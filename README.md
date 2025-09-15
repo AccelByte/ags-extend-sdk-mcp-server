@@ -201,10 +201,7 @@ If your MCP server is running on a remote machine, you can connect to it using H
 {
   "mcpServers": {
     "extend-sdk": {
-      "transport": {
-        "type": "http",
-        "url": "http://your-remote-server:3000"
-      }
+      "url": "http://localhost:3000/"
     }
   }
 }
