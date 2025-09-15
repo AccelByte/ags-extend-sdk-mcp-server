@@ -25,5 +25,14 @@ EXPOSE 3000
 # Set environment to production
 ENV NODE_ENV=production
 
-# Start the application
-CMD ["pnpm", "start"]
+# Set default commands file path (can be overridden via environment variable)
+# Users can override this by setting COMMANDS_FILE environment variable when running the container
+# Examples:
+#   docker run -e COMMANDS_FILE=custom-commands.yaml <image>  # Just filename
+#   docker run -e COMMANDS_FILE=/app/dist/commands/custom-commands.yaml <image>  # Full path
+ENV COMMANDS_FILE=commands.yaml
+
+# Start the application with configurable commands file
+# The COMMANDS_FILE environment variable allows users to select different command YAML files
+# from the dist/commands directory. Users can specify just the filename or a full path.
+CMD ["sh", "-c", "if [ \"${COMMANDS_FILE#/}\" = \"${COMMANDS_FILE}\" ]; then COMMANDS_FILE=\"/app/dist/commands/${COMMANDS_FILE}\"; fi && node dist/adapter-http.js --commands-file ${COMMANDS_FILE}"]
