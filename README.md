@@ -157,3 +157,58 @@ Execute a specific command.
 - `PORT`: Server port (default: 3000)
 - `NODE_ENV`: Environment (development/production)
 - `LOG_LEVEL`: Logging level (debug/info/warn/error)
+
+## Adding to Cursor AI
+
+To use this MCP server with Cursor AI, you need to configure it in your Cursor settings:
+
+### 1. Open Cursor Settings
+- Press `Ctrl+,` (or `Cmd+,` on Mac) to open settings
+- Or go to **File > Preferences > Settings**
+
+### 2. Navigate to MCP Settings
+- Search for "MCP" in the settings search bar
+- Click on **"MCP Servers"** or **"Model Context Protocol"**
+
+### 3a. Alternative: Using Docker
+If you prefer to run the server via Docker:
+
+```json
+{
+  "mcpServers": {
+    "extend-sdk": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "-p", "3000:3000",
+        "extend-sdk-mcp-server:latest"
+      ]
+    }
+  }
+}
+```
+
+### 3b. Alternative: Remote Server Setup
+If your MCP server is running on a remote machine, you can connect to it using HTTP transport:
+
+```json
+{
+  "mcpServers": {
+    "extend-sdk": {
+      "transport": {
+        "type": "http",
+        "url": "http://your-remote-server:3000"
+      }
+    }
+  }
+}
+```
+
+### 4. Restart Cursor
+After adding the configuration, restart Cursor AI to load the new MCP server.
+
+### 5. Verify Connection
+Once Cursor restarts, you should see the Extend SDK MCP server available in your AI assistant. You can test it by asking the AI to:
+- Search for available commands: "Search for commands related to 'hello'"
+- Get command details: "Describe the 'hello' command in the 'demo' namespace"
+- Execute commands: "Run the hello command with name 'World'"
