@@ -129,7 +129,7 @@ server.registerTool("dispatch_run", {
 
 // Create and start the HTTP transport
 async function main() {
-  const port = Number(process.env.PORT ?? 3001);
+  const port = Number(process.env.PORT ?? 3000);
 
   logger.info({ port }, 'MCP server starting on HTTP port');
 
