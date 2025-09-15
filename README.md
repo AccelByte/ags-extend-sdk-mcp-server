@@ -58,6 +58,7 @@ docker run -p 3000:3000 \
   -e NODE_ENV=production \
   -e PORT=3000 \
   -e LOG_LEVEL=info \
+  -e COMMANDS_FILE=go-commands.yaml \
   extend-sdk-mcp-server
 
 ## Testing the MCP Server
@@ -157,6 +158,11 @@ Execute a specific command.
 - `PORT`: Server port (default: 3000)
 - `NODE_ENV`: Environment (development/production)
 - `LOG_LEVEL`: Logging level (debug/info/warn/error)
+- `COMMANDS_FILE`: Path to commands file for loading SDK commands. You can specify:
+  - `cs-commands.yaml` for C# commands
+  - `go-commands.yaml` for Go commands
+  - `jv-commands.yaml` for Java commands
+  - `py-commands.yaml` for Python commands
 
 ## Adding to Cursor AI
 
