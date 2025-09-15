@@ -32,7 +32,9 @@ ENV NODE_ENV=production
 #   docker run -e COMMANDS_FILE=/app/dist/commands/custom-commands.yaml <image>  # Full path
 ENV COMMANDS_FILE=commands.yaml
 
-# Start the application with configurable commands file
-# The COMMANDS_FILE environment variable allows users to select different command YAML files
-# from the dist/commands directory. Users can specify just the filename or a full path.
-CMD ["sh", "-c", "if [ \"${COMMANDS_FILE#/}\" = \"${COMMANDS_FILE}\" ]; then COMMANDS_FILE=\"/app/dist/commands/${COMMANDS_FILE}\"; fi && node dist/adapter-http.js --commands-file ${COMMANDS_FILE}"]
+# Copy entrypoint script for proper signal handling and environment variable processing
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Use the entrypoint script to ensure proper signal handling
+ENTRYPOINT ["/app/entrypoint.sh"]

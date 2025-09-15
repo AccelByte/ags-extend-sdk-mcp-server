@@ -237,6 +237,59 @@ async function main() {
   server_http.listen(port, () => {
     logger.info({ port }, 'HTTP server listening and ready');
   });
+
+  // Set up graceful shutdown handlers
+  let isShuttingDown = false;
+  
+  const gracefulShutdown = async (signal: string) => {
+    if (isShuttingDown) {
+      logger.warn('Already shutting down, forcing exit...');
+      process.exit(1);
+    }
+    
+    isShuttingDown = true;
+    logger.info({ signal }, 'Received shutdown signal, starting graceful shutdown...');
+    
+    try {
+      // Close the HTTP server
+      await new Promise<void>((resolve, reject) => {
+        server_http.close((err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
+      });
+      logger.info('HTTP server closed');
+      
+      // Close the MCP server transport
+      await server.close();
+      logger.info('MCP server closed');
+      
+      logger.info('Graceful shutdown completed');
+      process.exit(0);
+    } catch (error) {
+      logger.error({ error: error instanceof Error ? error.message : String(error) }, 'Error during shutdown');
+      process.exit(1);
+    }
+  };
+
+  // Handle different termination signals
+  process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+  process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+  process.on('SIGHUP', () => gracefulShutdown('SIGHUP'));
+  
+  // Handle uncaught exceptions and unhandled rejections
+  process.on('uncaughtException', (error) => {
+    logger.fatal({ error: error.message, stack: error.stack }, 'Uncaught exception');
+    process.exit(1);
+  });
+  
+  process.on('unhandledRejection', (reason, promise) => {
+    logger.fatal({ reason, promise }, 'Unhandled promise rejection');
+    process.exit(1);
+  });
 }
 
 main().catch((error) => {
