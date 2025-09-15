@@ -1,15 +1,27 @@
 import { CommandRegistry, CommandDef } from "./registry.js";
-import { readFileSync } from "fs";
-import { join } from "path";
+import { readFileSync, existsSync } from "fs";
+import { join, resolve } from "path";
 import { fileURLToPath } from "url";
 import yaml from "js-yaml";
+import pino from "pino";
 
-// Read commands from YAML file
+// Create logger instance for registry operations
+const logger = pino({
+  level: process.env.LOG_LEVEL || 'info',
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true,
+      translateTime: 'SYS:standard',
+      ignore: 'pid,hostname',
+    },
+  },
+});
+
+// Get default commands file path
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = join(__filename, "..");
-const commandsData = yaml.load(
-  readFileSync(join(__dirname, "commands", "commands.yaml"), "utf-8")
-) as { commands: any[] };
+const defaultCommandsFile = join(__dirname, "commands", "commands.yaml");
 
 // Handler implementations
 const handlers = {
@@ -65,8 +77,34 @@ type JsonCommand = {
 };
 
 // Load commands from YAML and register them
-export function registerCommandsFromYaml(reg: CommandRegistry) {
+export function registerCommandsFromYaml(reg: CommandRegistry, commandsFile?: string) {
+  // Determine which commands file to use
+  const filePath = commandsFile ? resolve(commandsFile) : defaultCommandsFile;
+  
+  // Log which commands file is being loaded
+  logger.info({ commandsFile: filePath }, 'Loading commands from YAML file');
+  
+  // Check if file exists
+  if (!existsSync(filePath)) {
+    throw new Error(`Commands file not found: ${filePath}`);
+  }
+  
+  // Read and parse the YAML file
+  const commandsData = yaml.load(
+    readFileSync(filePath, "utf-8")
+  ) as { commands: any[] };
+  
+  if (!commandsData || !commandsData.commands) {
+    throw new Error(`Invalid YAML file format: ${filePath}. Expected 'commands' array.`);
+  }
+  
   const commands = commandsData.commands as JsonCommand[];
+  
+  // Log how many commands were loaded
+  logger.info({ 
+    commandsFile: filePath, 
+    commandCount: commands.length 
+  }, 'Successfully loaded commands from YAML file');
   
   for (const cmd of commands) {
     const { handler, handlerInline, staticData, ...cmdDef } = cmd;

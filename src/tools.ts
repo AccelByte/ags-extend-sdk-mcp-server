@@ -7,7 +7,15 @@ export const registry = new CommandRegistry();
 
 // Load demo commands; replace/extend as needed
 import { registerBuiltins } from "./registry.js";
-registerBuiltins(registry);
+
+// Initialize tools with optional custom commands file
+export function initializeTools(commandsFile?: string) {
+  // Clear existing registry
+  registry.clear();
+  
+  // Register commands with custom file if provided
+  registerBuiltins(registry, commandsFile);
+}
 
 // ---- Input types ----
 export type SearchInput = { q?: string; ns?: string; limit?: number; offset?: number };

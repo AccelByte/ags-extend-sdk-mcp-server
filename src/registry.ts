@@ -25,6 +25,10 @@ export class CommandRegistry {
     this.map.set(id, cmd);
   }
 
+  clear() {
+    this.map.clear();
+  }
+
   get(ns: string, name: string) {
     const id = this.key(ns, name);
     const cmd = this.map.get(id);
@@ -55,8 +59,8 @@ export class CommandRegistry {
 // ---- Built-in/demo commands registration ----
 import { registerCommandsFromYaml } from "./registry-yaml.js";
 
-export function registerBuiltins(reg: CommandRegistry) {
-  registerCommandsFromYaml(reg);
+export function registerBuiltins(reg: CommandRegistry, commandsFile?: string) {
+  registerCommandsFromYaml(reg, commandsFile);
 
   // TODO: For large catalogs, consider lazy-loading by namespace:
   // e.g., on first access to ns "aws", dynamically import("./commands/aws.js") and register.

@@ -5,7 +5,60 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
 import pino from "pino";
-import { handleSearch, handleDescribe, handleRun } from "./tools.js";
+import { handleSearch, handleDescribe, handleRun, initializeTools } from "./tools.js";
+
+// Parse command line arguments
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const options: { commandsFile?: string; help?: boolean } = {};
+  
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    
+    if (arg === '--help' || arg === '-h') {
+      options.help = true;
+    } else if (arg === '--commands-file' || arg === '-c') {
+      if (i + 1 < args.length) {
+        options.commandsFile = args[i + 1];
+        i++; // Skip the next argument as it's the value
+      } else {
+        console.error('Error: --commands-file requires a file path');
+        process.exit(1);
+      }
+    } else if (arg.startsWith('--commands-file=')) {
+      options.commandsFile = arg.split('=')[1];
+    } else if (arg.startsWith('-c=')) {
+      options.commandsFile = arg.split('=')[1];
+    } else {
+      console.error(`Error: Unknown argument: ${arg}`);
+      console.error('Use --help to see available options');
+      process.exit(1);
+    }
+  }
+  
+  return options;
+}
+
+// Show help information
+function showHelp() {
+  console.log(`
+Usage: node dist/adapter-http.js [options]
+
+Options:
+  -c, --commands-file <path>  Path to YAML file containing command definitions
+                              (default: src/commands/commands.yaml)
+  -h, --help                  Show this help message
+
+Environment Variables:
+  PORT                        HTTP server port (default: 3000)
+  LOG_LEVEL                   Logging level (default: info)
+
+Examples:
+  node dist/adapter-http.js
+  node dist/adapter-http.js --commands-file /path/to/custom-commands.yaml
+  node dist/adapter-http.js -c ./my-commands.yaml
+`);
+}
 
 // Load environment variables from .env file
 config();
@@ -129,9 +182,22 @@ server.registerTool("dispatch_run", {
 
 // Create and start the HTTP transport
 async function main() {
+  // Parse command line arguments
+  const options = parseArgs();
+  
+  // Show help and exit if requested
+  if (options.help) {
+    showHelp();
+    process.exit(0);
+  }
+  
   const port = Number(process.env.PORT ?? 3000);
+  const commandsFile = options.commandsFile;
 
-  logger.info({ port }, 'MCP server starting on HTTP port');
+  // Initialize tools with custom commands file if provided (or default if none specified)
+  initializeTools(commandsFile);
+
+  logger.info({ port, commandsFile }, 'MCP server starting on HTTP port');
 
   // Create the HTTP transport with session management disabled for simpler local development
   const transport = new StreamableHTTPServerTransport({
