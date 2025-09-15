@@ -26,7 +26,7 @@ const logger = pino({
 // Create the MCP server instance
 const server = new McpServer(
   {
-    name: "accelbyte-jssdk-mcp",
+    name: "extend-sdk-mcp-server",
     version: "0.1.0",
   },
   {
