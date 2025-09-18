@@ -1,14 +1,17 @@
 # Extend SDK MCP Server
 
-This project provides a **Model Context Protocol (MCP) server** that exposes SDK commands through a scalable pattern using only three MCP tools. It allows AI assistants and other MCP clients to discover, describe, and execute thousands of SDK commands dynamically.
+This project provides a **Model Context Protocol (MCP) server** that exposes Extend SDK functions and structs. It allows AI assistants and other MCP clients to discover, describe, and execute thousands of SDK functions dynamically.
 
 ## What is this project?
 
-This is an MCP server that provides access to SDK functionality through the Model Context Protocol. Instead of exposing thousands of individual tools (which would be slow and unwieldy), it uses a smart dispatch pattern with just three tools:
+This is an MCP server that provides access to SDK models via six tools:
 
-- **`dispatch_search`** – Discover commands by text search or namespace
-- **`dispatch_describe`** – Get detailed JSON Schema and examples for any command
-- **`dispatch_run`** – Execute any command with proper parameters
+- **`describe_function`** – Get detailed information about a specific function by its ID
+- **`describe_struct`** – Get detailed information about a specific struct by its ID
+- **`search_functions`** – Search for functions by name, tags, description (fuzzy)
+- **`search_structs`** – Search for structs by name, tags, description (fuzzy)
+- **`get_bulk_functions`** – Retrieve multiple functions with pagination
+- **`get_bulk_structs`** – Retrieve multiple structs with pagination
 
 ### Why this pattern?
 - **Fast handshake**: Keeps the MCP tool list tiny for quick client connections
@@ -58,8 +61,9 @@ docker run -p 3000:3000 \
   -e NODE_ENV=production \
   -e PORT=3000 \
   -e LOG_LEVEL=info \
-  -e COMMANDS_FILE=go-commands.yaml \
+  -e CONFIG_DIR=/app/config \
   extend-sdk-mcp-server
+```
 
 ## Testing the MCP Server
 
@@ -94,27 +98,20 @@ curl -N -H "Accept: application/json, text/event-stream" \
 curl -N -H "Accept: application/json, text/event-stream" \
      -H "Content-Type: application/json" \
      -X POST \
-     -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"dispatch_search","arguments":{"q":"hello"}}}' \
+     -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search_functions","arguments":{"query":"user"}}}' \
      http://localhost:3000/
 ```
 
-**4. Test the describe tool:**
+**4. Test describe struct:**
 ```bash
 curl -N -H "Accept: application/json, text/event-stream" \
      -H "Content-Type: application/json" \
      -X POST \
-     -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"dispatch_describe","arguments":{"ns":"demo","name":"hello"}}}' \
+     -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_struct","arguments":{"id":"User@iam"}}}' \
      http://localhost:3000/
 ```
 
-**5. Test the run tool:**
-```bash
-curl -N -H "Accept: application/json, text/event-stream" \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"dispatch_run","arguments":{"ns":"demo","name":"hello","args":{"name":"World"}}}}' \
-     http://localhost:3000/
-```
+--
 
 #### Key curl Parameters Explained
 
@@ -125,44 +122,33 @@ curl -N -H "Accept: application/json, text/event-stream" \
 
 ## Available MCP Tools
 
-The server exposes these 3 tools:
+The server exposes these 6 tools:
 
-### 1. `dispatch_search`
-Search for available commands by text or namespace.
+### 1. `describe_function`
+Get detailed information about a specific function by its ID.
 
-**Parameters:**
-- `q` (optional): Search query string
-- `ns` (optional): Namespace filter
-- `limit` (optional): Maximum results (1-200, default: 25)
-- `offset` (optional): Pagination offset (default: 0)
+### 2. `describe_struct`
+Get detailed information about a specific struct by its ID.
 
-### 2. `dispatch_describe`
-Get detailed information about a specific command.
+### 3. `search_functions`
+Search for functions by name, tags, or description with fuzzy matching support.
 
-**Parameters:**
-- `ns` (required): Command namespace
-- `name` (required): Command name
+### 4. `search_structs`
+Search for structs by name, tags, or description with fuzzy matching support.
 
-**Returns:** JSON Schema, examples, and summary for the command.
+### 5. `get_bulk_functions`
+Get multiple functions at once for efficient analysis with pagination.
 
-### 3. `dispatch_run`
-Execute a specific command.
-
-**Parameters:**
-- `ns` (required): Command namespace
-- `name` (required): Command name
-- `args` (optional): Command arguments object
+### 6. `get_bulk_structs`
+Get multiple structs at once for efficient analysis with pagination.
 
 ## Environment Variables
 
 - `PORT`: Server port (default: 3000)
 - `NODE_ENV`: Environment (development/production)
 - `LOG_LEVEL`: Logging level (debug/info/warn/error)
-- `COMMANDS_FILE`: Path to commands file for loading SDK commands. You can specify:
-  - `cs-commands.yaml` for C# commands
-  - `go-commands.yaml` for Go commands
-  - `jv-commands.yaml` for Java commands
-  - `py-commands.yaml` for Python commands
+- `CONFIG_FILE`: Single YAML config file path
+- `CONFIG_DIR`: Directory of YAML config files (recursive)
 
 ## Adding to Cursor AI
 
@@ -187,6 +173,9 @@ If you prefer to run the server via Docker:
       "args": [
         "run", "--rm", "-i",
         "-p", "3000:3000",
+        "-e", "PORT=3000",
+        "-e", "LOG_LEVEL=info",
+        "-e", "CONFIG_DIR=/app/config",
         "extend-sdk-mcp-server:latest"
       ]
     }
@@ -212,6 +201,6 @@ After adding the configuration, restart Cursor AI to load the new MCP server.
 
 ### 5. Verify Connection
 Once Cursor restarts, you should see the Extend SDK MCP server available in your AI assistant. You can test it by asking the AI to:
-- Search for available commands: "Search for commands related to 'hello'"
-- Get command details: "Describe the 'hello' command in the 'demo' namespace"
-- Execute commands: "Run the hello command with name 'World'"
+- Search functions: "Search for functions related to 'user'"
+- Get struct details: "Describe the 'User@iam' struct"
+- Get function details: "Describe the 'AdminCreateUser@iam' function"

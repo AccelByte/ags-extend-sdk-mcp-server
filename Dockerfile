@@ -25,12 +25,8 @@ EXPOSE 3000
 # Set environment to production
 ENV NODE_ENV=production
 
-# Set default commands file path (can be overridden via environment variable)
-# Users can override this by setting COMMANDS_FILE environment variable when running the container
-# Examples:
-#   docker run -e COMMANDS_FILE=custom-commands.yaml <image>  # Just filename
-#   docker run -e COMMANDS_FILE=/app/dist/commands/custom-commands.yaml <image>  # Full path
-ENV COMMANDS_FILE=commands.yaml
+# Default config location (override with CONFIG_FILE or CONFIG_DIR at runtime)
+ENV CONFIG_DIR=/app/config
 
 # Copy entrypoint script for proper signal handling and environment variable processing
 COPY entrypoint.sh /app/entrypoint.sh
