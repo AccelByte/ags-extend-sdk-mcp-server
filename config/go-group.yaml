@@ -1,0 +1,5404 @@
+structs:
+  'JusticeGroupService@group':
+    id: 'JusticeGroupService@group'
+    name: 'JusticeGroupService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/justice_group_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/groupclientfactory.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo)
+
+  # region wrappers
+
+  'ConfigurationService@group':
+    id: 'ConfigurationService@group'
+    name: 'ConfigurationService'
+    fields:
+      Client:
+        type: '*groupclient.JusticeGroupService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo) // re-use if it exists already
+      configurationService := ConfigurationService{
+          Client:           groupClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'GroupService@group':
+    id: 'GroupService@group'
+    name: 'GroupService'
+    fields:
+      Client:
+        type: '*groupclient.JusticeGroupService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo) // re-use if it exists already
+      groupService := GroupService{
+          Client:           groupClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'GroupMemberService@group':
+    id: 'GroupMemberService@group'
+    name: 'GroupMemberService'
+    fields:
+      Client:
+        type: '*groupclient.JusticeGroupService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo) // re-use if it exists already
+      groupMemberService := GroupMemberService{
+          Client:           groupClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'GroupRolesService@group':
+    id: 'GroupRolesService@group'
+    name: 'GroupRolesService'
+    fields:
+      Client:
+        type: '*groupclient.JusticeGroupService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo) // re-use if it exists already
+      groupRolesService := GroupRolesService{
+          Client:           groupClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MemberRequestService@group':
+    id: 'MemberRequestService@group'
+    name: 'MemberRequestService'
+    fields:
+      Client:
+        type: '*groupclient.JusticeGroupService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      groupClient := factory.NewGroupClient(configRepo) // re-use if it exists already
+      memberRequestService := MemberRequestService{
+          Client:           groupClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AcceptGroupInvitationPublicV1Params@group':
+    id: 'AcceptGroupInvitationPublicV1Params@group'
+    name: 'AcceptGroupInvitationPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_invitation_public_v1_parameters.go'
+
+  'AcceptGroupInvitationPublicV2Params@group':
+    id: 'AcceptGroupInvitationPublicV2Params@group'
+    name: 'AcceptGroupInvitationPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_invitation_public_v2_parameters.go'
+
+  'AcceptGroupJoinRequestPublicV1Params@group':
+    id: 'AcceptGroupJoinRequestPublicV1Params@group'
+    name: 'AcceptGroupJoinRequestPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_join_request_public_v1_parameters.go'
+
+  'AcceptGroupJoinRequestPublicV2Params@group':
+    id: 'AcceptGroupJoinRequestPublicV2Params@group'
+    name: 'AcceptGroupJoinRequestPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_join_request_public_v2_parameters.go'
+
+  'AdminGetUserGroupStatusInformationV2Params@group':
+    id: 'AdminGetUserGroupStatusInformationV2Params@group'
+    name: 'AdminGetUserGroupStatusInformationV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/admin_get_user_group_status_information_v2_parameters.go'
+
+  'CancelGroupJoinRequestV1Params@group':
+    id: 'CancelGroupJoinRequestV1Params@group'
+    name: 'CancelGroupJoinRequestV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/cancel_group_join_request_v1_parameters.go'
+
+  'CancelInvitationGroupMemberV2Params@group':
+    id: 'CancelInvitationGroupMemberV2Params@group'
+    name: 'CancelInvitationGroupMemberV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/cancel_invitation_group_member_v2_parameters.go'
+
+  'CreateGroupConfigurationAdminV1Params@group':
+    id: 'CreateGroupConfigurationAdminV1Params@group'
+    name: 'CreateGroupConfigurationAdminV1Params'
+    fields:
+      'Body':
+        type: '*ModelsCreateGroupConfigurationRequestV1'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/create_group_configuration_admin_v1_parameters.go'
+
+  'CreateMemberRoleAdminV1Params@group':
+    id: 'CreateMemberRoleAdminV1Params@group'
+    name: 'CreateMemberRoleAdminV1Params'
+    fields:
+      'Body':
+        type: '*ModelsCreateMemberRoleRequestV1'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/create_member_role_admin_v1_parameters.go'
+
+  'CreateNewGroupPublicV1Params@group':
+    id: 'CreateNewGroupPublicV1Params@group'
+    name: 'CreateNewGroupPublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsPublicCreateNewGroupRequestV1'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/create_new_group_public_v1_parameters.go'
+
+  'CreateNewGroupPublicV2Params@group':
+    id: 'CreateNewGroupPublicV2Params@group'
+    name: 'CreateNewGroupPublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsPublicCreateNewGroupRequestV1'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/create_new_group_public_v2_parameters.go'
+
+  'DeleteGroupAdminV1Params@group':
+    id: 'DeleteGroupAdminV1Params@group'
+    name: 'DeleteGroupAdminV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_admin_v1_parameters.go'
+
+  'DeleteGroupConfigurationGlobalRuleAdminV1Params@group':
+    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Params@group'
+    name: 'DeleteGroupConfigurationGlobalRuleAdminV1Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed Action. The value should be any actions in the service
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          Group Configuration Code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/delete_group_configuration_global_rule_admin_v1_parameters.go'
+
+  'DeleteGroupConfigurationV1Params@group':
+    id: 'DeleteGroupConfigurationV1Params@group'
+    name: 'DeleteGroupConfigurationV1Params'
+    fields:
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          Group Configuration Code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/delete_group_configuration_v1_parameters.go'
+
+  'DeleteGroupPredefinedRulePublicV1Params@group':
+    id: 'DeleteGroupPredefinedRulePublicV1Params@group'
+    name: 'DeleteGroupPredefinedRulePublicV1Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed action, any available action in service
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_predefined_rule_public_v1_parameters.go'
+
+  'DeleteGroupPredefinedRulePublicV2Params@group':
+    id: 'DeleteGroupPredefinedRulePublicV2Params@group'
+    name: 'DeleteGroupPredefinedRulePublicV2Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed action, any available action in service
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_predefined_rule_public_v2_parameters.go'
+
+  'DeleteGroupPublicV1Params@group':
+    id: 'DeleteGroupPublicV1Params@group'
+    name: 'DeleteGroupPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_public_v1_parameters.go'
+
+  'DeleteGroupPublicV2Params@group':
+    id: 'DeleteGroupPublicV2Params@group'
+    name: 'DeleteGroupPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_public_v2_parameters.go'
+
+  'DeleteMemberRoleAdminV1Params@group':
+    id: 'DeleteMemberRoleAdminV1Params@group'
+    name: 'DeleteMemberRoleAdminV1Params'
+    fields:
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_admin_v1_parameters.go'
+
+  'DeleteMemberRolePublicV1Params@group':
+    id: 'DeleteMemberRolePublicV1Params@group'
+    name: 'DeleteMemberRolePublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsRemoveRoleFromMemberRequestV1'
+        required: true
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_public_v1_parameters.go'
+
+  'DeleteMemberRolePublicV2Params@group':
+    id: 'DeleteMemberRolePublicV2Params@group'
+    name: 'DeleteMemberRolePublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsRemoveRoleFromMemberRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_public_v2_parameters.go'
+
+  'GetGroupConfigurationAdminV1Params@group':
+    id: 'GetGroupConfigurationAdminV1Params@group'
+    name: 'GetGroupConfigurationAdminV1Params'
+    fields:
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          Group Configuration Code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/get_group_configuration_admin_v1_parameters.go'
+
+  'GetGroupInvitationRequestPublicV1Params@group':
+    id: 'GetGroupInvitationRequestPublicV1Params@group'
+    name: 'GetGroupInvitationRequestPublicV1Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_invitation_request_public_v1_parameters.go'
+
+  'GetGroupInviteRequestPublicV2Params@group':
+    id: 'GetGroupInviteRequestPublicV2Params@group'
+    name: 'GetGroupInviteRequestPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_invite_request_public_v2_parameters.go'
+
+  'GetGroupJoinRequestPublicV1Params@group':
+    id: 'GetGroupJoinRequestPublicV1Params@group'
+    name: 'GetGroupJoinRequestPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_join_request_public_v1_parameters.go'
+
+  'GetGroupJoinRequestPublicV2Params@group':
+    id: 'GetGroupJoinRequestPublicV2Params@group'
+    name: 'GetGroupJoinRequestPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_join_request_public_v2_parameters.go'
+
+  'GetGroupListAdminV1Params@group':
+    id: 'GetGroupListAdminV1Params@group'
+    name: 'GetGroupListAdminV1Params'
+    fields:
+      'ConfigurationCode':
+        type: 'string'
+        required: false
+        description: |-
+          Query Group Configuration Code
+      'GroupName':
+        type: 'string'
+        required: false
+        description: |-
+          Query Group Name
+      'GroupRegion':
+        type: 'string'
+        required: false
+        description: |-
+          Query Group Region
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_group_list_admin_v1_parameters.go'
+
+  'GetGroupListPublicV1Params@group':
+    id: 'GetGroupListPublicV1Params@group'
+    name: 'GetGroupListPublicV1Params'
+    fields:
+      'GroupName':
+        type: 'string'
+        required: false
+        description: |-
+          Query Group Name
+      'GroupRegion':
+        type: 'string'
+        required: false
+        description: |-
+          Query Group Region
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_group_list_public_v1_parameters.go'
+
+  'GetGroupMembersListAdminV1Params@group':
+    id: 'GetGroupMembersListAdminV1Params@group'
+    name: 'GetGroupMembersListAdminV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          Sort group members list by User ID with ascending as default order. Set it 'desc' for descending order
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_group_members_list_admin_v1_parameters.go'
+
+  'GetGroupMembersListPublicV1Params@group':
+    id: 'GetGroupMembersListPublicV1Params@group'
+    name: 'GetGroupMembersListPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          Sort group members list by User ID with ascending as default order. Set it 'desc' for descending order
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_group_members_list_public_v1_parameters.go'
+
+  'GetListGroupByIDsAdminV2Params@group':
+    id: 'GetListGroupByIDsAdminV2Params@group'
+    name: 'GetListGroupByIDsAdminV2Params'
+    fields:
+      'Body':
+        type: '*ModelsGetGroupListRequestV2'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_list_group_by_i_ds_admin_v2_parameters.go'
+
+  'GetListGroupByIDsV2Params@group':
+    id: 'GetListGroupByIDsV2Params@group'
+    name: 'GetListGroupByIDsV2Params'
+    fields:
+      'Body':
+        type: '*ModelsGetGroupListRequestV2'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_list_group_by_i_ds_v2_parameters.go'
+
+  'GetMemberRolesListAdminV1Params@group':
+    id: 'GetMemberRolesListAdminV1Params@group'
+    name: 'GetMemberRolesListAdminV1Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_admin_v1_parameters.go'
+
+  'GetMemberRolesListPublicV1Params@group':
+    id: 'GetMemberRolesListPublicV1Params@group'
+    name: 'GetMemberRolesListPublicV1Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_public_v1_parameters.go'
+
+  'GetMemberRolesListPublicV2Params@group':
+    id: 'GetMemberRolesListPublicV2Params@group'
+    name: 'GetMemberRolesListPublicV2Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_public_v2_parameters.go'
+
+  'GetMyGroupJoinRequestV2Params@group':
+    id: 'GetMyGroupJoinRequestV2Params@group'
+    name: 'GetMyGroupJoinRequestV2Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_my_group_join_request_v2_parameters.go'
+
+  'GetSingleGroupAdminV1Params@group':
+    id: 'GetSingleGroupAdminV1Params@group'
+    name: 'GetSingleGroupAdminV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_single_group_admin_v1_parameters.go'
+
+  'GetSingleGroupPublicV1Params@group':
+    id: 'GetSingleGroupPublicV1Params@group'
+    name: 'GetSingleGroupPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_single_group_public_v1_parameters.go'
+
+  'GetSingleMemberRoleAdminV1Params@group':
+    id: 'GetSingleMemberRoleAdminV1Params@group'
+    name: 'GetSingleMemberRoleAdminV1Params'
+    fields:
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_single_member_role_admin_v1_parameters.go'
+
+  'GetUserGroupInformationPublicV1Params@group':
+    id: 'GetUserGroupInformationPublicV1Params@group'
+    name: 'GetUserGroupInformationPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_information_public_v1_parameters.go'
+
+  'GetUserGroupInformationPublicV2Params@group':
+    id: 'GetUserGroupInformationPublicV2Params@group'
+    name: 'GetUserGroupInformationPublicV2Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_information_public_v2_parameters.go'
+
+  'GetUserGroupStatusInformationV2Params@group':
+    id: 'GetUserGroupStatusInformationV2Params@group'
+    name: 'GetUserGroupStatusInformationV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_status_information_v2_parameters.go'
+
+  'GetUserJoinedGroupInformationPublicV2Params@group':
+    id: 'GetUserJoinedGroupInformationPublicV2Params@group'
+    name: 'GetUserJoinedGroupInformationPublicV2Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_joined_group_information_public_v2_parameters.go'
+
+  'InitiateGroupConfigurationAdminV1Params@group':
+    id: 'InitiateGroupConfigurationAdminV1Params@group'
+    name: 'InitiateGroupConfigurationAdminV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/initiate_group_configuration_admin_v1_parameters.go'
+
+  'InviteGroupPublicV1Params@group':
+    id: 'InviteGroupPublicV1Params@group'
+    name: 'InviteGroupPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/invite_group_public_v1_parameters.go'
+
+  'InviteGroupPublicV2Params@group':
+    id: 'InviteGroupPublicV2Params@group'
+    name: 'InviteGroupPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/invite_group_public_v2_parameters.go'
+
+  'JoinGroupV1Params@group':
+    id: 'JoinGroupV1Params@group'
+    name: 'JoinGroupV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/join_group_v1_parameters.go'
+
+  'JoinGroupV2Params@group':
+    id: 'JoinGroupV2Params@group'
+    name: 'JoinGroupV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/join_group_v2_parameters.go'
+
+  'KickGroupMemberPublicV1Params@group':
+    id: 'KickGroupMemberPublicV1Params@group'
+    name: 'KickGroupMemberPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/kick_group_member_public_v1_parameters.go'
+
+  'KickGroupMemberPublicV2Params@group':
+    id: 'KickGroupMemberPublicV2Params@group'
+    name: 'KickGroupMemberPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/kick_group_member_public_v2_parameters.go'
+
+  'LeaveGroupPublicV1Params@group':
+    id: 'LeaveGroupPublicV1Params@group'
+    name: 'LeaveGroupPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/leave_group_public_v1_parameters.go'
+
+  'LeaveGroupPublicV2Params@group':
+    id: 'LeaveGroupPublicV2Params@group'
+    name: 'LeaveGroupPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/leave_group_public_v2_parameters.go'
+
+  'ListGroupConfigurationAdminV1Params@group':
+    id: 'ListGroupConfigurationAdminV1Params@group'
+    name: 'ListGroupConfigurationAdminV1Params'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          size of displayed data
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/list_group_configuration_admin_v1_parameters.go'
+
+  'RejectGroupInvitationPublicV1Params@group':
+    id: 'RejectGroupInvitationPublicV1Params@group'
+    name: 'RejectGroupInvitationPublicV1Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_invitation_public_v1_parameters.go'
+
+  'RejectGroupInvitationPublicV2Params@group':
+    id: 'RejectGroupInvitationPublicV2Params@group'
+    name: 'RejectGroupInvitationPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_invitation_public_v2_parameters.go'
+
+  'RejectGroupJoinRequestPublicV1Params@group':
+    id: 'RejectGroupJoinRequestPublicV1Params@group'
+    name: 'RejectGroupJoinRequestPublicV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_join_request_public_v1_parameters.go'
+
+  'RejectGroupJoinRequestPublicV2Params@group':
+    id: 'RejectGroupJoinRequestPublicV2Params@group'
+    name: 'RejectGroupJoinRequestPublicV2Params'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_join_request_public_v2_parameters.go'
+
+  'UpdateGroupConfigurationAdminV1Params@group':
+    id: 'UpdateGroupConfigurationAdminV1Params@group'
+    name: 'UpdateGroupConfigurationAdminV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupConfigurationRequestV1'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          Group Configuration Code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/update_group_configuration_admin_v1_parameters.go'
+
+  'UpdateGroupConfigurationGlobalRuleAdminV1Params@group':
+    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Params@group'
+    name: 'UpdateGroupConfigurationGlobalRuleAdminV1Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed Action. The value should be any actions in the service
+      'Body':
+        type: '*ModelsUpdateGroupConfigurationGlobalRulesRequestV1'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          Group Configuration Code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/update_group_configuration_global_rule_admin_v1_parameters.go'
+
+  'UpdateGroupCustomAttributesPublicV1Params@group':
+    id: 'UpdateGroupCustomAttributesPublicV1Params@group'
+    name: 'UpdateGroupCustomAttributesPublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupCustomAttributesRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_attributes_public_v1_parameters.go'
+
+  'UpdateGroupCustomAttributesPublicV2Params@group':
+    id: 'UpdateGroupCustomAttributesPublicV2Params@group'
+    name: 'UpdateGroupCustomAttributesPublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupCustomAttributesRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_attributes_public_v2_parameters.go'
+
+  'UpdateGroupCustomRulePublicV1Params@group':
+    id: 'UpdateGroupCustomRulePublicV1Params@group'
+    name: 'UpdateGroupCustomRulePublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupCustomRuleRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_rule_public_v1_parameters.go'
+
+  'UpdateGroupCustomRulePublicV2Params@group':
+    id: 'UpdateGroupCustomRulePublicV2Params@group'
+    name: 'UpdateGroupCustomRulePublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupCustomRuleRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_rule_public_v2_parameters.go'
+
+  'UpdateGroupPredefinedRulePublicV1Params@group':
+    id: 'UpdateGroupPredefinedRulePublicV1Params@group'
+    name: 'UpdateGroupPredefinedRulePublicV1Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed action, any available action in service
+      'Body':
+        type: '*ModelsUpdateGroupPredefinedRuleRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_predefined_rule_public_v1_parameters.go'
+
+  'UpdateGroupPredefinedRulePublicV2Params@group':
+    id: 'UpdateGroupPredefinedRulePublicV2Params@group'
+    name: 'UpdateGroupPredefinedRulePublicV2Params'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+        description: |-
+          Allowed action, any available action in service
+      'Body':
+        type: '*ModelsUpdateGroupPredefinedRuleRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_predefined_rule_public_v2_parameters.go'
+
+  'UpdateMemberRoleAdminV1Params@group':
+    id: 'UpdateMemberRoleAdminV1Params@group'
+    name: 'UpdateMemberRoleAdminV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateMemberRoleRequestV1'
+        required: true
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_admin_v1_parameters.go'
+
+  'UpdateMemberRolePermissionAdminV1Params@group':
+    id: 'UpdateMemberRolePermissionAdminV1Params@group'
+    name: 'UpdateMemberRolePermissionAdminV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateMemberRolePermissionsRequestV1'
+        required: true
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_permission_admin_v1_parameters.go'
+
+  'UpdateMemberRolePublicV1Params@group':
+    id: 'UpdateMemberRolePublicV1Params@group'
+    name: 'UpdateMemberRolePublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsAssignRoleToMemberRequestV1'
+        required: true
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_public_v1_parameters.go'
+
+  'UpdateMemberRolePublicV2Params@group':
+    id: 'UpdateMemberRolePublicV2Params@group'
+    name: 'UpdateMemberRolePublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsAssignRoleToMemberRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'MemberRoleID':
+        type: '*string'
+        required: true
+        description: |-
+          member Role ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_public_v2_parameters.go'
+
+  'UpdatePatchSingleGroupPublicV1Params@group':
+    id: 'UpdatePatchSingleGroupPublicV1Params@group'
+    name: 'UpdatePatchSingleGroupPublicV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_patch_single_group_public_v1_parameters.go'
+
+  'UpdatePatchSingleGroupPublicV2Params@group':
+    id: 'UpdatePatchSingleGroupPublicV2Params@group'
+    name: 'UpdatePatchSingleGroupPublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_patch_single_group_public_v2_parameters.go'
+
+  'UpdatePutSingleGroupPublicV2Params@group':
+    id: 'UpdatePutSingleGroupPublicV2Params@group'
+    name: 'UpdatePutSingleGroupPublicV2Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_put_single_group_public_v2_parameters.go'
+
+  'UpdateSingleGroupV1Params@group':
+    id: 'UpdateSingleGroupV1Params@group'
+    name: 'UpdateSingleGroupV1Params'
+    fields:
+      'Body':
+        type: '*ModelsUpdateGroupRequestV1'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Group ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_single_group_v1_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ModelsAssignRoleToMemberRequestV1@group':
+    id: 'ModelsAssignRoleToMemberRequestV1@group'
+    name: 'ModelsAssignRoleToMemberRequestV1'
+    fields:
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_assign_role_to_member_request_v1.go'
+
+  'ModelsCancelInvitationGroupResponseV2@group':
+    id: 'ModelsCancelInvitationGroupResponseV2@group'
+    name: 'ModelsCancelInvitationGroupResponseV2'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_cancel_invitation_group_response_v2.go'
+
+  'ModelsCreateGroupConfigurationRequestV1@group':
+    id: 'ModelsCreateGroupConfigurationRequestV1@group'
+    name: 'ModelsCreateGroupConfigurationRequestV1'
+    fields:
+      'AllowMultiple':
+        type: '*bool'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'GlobalRules':
+        type: '[]*ModelsRule'
+        required: true
+      'GroupAdminRoleID':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupMemberRoleID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_group_configuration_request_v1.go'
+
+  'ModelsCreateGroupConfigurationResponseV1@group':
+    id: 'ModelsCreateGroupConfigurationResponseV1@group'
+    name: 'ModelsCreateGroupConfigurationResponseV1'
+    fields:
+      'AllowMultiple':
+        type: '*bool'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'GlobalRules':
+        type: '[]*ModelsRuleResponseV1'
+        required: true
+      'GroupAdminRoleID':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupMemberRoleID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_group_configuration_response_v1.go'
+
+  'ModelsCreateMemberRoleRequestV1@group':
+    id: 'ModelsCreateMemberRoleRequestV1@group'
+    name: 'ModelsCreateMemberRoleRequestV1'
+    fields:
+      'MemberRoleName':
+        type: '*string'
+        required: true
+      'MemberRolePermissions':
+        type: '[]*ModelsRolePermission'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_member_role_request_v1.go'
+
+  'ModelsGetGroupConfigurationResponseV1@group':
+    id: 'ModelsGetGroupConfigurationResponseV1@group'
+    name: 'ModelsGetGroupConfigurationResponseV1'
+    fields:
+      'AllowMultiple':
+        type: '*bool'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'GlobalRules':
+        type: '[]*ModelsRuleResponseV1'
+        required: true
+      'GroupAdminRoleID':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupMemberRoleID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_configuration_response_v1.go'
+
+  'ModelsGetGroupListRequestV2@group':
+    id: 'ModelsGetGroupListRequestV2@group'
+    name: 'ModelsGetGroupListRequestV2'
+    fields:
+      'GroupIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_list_request_v2.go'
+
+  'ModelsGetGroupMemberListResponseV1@group':
+    id: 'ModelsGetGroupMemberListResponseV1@group'
+    name: 'ModelsGetGroupMemberListResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsGetUserGroupInformationResponseV1'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_member_list_response_v1.go'
+
+  'ModelsGetGroupsListResponseV1@group':
+    id: 'ModelsGetGroupsListResponseV1@group'
+    name: 'ModelsGetGroupsListResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsGroupResponseV1'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_groups_list_response_v1.go'
+
+  'ModelsGetGroupsResponseV1@group':
+    id: 'ModelsGetGroupsResponseV1@group'
+    name: 'ModelsGetGroupsResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsGroupResponseV1'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_groups_response_v1.go'
+
+  'ModelsGetMemberRequestsListResponseV1@group':
+    id: 'ModelsGetMemberRequestsListResponseV1@group'
+    name: 'ModelsGetMemberRequestsListResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsMemberRequestResponseV1'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_member_requests_list_response_v1.go'
+
+  'ModelsGetMemberRolesListResponseV1@group':
+    id: 'ModelsGetMemberRolesListResponseV1@group'
+    name: 'ModelsGetMemberRolesListResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsMemberRoleResponseV1'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_member_roles_list_response_v1.go'
+
+  'ModelsGetUserGroupInformationResponseV1@group':
+    id: 'ModelsGetUserGroupInformationResponseV1@group'
+    name: 'ModelsGetUserGroupInformationResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'JoinedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'MemberRoleID':
+        type: '[]string'
+        required: true
+      'Status':
+        type: 'string'
+        required: false
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_user_group_information_response_v1.go'
+
+  'ModelsGroupMember@group':
+    id: 'ModelsGroupMember@group'
+    name: 'ModelsGroupMember'
+    fields:
+      'MemberRoleID':
+        type: '[]string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_member.go'
+
+  'ModelsGroupResponseV1@group':
+    id: 'ModelsGroupResponseV1@group'
+    name: 'ModelsGroupResponseV1'
+    fields:
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'GroupDescription':
+        type: '*string'
+        required: true
+      'GroupIcon':
+        type: '*string'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupMembers':
+        type: '[]*ModelsGroupMember'
+        required: true
+      'GroupName':
+        type: '*string'
+        required: true
+      'GroupRegion':
+        type: '*string'
+        required: true
+      'GroupRules':
+        type: '*ModelsGroupRuleResponseV1'
+        required: true
+      'GroupType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_response_v1.go'
+
+  'ModelsGroupRule@group':
+    id: 'ModelsGroupRule@group'
+    name: 'ModelsGroupRule'
+    fields:
+      'GroupCustomRule':
+        type: 'ModelsGroupRuleGroupCustomRule'
+        required: true
+      'GroupPredefinedRules':
+        type: '[]*ModelsRule'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule.go'
+
+  'ModelsGroupRuleGroupCustomRule@group':
+    id: 'ModelsGroupRuleGroupCustomRule@group'
+    name: 'ModelsGroupRuleGroupCustomRule'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_group_custom_rule.go'
+
+  'ModelsGroupRuleResponseV1@group':
+    id: 'ModelsGroupRuleResponseV1@group'
+    name: 'ModelsGroupRuleResponseV1'
+    fields:
+      'GroupCustomRule':
+        type: 'ModelsGroupRuleResponseV1GroupCustomRule'
+        required: true
+      'GroupPredefinedRules':
+        type: '[]*ModelsRuleResponseV1'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_response_v1.go'
+
+  'ModelsGroupRuleResponseV1GroupCustomRule@group':
+    id: 'ModelsGroupRuleResponseV1GroupCustomRule@group'
+    name: 'ModelsGroupRuleResponseV1GroupCustomRule'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_response_v1_group_custom_rule.go'
+
+  'ModelsJoinGroupResponseV1@group':
+    id: 'ModelsJoinGroupResponseV1@group'
+    name: 'ModelsJoinGroupResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_join_group_response_v1.go'
+
+  'ModelsKickGroupMemberResponseV1@group':
+    id: 'ModelsKickGroupMemberResponseV1@group'
+    name: 'ModelsKickGroupMemberResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'KickedUserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_kick_group_member_response_v1.go'
+
+  'ModelsLeaveGroupResponseV1@group':
+    id: 'ModelsLeaveGroupResponseV1@group'
+    name: 'ModelsLeaveGroupResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_leave_group_response_v1.go'
+
+  'ModelsListConfigurationResponseV1@group':
+    id: 'ModelsListConfigurationResponseV1@group'
+    name: 'ModelsListConfigurationResponseV1'
+    fields:
+      'Data':
+        type: '[]*ModelsGetGroupConfigurationResponseV1'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_list_configuration_response_v1.go'
+
+  'ModelsMemberRequestGroupResponseV1@group':
+    id: 'ModelsMemberRequestGroupResponseV1@group'
+    name: 'ModelsMemberRequestGroupResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_request_group_response_v1.go'
+
+  'ModelsMemberRequestResponseV1@group':
+    id: 'ModelsMemberRequestResponseV1@group'
+    name: 'ModelsMemberRequestResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'RequestType':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_request_response_v1.go'
+
+  'ModelsMemberRoleResponseV1@group':
+    id: 'ModelsMemberRoleResponseV1@group'
+    name: 'ModelsMemberRoleResponseV1'
+    fields:
+      'MemberRoleID':
+        type: '*string'
+        required: true
+      'MemberRoleName':
+        type: '*string'
+        required: true
+      'MemberRolePermissions':
+        type: '[]*ModelsRolePermission'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_role_response_v1.go'
+
+  'ModelsPagination@group':
+    id: 'ModelsPagination@group'
+    name: 'ModelsPagination'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_pagination.go'
+
+  'ModelsPublicCreateNewGroupRequestV1@group':
+    id: 'ModelsPublicCreateNewGroupRequestV1@group'
+    name: 'ModelsPublicCreateNewGroupRequestV1'
+    fields:
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'GroupDescription':
+        type: '*string'
+        required: true
+      'GroupIcon':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupName':
+        type: '*string'
+        required: true
+      'GroupRegion':
+        type: '*string'
+        required: true
+      'GroupRules':
+        type: '*ModelsGroupRule'
+        required: true
+      'GroupType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_public_create_new_group_request_v1.go'
+
+  'ModelsRemoveRoleFromMemberRequestV1@group':
+    id: 'ModelsRemoveRoleFromMemberRequestV1@group'
+    name: 'ModelsRemoveRoleFromMemberRequestV1'
+    fields:
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_remove_role_from_member_request_v1.go'
+
+  'ModelsRolePermission@group':
+    id: 'ModelsRolePermission@group'
+    name: 'ModelsRolePermission'
+    fields:
+      'Action':
+        type: '*int32'
+        required: true
+      'ResourceName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_role_permission.go'
+
+  'ModelsRule@group':
+    id: 'ModelsRule@group'
+    name: 'ModelsRule'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+      'RuleDetail':
+        type: '[]*ModelsRuleInformation'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule.go'
+
+  'ModelsRuleInformation@group':
+    id: 'ModelsRuleInformation@group'
+    name: 'ModelsRuleInformation'
+    fields:
+      'RuleAttribute':
+        type: '*string'
+        required: true
+      'RuleCriteria':
+        type: '*string'
+        required: true
+      'RuleValue':
+        type: '*float64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule_information.go'
+
+  'ModelsRuleResponseV1@group':
+    id: 'ModelsRuleResponseV1@group'
+    name: 'ModelsRuleResponseV1'
+    fields:
+      'AllowedAction':
+        type: '*string'
+        required: true
+      'RuleDetail':
+        type: '[]*ModelsRuleInformation'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule_response_v1.go'
+
+  'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@group':
+    id: 'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@group'
+    name: 'ModelsUpdateGroupConfigurationGlobalRulesRequestV1'
+    fields:
+      'RuleDetail':
+        type: '[]*ModelsRuleInformation'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_global_rules_request_v1.go'
+
+  'ModelsUpdateGroupConfigurationRequestV1@group':
+    id: 'ModelsUpdateGroupConfigurationRequestV1@group'
+    name: 'ModelsUpdateGroupConfigurationRequestV1'
+    fields:
+      'Description':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_request_v1.go'
+
+  'ModelsUpdateGroupConfigurationResponseV1@group':
+    id: 'ModelsUpdateGroupConfigurationResponseV1@group'
+    name: 'ModelsUpdateGroupConfigurationResponseV1'
+    fields:
+      'AllowMultiple':
+        type: '*bool'
+        required: true
+      'ConfigurationCode':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'GlobalRules':
+        type: '[]*ModelsRuleResponseV1'
+        required: true
+      'GroupAdminRoleID':
+        type: '*string'
+        required: true
+      'GroupMaxMember':
+        type: '*int32'
+        required: true
+      'GroupMemberRoleID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_response_v1.go'
+
+  'ModelsUpdateGroupCustomAttributesRequestV1@group':
+    id: 'ModelsUpdateGroupCustomAttributesRequestV1@group'
+    name: 'ModelsUpdateGroupCustomAttributesRequestV1'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_custom_attributes_request_v1.go'
+
+  'ModelsUpdateGroupCustomRuleRequestV1@group':
+    id: 'ModelsUpdateGroupCustomRuleRequestV1@group'
+    name: 'ModelsUpdateGroupCustomRuleRequestV1'
+    fields:
+      'GroupCustomRule':
+        type: 'interface{}'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_custom_rule_request_v1.go'
+
+  'ModelsUpdateGroupPredefinedRuleRequestV1@group':
+    id: 'ModelsUpdateGroupPredefinedRuleRequestV1@group'
+    name: 'ModelsUpdateGroupPredefinedRuleRequestV1'
+    fields:
+      'RuleDetail':
+        type: '[]*ModelsRuleInformation'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_predefined_rule_request_v1.go'
+
+  'ModelsUpdateGroupRequestV1@group':
+    id: 'ModelsUpdateGroupRequestV1@group'
+    name: 'ModelsUpdateGroupRequestV1'
+    fields:
+      'CustomAttributes':
+        type: 'ModelsUpdateGroupRequestV1CustomAttributes'
+        required: true
+      'GroupDescription':
+        type: '*string'
+        required: true
+      'GroupIcon':
+        type: '*string'
+        required: true
+      'GroupName':
+        type: '*string'
+        required: true
+      'GroupRegion':
+        type: '*string'
+        required: true
+      'GroupType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_request_v1.go'
+
+  'ModelsUpdateGroupRequestV1CustomAttributes@group':
+    id: 'ModelsUpdateGroupRequestV1CustomAttributes@group'
+    name: 'ModelsUpdateGroupRequestV1CustomAttributes'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_request_v1_custom_attributes.go'
+
+  'ModelsUpdateMemberRolePermissionsRequestV1@group':
+    id: 'ModelsUpdateMemberRolePermissionsRequestV1@group'
+    name: 'ModelsUpdateMemberRolePermissionsRequestV1'
+    fields:
+      'MemberRolePermissions':
+        type: '[]*ModelsRolePermission'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_member_role_permissions_request_v1.go'
+
+  'ModelsUpdateMemberRoleRequestV1@group':
+    id: 'ModelsUpdateMemberRoleRequestV1@group'
+    name: 'ModelsUpdateMemberRoleRequestV1'
+    fields:
+      'MemberRoleName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_member_role_request_v1.go'
+
+  'ModelsUserInvitationResponseV1@group':
+    id: 'ModelsUserInvitationResponseV1@group'
+    name: 'ModelsUserInvitationResponseV1'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_user_invitation_response_v1.go'
+
+  'ResponseErrorResponse@group':
+    id: 'ResponseErrorResponse@group'
+    name: 'ResponseErrorResponse'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/response_error_response.go'
+
+  # endregion models
+
+functions:
+
+  'AcceptGroupInvitationPublicV1Short@group':
+    id: 'AcceptGroupInvitationPublicV1Short@group'
+    name: 'AcceptGroupInvitationPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to accept group invitation.
+
+      Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+      This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+      Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+      Existing members will receive notification of newly accepted member.
+
+      Action Code: 73401
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.AcceptGroupInvitationPublicV1Params'
+        required: true
+    return_type: '(*group_member.AcceptGroupInvitationPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.AcceptGroupInvitationPublicV1Params{ ... }
+      res, err := groupMemberService.AcceptGroupInvitationPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'accept'
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'public'
+      - 'v1'
+
+  'AcceptGroupInvitationPublicV2Short@group':
+    id: 'AcceptGroupInvitationPublicV2Short@group'
+    name: 'AcceptGroupInvitationPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to accept group invitation.
+
+      Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+      This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+      Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+      Existing members will receive notification of newly accepted member.
+
+      Action Code: 73401
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.AcceptGroupInvitationPublicV2Params'
+        required: true
+    return_type: '(*group_member.AcceptGroupInvitationPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.AcceptGroupInvitationPublicV2Params{ ... }
+      res, err := groupMemberService.AcceptGroupInvitationPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'accept'
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'public'
+      - 'v2'
+
+  'AcceptGroupJoinRequestPublicV1Short@group':
+    id: 'AcceptGroupJoinRequestPublicV1Short@group'
+    name: 'AcceptGroupJoinRequestPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+      This endpoint is used to accept group join request.
+
+      Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+      This endpoint will also check if the specific user is already joined to specific group
+
+      Action Code: 73407
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.AcceptGroupJoinRequestPublicV1Params'
+        required: true
+    return_type: '(*group_member.AcceptGroupJoinRequestPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.AcceptGroupJoinRequestPublicV1Params{ ... }
+      res, err := groupMemberService.AcceptGroupJoinRequestPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'accept'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v1'
+
+  'AcceptGroupJoinRequestPublicV2Short@group':
+    id: 'AcceptGroupJoinRequestPublicV2Short@group'
+    name: 'AcceptGroupJoinRequestPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+      This endpoint is used to accept group join request.
+
+      Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+      This endpoint will also check if the specific user is already joined to specific group
+
+      Action Code: 73407
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.AcceptGroupJoinRequestPublicV2Params'
+        required: true
+    return_type: '(*group_member.AcceptGroupJoinRequestPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.AcceptGroupJoinRequestPublicV2Params{ ... }
+      res, err := groupMemberService.AcceptGroupJoinRequestPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'accept'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v2'
+
+  'AdminGetUserGroupStatusInformationV2Short@group':
+    id: 'AdminGetUserGroupStatusInformationV2Short@group'
+    name: 'AdminGetUserGroupStatusInformationV2Short'
+    description: |-
+      This endpoint is used to get user group status information.
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.AdminGetUserGroupStatusInformationV2Params'
+        required: true
+    return_type: '(*group_member.AdminGetUserGroupStatusInformationV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.AdminGetUserGroupStatusInformationV2Params{ ... }
+      res, err := groupMemberService.AdminGetUserGroupStatusInformationV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'information'
+      - 'member'
+      - 'status'
+      - 'user'
+      - 'v2'
+
+  'CancelGroupJoinRequestV1Short@group':
+    id: 'CancelGroupJoinRequestV1Short@group'
+    name: 'CancelGroupJoinRequestV1Short'
+    description: |-
+      Requires valid user authentication
+
+      This endpoint allows user to cancel request to join specific group.
+
+      Action Code: 73411
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.CancelGroupJoinRequestV1Params'
+        required: true
+    return_type: '(*group_member.CancelGroupJoinRequestV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.CancelGroupJoinRequestV1Params{ ... }
+      res, err := groupMemberService.CancelGroupJoinRequestV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cancel'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'request'
+      - 'v1'
+
+  'CancelInvitationGroupMemberV2Short@group':
+    id: 'CancelInvitationGroupMemberV2Short@group'
+    name: 'CancelInvitationGroupMemberV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:INVITE [DELETE]"
+
+      This endpoint is used to cancel invitation group member.
+
+      cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+
+      Action Code: 73409
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.CancelInvitationGroupMemberV2Params'
+        required: true
+    return_type: '(*group_member.CancelInvitationGroupMemberV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.CancelInvitationGroupMemberV2Params{ ... }
+      res, err := groupMemberService.CancelInvitationGroupMemberV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cancel'
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'v2'
+
+  'CreateGroupConfigurationAdminV1Short@group':
+    id: 'CreateGroupConfigurationAdminV1Short@group'
+    name: 'CreateGroupConfigurationAdminV1Short'
+    description: |-
+      This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
+
+      For each of the global rule, it will be the rule detail that consists of these fields:
+
+      * **ruleAttribute**: attribute of the player that needs to be checked
+      * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+      * **ruleValue**: value that needs to be checked
+
+      Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is **"createGroup"**
+
+      Action Code: 73103
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.CreateGroupConfigurationAdminV1Params'
+        required: true
+    return_type: '(*configuration.CreateGroupConfigurationAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.CreateGroupConfigurationAdminV1Params{ ... }
+      res, err := configurationService.CreateGroupConfigurationAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'create'
+      - 'group'
+      - 'v1'
+
+  'CreateMemberRoleAdminV1Short@group':
+    id: 'CreateMemberRoleAdminV1Short@group'
+    name: 'CreateMemberRoleAdminV1Short'
+    description: |-
+      This endpoint is used to create new member role
+
+      Action Code: 73202
+
+
+
+      memberRolePermissions example value :
+
+      "action": 1
+
+      "resourceName": "GROUP:ROLE"
+
+      The changes will give user with that role have a permission to create a role for new group member
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.CreateMemberRoleAdminV1Params'
+        required: true
+    return_type: '(*group_roles.CreateMemberRoleAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.CreateMemberRoleAdminV1Params{ ... }
+      res, err := groupRolesService.CreateMemberRoleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'group'
+      - 'member'
+      - 'role'
+      - 'roles'
+      - 'v1'
+
+  'CreateNewGroupPublicV1Short@group':
+    id: 'CreateNewGroupPublicV1Short@group'
+    name: 'CreateNewGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to create new group
+
+      There are some fields that needs to be fulfilled
+
+      * **groupDescription**: the description of the group (optional)
+      * **groupIcon**: group icon URL link (optional)
+      * **groupName**: name of the group
+      * **groupRegion**: region of the group
+      * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+      * **allowedAction**: available action in group service. It consist of joinGroup and createGroup
+      * **ruleAttribute**: attribute of the player that needs to be checked
+      * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+      * **ruleValue**: value that needs to be checked
+      * **customAttributes**: additional custom group attributes (optional)
+
+      Action Code: 73304
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.CreateNewGroupPublicV1Params'
+        required: true
+    return_type: '(*group.CreateNewGroupPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.CreateNewGroupPublicV1Params{ ... }
+      res, err := groupService.CreateNewGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'group'
+      - 'new'
+      - 'public'
+      - 'v1'
+
+  'CreateNewGroupPublicV2Short@group':
+    id: 'CreateNewGroupPublicV2Short@group'
+    name: 'CreateNewGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to create new group
+
+      There are some fields that needs to be fulfilled
+
+      * **groupDescription**: the description of the group (optional)
+      * **groupIcon**: group icon URL link (optional)
+      * **groupName**: name of the group
+      * **groupRegion**: region of the group
+      * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+      * **allowedAction**: available action in group service. It consist of joinGroup and inviteGroup
+      * **ruleAttribute**: attribute of the player that needs to be checked
+      * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+      * **ruleValue**: value that needs to be checked
+      * **customAttributes**: additional custom group attributes (optional)
+
+      Action Code: 73304
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.CreateNewGroupPublicV2Params'
+        required: true
+    return_type: '(*group.CreateNewGroupPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.CreateNewGroupPublicV2Params{ ... }
+      res, err := groupService.CreateNewGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'group'
+      - 'new'
+      - 'public'
+      - 'v2'
+
+  'DeleteGroupAdminV1Short@group':
+    id: 'DeleteGroupAdminV1Short@group'
+    name: 'DeleteGroupAdminV1Short'
+    description: |-
+      Delete existing group. It will check whether the groupID is exist before doing the process to delete the group.
+
+      Action Code: 73302
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.DeleteGroupAdminV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.DeleteGroupAdminV1Params{ ... }
+      res, err := groupService.DeleteGroupAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'group'
+      - 'v1'
+
+  'DeleteGroupConfigurationGlobalRuleAdminV1Short@group':
+    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Short@group'
+    name: 'DeleteGroupConfigurationGlobalRuleAdminV1Short'
+    description: |-
+      This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
+
+      Action Code: 73105
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.DeleteGroupConfigurationGlobalRuleAdminV1Params'
+        required: true
+    return_type: '(*configuration.DeleteGroupConfigurationGlobalRuleAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.DeleteGroupConfigurationGlobalRuleAdminV1Params{ ... }
+      res, err := configurationService.DeleteGroupConfigurationGlobalRuleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'global'
+      - 'group'
+      - 'rule'
+      - 'v1'
+
+  'DeleteGroupConfigurationV1Short@group':
+    id: 'DeleteGroupConfigurationV1Short@group'
+    name: 'DeleteGroupConfigurationV1Short'
+    description: |-
+      This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+      Action Code: 73101
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.DeleteGroupConfigurationV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.DeleteGroupConfigurationV1Params{ ... }
+      res, err := configurationService.DeleteGroupConfigurationV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'group'
+      - 'v1'
+
+  'DeleteGroupPredefinedRulePublicV1Short@group':
+    id: 'DeleteGroupPredefinedRulePublicV1Short@group'
+    name: 'DeleteGroupPredefinedRulePublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73309
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.DeleteGroupPredefinedRulePublicV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.DeleteGroupPredefinedRulePublicV1Params{ ... }
+      res, err := groupService.DeleteGroupPredefinedRulePublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'predefined'
+      - 'public'
+      - 'rule'
+      - 'v1'
+
+  'DeleteGroupPredefinedRulePublicV2Short@group':
+    id: 'DeleteGroupPredefinedRulePublicV2Short@group'
+    name: 'DeleteGroupPredefinedRulePublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73309
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.DeleteGroupPredefinedRulePublicV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.DeleteGroupPredefinedRulePublicV2Params{ ... }
+      res, err := groupService.DeleteGroupPredefinedRulePublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'predefined'
+      - 'public'
+      - 'rule'
+      - 'v2'
+
+  'DeleteGroupPublicV1Short@group':
+    id: 'DeleteGroupPublicV1Short@group'
+    name: 'DeleteGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [DELETE]"
+
+      Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73305
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.DeleteGroupPublicV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.DeleteGroupPublicV1Params{ ... }
+      res, err := groupService.DeleteGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'public'
+      - 'v1'
+
+  'DeleteGroupPublicV2Short@group':
+    id: 'DeleteGroupPublicV2Short@group'
+    name: 'DeleteGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [DELETE]"
+
+      Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73305
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.DeleteGroupPublicV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.DeleteGroupPublicV2Params{ ... }
+      res, err := groupService.DeleteGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'public'
+      - 'v2'
+
+  'DeleteMemberRoleAdminV1Short@group':
+    id: 'DeleteMemberRoleAdminV1Short@group'
+    name: 'DeleteMemberRoleAdminV1Short'
+    description: |-
+      This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
+
+      Action Code: 73207
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.DeleteMemberRoleAdminV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.DeleteMemberRoleAdminV1Params{ ... }
+      res, err := groupRolesService.DeleteMemberRoleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'group'
+      - 'member'
+      - 'role'
+      - 'roles'
+      - 'v1'
+
+  'DeleteMemberRolePublicV1Short@group':
+    id: 'DeleteMemberRolePublicV1Short@group'
+    name: 'DeleteMemberRolePublicV1Short'
+    description: |-
+      Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+      This endpoint is used to remove role from group member
+
+      Action Code: 73204
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.DeleteMemberRolePublicV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.DeleteMemberRolePublicV1Params{ ... }
+      res, err := groupRolesService.DeleteMemberRolePublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'member'
+      - 'public'
+      - 'role'
+      - 'roles'
+      - 'v1'
+
+  'DeleteMemberRolePublicV2Short@group':
+    id: 'DeleteMemberRolePublicV2Short@group'
+    name: 'DeleteMemberRolePublicV2Short'
+    description: |-
+      Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+      This endpoint is used to remove role from group member
+
+      Action Code: 73204
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.DeleteMemberRolePublicV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.DeleteMemberRolePublicV2Params{ ... }
+      res, err := groupRolesService.DeleteMemberRolePublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'member'
+      - 'public'
+      - 'role'
+      - 'roles'
+      - 'v2'
+
+  'GetGroupConfigurationAdminV1Short@group':
+    id: 'GetGroupConfigurationAdminV1Short@group'
+    name: 'GetGroupConfigurationAdminV1Short'
+    description: |-
+      This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+      Action Code: 73101
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.GetGroupConfigurationAdminV1Params'
+        required: true
+    return_type: '(*configuration.GetGroupConfigurationAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.GetGroupConfigurationAdminV1Params{ ... }
+      res, err := configurationService.GetGroupConfigurationAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'group'
+      - 'v1'
+
+  'GetGroupInvitationRequestPublicV1Short@group':
+    id: 'GetGroupInvitationRequestPublicV1Short@group'
+    name: 'GetGroupInvitationRequestPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to Get Group Invitation Request List
+
+      Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
+
+      Action Code: 73502
+    struct: 'MemberRequestService'
+    parameters:
+      params:
+        type: '*member_request.GetGroupInvitationRequestPublicV1Params'
+        required: true
+    return_type: '(*member_request.GetGroupInvitationRequestPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      memberRequestService := group.MemberRequestService{ ... }
+      params := member_request.GetGroupInvitationRequestPublicV1Params{ ... }
+      res, err := memberRequestService.GetGroupInvitationRequestPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v1'
+
+  'GetGroupInviteRequestPublicV2Short@group':
+    id: 'GetGroupInviteRequestPublicV2Short@group'
+    name: 'GetGroupInviteRequestPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [READ]"
+
+      This endpoint is used to Get Group Invite Request List
+
+      Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+      Action Code: 73501
+    struct: 'MemberRequestService'
+    parameters:
+      params:
+        type: '*member_request.GetGroupInviteRequestPublicV2Params'
+        required: true
+    return_type: '(*member_request.GetGroupInviteRequestPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      memberRequestService := group.MemberRequestService{ ... }
+      params := member_request.GetGroupInviteRequestPublicV2Params{ ... }
+      res, err := memberRequestService.GetGroupInviteRequestPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'invite'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v2'
+
+  'GetGroupJoinRequestPublicV1Short@group':
+    id: 'GetGroupJoinRequestPublicV1Short@group'
+    name: 'GetGroupJoinRequestPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [READ]"
+
+      This endpoint is used to Get Group Join Request List
+
+      Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+      Action Code: 73501
+    struct: 'MemberRequestService'
+    parameters:
+      params:
+        type: '*member_request.GetGroupJoinRequestPublicV1Params'
+        required: true
+    return_type: '(*member_request.GetGroupJoinRequestPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      memberRequestService := group.MemberRequestService{ ... }
+      params := member_request.GetGroupJoinRequestPublicV1Params{ ... }
+      res, err := memberRequestService.GetGroupJoinRequestPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v1'
+
+  'GetGroupJoinRequestPublicV2Short@group':
+    id: 'GetGroupJoinRequestPublicV2Short@group'
+    name: 'GetGroupJoinRequestPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [READ]"
+
+      This endpoint is used to Get Group Join Request List
+
+      Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+      Action Code: 73501
+    struct: 'MemberRequestService'
+    parameters:
+      params:
+        type: '*member_request.GetGroupJoinRequestPublicV2Params'
+        required: true
+    return_type: '(*member_request.GetGroupJoinRequestPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      memberRequestService := group.MemberRequestService{ ... }
+      params := member_request.GetGroupJoinRequestPublicV2Params{ ... }
+      res, err := memberRequestService.GetGroupJoinRequestPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'request'
+      - 'v2'
+
+  'GetGroupListAdminV1Short@group':
+    id: 'GetGroupListAdminV1Short@group'
+    name: 'GetGroupListAdminV1Short'
+    description: |-
+      Get list of groups. This endpoint will show any types of group
+
+      Action Code: 73301
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetGroupListAdminV1Params'
+        required: true
+    return_type: '(*group.GetGroupListAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetGroupListAdminV1Params{ ... }
+      res, err := groupService.GetGroupListAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'v1'
+
+  'GetGroupListPublicV1Short@group':
+    id: 'GetGroupListPublicV1Short@group'
+    name: 'GetGroupListPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Get list of groups. This endpoint will only show OPEN and PUBLIC group type. This endpoint can search based on the group name by filling the "groupName" query parameter
+
+      Action Code: 73303
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetGroupListPublicV1Params'
+        required: true
+    return_type: '(*group.GetGroupListPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetGroupListPublicV1Params{ ... }
+      res, err := groupService.GetGroupListPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'public'
+      - 'v1'
+
+  'GetGroupMembersListAdminV1Short@group':
+    id: 'GetGroupMembersListAdminV1Short@group'
+    name: 'GetGroupMembersListAdminV1Short'
+    description: |-
+      This endpoint is used to get list of group members.
+
+      Action Code: 73410
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetGroupMembersListAdminV1Params'
+        required: true
+    return_type: '(*group_member.GetGroupMembersListAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetGroupMembersListAdminV1Params{ ... }
+      res, err := groupMemberService.GetGroupMembersListAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'member'
+      - 'members'
+      - 'v1'
+
+  'GetGroupMembersListPublicV1Short@group':
+    id: 'GetGroupMembersListPublicV1Short@group'
+    name: 'GetGroupMembersListPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to get list of group members.
+
+      Action Code: 73410
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetGroupMembersListPublicV1Params'
+        required: true
+    return_type: '(*group_member.GetGroupMembersListPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetGroupMembersListPublicV1Params{ ... }
+      res, err := groupMemberService.GetGroupMembersListPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'member'
+      - 'members'
+      - 'public'
+      - 'v1'
+
+  'GetListGroupByIDsAdminV2Short@group':
+    id: 'GetListGroupByIDsAdminV2Short@group'
+    name: 'GetListGroupByIDsAdminV2Short'
+    description: |-
+      Required valid user authentication
+
+      Get list of groups by group Ids.
+
+      Action Code: 73303
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetListGroupByIDsAdminV2Params'
+        required: true
+    return_type: '(*group.GetListGroupByIDsAdminV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetListGroupByIDsAdminV2Params{ ... }
+      res, err := groupService.GetListGroupByIDsAdminV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'ds'
+      - 'get'
+      - 'group'
+      - 'i'
+      - 'list'
+      - 'v2'
+
+  'GetListGroupByIDsV2Short@group':
+    id: 'GetListGroupByIDsV2Short@group'
+    name: 'GetListGroupByIDsV2Short'
+    description: |-
+      Required valid user authentication
+
+      Get list of groups by group Ids.
+
+      Action Code: 73303
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetListGroupByIDsV2Params'
+        required: true
+    return_type: '(*group.GetListGroupByIDsV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetListGroupByIDsV2Params{ ... }
+      res, err := groupService.GetListGroupByIDsV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'ds'
+      - 'get'
+      - 'group'
+      - 'i'
+      - 'list'
+      - 'v2'
+
+  'GetMemberRolesListAdminV1Short@group':
+    id: 'GetMemberRolesListAdminV1Short@group'
+    name: 'GetMemberRolesListAdminV1Short'
+    description: |-
+      This endpoint is used to get list of member roles
+
+      Action Code: 73201
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.GetMemberRolesListAdminV1Params'
+        required: true
+    return_type: '(*group_roles.GetMemberRolesListAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.GetMemberRolesListAdminV1Params{ ... }
+      res, err := groupRolesService.GetMemberRolesListAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'member'
+      - 'roles'
+      - 'v1'
+
+  'GetMemberRolesListPublicV1Short@group':
+    id: 'GetMemberRolesListPublicV1Short@group'
+    name: 'GetMemberRolesListPublicV1Short'
+    description: |-
+      Required Member Role Permission: "GROUP:ROLE [READ]"
+
+      This endpoint is used to get list of member roles
+
+      Action Code: 73201
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.GetMemberRolesListPublicV1Params'
+        required: true
+    return_type: '(*group_roles.GetMemberRolesListPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.GetMemberRolesListPublicV1Params{ ... }
+      res, err := groupRolesService.GetMemberRolesListPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'member'
+      - 'public'
+      - 'roles'
+      - 'v1'
+
+  'GetMemberRolesListPublicV2Short@group':
+    id: 'GetMemberRolesListPublicV2Short@group'
+    name: 'GetMemberRolesListPublicV2Short'
+    description: |-
+      This endpoint is used to get list of member roles
+
+      Action Code: 73201
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.GetMemberRolesListPublicV2Params'
+        required: true
+    return_type: '(*group_roles.GetMemberRolesListPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.GetMemberRolesListPublicV2Params{ ... }
+      res, err := groupRolesService.GetMemberRolesListPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'list'
+      - 'member'
+      - 'public'
+      - 'roles'
+      - 'v2'
+
+  'GetMyGroupJoinRequestV2Short@group':
+    id: 'GetMyGroupJoinRequestV2Short@group'
+    name: 'GetMyGroupJoinRequestV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to Get My Join Request To The Groups
+
+      Get My Join Request To The Groups for the user calling this endpoint. It will check any join request group for this user
+
+      Action Code: 73502
+    struct: 'MemberRequestService'
+    parameters:
+      params:
+        type: '*member_request.GetMyGroupJoinRequestV2Params'
+        required: true
+    return_type: '(*member_request.GetMyGroupJoinRequestV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/member_request'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/memberRequest.go'
+    example: |-
+      memberRequestService := group.MemberRequestService{ ... }
+      params := member_request.GetMyGroupJoinRequestV2Params{ ... }
+      res, err := memberRequestService.GetMyGroupJoinRequestV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'my'
+      - 'request'
+      - 'v2'
+
+  'GetSingleGroupAdminV1Short@group':
+    id: 'GetSingleGroupAdminV1Short@group'
+    name: 'GetSingleGroupAdminV1Short'
+    description: |-
+      Get single group information. This endpoint will show the group information by the groupId
+
+      Action Code: 73306
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetSingleGroupAdminV1Params'
+        required: true
+    return_type: '(*group.GetSingleGroupAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetSingleGroupAdminV1Params{ ... }
+      res, err := groupService.GetSingleGroupAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'single'
+      - 'v1'
+
+  'GetSingleGroupPublicV1Short@group':
+    id: 'GetSingleGroupPublicV1Short@group'
+    name: 'GetSingleGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Get single group information. This endpoint will show the group information by the groupId
+
+      Action Code: 73306
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.GetSingleGroupPublicV1Params'
+        required: true
+    return_type: '(*group.GetSingleGroupPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.GetSingleGroupPublicV1Params{ ... }
+      res, err := groupService.GetSingleGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'public'
+      - 'single'
+      - 'v1'
+
+  'GetSingleMemberRoleAdminV1Short@group':
+    id: 'GetSingleMemberRoleAdminV1Short@group'
+    name: 'GetSingleMemberRoleAdminV1Short'
+    description: |-
+      This endpoint is used to get member role based on the role ID
+
+      Action Code: 73203
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.GetSingleMemberRoleAdminV1Params'
+        required: true
+    return_type: '(*group_roles.GetSingleMemberRoleAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.GetSingleMemberRoleAdminV1Params{ ... }
+      res, err := groupRolesService.GetSingleMemberRoleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'member'
+      - 'role'
+      - 'roles'
+      - 'single'
+      - 'v1'
+
+  'GetUserGroupInformationPublicV1Short@group':
+    id: 'GetUserGroupInformationPublicV1Short@group'
+    name: 'GetUserGroupInformationPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to get user group information.
+
+      Get user group information. If user does not belong to any group, it will return warning to give information about it
+
+      Group Member Status:
+
+      * JOIN : status of user requested to join group
+      * INVITE: status of user invited to a group
+      * JOINED: status of user already joined to a group
+
+      Action Code: 73405
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetUserGroupInformationPublicV1Params'
+        required: true
+    return_type: '(*group_member.GetUserGroupInformationPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetUserGroupInformationPublicV1Params{ ... }
+      res, err := groupMemberService.GetUserGroupInformationPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'information'
+      - 'member'
+      - 'public'
+      - 'user'
+      - 'v1'
+
+  'GetUserGroupInformationPublicV2Short@group':
+    id: 'GetUserGroupInformationPublicV2Short@group'
+    name: 'GetUserGroupInformationPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to get user joined group information.
+
+      Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+      Group Member Status:
+
+      * JOINED: status of user already joined to a group
+
+      Action Code: 73405
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetUserGroupInformationPublicV2Params'
+        required: true
+    return_type: '(*group_member.GetUserGroupInformationPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetUserGroupInformationPublicV2Params{ ... }
+      res, err := groupMemberService.GetUserGroupInformationPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'information'
+      - 'member'
+      - 'public'
+      - 'user'
+      - 'v2'
+
+  'GetUserGroupStatusInformationV2Short@group':
+    id: 'GetUserGroupStatusInformationV2Short@group'
+    name: 'GetUserGroupStatusInformationV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [READ]"
+
+      This endpoint is used to get user group status information.
+
+      get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+      Action Code: 73409
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetUserGroupStatusInformationV2Params'
+        required: true
+    return_type: '(*group_member.GetUserGroupStatusInformationV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetUserGroupStatusInformationV2Params{ ... }
+      res, err := groupMemberService.GetUserGroupStatusInformationV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'information'
+      - 'member'
+      - 'status'
+      - 'user'
+      - 'v2'
+
+  'GetUserJoinedGroupInformationPublicV2Short@group':
+    id: 'GetUserJoinedGroupInformationPublicV2Short@group'
+    name: 'GetUserJoinedGroupInformationPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to get user joined group information.
+
+      Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+      Group Member Status:
+
+      * JOINED: status of user already joined to a group
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.GetUserJoinedGroupInformationPublicV2Params'
+        required: true
+    return_type: '(*group_member.GetUserJoinedGroupInformationPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.GetUserJoinedGroupInformationPublicV2Params{ ... }
+      res, err := groupMemberService.GetUserJoinedGroupInformationPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'group'
+      - 'information'
+      - 'joined'
+      - 'member'
+      - 'public'
+      - 'user'
+      - 'v2'
+
+  'InitiateGroupConfigurationAdminV1Short@group':
+    id: 'InitiateGroupConfigurationAdminV1Short@group'
+    name: 'InitiateGroupConfigurationAdminV1Short'
+    description: |-
+      This endpoint is used to initiate configuration.
+      This endpoint will automatically create default configuration and member roles with default permission
+      Default Permission for admin role will cover these permission:
+      - Permission to invite user to group
+      - Permission to accept or reject join request
+      - Permission to kick group member
+
+      Default max member value will be 50 and global rules will be empty
+      Action Code: 73104
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.InitiateGroupConfigurationAdminV1Params'
+        required: true
+    return_type: '(*configuration.InitiateGroupConfigurationAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.InitiateGroupConfigurationAdminV1Params{ ... }
+      res, err := configurationService.InitiateGroupConfigurationAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'group'
+      - 'initiate'
+      - 'v1'
+
+  'InviteGroupPublicV1Short@group':
+    id: 'InviteGroupPublicV1Short@group'
+    name: 'InviteGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+      This endpoint is used to invite specific user to the group.
+
+      invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+      Invited user will receive notification through lobby.
+
+      Action Code: 73406
+
+
+
+      memberRolePermissions example value :
+
+      "action": 1
+
+      "resourceName": "GROUP:INVITE"
+
+      The invited user will have a permission to invite another user to the group
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.InviteGroupPublicV1Params'
+        required: true
+    return_type: '(*group_member.InviteGroupPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.InviteGroupPublicV1Params{ ... }
+      res, err := groupMemberService.InviteGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'invite'
+      - 'member'
+      - 'public'
+      - 'v1'
+
+  'InviteGroupPublicV2Short@group':
+    id: 'InviteGroupPublicV2Short@group'
+    name: 'InviteGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+      This endpoint is used to invite specific user to the group.
+
+      invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+      Invited user will receive notification through lobby.
+
+      Action Code: 73406
+
+
+
+      memberRolePermissions example value :
+
+      "action": 1
+
+      "resourceName": "GROUP:INVITE"
+
+      The invited user will have a permission to invite another user to the group
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.InviteGroupPublicV2Params'
+        required: true
+    return_type: '(*group_member.InviteGroupPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.InviteGroupPublicV2Params{ ... }
+      res, err := groupMemberService.InviteGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'invite'
+      - 'member'
+      - 'public'
+      - 'v2'
+
+  'JoinGroupV1Short@group':
+    id: 'JoinGroupV1Short@group'
+    name: 'JoinGroupV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to join as group member
+
+      Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+      Additional Information:
+
+      * User cannot join to the group with PRIVATE type
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+      * Joining OPEN group type will make this user become member of that group immediately
+
+      This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+      Action Code: 73403
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.JoinGroupV1Params'
+        required: true
+    return_type: '(*group_member.JoinGroupV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.JoinGroupV1Params{ ... }
+      res, err := groupMemberService.JoinGroupV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'v1'
+
+  'JoinGroupV2Short@group':
+    id: 'JoinGroupV2Short@group'
+    name: 'JoinGroupV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to join as group member
+
+      Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+      Additional Information:
+
+      * User cannot join to the group with PRIVATE type
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+      * Joining OPEN group type will make this user become member of that group immediately
+
+      This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+      Action Code: 73403
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.JoinGroupV2Params'
+        required: true
+    return_type: '(*group_member.JoinGroupV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.JoinGroupV2Params{ ... }
+      res, err := groupMemberService.JoinGroupV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'v2'
+
+  'KickGroupMemberPublicV1Short@group':
+    id: 'KickGroupMemberPublicV1Short@group'
+    name: 'KickGroupMemberPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+      This endpoint is used to kick group member.
+
+      Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+      Action Code: 73409
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.KickGroupMemberPublicV1Params'
+        required: true
+    return_type: '(*group_member.KickGroupMemberPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.KickGroupMemberPublicV1Params{ ... }
+      res, err := groupMemberService.KickGroupMemberPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'kick'
+      - 'member'
+      - 'public'
+      - 'v1'
+
+  'KickGroupMemberPublicV2Short@group':
+    id: 'KickGroupMemberPublicV2Short@group'
+    name: 'KickGroupMemberPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+      This endpoint is used to kick group member.
+
+      Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+      Action Code: 73409
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.KickGroupMemberPublicV2Params'
+        required: true
+    return_type: '(*group_member.KickGroupMemberPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.KickGroupMemberPublicV2Params{ ... }
+      res, err := groupMemberService.KickGroupMemberPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'kick'
+      - 'member'
+      - 'public'
+      - 'v2'
+
+  'LeaveGroupPublicV1Short@group':
+    id: 'LeaveGroupPublicV1Short@group'
+    name: 'LeaveGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to leave from group.
+
+      leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+      Action Code: 73404
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.LeaveGroupPublicV1Params'
+        required: true
+    return_type: '(*group_member.LeaveGroupPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.LeaveGroupPublicV1Params{ ... }
+      res, err := groupMemberService.LeaveGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'leave'
+      - 'member'
+      - 'public'
+      - 'v1'
+
+  'LeaveGroupPublicV2Short@group':
+    id: 'LeaveGroupPublicV2Short@group'
+    name: 'LeaveGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to leave from group.
+
+      leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+      Action Code: 73404
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.LeaveGroupPublicV2Params'
+        required: true
+    return_type: '(*group_member.LeaveGroupPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.LeaveGroupPublicV2Params{ ... }
+      res, err := groupMemberService.LeaveGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'leave'
+      - 'member'
+      - 'public'
+      - 'v2'
+
+  'ListGroupConfigurationAdminV1Short@group':
+    id: 'ListGroupConfigurationAdminV1Short@group'
+    name: 'ListGroupConfigurationAdminV1Short'
+    description: |-
+      This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+      Action Code: 73101
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.ListGroupConfigurationAdminV1Params'
+        required: true
+    return_type: '(*configuration.ListGroupConfigurationAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.ListGroupConfigurationAdminV1Params{ ... }
+      res, err := configurationService.ListGroupConfigurationAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'group'
+      - 'list'
+      - 'v1'
+
+  'RejectGroupInvitationPublicV1Short@group':
+    id: 'RejectGroupInvitationPublicV1Short@group'
+    name: 'RejectGroupInvitationPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to reject group invitation.
+
+      Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+      Action Code: 73402
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.RejectGroupInvitationPublicV1Params'
+        required: true
+    return_type: '(*group_member.RejectGroupInvitationPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.RejectGroupInvitationPublicV1Params{ ... }
+      res, err := groupMemberService.RejectGroupInvitationPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'public'
+      - 'reject'
+      - 'v1'
+
+  'RejectGroupInvitationPublicV2Short@group':
+    id: 'RejectGroupInvitationPublicV2Short@group'
+    name: 'RejectGroupInvitationPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      This endpoint is used to reject group invitation.
+
+      Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+      Action Code: 73402
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.RejectGroupInvitationPublicV2Params'
+        required: true
+    return_type: '(*group_member.RejectGroupInvitationPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.RejectGroupInvitationPublicV2Params{ ... }
+      res, err := groupMemberService.RejectGroupInvitationPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'invitation'
+      - 'member'
+      - 'public'
+      - 'reject'
+      - 'v2'
+
+  'RejectGroupJoinRequestPublicV1Short@group':
+    id: 'RejectGroupJoinRequestPublicV1Short@group'
+    name: 'RejectGroupJoinRequestPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+      This endpoint is used to reject group join request.
+
+      Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+      This endpoint will also check if the specific user is already joined to specific group
+
+      Action Code: 73408
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.RejectGroupJoinRequestPublicV1Params'
+        required: true
+    return_type: '(*group_member.RejectGroupJoinRequestPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.RejectGroupJoinRequestPublicV1Params{ ... }
+      res, err := groupMemberService.RejectGroupJoinRequestPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'reject'
+      - 'request'
+      - 'v1'
+
+  'RejectGroupJoinRequestPublicV2Short@group':
+    id: 'RejectGroupJoinRequestPublicV2Short@group'
+    name: 'RejectGroupJoinRequestPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+      This endpoint is used to reject group join request.
+
+      Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+      This endpoint will also check if the specific user is already joined to specific group
+
+      Action Code: 73408
+    struct: 'GroupMemberService'
+    parameters:
+      params:
+        type: '*group_member.RejectGroupJoinRequestPublicV2Params'
+        required: true
+    return_type: '(*group_member.RejectGroupJoinRequestPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_member'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupMember.go'
+    example: |-
+      groupMemberService := group.GroupMemberService{ ... }
+      params := group_member.RejectGroupJoinRequestPublicV2Params{ ... }
+      res, err := groupMemberService.RejectGroupJoinRequestPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'join'
+      - 'member'
+      - 'public'
+      - 'reject'
+      - 'request'
+      - 'v2'
+
+  'UpdateGroupConfigurationAdminV1Short@group':
+    id: 'UpdateGroupConfigurationAdminV1Short@group'
+    name: 'UpdateGroupConfigurationAdminV1Short'
+    description: |-
+      This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
+
+      Action Code: 73102
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.UpdateGroupConfigurationAdminV1Params'
+        required: true
+    return_type: '(*configuration.UpdateGroupConfigurationAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.UpdateGroupConfigurationAdminV1Params{ ... }
+      res, err := configurationService.UpdateGroupConfigurationAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'group'
+      - 'update'
+      - 'v1'
+
+  'UpdateGroupConfigurationGlobalRuleAdminV1Short@group':
+    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Short@group'
+    name: 'UpdateGroupConfigurationGlobalRuleAdminV1Short'
+    description: |-
+      This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
+
+      Action Code: 73106
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.UpdateGroupConfigurationGlobalRuleAdminV1Params'
+        required: true
+    return_type: '(*configuration.UpdateGroupConfigurationGlobalRuleAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/configuration.go'
+    example: |-
+      configurationService := group.ConfigurationService{ ... }
+      params := configuration.UpdateGroupConfigurationGlobalRuleAdminV1Params{ ... }
+      res, err := configurationService.UpdateGroupConfigurationGlobalRuleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'global'
+      - 'group'
+      - 'rule'
+      - 'update'
+      - 'v1'
+
+  'UpdateGroupCustomAttributesPublicV1Short@group':
+    id: 'UpdateGroupCustomAttributesPublicV1Short@group'
+    name: 'UpdateGroupCustomAttributesPublicV1Short'
+    description: |-
+      Requires valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]
+
+      This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73311
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupCustomAttributesPublicV1Params'
+        required: true
+    return_type: '(*group.UpdateGroupCustomAttributesPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupCustomAttributesPublicV1Params{ ... }
+      res, err := groupService.UpdateGroupCustomAttributesPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'group'
+      - 'public'
+      - 'update'
+      - 'v1'
+
+  'UpdateGroupCustomAttributesPublicV2Short@group':
+    id: 'UpdateGroupCustomAttributesPublicV2Short@group'
+    name: 'UpdateGroupCustomAttributesPublicV2Short'
+    description: |-
+      Requires valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73311
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupCustomAttributesPublicV2Params'
+        required: true
+    return_type: '(*group.UpdateGroupCustomAttributesPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupCustomAttributesPublicV2Params{ ... }
+      res, err := groupService.UpdateGroupCustomAttributesPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'group'
+      - 'public'
+      - 'update'
+      - 'v2'
+
+  'UpdateGroupCustomRulePublicV1Short@group':
+    id: 'UpdateGroupCustomRulePublicV1Short@group'
+    name: 'UpdateGroupCustomRulePublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73308
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupCustomRulePublicV1Params'
+        required: true
+    return_type: '(*group.UpdateGroupCustomRulePublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupCustomRulePublicV1Params{ ... }
+      res, err := groupService.UpdateGroupCustomRulePublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'custom'
+      - 'group'
+      - 'public'
+      - 'rule'
+      - 'update'
+      - 'v1'
+
+  'UpdateGroupCustomRulePublicV2Short@group':
+    id: 'UpdateGroupCustomRulePublicV2Short@group'
+    name: 'UpdateGroupCustomRulePublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73308
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupCustomRulePublicV2Params'
+        required: true
+    return_type: '(*group.UpdateGroupCustomRulePublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupCustomRulePublicV2Params{ ... }
+      res, err := groupService.UpdateGroupCustomRulePublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'custom'
+      - 'group'
+      - 'public'
+      - 'rule'
+      - 'update'
+      - 'v2'
+
+  'UpdateGroupPredefinedRulePublicV1Short@group':
+    id: 'UpdateGroupPredefinedRulePublicV1Short@group'
+    name: 'UpdateGroupPredefinedRulePublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      If the rule action is not defined in the group, it will be added immediately to the predefined group rule
+
+      Action Code: 73310
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupPredefinedRulePublicV1Params'
+        required: true
+    return_type: '(*group.UpdateGroupPredefinedRulePublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupPredefinedRulePublicV1Params{ ... }
+      res, err := groupService.UpdateGroupPredefinedRulePublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'predefined'
+      - 'public'
+      - 'rule'
+      - 'update'
+      - 'v1'
+
+  'UpdateGroupPredefinedRulePublicV2Short@group':
+    id: 'UpdateGroupPredefinedRulePublicV2Short@group'
+    name: 'UpdateGroupPredefinedRulePublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      If the rule action is not defined in the group, it will be added immediately to the predefined group rule
+
+      Action Code: 73310
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateGroupPredefinedRulePublicV2Params'
+        required: true
+    return_type: '(*group.UpdateGroupPredefinedRulePublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateGroupPredefinedRulePublicV2Params{ ... }
+      res, err := groupService.UpdateGroupPredefinedRulePublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'predefined'
+      - 'public'
+      - 'rule'
+      - 'update'
+      - 'v2'
+
+  'UpdateMemberRoleAdminV1Short@group':
+    id: 'UpdateMemberRoleAdminV1Short@group'
+    name: 'UpdateMemberRoleAdminV1Short'
+    description: |-
+      This endpoint is used to update member role
+
+      Action Code: 73204
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.UpdateMemberRoleAdminV1Params'
+        required: true
+    return_type: '(*group_roles.UpdateMemberRoleAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.UpdateMemberRoleAdminV1Params{ ... }
+      res, err := groupRolesService.UpdateMemberRoleAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'group'
+      - 'member'
+      - 'role'
+      - 'roles'
+      - 'update'
+      - 'v1'
+
+  'UpdateMemberRolePermissionAdminV1Short@group':
+    id: 'UpdateMemberRolePermissionAdminV1Short@group'
+    name: 'UpdateMemberRolePermissionAdminV1Short'
+    description: |-
+      This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
+
+      Action Code: 73205
+
+
+
+      memberRolePermissions example value :
+
+      "action": 2
+
+      "resourceName": "GROUP:ROLE"
+
+      The changes will update user role to be able to read a role of other member
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.UpdateMemberRolePermissionAdminV1Params'
+        required: true
+    return_type: '(*group_roles.UpdateMemberRolePermissionAdminV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.UpdateMemberRolePermissionAdminV1Params{ ... }
+      res, err := groupRolesService.UpdateMemberRolePermissionAdminV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'group'
+      - 'member'
+      - 'permission'
+      - 'role'
+      - 'roles'
+      - 'update'
+      - 'v1'
+
+  'UpdateMemberRolePublicV1Short@group':
+    id: 'UpdateMemberRolePublicV1Short@group'
+    name: 'UpdateMemberRolePublicV1Short'
+    description: |-
+      Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+      This endpoint is used to assign role to group member
+
+      Action Code: 73204
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.UpdateMemberRolePublicV1Params'
+        required: true
+    return_type: '(*group_roles.UpdateMemberRolePublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.UpdateMemberRolePublicV1Params{ ... }
+      res, err := groupRolesService.UpdateMemberRolePublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'member'
+      - 'public'
+      - 'role'
+      - 'roles'
+      - 'update'
+      - 'v1'
+
+  'UpdateMemberRolePublicV2Short@group':
+    id: 'UpdateMemberRolePublicV2Short@group'
+    name: 'UpdateMemberRolePublicV2Short'
+    description: |-
+      Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+      This endpoint is used to assign role to group member
+
+      Action Code: 73204
+    struct: 'GroupRolesService'
+    parameters:
+      params:
+        type: '*group_roles.UpdateMemberRolePublicV2Params'
+        required: true
+    return_type: '(*group_roles.UpdateMemberRolePublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group_roles'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/groupRoles.go'
+    example: |-
+      groupRolesService := group.GroupRolesService{ ... }
+      params := group_roles.UpdateMemberRolePublicV2Params{ ... }
+      res, err := groupRolesService.UpdateMemberRolePublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'member'
+      - 'public'
+      - 'role'
+      - 'roles'
+      - 'update'
+      - 'v2'
+
+  'UpdatePatchSingleGroupPublicV1Short@group':
+    id: 'UpdatePatchSingleGroupPublicV1Short@group'
+    name: 'UpdatePatchSingleGroupPublicV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73307
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdatePatchSingleGroupPublicV1Params'
+        required: true
+    return_type: '(*group.UpdatePatchSingleGroupPublicV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdatePatchSingleGroupPublicV1Params{ ... }
+      res, err := groupService.UpdatePatchSingleGroupPublicV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'patch'
+      - 'public'
+      - 'single'
+      - 'update'
+      - 'v1'
+
+  'UpdatePatchSingleGroupPublicV2Short@group':
+    id: 'UpdatePatchSingleGroupPublicV2Short@group'
+    name: 'UpdatePatchSingleGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73307
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdatePatchSingleGroupPublicV2Params'
+        required: true
+    return_type: '(*group.UpdatePatchSingleGroupPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdatePatchSingleGroupPublicV2Params{ ... }
+      res, err := groupService.UpdatePatchSingleGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'patch'
+      - 'public'
+      - 'single'
+      - 'update'
+      - 'v2'
+
+  'UpdatePutSingleGroupPublicV2Short@group':
+    id: 'UpdatePutSingleGroupPublicV2Short@group'
+    name: 'UpdatePutSingleGroupPublicV2Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73307
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdatePutSingleGroupPublicV2Params'
+        required: true
+    return_type: '(*group.UpdatePutSingleGroupPublicV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdatePutSingleGroupPublicV2Params{ ... }
+      res, err := groupService.UpdatePutSingleGroupPublicV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'public'
+      - 'put'
+      - 'single'
+      - 'update'
+      - 'v2'
+
+  'UpdateSingleGroupV1Short@group':
+    id: 'UpdateSingleGroupV1Short@group'
+    name: 'UpdateSingleGroupV1Short'
+    description: |-
+      Required valid user authentication
+
+      Required Member Role Permission: "GROUP [UPDATE]"
+
+      Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
+
+      Action Code: 73307
+    struct: 'GroupService'
+    parameters:
+      params:
+        type: '*group.UpdateSingleGroupV1Params'
+        required: true
+    return_type: '(*group.UpdateSingleGroupV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclient/group'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/group'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/group/group.go'
+    example: |-
+      groupService := group.GroupService{ ... }
+      params := group.UpdateSingleGroupV1Params{ ... }
+      res, err := groupService.UpdateSingleGroupV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'single'
+      - 'update'
+      - 'v1'

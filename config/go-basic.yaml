@@ -1,0 +1,4296 @@
+structs:
+  'JusticeBasicService@basic':
+    id: 'JusticeBasicService@basic'
+    name: 'JusticeBasicService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/justice_basic_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/basicclientfactory.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo)
+
+  # region wrappers
+
+  'AnonymizationService@basic':
+    id: 'AnonymizationService@basic'
+    name: 'AnonymizationService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/anonymization.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      anonymizationService := AnonymizationService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ConfigService@basic':
+    id: 'ConfigService@basic'
+    name: 'ConfigService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      configService := ConfigService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'FileUploadService@basic':
+    id: 'FileUploadService@basic'
+    name: 'FileUploadService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/fileUpload.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      fileUploadService := FileUploadService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MiscService@basic':
+    id: 'MiscService@basic'
+    name: 'MiscService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      miscService := MiscService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'NamespaceService@basic':
+    id: 'NamespaceService@basic'
+    name: 'NamespaceService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      namespaceService := NamespaceService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'UserProfileService@basic':
+    id: 'UserProfileService@basic'
+    name: 'UserProfileService'
+    fields:
+      Client:
+        type: '*basicclient.JusticeBasicService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      basicClient := factory.NewBasicClient(configRepo) // re-use if it exists already
+      userProfileService := UserProfileService{
+          Client:           basicClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AddCountryGroupParams@basic':
+    id: 'AddCountryGroupParams@basic'
+    name: 'AddCountryGroupParams'
+    fields:
+      'Body':
+        type: '*AddCountryGroupRequest'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/add_country_group_parameters.go'
+
+  'AdminGetUserProfilePublicInfoByIdsParams@basic':
+    id: 'AdminGetUserProfilePublicInfoByIdsParams@basic'
+    name: 'AdminGetUserProfilePublicInfoByIdsParams'
+    fields:
+      'Body':
+        type: '*UserProfileBulkRequest'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/admin_get_user_profile_public_info_by_ids_parameters.go'
+
+  'AnonymizeUserProfileParams@basic':
+    id: 'AnonymizeUserProfileParams@basic'
+    name: 'AnonymizeUserProfileParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/anonymization'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/anonymization/anonymize_user_profile_parameters.go'
+
+  'ChangeNamespaceStatusParams@basic':
+    id: 'ChangeNamespaceStatusParams@basic'
+    name: 'ChangeNamespaceStatusParams'
+    fields:
+      'Body':
+        type: '*NamespaceStatusUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/change_namespace_status_parameters.go'
+
+  'CreateConfigParams@basic':
+    id: 'CreateConfigParams@basic'
+    name: 'CreateConfigParams'
+    fields:
+      'Body':
+        type: '*ConfigCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/create_config_parameters.go'
+
+  'CreateMyProfileParams@basic':
+    id: 'CreateMyProfileParams@basic'
+    name: 'CreateMyProfileParams'
+    fields:
+      'Body':
+        type: '*UserProfilePrivateCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/create_my_profile_parameters.go'
+
+  'CreateNamespaceParams@basic':
+    id: 'CreateNamespaceParams@basic'
+    name: 'CreateNamespaceParams'
+    fields:
+      'Body':
+        type: '*NamespaceCreate'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/create_namespace_parameters.go'
+
+  'DeleteConfigParams@basic':
+    id: 'DeleteConfigParams@basic'
+    name: 'DeleteConfigParams'
+    fields:
+      'ConfigKey':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/delete_config_parameters.go'
+
+  'DeleteCountryGroupParams@basic':
+    id: 'DeleteCountryGroupParams@basic'
+    name: 'DeleteCountryGroupParams'
+    fields:
+      'CountryGroupCode':
+        type: '*string'
+        required: true
+        description: |-
+          groupCode, only accept alphabet and whitespace
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/delete_country_group_parameters.go'
+
+  'DeleteNamespaceParams@basic':
+    id: 'DeleteNamespaceParams@basic'
+    name: 'DeleteNamespaceParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/delete_namespace_parameters.go'
+
+  'DeleteUserProfileParams@basic':
+    id: 'DeleteUserProfileParams@basic'
+    name: 'DeleteUserProfileParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/delete_user_profile_parameters.go'
+
+  'GeneratedUploadURLParams@basic':
+    id: 'GeneratedUploadURLParams@basic'
+    name: 'GeneratedUploadURLParams'
+    fields:
+      'FileType':
+        type: '*string'
+        required: true
+        description: |-
+          one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp, mp4, webm
+      'Folder':
+        type: '*string'
+        required: true
+        description: |-
+          the name of folder where the file will be uploaded, must be between 1-256 characters, all characters allowed no whitespace
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/generated_upload_url_parameters.go'
+
+  'GeneratedUserUploadContentURLParams@basic':
+    id: 'GeneratedUserUploadContentURLParams@basic'
+    name: 'GeneratedUserUploadContentURLParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          Upload category. Supported categories: default, reporting
+      'FileType':
+        type: '*string'
+        required: true
+        description: |-
+          one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp, mp4, webm
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/generated_user_upload_content_url_parameters.go'
+
+  'GetChildNamespacesParams@basic':
+    id: 'GetChildNamespacesParams@basic'
+    name: 'GetChildNamespacesParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          only retrieves active namespaces
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_child_namespaces_parameters.go'
+
+  'GetConfigParams@basic':
+    id: 'GetConfigParams@basic'
+    name: 'GetConfigParams'
+    fields:
+      'ConfigKey':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/get_config_parameters.go'
+
+  'GetCountriesParams@basic':
+    id: 'GetCountriesParams@basic'
+    name: 'GetCountriesParams'
+    fields:
+      'Lang':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_countries_parameters.go'
+
+  'GetCountryGroupsParams@basic':
+    id: 'GetCountryGroupsParams@basic'
+    name: 'GetCountryGroupsParams'
+    fields:
+      'GroupCode':
+        type: 'string'
+        required: false
+        description: |-
+          groupCode, only accept alphabet and whitespace
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_country_groups_parameters.go'
+
+  'GetCustomAttributesInfoParams@basic':
+    id: 'GetCustomAttributesInfoParams@basic'
+    name: 'GetCustomAttributesInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_custom_attributes_info_parameters.go'
+
+  'GetGameNamespacesParams@basic':
+    id: 'GetGameNamespacesParams@basic'
+    name: 'GetGameNamespacesParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          only retrieves active namespaces
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_game_namespaces_parameters.go'
+
+  'GetLanguagesParams@basic':
+    id: 'GetLanguagesParams@basic'
+    name: 'GetLanguagesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_languages_parameters.go'
+
+  'GetMyPrivateCustomAttributesInfoParams@basic':
+    id: 'GetMyPrivateCustomAttributesInfoParams@basic'
+    name: 'GetMyPrivateCustomAttributesInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_private_custom_attributes_info_parameters.go'
+
+  'GetMyProfileInfoParams@basic':
+    id: 'GetMyProfileInfoParams@basic'
+    name: 'GetMyProfileInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_profile_info_parameters.go'
+
+  'GetMyZipCodeParams@basic':
+    id: 'GetMyZipCodeParams@basic'
+    name: 'GetMyZipCodeParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_zip_code_parameters.go'
+
+  'GetNamespaceParams@basic':
+    id: 'GetNamespaceParams@basic'
+    name: 'GetNamespaceParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          only retrieves active namespaces
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_parameters.go'
+
+  'GetNamespace1Params@basic':
+    id: 'GetNamespace1Params@basic'
+    name: 'GetNamespace1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_1_parameters.go'
+
+  'GetNamespaceContextParams@basic':
+    id: 'GetNamespaceContextParams@basic'
+    name: 'GetNamespaceContextParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'RefreshOnCacheMiss':
+        type: 'bool'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_context_parameters.go'
+
+  'GetNamespacePublisherParams@basic':
+    id: 'GetNamespacePublisherParams@basic'
+    name: 'GetNamespacePublisherParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_publisher_parameters.go'
+
+  'GetNamespacesParams@basic':
+    id: 'GetNamespacesParams@basic'
+    name: 'GetNamespacesParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          only retrieves active namespaces
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespaces_parameters.go'
+
+  'GetPrivateCustomAttributesInfoParams@basic':
+    id: 'GetPrivateCustomAttributesInfoParams@basic'
+    name: 'GetPrivateCustomAttributesInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_private_custom_attributes_info_parameters.go'
+
+  'GetPublisherConfigParams@basic':
+    id: 'GetPublisherConfigParams@basic'
+    name: 'GetPublisherConfigParams'
+    fields:
+      'ConfigKey':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/get_publisher_config_parameters.go'
+
+  'GetTimeZonesParams@basic':
+    id: 'GetTimeZonesParams@basic'
+    name: 'GetTimeZonesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_time_zones_parameters.go'
+
+  'GetUserProfileInfoParams@basic':
+    id: 'GetUserProfileInfoParams@basic'
+    name: 'GetUserProfileInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_user_profile_info_parameters.go'
+
+  'GetUserProfileInfoByPublicIDParams@basic':
+    id: 'GetUserProfileInfoByPublicIDParams@basic'
+    name: 'GetUserProfileInfoByPublicIDParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'PublicID':
+        type: '*string'
+        required: true
+        description: |-
+          user public id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_user_profile_info_by_public_id_parameters.go'
+
+  'PublicBulkGetUserProfilePublicInfoParams@basic':
+    id: 'PublicBulkGetUserProfilePublicInfoParams@basic'
+    name: 'PublicBulkGetUserProfilePublicInfoParams'
+    fields:
+      'Body':
+        type: '*UserProfileBulkRequest'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_bulk_get_user_profile_public_info_parameters.go'
+
+  'PublicCreateUserProfileParams@basic':
+    id: 'PublicCreateUserProfileParams@basic'
+    name: 'PublicCreateUserProfileParams'
+    fields:
+      'Body':
+        type: '*UserProfileCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_create_user_profile_parameters.go'
+
+  'PublicGeneratedUploadURLParams@basic':
+    id: 'PublicGeneratedUploadURLParams@basic'
+    name: 'PublicGeneratedUploadURLParams'
+    fields:
+      'FileType':
+        type: '*string'
+        required: true
+        description: |-
+          one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp
+      'Folder':
+        type: '*string'
+        required: true
+        description: |-
+          the name of folder where the file will be uploaded, must be between 1-256 characters, all characters allowed no whitespace
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/public_generated_upload_url_parameters.go'
+
+  'PublicGeneratedUserUploadContentURLParams@basic':
+    id: 'PublicGeneratedUserUploadContentURLParams@basic'
+    name: 'PublicGeneratedUserUploadContentURLParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          Upload category. Supported categories: default, reporting
+      'FileType':
+        type: '*string'
+        required: true
+        description: |-
+          one of the these types: jpeg, jpg, png, bmp, gif, mp3, bin, webp
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/public_generated_user_upload_content_url_parameters.go'
+
+  'PublicGetCountriesParams@basic':
+    id: 'PublicGetCountriesParams@basic'
+    name: 'PublicGetCountriesParams'
+    fields:
+      'Lang':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_countries_parameters.go'
+
+  'PublicGetCustomAttributesInfoParams@basic':
+    id: 'PublicGetCustomAttributesInfoParams@basic'
+    name: 'PublicGetCustomAttributesInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_custom_attributes_info_parameters.go'
+
+  'PublicGetLanguagesParams@basic':
+    id: 'PublicGetLanguagesParams@basic'
+    name: 'PublicGetLanguagesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_languages_parameters.go'
+
+  'PublicGetNamespacePublisherParams@basic':
+    id: 'PublicGetNamespacePublisherParams@basic'
+    name: 'PublicGetNamespacePublisherParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/public_get_namespace_publisher_parameters.go'
+
+  'PublicGetNamespacesParams@basic':
+    id: 'PublicGetNamespacesParams@basic'
+    name: 'PublicGetNamespacesParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          only retrieves active namespaces
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/public_get_namespaces_parameters.go'
+
+  'PublicGetTimeParams@basic':
+    id: 'PublicGetTimeParams@basic'
+    name: 'PublicGetTimeParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_time_parameters.go'
+
+  'PublicGetTimeZonesParams@basic':
+    id: 'PublicGetTimeZonesParams@basic'
+    name: 'PublicGetTimeZonesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_time_zones_parameters.go'
+
+  'PublicGetUserProfileInfoParams@basic':
+    id: 'PublicGetUserProfileInfoParams@basic'
+    name: 'PublicGetUserProfileInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_info_parameters.go'
+
+  'PublicGetUserProfileInfoByPublicIDParams@basic':
+    id: 'PublicGetUserProfileInfoByPublicIDParams@basic'
+    name: 'PublicGetUserProfileInfoByPublicIDParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'PublicID':
+        type: '*string'
+        required: true
+        description: |-
+          user public id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_info_by_public_id_parameters.go'
+
+  'PublicGetUserProfilePublicInfoParams@basic':
+    id: 'PublicGetUserProfilePublicInfoParams@basic'
+    name: 'PublicGetUserProfilePublicInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_public_info_parameters.go'
+
+  'PublicGetUserProfilePublicInfoByIdsParams@basic':
+    id: 'PublicGetUserProfilePublicInfoByIdsParams@basic'
+    name: 'PublicGetUserProfilePublicInfoByIdsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserIds':
+        type: '*string'
+        required: true
+        description: |-
+          User IDs, should follow UUID version 4 without hyphen, separate the IDs using comma
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_public_info_by_ids_parameters.go'
+
+  'PublicUpdateCustomAttributesPartiallyParams@basic':
+    id: 'PublicUpdateCustomAttributesPartiallyParams@basic'
+    name: 'PublicUpdateCustomAttributesPartiallyParams'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_custom_attributes_partially_parameters.go'
+
+  'PublicUpdateUserProfileParams@basic':
+    id: 'PublicUpdateUserProfileParams@basic'
+    name: 'PublicUpdateUserProfileParams'
+    fields:
+      'Body':
+        type: '*UserProfileUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_user_profile_parameters.go'
+
+  'PublicUpdateUserProfileStatusParams@basic':
+    id: 'PublicUpdateUserProfileStatusParams@basic'
+    name: 'PublicUpdateUserProfileStatusParams'
+    fields:
+      'Body':
+        type: '*UserProfileStatusUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_user_profile_status_parameters.go'
+
+  'UpdateConfigParams@basic':
+    id: 'UpdateConfigParams@basic'
+    name: 'UpdateConfigParams'
+    fields:
+      'Body':
+        type: '*ConfigUpdate'
+        required: false
+      'ConfigKey':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/update_config_parameters.go'
+
+  'UpdateCountryGroupParams@basic':
+    id: 'UpdateCountryGroupParams@basic'
+    name: 'UpdateCountryGroupParams'
+    fields:
+      'Body':
+        type: '*UpdateCountryGroupRequest'
+        required: false
+      'CountryGroupCode':
+        type: '*string'
+        required: true
+        description: |-
+          groupCode, only accept alphabet and whitespace
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/update_country_group_parameters.go'
+
+  'UpdateCustomAttributesPartiallyParams@basic':
+    id: 'UpdateCustomAttributesPartiallyParams@basic'
+    name: 'UpdateCustomAttributesPartiallyParams'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_custom_attributes_partially_parameters.go'
+
+  'UpdateMyPrivateCustomAttributesPartiallyParams@basic':
+    id: 'UpdateMyPrivateCustomAttributesPartiallyParams@basic'
+    name: 'UpdateMyPrivateCustomAttributesPartiallyParams'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_private_custom_attributes_partially_parameters.go'
+
+  'UpdateMyProfileParams@basic':
+    id: 'UpdateMyProfileParams@basic'
+    name: 'UpdateMyProfileParams'
+    fields:
+      'Body':
+        type: '*UserProfileUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_profile_parameters.go'
+
+  'UpdateMyZipCodeParams@basic':
+    id: 'UpdateMyZipCodeParams@basic'
+    name: 'UpdateMyZipCodeParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserZipCodeUpdate':
+        type: '*UserZipCodeUpdate'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_zip_code_parameters.go'
+
+  'UpdateNamespaceParams@basic':
+    id: 'UpdateNamespaceParams@basic'
+    name: 'UpdateNamespaceParams'
+    fields:
+      'Body':
+        type: '*NamespaceUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/update_namespace_parameters.go'
+
+  'UpdatePrivateCustomAttributesPartiallyParams@basic':
+    id: 'UpdatePrivateCustomAttributesPartiallyParams@basic'
+    name: 'UpdatePrivateCustomAttributesPartiallyParams'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_private_custom_attributes_partially_parameters.go'
+
+  'UpdateUserProfileParams@basic':
+    id: 'UpdateUserProfileParams@basic'
+    name: 'UpdateUserProfileParams'
+    fields:
+      'Body':
+        type: '*UserProfileAdmin'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_user_profile_parameters.go'
+
+  'UpdateUserProfileStatusParams@basic':
+    id: 'UpdateUserProfileStatusParams@basic'
+    name: 'UpdateUserProfileStatusParams'
+    fields:
+      'Body':
+        type: '*UserProfileStatusUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user's id, should follow UUID version 4 without hyphen
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_user_profile_status_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'AddCountryGroupRequest@basic':
+    id: 'AddCountryGroupRequest@basic'
+    name: 'AddCountryGroupRequest'
+    fields:
+      'Countries':
+        type: '[]*CountryObject'
+        required: false
+      'CountryGroupCode':
+        type: 'string'
+        required: false
+      'CountryGroupName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/add_country_group_request.go'
+
+  'AddCountryGroupResponse@basic':
+    id: 'AddCountryGroupResponse@basic'
+    name: 'AddCountryGroupResponse'
+    fields:
+      'Countries':
+        type: '[]*CountryObject'
+        required: false
+      'CountryGroupCode':
+        type: 'string'
+        required: false
+      'CountryGroupName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/add_country_group_response.go'
+
+  'ConfigCreate@basic':
+    id: 'ConfigCreate@basic'
+    name: 'ConfigCreate'
+    fields:
+      'Key':
+        type: '*string'
+        required: true
+        description: |-
+          key, only accept alphabet and numeric
+      'Value':
+        type: '*string'
+        required: true
+        description: |-
+          value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_create.go'
+
+  'ConfigInfo@basic':
+    id: 'ConfigInfo@basic'
+    name: 'ConfigInfo'
+    fields:
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'Key':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'Value':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_info.go'
+
+  'ConfigUpdate@basic':
+    id: 'ConfigUpdate@basic'
+    name: 'ConfigUpdate'
+    fields:
+      'Value':
+        type: '*string'
+        required: true
+        description: |-
+          value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_update.go'
+
+  'CountryGroupObject@basic':
+    id: 'CountryGroupObject@basic'
+    name: 'CountryGroupObject'
+    fields:
+      'Countries':
+        type: '[]*CountryObject'
+        required: false
+      'CountryGroupCode':
+        type: 'string'
+        required: false
+      'CountryGroupName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/country_group_object.go'
+
+  'CountryObject@basic':
+    id: 'CountryObject@basic'
+    name: 'CountryObject'
+    fields:
+      'Code':
+        type: 'string'
+        required: false
+      'Name':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/country_object.go'
+
+  'ErrorEntity@basic':
+    id: 'ErrorEntity@basic'
+    name: 'ErrorEntity'
+    fields:
+      'DevStackTrace':
+        type: 'string'
+        required: false
+        description: |-
+          internal server error stack trace in configured environment
+      'ErrorCode':
+        type: '*int32'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: '*string'
+        required: true
+        description: |-
+          error message
+      'MessageVariables':
+        type: 'map[string]string'
+        required: false
+        description: |-
+          message variables
+      'RequiredPermission':
+        type: '*Permission'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/error_entity.go'
+
+  'FieldValidationError@basic':
+    id: 'FieldValidationError@basic'
+    name: 'FieldValidationError'
+    fields:
+      'ErrorCode':
+        type: 'string'
+        required: false
+      'ErrorField':
+        type: 'string'
+        required: false
+      'ErrorMessage':
+        type: 'string'
+        required: false
+      'ErrorValue':
+        type: 'string'
+        required: false
+      'MessageVariables':
+        type: 'map[string]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/field_validation_error.go'
+
+  'FileUploadURLInfo@basic':
+    id: 'FileUploadURLInfo@basic'
+    name: 'FileUploadURLInfo'
+    fields:
+      'AccessURL':
+        type: 'string'
+        required: false
+        description: |-
+          URL for accessing file
+      'ContentType':
+        type: 'string'
+        required: false
+        description: |-
+          File content-type
+      'Method':
+        type: 'string'
+        required: false
+        description: |-
+          HTTP method for uploading file
+      'URL':
+        type: 'string'
+        required: false
+        description: |-
+          URL for uploading file (S3 presigned URL)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/file_upload_url_info.go'
+
+  'NamespaceContext@basic':
+    id: 'NamespaceContext@basic'
+    name: 'NamespaceContext'
+    description: |-
+      This model is used to indicate the context of a namespace
+    fields:
+      'Namespace':
+        type: 'string'
+        required: false
+        description: |-
+          target namespace which need to get its context
+      'PublisherNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          publisher namespace
+      'StudioNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          studio namespace, it will be empty when input namespace is publisher namespace
+      'Type':
+        type: 'string'
+        required: false
+        description: |-
+          input namespace type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_context.go'
+
+  'NamespaceCreate@basic':
+    id: 'NamespaceCreate@basic'
+    name: 'NamespaceCreate'
+    fields:
+      'DisplayName':
+        type: '*string'
+        required: true
+        description: |-
+          display name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric. Will be converted to lowercase
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_create.go'
+
+  'NamespaceInfo@basic':
+    id: 'NamespaceInfo@basic'
+    name: 'NamespaceInfo'
+    fields:
+      'ClientID':
+        type: 'string'
+        required: false
+        description: |-
+          clientId is only present on multi tenant mode with namespace is not publisher namespace
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'DisplayName':
+        type: '*string'
+        required: true
+        description: |-
+          namespace display name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'ParentNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          parentNamespace is only present in multi tenant mode
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_info.go'
+
+  'NamespacePublisherInfo@basic':
+    id: 'NamespacePublisherInfo@basic'
+    name: 'NamespacePublisherInfo'
+    fields:
+      'Publisher':
+        type: 'bool'
+        required: false
+        description: |-
+          inform whether the specified namespace is publisher namespace or not
+      'PublisherNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          name of publisher namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_publisher_info.go'
+
+  'NamespaceSimpleInfo@basic':
+    id: 'NamespaceSimpleInfo@basic'
+    name: 'NamespaceSimpleInfo'
+    fields:
+      'DisplayName':
+        type: '*string'
+        required: true
+        description: |-
+          namespace display name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_simple_info.go'
+
+  'NamespaceStatusUpdate@basic':
+    id: 'NamespaceStatusUpdate@basic'
+    name: 'NamespaceStatusUpdate'
+    description: |-
+      A DTO object for updating namespace status API call.
+    fields:
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          namespace status
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_status_update.go'
+
+  'NamespaceUpdate@basic':
+    id: 'NamespaceUpdate@basic'
+    name: 'NamespaceUpdate'
+    fields:
+      'DisplayName':
+        type: '*string'
+        required: true
+        description: |-
+          display name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_update.go'
+
+  'Permission@basic':
+    id: 'Permission@basic'
+    name: 'Permission'
+    fields:
+      'Action':
+        type: 'int32'
+        required: false
+      'Resource':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/permission.go'
+
+  'RetrieveCountryGroupResponse@basic':
+    id: 'RetrieveCountryGroupResponse@basic'
+    name: 'RetrieveCountryGroupResponse'
+    fields:
+      'Countries':
+        type: '[]*CountryObject'
+        required: false
+      'CountryGroupCode':
+        type: 'string'
+        required: false
+      'CountryGroupName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/retrieve_country_group_response.go'
+
+  'RetrieveTimeResponse@basic':
+    id: 'RetrieveTimeResponse@basic'
+    name: 'RetrieveTimeResponse'
+    fields:
+      'CurrentTime':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/retrieve_time_response.go'
+
+  'UpdateCountryGroupRequest@basic':
+    id: 'UpdateCountryGroupRequest@basic'
+    name: 'UpdateCountryGroupRequest'
+    fields:
+      'Countries':
+        type: '[]*CountryObject'
+        required: false
+      'CountryGroupName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/update_country_group_request.go'
+
+  'UserProfileAdmin@basic':
+    id: 'UserProfileAdmin@basic'
+    name: 'UserProfileAdmin'
+    description: |-
+      A DTO object for updating user profile API call.
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+        description: |-
+          date of birth, allowed format: yyyy-MM-dd, valid date range from 1905-01-01 until present
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US.<p>Supported language tag : [RFC5646](https://gist.github.com/msikma/8912e62ed866778ff8cd) and [IETF](https://datahub.io/core/language-codes#resource-ietf-language-tags)</p>
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'PrivateCustomAttributes':
+        type: 'interface{}'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+        description: |-
+          time zone, allowed IANA time zone, e.g.Asia/Shanghai
+      'ZipCode':
+        type: 'string'
+        required: false
+        description: |-
+          zip code
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_admin.go'
+
+  'UserProfileBulkRequest@basic':
+    id: 'UserProfileBulkRequest@basic'
+    name: 'UserProfileBulkRequest'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: false
+        description: |-
+          User IDs, list of User ID with limit max to 100 User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_bulk_request.go'
+
+  'UserProfileCreate@basic':
+    id: 'UserProfileCreate@basic'
+    name: 'UserProfileCreate'
+    description: |-
+      A DTO object for creating user profile API call.
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+        description: |-
+          date of birth, allowed format: yyyy-MM-dd, valid date range from 1905-01-01 until present
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US.<p>Supported language tag : [RFC5646](https://gist.github.com/msikma/8912e62ed866778ff8cd) and [IETF](https://datahub.io/core/language-codes#resource-ietf-language-tags)</p>
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'TimeZone':
+        type: 'string'
+        required: false
+        description: |-
+          time zone, allowed IANA time zone, e.g.Asia/Shanghai
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_create.go'
+
+  'UserProfileInfo@basic':
+    id: 'UserProfileInfo@basic'
+    name: 'UserProfileInfo'
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+      'AvatarURL':
+        type: 'string'
+        required: false
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Namespace':
+        type: 'string'
+        required: false
+      'PublicID':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+      'ZipCode':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_info.go'
+
+  'UserProfilePrivateCreate@basic':
+    id: 'UserProfilePrivateCreate@basic'
+    name: 'UserProfilePrivateCreate'
+    description: |-
+      A DTO object for creating user profile API call.
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+        description: |-
+          date of birth, allowed format: yyyy-MM-dd, valid date range from 1905-01-01 until present
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US.<p>Supported language tag : [RFC5646](https://gist.github.com/msikma/8912e62ed866778ff8cd) and [IETF](https://datahub.io/core/language-codes#resource-ietf-language-tags)</p>
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'PrivateCustomAttributes':
+        type: 'interface{}'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+        description: |-
+          time zone, allowed IANA time zone, e.g.Asia/Shanghai
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_private_create.go'
+
+  'UserProfilePrivateInfo@basic':
+    id: 'UserProfilePrivateInfo@basic'
+    name: 'UserProfilePrivateInfo'
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+      'AvatarURL':
+        type: 'string'
+        required: false
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Namespace':
+        type: 'string'
+        required: false
+      'PrivateCustomAttributes':
+        type: 'interface{}'
+        required: false
+      'PublicID':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+      'ZipCode':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_private_info.go'
+
+  'UserProfilePublicInfo@basic':
+    id: 'UserProfilePublicInfo@basic'
+    name: 'UserProfilePublicInfo'
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+      'AvatarURL':
+        type: 'string'
+        required: false
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: false
+      'PublicID':
+        type: 'string'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_public_info.go'
+
+  'UserProfileStatusUpdate@basic':
+    id: 'UserProfileStatusUpdate@basic'
+    name: 'UserProfileStatusUpdate'
+    description: |-
+      A DTO object for updating user profile status API call.
+    fields:
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          status, ACTIVE or INACTIVE
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_status_update.go'
+
+  'UserProfileUpdate@basic':
+    id: 'UserProfileUpdate@basic'
+    name: 'UserProfileUpdate'
+    description: |-
+      A DTO object for updating user profile API call.
+    fields:
+      'AvatarLargeURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarSmallURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'AvatarURL':
+        type: 'string'
+        required: false
+        description: |-
+          should be comply with OWASP url format
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DateOfBirth':
+        type: '*string'
+        required: false
+        description: |-
+          date of birth, allowed format: yyyy-MM-dd, valid date range from 1905-01-01 until present
+      'FirstName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'Language':
+        type: 'string'
+        required: false
+        description: |-
+          language value from language tag, allowed format: en, en-US.<p>Supported language tag : [RFC5646](https://gist.github.com/msikma/8912e62ed866778ff8cd) and [IETF](https://datahub.io/core/language-codes#resource-ietf-language-tags)</p>
+      'LastName':
+        type: 'string'
+        required: false
+        description: |-
+          deprecated
+      'PrivateCustomAttributes':
+        type: 'interface{}'
+        required: false
+      'TimeZone':
+        type: 'string'
+        required: false
+        description: |-
+          time zone, allowed IANA time zone, e.g.Asia/Shanghai
+      'ZipCode':
+        type: 'string'
+        required: false
+        description: |-
+          zip code
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_update.go'
+
+  'UserZipCode@basic':
+    id: 'UserZipCode@basic'
+    name: 'UserZipCode'
+    fields:
+      'ZipCode':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_zip_code.go'
+
+  'UserZipCodeUpdate@basic':
+    id: 'UserZipCodeUpdate@basic'
+    name: 'UserZipCodeUpdate'
+    fields:
+      'ZipCode':
+        type: '*string'
+        required: true
+        description: |-
+          zip code, accept alphabet and numeric string default
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_zip_code_update.go'
+
+  'ValidationErrorEntity@basic':
+    id: 'ValidationErrorEntity@basic'
+    name: 'ValidationErrorEntity'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: '*string'
+        required: true
+        description: |-
+          error message
+      'Errors':
+        type: '[]*FieldValidationError'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/validation_error_entity.go'
+
+  # endregion models
+
+functions:
+
+  'AddCountryGroupShort@basic':
+    id: 'AddCountryGroupShort@basic'
+    name: 'AddCountryGroupShort'
+    description: |-
+      Add a country groups
+      Country code must follow ISO3166-1 alpha-2.
+      Other detail info:
+
+        * Action code : 11201
+        *  Returns : newly created country group
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.AddCountryGroupParams'
+        required: true
+    return_type: '(*misc.AddCountryGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.AddCountryGroupParams{ ... }
+      res, err := miscService.AddCountryGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'add'
+      - 'country'
+      - 'group'
+      - 'misc'
+
+  'AdminGetUserProfilePublicInfoByIdsShort@basic':
+    id: 'AdminGetUserProfilePublicInfoByIdsShort@basic'
+    name: 'AdminGetUserProfilePublicInfoByIdsShort'
+    description: |-
+      Admin get user public profile by ids.
+      Other detail info:
+
+        * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (GET)
+        *  Action code : 11405
+        *  Returns : user public profiles
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.AdminGetUserProfilePublicInfoByIdsParams'
+        required: true
+    return_type: '(*user_profile.AdminGetUserProfilePublicInfoByIdsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.AdminGetUserProfilePublicInfoByIdsParams{ ... }
+      res, err := userProfileService.AdminGetUserProfilePublicInfoByIdsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'get'
+      - 'ids'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'AnonymizeUserProfileShort@basic':
+    id: 'AnonymizeUserProfileShort@basic'
+    name: 'AnonymizeUserProfileShort'
+    description: |-
+      Anonymize user profile.
+      Other detail info:
+
+        * Action code : 11501
+    struct: 'AnonymizationService'
+    parameters:
+      params:
+        type: '*anonymization.AnonymizeUserProfileParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/anonymization'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/anonymization.go'
+    example: |-
+      anonymizationService := basic.AnonymizationService{ ... }
+      params := anonymization.AnonymizeUserProfileParams{ ... }
+      res, err := anonymizationService.AnonymizeUserProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'anonymization'
+      - 'anonymize'
+      - 'profile'
+      - 'user'
+
+  'ChangeNamespaceStatusShort@basic':
+    id: 'ChangeNamespaceStatusShort@basic'
+    name: 'ChangeNamespaceStatusShort'
+    description: |-
+      Change a namespace status.
+      Other detail info:
+
+        * Action code : 11306
+        *  Returns : updated namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.ChangeNamespaceStatusParams'
+        required: true
+    return_type: '(*namespace.ChangeNamespaceStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.ChangeNamespaceStatusParams{ ... }
+      res, err := namespaceService.ChangeNamespaceStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'change'
+      - 'namespace'
+      - 'status'
+
+  'CreateConfigShort@basic':
+    id: 'CreateConfigShort@basic'
+    name: 'CreateConfigShort'
+    description: |-
+      Create a config.
+      Other detail info:
+
+        * Returns : created config
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.CreateConfigParams'
+        required: true
+    return_type: '(*config.CreateConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      configService := basic.ConfigService{ ... }
+      params := config.CreateConfigParams{ ... }
+      res, err := configService.CreateConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'create'
+
+  'CreateMyProfileShort@basic':
+    id: 'CreateMyProfileShort@basic'
+    name: 'CreateMyProfileShort'
+    description: |-
+      Create my profile.
+       Client with user token can create user profile in target namespace
+      Other detail info:
+
+        * Action code : 11401
+        *  Returns : Created user profile
+        *  Path's namespace :
+          * can be filled with publisher namespace in order to create publisher user profile
+          * can be filled with game namespace in order to create game user profile
+        *  Language : allowed format: en, en-US
+        *  Country : ISO3166-1 alpha-2 two letter, e.g. US
+        * Timezone : IANA time zone, e.g. Asia/Shanghai
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.CreateMyProfileParams'
+        required: true
+    return_type: '(*user_profile.CreateMyProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.CreateMyProfileParams{ ... }
+      res, err := userProfileService.CreateMyProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'my'
+      - 'profile'
+      - 'user'
+
+  'CreateNamespaceShort@basic':
+    id: 'CreateNamespaceShort@basic'
+    name: 'CreateNamespaceShort'
+    description: |-
+      Create a namespace.
+      By default the namespace is enabled.
+      In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
+      displayName rule:
+
+
+        * Alphanumeric lowercase and uppercase are allowed
+        * Allowed Special Character: ',. -
+        * Must start and end with alphanumeric
+        * Spaces and special character are allowed but cannot appear twice in a row
+
+
+      Other detail info:
+
+        * Action code : 11301
+        *  Returns : created namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.CreateNamespaceParams'
+        required: true
+    return_type: '(*namespace.CreateNamespaceResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.CreateNamespaceParams{ ... }
+      res, err := namespaceService.CreateNamespaceShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'namespace'
+
+  'DeleteConfigShort@basic':
+    id: 'DeleteConfigShort@basic'
+    name: 'DeleteConfigShort'
+    description: |-
+      Delete a config.
+      Other detail info:
+
+        * Returns : created config
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.DeleteConfigParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      configService := basic.ConfigService{ ... }
+      params := config.DeleteConfigParams{ ... }
+      res, err := configService.DeleteConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'delete'
+
+  'DeleteCountryGroupShort@basic':
+    id: 'DeleteCountryGroupShort@basic'
+    name: 'DeleteCountryGroupShort'
+    description: |-
+      Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.DeleteCountryGroupParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.DeleteCountryGroupParams{ ... }
+      res, err := miscService.DeleteCountryGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'country'
+      - 'delete'
+      - 'group'
+      - 'misc'
+
+  'DeleteNamespaceShort@basic':
+    id: 'DeleteNamespaceShort@basic'
+    name: 'DeleteNamespaceShort'
+    description: |-
+      Delete a namespace.
+      Other detail info:
+
+        * Action code : 11307
+        *  Returns : deleted namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.DeleteNamespaceParams'
+        required: true
+    return_type: '(*namespace.DeleteNamespaceResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.DeleteNamespaceParams{ ... }
+      res, err := namespaceService.DeleteNamespaceShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'namespace'
+
+  'DeleteUserProfileShort@basic':
+    id: 'DeleteUserProfileShort@basic'
+    name: 'DeleteUserProfileShort'
+    description: |-
+      Delete user profile.
+      Other detail info:
+
+        * Action code : 11407
+        *  Returns : Delete user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.DeleteUserProfileParams'
+        required: true
+    return_type: '(*user_profile.DeleteUserProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.DeleteUserProfileParams{ ... }
+      res, err := userProfileService.DeleteUserProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'profile'
+      - 'user'
+
+  'GeneratedUploadURLShort@basic':
+    id: 'GeneratedUploadURLShort@basic'
+    name: 'GeneratedUploadURLShort'
+    description: |-
+      Generate an upload URL. It's valid for 10 minutes.
+      Other detail info:
+
+        * Action code : 11101
+        *  Returns : URL data
+    struct: 'FileUploadService'
+    parameters:
+      params:
+        type: '*file_upload.GeneratedUploadURLParams'
+        required: true
+    return_type: '(*file_upload.GeneratedUploadURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/fileUpload.go'
+    example: |-
+      fileUploadService := basic.FileUploadService{ ... }
+      params := file_upload.GeneratedUploadURLParams{ ... }
+      res, err := fileUploadService.GeneratedUploadURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'file'
+      - 'generated'
+      - 'upload'
+      - 'url'
+
+  'GeneratedUserUploadContentURLShort@basic':
+    id: 'GeneratedUserUploadContentURLShort@basic'
+    name: 'GeneratedUserUploadContentURLShort'
+    description: |-
+      Generate an upload URL for user content. It's valid for 10 minutes.
+      Other detail info:
+
+        * Action code : 11102
+        *  Returns : URL data
+    struct: 'FileUploadService'
+    parameters:
+      params:
+        type: '*file_upload.GeneratedUserUploadContentURLParams'
+        required: true
+    return_type: '(*file_upload.GeneratedUserUploadContentURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/fileUpload.go'
+    example: |-
+      fileUploadService := basic.FileUploadService{ ... }
+      params := file_upload.GeneratedUserUploadContentURLParams{ ... }
+      res, err := fileUploadService.GeneratedUserUploadContentURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'content'
+      - 'file'
+      - 'generated'
+      - 'upload'
+      - 'url'
+      - 'user'
+
+  'GetChildNamespacesShort@basic':
+    id: 'GetChildNamespacesShort@basic'
+    name: 'GetChildNamespacesShort'
+    description: |-
+      Get child namespaces.
+      If input namespace is publisher namespace, then it will return its all studio namespace.
+      If input namespace is studio namespace, then it will return its all game namespace.
+      Other detail info:
+
+        * Returns : list of child namespaces
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetChildNamespacesParams'
+        required: true
+    return_type: '(*namespace.GetChildNamespacesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetChildNamespacesParams{ ... }
+      res, err := namespaceService.GetChildNamespacesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'child'
+      - 'get'
+      - 'namespace'
+      - 'namespaces'
+
+  'GetConfigShort@basic':
+    id: 'GetConfigShort@basic'
+    name: 'GetConfigShort'
+    description: |-
+      Get a config.
+      Other detail info:
+
+        * Returns : config
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.GetConfigParams'
+        required: true
+    return_type: '(*config.GetConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      configService := basic.ConfigService{ ... }
+      params := config.GetConfigParams{ ... }
+      res, err := configService.GetConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'get'
+
+  'GetCountriesShort@basic':
+    id: 'GetCountriesShort@basic'
+    name: 'GetCountriesShort'
+    description: |-
+      List countries.
+      Other detail info:
+
+        * Action code : 11204
+        *  Returns : country code list
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.GetCountriesParams'
+        required: true
+    return_type: '(*misc.GetCountriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.GetCountriesParams{ ... }
+      res, err := miscService.GetCountriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'countries'
+      - 'get'
+      - 'misc'
+
+  'GetCountryGroupsShort@basic':
+    id: 'GetCountryGroupsShort@basic'
+    name: 'GetCountryGroupsShort'
+    description: |-
+      List country groups. Will return all available country groups if the query param is not specified
+      Other detail info:
+
+        * Action code : 11203
+        *  Returns : list of country groups
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.GetCountryGroupsParams'
+        required: true
+    return_type: '(*misc.GetCountryGroupsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.GetCountryGroupsParams{ ... }
+      res, err := miscService.GetCountryGroupsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'country'
+      - 'get'
+      - 'groups'
+      - 'misc'
+
+  'GetCustomAttributesInfoShort@basic':
+    id: 'GetCustomAttributesInfoShort@basic'
+    name: 'GetCustomAttributesInfoShort'
+    description: |-
+      Get user custom attributes.
+      Other detail info:
+
+        * Returns : custom attributes
+        *  Action code : 11403
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetCustomAttributesInfoParams'
+        required: true
+    return_type: '(*user_profile.GetCustomAttributesInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetCustomAttributesInfoParams{ ... }
+      res, err := userProfileService.GetCustomAttributesInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'user'
+
+  'GetGameNamespacesShort@basic':
+    id: 'GetGameNamespacesShort@basic'
+    name: 'GetGameNamespacesShort'
+    description: |-
+      Get game namespaces.
+      In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
+      Other detail info:
+
+        * Action code : 11308
+        *  Returns : list of namespaces
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetGameNamespacesParams'
+        required: true
+    return_type: '(*namespace.GetGameNamespacesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetGameNamespacesParams{ ... }
+      res, err := namespaceService.GetGameNamespacesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'game'
+      - 'get'
+      - 'namespace'
+      - 'namespaces'
+
+  'GetLanguagesShort@basic':
+    id: 'GetLanguagesShort@basic'
+    name: 'GetLanguagesShort'
+    description: |-
+      List languages.
+      Other detail info:
+
+        * Action code : 11206
+        *  Returns : language list
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.GetLanguagesParams'
+        required: true
+    return_type: '(*misc.GetLanguagesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.GetLanguagesParams{ ... }
+      res, err := miscService.GetLanguagesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'languages'
+      - 'misc'
+
+  'GetMyPrivateCustomAttributesInfoShort@basic':
+    id: 'GetMyPrivateCustomAttributesInfoShort@basic'
+    name: 'GetMyPrivateCustomAttributesInfoShort'
+    description: |-
+      Get my private custom attributes.
+      Other detail info:
+
+        * Returns : custom attributes
+        *  Action code : 11403
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetMyPrivateCustomAttributesInfoParams'
+        required: true
+    return_type: '(*user_profile.GetMyPrivateCustomAttributesInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetMyPrivateCustomAttributesInfoParams{ ... }
+      res, err := userProfileService.GetMyPrivateCustomAttributesInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'get'
+      - 'info'
+      - 'my'
+      - 'private'
+      - 'profile'
+      - 'user'
+
+  'GetMyProfileInfoShort@basic':
+    id: 'GetMyProfileInfoShort@basic'
+    name: 'GetMyProfileInfoShort'
+    description: |-
+      Get my profile
+       Client with user token can get user profile in target namespace
+      Other detail info:
+
+        * Action code : 11403
+        *  Returns : user profile
+        *  Path's namespace :
+          * can be filled with publisher namespace in order to get publisher user profile
+          * can be filled with game namespace in order to get game user profile
+        *  Language : allowed format: en, en-US
+        *  Timezone : IANA time zone, e.g. Asia/Shanghai
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetMyProfileInfoParams'
+        required: true
+    return_type: '(*user_profile.GetMyProfileInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetMyProfileInfoParams{ ... }
+      res, err := userProfileService.GetMyProfileInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'info'
+      - 'my'
+      - 'profile'
+      - 'user'
+
+  'GetMyZipCodeShort@basic':
+    id: 'GetMyZipCodeShort@basic'
+    name: 'GetMyZipCodeShort'
+    description: |-
+      Get my zip code.
+      Other detail info:
+
+        * Action code : 11407
+        *  Returns : user zip code
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetMyZipCodeParams'
+        required: true
+    return_type: '(*user_profile.GetMyZipCodeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetMyZipCodeParams{ ... }
+      res, err := userProfileService.GetMyZipCodeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'code'
+      - 'get'
+      - 'my'
+      - 'profile'
+      - 'user'
+      - 'zip'
+
+  'GetNamespaceShort@basic':
+    id: 'GetNamespaceShort@basic'
+    name: 'GetNamespaceShort'
+    description: |-
+      Get a namespace.
+      In multi tenant mode, parentNamespace will be returned.
+      Other detail info:
+
+        * Action code : 11304
+        *  Returns : namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetNamespaceParams'
+        required: true
+    return_type: '(*namespace.GetNamespaceResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetNamespaceParams{ ... }
+      res, err := namespaceService.GetNamespaceShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'namespace'
+
+  'GetNamespace1Short@basic':
+    id: 'GetNamespace1Short@basic'
+    name: 'GetNamespace1Short'
+    description: |-
+      Get a namespace info.
+      Other detail info:
+
+        * Returns : namespace info
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetNamespace1Params'
+        required: true
+    return_type: '(*namespace.GetNamespace1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetNamespace1Params{ ... }
+      res, err := namespaceService.GetNamespace1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - '1'
+      - 'get'
+      - 'namespace'
+
+  'GetNamespaceContextShort@basic':
+    id: 'GetNamespaceContextShort@basic'
+    name: 'GetNamespaceContextShort'
+    description: |-
+      Get context of namespace.
+      Other detail info:
+
+        * Returns : context of namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetNamespaceContextParams'
+        required: true
+    return_type: '(*namespace.GetNamespaceContextResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetNamespaceContextParams{ ... }
+      res, err := namespaceService.GetNamespaceContextShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'context'
+      - 'get'
+      - 'namespace'
+
+  'GetNamespacePublisherShort@basic':
+    id: 'GetNamespacePublisherShort@basic'
+    name: 'GetNamespacePublisherShort'
+    description: |-
+      Get namespace info related publisher namespace.
+      Other detail info:
+
+        * Action code : 11305
+        *  Returns : Namespace info related publisher namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetNamespacePublisherParams'
+        required: true
+    return_type: '(*namespace.GetNamespacePublisherResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetNamespacePublisherParams{ ... }
+      res, err := namespaceService.GetNamespacePublisherShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'namespace'
+      - 'publisher'
+
+  'GetNamespacesShort@basic':
+    id: 'GetNamespacesShort@basic'
+    name: 'GetNamespacesShort'
+    description: |-
+      Get all namespaces.
+      Other detail info:
+
+        * Action code : 11303
+        *  Returns : list of namespaces
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.GetNamespacesParams'
+        required: true
+    return_type: '(*namespace.GetNamespacesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.GetNamespacesParams{ ... }
+      res, err := namespaceService.GetNamespacesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'namespace'
+      - 'namespaces'
+
+  'GetPrivateCustomAttributesInfoShort@basic':
+    id: 'GetPrivateCustomAttributesInfoShort@basic'
+    name: 'GetPrivateCustomAttributesInfoShort'
+    description: |-
+      Get user private custom attributes.
+      Other detail info:
+
+        * Returns : custom attributes
+        *  Action code : 11403
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetPrivateCustomAttributesInfoParams'
+        required: true
+    return_type: '(*user_profile.GetPrivateCustomAttributesInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetPrivateCustomAttributesInfoParams{ ... }
+      res, err := userProfileService.GetPrivateCustomAttributesInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'get'
+      - 'info'
+      - 'private'
+      - 'profile'
+      - 'user'
+
+  'GetPublisherConfigShort@basic':
+    id: 'GetPublisherConfigShort@basic'
+    name: 'GetPublisherConfigShort'
+    description: |-
+      Get a publisher config.
+      It will return a publisher namespace config of the given namespace and key.
+      Other detail info:
+
+        * Returns : config
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.GetPublisherConfigParams'
+        required: true
+    return_type: '(*config.GetPublisherConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      configService := basic.ConfigService{ ... }
+      params := config.GetPublisherConfigParams{ ... }
+      res, err := configService.GetPublisherConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'get'
+      - 'publisher'
+
+  'GetTimeZonesShort@basic':
+    id: 'GetTimeZonesShort@basic'
+    name: 'GetTimeZonesShort'
+    description: |-
+      List time zones.
+      Other detail info:
+
+        * Action code : 11205
+        *  Returns : time zones
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.GetTimeZonesParams'
+        required: true
+    return_type: '(*misc.GetTimeZonesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.GetTimeZonesParams{ ... }
+      res, err := miscService.GetTimeZonesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'misc'
+      - 'time'
+      - 'zones'
+
+  'GetUserProfileInfoShort@basic':
+    id: 'GetUserProfileInfoShort@basic'
+    name: 'GetUserProfileInfoShort'
+    description: |-
+      Get user profile.
+      Other detail info:
+
+        * Returns : user profile
+        *  Action code : 11403
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetUserProfileInfoParams'
+        required: true
+    return_type: '(*user_profile.GetUserProfileInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetUserProfileInfoParams{ ... }
+      res, err := userProfileService.GetUserProfileInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'user'
+
+  'GetUserProfileInfoByPublicIDShort@basic':
+    id: 'GetUserProfileInfoByPublicIDShort@basic'
+    name: 'GetUserProfileInfoByPublicIDShort'
+    description: |-
+      Get user profile by public id.
+      Other detail info:
+
+        * Returns : user profile info
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.GetUserProfileInfoByPublicIDParams'
+        required: true
+    return_type: '(*user_profile.GetUserProfileInfoByPublicIDResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.GetUserProfileInfoByPublicIDParams{ ... }
+      res, err := userProfileService.GetUserProfileInfoByPublicIDShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'get'
+      - 'id'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicBulkGetUserProfilePublicInfoShort@basic':
+    id: 'PublicBulkGetUserProfilePublicInfoShort@basic'
+    name: 'PublicBulkGetUserProfilePublicInfoShort'
+    description: |-
+      Bulk get user public profile by ids.
+      Other detail info:
+
+        * Returns : user public profiles
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicBulkGetUserProfilePublicInfoParams'
+        required: true
+    return_type: '(*user_profile.PublicBulkGetUserProfilePublicInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicBulkGetUserProfilePublicInfoParams{ ... }
+      res, err := userProfileService.PublicBulkGetUserProfilePublicInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicCreateUserProfileShort@basic':
+    id: 'PublicCreateUserProfileShort@basic'
+    name: 'PublicCreateUserProfileShort'
+    description: |-
+      Create user profile.
+      Other detail info:
+
+        * Action code : 11401
+        *  Language : allowed format: en, en-US
+        *  Timezone : IANA time zone, e.g. Asia/Shanghai
+        *  Returns : Created user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicCreateUserProfileParams'
+        required: true
+    return_type: '(*user_profile.PublicCreateUserProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicCreateUserProfileParams{ ... }
+      res, err := userProfileService.PublicCreateUserProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicGeneratedUploadURLShort@basic':
+    id: 'PublicGeneratedUploadURLShort@basic'
+    name: 'PublicGeneratedUploadURLShort'
+    description: |-
+      Generate an upload URL. It's valid for 10 minutes.
+      Other detail info:
+
+        * Action code : 11101
+        *  Returns : URL data
+    struct: 'FileUploadService'
+    parameters:
+      params:
+        type: '*file_upload.PublicGeneratedUploadURLParams'
+        required: true
+    return_type: '(*file_upload.PublicGeneratedUploadURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/fileUpload.go'
+    example: |-
+      fileUploadService := basic.FileUploadService{ ... }
+      params := file_upload.PublicGeneratedUploadURLParams{ ... }
+      res, err := fileUploadService.PublicGeneratedUploadURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'file'
+      - 'generated'
+      - 'public'
+      - 'upload'
+      - 'url'
+
+  'PublicGeneratedUserUploadContentURLShort@basic':
+    id: 'PublicGeneratedUserUploadContentURLShort@basic'
+    name: 'PublicGeneratedUserUploadContentURLShort'
+    description: |-
+      Generate an upload URL for user content. It's valid for 10 minutes.
+      There are two types of storage limits per user: maximum file count and maximum total file size.
+      These limits vary depending on the upload category used.
+
+       1. Default category:
+      - Maximum file count per user: 10 files
+      - Maximum total file size per user: 100MB
+       2. Reporting category:
+      - Maximum file count per user: 3 files every 1 hour
+      - Maximum total file size per user: 30MB every 1 hour
+
+
+      Other detail info:
+
+        * Action code : 11102
+        *  Returns : URL data
+    struct: 'FileUploadService'
+    parameters:
+      params:
+        type: '*file_upload.PublicGeneratedUserUploadContentURLParams'
+        required: true
+    return_type: '(*file_upload.PublicGeneratedUserUploadContentURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/file_upload'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/fileUpload.go'
+    example: |-
+      fileUploadService := basic.FileUploadService{ ... }
+      params := file_upload.PublicGeneratedUserUploadContentURLParams{ ... }
+      res, err := fileUploadService.PublicGeneratedUserUploadContentURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'content'
+      - 'file'
+      - 'generated'
+      - 'public'
+      - 'upload'
+      - 'url'
+      - 'user'
+
+  'PublicGetCountriesShort@basic':
+    id: 'PublicGetCountriesShort@basic'
+    name: 'PublicGetCountriesShort'
+    description: |-
+      List countries.
+      Other detail info:
+
+        * Returns : country code list
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.PublicGetCountriesParams'
+        required: true
+    return_type: '(*misc.PublicGetCountriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.PublicGetCountriesParams{ ... }
+      res, err := miscService.PublicGetCountriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'countries'
+      - 'get'
+      - 'misc'
+      - 'public'
+
+  'PublicGetCustomAttributesInfoShort@basic':
+    id: 'PublicGetCustomAttributesInfoShort@basic'
+    name: 'PublicGetCustomAttributesInfoShort'
+    description: |-
+      Get custom attributes info.
+      Other detail info:
+
+        * Action code : 11404
+        *  Returns : user custom attributes
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicGetCustomAttributesInfoParams'
+        required: true
+    return_type: '(*user_profile.PublicGetCustomAttributesInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicGetCustomAttributesInfoParams{ ... }
+      res, err := userProfileService.PublicGetCustomAttributesInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicGetLanguagesShort@basic':
+    id: 'PublicGetLanguagesShort@basic'
+    name: 'PublicGetLanguagesShort'
+    description: |-
+      List languages.
+      Other detail info:
+
+        * Returns : language list
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.PublicGetLanguagesParams'
+        required: true
+    return_type: '(*misc.PublicGetLanguagesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.PublicGetLanguagesParams{ ... }
+      res, err := miscService.PublicGetLanguagesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'languages'
+      - 'misc'
+      - 'public'
+
+  'PublicGetNamespacePublisherShort@basic':
+    id: 'PublicGetNamespacePublisherShort@basic'
+    name: 'PublicGetNamespacePublisherShort'
+    description: |-
+      Get namespace info related publisher namespace.
+      Other detail info:
+
+        * Action code : 11305
+        *  Returns : Namespace info related publisher namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.PublicGetNamespacePublisherParams'
+        required: true
+    return_type: '(*namespace.PublicGetNamespacePublisherResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.PublicGetNamespacePublisherParams{ ... }
+      res, err := namespaceService.PublicGetNamespacePublisherShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'namespace'
+      - 'public'
+      - 'publisher'
+
+  'PublicGetNamespacesShort@basic':
+    id: 'PublicGetNamespacesShort@basic'
+    name: 'PublicGetNamespacesShort'
+    description: |-
+      Get all namespaces.
+      Other detail info:
+
+        * Action code : 11303
+        *  Returns : list of namespaces
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.PublicGetNamespacesParams'
+        required: true
+    return_type: '(*namespace.PublicGetNamespacesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.PublicGetNamespacesParams{ ... }
+      res, err := namespaceService.PublicGetNamespacesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'namespace'
+      - 'namespaces'
+      - 'public'
+
+  'PublicGetTimeShort@basic':
+    id: 'PublicGetTimeShort@basic'
+    name: 'PublicGetTimeShort'
+    description: |-
+      Get server time
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.PublicGetTimeParams'
+        required: true
+    return_type: '(*misc.PublicGetTimeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.PublicGetTimeParams{ ... }
+      res, err := miscService.PublicGetTimeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'misc'
+      - 'public'
+      - 'time'
+
+  'PublicGetTimeZonesShort@basic':
+    id: 'PublicGetTimeZonesShort@basic'
+    name: 'PublicGetTimeZonesShort'
+    description: |-
+      List time zones.
+      Other detail info:
+
+        * Returns : time zones
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.PublicGetTimeZonesParams'
+        required: true
+    return_type: '(*misc.PublicGetTimeZonesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.PublicGetTimeZonesParams{ ... }
+      res, err := miscService.PublicGetTimeZonesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'misc'
+      - 'public'
+      - 'time'
+      - 'zones'
+
+  'PublicGetUserProfileInfoShort@basic':
+    id: 'PublicGetUserProfileInfoShort@basic'
+    name: 'PublicGetUserProfileInfoShort'
+    description: |-
+      Get user profile.
+      Other detail info:
+
+        * Action code : 11403
+        *  Returns : user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicGetUserProfileInfoParams'
+        required: true
+    return_type: '(*user_profile.PublicGetUserProfileInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicGetUserProfileInfoParams{ ... }
+      res, err := userProfileService.PublicGetUserProfileInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicGetUserProfileInfoByPublicIDShort@basic':
+    id: 'PublicGetUserProfileInfoByPublicIDShort@basic'
+    name: 'PublicGetUserProfileInfoByPublicIDShort'
+    description: |-
+      Get user public profile by public id.
+      Other detail info:
+
+        * Returns : user public profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicGetUserProfileInfoByPublicIDParams'
+        required: true
+    return_type: '(*user_profile.PublicGetUserProfileInfoByPublicIDResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicGetUserProfileInfoByPublicIDParams{ ... }
+      res, err := userProfileService.PublicGetUserProfileInfoByPublicIDShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'get'
+      - 'id'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicGetUserProfilePublicInfoShort@basic':
+    id: 'PublicGetUserProfilePublicInfoShort@basic'
+    name: 'PublicGetUserProfilePublicInfoShort'
+    description: |-
+      Get user profile public info.
+      Other detail info:
+
+        * Action code : 11404
+        *  Returns : user public profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicGetUserProfilePublicInfoParams'
+        required: true
+    return_type: '(*user_profile.PublicGetUserProfilePublicInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicGetUserProfilePublicInfoParams{ ... }
+      res, err := userProfileService.PublicGetUserProfilePublicInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicGetUserProfilePublicInfoByIdsShort@basic':
+    id: 'PublicGetUserProfilePublicInfoByIdsShort@basic'
+    name: 'PublicGetUserProfilePublicInfoByIdsShort'
+    description: |-
+      Get user public profile by ids.
+      Other detail info:
+
+        * Action code : 11405
+        *  Returns : user public profiles
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicGetUserProfilePublicInfoByIdsParams'
+        required: true
+    return_type: '(*user_profile.PublicGetUserProfilePublicInfoByIdsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicGetUserProfilePublicInfoByIdsParams{ ... }
+      res, err := userProfileService.PublicGetUserProfilePublicInfoByIdsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'get'
+      - 'ids'
+      - 'info'
+      - 'profile'
+      - 'public'
+      - 'user'
+
+  'PublicUpdateCustomAttributesPartiallyShort@basic':
+    id: 'PublicUpdateCustomAttributesPartiallyShort@basic'
+    name: 'PublicUpdateCustomAttributesPartiallyShort'
+    description: |-
+      Update partially custom attributes tied to user id.
+      Other detail info:
+
+        * Action code : 11402
+        *  Request body : allowed format: JSON object
+        *  Returns : Updated custom attributes
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicUpdateCustomAttributesPartiallyParams'
+        required: true
+    return_type: '(*user_profile.PublicUpdateCustomAttributesPartiallyResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicUpdateCustomAttributesPartiallyParams{ ... }
+      res, err := userProfileService.PublicUpdateCustomAttributesPartiallyShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'partially'
+      - 'profile'
+      - 'public'
+      - 'update'
+      - 'user'
+
+  'PublicUpdateUserProfileShort@basic':
+    id: 'PublicUpdateUserProfileShort@basic'
+    name: 'PublicUpdateUserProfileShort'
+    description: |-
+      Update user profile.
+      Other detail info:
+
+        * Action code : 11402
+        *  Language : allowed format: en, en-US
+        *  Timezone : IANA time zone, e.g. Asia/Shanghai
+        *  Returns : Updated user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicUpdateUserProfileParams'
+        required: true
+    return_type: '(*user_profile.PublicUpdateUserProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicUpdateUserProfileParams{ ... }
+      res, err := userProfileService.PublicUpdateUserProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'profile'
+      - 'public'
+      - 'update'
+      - 'user'
+
+  'PublicUpdateUserProfileStatusShort@basic':
+    id: 'PublicUpdateUserProfileStatusShort@basic'
+    name: 'PublicUpdateUserProfileStatusShort'
+    description: |-
+      Update user profile status.
+      Other detail info:
+
+        * Action code : 11406
+        *  Returns : user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.PublicUpdateUserProfileStatusParams'
+        required: true
+    return_type: '(*user_profile.PublicUpdateUserProfileStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.PublicUpdateUserProfileStatusParams{ ... }
+      res, err := userProfileService.PublicUpdateUserProfileStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'profile'
+      - 'public'
+      - 'status'
+      - 'update'
+      - 'user'
+
+  'UpdateConfigShort@basic':
+    id: 'UpdateConfigShort@basic'
+    name: 'UpdateConfigShort'
+    description: |-
+      Update a config.
+      Other detail info:
+
+        * Returns : created config
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.UpdateConfigParams'
+        required: true
+    return_type: '(*config.UpdateConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/config.go'
+    example: |-
+      configService := basic.ConfigService{ ... }
+      params := config.UpdateConfigParams{ ... }
+      res, err := configService.UpdateConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'update'
+
+  'UpdateCountryGroupShort@basic':
+    id: 'UpdateCountryGroupShort@basic'
+    name: 'UpdateCountryGroupShort'
+    description: |-
+      Update a country groups. The countryGroupCode must be exist beforehand.
+      Valid update behaviour :
+      - To update countryGroupName only, do not include countries key or just specify it with empty array.
+      - To update countries only, do not include countryGroupName key or just specify it with blank value.
+      Other detail info:
+
+        * Action code : 11202
+        *  Returns : updated country group
+    struct: 'MiscService'
+    parameters:
+      params:
+        type: '*misc.UpdateCountryGroupParams'
+        required: true
+    return_type: '(*misc.UpdateCountryGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/misc.go'
+    example: |-
+      miscService := basic.MiscService{ ... }
+      params := misc.UpdateCountryGroupParams{ ... }
+      res, err := miscService.UpdateCountryGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'country'
+      - 'group'
+      - 'misc'
+      - 'update'
+
+  'UpdateCustomAttributesPartiallyShort@basic':
+    id: 'UpdateCustomAttributesPartiallyShort@basic'
+    name: 'UpdateCustomAttributesPartiallyShort'
+    description: |-
+      Update partially custom attributes tied to the user id.
+      Other detail info:
+
+        * Action code : 11402
+        *  Request body : allowed format: JSON object
+        *  Returns : Updated custom attributes
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateCustomAttributesPartiallyParams'
+        required: true
+    return_type: '(*user_profile.UpdateCustomAttributesPartiallyResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateCustomAttributesPartiallyParams{ ... }
+      res, err := userProfileService.UpdateCustomAttributesPartiallyShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'partially'
+      - 'profile'
+      - 'update'
+      - 'user'
+
+  'UpdateMyPrivateCustomAttributesPartiallyShort@basic':
+    id: 'UpdateMyPrivateCustomAttributesPartiallyShort@basic'
+    name: 'UpdateMyPrivateCustomAttributesPartiallyShort'
+    description: |-
+      Update partially private custom attributes tied to me.
+      Other detail info:
+
+        * Action code : 11402
+        *  Request body : allowed format: JSON object
+        *  Returns : Updated custom attributes
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateMyPrivateCustomAttributesPartiallyParams'
+        required: true
+    return_type: '(*user_profile.UpdateMyPrivateCustomAttributesPartiallyResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateMyPrivateCustomAttributesPartiallyParams{ ... }
+      res, err := userProfileService.UpdateMyPrivateCustomAttributesPartiallyShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'my'
+      - 'partially'
+      - 'private'
+      - 'profile'
+      - 'update'
+      - 'user'
+
+  'UpdateMyProfileShort@basic':
+    id: 'UpdateMyProfileShort@basic'
+    name: 'UpdateMyProfileShort'
+    description: |-
+      Update my profile.
+      Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
+      Other detail info:
+
+        * Action code : 11402
+        *  Returns : user profile
+        *  Path's namespace :
+          * can be filled with publisher namespace in order to update publisher user profile
+          * can be filled with game namespace in order to update game user profile
+        *  Language : allowed format: en, en-US
+        *  Timezone : IANA time zone, e.g. Asia/Shanghai
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateMyProfileParams'
+        required: true
+    return_type: '(*user_profile.UpdateMyProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateMyProfileParams{ ... }
+      res, err := userProfileService.UpdateMyProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'my'
+      - 'profile'
+      - 'update'
+      - 'user'
+
+  'UpdateMyZipCodeShort@basic':
+    id: 'UpdateMyZipCodeShort@basic'
+    name: 'UpdateMyZipCodeShort'
+    description: |-
+      Update my zip code.
+      Other detail info:
+
+        * Action code : 11408
+        *  Returns : user zip code
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateMyZipCodeParams'
+        required: true
+    return_type: '(*user_profile.UpdateMyZipCodeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateMyZipCodeParams{ ... }
+      res, err := userProfileService.UpdateMyZipCodeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'code'
+      - 'my'
+      - 'profile'
+      - 'update'
+      - 'user'
+      - 'zip'
+
+  'UpdateNamespaceShort@basic':
+    id: 'UpdateNamespaceShort@basic'
+    name: 'UpdateNamespaceShort'
+    description: |-
+      Update namespace basic info.
+      displayName rule:
+
+
+        * Alphanumeric lowercase and uppercase are allowed
+        * Allowed Special Character: ',. -
+        * Must start and end with alphanumeric
+        * Spaces and special character are allowed but cannot appear twice in a row
+
+
+      Other detail info:
+
+        * Action code : 11302
+        *  Returns : updated namespace
+    struct: 'NamespaceService'
+    parameters:
+      params:
+        type: '*namespace.UpdateNamespaceParams'
+        required: true
+    return_type: '(*namespace.UpdateNamespaceResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.UpdateNamespaceParams{ ... }
+      res, err := namespaceService.UpdateNamespaceShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'namespace'
+      - 'update'
+
+  'UpdatePrivateCustomAttributesPartiallyShort@basic':
+    id: 'UpdatePrivateCustomAttributesPartiallyShort@basic'
+    name: 'UpdatePrivateCustomAttributesPartiallyShort'
+    description: |-
+      Update partially private custom attributes tied to the user id.
+      Other detail info:
+
+        * Action code : 11402
+        *  Request body : allowed format: JSON object
+        *  Returns : Updated custom attributes
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdatePrivateCustomAttributesPartiallyParams'
+        required: true
+    return_type: '(*user_profile.UpdatePrivateCustomAttributesPartiallyResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdatePrivateCustomAttributesPartiallyParams{ ... }
+      res, err := userProfileService.UpdatePrivateCustomAttributesPartiallyShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'attributes'
+      - 'custom'
+      - 'partially'
+      - 'private'
+      - 'profile'
+      - 'update'
+      - 'user'
+
+  'UpdateUserProfileShort@basic':
+    id: 'UpdateUserProfileShort@basic'
+    name: 'UpdateUserProfileShort'
+    description: |-
+      Update user profile.
+      Other detail info:
+
+        * Action code : 11402
+        *  Returns : Updated user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateUserProfileParams'
+        required: true
+    return_type: '(*user_profile.UpdateUserProfileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateUserProfileParams{ ... }
+      res, err := userProfileService.UpdateUserProfileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'profile'
+      - 'update'
+      - 'user'
+
+  'UpdateUserProfileStatusShort@basic':
+    id: 'UpdateUserProfileStatusShort@basic'
+    name: 'UpdateUserProfileStatusShort'
+    description: |-
+      Update user profile status.
+      Other detail info:
+
+        * Action code : 11406
+        *  Returns : user profile
+    struct: 'UserProfileService'
+    parameters:
+      params:
+        type: '*user_profile.UpdateUserProfileStatusParams'
+        required: true
+    return_type: '(*user_profile.UpdateUserProfileStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/user_profile'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/userProfile.go'
+    example: |-
+      userProfileService := basic.UserProfileService{ ... }
+      params := user_profile.UpdateUserProfileStatusParams{ ... }
+      res, err := userProfileService.UpdateUserProfileStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'profile'
+      - 'status'
+      - 'update'
+      - 'user'

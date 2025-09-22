@@ -1,0 +1,2735 @@
+structs:
+  'JusticeAchievementService@achievement':
+    id: 'JusticeAchievementService@achievement'
+    name: 'JusticeAchievementService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/justice_achievement_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/achievementclientfactory.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo)
+
+  # region wrappers
+
+  'AchievementsService@achievement':
+    id: 'AchievementsService@achievement'
+    name: 'AchievementsService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      achievementsService := AchievementsService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AnonymizationService@achievement':
+    id: 'AnonymizationService@achievement'
+    name: 'AnonymizationService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/anonymization.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      anonymizationService := AnonymizationService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'GlobalAchievementsService@achievement':
+    id: 'GlobalAchievementsService@achievement'
+    name: 'GlobalAchievementsService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      globalAchievementsService := GlobalAchievementsService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PlatformAchievementService@achievement':
+    id: 'PlatformAchievementService@achievement'
+    name: 'PlatformAchievementService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/platformAchievement.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      platformAchievementService := PlatformAchievementService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'TagsService@achievement':
+    id: 'TagsService@achievement'
+    name: 'TagsService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/tags.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      tagsService := TagsService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'UserAchievementsService@achievement':
+    id: 'UserAchievementsService@achievement'
+    name: 'UserAchievementsService'
+    fields:
+      Client:
+        type: '*achievementclient.JusticeAchievementService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      achievementClient := factory.NewAchievementClient(configRepo) // re-use if it exists already
+      userAchievementsService := UserAchievementsService{
+          Client:           achievementClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminAnonymizeUserAchievementParams@achievement':
+    id: 'AdminAnonymizeUserAchievementParams@achievement'
+    name: 'AdminAnonymizeUserAchievementParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/anonymization'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/anonymization/admin_anonymize_user_achievement_parameters.go'
+
+  'AdminBulkUnlockAchievementParams@achievement':
+    id: 'AdminBulkUnlockAchievementParams@achievement'
+    name: 'AdminBulkUnlockAchievementParams'
+    fields:
+      'Body':
+        type: '*ModelsBulkUnlockAchievementRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_bulk_unlock_achievement_parameters.go'
+
+  'AdminCreateNewAchievementParams@achievement':
+    id: 'AdminCreateNewAchievementParams@achievement'
+    name: 'AdminCreateNewAchievementParams'
+    fields:
+      'Body':
+        type: '*ModelsAchievementRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_create_new_achievement_parameters.go'
+
+  'AdminDeleteAchievementParams@achievement':
+    id: 'AdminDeleteAchievementParams@achievement'
+    name: 'AdminDeleteAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_delete_achievement_parameters.go'
+
+  'AdminGetAchievementParams@achievement':
+    id: 'AdminGetAchievementParams@achievement'
+    name: 'AdminGetAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_get_achievement_parameters.go'
+
+  'AdminListAchievementsParams@achievement':
+    id: 'AdminListAchievementsParams@achievement'
+    name: 'AdminListAchievementsParams'
+    fields:
+      'Global':
+        type: 'bool'
+        required: false
+        description: |-
+          filter by global achievement flag
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'listOrder:asc', allow values: [listOrder, listOrder:asc, listOrder:desc, createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_list_achievements_parameters.go'
+
+  'AdminListGlobalAchievementContributorsParams@achievement':
+    id: 'AdminListGlobalAchievementContributorsParams@achievement'
+    name: 'AdminListGlobalAchievementContributorsParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'contributedValue:desc', allow values: [contributedValue, contributedValue:asc, contributedValue:desc]
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_global_achievement_contributors_parameters.go'
+
+  'AdminListGlobalAchievementsParams@achievement':
+    id: 'AdminListGlobalAchievementsParams@achievement'
+    name: 'AdminListGlobalAchievementsParams'
+    fields:
+      'AchievementCodes':
+        type: 'string'
+        required: false
+        description: |-
+          filter by achievement codes. multiple value separated by comma
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, allow values: [achievedAt, achievedAt:asc, achievedAt:desc, createdAt, createdAt:asc, createdAt:desc]
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          filter by status. available value: [in_progress, unlocked]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_global_achievements_parameters.go'
+
+  'AdminListTagsParams@achievement':
+    id: 'AdminListTagsParams@achievement'
+    name: 'AdminListTagsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          like's query by tag name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'name:asc', allow values: [name, name:asc, name:desc, createdAt, createdAt:asc, createdAt:desc]
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/tags/admin_list_tags_parameters.go'
+
+  'AdminListUserAchievementsParams@achievement':
+    id: 'AdminListUserAchievementsParams@achievement'
+    name: 'AdminListUserAchievementsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'PreferUnlocked':
+        type: 'bool'
+        required: false
+        description: |-
+          prefer to query achieved
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, allow values: [achievedAt, achievedAt:asc, achievedAt:desc, createdAt, createdAt:asc, createdAt:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_list_user_achievements_parameters.go'
+
+  'AdminListUserContributionsParams@achievement':
+    id: 'AdminListUserContributionsParams@achievement'
+    name: 'AdminListUserContributionsParams'
+    fields:
+      'AchievementCodes':
+        type: 'string'
+        required: false
+        description: |-
+          achievement codes. multiple value separated by comma
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'contributedValue:desc', allow values: [contributedValue, contributedValue:asc, contributedValue:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_user_contributions_parameters.go'
+
+  'AdminResetAchievementParams@achievement':
+    id: 'AdminResetAchievementParams@achievement'
+    name: 'AdminResetAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_reset_achievement_parameters.go'
+
+  'AdminUnlockAchievementParams@achievement':
+    id: 'AdminUnlockAchievementParams@achievement'
+    name: 'AdminUnlockAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_unlock_achievement_parameters.go'
+
+  'AdminUpdateAchievementParams@achievement':
+    id: 'AdminUpdateAchievementParams@achievement'
+    name: 'AdminUpdateAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Body':
+        type: '*ModelsAchievementUpdateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_update_achievement_parameters.go'
+
+  'AdminUpdateAchievementListOrderParams@achievement':
+    id: 'AdminUpdateAchievementListOrderParams@achievement'
+    name: 'AdminUpdateAchievementListOrderParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Body':
+        type: '*ModelsAchievementOrderUpdateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_update_achievement_list_order_parameters.go'
+
+  'BulkCreatePSNEventParams@achievement':
+    id: 'BulkCreatePSNEventParams@achievement'
+    name: 'BulkCreatePSNEventParams'
+    fields:
+      'Body':
+        type: '*ModelsBulkCreatePSNEvents'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/platform_achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/platform_achievement/bulk_create_p_s_n_event_parameters.go'
+
+  'ClaimGlobalAchievementRewardParams@achievement':
+    id: 'ClaimGlobalAchievementRewardParams@achievement'
+    name: 'ClaimGlobalAchievementRewardParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/claim_global_achievement_reward_parameters.go'
+
+  'ExportAchievementsParams@achievement':
+    id: 'ExportAchievementsParams@achievement'
+    name: 'ExportAchievementsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/export_achievements_parameters.go'
+
+  'ImportAchievementsParams@achievement':
+    id: 'ImportAchievementsParams@achievement'
+    name: 'ImportAchievementsParams'
+    fields:
+      'File':
+        type: '[]byte'
+        required: false
+        description: |-
+          file to be imported
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Strategy':
+        type: 'string'
+        required: false
+        description: |-
+          strategy for import
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/import_achievements_parameters.go'
+
+  'ListGlobalAchievementContributorsParams@achievement':
+    id: 'ListGlobalAchievementContributorsParams@achievement'
+    name: 'ListGlobalAchievementContributorsParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'contributedValue:desc', allow values: [contributedValue, contributedValue:asc, contributedValue:desc]
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/list_global_achievement_contributors_parameters.go'
+
+  'ListUserContributionsParams@achievement':
+    id: 'ListUserContributionsParams@achievement'
+    name: 'ListUserContributionsParams'
+    fields:
+      'AchievementCodes':
+        type: 'string'
+        required: false
+        description: |-
+          achievement codes. multiple value separated by comma
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'contributedValue:desc', allow values: [contributedValue, contributedValue:asc, contributedValue:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/list_user_contributions_parameters.go'
+
+  'PublicBulkUnlockAchievementParams@achievement':
+    id: 'PublicBulkUnlockAchievementParams@achievement'
+    name: 'PublicBulkUnlockAchievementParams'
+    fields:
+      'Body':
+        type: '*ModelsBulkUnlockAchievementRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_bulk_unlock_achievement_parameters.go'
+
+  'PublicGetAchievementParams@achievement':
+    id: 'PublicGetAchievementParams@achievement'
+    name: 'PublicGetAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Language':
+        type: '*string'
+        required: true
+        description: |-
+          language, if the selected language not exist in achievement,it use default language
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/public_get_achievement_parameters.go'
+
+  'PublicListAchievementsParams@achievement':
+    id: 'PublicListAchievementsParams@achievement'
+    name: 'PublicListAchievementsParams'
+    fields:
+      'Global':
+        type: 'bool'
+        required: false
+        description: |-
+          filter by global achievement flag
+      'Language':
+        type: '*string'
+        required: true
+        description: |-
+          language, if the selected language not exist in achievement,it use default language
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'listOrder:asc', allow values: [listOrder, listOrder:asc, listOrder:desc, createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/public_list_achievements_parameters.go'
+
+  'PublicListGlobalAchievementsParams@achievement':
+    id: 'PublicListGlobalAchievementsParams@achievement'
+    name: 'PublicListGlobalAchievementsParams'
+    fields:
+      'AchievementCodes':
+        type: 'string'
+        required: false
+        description: |-
+          filter by achievement codes. multiple value separated by comma
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, allow values: [achievedAt, achievedAt:asc, achievedAt:desc, createdAt, createdAt:asc, createdAt:desc]
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          filter by status. available value: [in_progress, unlocked]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/public_list_global_achievements_parameters.go'
+
+  'PublicListTagsParams@achievement':
+    id: 'PublicListTagsParams@achievement'
+    name: 'PublicListTagsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          like's query by tag name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, default is 'name:asc', allow values: [name, name:asc, name:desc, createdAt, createdAt:asc, createdAt:desc]
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/tags/public_list_tags_parameters.go'
+
+  'PublicListUserAchievementsParams@achievement':
+    id: 'PublicListUserAchievementsParams@achievement'
+    name: 'PublicListUserAchievementsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'PreferUnlocked':
+        type: 'bool'
+        required: false
+        description: |-
+          prefer to query achieved
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort by, allow values: [achievedAt, achievedAt:asc, achievedAt:desc, createdAt, createdAt:asc, createdAt:desc]
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_list_user_achievements_parameters.go'
+
+  'PublicUnlockAchievementParams@achievement':
+    id: 'PublicUnlockAchievementParams@achievement'
+    name: 'PublicUnlockAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_unlock_achievement_parameters.go'
+
+  'ResetGlobalAchievementParams@achievement':
+    id: 'ResetGlobalAchievementParams@achievement'
+    name: 'ResetGlobalAchievementParams'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+        description: |-
+          achievement code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/reset_global_achievement_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ModelsAchievementOrderUpdateRequest@achievement':
+    id: 'ModelsAchievementOrderUpdateRequest@achievement'
+    name: 'ModelsAchievementOrderUpdateRequest'
+    fields:
+      'TargetOrder':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_order_update_request.go'
+
+  'ModelsAchievementRequest@achievement':
+    id: 'ModelsAchievementRequest@achievement'
+    name: 'ModelsAchievementRequest'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DefaultLanguage':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'map[string]string'
+        required: true
+      'Global':
+        type: 'bool'
+        required: false
+      'GoalValue':
+        type: '*float64'
+        required: true
+      'Hidden':
+        type: '*bool'
+        required: true
+      'Incremental':
+        type: '*bool'
+        required: true
+      'LockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+      'StatCode':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'UnlockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_request.go'
+
+  'ModelsAchievementResponse@achievement':
+    id: 'ModelsAchievementResponse@achievement'
+    name: 'ModelsAchievementResponse'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DefaultLanguage':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'map[string]string'
+        required: true
+      'Global':
+        type: '*bool'
+        required: true
+      'GoalValue':
+        type: 'float64'
+        required: false
+      'Hidden':
+        type: '*bool'
+        required: true
+      'Incremental':
+        type: '*bool'
+        required: true
+      'ListOrder':
+        type: '*int32'
+        required: true
+      'LockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'StatCode':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          Achievement progression status: [INIT, TIED]
+      'Tags':
+        type: '[]string'
+        required: true
+      'UnlockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_response.go'
+
+  'ModelsAchievementUpdateRequest@achievement':
+    id: 'ModelsAchievementUpdateRequest@achievement'
+    name: 'ModelsAchievementUpdateRequest'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'DefaultLanguage':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'map[string]string'
+        required: true
+      'Global':
+        type: 'bool'
+        required: false
+      'GoalValue':
+        type: '*float64'
+        required: true
+      'Hidden':
+        type: '*bool'
+        required: true
+      'Incremental':
+        type: '*bool'
+        required: true
+      'LockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+      'StatCode':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'UnlockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_update_request.go'
+
+  'ModelsAdditionalInfo@achievement':
+    id: 'ModelsAdditionalInfo@achievement'
+    name: 'ModelsAdditionalInfo'
+    fields:
+      'NumberOfAchievements':
+        type: '*int64'
+        required: true
+      'NumberOfHiddenAchievements':
+        type: '*int64'
+        required: true
+      'NumberOfVisibleAchievements':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_additional_info.go'
+
+  'ModelsBulkCreatePSNEventResponse@achievement':
+    id: 'ModelsBulkCreatePSNEventResponse@achievement'
+    name: 'ModelsBulkCreatePSNEventResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsPSNEventResult'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_create_p_s_n_event_response.go'
+
+  'ModelsBulkCreatePSNEvents@achievement':
+    id: 'ModelsBulkCreatePSNEvents@achievement'
+    name: 'ModelsBulkCreatePSNEvents'
+    fields:
+      'Data':
+        type: '[]*ModelsCreatePSNEvent'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_create_p_s_n_events.go'
+
+  'ModelsBulkUnlockAchievementRequest@achievement':
+    id: 'ModelsBulkUnlockAchievementRequest@achievement'
+    name: 'ModelsBulkUnlockAchievementRequest'
+    fields:
+      'AchievementCodes':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_unlock_achievement_request.go'
+
+  'ModelsBulkUnlockAchievementResponse@achievement':
+    id: 'ModelsBulkUnlockAchievementResponse@achievement'
+    name: 'ModelsBulkUnlockAchievementResponse'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'ErrorDetail':
+        type: '*ModelsErrorDetails'
+        required: false
+      'Success':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_unlock_achievement_response.go'
+
+  'ModelsContributorResponse@achievement':
+    id: 'ModelsContributorResponse@achievement'
+    name: 'ModelsContributorResponse'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'ContributedValue':
+        type: '*float64'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_contributor_response.go'
+
+  'ModelsCreatePSNEvent@achievement':
+    id: 'ModelsCreatePSNEvent@achievement'
+    name: 'ModelsCreatePSNEvent'
+    fields:
+      'Events':
+        type: '[]*ModelsPSNEvent'
+        required: true
+      'ThirdPartyUserID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_create_p_s_n_event.go'
+
+  'ModelsErrorDetails@achievement':
+    id: 'ModelsErrorDetails@achievement'
+    name: 'ModelsErrorDetails'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'ThirdPartyReferenceID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_error_details.go'
+
+  'ModelsGlobalAchievementResponse@achievement':
+    id: 'ModelsGlobalAchievementResponse@achievement'
+    name: 'ModelsGlobalAchievementResponse'
+    fields:
+      'AchievedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'LatestValue':
+        type: '*float64'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*int32'
+        required: true
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_global_achievement_response.go'
+
+  'ModelsIcon@achievement':
+    id: 'ModelsIcon@achievement'
+    name: 'ModelsIcon'
+    fields:
+      'Slug':
+        type: '*string'
+        required: true
+      'URL':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_icon.go'
+
+  'ModelsPaginatedAchievementResponse@achievement':
+    id: 'ModelsPaginatedAchievementResponse@achievement'
+    name: 'ModelsPaginatedAchievementResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsAchievementResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_achievement_response.go'
+
+  'ModelsPaginatedContributorResponse@achievement':
+    id: 'ModelsPaginatedContributorResponse@achievement'
+    name: 'ModelsPaginatedContributorResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsContributorResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_contributor_response.go'
+
+  'ModelsPaginatedGlobalAchievementResponse@achievement':
+    id: 'ModelsPaginatedGlobalAchievementResponse@achievement'
+    name: 'ModelsPaginatedGlobalAchievementResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsGlobalAchievementResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_global_achievement_response.go'
+
+  'ModelsPaginatedTagResponse@achievement':
+    id: 'ModelsPaginatedTagResponse@achievement'
+    name: 'ModelsPaginatedTagResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsTagResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_tag_response.go'
+
+  'ModelsPaginatedUserAchievementResponse@achievement':
+    id: 'ModelsPaginatedUserAchievementResponse@achievement'
+    name: 'ModelsPaginatedUserAchievementResponse'
+    fields:
+      'CountInfo':
+        type: '*ModelsAdditionalInfo'
+        required: true
+      'Data':
+        type: '[]*ModelsUserAchievementResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_user_achievement_response.go'
+
+  'ModelsPaginatedUserContributionResponse@achievement':
+    id: 'ModelsPaginatedUserContributionResponse@achievement'
+    name: 'ModelsPaginatedUserContributionResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsUserContributionResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_user_contribution_response.go'
+
+  'ModelsPagination@achievement':
+    id: 'ModelsPagination@achievement'
+    name: 'ModelsPagination'
+    fields:
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_pagination.go'
+
+  'ModelsPSNEvent@achievement':
+    id: 'ModelsPSNEvent@achievement'
+    name: 'ModelsPSNEvent'
+    fields:
+      'DateTime':
+        type: '*string'
+        required: true
+      'EventData':
+        type: '*ModelsPSNEventData'
+        required: true
+      'EventID':
+        type: '*string'
+        required: true
+      'Version':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event.go'
+
+  'ModelsPSNEventData@achievement':
+    id: 'ModelsPSNEventData@achievement'
+    name: 'ModelsPSNEventData'
+    fields:
+      'EventName':
+        type: '*string'
+        required: true
+      'Properties':
+        type: 'interface{}'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event_data.go'
+
+  'ModelsPSNEventResult@achievement':
+    id: 'ModelsPSNEventResult@achievement'
+    name: 'ModelsPSNEventResult'
+    fields:
+      'ErrorDetail':
+        type: '*ModelsErrorDetails'
+        required: false
+      'IsSuccess':
+        type: '*bool'
+        required: true
+      'ThirdPartyUserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event_result.go'
+
+  'ModelsPublicAchievementResponse@achievement':
+    id: 'ModelsPublicAchievementResponse@achievement'
+    name: 'ModelsPublicAchievementResponse'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: false
+      'Description':
+        type: '*string'
+        required: true
+      'Global':
+        type: '*bool'
+        required: true
+      'GoalValue':
+        type: 'float64'
+        required: false
+      'Hidden':
+        type: '*bool'
+        required: true
+      'Incremental':
+        type: '*bool'
+        required: true
+      'ListOrder':
+        type: '*int32'
+        required: true
+      'LockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'StatCode':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          Achievement progression status: [INIT, TIED]
+      'Tags':
+        type: '[]string'
+        required: true
+      'UnlockedIcons':
+        type: '[]*ModelsIcon'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_public_achievement_response.go'
+
+  'ModelsPublicAchievementsResponse@achievement':
+    id: 'ModelsPublicAchievementsResponse@achievement'
+    name: 'ModelsPublicAchievementsResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsPublicAchievementResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_public_achievements_response.go'
+
+  'ModelsTagResponse@achievement':
+    id: 'ModelsTagResponse@achievement'
+    name: 'ModelsTagResponse'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_tag_response.go'
+
+  'ModelsUserAchievementResponse@achievement':
+    id: 'ModelsUserAchievementResponse@achievement'
+    name: 'ModelsUserAchievementResponse'
+    fields:
+      'AchievedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'LatestValue':
+        type: '*float64'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+      'Status':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_user_achievement_response.go'
+
+  'ModelsUserContributionResponse@achievement':
+    id: 'ModelsUserContributionResponse@achievement'
+    name: 'ModelsUserContributionResponse'
+    fields:
+      'AchievementCode':
+        type: '*string'
+        required: true
+      'CanClaimReward':
+        type: '*bool'
+        required: true
+        description: |-
+          CanClaimReward is a flag whether the user can claim the reward of not
+      'ContributedValue':
+        type: '*float64'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Name':
+        type: 'map[string]string'
+        required: true
+        description: |-
+          Name is achievement name
+      'Namespace':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_user_contribution_response.go'
+
+  'ResponseError@achievement':
+    id: 'ResponseError@achievement'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/response_error.go'
+
+  'ServiceImportConfigResponse@achievement':
+    id: 'ServiceImportConfigResponse@achievement'
+    name: 'ServiceImportConfigResponse'
+    fields:
+      'FailedConfigs':
+        type: '[]string'
+        required: true
+      'IgnoredConfigs':
+        type: '[]string'
+        required: true
+      'NewConfigs':
+        type: '[]string'
+        required: true
+      'ReplacedConfigs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/service_import_config_response.go'
+
+  # endregion models
+
+functions:
+
+  'AdminAnonymizeUserAchievementShort@achievement':
+    id: 'AdminAnonymizeUserAchievementShort@achievement'
+    name: 'AdminAnonymizeUserAchievementShort'
+    description: |-
+      This API will delete specified user achievement
+
+
+
+
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
+    struct: 'AnonymizationService'
+    parameters:
+      params:
+        type: '*anonymization.AdminAnonymizeUserAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/anonymization'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/anonymization.go'
+    example: |-
+      anonymizationService := achievement.AnonymizationService{ ... }
+      params := anonymization.AdminAnonymizeUserAchievementParams{ ... }
+      res, err := anonymizationService.AdminAnonymizeUserAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'admin'
+      - 'anonymization'
+      - 'anonymize'
+      - 'user'
+
+  'AdminBulkUnlockAchievementShort@achievement':
+    id: 'AdminBulkUnlockAchievementShort@achievement'
+    name: 'AdminBulkUnlockAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.AdminBulkUnlockAchievementParams'
+        required: true
+    return_type: '(*user_achievements.AdminBulkUnlockAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.AdminBulkUnlockAchievementParams{ ... }
+      res, err := userAchievementsService.AdminBulkUnlockAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'bulk'
+      - 'unlock'
+      - 'user'
+
+  'AdminCreateNewAchievementShort@achievement':
+    id: 'AdminCreateNewAchievementShort@achievement'
+    name: 'AdminCreateNewAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]` and scope `social`
+
+
+      Other detail info:
+      - achievementCode: Human readable unique code to indentify the achievement. Must be lowercase
+      and maximum length is 32
+      - incremental: If the achievement is not incremental, it does not need to store a goal value
+      of a stat to be unlocked.
+      If the achievement is incremental, it needs to set statCode and goalValue
+      - statCode: Selected statistic code, from the published statistic code event.Human readable unique
+      code to indentify the achievement. Must be lowercase and maximum length is 32
+      - goalValue: Statistics value required to unlock the achievement.
+      - defaultLanguage: localozation for achievement name and achievement description. Allowed format : en, en-US
+      - slug: specify the image they want to use, it can be file image name or something
+      to define the achievement icon.
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminCreateNewAchievementParams'
+        required: true
+    return_type: '(*achievements.AdminCreateNewAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminCreateNewAchievementParams{ ... }
+      res, err := achievementsService.AdminCreateNewAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'create'
+      - 'new'
+
+  'AdminDeleteAchievementShort@achievement':
+    id: 'AdminDeleteAchievementShort@achievement'
+    name: 'AdminDeleteAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminDeleteAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminDeleteAchievementParams{ ... }
+      res, err := achievementsService.AdminDeleteAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'delete'
+
+  'AdminGetAchievementShort@achievement':
+    id: 'AdminGetAchievementShort@achievement'
+    name: 'AdminGetAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminGetAchievementParams'
+        required: true
+    return_type: '(*achievements.AdminGetAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminGetAchievementParams{ ... }
+      res, err := achievementsService.AdminGetAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'get'
+
+  'AdminListAchievementsShort@achievement':
+    id: 'AdminListAchievementsShort@achievement'
+    name: 'AdminListAchievementsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminListAchievementsParams'
+        required: true
+    return_type: '(*achievements.AdminListAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminListAchievementsParams{ ... }
+      res, err := achievementsService.AdminListAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'list'
+
+  'AdminListGlobalAchievementContributorsShort@achievement':
+    id: 'AdminListGlobalAchievementContributorsShort@achievement'
+    name: 'AdminListGlobalAchievementContributorsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.AdminListGlobalAchievementContributorsParams'
+        required: true
+    return_type: '(*global_achievements.AdminListGlobalAchievementContributorsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.AdminListGlobalAchievementContributorsParams{ ... }
+      res, err := globalAchievementsService.AdminListGlobalAchievementContributorsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'contributors'
+      - 'global'
+      - 'list'
+
+  'AdminListGlobalAchievementsShort@achievement':
+    id: 'AdminListGlobalAchievementsShort@achievement'
+    name: 'AdminListGlobalAchievementsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.AdminListGlobalAchievementsParams'
+        required: true
+    return_type: '(*global_achievements.AdminListGlobalAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.AdminListGlobalAchievementsParams{ ... }
+      res, err := globalAchievementsService.AdminListGlobalAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'global'
+      - 'list'
+
+  'AdminListTagsShort@achievement':
+    id: 'AdminListTagsShort@achievement'
+    name: 'AdminListTagsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'TagsService'
+    parameters:
+      params:
+        type: '*tags.AdminListTagsParams'
+        required: true
+    return_type: '(*tags.AdminListTagsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/tags.go'
+    example: |-
+      tagsService := achievement.TagsService{ ... }
+      params := tags.AdminListTagsParams{ ... }
+      res, err := tagsService.AdminListTagsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tags'
+
+  'AdminListUserAchievementsShort@achievement':
+    id: 'AdminListUserAchievementsShort@achievement'
+    name: 'AdminListUserAchievementsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.AdminListUserAchievementsParams'
+        required: true
+    return_type: '(*user_achievements.AdminListUserAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.AdminListUserAchievementsParams{ ... }
+      res, err := userAchievementsService.AdminListUserAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'list'
+      - 'user'
+
+  'AdminListUserContributionsShort@achievement':
+    id: 'AdminListUserContributionsShort@achievement'
+    name: 'AdminListUserContributionsShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.AdminListUserContributionsParams'
+        required: true
+    return_type: '(*global_achievements.AdminListUserContributionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.AdminListUserContributionsParams{ ... }
+      res, err := globalAchievementsService.AdminListUserContributionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'contributions'
+      - 'global'
+      - 'list'
+      - 'user'
+
+  'AdminResetAchievementShort@achievement':
+    id: 'AdminResetAchievementShort@achievement'
+    name: 'AdminResetAchievementShort'
+    description: |-
+      [TEST FACILITY ONLY]
+
+
+
+
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.AdminResetAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.AdminResetAchievementParams{ ... }
+      res, err := userAchievementsService.AdminResetAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'reset'
+      - 'user'
+
+  'AdminUnlockAchievementShort@achievement':
+    id: 'AdminUnlockAchievementShort@achievement'
+    name: 'AdminUnlockAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.AdminUnlockAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.AdminUnlockAchievementParams{ ... }
+      res, err := userAchievementsService.AdminUnlockAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'unlock'
+      - 'user'
+
+  'AdminUpdateAchievementShort@achievement':
+    id: 'AdminUpdateAchievementShort@achievement'
+    name: 'AdminUpdateAchievementShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminUpdateAchievementParams'
+        required: true
+    return_type: '(*achievements.AdminUpdateAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminUpdateAchievementParams{ ... }
+      res, err := achievementsService.AdminUpdateAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'update'
+
+  'AdminUpdateAchievementListOrderShort@achievement':
+    id: 'AdminUpdateAchievementListOrderShort@achievement'
+    name: 'AdminUpdateAchievementListOrderShort'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.AdminUpdateAchievementListOrderParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.AdminUpdateAchievementListOrderParams{ ... }
+      res, err := achievementsService.AdminUpdateAchievementListOrderShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'admin'
+      - 'list'
+      - 'order'
+      - 'update'
+
+  'BulkCreatePSNEventShort@achievement':
+    id: 'BulkCreatePSNEventShort@achievement'
+    name: 'BulkCreatePSNEventShort'
+    description: |-
+      Create PSN UDS events. Player need to login first using playstation token to IAM service.
+    struct: 'PlatformAchievementService'
+    parameters:
+      params:
+        type: '*platform_achievement.BulkCreatePSNEventParams'
+        required: true
+    return_type: '(*platform_achievement.BulkCreatePSNEventResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/platform_achievement'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/platformAchievement.go'
+    example: |-
+      platformAchievementService := achievement.PlatformAchievementService{ ... }
+      params := platform_achievement.BulkCreatePSNEventParams{ ... }
+      res, err := platformAchievementService.BulkCreatePSNEventShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'bulk'
+      - 'create'
+      - 'event'
+      - 'platform'
+      - 'psn'
+
+  'ClaimGlobalAchievementRewardShort@achievement':
+    id: 'ClaimGlobalAchievementRewardShort@achievement'
+    name: 'ClaimGlobalAchievementRewardShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.ClaimGlobalAchievementRewardParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.ClaimGlobalAchievementRewardParams{ ... }
+      res, err := globalAchievementsService.ClaimGlobalAchievementRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'claim'
+      - 'global'
+      - 'reward'
+
+  'ExportAchievementsShort@achievement':
+    id: 'ExportAchievementsShort@achievement'
+    name: 'ExportAchievementsShort'
+    description: |-
+      Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]`
+
+      Required Scope: `social`
+
+      Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.ExportAchievementsParams'
+        required: true
+    return_type: '(*achievements.ExportAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.ExportAchievementsParams{ ... }
+      res, err := achievementsService.ExportAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'export'
+
+  'ImportAchievementsShort@achievement':
+    id: 'ImportAchievementsShort@achievement'
+    name: 'ImportAchievementsShort'
+    description: |-
+      Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+      Required Scope: social
+
+      Import achievement configuration from file. It will merge with existing achievement.
+      Available import strategy:
+      - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
+      - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.ImportAchievementsParams'
+        required: true
+    return_type: '(*achievements.ImportAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.ImportAchievementsParams{ ... }
+      res, err := achievementsService.ImportAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'import'
+
+  'ListGlobalAchievementContributorsShort@achievement':
+    id: 'ListGlobalAchievementContributorsShort@achievement'
+    name: 'ListGlobalAchievementContributorsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.ListGlobalAchievementContributorsParams'
+        required: true
+    return_type: '(*global_achievements.ListGlobalAchievementContributorsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.ListGlobalAchievementContributorsParams{ ... }
+      res, err := globalAchievementsService.ListGlobalAchievementContributorsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'contributors'
+      - 'global'
+      - 'list'
+
+  'ListUserContributionsShort@achievement':
+    id: 'ListUserContributionsShort@achievement'
+    name: 'ListUserContributionsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.ListUserContributionsParams'
+        required: true
+    return_type: '(*global_achievements.ListUserContributionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.ListUserContributionsParams{ ... }
+      res, err := globalAchievementsService.ListUserContributionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'contributions'
+      - 'global'
+      - 'list'
+      - 'user'
+
+  'PublicBulkUnlockAchievementShort@achievement':
+    id: 'PublicBulkUnlockAchievementShort@achievement'
+    name: 'PublicBulkUnlockAchievementShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.PublicBulkUnlockAchievementParams'
+        required: true
+    return_type: '(*user_achievements.PublicBulkUnlockAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.PublicBulkUnlockAchievementParams{ ... }
+      res, err := userAchievementsService.PublicBulkUnlockAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'bulk'
+      - 'public'
+      - 'unlock'
+      - 'user'
+
+  'PublicGetAchievementShort@achievement':
+    id: 'PublicGetAchievementShort@achievement'
+    name: 'PublicGetAchievementShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.PublicGetAchievementParams'
+        required: true
+    return_type: '(*achievements.PublicGetAchievementResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.PublicGetAchievementParams{ ... }
+      res, err := achievementsService.PublicGetAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'get'
+      - 'public'
+
+  'PublicListAchievementsShort@achievement':
+    id: 'PublicListAchievementsShort@achievement'
+    name: 'PublicListAchievementsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'AchievementsService'
+    parameters:
+      params:
+        type: '*achievements.PublicListAchievementsParams'
+        required: true
+    return_type: '(*achievements.PublicListAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/achievements.go'
+    example: |-
+      achievementsService := achievement.AchievementsService{ ... }
+      params := achievements.PublicListAchievementsParams{ ... }
+      res, err := achievementsService.PublicListAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'list'
+      - 'public'
+
+  'PublicListGlobalAchievementsShort@achievement':
+    id: 'PublicListGlobalAchievementsShort@achievement'
+    name: 'PublicListGlobalAchievementsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.PublicListGlobalAchievementsParams'
+        required: true
+    return_type: '(*global_achievements.PublicListGlobalAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.PublicListGlobalAchievementsParams{ ... }
+      res, err := globalAchievementsService.PublicListGlobalAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'global'
+      - 'list'
+      - 'public'
+
+  'PublicListTagsShort@achievement':
+    id: 'PublicListTagsShort@achievement'
+    name: 'PublicListTagsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+    struct: 'TagsService'
+    parameters:
+      params:
+        type: '*tags.PublicListTagsParams'
+        required: true
+    return_type: '(*tags.PublicListTagsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/tags.go'
+    example: |-
+      tagsService := achievement.TagsService{ ... }
+      params := tags.PublicListTagsParams{ ... }
+      res, err := tagsService.PublicListTagsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'list'
+      - 'public'
+      - 'tags'
+
+  'PublicListUserAchievementsShort@achievement':
+    id: 'PublicListUserAchievementsShort@achievement'
+    name: 'PublicListUserAchievementsShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.PublicListUserAchievementsParams'
+        required: true
+    return_type: '(*user_achievements.PublicListUserAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.PublicListUserAchievementsParams{ ... }
+      res, err := userAchievementsService.PublicListUserAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'list'
+      - 'public'
+      - 'user'
+
+  'PublicUnlockAchievementShort@achievement':
+    id: 'PublicUnlockAchievementShort@achievement'
+    name: 'PublicUnlockAchievementShort'
+    description: |-
+      Required permission
+      `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    struct: 'UserAchievementsService'
+    parameters:
+      params:
+        type: '*user_achievements.PublicUnlockAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.PublicUnlockAchievementParams{ ... }
+      res, err := userAchievementsService.PublicUnlockAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'public'
+      - 'unlock'
+      - 'user'
+
+  'ResetGlobalAchievementShort@achievement':
+    id: 'ResetGlobalAchievementShort@achievement'
+    name: 'ResetGlobalAchievementShort'
+    description: |-
+      [TEST FACILITY ONLY]
+
+
+
+
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
+    struct: 'GlobalAchievementsService'
+    parameters:
+      params:
+        type: '*global_achievements.ResetGlobalAchievementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/global_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/globalAchievements.go'
+    example: |-
+      globalAchievementsService := achievement.GlobalAchievementsService{ ... }
+      params := global_achievements.ResetGlobalAchievementParams{ ... }
+      res, err := globalAchievementsService.ResetGlobalAchievementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievement'
+      - 'achievements'
+      - 'global'
+      - 'reset'

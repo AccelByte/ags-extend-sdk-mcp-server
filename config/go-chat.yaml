@@ -1,0 +1,5348 @@
+structs:
+  'JusticeChatService@chat':
+    id: 'JusticeChatService@chat'
+    name: 'JusticeChatService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/justice_chat_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/chatclientfactory.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo)
+
+  # region wrappers
+
+  'EmptyService@chat':
+    id: 'EmptyService@chat'
+    name: 'EmptyService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      Service := EmptyService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ConfigService@chat':
+    id: 'ConfigService@chat'
+    name: 'ConfigService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      configService := ConfigService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'InboxService@chat':
+    id: 'InboxService@chat'
+    name: 'InboxService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      inboxService := InboxService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ModerationService@chat':
+    id: 'ModerationService@chat'
+    name: 'ModerationService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/moderation.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      moderationService := ModerationService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ProfanityService@chat':
+    id: 'ProfanityService@chat'
+    name: 'ProfanityService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      profanityService := ProfanityService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'TopicService@chat':
+    id: 'TopicService@chat'
+    name: 'TopicService'
+    fields:
+      Client:
+        type: '*chatclient.JusticeChatService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      chatClient := factory.NewChatClient(configRepo) // re-use if it exists already
+      topicService := TopicService{
+          Client:           chatClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminAddInboxCategoryParams@chat':
+    id: 'AdminAddInboxCategoryParams@chat'
+    name: 'AdminAddInboxCategoryParams'
+    fields:
+      'Body':
+        type: '*ModelsAddInboxCategoryRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_add_inbox_category_parameters.go'
+
+  'AdminAddTopicMemberParams@chat':
+    id: 'AdminAddTopicMemberParams@chat'
+    name: 'AdminAddTopicMemberParams'
+    fields:
+      'Body':
+        type: '*APIAddMemberParams'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that will added user to
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user ID that will be added to topic
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_add_topic_member_parameters.go'
+
+  'AdminBanTopicMembersParams@chat':
+    id: 'AdminBanTopicMembersParams@chat'
+    name: 'AdminBanTopicMembersParams'
+    fields:
+      'Body':
+        type: '*ModelsBanTopicMemberParam'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_ban_topic_members_parameters.go'
+
+  'AdminChannelTopicInfoParams@chat':
+    id: 'AdminChannelTopicInfoParams@chat'
+    name: 'AdminChannelTopicInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_info_parameters.go'
+
+  'AdminChannelTopicListParams@chat':
+    id: 'AdminChannelTopicListParams@chat'
+    name: 'AdminChannelTopicListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'TopicName':
+        type: 'string'
+        required: false
+        description: |-
+          name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_list_parameters.go'
+
+  'AdminChannelTopicSummaryParams@chat':
+    id: 'AdminChannelTopicSummaryParams@chat'
+    name: 'AdminChannelTopicSummaryParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_summary_parameters.go'
+
+  'AdminChatHistoryParams@chat':
+    id: 'AdminChatHistoryParams@chat'
+    name: 'AdminChatHistoryParams'
+    fields:
+      'ChatID':
+        type: '[]string'
+        required: false
+        description: |-
+          chat ID of chat
+      'EndCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          end date
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          keyword containing in message
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          anyof: createdAt:asc / createdAt:desc
+      'SenderUserID':
+        type: 'string'
+        required: false
+        description: |-
+          sender user ID
+      'ShardID':
+        type: 'string'
+        required: false
+        description: |-
+          shard id
+      'StartCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          start date
+      'Topic':
+        type: '[]string'
+        required: false
+        description: |-
+          topic ID that receive the chat
+      'Unfiltered':
+        type: 'bool'
+        required: false
+        description: |-
+          unfiltered chat messages
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_chat_history_parameters.go'
+
+  'AdminCreateNamespaceTopicParams@chat':
+    id: 'AdminCreateNamespaceTopicParams@chat'
+    name: 'AdminCreateNamespaceTopicParams'
+    fields:
+      'Body':
+        type: '*APICreateNamespaceTopicParams'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_create_namespace_topic_parameters.go'
+
+  'AdminCreateTopicParams@chat':
+    id: 'AdminCreateTopicParams@chat'
+    name: 'AdminCreateTopicParams'
+    fields:
+      'Body':
+        type: '*APICreateTopicParams'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_create_topic_parameters.go'
+
+  'AdminDeleteChatParams@chat':
+    id: 'AdminDeleteChatParams@chat'
+    name: 'AdminDeleteChatParams'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+        description: |-
+          chat ID od the chat
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID of the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_delete_chat_parameters.go'
+
+  'AdminDeleteChatSnapshotParams@chat':
+    id: 'AdminDeleteChatSnapshotParams@chat'
+    name: 'AdminDeleteChatSnapshotParams'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+        description: |-
+          id of the chat
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/admin_delete_chat_snapshot_parameters.go'
+
+  'AdminDeleteInboxCategoryParams@chat':
+    id: 'AdminDeleteInboxCategoryParams@chat'
+    name: 'AdminDeleteInboxCategoryParams'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          category
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_delete_inbox_category_parameters.go'
+
+  'AdminDeleteInboxMessageParams@chat':
+    id: 'AdminDeleteInboxMessageParams@chat'
+    name: 'AdminDeleteInboxMessageParams'
+    fields:
+      'Force':
+        type: 'bool'
+        required: false
+        description: |-
+          only for testing purposes, to force delete data
+      'MessageID':
+        type: '*string'
+        required: true
+        description: |-
+          message
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_delete_inbox_message_parameters.go'
+
+  'AdminDeleteTopicParams@chat':
+    id: 'AdminDeleteTopicParams@chat'
+    name: 'AdminDeleteTopicParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_delete_topic_parameters.go'
+
+  'AdminFilterChatMessageParams@chat':
+    id: 'AdminFilterChatMessageParams@chat'
+    name: 'AdminFilterChatMessageParams'
+    fields:
+      'Body':
+        type: '*ModelsMessageRequest'
+        required: true
+      'Detail':
+        type: 'bool'
+        required: false
+        description: |-
+          To show what filter driver is used
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_filter_chat_message_parameters.go'
+
+  'AdminGetAllConfigV1Params@chat':
+    id: 'AdminGetAllConfigV1Params@chat'
+    name: 'AdminGetAllConfigV1Params'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_all_config_v1_parameters.go'
+
+  'AdminGetCategorySchemaParams@chat':
+    id: 'AdminGetCategorySchemaParams@chat'
+    name: 'AdminGetCategorySchemaParams'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          category
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_category_schema_parameters.go'
+
+  'AdminGetChatSnapshotParams@chat':
+    id: 'AdminGetChatSnapshotParams@chat'
+    name: 'AdminGetChatSnapshotParams'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+        description: |-
+          id of the chat
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/admin_get_chat_snapshot_parameters.go'
+
+  'AdminGetConfigV1Params@chat':
+    id: 'AdminGetConfigV1Params@chat'
+    name: 'AdminGetConfigV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_config_v1_parameters.go'
+
+  'AdminGetInboxCategoriesParams@chat':
+    id: 'AdminGetInboxCategoriesParams@chat'
+    name: 'AdminGetInboxCategoriesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_categories_parameters.go'
+
+  'AdminGetInboxMessagesParams@chat':
+    id: 'AdminGetInboxMessagesParams@chat'
+    name: 'AdminGetInboxMessagesParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+        description: |-
+          active only
+      'EndCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          end created at
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'MessageID':
+        type: '[]string'
+        required: false
+        description: |-
+          message ids
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          anyof: createdAt:asc / createdAt:desc
+      'Scope':
+        type: 'string'
+        required: false
+        description: |-
+          message scope
+      'StartCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          start created at
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          message status
+      'Transient':
+        type: 'bool'
+        required: false
+        description: |-
+          transient message filter
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_messages_parameters.go'
+
+  'AdminGetInboxStatsParams@chat':
+    id: 'AdminGetInboxStatsParams@chat'
+    name: 'AdminGetInboxStatsParams'
+    fields:
+      'MessageID':
+        type: '[]string'
+        required: false
+        description: |-
+          message ids
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_stats_parameters.go'
+
+  'AdminGetInboxUsersParams@chat':
+    id: 'AdminGetInboxUsersParams@chat'
+    name: 'AdminGetInboxUsersParams'
+    fields:
+      'Inbox':
+        type: '*string'
+        required: true
+        description: |-
+          message id
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          message status
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userId
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_users_parameters.go'
+
+  'AdminGetLogConfigParams@chat':
+    id: 'AdminGetLogConfigParams@chat'
+    name: 'AdminGetLogConfigParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_log_config_parameters.go'
+
+  'AdminListKafkaTopicParams@chat':
+    id: 'AdminListKafkaTopicParams@chat'
+    name: 'AdminListKafkaTopicParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_list_kafka_topic_parameters.go'
+
+  'AdminPatchUpdateLogConfigParams@chat':
+    id: 'AdminPatchUpdateLogConfigParams@chat'
+    name: 'AdminPatchUpdateLogConfigParams'
+    fields:
+      'Body':
+        type: '*LogconfigConfiguration'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_patch_update_log_config_parameters.go'
+
+  'AdminProfanityCreateParams@chat':
+    id: 'AdminProfanityCreateParams@chat'
+    name: 'AdminProfanityCreateParams'
+    fields:
+      'Body':
+        type: '*ModelsDictionaryInsertRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_create_parameters.go'
+
+  'AdminProfanityCreateBulkParams@chat':
+    id: 'AdminProfanityCreateBulkParams@chat'
+    name: 'AdminProfanityCreateBulkParams'
+    fields:
+      'Body':
+        type: '*ModelsDictionaryInsertBulkRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_create_bulk_parameters.go'
+
+  'AdminProfanityDeleteParams@chat':
+    id: 'AdminProfanityDeleteParams@chat'
+    name: 'AdminProfanityDeleteParams'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id of the dictionary
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_delete_parameters.go'
+
+  'AdminProfanityExportParams@chat':
+    id: 'AdminProfanityExportParams@chat'
+    name: 'AdminProfanityExportParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_export_parameters.go'
+
+  'AdminProfanityGroupParams@chat':
+    id: 'AdminProfanityGroupParams@chat'
+    name: 'AdminProfanityGroupParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default: 100
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_group_parameters.go'
+
+  'AdminProfanityImportParams@chat':
+    id: 'AdminProfanityImportParams@chat'
+    name: 'AdminProfanityImportParams'
+    fields:
+      'Action':
+        type: 'string'
+        required: false
+        description: |-
+          The action when same words already exists</br>
+          								<b>REPLACE</b>: replace all same words with imported false positives and false negatives, existing non-imported words won't be removed</br>
+                                          <b>FULLREPLACE</b>: replace all words with imported data and remove existing non-imported words, list words will be exactly same with imported data</br>
+                                          <b>LEAVEOUT</b>: ignore imported same words, false positives and false negatives won't be replaced with imported data'
+      'File':
+        type: '*[]byte'
+        required: true
+        description: |-
+          file to be imported
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'ShowResult':
+        type: 'bool'
+        required: false
+        description: |-
+          When showResult=true, this endpoint with returns imported words result
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_import_parameters.go'
+
+  'AdminProfanityQueryParams@chat':
+    id: 'AdminProfanityQueryParams@chat'
+    name: 'AdminProfanityQueryParams'
+    fields:
+      'FilterMask':
+        type: 'string'
+        required: false
+        description: |-
+          filter mask
+      'IncludeChildren':
+        type: 'bool'
+        required: false
+        description: |-
+          include false positives and false negatives
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'ParentID':
+        type: 'string'
+        required: false
+        description: |-
+          parent ID of the word
+      'StartWith':
+        type: 'string'
+        required: false
+        description: |-
+          word start with
+      'WordType':
+        type: 'string'
+        required: false
+        description: |-
+          type of the word: PROFANITY, FALSEPOSITIVE, FALSENEGATIVE
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_query_parameters.go'
+
+  'AdminProfanityUpdateParams@chat':
+    id: 'AdminProfanityUpdateParams@chat'
+    name: 'AdminProfanityUpdateParams'
+    fields:
+      'Body':
+        type: '*ModelsDictionaryUpdateRequest'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id of the dictionary
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_update_parameters.go'
+
+  'AdminQueryTopicParams@chat':
+    id: 'AdminQueryTopicParams@chat'
+    name: 'AdminQueryTopicParams'
+    fields:
+      'IncludeMembers':
+        type: 'bool'
+        required: false
+        description: |-
+          include topic's members
+      'IncludePastMembers':
+        type: 'bool'
+        required: false
+        description: |-
+          include past members (user that had left topic)
+      'IncludePastTopics':
+        type: 'bool'
+        required: false
+        description: |-
+          include topic that has been removed.<br/><b>NOTE:</b> only soft deleted topics are available
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default: 100
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Topic':
+        type: '[]string'
+        required: false
+        description: |-
+          topic
+      'TopicSubType':
+        type: 'string'
+        required: false
+        description: |-
+          topicSubType
+      'TopicType':
+        type: 'string'
+        required: false
+        description: |-
+          topicType
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userId
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_topic_parameters.go'
+
+  'AdminQueryTopicLogParams@chat':
+    id: 'AdminQueryTopicLogParams@chat'
+    name: 'AdminQueryTopicLogParams'
+    fields:
+      'EndCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          end date
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SenderUserID':
+        type: 'string'
+        required: false
+        description: |-
+          senderUserId (actor, can be admin or the user itself)
+      'StartCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          start date
+      'TopicID':
+        type: 'string'
+        required: false
+        description: |-
+          topicId
+      'TopicIds':
+        type: '[]string'
+        required: false
+        description: |-
+          topicIds
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userId
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_topic_log_parameters.go'
+
+  'AdminQueryUsersTopicParams@chat':
+    id: 'AdminQueryUsersTopicParams@chat'
+    name: 'AdminQueryUsersTopicParams'
+    fields:
+      'IncludePastTopics':
+        type: 'bool'
+        required: false
+        description: |-
+          when true will include topics that user already left
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default: 100
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'TopicSubType':
+        type: 'string'
+        required: false
+        description: |-
+          topicSubType
+      'TopicType':
+        type: 'string'
+        required: false
+        description: |-
+          topicType
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          userId
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_users_topic_parameters.go'
+
+  'AdminRemoveTopicMemberParams@chat':
+    id: 'AdminRemoveTopicMemberParams@chat'
+    name: 'AdminRemoveTopicMemberParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that will removed user from
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user ID that will be removed from topic
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_remove_topic_member_parameters.go'
+
+  'AdminSaveInboxMessageParams@chat':
+    id: 'AdminSaveInboxMessageParams@chat'
+    name: 'AdminSaveInboxMessageParams'
+    fields:
+      'Body':
+        type: '*ModelsSaveInboxMessageRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_save_inbox_message_parameters.go'
+
+  'AdminSendChatParams@chat':
+    id: 'AdminSendChatParams@chat'
+    name: 'AdminSendChatParams'
+    fields:
+      'Body':
+        type: '*APISendChatParams'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_send_chat_parameters.go'
+
+  'AdminSendInboxMessageParams@chat':
+    id: 'AdminSendInboxMessageParams@chat'
+    name: 'AdminSendInboxMessageParams'
+    fields:
+      'Body':
+        type: 'ModelsSendInboxMessageRequest'
+        required: true
+      'MessageID':
+        type: '*string'
+        required: true
+        description: |-
+          message
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_send_inbox_message_parameters.go'
+
+  'AdminTopicChatHistoryParams@chat':
+    id: 'AdminTopicChatHistoryParams@chat'
+    name: 'AdminTopicChatHistoryParams'
+    fields:
+      'EndCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          end date
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          keyword containing in message
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          anyof: createdAt:asc / createdAt:desc
+      'SenderUserID':
+        type: 'string'
+        required: false
+        description: |-
+          sender user ID
+      'ShardID':
+        type: 'string'
+        required: false
+        description: |-
+          shard id
+      'StartCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          start date
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+      'Unfiltered':
+        type: 'bool'
+        required: false
+        description: |-
+          unfiltered chat messages
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_chat_history_parameters.go'
+
+  'AdminTopicListParams@chat':
+    id: 'AdminTopicListParams@chat'
+    name: 'AdminTopicListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'TopicType':
+        type: 'string'
+        required: false
+        description: |-
+          PERSONAL or GROUP
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_list_parameters.go'
+
+  'AdminTopicMembersParams@chat':
+    id: 'AdminTopicMembersParams@chat'
+    name: 'AdminTopicMembersParams'
+    fields:
+      'IsBanned':
+        type: 'bool'
+        required: false
+        description: |-
+          only show banned member
+      'IsModerator':
+        type: 'bool'
+        required: false
+        description: |-
+          only show moderator member
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'ShardID':
+        type: 'string'
+        required: false
+        description: |-
+          shard ID
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_members_parameters.go'
+
+  'AdminTopicShardsParams@chat':
+    id: 'AdminTopicShardsParams@chat'
+    name: 'AdminTopicShardsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_shards_parameters.go'
+
+  'AdminUnbanTopicMembersParams@chat':
+    id: 'AdminUnbanTopicMembersParams@chat'
+    name: 'AdminUnbanTopicMembersParams'
+    fields:
+      'Body':
+        type: '*ModelsUnbanTopicMemberParam'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_unban_topic_members_parameters.go'
+
+  'AdminUnsendInboxMessageParams@chat':
+    id: 'AdminUnsendInboxMessageParams@chat'
+    name: 'AdminUnsendInboxMessageParams'
+    fields:
+      'Body':
+        type: '*ModelsUnsendInboxMessageRequest'
+        required: true
+      'Inbox':
+        type: '*string'
+        required: true
+        description: |-
+          message
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_unsend_inbox_message_parameters.go'
+
+  'AdminUpdateConfigV1Params@chat':
+    id: 'AdminUpdateConfigV1Params@chat'
+    name: 'AdminUpdateConfigV1Params'
+    fields:
+      'Body':
+        type: '*ModelsConfigResponse'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_update_config_v1_parameters.go'
+
+  'AdminUpdateInboxCategoryParams@chat':
+    id: 'AdminUpdateInboxCategoryParams@chat'
+    name: 'AdminUpdateInboxCategoryParams'
+    fields:
+      'Body':
+        type: '*ModelsUpdateInboxCategoryRequest'
+        required: true
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          category
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_update_inbox_category_parameters.go'
+
+  'AdminUpdateInboxMessageParams@chat':
+    id: 'AdminUpdateInboxMessageParams@chat'
+    name: 'AdminUpdateInboxMessageParams'
+    fields:
+      'Body':
+        type: '*ModelsUpdateInboxMessageRequest'
+        required: true
+      'MessageID':
+        type: '*string'
+        required: true
+        description: |-
+          message
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_update_inbox_message_parameters.go'
+
+  'AdminUpdateTopicParams@chat':
+    id: 'AdminUpdateTopicParams@chat'
+    name: 'AdminUpdateTopicParams'
+    fields:
+      'Body':
+        type: '*APIUpdateTopicParams'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_update_topic_parameters.go'
+
+  'ExportConfigParams@chat':
+    id: 'ExportConfigParams@chat'
+    name: 'ExportConfigParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/export_config_parameters.go'
+
+  'ImportConfigParams@chat':
+    id: 'ImportConfigParams@chat'
+    name: 'ImportConfigParams'
+    fields:
+      'File':
+        type: '[]byte'
+        required: false
+        description: |-
+          file to be imported
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/import_config_parameters.go'
+
+  'PublicBanTopicMembersParams@chat':
+    id: 'PublicBanTopicMembersParams@chat'
+    name: 'PublicBanTopicMembersParams'
+    fields:
+      'Body':
+        type: '*ModelsPublicBanTopicMembersRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_ban_topic_members_parameters.go'
+
+  'PublicChatHistoryParams@chat':
+    id: 'PublicChatHistoryParams@chat'
+    name: 'PublicChatHistoryParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          anyof: createdAt:asc / createdAt:desc
+      'StartCreatedAt':
+        type: 'int64'
+        required: false
+        description: |-
+          lastChatCreatedAt
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID that receive the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_chat_history_parameters.go'
+
+  'PublicDeleteChatParams@chat':
+    id: 'PublicDeleteChatParams@chat'
+    name: 'PublicDeleteChatParams'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+        description: |-
+          chat ID od the chat
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID of the chat
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_delete_chat_parameters.go'
+
+  'PublicGetChatSnapshotParams@chat':
+    id: 'PublicGetChatSnapshotParams@chat'
+    name: 'PublicGetChatSnapshotParams'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+        description: |-
+          id of the chat
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/public_get_chat_snapshot_parameters.go'
+
+  'PublicGetConfigV1Params@chat':
+    id: 'PublicGetConfigV1Params@chat'
+    name: 'PublicGetConfigV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/public_get_config_v1_parameters.go'
+
+  'PublicGetMessagesParams@chat':
+    id: 'PublicGetMessagesParams@chat'
+    name: 'PublicGetMessagesParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient//public_get_messages_parameters.go'
+
+  'PublicGetMutedTopicsParams@chat':
+    id: 'PublicGetMutedTopicsParams@chat'
+    name: 'PublicGetMutedTopicsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_get_muted_topics_parameters.go'
+
+  'PublicMuteUserParams@chat':
+    id: 'PublicMuteUserParams@chat'
+    name: 'PublicMuteUserParams'
+    fields:
+      'Body':
+        type: '*APIMuteUserRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_mute_user_parameters.go'
+
+  'PublicTopicListParams@chat':
+    id: 'PublicTopicListParams@chat'
+    name: 'PublicTopicListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'TopicType':
+        type: 'string'
+        required: false
+        description: |-
+          PERSONAL or GROUP
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_topic_list_parameters.go'
+
+  'PublicUnbanTopicMembersParams@chat':
+    id: 'PublicUnbanTopicMembersParams@chat'
+    name: 'PublicUnbanTopicMembersParams'
+    fields:
+      'Body':
+        type: '*ModelsPublicUnbanTopicMembersRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_unban_topic_members_parameters.go'
+
+  'PublicUnmuteUserParams@chat':
+    id: 'PublicUnmuteUserParams@chat'
+    name: 'PublicUnmuteUserParams'
+    fields:
+      'Body':
+        type: '*APIUnmuteUserRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Topic':
+        type: '*string'
+        required: true
+        description: |-
+          topic ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_unmute_user_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'APIAddMemberParams@chat':
+    id: 'APIAddMemberParams@chat'
+    name: 'APIAddMemberParams'
+    fields:
+      'IsAdmin':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_add_member_params.go'
+
+  'APICreateNamespaceTopicParams@chat':
+    id: 'APICreateNamespaceTopicParams@chat'
+    name: 'APICreateNamespaceTopicParams'
+    fields:
+      'Description':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_namespace_topic_params.go'
+
+  'APICreateTopicParams@chat':
+    id: 'APICreateTopicParams@chat'
+    name: 'APICreateTopicParams'
+    fields:
+      'Admins':
+        type: '[]string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'IsChannel':
+        type: '*bool'
+        required: true
+      'IsJoinable':
+        type: '*bool'
+        required: true
+      'Members':
+        type: '[]string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'ShardLimit':
+        type: 'int32'
+        required: false
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_topic_params.go'
+
+  'APICreateTopicResponse@chat':
+    id: 'APICreateTopicResponse@chat'
+    name: 'APICreateTopicResponse'
+    fields:
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'CreatedBy':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'IsChannel':
+        type: '*bool'
+        required: true
+      'IsJoinable':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_topic_response.go'
+
+  'APIMutedTopicResponse@chat':
+    id: 'APIMutedTopicResponse@chat'
+    name: 'APIMutedTopicResponse'
+    fields:
+      'ExpirationTime':
+        type: '*int64'
+        required: true
+      'RemainingTime':
+        type: '*int64'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_muted_topic_response.go'
+
+  'APIMuteUserRequest@chat':
+    id: 'APIMuteUserRequest@chat'
+    name: 'APIMuteUserRequest'
+    fields:
+      'Duration':
+        type: '*int32'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_mute_user_request.go'
+
+  'APISendChatParams@chat':
+    id: 'APISendChatParams@chat'
+    name: 'APISendChatParams'
+    fields:
+      'Message':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_send_chat_params.go'
+
+  'APIUnmuteUserRequest@chat':
+    id: 'APIUnmuteUserRequest@chat'
+    name: 'APIUnmuteUserRequest'
+    fields:
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_unmute_user_request.go'
+
+  'APIUpdateTopicParams@chat':
+    id: 'APIUpdateTopicParams@chat'
+    name: 'APIUpdateTopicParams'
+    fields:
+      'Description':
+        type: '*string'
+        required: true
+      'IsJoinable':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_update_topic_params.go'
+
+  'LogAppMessageDeclaration@chat':
+    id: 'LogAppMessageDeclaration@chat'
+    name: 'LogAppMessageDeclaration'
+    fields:
+      'Attributes':
+        type: '[]string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+      'CodeName':
+        type: '*string'
+        required: true
+      'Section':
+        type: '*string'
+        required: true
+      'Service':
+        type: '*string'
+        required: true
+      'Text':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/log_app_message_declaration.go'
+
+  'LogconfigConfiguration@chat':
+    id: 'LogconfigConfiguration@chat'
+    name: 'LogconfigConfiguration'
+    fields:
+      'InternalAccessLogEnabled':
+        type: 'bool'
+        required: false
+      'LogLevel':
+        type: 'string'
+        required: false
+      'LogLevelDB':
+        type: 'string'
+        required: false
+      'SlowQueryThreshold':
+        type: 'int64'
+        required: false
+      'SocketLogEnabled':
+        type: 'bool'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/logconfig_configuration.go'
+
+  'MessageActionAddUserToTopicResult@chat':
+    id: 'MessageActionAddUserToTopicResult@chat'
+    name: 'MessageActionAddUserToTopicResult'
+    fields:
+      'Processed':
+        type: '*int64'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/message_action_add_user_to_topic_result.go'
+
+  'MessageActionDeleteTopicResult@chat':
+    id: 'MessageActionDeleteTopicResult@chat'
+    name: 'MessageActionDeleteTopicResult'
+    fields:
+      'Processed':
+        type: '*int64'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/message_action_delete_topic_result.go'
+
+  'ModelsAddInboxCategoryRequest@chat':
+    id: 'ModelsAddInboxCategoryRequest@chat'
+    name: 'ModelsAddInboxCategoryRequest'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'ExpiresIn':
+        type: '*int64'
+        required: true
+      'Hook':
+        type: '*ModelsCategoryHook'
+        required: false
+      'JSONSchema':
+        type: 'interface{}'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'SaveInbox':
+        type: '*bool'
+        required: true
+      'SendNotification':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_add_inbox_category_request.go'
+
+  'ModelsAddInboxCategoryResponse@chat':
+    id: 'ModelsAddInboxCategoryResponse@chat'
+    name: 'ModelsAddInboxCategoryResponse'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'ExpiresIn':
+        type: '*int64'
+        required: true
+      'Hook':
+        type: '*ModelsCategoryHook'
+        required: false
+      'JSONSchema':
+        type: 'interface{}'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'SaveInbox':
+        type: '*bool'
+        required: true
+      'SendNotification':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_add_inbox_category_response.go'
+
+  'ModelsBanTopicMemberParam@chat':
+    id: 'ModelsBanTopicMemberParam@chat'
+    name: 'ModelsBanTopicMemberParam'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_ban_topic_member_param.go'
+
+  'ModelsBanTopicMemberResult@chat':
+    id: 'ModelsBanTopicMemberResult@chat'
+    name: 'ModelsBanTopicMemberResult'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_ban_topic_member_result.go'
+
+  'ModelsCategoryHook@chat':
+    id: 'ModelsCategoryHook@chat'
+    name: 'ModelsCategoryHook'
+    fields:
+      'Driver':
+        type: 'string'
+        required: false
+      'Params':
+        type: 'interface{}'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_category_hook.go'
+
+  'ModelsChannelTopicResponse@chat':
+    id: 'ModelsChannelTopicResponse@chat'
+    name: 'ModelsChannelTopicResponse'
+    fields:
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'CreatedBy':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'IsJoinable':
+        type: '*bool'
+        required: true
+      'MessagePerMinutes':
+        type: '*float64'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ShardLimit':
+        type: '*int32'
+        required: true
+      'ShardNumber':
+        type: '*int32'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+      'TotalMember':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_response.go'
+
+  'ModelsChannelTopicSummaryResponse@chat':
+    id: 'ModelsChannelTopicSummaryResponse@chat'
+    name: 'ModelsChannelTopicSummaryResponse'
+    fields:
+      'TotalChannel':
+        type: '*int32'
+        required: true
+      'TotalShard':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_summary_response.go'
+
+  'ModelsChannelTopicWithPaginationResponse@chat':
+    id: 'ModelsChannelTopicWithPaginationResponse@chat'
+    name: 'ModelsChannelTopicWithPaginationResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsChannelTopicResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_with_pagination_response.go'
+
+  'ModelsChatMessageResponse@chat':
+    id: 'ModelsChatMessageResponse@chat'
+    name: 'ModelsChatMessageResponse'
+    fields:
+      'From':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'ReadAt':
+        type: 'int64'
+        required: false
+      'ReceivedAt':
+        type: 'int64'
+        required: false
+      'TopicID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_message_response.go'
+
+  'ModelsChatMessageWithPaginationResponse@chat':
+    id: 'ModelsChatMessageWithPaginationResponse@chat'
+    name: 'ModelsChatMessageWithPaginationResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsChatMessageResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_message_with_pagination_response.go'
+
+  'ModelsChatSnapshotMessage@chat':
+    id: 'ModelsChatSnapshotMessage@chat'
+    name: 'ModelsChatSnapshotMessage'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'SenderID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_snapshot_message.go'
+
+  'ModelsChatSnapshots@chat':
+    id: 'ModelsChatSnapshots@chat'
+    name: 'ModelsChatSnapshots'
+    fields:
+      'ChatID':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'JoinedTopics':
+        type: '[]string'
+        required: true
+      'Messages':
+        type: '[]*ModelsChatSnapshotMessage'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SenderID':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_snapshots.go'
+
+  'ModelsConfig@chat':
+    id: 'ModelsConfig@chat'
+    name: 'ModelsConfig'
+    fields:
+      'ChatRateLimitBurst':
+        type: '*int32'
+        required: true
+      'ChatRateLimitDuration':
+        type: '*int64'
+        required: true
+      'ConcurrentUsersLimit':
+        type: '*int32'
+        required: true
+      'DefaultDictionaryLoaded':
+        type: 'bool'
+        required: false
+      'EnableClanChat':
+        type: 'bool'
+        required: false
+      'EnableManualTopicCreation':
+        type: 'bool'
+        required: false
+      'EnablePmSendPlatformID':
+        type: 'bool'
+        required: false
+      'EnableProfanityFilter':
+        type: '*bool'
+        required: true
+      'FilterAppName':
+        type: '*string'
+        required: true
+      'FilterParam':
+        type: '*string'
+        required: true
+      'FilterType':
+        type: '*string'
+        required: true
+      'GeneralRateLimitBurst':
+        type: '*int32'
+        required: true
+      'GeneralRateLimitDuration':
+        type: '*int64'
+        required: true
+      'MaxChatMessageLength':
+        type: 'int32'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'ShardCapacityLimit':
+        type: '*int32'
+        required: true
+      'ShardDefaultLimit':
+        type: '*int32'
+        required: true
+      'ShardHardLimit':
+        type: '*int32'
+        required: true
+      'SpamChatBurst':
+        type: '*int32'
+        required: true
+      'SpamChatDuration':
+        type: '*int64'
+        required: true
+      'SpamMuteDuration':
+        type: '*int64'
+        required: true
+      'UseDefaultDictionary':
+        type: 'bool'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config.go'
+
+  'ModelsConfigExport@chat':
+    id: 'ModelsConfigExport@chat'
+    name: 'ModelsConfigExport'
+    fields:
+      'ChatRateLimitBurst':
+        type: '*int32'
+        required: true
+      'ChatRateLimitDuration':
+        type: '*int64'
+        required: true
+      'ConcurrentUsersLimit':
+        type: '*int32'
+        required: true
+      'EnableClanChat':
+        type: 'bool'
+        required: false
+      'EnableManualTopicCreation':
+        type: 'bool'
+        required: false
+      'EnablePmSendPlatformID':
+        type: 'bool'
+        required: false
+      'EnableProfanityFilter':
+        type: 'bool'
+        required: false
+      'FilterAppName':
+        type: 'string'
+        required: false
+      'FilterParam':
+        type: 'string'
+        required: false
+      'FilterType':
+        type: 'string'
+        required: false
+      'GeneralRateLimitBurst':
+        type: '*int32'
+        required: true
+      'GeneralRateLimitDuration':
+        type: '*int64'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ShardCapacityLimit':
+        type: 'int32'
+        required: false
+      'ShardDefaultLimit':
+        type: 'int32'
+        required: false
+      'ShardHardLimit':
+        type: 'int32'
+        required: false
+      'SpamChatBurst':
+        type: 'int32'
+        required: false
+      'SpamChatDuration':
+        type: 'int64'
+        required: false
+      'SpamMuteDuration':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_export.go'
+
+  'ModelsConfigList@chat':
+    id: 'ModelsConfigList@chat'
+    name: 'ModelsConfigList'
+    fields:
+      'Configs':
+        type: '[]*ModelsConfig'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_list.go'
+
+  'ModelsConfigResponse@chat':
+    id: 'ModelsConfigResponse@chat'
+    name: 'ModelsConfigResponse'
+    fields:
+      'ChatRateLimitBurst':
+        type: 'int32'
+        required: false
+      'ChatRateLimitDuration':
+        type: 'int64'
+        required: false
+      'ConcurrentUsersLimit':
+        type: 'int32'
+        required: false
+      'EnableClanChat':
+        type: 'bool'
+        required: false
+      'EnableManualTopicCreation':
+        type: 'bool'
+        required: false
+      'EnablePmSendPlatformID':
+        type: 'bool'
+        required: false
+      'EnableProfanityFilter':
+        type: 'bool'
+        required: false
+      'FilterAppName':
+        type: 'string'
+        required: false
+      'FilterParam':
+        type: 'string'
+        required: false
+      'FilterType':
+        type: 'string'
+        required: false
+      'GeneralRateLimitBurst':
+        type: 'int32'
+        required: false
+      'GeneralRateLimitDuration':
+        type: 'int64'
+        required: false
+      'MaxChatMessageLength':
+        type: 'int32'
+        required: false
+      'ShardCapacityLimit':
+        type: 'int32'
+        required: false
+      'ShardDefaultLimit':
+        type: 'int32'
+        required: false
+      'ShardHardLimit':
+        type: 'int32'
+        required: false
+      'SpamChatBurst':
+        type: 'int32'
+        required: false
+      'SpamChatDuration':
+        type: 'int64'
+        required: false
+      'SpamMuteDuration':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_response.go'
+
+  'ModelsDictionary@chat':
+    id: 'ModelsDictionary@chat'
+    name: 'ModelsDictionary'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ParentID':
+        type: 'string'
+        required: false
+      'Word':
+        type: '*string'
+        required: true
+      'WordType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary.go'
+
+  'ModelsDictionaryChild@chat':
+    id: 'ModelsDictionaryChild@chat'
+    name: 'ModelsDictionaryChild'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Word':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_child.go'
+
+  'ModelsDictionaryExport@chat':
+    id: 'ModelsDictionaryExport@chat'
+    name: 'ModelsDictionaryExport'
+    fields:
+      'Dictionaries':
+        type: '[]*ModelsDictionaryExportItem'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_export.go'
+
+  'ModelsDictionaryExportItem@chat':
+    id: 'ModelsDictionaryExportItem@chat'
+    name: 'ModelsDictionaryExportItem'
+    fields:
+      'FalseNegative':
+        type: '[]string'
+        required: false
+      'FalsePositive':
+        type: '[]string'
+        required: false
+      'Word':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_export_item.go'
+
+  'ModelsDictionaryGroup@chat':
+    id: 'ModelsDictionaryGroup@chat'
+    name: 'ModelsDictionaryGroup'
+    fields:
+      'Count':
+        type: '*int32'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_group.go'
+
+  'ModelsDictionaryImportResult@chat':
+    id: 'ModelsDictionaryImportResult@chat'
+    name: 'ModelsDictionaryImportResult'
+    fields:
+      'Words':
+        type: '*ModelsDictionaryWordChanges'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_import_result.go'
+
+  'ModelsDictionaryInsertBulkRequest@chat':
+    id: 'ModelsDictionaryInsertBulkRequest@chat'
+    name: 'ModelsDictionaryInsertBulkRequest'
+    fields:
+      'Dictionaries':
+        type: '[]*ModelsDictionaryInsertRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_insert_bulk_request.go'
+
+  'ModelsDictionaryInsertRequest@chat':
+    id: 'ModelsDictionaryInsertRequest@chat'
+    name: 'ModelsDictionaryInsertRequest'
+    fields:
+      'FalseNegative':
+        type: '[]string'
+        required: true
+      'FalsePositive':
+        type: '[]string'
+        required: true
+      'Word':
+        type: '*string'
+        required: true
+      'WordType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_insert_request.go'
+
+  'ModelsDictionaryQueryResult@chat':
+    id: 'ModelsDictionaryQueryResult@chat'
+    name: 'ModelsDictionaryQueryResult'
+    fields:
+      'Data':
+        type: '[]*ModelsDictionaryWithChildren'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_query_result.go'
+
+  'ModelsDictionaryUpdateRequest@chat':
+    id: 'ModelsDictionaryUpdateRequest@chat'
+    name: 'ModelsDictionaryUpdateRequest'
+    fields:
+      'FalseNegative':
+        type: '[]string'
+        required: true
+      'FalsePositive':
+        type: '[]string'
+        required: true
+      'Word':
+        type: '*string'
+        required: true
+      'WordType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_update_request.go'
+
+  'ModelsDictionaryWithChildren@chat':
+    id: 'ModelsDictionaryWithChildren@chat'
+    name: 'ModelsDictionaryWithChildren'
+    fields:
+      'FalseNegatives':
+        type: '[]*ModelsDictionaryChild'
+        required: false
+      'FalsePositives':
+        type: '[]*ModelsDictionaryChild'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ParentID':
+        type: 'string'
+        required: false
+      'Word':
+        type: '*string'
+        required: true
+      'WordType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_with_children.go'
+
+  'ModelsDictionaryWordChanges@chat':
+    id: 'ModelsDictionaryWordChanges@chat'
+    name: 'ModelsDictionaryWordChanges'
+    fields:
+      'Added':
+        type: '[]string'
+        required: true
+      'Failed':
+        type: '[]string'
+        required: true
+      'Ignored':
+        type: '[]string'
+        required: true
+      'Replaced':
+        type: '[]string'
+        required: true
+      'Unchanged':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_word_changes.go'
+
+  'ModelsGetInboxCategoriesResponseItem@chat':
+    id: 'ModelsGetInboxCategoriesResponseItem@chat'
+    name: 'ModelsGetInboxCategoriesResponseItem'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'ExpiresIn':
+        type: '*int64'
+        required: true
+      'Hook':
+        type: '*ModelsCategoryHook'
+        required: false
+      'JSONSchema':
+        type: 'interface{}'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'SaveInbox':
+        type: '*bool'
+        required: true
+      'SendNotification':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_categories_response_item.go'
+
+  'ModelsGetInboxMessagesResponse@chat':
+    id: 'ModelsGetInboxMessagesResponse@chat'
+    name: 'ModelsGetInboxMessagesResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsGetInboxMessagesResponseData'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_messages_response.go'
+
+  'ModelsGetInboxMessagesResponseData@chat':
+    id: 'ModelsGetInboxMessagesResponseData@chat'
+    name: 'ModelsGetInboxMessagesResponseData'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'ExpiredAt':
+        type: '*int64'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Message':
+        type: 'interface{}'
+        required: false
+      'Scope':
+        type: '*string'
+        required: true
+      'SenderID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*int64'
+        required: true
+      'UserIds':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_messages_response_data.go'
+
+  'ModelsGetInboxStatsResponse@chat':
+    id: 'ModelsGetInboxStatsResponse@chat'
+    name: 'ModelsGetInboxStatsResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsMessageStats'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_stats_response.go'
+
+  'ModelsGetInboxUsersResponse@chat':
+    id: 'ModelsGetInboxUsersResponse@chat'
+    name: 'ModelsGetInboxUsersResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsUserInbox'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_users_response.go'
+
+  'ModelsGetListTopicKafkaResponse@chat':
+    id: 'ModelsGetListTopicKafkaResponse@chat'
+    name: 'ModelsGetListTopicKafkaResponse'
+    fields:
+      'TopicName':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_list_topic_kafka_response.go'
+
+  'ModelsImportConfigResponse@chat':
+    id: 'ModelsImportConfigResponse@chat'
+    name: 'ModelsImportConfigResponse'
+    fields:
+      'FailedConfigs':
+        type: '[]string'
+        required: true
+      'IgnoredConfigs':
+        type: '[]string'
+        required: true
+      'NewConfigs':
+        type: '[]string'
+        required: true
+      'ReplacedConfigs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_import_config_response.go'
+
+  'ModelsJSONSchemaType@chat':
+    id: 'ModelsJSONSchemaType@chat'
+    name: 'ModelsJSONSchemaType'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_json_schema_type.go'
+
+  'ModelsMessageRequest@chat':
+    id: 'ModelsMessageRequest@chat'
+    name: 'ModelsMessageRequest'
+    fields:
+      'Message':
+        type: '*string'
+        required: true
+      'Timestamp':
+        type: 'int64'
+        required: false
+      'TopicID':
+        type: 'string'
+        required: false
+      'TopicType':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_request.go'
+
+  'ModelsMessageResultWithAttributes@chat':
+    id: 'ModelsMessageResultWithAttributes@chat'
+    name: 'ModelsMessageResultWithAttributes'
+    fields:
+      'Action':
+        type: '*string'
+        required: true
+      'Attributes':
+        type: 'interface{}'
+        required: false
+      'CencoredWords':
+        type: '[]string'
+        required: false
+      'Classifications':
+        type: '[]string'
+        required: false
+      'FinalMessage':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'ReferenceID':
+        type: 'string'
+        required: false
+      'Timestamp':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_result_with_attributes.go'
+
+  'ModelsMessageStats@chat':
+    id: 'ModelsMessageStats@chat'
+    name: 'ModelsMessageStats'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'MessageRead':
+        type: '*int32'
+        required: true
+      'MessageStored':
+        type: '*int32'
+        required: true
+      'NotificationSent':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_stats.go'
+
+  'ModelsPagination@chat':
+    id: 'ModelsPagination@chat'
+    name: 'ModelsPagination'
+    fields:
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_pagination.go'
+
+  'ModelsPublicBanTopicMembersRequest@chat':
+    id: 'ModelsPublicBanTopicMembersRequest@chat'
+    name: 'ModelsPublicBanTopicMembersRequest'
+    fields:
+      'UserIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_ban_topic_members_request.go'
+
+  'ModelsPublicBanTopicMembersResponse@chat':
+    id: 'ModelsPublicBanTopicMembersResponse@chat'
+    name: 'ModelsPublicBanTopicMembersResponse'
+    fields:
+      'UserIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_ban_topic_members_response.go'
+
+  'ModelsPublicConfigResponse@chat':
+    id: 'ModelsPublicConfigResponse@chat'
+    name: 'ModelsPublicConfigResponse'
+    fields:
+      'ChatRateLimitBurst':
+        type: '*int32'
+        required: true
+      'ChatRateLimitDuration':
+        type: '*int64'
+        required: true
+      'EnablePmSendPlatformID':
+        type: 'bool'
+        required: false
+      'GeneralRateLimitBurst':
+        type: '*int32'
+        required: true
+      'GeneralRateLimitDuration':
+        type: '*int64'
+        required: true
+      'MaxChatMessageLength':
+        type: '*int32'
+        required: true
+      'SpamChatBurst':
+        type: '*int32'
+        required: true
+      'SpamChatDuration':
+        type: '*int64'
+        required: true
+      'SpamMuteDuration':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_config_response.go'
+
+  'ModelsPublicUnbanTopicMembersRequest@chat':
+    id: 'ModelsPublicUnbanTopicMembersRequest@chat'
+    name: 'ModelsPublicUnbanTopicMembersRequest'
+    fields:
+      'UserIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_unban_topic_members_request.go'
+
+  'ModelsPublicUnbanTopicMembersResponse@chat':
+    id: 'ModelsPublicUnbanTopicMembersResponse@chat'
+    name: 'ModelsPublicUnbanTopicMembersResponse'
+    fields:
+      'UserIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_unban_topic_members_response.go'
+
+  'ModelsSaveInboxMessageRequest@chat':
+    id: 'ModelsSaveInboxMessageRequest@chat'
+    name: 'ModelsSaveInboxMessageRequest'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+      'ExpiredAt':
+        type: '*int64'
+        required: true
+      'Message':
+        type: 'interface{}'
+        required: true
+      'Scope':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_save_inbox_message_request.go'
+
+  'ModelsSaveInboxMessageResponse@chat':
+    id: 'ModelsSaveInboxMessageResponse@chat'
+    name: 'ModelsSaveInboxMessageResponse'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+      'ExpiredAt':
+        type: '*int64'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Message':
+        type: 'interface{}'
+        required: false
+      'Scope':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UserIDs':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_save_inbox_message_response.go'
+
+  'ModelsSendInboxMessageRequest@chat':
+    id: 'ModelsSendInboxMessageRequest@chat'
+    name: 'ModelsSendInboxMessageRequest'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_send_inbox_message_request.go'
+
+  'ModelsSendInboxMessageResponse@chat':
+    id: 'ModelsSendInboxMessageResponse@chat'
+    name: 'ModelsSendInboxMessageResponse'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_send_inbox_message_response.go'
+
+  'ModelsTopicInfo@chat':
+    id: 'ModelsTopicInfo@chat'
+    name: 'ModelsTopicInfo'
+    fields:
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'DeletedAt':
+        type: 'int64'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Members':
+        type: '[]*TopicInfoMember'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'SubType':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_info.go'
+
+  'ModelsTopicLogItem@chat':
+    id: 'ModelsTopicLogItem@chat'
+    name: 'ModelsTopicLogItem'
+    fields:
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'SenderID':
+        type: '*string'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_log_item.go'
+
+  'ModelsTopicLogWithPaginationResponse@chat':
+    id: 'ModelsTopicLogWithPaginationResponse@chat'
+    name: 'ModelsTopicLogWithPaginationResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsTopicLogItem'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_log_with_pagination_response.go'
+
+  'ModelsTopicMemberResponse@chat':
+    id: 'ModelsTopicMemberResponse@chat'
+    name: 'ModelsTopicMemberResponse'
+    fields:
+      'IsAdmin':
+        type: '*bool'
+        required: true
+      'IsBanned':
+        type: '*bool'
+        required: true
+      'ShardID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_member_response.go'
+
+  'ModelsTopicMemberWithPaginationResponse@chat':
+    id: 'ModelsTopicMemberWithPaginationResponse@chat'
+    name: 'ModelsTopicMemberWithPaginationResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsTopicMemberResponse'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_member_with_pagination_response.go'
+
+  'ModelsTopicResponse@chat':
+    id: 'ModelsTopicResponse@chat'
+    name: 'ModelsTopicResponse'
+    fields:
+      'CreatedAt':
+        type: '*int64'
+        required: true
+      'CreatedBy':
+        type: '*string'
+        required: true
+      'LastMessageAt':
+        type: '*int64'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'TopicID':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_response.go'
+
+  'ModelsUnbanTopicMemberParam@chat':
+    id: 'ModelsUnbanTopicMemberParam@chat'
+    name: 'ModelsUnbanTopicMemberParam'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unban_topic_member_param.go'
+
+  'ModelsUnbanTopicMemberResult@chat':
+    id: 'ModelsUnbanTopicMemberResult@chat'
+    name: 'ModelsUnbanTopicMemberResult'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unban_topic_member_result.go'
+
+  'ModelsUnsendInboxMessageRequest@chat':
+    id: 'ModelsUnsendInboxMessageRequest@chat'
+    name: 'ModelsUnsendInboxMessageRequest'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unsend_inbox_message_request.go'
+
+  'ModelsUnsendInboxMessageResponse@chat':
+    id: 'ModelsUnsendInboxMessageResponse@chat'
+    name: 'ModelsUnsendInboxMessageResponse'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unsend_inbox_message_response.go'
+
+  'ModelsUpdateInboxCategoryRequest@chat':
+    id: 'ModelsUpdateInboxCategoryRequest@chat'
+    name: 'ModelsUpdateInboxCategoryRequest'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'ExpiresIn':
+        type: '*int64'
+        required: true
+      'Hook':
+        type: '*ModelsCategoryHook'
+        required: true
+      'JSONSchema':
+        type: 'interface{}'
+        required: false
+      'SaveInbox':
+        type: '*bool'
+        required: true
+      'SendNotification':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_update_inbox_category_request.go'
+
+  'ModelsUpdateInboxMessageRequest@chat':
+    id: 'ModelsUpdateInboxMessageRequest@chat'
+    name: 'ModelsUpdateInboxMessageRequest'
+    fields:
+      'ExpiredAt':
+        type: '*int64'
+        required: true
+      'Message':
+        type: 'interface{}'
+        required: true
+      'Scope':
+        type: '*string'
+        required: true
+      'UserIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_update_inbox_message_request.go'
+
+  'ModelsUserInbox@chat':
+    id: 'ModelsUserInbox@chat'
+    name: 'ModelsUserInbox'
+    fields:
+      'Keep':
+        type: '*bool'
+        required: true
+      'ReadAt':
+        type: '*int64'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_user_inbox.go'
+
+  'ResponseError@chat':
+    id: 'ResponseError@chat'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/response_error.go'
+
+  'RestapiErrorResponseBody@chat':
+    id: 'RestapiErrorResponseBody@chat'
+    name: 'RestapiErrorResponseBody'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/restapi_error_response_body.go'
+
+  'TopicInfoMember@chat':
+    id: 'TopicInfoMember@chat'
+    name: 'TopicInfoMember'
+    fields:
+      'LeftAt':
+        type: 'int64'
+        required: false
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/topic_info_member.go'
+
+  # endregion models
+
+functions:
+
+  'AdminAddInboxCategoryShort@chat':
+    id: 'AdminAddInboxCategoryShort@chat'
+    name: 'AdminAddInboxCategoryShort'
+    description: |-
+      Add inbox category.
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminAddInboxCategoryParams'
+        required: true
+    return_type: '(*inbox.AdminAddInboxCategoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminAddInboxCategoryParams{ ... }
+      res, err := inboxService.AdminAddInboxCategoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'add'
+      - 'admin'
+      - 'category'
+      - 'inbox'
+
+  'AdminAddTopicMemberShort@chat':
+    id: 'AdminAddTopicMemberShort@chat'
+    name: 'AdminAddTopicMemberShort'
+    description: |-
+      Add new member for topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminAddTopicMemberParams'
+        required: true
+    return_type: '(*topic.AdminAddTopicMemberResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminAddTopicMemberParams{ ... }
+      res, err := topicService.AdminAddTopicMemberShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'add'
+      - 'admin'
+      - 'member'
+      - 'topic'
+
+  'AdminBanTopicMembersShort@chat':
+    id: 'AdminBanTopicMembersShort@chat'
+    name: 'AdminBanTopicMembersShort'
+    description: |-
+      Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminBanTopicMembersParams'
+        required: true
+    return_type: '(*topic.AdminBanTopicMembersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminBanTopicMembersParams{ ... }
+      res, err := topicService.AdminBanTopicMembersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'ban'
+      - 'members'
+      - 'topic'
+
+  'AdminChannelTopicInfoShort@chat':
+    id: 'AdminChannelTopicInfoShort@chat'
+    name: 'AdminChannelTopicInfoShort'
+    description: |-
+      Get chat list of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminChannelTopicInfoParams'
+        required: true
+    return_type: '(*topic.AdminChannelTopicInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminChannelTopicInfoParams{ ... }
+      res, err := topicService.AdminChannelTopicInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'channel'
+      - 'info'
+      - 'topic'
+
+  'AdminChannelTopicListShort@chat':
+    id: 'AdminChannelTopicListShort@chat'
+    name: 'AdminChannelTopicListShort'
+    description: |-
+      Get channel chat list of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminChannelTopicListParams'
+        required: true
+    return_type: '(*topic.AdminChannelTopicListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminChannelTopicListParams{ ... }
+      res, err := topicService.AdminChannelTopicListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'channel'
+      - 'list'
+      - 'topic'
+
+  'AdminChannelTopicSummaryShort@chat':
+    id: 'AdminChannelTopicSummaryShort@chat'
+    name: 'AdminChannelTopicSummaryShort'
+    description: |-
+      Get chat list of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminChannelTopicSummaryParams'
+        required: true
+    return_type: '(*topic.AdminChannelTopicSummaryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminChannelTopicSummaryParams{ ... }
+      res, err := topicService.AdminChannelTopicSummaryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'channel'
+      - 'summary'
+      - 'topic'
+
+  'AdminChatHistoryShort@chat':
+    id: 'AdminChatHistoryShort@chat'
+    name: 'AdminChatHistoryShort'
+    description: |-
+      Get chat history in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminChatHistoryParams'
+        required: true
+    return_type: '(*topic.AdminChatHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminChatHistoryParams{ ... }
+      res, err := topicService.AdminChatHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'history'
+      - 'topic'
+
+  'AdminCreateNamespaceTopicShort@chat':
+    id: 'AdminCreateNamespaceTopicShort@chat'
+    name: 'AdminCreateNamespaceTopicShort'
+    description: |-
+      Create new namespace group topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminCreateNamespaceTopicParams'
+        required: true
+    return_type: '(*topic.AdminCreateNamespaceTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminCreateNamespaceTopicParams{ ... }
+      res, err := topicService.AdminCreateNamespaceTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'namespace'
+      - 'topic'
+
+  'AdminCreateTopicShort@chat':
+    id: 'AdminCreateTopicShort@chat'
+    name: 'AdminCreateTopicShort'
+    description: |-
+      Create new group topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminCreateTopicParams'
+        required: true
+    return_type: '(*topic.AdminCreateTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminCreateTopicParams{ ... }
+      res, err := topicService.AdminCreateTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'topic'
+
+  'AdminDeleteChatShort@chat':
+    id: 'AdminDeleteChatShort@chat'
+    name: 'AdminDeleteChatShort'
+    description: |-
+      Delete chat.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminDeleteChatParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminDeleteChatParams{ ... }
+      res, err := topicService.AdminDeleteChatShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'delete'
+      - 'topic'
+
+  'AdminDeleteChatSnapshotShort@chat':
+    id: 'AdminDeleteChatSnapshotShort@chat'
+    name: 'AdminDeleteChatSnapshotShort'
+    description: |-
+      Delete the chat snapshot
+    struct: 'ModerationService'
+    parameters:
+      params:
+        type: '*moderation.AdminDeleteChatSnapshotParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/moderation.go'
+    example: |-
+      moderationService := chat.ModerationService{ ... }
+      params := moderation.AdminDeleteChatSnapshotParams{ ... }
+      res, err := moderationService.AdminDeleteChatSnapshotShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'delete'
+      - 'moderation'
+      - 'snapshot'
+
+  'AdminDeleteInboxCategoryShort@chat':
+    id: 'AdminDeleteInboxCategoryShort@chat'
+    name: 'AdminDeleteInboxCategoryShort'
+    description: |-
+      Delete inbox category
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminDeleteInboxCategoryParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminDeleteInboxCategoryParams{ ... }
+      res, err := inboxService.AdminDeleteInboxCategoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'category'
+      - 'delete'
+      - 'inbox'
+
+  'AdminDeleteInboxMessageShort@chat':
+    id: 'AdminDeleteInboxMessageShort@chat'
+    name: 'AdminDeleteInboxMessageShort'
+    description: |-
+      Delete inbox message
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminDeleteInboxMessageParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminDeleteInboxMessageParams{ ... }
+      res, err := inboxService.AdminDeleteInboxMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'inbox'
+      - 'message'
+
+  'AdminDeleteTopicShort@chat':
+    id: 'AdminDeleteTopicShort@chat'
+    name: 'AdminDeleteTopicShort'
+    description: |-
+      Delete topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminDeleteTopicParams'
+        required: true
+    return_type: '(*topic.AdminDeleteTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminDeleteTopicParams{ ... }
+      res, err := topicService.AdminDeleteTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'topic'
+
+  'AdminFilterChatMessageShort@chat':
+    id: 'AdminFilterChatMessageShort@chat'
+    name: 'AdminFilterChatMessageShort'
+    description: |-
+      For testing purpose, doesn't send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminFilterChatMessageParams'
+        required: true
+    return_type: '(*topic.AdminFilterChatMessageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminFilterChatMessageParams{ ... }
+      res, err := topicService.AdminFilterChatMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'filter'
+      - 'message'
+      - 'topic'
+
+  'AdminGetAllConfigV1Short@chat':
+    id: 'AdminGetAllConfigV1Short@chat'
+    name: 'AdminGetAllConfigV1Short'
+    description: |-
+      Get chat config of all namespaces.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetAllConfigV1Params'
+        required: true
+    return_type: '(*config.AdminGetAllConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.AdminGetAllConfigV1Params{ ... }
+      res, err := configService.AdminGetAllConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'all'
+      - 'config'
+      - 'get'
+      - 'v1'
+
+  'AdminGetCategorySchemaShort@chat':
+    id: 'AdminGetCategorySchemaShort@chat'
+    name: 'AdminGetCategorySchemaShort'
+    description: |-
+      Get category schema.
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminGetCategorySchemaParams'
+        required: true
+    return_type: '(*inbox.AdminGetCategorySchemaResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminGetCategorySchemaParams{ ... }
+      res, err := inboxService.AdminGetCategorySchemaShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'category'
+      - 'get'
+      - 'inbox'
+      - 'schema'
+
+  'AdminGetChatSnapshotShort@chat':
+    id: 'AdminGetChatSnapshotShort@chat'
+    name: 'AdminGetChatSnapshotShort'
+    description: |-
+      Get the chat snapshot
+    struct: 'ModerationService'
+    parameters:
+      params:
+        type: '*moderation.AdminGetChatSnapshotParams'
+        required: true
+    return_type: '(*moderation.AdminGetChatSnapshotResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/moderation.go'
+    example: |-
+      moderationService := chat.ModerationService{ ... }
+      params := moderation.AdminGetChatSnapshotParams{ ... }
+      res, err := moderationService.AdminGetChatSnapshotShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'get'
+      - 'moderation'
+      - 'snapshot'
+
+  'AdminGetConfigV1Short@chat':
+    id: 'AdminGetConfigV1Short@chat'
+    name: 'AdminGetConfigV1Short'
+    description: |-
+      Get chat config of a namespace.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetConfigV1Params'
+        required: true
+    return_type: '(*config.AdminGetConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.AdminGetConfigV1Params{ ... }
+      res, err := configService.AdminGetConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'get'
+      - 'v1'
+
+  'AdminGetInboxCategoriesShort@chat':
+    id: 'AdminGetInboxCategoriesShort@chat'
+    name: 'AdminGetInboxCategoriesShort'
+    description: |-
+      Get inbox categories
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminGetInboxCategoriesParams'
+        required: true
+    return_type: '(*inbox.AdminGetInboxCategoriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminGetInboxCategoriesParams{ ... }
+      res, err := inboxService.AdminGetInboxCategoriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'categories'
+      - 'get'
+      - 'inbox'
+
+  'AdminGetInboxMessagesShort@chat':
+    id: 'AdminGetInboxMessagesShort@chat'
+    name: 'AdminGetInboxMessagesShort'
+    description: |-
+      Get inbox messages
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminGetInboxMessagesParams'
+        required: true
+    return_type: '(*inbox.AdminGetInboxMessagesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminGetInboxMessagesParams{ ... }
+      res, err := inboxService.AdminGetInboxMessagesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inbox'
+      - 'messages'
+
+  'AdminGetInboxStatsShort@chat':
+    id: 'AdminGetInboxStatsShort@chat'
+    name: 'AdminGetInboxStatsShort'
+    description: |-
+      Get inbox stats
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminGetInboxStatsParams'
+        required: true
+    return_type: '(*inbox.AdminGetInboxStatsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminGetInboxStatsParams{ ... }
+      res, err := inboxService.AdminGetInboxStatsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inbox'
+      - 'stats'
+
+  'AdminGetInboxUsersShort@chat':
+    id: 'AdminGetInboxUsersShort@chat'
+    name: 'AdminGetInboxUsersShort'
+    description: |-
+      Get inbox users
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminGetInboxUsersParams'
+        required: true
+    return_type: '(*inbox.AdminGetInboxUsersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminGetInboxUsersParams{ ... }
+      res, err := inboxService.AdminGetInboxUsersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inbox'
+      - 'users'
+
+  'AdminGetLogConfigShort@chat':
+    id: 'AdminGetLogConfigShort@chat'
+    name: 'AdminGetLogConfigShort'
+    description: |-
+      Get Log Configuration
+      logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+      socketLogEnabled is use for enable socket log
+      internalAccessLogEnabled is for enabling access log for internal endpoint
+      logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+      slowQueryThreshold use for logging slow threshold in time measure is nano second
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetLogConfigParams'
+        required: true
+    return_type: '(*config.AdminGetLogConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.AdminGetLogConfigParams{ ... }
+      res, err := configService.AdminGetLogConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'get'
+      - 'log'
+
+  'AdminListKafkaTopicShort@chat':
+    id: 'AdminListKafkaTopicShort@chat'
+    name: 'AdminListKafkaTopicShort'
+    description: |-
+      Get list kafka topic. example result chat,sessionNotification
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminListKafkaTopicParams'
+        required: true
+    return_type: '(*inbox.AdminListKafkaTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminListKafkaTopicParams{ ... }
+      res, err := inboxService.AdminListKafkaTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inbox'
+      - 'kafka'
+      - 'list'
+      - 'topic'
+
+  'AdminPatchUpdateLogConfigShort@chat':
+    id: 'AdminPatchUpdateLogConfigShort@chat'
+    name: 'AdminPatchUpdateLogConfigShort'
+    description: |-
+      Update Log Configuration
+      logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+      socketLogEnabled is use for enable socket log
+      internalAccessLogEnabled is for enabling access log for internal endpoint
+      logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+      slowQueryThreshold use for logging slow threshold in time measure is nano second
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminPatchUpdateLogConfigParams'
+        required: true
+    return_type: '(*config.AdminPatchUpdateLogConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.AdminPatchUpdateLogConfigParams{ ... }
+      res, err := configService.AdminPatchUpdateLogConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'log'
+      - 'patch'
+      - 'update'
+
+  'AdminProfanityCreateShort@chat':
+    id: 'AdminProfanityCreateShort@chat'
+    name: 'AdminProfanityCreateShort'
+    description: |-
+      Insert new word for profanity censor
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityCreateParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityCreateResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityCreateParams{ ... }
+      res, err := profanityService.AdminProfanityCreateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'profanity'
+
+  'AdminProfanityCreateBulkShort@chat':
+    id: 'AdminProfanityCreateBulkShort@chat'
+    name: 'AdminProfanityCreateBulkShort'
+    description: |-
+      Bulk insert new word for profanity censor
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityCreateBulkParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityCreateBulkParams{ ... }
+      res, err := profanityService.AdminProfanityCreateBulkShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'create'
+      - 'profanity'
+
+  'AdminProfanityDeleteShort@chat':
+    id: 'AdminProfanityDeleteShort@chat'
+    name: 'AdminProfanityDeleteShort'
+    description: |-
+      Delete profanity words.
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityDeleteParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityDeleteParams{ ... }
+      res, err := profanityService.AdminProfanityDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'profanity'
+
+  'AdminProfanityExportShort@chat':
+    id: 'AdminProfanityExportShort@chat'
+    name: 'AdminProfanityExportShort'
+    description: |-
+      Export profanity words
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityExportParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityExportResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityExportParams{ ... }
+      res, err := profanityService.AdminProfanityExportShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'export'
+      - 'profanity'
+
+  'AdminProfanityGroupShort@chat':
+    id: 'AdminProfanityGroupShort@chat'
+    name: 'AdminProfanityGroupShort'
+    description: |-
+      Get profanity words group.
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityGroupParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityGroupParams{ ... }
+      res, err := profanityService.AdminProfanityGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'group'
+      - 'profanity'
+
+  'AdminProfanityImportShort@chat':
+    id: 'AdminProfanityImportShort@chat'
+    name: 'AdminProfanityImportShort'
+    description: |-
+      Import profanity words
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityImportParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityImportResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityImportParams{ ... }
+      res, err := profanityService.AdminProfanityImportShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'import'
+      - 'profanity'
+
+  'AdminProfanityQueryShort@chat':
+    id: 'AdminProfanityQueryShort@chat'
+    name: 'AdminProfanityQueryShort'
+    description: |-
+      Query all profanity words.
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityQueryParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityQueryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityQueryParams{ ... }
+      res, err := profanityService.AdminProfanityQueryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'profanity'
+      - 'query'
+
+  'AdminProfanityUpdateShort@chat':
+    id: 'AdminProfanityUpdateShort@chat'
+    name: 'AdminProfanityUpdateShort'
+    description: |-
+      Update profanity word
+    struct: 'ProfanityService'
+    parameters:
+      params:
+        type: '*profanity.AdminProfanityUpdateParams'
+        required: true
+    return_type: '(*profanity.AdminProfanityUpdateResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/profanity'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/profanity.go'
+    example: |-
+      profanityService := chat.ProfanityService{ ... }
+      params := profanity.AdminProfanityUpdateParams{ ... }
+      res, err := profanityService.AdminProfanityUpdateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'profanity'
+      - 'update'
+
+  'AdminQueryTopicShort@chat':
+    id: 'AdminQueryTopicShort@chat'
+    name: 'AdminQueryTopicShort'
+    description: |-
+      Get topics in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminQueryTopicParams'
+        required: true
+    return_type: '(*topic.AdminQueryTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminQueryTopicParams{ ... }
+      res, err := topicService.AdminQueryTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'query'
+      - 'topic'
+
+  'AdminQueryTopicLogShort@chat':
+    id: 'AdminQueryTopicLogShort@chat'
+    name: 'AdminQueryTopicLogShort'
+    description: |-
+      Get chat log of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminQueryTopicLogParams'
+        required: true
+    return_type: '(*topic.AdminQueryTopicLogResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminQueryTopicLogParams{ ... }
+      res, err := topicService.AdminQueryTopicLogShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'log'
+      - 'query'
+      - 'topic'
+
+  'AdminQueryUsersTopicShort@chat':
+    id: 'AdminQueryUsersTopicShort@chat'
+    name: 'AdminQueryUsersTopicShort'
+    description: |-
+      Get user's topics in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminQueryUsersTopicParams'
+        required: true
+    return_type: '(*topic.AdminQueryUsersTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminQueryUsersTopicParams{ ... }
+      res, err := topicService.AdminQueryUsersTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'query'
+      - 'topic'
+      - 'users'
+
+  'AdminRemoveTopicMemberShort@chat':
+    id: 'AdminRemoveTopicMemberShort@chat'
+    name: 'AdminRemoveTopicMemberShort'
+    description: |-
+      Remove member from topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminRemoveTopicMemberParams'
+        required: true
+    return_type: '(*topic.AdminRemoveTopicMemberResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminRemoveTopicMemberParams{ ... }
+      res, err := topicService.AdminRemoveTopicMemberShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'member'
+      - 'remove'
+      - 'topic'
+
+  'AdminSaveInboxMessageShort@chat':
+    id: 'AdminSaveInboxMessageShort@chat'
+    name: 'AdminSaveInboxMessageShort'
+    description: |-
+      Save inbox message
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminSaveInboxMessageParams'
+        required: true
+    return_type: '(*inbox.AdminSaveInboxMessageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminSaveInboxMessageParams{ ... }
+      res, err := inboxService.AdminSaveInboxMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inbox'
+      - 'message'
+      - 'save'
+
+  'AdminSendChatShort@chat':
+    id: 'AdminSendChatShort@chat'
+    name: 'AdminSendChatShort'
+    description: |-
+      Send message to chat topic as system.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminSendChatParams'
+        required: true
+    return_type: '(*topic.AdminSendChatResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminSendChatParams{ ... }
+      res, err := topicService.AdminSendChatShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'send'
+      - 'topic'
+
+  'AdminSendInboxMessageShort@chat':
+    id: 'AdminSendInboxMessageShort@chat'
+    name: 'AdminSendInboxMessageShort'
+    description: |-
+      Send inbox message
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminSendInboxMessageParams'
+        required: true
+    return_type: '(*inbox.AdminSendInboxMessageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminSendInboxMessageParams{ ... }
+      res, err := inboxService.AdminSendInboxMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inbox'
+      - 'message'
+      - 'send'
+
+  'AdminTopicChatHistoryShort@chat':
+    id: 'AdminTopicChatHistoryShort@chat'
+    name: 'AdminTopicChatHistoryShort'
+    description: |-
+      Get chat history in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminTopicChatHistoryParams'
+        required: true
+    return_type: '(*topic.AdminTopicChatHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminTopicChatHistoryParams{ ... }
+      res, err := topicService.AdminTopicChatHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chat'
+      - 'history'
+      - 'topic'
+
+  'AdminTopicListShort@chat':
+    id: 'AdminTopicListShort@chat'
+    name: 'AdminTopicListShort'
+    description: |-
+      Get chat list of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminTopicListParams'
+        required: true
+    return_type: '(*topic.AdminTopicListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminTopicListParams{ ... }
+      res, err := topicService.AdminTopicListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'topic'
+
+  'AdminTopicMembersShort@chat':
+    id: 'AdminTopicMembersShort@chat'
+    name: 'AdminTopicMembersShort'
+    description: |-
+      Get topic members.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminTopicMembersParams'
+        required: true
+    return_type: '(*topic.AdminTopicMembersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminTopicMembersParams{ ... }
+      res, err := topicService.AdminTopicMembersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'members'
+      - 'topic'
+
+  'AdminTopicShardsShort@chat':
+    id: 'AdminTopicShardsShort@chat'
+    name: 'AdminTopicShardsShort'
+    description: |-
+      Get shard list from topic.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminTopicShardsParams'
+        required: true
+    return_type: '(*topic.AdminTopicShardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminTopicShardsParams{ ... }
+      res, err := topicService.AdminTopicShardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'shards'
+      - 'topic'
+
+  'AdminUnbanTopicMembersShort@chat':
+    id: 'AdminUnbanTopicMembersShort@chat'
+    name: 'AdminUnbanTopicMembersShort'
+    description: |-
+      Unban users in some topic.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminUnbanTopicMembersParams'
+        required: true
+    return_type: '(*topic.AdminUnbanTopicMembersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminUnbanTopicMembersParams{ ... }
+      res, err := topicService.AdminUnbanTopicMembersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'members'
+      - 'topic'
+      - 'unban'
+
+  'AdminUnsendInboxMessageShort@chat':
+    id: 'AdminUnsendInboxMessageShort@chat'
+    name: 'AdminUnsendInboxMessageShort'
+    description: |-
+      Unsend inbox message
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminUnsendInboxMessageParams'
+        required: true
+    return_type: '(*inbox.AdminUnsendInboxMessageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminUnsendInboxMessageParams{ ... }
+      res, err := inboxService.AdminUnsendInboxMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inbox'
+      - 'message'
+      - 'unsend'
+
+  'AdminUpdateConfigV1Short@chat':
+    id: 'AdminUpdateConfigV1Short@chat'
+    name: 'AdminUpdateConfigV1Short'
+    description: |-
+      Update chat config of a namespace.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminUpdateConfigV1Params'
+        required: true
+    return_type: '(*config.AdminUpdateConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.AdminUpdateConfigV1Params{ ... }
+      res, err := configService.AdminUpdateConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'update'
+      - 'v1'
+
+  'AdminUpdateInboxCategoryShort@chat':
+    id: 'AdminUpdateInboxCategoryShort@chat'
+    name: 'AdminUpdateInboxCategoryShort'
+    description: |-
+      Update inbox category
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminUpdateInboxCategoryParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminUpdateInboxCategoryParams{ ... }
+      res, err := inboxService.AdminUpdateInboxCategoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'category'
+      - 'inbox'
+      - 'update'
+
+  'AdminUpdateInboxMessageShort@chat':
+    id: 'AdminUpdateInboxMessageShort@chat'
+    name: 'AdminUpdateInboxMessageShort'
+    description: |-
+      Update inbox message
+    struct: 'InboxService'
+    parameters:
+      params:
+        type: '*inbox.AdminUpdateInboxMessageParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/inbox'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/inbox.go'
+    example: |-
+      inboxService := chat.InboxService{ ... }
+      params := inbox.AdminUpdateInboxMessageParams{ ... }
+      res, err := inboxService.AdminUpdateInboxMessageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inbox'
+      - 'message'
+      - 'update'
+
+  'AdminUpdateTopicShort@chat':
+    id: 'AdminUpdateTopicShort@chat'
+    name: 'AdminUpdateTopicShort'
+    description: |-
+      Update group topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.AdminUpdateTopicParams'
+        required: true
+    return_type: '(*topic.AdminUpdateTopicResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.AdminUpdateTopicParams{ ... }
+      res, err := topicService.AdminUpdateTopicShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'topic'
+      - 'update'
+
+  'ExportConfigShort@chat':
+    id: 'ExportConfigShort@chat'
+    name: 'ExportConfigShort'
+    description: |-
+      Export chat configuration to a json file. The file can then be imported from the /import endpoint.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.ExportConfigParams'
+        required: true
+    return_type: '(*config.ExportConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.ExportConfigParams{ ... }
+      res, err := configService.ExportConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'export'
+
+  'ImportConfigShort@chat':
+    id: 'ImportConfigShort@chat'
+    name: 'ImportConfigShort'
+    description: |-
+      Import config configuration from file. The existing configuration will be replaced.
+      The json file to import can be obtained from the /export endpoint.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.ImportConfigParams'
+        required: true
+    return_type: '(*config.ImportConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.ImportConfigParams{ ... }
+      res, err := configService.ImportConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'import'
+
+  'PublicBanTopicMembersShort@chat':
+    id: 'PublicBanTopicMembersShort@chat'
+    name: 'PublicBanTopicMembersShort'
+    description: |-
+      Ban topic members in a group topic.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicBanTopicMembersParams'
+        required: true
+    return_type: '(*topic.PublicBanTopicMembersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicBanTopicMembersParams{ ... }
+      res, err := topicService.PublicBanTopicMembersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ban'
+      - 'members'
+      - 'public'
+      - 'topic'
+
+  'PublicChatHistoryShort@chat':
+    id: 'PublicChatHistoryShort@chat'
+    name: 'PublicChatHistoryShort'
+    description: |-
+      get chat history in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicChatHistoryParams'
+        required: true
+    return_type: '(*topic.PublicChatHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicChatHistoryParams{ ... }
+      res, err := topicService.PublicChatHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'chat'
+      - 'history'
+      - 'public'
+      - 'topic'
+
+  'PublicDeleteChatShort@chat':
+    id: 'PublicDeleteChatShort@chat'
+    name: 'PublicDeleteChatShort'
+    description: |-
+      Delete chat.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicDeleteChatParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicDeleteChatParams{ ... }
+      res, err := topicService.PublicDeleteChatShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'chat'
+      - 'delete'
+      - 'public'
+      - 'topic'
+
+  'PublicGetChatSnapshotShort@chat':
+    id: 'PublicGetChatSnapshotShort@chat'
+    name: 'PublicGetChatSnapshotShort'
+    description: |-
+      Get the chat snapshot
+    struct: 'ModerationService'
+    parameters:
+      params:
+        type: '*moderation.PublicGetChatSnapshotParams'
+        required: true
+    return_type: '(*moderation.PublicGetChatSnapshotResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/moderation'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/moderation.go'
+    example: |-
+      moderationService := chat.ModerationService{ ... }
+      params := moderation.PublicGetChatSnapshotParams{ ... }
+      res, err := moderationService.PublicGetChatSnapshotShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'chat'
+      - 'get'
+      - 'moderation'
+      - 'public'
+      - 'snapshot'
+
+  'PublicGetConfigV1Short@chat':
+    id: 'PublicGetConfigV1Short@chat'
+    name: 'PublicGetConfigV1Short'
+    description: |-
+      Get chat config of a namespace.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.PublicGetConfigV1Params'
+        required: true
+    return_type: '(*config.PublicGetConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/config.go'
+    example: |-
+      configService := chat.ConfigService{ ... }
+      params := config.PublicGetConfigV1Params{ ... }
+      res, err := configService.PublicGetConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'config'
+      - 'get'
+      - 'public'
+      - 'v1'
+
+  'PublicGetMessagesShort@chat':
+    id: 'PublicGetMessagesShort@chat'
+    name: 'PublicGetMessagesShort'
+    description: |-
+      get the list of messages.
+    struct: 'EmptyService'
+    parameters:
+      params:
+        type: '*.PublicGetMessagesParams'
+        required: true
+    return_type: '(*.PublicGetMessagesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/.go'
+    example: |-
+      emptyService := chat.EmptyService{ ... }
+      params := .PublicGetMessagesParams{ ... }
+      res, err := emptyService.PublicGetMessagesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'messages'
+      - 'public'
+
+  'PublicGetMutedTopicsShort@chat':
+    id: 'PublicGetMutedTopicsShort@chat'
+    name: 'PublicGetMutedTopicsShort'
+    description: |-
+      get chat muted topics in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicGetMutedTopicsParams'
+        required: true
+    return_type: '(*topic.PublicGetMutedTopicsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicGetMutedTopicsParams{ ... }
+      res, err := topicService.PublicGetMutedTopicsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'muted'
+      - 'public'
+      - 'topic'
+      - 'topics'
+
+  'PublicMuteUserShort@chat':
+    id: 'PublicMuteUserShort@chat'
+    name: 'PublicMuteUserShort'
+    description: |-
+      Mute user.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicMuteUserParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicMuteUserParams{ ... }
+      res, err := topicService.PublicMuteUserShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'mute'
+      - 'public'
+      - 'topic'
+      - 'user'
+
+  'PublicTopicListShort@chat':
+    id: 'PublicTopicListShort@chat'
+    name: 'PublicTopicListShort'
+    description: |-
+      get chat list of topic in a namespace.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicTopicListParams'
+        required: true
+    return_type: '(*topic.PublicTopicListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicTopicListParams{ ... }
+      res, err := topicService.PublicTopicListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'list'
+      - 'public'
+      - 'topic'
+
+  'PublicUnbanTopicMembersShort@chat':
+    id: 'PublicUnbanTopicMembersShort@chat'
+    name: 'PublicUnbanTopicMembersShort'
+    description: |-
+      Unban topic members in a group topic.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicUnbanTopicMembersParams'
+        required: true
+    return_type: '(*topic.PublicUnbanTopicMembersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicUnbanTopicMembersParams{ ... }
+      res, err := topicService.PublicUnbanTopicMembersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'members'
+      - 'public'
+      - 'topic'
+      - 'unban'
+
+  'PublicUnmuteUserShort@chat':
+    id: 'PublicUnmuteUserShort@chat'
+    name: 'PublicUnmuteUserShort'
+    description: |-
+      Unmute user.
+    struct: 'TopicService'
+    parameters:
+      params:
+        type: '*topic.PublicUnmuteUserParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/topic'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/chat'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/chat/topic.go'
+    example: |-
+      topicService := chat.TopicService{ ... }
+      params := topic.PublicUnmuteUserParams{ ... }
+      res, err := topicService.PublicUnmuteUserShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'public'
+      - 'topic'
+      - 'unmute'
+      - 'user'

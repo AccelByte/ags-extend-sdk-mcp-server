@@ -1,0 +1,596 @@
+structs:
+  'JusticeGametelemetryService@gametelemetry':
+    id: 'JusticeGametelemetryService@gametelemetry'
+    name: 'JusticeGametelemetryService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/justice_gametelemetry_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/gametelemetryclientfactory.go'
+    example: |-
+      gametelemetryClient := factory.NewGametelemetryClient(configRepo)
+
+  # region wrappers
+
+  'GametelemetryOperationsService@gametelemetry':
+    id: 'GametelemetryOperationsService@gametelemetry'
+    name: 'GametelemetryOperationsService'
+    fields:
+      Client:
+        type: '*gametelemetryclient.JusticeGametelemetryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/gametelemetryOperations.go'
+    example: |-
+      gametelemetryClient := factory.NewGametelemetryClient(configRepo) // re-use if it exists already
+      gametelemetryOperationsService := GametelemetryOperationsService{
+          Client:           gametelemetryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'TelemetryService@gametelemetry':
+    id: 'TelemetryService@gametelemetry'
+    name: 'TelemetryService'
+    fields:
+      Client:
+        type: '*gametelemetryclient.JusticeGametelemetryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/telemetry.go'
+    example: |-
+      gametelemetryClient := factory.NewGametelemetryClient(configRepo) // re-use if it exists already
+      telemetryService := TelemetryService{
+          Client:           gametelemetryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@gametelemetry':
+    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@gametelemetry'
+    name: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams'
+    fields:
+      'DeviceType':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry DeviceType.
+      'EndTime':
+        type: 'string'
+        required: false
+        description: |-
+          End time of data to be queried. Default: Current time in UTC.
+      'EventID':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry EventId.
+      'EventName':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry EventName.
+      'EventPayload':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry payload to be query. Format: [foo].[bar]:[keyword]. e.g: player.username:tom*
+      'FlightID':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry FlightId.
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit of response data number.
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset of response data number.
+      'StartTime':
+        type: 'string'
+        required: false
+        description: |-
+          Start time of data to be queried. Default: Current time in UTC minus 1 day.
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          Game telemetry UserId.
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/telemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/telemetry/get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_parameters.go'
+
+  'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@gametelemetry':
+    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@gametelemetry'
+    name: 'GetNamespacesGameTelemetryV1AdminNamespacesGetParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/telemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/telemetry/get_namespaces_game_telemetry_v1_admin_namespaces_get_parameters.go'
+
+  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@gametelemetry':
+    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@gametelemetry'
+    name: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams'
+    fields:
+      'Cookie':
+        type: 'string'
+        required: false
+      'SteamID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations/protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_parameters.go'
+
+  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@gametelemetry':
+    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@gametelemetry'
+    name: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams'
+    fields:
+      'Body':
+        type: '[]*TelemetryBody'
+        required: true
+      'Cookie':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations/protected_save_events_game_telemetry_v1_protected_events_post_parameters.go'
+
+  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@gametelemetry':
+    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@gametelemetry'
+    name: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams'
+    fields:
+      'Cookie':
+        type: 'string'
+        required: false
+      'Playtime':
+        type: '*string'
+        required: true
+      'SteamID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations/protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'BaseErrorResponse@gametelemetry':
+    id: 'BaseErrorResponse@gametelemetry'
+    name: 'BaseErrorResponse'
+    fields:
+      'ErrorCode':
+        type: '*int64'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/base_error_response.go'
+
+  'GetNamespaceEventResponse@gametelemetry':
+    id: 'GetNamespaceEventResponse@gametelemetry'
+    name: 'GetNamespaceEventResponse'
+    fields:
+      'EventID':
+        type: '*string'
+        required: true
+      'EventName':
+        type: '*string'
+        required: true
+      'EventNamespace':
+        type: '*string'
+        required: true
+      'EventTimestamp':
+        type: '*string'
+        required: true
+      'FlightID':
+        type: 'string'
+        required: false
+      'Payload':
+        type: 'interface{}'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+      'UserNamespace':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/get_namespace_event_response.go'
+
+  'HTTPValidationError@gametelemetry':
+    id: 'HTTPValidationError@gametelemetry'
+    name: 'HTTPValidationError'
+    fields:
+      'Detail':
+        type: '[]*ValidationError'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/http_validation_error.go'
+
+  'ListBaseResponseStr@gametelemetry':
+    id: 'ListBaseResponseStr@gametelemetry'
+    name: 'ListBaseResponseStr'
+    fields:
+      'Data':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/list_base_response_str.go'
+
+  'PagedResponseGetNamespaceEventResponse@gametelemetry':
+    id: 'PagedResponseGetNamespaceEventResponse@gametelemetry'
+    name: 'PagedResponseGetNamespaceEventResponse'
+    fields:
+      'Data':
+        type: '[]*GetNamespaceEventResponse'
+        required: true
+      'Paging':
+        type: '*Paging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/paged_response_get_namespace_event_response.go'
+
+  'Paging@gametelemetry':
+    id: 'Paging@gametelemetry'
+    name: 'Paging'
+    fields:
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/paging.go'
+
+  'PlayTimeResponse@gametelemetry':
+    id: 'PlayTimeResponse@gametelemetry'
+    name: 'PlayTimeResponse'
+    fields:
+      'TotalPlaytime':
+        type: '*float64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/play_time_response.go'
+
+  'TelemetryBody@gametelemetry':
+    id: 'TelemetryBody@gametelemetry'
+    name: 'TelemetryBody'
+    fields:
+      'ClientTimestamp':
+        type: '*strfmt.DateTime'
+        required: false
+      'DeviceType':
+        type: 'string'
+        required: false
+      'EventID':
+        type: 'string'
+        required: false
+        description: |-
+          Adding this `EventID` field in the request body does not override the `EventID` generated by server which is saved in the data lake
+      'EventName':
+        type: '*string'
+        required: true
+      'EventNamespace':
+        type: '*string'
+        required: true
+      'EventTimestamp':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          Adding this `EventTimestamp` field in the request body does not override the `EventTimestamp` generated by server which is saved in the data lake. To add specific timestamp of your telemetry data, please add it to ClientTimestamp field OR a new subfield in the `payload` field
+      'Payload':
+        type: 'interface{}'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/telemetry_body.go'
+
+  'ValidationError@gametelemetry':
+    id: 'ValidationError@gametelemetry'
+    name: 'ValidationError'
+    fields:
+      'Loc':
+        type: '[]string'
+        required: true
+      'Msg':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/validation_error.go'
+
+  # endregion models
+
+functions:
+
+  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@gametelemetry':
+    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@gametelemetry'
+    name: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort'
+    description: |-
+      This endpoint requires valid JWT token and telemetry permission
+      This endpoint retrieves event list
+    struct: 'TelemetryService'
+    parameters:
+      params:
+        type: '*telemetry.GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams'
+        required: true
+    return_type: '(*telemetry.GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/telemetry'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gametelemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/telemetry.go'
+    example: |-
+      telemetryService := gametelemetry.TelemetryService{ ... }
+      params := telemetry.GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams{ ... }
+      res, err := telemetryService.GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'events'
+      - 'game'
+      - 'get'
+      - 'namespace'
+      - 'namespaces'
+      - 'telemetry'
+      - 'v1'
+
+  'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@gametelemetry':
+    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@gametelemetry'
+    name: 'GetNamespacesGameTelemetryV1AdminNamespacesGetShort'
+    description: |-
+      This endpoint requires valid JWT token and telemetry permission
+      This endpoint retrieves namespace list
+    struct: 'TelemetryService'
+    parameters:
+      params:
+        type: '*telemetry.GetNamespacesGameTelemetryV1AdminNamespacesGetParams'
+        required: true
+    return_type: '(*telemetry.GetNamespacesGameTelemetryV1AdminNamespacesGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/telemetry'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gametelemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/telemetry.go'
+    example: |-
+      telemetryService := gametelemetry.TelemetryService{ ... }
+      params := telemetry.GetNamespacesGameTelemetryV1AdminNamespacesGetParams{ ... }
+      res, err := telemetryService.GetNamespacesGameTelemetryV1AdminNamespacesGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'game'
+      - 'get'
+      - 'namespaces'
+      - 'telemetry'
+      - 'v1'
+
+  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@gametelemetry':
+    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@gametelemetry'
+    name: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort'
+    description: |-
+      This endpoint requires valid JWT token.
+      This endpoint does not require permission.
+
+      This endpoint retrieves player's total playtime in Steam for a specific game (AppId) and store them in service's cache.
+
+      Players' Steam account must be set into public to enable the service fetch their total playtime data.
+    struct: 'GametelemetryOperationsService'
+    parameters:
+      params:
+        type: '*gametelemetry_operations.ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams'
+        required: true
+    return_type: '(*gametelemetry_operations.ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gametelemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/gametelemetryOperations.go'
+    example: |-
+      gametelemetryOperationsService := gametelemetry.GametelemetryOperationsService{ ... }
+      params := gametelemetry_operations.ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams{ ... }
+      res, err := gametelemetryOperationsService.ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'game'
+      - 'gametelemetry'
+      - 'get'
+      - 'id'
+      - 'ids'
+      - 'operations'
+      - 'playtime'
+      - 'protected'
+      - 'steam'
+      - 'telemetry'
+      - 'v1'
+
+  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@gametelemetry':
+    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@gametelemetry'
+    name: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort'
+    description: |-
+      This endpoint requires valid JWT token.
+      This endpoint does not require permission.
+
+      This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
+
+
+      Format of the event:
+
+      - **EventNamespace (required)**: Namespace of the relevant game with domain name format.
+
+
+      Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+      It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+      Example: accelbyte
+
+
+
+      - **EventName (required)**: Name of the event.
+
+
+      Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+      It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+      Example: player_killed, mission_accomplished
+
+
+
+      - **Payload (required)**: An arbitrary json with the payload of the said event.
+
+
+      Default maximum payload size is 1MB
+
+
+
+      - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
+
+      - **DeviceType (optional)**: The device type of the user.
+    struct: 'GametelemetryOperationsService'
+    parameters:
+      params:
+        type: '*gametelemetry_operations.ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gametelemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/gametelemetryOperations.go'
+    example: |-
+      gametelemetryOperationsService := gametelemetry.GametelemetryOperationsService{ ... }
+      params := gametelemetry_operations.ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams{ ... }
+      res, err := gametelemetryOperationsService.ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'events'
+      - 'game'
+      - 'gametelemetry'
+      - 'operations'
+      - 'post'
+      - 'protected'
+      - 'save'
+      - 'telemetry'
+      - 'v1'
+
+  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@gametelemetry':
+    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@gametelemetry'
+    name: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort'
+    description: |-
+      This endpoint requires valid JWT token.
+      This endpoint does not require permission.
+
+      This endpoint update player's total playtime in a specific game (AppId) from service's cache.
+    struct: 'GametelemetryOperationsService'
+    parameters:
+      params:
+        type: '*gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams'
+        required: true
+    return_type: '(*gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gametelemetry'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gametelemetry/gametelemetryOperations.go'
+    example: |-
+      gametelemetryOperationsService := gametelemetry.GametelemetryOperationsService{ ... }
+      params := gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams{ ... }
+      res, err := gametelemetryOperationsService.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'game'
+      - 'gametelemetry'
+      - 'id'
+      - 'ids'
+      - 'operations'
+      - 'playtime'
+      - 'protected'
+      - 'put'
+      - 'steam'
+      - 'telemetry'
+      - 'update'
+      - 'v1'

@@ -1,0 +1,5337 @@
+structs:
+  'JusticeCsmService@csm':
+    id: 'JusticeCsmService@csm'
+    name: 'JusticeCsmService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/justice_csm_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/csmclientfactory.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo)
+
+  # region wrappers
+
+  'AppService@csm':
+    id: 'AppService@csm'
+    name: 'AppService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appService := AppService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AppV2Service@csm':
+    id: 'AppV2Service@csm'
+    name: 'AppV2Service'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appV2Service := AppV2Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ConfigurationService@csm':
+    id: 'ConfigurationService@csm'
+    name: 'ConfigurationService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      configurationService := ConfigurationService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ConfigurationV2Service@csm':
+    id: 'ConfigurationV2Service@csm'
+    name: 'ConfigurationV2Service'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      configurationV2Service := ConfigurationV2Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DeploymentService@csm':
+    id: 'DeploymentService@csm'
+    name: 'DeploymentService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deployment.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      deploymentService := DeploymentService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DeploymentV2Service@csm':
+    id: 'DeploymentV2Service@csm'
+    name: 'DeploymentV2Service'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deploymentV2.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      deploymentV2Service := DeploymentV2Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ImageService@csm':
+    id: 'ImageService@csm'
+    name: 'ImageService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/image.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      imageService := ImageService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ImageV2Service@csm':
+    id: 'ImageV2Service@csm'
+    name: 'ImageV2Service'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/imageV2.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      imageV2Service := ImageV2Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MessagesService@csm':
+    id: 'MessagesService@csm'
+    name: 'MessagesService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/messages.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      messagesService := MessagesService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'NotificationSubscriptionService@csm':
+    id: 'NotificationSubscriptionService@csm'
+    name: 'NotificationSubscriptionService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      notificationSubscriptionService := NotificationSubscriptionService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'NotificationSubscriptionV3Service@csm':
+    id: 'NotificationSubscriptionV3Service@csm'
+    name: 'NotificationSubscriptionV3Service'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscriptionV3.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      notificationSubscriptionV3Service := NotificationSubscriptionV3Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ResourcesLimitsService@csm':
+    id: 'ResourcesLimitsService@csm'
+    name: 'ResourcesLimitsService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/resourcesLimits.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      resourcesLimitsService := ResourcesLimitsService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'BulkSaveSubscriptionAppNotificationV2Params@csm':
+    id: 'BulkSaveSubscriptionAppNotificationV2Params@csm'
+    name: 'BulkSaveSubscriptionAppNotificationV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelBulkSubscribeRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/bulk_save_subscription_app_notification_v2_parameters.go'
+
+  'CreateAppV1Params@csm':
+    id: 'CreateAppV1Params@csm'
+    name: 'CreateAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*GeneratedCreateAppV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/create_app_v1_parameters.go'
+
+  'CreateAppV2Params@csm':
+    id: 'CreateAppV2Params@csm'
+    name: 'CreateAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelCreateAppV2Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/create_app_v2_parameters.go'
+
+  'CreateDeploymentV1Params@csm':
+    id: 'CreateDeploymentV1Params@csm'
+    name: 'CreateDeploymentV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedCreateDeploymentV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment/create_deployment_v1_parameters.go'
+
+  'CreateDeploymentV2Params@csm':
+    id: 'CreateDeploymentV2Params@csm'
+    name: 'CreateDeploymentV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateDeploymentV2Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/create_deployment_v2_parameters.go'
+
+  'DeleteAppImagesV1Params@csm':
+    id: 'DeleteAppImagesV1Params@csm'
+    name: 'DeleteAppImagesV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedDeleteAppImagesV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/image/delete_app_images_v1_parameters.go'
+
+  'DeleteAppImagesV2Params@csm':
+    id: 'DeleteAppImagesV2Params@csm'
+    name: 'DeleteAppImagesV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedDeleteAppImagesV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/image_v2/delete_app_images_v2_parameters.go'
+
+  'DeleteAppV1Params@csm':
+    id: 'DeleteAppV1Params@csm'
+    name: 'DeleteAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Forced':
+        type: 'string'
+        required: false
+        description: |-
+          Force App Deletion
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/delete_app_v1_parameters.go'
+
+  'DeleteAppV2Params@csm':
+    id: 'DeleteAppV2Params@csm'
+    name: 'DeleteAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Forced':
+        type: 'string'
+        required: false
+        description: |-
+          Force app deletion, if 'true' will proceed delete regardless of current app status (default: false)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/delete_app_v2_parameters.go'
+
+  'DeleteDeploymentV1Params@csm':
+    id: 'DeleteDeploymentV1Params@csm'
+    name: 'DeleteDeploymentV1Params'
+    fields:
+      'DeploymentID':
+        type: '*string'
+        required: true
+        description: |-
+          Deployment ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment/delete_deployment_v1_parameters.go'
+
+  'DeleteDeploymentV2Params@csm':
+    id: 'DeleteDeploymentV2Params@csm'
+    name: 'DeleteDeploymentV2Params'
+    fields:
+      'DeploymentID':
+        type: '*string'
+        required: true
+        description: |-
+          Deployment ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/delete_deployment_v2_parameters.go'
+
+  'DeleteSecretV1Params@csm':
+    id: 'DeleteSecretV1Params@csm'
+    name: 'DeleteSecretV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/delete_secret_v1_parameters.go'
+
+  'DeleteSecretV2Params@csm':
+    id: 'DeleteSecretV2Params@csm'
+    name: 'DeleteSecretV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/delete_secret_v2_parameters.go'
+
+  'DeleteSubscriptionAppNotificationByUserIDV2Params@csm':
+    id: 'DeleteSubscriptionAppNotificationByUserIDV2Params@csm'
+    name: 'DeleteSubscriptionAppNotificationByUserIDV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/delete_subscription_app_notification_by_user_id_v2_parameters.go'
+
+  'DeleteSubscriptionAppNotificationV2Params@csm':
+    id: 'DeleteSubscriptionAppNotificationV2Params@csm'
+    name: 'DeleteSubscriptionAppNotificationV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'SubscriptionID':
+        type: '*string'
+        required: true
+        description: |-
+          Subscription ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/delete_subscription_app_notification_v2_parameters.go'
+
+  'DeleteSubscriptionAppNotificationV3Params@csm':
+    id: 'DeleteSubscriptionAppNotificationV3Params@csm'
+    name: 'DeleteSubscriptionAppNotificationV3Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'EmailAddress':
+        type: 'string'
+        required: false
+        description: |-
+          emailAddress
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription_v3'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription_v3/delete_subscription_app_notification_v3_parameters.go'
+
+  'DeleteVariableV1Params@csm':
+    id: 'DeleteVariableV1Params@csm'
+    name: 'DeleteVariableV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/delete_variable_v1_parameters.go'
+
+  'DeleteVariableV2Params@csm':
+    id: 'DeleteVariableV2Params@csm'
+    name: 'DeleteVariableV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/delete_variable_v2_parameters.go'
+
+  'GetAppImageListV1Params@csm':
+    id: 'GetAppImageListV1Params@csm'
+    name: 'GetAppImageListV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Cached':
+        type: 'string'
+        required: false
+        description: |-
+          Get Cached Images
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/image/get_app_image_list_v1_parameters.go'
+
+  'GetAppImageListV2Params@csm':
+    id: 'GetAppImageListV2Params@csm'
+    name: 'GetAppImageListV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Cached':
+        type: 'string'
+        required: false
+        description: |-
+          Get Cached Images
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/image_v2/get_app_image_list_v2_parameters.go'
+
+  'GetAppListV1Params@csm':
+    id: 'GetAppListV1Params@csm'
+    name: 'GetAppListV1Params'
+    fields:
+      'Body':
+        type: '*GeneratedGetAppListV1Request'
+        required: true
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/get_app_list_v1_parameters.go'
+
+  'GetAppListV2Params@csm':
+    id: 'GetAppListV2Params@csm'
+    name: 'GetAppListV2Params'
+    fields:
+      'Body':
+        type: '*ApimodelGetAppListV2Request'
+        required: true
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum number of apps items returned
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Starting point offset items
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/get_app_list_v2_parameters.go'
+
+  'GetAppReleaseV1Params@csm':
+    id: 'GetAppReleaseV1Params@csm'
+    name: 'GetAppReleaseV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/get_app_release_v1_parameters.go'
+
+  'GetAppV1Params@csm':
+    id: 'GetAppV1Params@csm'
+    name: 'GetAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/get_app_v1_parameters.go'
+
+  'GetAppV2Params@csm':
+    id: 'GetAppV2Params@csm'
+    name: 'GetAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/get_app_v2_parameters.go'
+
+  'GetDeploymentV1Params@csm':
+    id: 'GetDeploymentV1Params@csm'
+    name: 'GetDeploymentV1Params'
+    fields:
+      'DeploymentID':
+        type: '*string'
+        required: true
+        description: |-
+          Deployment ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment/get_deployment_v1_parameters.go'
+
+  'GetDeploymentV2Params@csm':
+    id: 'GetDeploymentV2Params@csm'
+    name: 'GetDeploymentV2Params'
+    fields:
+      'DeploymentID':
+        type: '*string'
+        required: true
+        description: |-
+          Deployment ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/get_deployment_v2_parameters.go'
+
+  'GetListOfDeploymentV1Params@csm':
+    id: 'GetListOfDeploymentV1Params@csm'
+    name: 'GetListOfDeploymentV1Params'
+    fields:
+      'Body':
+        type: '*GeneratedGetDeploymentListV1Request'
+        required: true
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment/get_list_of_deployment_v1_parameters.go'
+
+  'GetListOfDeploymentV2Params@csm':
+    id: 'GetListOfDeploymentV2Params@csm'
+    name: 'GetListOfDeploymentV2Params'
+    fields:
+      'Body':
+        type: '*ApimodelGetDeploymentListV2Request'
+        required: true
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/get_list_of_deployment_v2_parameters.go'
+
+  'GetListOfSecretsV1Params@csm':
+    id: 'GetListOfSecretsV1Params@csm'
+    name: 'GetListOfSecretsV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/get_list_of_secrets_v1_parameters.go'
+
+  'GetListOfSecretsV2Params@csm':
+    id: 'GetListOfSecretsV2Params@csm'
+    name: 'GetListOfSecretsV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/get_list_of_secrets_v2_parameters.go'
+
+  'GetListOfVariablesV1Params@csm':
+    id: 'GetListOfVariablesV1Params@csm'
+    name: 'GetListOfVariablesV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/get_list_of_variables_v1_parameters.go'
+
+  'GetListOfVariablesV2Params@csm':
+    id: 'GetListOfVariablesV2Params@csm'
+    name: 'GetListOfVariablesV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/get_list_of_variables_v2_parameters.go'
+
+  'GetNotificationSubscriberListV2Params@csm':
+    id: 'GetNotificationSubscriberListV2Params@csm'
+    name: 'GetNotificationSubscriberListV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'NotificationType':
+        type: '*string'
+        required: true
+        description: |-
+          Notification Type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/get_notification_subscriber_list_v2_parameters.go'
+
+  'GetNotificationSubscriberListV3Params@csm':
+    id: 'GetNotificationSubscriberListV3Params@csm'
+    name: 'GetNotificationSubscriberListV3Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+      'NotificationType':
+        type: '*string'
+        required: true
+        description: |-
+          Notification Type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription_v3'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription_v3/get_notification_subscriber_list_v3_parameters.go'
+
+  'GetResourcesLimitsParams@csm':
+    id: 'GetResourcesLimitsParams@csm'
+    name: 'GetResourcesLimitsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/resources_limits'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/resources_limits/get_resources_limits_parameters.go'
+
+  'GetSubscriptionV2HandlerParams@csm':
+    id: 'GetSubscriptionV2HandlerParams@csm'
+    name: 'GetSubscriptionV2HandlerParams'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/get_subscription_v2_handler_parameters.go'
+
+  'PublicGetMessagesParams@csm':
+    id: 'PublicGetMessagesParams@csm'
+    name: 'PublicGetMessagesParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/messages'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/messages/public_get_messages_parameters.go'
+
+  'SaveSecretV1Params@csm':
+    id: 'SaveSecretV1Params@csm'
+    name: 'SaveSecretV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedSaveConfigurationV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/save_secret_v1_parameters.go'
+
+  'SaveSecretV2Params@csm':
+    id: 'SaveSecretV2Params@csm'
+    name: 'SaveSecretV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelSaveSecretConfigurationV2Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/save_secret_v2_parameters.go'
+
+  'SaveVariableV1Params@csm':
+    id: 'SaveVariableV1Params@csm'
+    name: 'SaveVariableV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedSaveConfigurationV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/save_variable_v1_parameters.go'
+
+  'SaveVariableV2Params@csm':
+    id: 'SaveVariableV2Params@csm'
+    name: 'SaveVariableV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelSaveConfigurationV2Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/save_variable_v2_parameters.go'
+
+  'StartAppV1Params@csm':
+    id: 'StartAppV1Params@csm'
+    name: 'StartAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*GeneratedStartAppV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/start_app_v1_parameters.go'
+
+  'StartAppV2Params@csm':
+    id: 'StartAppV2Params@csm'
+    name: 'StartAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/start_app_v2_parameters.go'
+
+  'StopAppV1Params@csm':
+    id: 'StopAppV1Params@csm'
+    name: 'StopAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*GeneratedStopAppV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/stop_app_v1_parameters.go'
+
+  'StopAppV2Params@csm':
+    id: 'StopAppV2Params@csm'
+    name: 'StopAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/stop_app_v2_parameters.go'
+
+  'SubscribeAppNotificationV2Params@csm':
+    id: 'SubscribeAppNotificationV2Params@csm'
+    name: 'SubscribeAppNotificationV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelSubscribeNotificationRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/subscribe_app_notification_v2_parameters.go'
+
+  'SubscribeV2HandlerParams@csm':
+    id: 'SubscribeV2HandlerParams@csm'
+    name: 'SubscribeV2HandlerParams'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelSelfSubscribeNotificationRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/subscribe_v2_handler_parameters.go'
+
+  'UnsubscribeV2HandlerParams@csm':
+    id: 'UnsubscribeV2HandlerParams@csm'
+    name: 'UnsubscribeV2HandlerParams'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/unsubscribe_v2_handler_parameters.go'
+
+  'UpdateAppResourcesResourceLimitFormV2Params@csm':
+    id: 'UpdateAppResourcesResourceLimitFormV2Params@csm'
+    name: 'UpdateAppResourcesResourceLimitFormV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelIncreaseLimitFormRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/update_app_resources_resource_limit_form_v2_parameters.go'
+
+  'UpdateAppResourcesV2Params@csm':
+    id: 'UpdateAppResourcesV2Params@csm'
+    name: 'UpdateAppResourcesV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelUpdateAppResourceRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/update_app_resources_v2_parameters.go'
+
+  'UpdateAppV1Params@csm':
+    id: 'UpdateAppV1Params@csm'
+    name: 'UpdateAppV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*GeneratedUpdateAppV1Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/update_app_v1_parameters.go'
+
+  'UpdateAppV2Params@csm':
+    id: 'UpdateAppV2Params@csm'
+    name: 'UpdateAppV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelUpdateAppV2Request'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/update_app_v2_parameters.go'
+
+  'UpdateSecretV1Params@csm':
+    id: 'UpdateSecretV1Params@csm'
+    name: 'UpdateSecretV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedUpdateConfigurationV1Request'
+        required: true
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/update_secret_v1_parameters.go'
+
+  'UpdateSecretV2Params@csm':
+    id: 'UpdateSecretV2Params@csm'
+    name: 'UpdateSecretV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelUpdateSecretConfigurationV2Request'
+        required: true
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/update_secret_v2_parameters.go'
+
+  'UpdateVariableV1Params@csm':
+    id: 'UpdateVariableV1Params@csm'
+    name: 'UpdateVariableV1Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*GeneratedUpdateConfigurationV1Request'
+        required: true
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration/update_variable_v1_parameters.go'
+
+  'UpdateVariableV2Params@csm':
+    id: 'UpdateVariableV2Params@csm'
+    name: 'UpdateVariableV2Params'
+    fields:
+      'App':
+        type: '*string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelUpdateConfigurationV2Request'
+        required: true
+      'ConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          Config ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/update_variable_v2_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ApimodelAppItem@csm':
+    id: 'ApimodelAppItem@csm'
+    name: 'ApimodelAppItem'
+    fields:
+      'AppID':
+        type: '*string'
+        required: true
+      'AppName':
+        type: '*string'
+        required: true
+      'AppRepoArn':
+        type: 'string'
+        required: false
+      'AppRepoURL':
+        type: 'string'
+        required: false
+      'AppStatus':
+        type: '*string'
+        required: true
+      'Autoscaling':
+        type: '*ApimodelAutoscalingResponse'
+        required: false
+      'BasePath':
+        type: 'string'
+        required: false
+      'CPU':
+        type: '*ApimodelCPUResponse'
+        required: false
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentCreatedAt':
+        type: 'string'
+        required: false
+      'DeploymentID':
+        type: 'string'
+        required: false
+      'DeploymentImageTag':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'GameName':
+        type: '*string'
+        required: true
+      'IsResourceApplied':
+        type: '*bool'
+        required: true
+      'Memory':
+        type: '*ApimodelMemoryResponse'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Replica':
+        type: '*ApimodelReplicaResponse'
+        required: false
+      'Scenario':
+        type: '*string'
+        required: true
+      'ServicePublicURL':
+        type: 'string'
+        required: false
+      'ServiceURL':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: '*string'
+        required: true
+      'VMSharingConfiguration':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_item.go'
+
+  'ApimodelAutoscalingRequest@csm':
+    id: 'ApimodelAutoscalingRequest@csm'
+    name: 'ApimodelAutoscalingRequest'
+    fields:
+      'TargetCPUUtilizationPercent':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_autoscaling_request.go'
+
+  'ApimodelAutoscalingResponse@csm':
+    id: 'ApimodelAutoscalingResponse@csm'
+    name: 'ApimodelAutoscalingResponse'
+    fields:
+      'TargetCPUUtilizationPercent':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_autoscaling_response.go'
+
+  'ApimodelBulkSubscribeItem@csm':
+    id: 'ApimodelBulkSubscribeItem@csm'
+    name: 'ApimodelBulkSubscribeItem'
+    fields:
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'NotificationType':
+        type: 'map[string]bool'
+        required: true
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_bulk_subscribe_item.go'
+
+  'ApimodelBulkSubscribeRequest@csm':
+    id: 'ApimodelBulkSubscribeRequest@csm'
+    name: 'ApimodelBulkSubscribeRequest'
+    fields:
+      'Subscribers':
+        type: '[]*ApimodelBulkSubscribeItem'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_bulk_subscribe_request.go'
+
+  'ApimodelCPURequest@csm':
+    id: 'ApimodelCPURequest@csm'
+    name: 'ApimodelCPURequest'
+    fields:
+      'RequestCPU':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_cpu_request.go'
+
+  'ApimodelCPUResponse@csm':
+    id: 'ApimodelCPUResponse@csm'
+    name: 'ApimodelCPUResponse'
+    fields:
+      'CPULimit':
+        type: 'int32'
+        required: false
+      'RequestCPU':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_cpu_response.go'
+
+  'ApimodelCreateAppV2Request@csm':
+    id: 'ApimodelCreateAppV2Request@csm'
+    name: 'ApimodelCreateAppV2Request'
+    fields:
+      'Autoscaling':
+        type: '*ApimodelAutoscalingRequest'
+        required: false
+      'CPU':
+        type: '*ApimodelCPURequest'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Memory':
+        type: '*ApimodelMemoryRequest'
+        required: false
+      'Replica':
+        type: '*ApimodelReplicaRequest'
+        required: false
+      'Scenario':
+        type: '*string'
+        required: true
+      'VMSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_app_v2_request.go'
+
+  'ApimodelCreateDeploymentV2Request@csm':
+    id: 'ApimodelCreateDeploymentV2Request@csm'
+    name: 'ApimodelCreateDeploymentV2Request'
+    fields:
+      'ImageTag':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_deployment_v2_request.go'
+
+  'ApimodelCreateDeploymentV2Response@csm':
+    id: 'ApimodelCreateDeploymentV2Response@csm'
+    name: 'ApimodelCreateDeploymentV2Response'
+    fields:
+      'DeploymentID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_deployment_v2_response.go'
+
+  'ApimodelCSMAppLimitsResponse@csm':
+    id: 'ApimodelCSMAppLimitsResponse@csm'
+    name: 'ApimodelCSMAppLimitsResponse'
+    fields:
+      'Autoscaling':
+        type: '*ModelCSMAutoscalingDefaults'
+        required: true
+      'ExtendAppCPULimit':
+        type: '*int32'
+        required: true
+      'ExtendAppeEventHandlerMemoryLimit':
+        type: '*int32'
+        required: true
+      'ExtendAppEventHandlerCPULimit':
+        type: '*int32'
+        required: true
+      'ExtendAppMemoryLimit':
+        type: '*int32'
+        required: true
+      'ExtendAppReplicaLimit':
+        type: '*int32'
+        required: true
+      'MaxSubscriberCount':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_c_s_m_app_limits_response.go'
+
+  'ApimodelGetAppImageListV2DataItem@csm':
+    id: 'ApimodelGetAppImageListV2DataItem@csm'
+    name: 'ApimodelGetAppImageListV2DataItem'
+    fields:
+      'ImageDigest':
+        type: '*string'
+        required: true
+      'ImageScanResult':
+        type: '*ApimodelGetAppImageListV2DataItemImageScanResult'
+        required: false
+      'ImageScanStatus':
+        type: '*ApimodelGetAppImageListV2DataItemImageScanStatus'
+        required: false
+      'ImageTag':
+        type: '*string'
+        required: true
+      'IsActive':
+        type: '*bool'
+        required: true
+      'Size':
+        type: '*int64'
+        required: true
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_image_list_v2_data_item.go'
+
+  'ApimodelGetAppImageListV2DataItemImageScanResult@csm':
+    id: 'ApimodelGetAppImageListV2DataItemImageScanResult@csm'
+    name: 'ApimodelGetAppImageListV2DataItemImageScanResult'
+    fields:
+      'Findings':
+        type: '[]*ModelImageScanFinding'
+        required: true
+      'FindingSeverityCounts':
+        type: 'map[string]int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_image_list_v2_data_item_image_scan_result.go'
+
+  'ApimodelGetAppImageListV2DataItemImageScanStatus@csm':
+    id: 'ApimodelGetAppImageListV2DataItemImageScanStatus@csm'
+    name: 'ApimodelGetAppImageListV2DataItemImageScanStatus'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_image_list_v2_data_item_image_scan_status.go'
+
+  'ApimodelGetAppImageListV2Response@csm':
+    id: 'ApimodelGetAppImageListV2Response@csm'
+    name: 'ApimodelGetAppImageListV2Response'
+    fields:
+      'Data':
+        type: '[]*ApimodelGetAppImageListV2DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+      'VulnerabilityStatus':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_image_list_v2_response.go'
+
+  'ApimodelGetAppListV2Request@csm':
+    id: 'ApimodelGetAppListV2Request@csm'
+    name: 'ApimodelGetAppListV2Request'
+    fields:
+      'AppNames':
+        type: '[]string'
+        required: false
+      'AppStatuses':
+        type: '[]string'
+        required: false
+      'FuzzyAppName':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_list_v2_request.go'
+
+  'ApimodelGetAppListV2Response@csm':
+    id: 'ApimodelGetAppListV2Response@csm'
+    name: 'ApimodelGetAppListV2Response'
+    fields:
+      'Data':
+        type: '[]*ApimodelAppItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_list_v2_response.go'
+
+  'ApimodelGetDeploymentListV2DataItem@csm':
+    id: 'ApimodelGetDeploymentListV2DataItem@csm'
+    name: 'ApimodelGetDeploymentListV2DataItem'
+    fields:
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentID':
+        type: '*string'
+        required: true
+      'ImageTag':
+        type: '*string'
+        required: true
+      'Message':
+        type: 'string'
+        required: false
+      'Status':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_deployment_list_v2_data_item.go'
+
+  'ApimodelGetDeploymentListV2Request@csm':
+    id: 'ApimodelGetDeploymentListV2Request@csm'
+    name: 'ApimodelGetDeploymentListV2Request'
+    fields:
+      'AppIds':
+        type: '[]string'
+        required: false
+      'DeploymentIds':
+        type: '[]string'
+        required: false
+      'Statuses':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_deployment_list_v2_request.go'
+
+  'ApimodelGetDeploymentListV2Response@csm':
+    id: 'ApimodelGetDeploymentListV2Response@csm'
+    name: 'ApimodelGetDeploymentListV2Response'
+    fields:
+      'Data':
+        type: '[]*ApimodelGetDeploymentListV2DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_deployment_list_v2_response.go'
+
+  'ApimodelGetListOfConfigurationsV2DataItem@csm':
+    id: 'ApimodelGetListOfConfigurationsV2DataItem@csm'
+    name: 'ApimodelGetListOfConfigurationsV2DataItem'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigID':
+        type: '*string'
+        required: true
+      'ConfigName':
+        type: '*string'
+        required: true
+      'ConfigType':
+        type: '*string'
+        required: true
+      'DeploymentStatus':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Editable':
+        type: 'bool'
+        required: false
+      'IsHidden':
+        type: '*bool'
+        required: true
+      'Source':
+        type: 'string'
+        required: false
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_list_of_configurations_v2_data_item.go'
+
+  'ApimodelGetListOfConfigurationsV2Response@csm':
+    id: 'ApimodelGetListOfConfigurationsV2Response@csm'
+    name: 'ApimodelGetListOfConfigurationsV2Response'
+    fields:
+      'Data':
+        type: '[]*ApimodelGetListOfConfigurationsV2DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_list_of_configurations_v2_response.go'
+
+  'ApimodelGetNotificationSubscriberItem@csm':
+    id: 'ApimodelGetNotificationSubscriberItem@csm'
+    name: 'ApimodelGetNotificationSubscriberItem'
+    fields:
+      'DisplayName':
+        type: 'string'
+        required: false
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'NotificationType':
+        type: 'map[string]bool'
+        required: true
+      'SubscriptionID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_notification_subscriber_item.go'
+
+  'ApimodelGetNotificationSubscriberItemV2@csm':
+    id: 'ApimodelGetNotificationSubscriberItemV2@csm'
+    name: 'ApimodelGetNotificationSubscriberItemV2'
+    fields:
+      'DisplayName':
+        type: 'string'
+        required: false
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'NotificationTypes':
+        type: '[]*ApimodelNotificationType'
+        required: true
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_notification_subscriber_item_v2.go'
+
+  'ApimodelGetNotificationSubscriberListResponse@csm':
+    id: 'ApimodelGetNotificationSubscriberListResponse@csm'
+    name: 'ApimodelGetNotificationSubscriberListResponse'
+    fields:
+      'MaxSubscriptions':
+        type: '*int32'
+        required: true
+      'Subscriptions':
+        type: '[]*ApimodelGetNotificationSubscriberItem'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_notification_subscriber_list_response.go'
+
+  'ApimodelGetNotificationSubscriberListResponseV2@csm':
+    id: 'ApimodelGetNotificationSubscriberListResponseV2@csm'
+    name: 'ApimodelGetNotificationSubscriberListResponseV2'
+    fields:
+      'MaxSubscriptions':
+        type: '*int32'
+        required: true
+      'Subscriptions':
+        type: '[]*ApimodelGetNotificationSubscriberItemV2'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_notification_subscriber_list_response_v2.go'
+
+  'ApimodelGetNotificationSubscriberStatusResponse@csm':
+    id: 'ApimodelGetNotificationSubscriberStatusResponse@csm'
+    name: 'ApimodelGetNotificationSubscriberStatusResponse'
+    fields:
+      'DisplayName':
+        type: 'string'
+        required: false
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'MaxSubscription':
+        type: '*int32'
+        required: true
+      'NotificationType':
+        type: '*string'
+        required: true
+      'Subscribed':
+        type: '*bool'
+        required: true
+      'SubscriptionsCount':
+        type: '*int32'
+        required: true
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_notification_subscriber_status_response.go'
+
+  'ApimodelIncreaseLimitFormRequest@csm':
+    id: 'ApimodelIncreaseLimitFormRequest@csm'
+    name: 'ApimodelIncreaseLimitFormRequest'
+    fields:
+      'ClientEmail':
+        type: '*string'
+        required: true
+      'PreferredLimitReplica':
+        type: 'int32'
+        required: false
+      'RequestReason':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_increase_limit_form_request.go'
+
+  'ApimodelMemoryRequest@csm':
+    id: 'ApimodelMemoryRequest@csm'
+    name: 'ApimodelMemoryRequest'
+    fields:
+      'RequestMemory':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_memory_request.go'
+
+  'ApimodelMemoryResponse@csm':
+    id: 'ApimodelMemoryResponse@csm'
+    name: 'ApimodelMemoryResponse'
+    fields:
+      'MemoryLimit':
+        type: 'int32'
+        required: false
+      'RequestMemory':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_memory_response.go'
+
+  'ApimodelNotificationType@csm':
+    id: 'ApimodelNotificationType@csm'
+    name: 'ApimodelNotificationType'
+    fields:
+      'SubcriptionID':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_notification_type.go'
+
+  'ApimodelReplicaRequest@csm':
+    id: 'ApimodelReplicaRequest@csm'
+    name: 'ApimodelReplicaRequest'
+    fields:
+      'MaxReplica':
+        type: 'int32'
+        required: false
+      'MinReplica':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_replica_request.go'
+
+  'ApimodelReplicaResponse@csm':
+    id: 'ApimodelReplicaResponse@csm'
+    name: 'ApimodelReplicaResponse'
+    fields:
+      'CurrentReplica':
+        type: 'int32'
+        required: false
+      'MaxReplica':
+        type: 'int32'
+        required: false
+      'MinReplica':
+        type: 'int32'
+        required: false
+      'ReplicaLimit':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_replica_response.go'
+
+  'ApimodelSaveConfigurationV2Request@csm':
+    id: 'ApimodelSaveConfigurationV2Request@csm'
+    name: 'ApimodelSaveConfigurationV2Request'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigName':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Source':
+        type: '*string'
+        required: true
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_save_configuration_v2_request.go'
+
+  'ApimodelSaveConfigurationV2Response@csm':
+    id: 'ApimodelSaveConfigurationV2Response@csm'
+    name: 'ApimodelSaveConfigurationV2Response'
+    fields:
+      'ConfigID':
+        type: '*string'
+        required: true
+      'ConfigName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_save_configuration_v2_response.go'
+
+  'ApimodelSaveSecretConfigurationV2Request@csm':
+    id: 'ApimodelSaveSecretConfigurationV2Request@csm'
+    name: 'ApimodelSaveSecretConfigurationV2Request'
+    fields:
+      'ConfigName':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Source':
+        type: '*string'
+        required: true
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_save_secret_configuration_v2_request.go'
+
+  'ApimodelSelfSubscribeNotificationRequest@csm':
+    id: 'ApimodelSelfSubscribeNotificationRequest@csm'
+    name: 'ApimodelSelfSubscribeNotificationRequest'
+    fields:
+      'NotificationType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_self_subscribe_notification_request.go'
+
+  'ApimodelSubscribeNotificationRequest@csm':
+    id: 'ApimodelSubscribeNotificationRequest@csm'
+    name: 'ApimodelSubscribeNotificationRequest'
+    fields:
+      'NotificationType':
+        type: '*string'
+        required: true
+      'Subscribers':
+        type: '[]*ApimodelSubscriberItemRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscribe_notification_request.go'
+
+  'ApimodelSubscribeNotificationResponse@csm':
+    id: 'ApimodelSubscribeNotificationResponse@csm'
+    name: 'ApimodelSubscribeNotificationResponse'
+    fields:
+      'NotificationType':
+        type: '*string'
+        required: true
+      'Subscriptions':
+        type: '[]*ApimodelSubscriberItemResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscribe_notification_response.go'
+
+  'ApimodelSubscriberItemRequest@csm':
+    id: 'ApimodelSubscriberItemRequest@csm'
+    name: 'ApimodelSubscriberItemRequest'
+    fields:
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscriber_item_request.go'
+
+  'ApimodelSubscriberItemResponse@csm':
+    id: 'ApimodelSubscriberItemResponse@csm'
+    name: 'ApimodelSubscriberItemResponse'
+    fields:
+      'DisplayName':
+        type: 'string'
+        required: false
+      'EmailAddress':
+        type: 'string'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'NotificationType':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscriber_item_response.go'
+
+  'ApimodelUpdateAppResourceRequest@csm':
+    id: 'ApimodelUpdateAppResourceRequest@csm'
+    name: 'ApimodelUpdateAppResourceRequest'
+    fields:
+      'Autoscaling':
+        type: '*ApimodelAutoscalingRequest'
+        required: true
+      'CPU':
+        type: '*ApimodelCPURequest'
+        required: false
+      'Memory':
+        type: '*ApimodelMemoryRequest'
+        required: false
+      'Replica':
+        type: '*ApimodelReplicaRequest'
+        required: false
+      'VMSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_app_resource_request.go'
+
+  'ApimodelUpdateAppV2Request@csm':
+    id: 'ApimodelUpdateAppV2Request@csm'
+    name: 'ApimodelUpdateAppV2Request'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_app_v2_request.go'
+
+  'ApimodelUpdateConfigurationV2Request@csm':
+    id: 'ApimodelUpdateConfigurationV2Request@csm'
+    name: 'ApimodelUpdateConfigurationV2Request'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_configuration_v2_request.go'
+
+  'ApimodelUpdateConfigurationV2Response@csm':
+    id: 'ApimodelUpdateConfigurationV2Response@csm'
+    name: 'ApimodelUpdateConfigurationV2Response'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigID':
+        type: '*string'
+        required: true
+      'ConfigName':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Source':
+        type: 'string'
+        required: false
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_configuration_v2_response.go'
+
+  'ApimodelUpdateSecretConfigurationV2Request@csm':
+    id: 'ApimodelUpdateSecretConfigurationV2Request@csm'
+    name: 'ApimodelUpdateSecretConfigurationV2Request'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_secret_configuration_v2_request.go'
+
+  'GeneratedCreateAppV1Request@csm':
+    id: 'GeneratedCreateAppV1Request@csm'
+    name: 'GeneratedCreateAppV1Request'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_create_app_v1_request.go'
+
+  'GeneratedCreateAppV1Response@csm':
+    id: 'GeneratedCreateAppV1Response@csm'
+    name: 'GeneratedCreateAppV1Response'
+    fields:
+      'StatusURL':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_create_app_v1_response.go'
+
+  'GeneratedCreateDeploymentV1Request@csm':
+    id: 'GeneratedCreateDeploymentV1Request@csm'
+    name: 'GeneratedCreateDeploymentV1Request'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'ImageTag':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_create_deployment_v1_request.go'
+
+  'GeneratedCreateDeploymentV1Response@csm':
+    id: 'GeneratedCreateDeploymentV1Response@csm'
+    name: 'GeneratedCreateDeploymentV1Response'
+    fields:
+      'DeploymentID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_create_deployment_v1_response.go'
+
+  'GeneratedDeleteAppImagesV1Request@csm':
+    id: 'GeneratedDeleteAppImagesV1Request@csm'
+    name: 'GeneratedDeleteAppImagesV1Request'
+    fields:
+      'ImageTags':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_delete_app_images_v1_request.go'
+
+  'GeneratedGetAppImageListV1DataItem@csm':
+    id: 'GeneratedGetAppImageListV1DataItem@csm'
+    name: 'GeneratedGetAppImageListV1DataItem'
+    fields:
+      'ImageDigest':
+        type: '*string'
+        required: true
+      'ImageScanStatus':
+        type: '*GeneratedGetAppImageListV1DataItemImageScanStatus'
+        required: false
+      'ImageTag':
+        type: '*string'
+        required: true
+      'Size':
+        type: 'int64'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_image_list_v1_data_item.go'
+
+  'GeneratedGetAppImageListV1DataItemImageScanStatus@csm':
+    id: 'GeneratedGetAppImageListV1DataItemImageScanStatus@csm'
+    name: 'GeneratedGetAppImageListV1DataItemImageScanStatus'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_image_list_v1_data_item_image_scan_status.go'
+
+  'GeneratedGetAppImageListV1Response@csm':
+    id: 'GeneratedGetAppImageListV1Response@csm'
+    name: 'GeneratedGetAppImageListV1Response'
+    fields:
+      'Data':
+        type: '[]*GeneratedGetAppImageListV1DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_image_list_v1_response.go'
+
+  'GeneratedGetAppListV1DataItem@csm':
+    id: 'GeneratedGetAppListV1DataItem@csm'
+    name: 'GeneratedGetAppListV1DataItem'
+    fields:
+      'AppReleaseStatus':
+        type: 'string'
+        required: false
+      'AppID':
+        type: 'string'
+        required: false
+      'AppName':
+        type: 'string'
+        required: false
+      'AppRepoArn':
+        type: 'string'
+        required: false
+      'AppRepoURL':
+        type: 'string'
+        required: false
+      'AppStatus':
+        type: 'string'
+        required: false
+      'BasePath':
+        type: 'string'
+        required: false
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentStatus':
+        type: 'string'
+        required: false
+      'DeploymentCreatedAt':
+        type: '*string'
+        required: true
+      'DeploymentID':
+        type: '*string'
+        required: true
+      'DeploymentImageTag':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+      'ServicePublicURL':
+        type: 'string'
+        required: false
+      'ServiceURL':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_list_v1_data_item.go'
+
+  'GeneratedGetAppListV1Request@csm':
+    id: 'GeneratedGetAppListV1Request@csm'
+    name: 'GeneratedGetAppListV1Request'
+    fields:
+      'AppNames':
+        type: '[]string'
+        required: true
+      'FuzzyAppName':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+      'Statuses':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_list_v1_request.go'
+
+  'GeneratedGetAppListV1Response@csm':
+    id: 'GeneratedGetAppListV1Response@csm'
+    name: 'GeneratedGetAppListV1Response'
+    fields:
+      'Data':
+        type: '[]*GeneratedGetAppListV1DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_list_v1_response.go'
+
+  'GeneratedGetAppReleaseV1Response@csm':
+    id: 'GeneratedGetAppReleaseV1Response@csm'
+    name: 'GeneratedGetAppReleaseV1Response'
+    fields:
+      'DeploymentID':
+        type: 'string'
+        required: false
+      'ImageTag':
+        type: 'string'
+        required: false
+      'ReleaseDate':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_release_v1_response.go'
+
+  'GeneratedGetAppV1Response@csm':
+    id: 'GeneratedGetAppV1Response@csm'
+    name: 'GeneratedGetAppV1Response'
+    fields:
+      'AppReleaseStatus':
+        type: 'string'
+        required: false
+      'AppID':
+        type: 'string'
+        required: false
+      'AppName':
+        type: 'string'
+        required: false
+      'AppRepoArn':
+        type: 'string'
+        required: false
+      'AppRepoURL':
+        type: 'string'
+        required: false
+      'AppStatus':
+        type: 'string'
+        required: false
+      'BasePath':
+        type: 'string'
+        required: false
+      'CreatedAt':
+        type: 'string'
+        required: false
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentStatus':
+        type: 'string'
+        required: false
+      'DeploymentCreatedAt':
+        type: '*string'
+        required: true
+      'DeploymentID':
+        type: '*string'
+        required: true
+      'DeploymentImageTag':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+      'ServicePublicURL':
+        type: 'string'
+        required: false
+      'ServiceURL':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_app_v1_response.go'
+
+  'GeneratedGetDeploymentListV1DataItem@csm':
+    id: 'GeneratedGetDeploymentListV1DataItem@csm'
+    name: 'GeneratedGetDeploymentListV1DataItem'
+    fields:
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentID':
+        type: '*string'
+        required: true
+      'ImageTag':
+        type: 'string'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_deployment_list_v1_data_item.go'
+
+  'GeneratedGetDeploymentListV1Request@csm':
+    id: 'GeneratedGetDeploymentListV1Request@csm'
+    name: 'GeneratedGetDeploymentListV1Request'
+    fields:
+      'AppIds':
+        type: '[]string'
+        required: true
+      'DeploymentIds':
+        type: '[]string'
+        required: true
+      'Statuses':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_deployment_list_v1_request.go'
+
+  'GeneratedGetDeploymentListV1Response@csm':
+    id: 'GeneratedGetDeploymentListV1Response@csm'
+    name: 'GeneratedGetDeploymentListV1Response'
+    fields:
+      'Data':
+        type: '[]*GeneratedGetDeploymentListV1DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_deployment_list_v1_response.go'
+
+  'GeneratedGetDeploymentV1Response@csm':
+    id: 'GeneratedGetDeploymentV1Response@csm'
+    name: 'GeneratedGetDeploymentV1Response'
+    fields:
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'DeploymentID':
+        type: '*string'
+        required: true
+      'ImageTag':
+        type: 'string'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_deployment_v1_response.go'
+
+  'GeneratedGetListOfConfigurationsV1DataItem@csm':
+    id: 'GeneratedGetListOfConfigurationsV1DataItem@csm'
+    name: 'GeneratedGetListOfConfigurationsV1DataItem'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigID':
+        type: 'string'
+        required: false
+      'ConfigName':
+        type: 'string'
+        required: false
+      'ConfigType':
+        type: 'string'
+        required: false
+      'DeploymentStatus':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Editable':
+        type: 'bool'
+        required: false
+      'IsHidden':
+        type: 'bool'
+        required: false
+      'Source':
+        type: 'string'
+        required: false
+      'Value':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_list_of_configurations_v1_data_item.go'
+
+  'GeneratedGetListOfConfigurationsV1Response@csm':
+    id: 'GeneratedGetListOfConfigurationsV1Response@csm'
+    name: 'GeneratedGetListOfConfigurationsV1Response'
+    fields:
+      'Data':
+        type: '[]*GeneratedGetListOfConfigurationsV1DataItem'
+        required: true
+      'Paging':
+        type: '*GeneratedPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_get_list_of_configurations_v1_response.go'
+
+  'GeneratedPagination@csm':
+    id: 'GeneratedPagination@csm'
+    name: 'GeneratedPagination'
+    fields:
+      'First':
+        type: 'string'
+        required: false
+      'Last':
+        type: 'string'
+        required: false
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_pagination.go'
+
+  'GeneratedSaveConfigurationV1Request@csm':
+    id: 'GeneratedSaveConfigurationV1Request@csm'
+    name: 'GeneratedSaveConfigurationV1Request'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigName':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Source':
+        type: '*string'
+        required: true
+      'Value':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_save_configuration_v1_request.go'
+
+  'GeneratedSaveConfigurationV1Response@csm':
+    id: 'GeneratedSaveConfigurationV1Response@csm'
+    name: 'GeneratedSaveConfigurationV1Response'
+    fields:
+      'ConfigID':
+        type: '*string'
+        required: true
+      'ConfigName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_save_configuration_v1_response.go'
+
+  'GeneratedStartAppV1Request@csm':
+    id: 'GeneratedStartAppV1Request@csm'
+    name: 'GeneratedStartAppV1Request'
+    fields:
+      'Reason':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_start_app_v1_request.go'
+
+  'GeneratedStartAppV1Response@csm':
+    id: 'GeneratedStartAppV1Response@csm'
+    name: 'GeneratedStartAppV1Response'
+    fields:
+      'StatusURL':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_start_app_v1_response.go'
+
+  'GeneratedStopAppV1Request@csm':
+    id: 'GeneratedStopAppV1Request@csm'
+    name: 'GeneratedStopAppV1Request'
+    fields:
+      'Reason':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_stop_app_v1_request.go'
+
+  'GeneratedStopAppV1Response@csm':
+    id: 'GeneratedStopAppV1Response@csm'
+    name: 'GeneratedStopAppV1Response'
+    fields:
+      'StatusURL':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_stop_app_v1_response.go'
+
+  'GeneratedUpdateAppV1Request@csm':
+    id: 'GeneratedUpdateAppV1Request@csm'
+    name: 'GeneratedUpdateAppV1Request'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_update_app_v1_request.go'
+
+  'GeneratedUpdateAppV1Response@csm':
+    id: 'GeneratedUpdateAppV1Response@csm'
+    name: 'GeneratedUpdateAppV1Response'
+    fields:
+      'AppID':
+        type: 'string'
+        required: false
+      'AppName':
+        type: 'string'
+        required: false
+      'AppRepoArn':
+        type: 'string'
+        required: false
+      'AppRepoURL':
+        type: 'string'
+        required: false
+      'DeletedAt':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Message':
+        type: 'string'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: false
+      'ServiceURL':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_update_app_v1_response.go'
+
+  'GeneratedUpdateConfigurationV1Request@csm':
+    id: 'GeneratedUpdateConfigurationV1Request@csm'
+    name: 'GeneratedUpdateConfigurationV1Request'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Value':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_update_configuration_v1_request.go'
+
+  'GeneratedUpdateConfigurationV1Response@csm':
+    id: 'GeneratedUpdateConfigurationV1Response@csm'
+    name: 'GeneratedUpdateConfigurationV1Response'
+    fields:
+      'ApplyMask':
+        type: 'bool'
+        required: false
+      'ConfigID':
+        type: 'string'
+        required: false
+      'ConfigName':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Source':
+        type: 'string'
+        required: false
+      'Value':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/generated_update_configuration_v1_response.go'
+
+  'LogAppMessageDeclaration@csm':
+    id: 'LogAppMessageDeclaration@csm'
+    name: 'LogAppMessageDeclaration'
+    fields:
+      'Attributes':
+        type: '[]string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+      'CodeName':
+        type: '*string'
+        required: true
+      'Section':
+        type: '*string'
+        required: true
+      'Service':
+        type: '*string'
+        required: true
+      'Text':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/log_app_message_declaration.go'
+
+  'ModelCSMAutoscalingDefaults@csm':
+    id: 'ModelCSMAutoscalingDefaults@csm'
+    name: 'ModelCSMAutoscalingDefaults'
+    fields:
+      'CPUUtilizationDefaultPercent':
+        type: '*int32'
+        required: true
+      'CPUUtilizationMaxPercent':
+        type: '*int32'
+        required: true
+      'CPUUtilizationMinPercent':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_c_s_m_autoscaling_defaults.go'
+
+  'ModelImageScanFinding@csm':
+    id: 'ModelImageScanFinding@csm'
+    name: 'ModelImageScanFinding'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'Severity':
+        type: '*string'
+        required: true
+      'URI':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_image_scan_finding.go'
+
+  'ResponseErrorResponse@csm':
+    id: 'ResponseErrorResponse@csm'
+    name: 'ResponseErrorResponse'
+    fields:
+      'Error':
+        type: '*string'
+        required: true
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'Errors':
+        type: '*string'
+        required: true
+      'MessageVariables':
+        type: 'map[string]string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Reason':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/response_error_response.go'
+
+  # endregion models
+
+functions:
+
+  'BulkSaveSubscriptionAppNotificationV2Short@csm':
+    id: 'BulkSaveSubscriptionAppNotificationV2Short@csm'
+    name: 'BulkSaveSubscriptionAppNotificationV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
+
+      Bulk update of users subscribed to an app's notifications.
+
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+      - subscribers : user(s) notification subscription to be updated - Required.
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.BulkSaveSubscriptionAppNotificationV2Params'
+        required: true
+    return_type: '(*notification_subscription.BulkSaveSubscriptionAppNotificationV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.BulkSaveSubscriptionAppNotificationV2Params{ ... }
+      res, err := notificationSubscriptionService.BulkSaveSubscriptionAppNotificationV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'bulk'
+      - 'notification'
+      - 'save'
+      - 'subscription'
+      - 'v2'
+
+  'CreateAppV1Short@csm':
+    id: 'CreateAppV1Short@csm'
+    name: 'CreateAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Creates new App for AB-Extend Customers
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+
+      Default: `function-override`
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.CreateAppV1Params'
+        required: true
+    return_type: '(*app.CreateAppV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.CreateAppV1Params{ ... }
+      res, err := appService.CreateAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v1'
+
+  'CreateAppV2Short@csm':
+    id: 'CreateAppV2Short@csm'
+    name: 'CreateAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Create new extend app with name provided by {app} path parameter and specified scenario type
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.CreateAppV2Params'
+        required: true
+    return_type: '(*app_v2.CreateAppV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.CreateAppV2Params{ ... }
+      res, err := appV2Service.CreateAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v2'
+
+  'CreateDeploymentV1Short@csm':
+    id: 'CreateDeploymentV1Short@csm'
+    name: 'CreateDeploymentV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
+
+      Creates Deployment for extend service
+
+      This endpoint intended to apply the helm release or deploying the custom service image.
+      Logic in this endpoint:
+      - Getting the repo from AppHistory table and image tag from request
+      - Getting the Helm Manifest template from S3
+      - Filling the Helm Manifest values
+      - Installing the Helm Manifest to deploy the custom service image into K8s based on given namespace
+      - Storing the filled Helm Manifest to S3
+      - Storing the Deployment information to Database
+
+      Required: Valid Access Token
+    struct: 'DeploymentService'
+    parameters:
+      params:
+        type: '*deployment.CreateDeploymentV1Params'
+        required: true
+    return_type: '(*deployment.CreateDeploymentV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deployment.go'
+    example: |-
+      deploymentService := csm.DeploymentService{ ... }
+      params := deployment.CreateDeploymentV1Params{ ... }
+      res, err := deploymentService.CreateDeploymentV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'deployment'
+      - 'v1'
+
+  'CreateDeploymentV2Short@csm':
+    id: 'CreateDeploymentV2Short@csm'
+    name: 'CreateDeploymentV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
+
+      Creates Deployment for extend service
+
+      This Endpoint will create new deployment and apply all of the secrets and variable as environment variable
+
+      Required:
+      - Valid Access Token
+      - Valid Image Version Created on Uploading image with docker or other method
+      - Valid App name
+      - Valid Namespace name
+    struct: 'DeploymentV2Service'
+    parameters:
+      params:
+        type: '*deployment_v2.CreateDeploymentV2Params'
+        required: true
+    return_type: '(*deployment_v2.CreateDeploymentV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deploymentV2.go'
+    example: |-
+      deploymentV2Service := csm.DeploymentV2Service{ ... }
+      params := deployment_v2.CreateDeploymentV2Params{ ... }
+      res, err := deploymentV2Service.CreateDeploymentV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'deployment'
+      - 'v2'
+
+  'DeleteAppImagesV1Short@csm':
+    id: 'DeleteAppImagesV1Short@csm'
+    name: 'DeleteAppImagesV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
+
+      Deletes the images uploaded to the repository
+    struct: 'ImageService'
+    parameters:
+      params:
+        type: '*image.DeleteAppImagesV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/image.go'
+    example: |-
+      imageService := csm.ImageService{ ... }
+      params := image.DeleteAppImagesV1Params{ ... }
+      res, err := imageService.DeleteAppImagesV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'image'
+      - 'images'
+      - 'v1'
+
+  'DeleteAppImagesV2Short@csm':
+    id: 'DeleteAppImagesV2Short@csm'
+    name: 'DeleteAppImagesV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
+
+      Deletes list of provided image tags from the app image repository
+    struct: 'ImageV2Service'
+    parameters:
+      params:
+        type: '*image_v2.DeleteAppImagesV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/imageV2.go'
+    example: |-
+      imageV2Service := csm.ImageV2Service{ ... }
+      params := image_v2.DeleteAppImagesV2Params{ ... }
+      res, err := imageV2Service.DeleteAppImagesV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'image'
+      - 'images'
+      - 'v2'
+
+  'DeleteAppV1Short@csm':
+    id: 'DeleteAppV1Short@csm'
+    name: 'DeleteAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
+
+      Delete App by given DeploymentID
+
+      This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
+      and update the deleted_at in DB by given App Name.
+
+      Required: Valid Access Token
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.DeleteAppV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.DeleteAppV1Params{ ... }
+      res, err := appService.DeleteAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'v1'
+
+  'DeleteAppV2Short@csm':
+    id: 'DeleteAppV2Short@csm'
+    name: 'DeleteAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
+
+      Delete extend app by given {app} name
+
+      This endpoint will delete app information, configuration, deployments and all related manifest from
+      db, storage and cluster
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.DeleteAppV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.DeleteAppV2Params{ ... }
+      res, err := appV2Service.DeleteAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'v2'
+
+  'DeleteDeploymentV1Short@csm':
+    id: 'DeleteDeploymentV1Short@csm'
+    name: 'DeleteDeploymentV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
+
+      Delete Deployment information by given DeploymentID
+
+      This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
+
+      Required: Valid Access Token
+    struct: 'DeploymentService'
+    parameters:
+      params:
+        type: '*deployment.DeleteDeploymentV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deployment.go'
+    example: |-
+      deploymentService := csm.DeploymentService{ ... }
+      params := deployment.DeleteDeploymentV1Params{ ... }
+      res, err := deploymentService.DeleteDeploymentV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'deployment'
+      - 'v1'
+
+  'DeleteDeploymentV2Short@csm':
+    id: 'DeleteDeploymentV2Short@csm'
+    name: 'DeleteDeploymentV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
+
+      Delete Deployment information by given DeploymentID
+
+      This endpoint will delete release object for the service deployment in the cluster
+
+      Required: Valid Access Token
+    struct: 'DeploymentV2Service'
+    parameters:
+      params:
+        type: '*deployment_v2.DeleteDeploymentV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deploymentV2.go'
+    example: |-
+      deploymentV2Service := csm.DeploymentV2Service{ ... }
+      params := deployment_v2.DeleteDeploymentV2Params{ ... }
+      res, err := deploymentV2Service.DeleteDeploymentV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'deployment'
+      - 'v2'
+
+  'DeleteSecretV1Short@csm':
+    id: 'DeleteSecretV1Short@csm'
+    name: 'DeleteSecretV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
+
+      Delete an environment secret.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.DeleteSecretV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.DeleteSecretV1Params{ ... }
+      res, err := configurationService.DeleteSecretV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'secret'
+      - 'v1'
+
+  'DeleteSecretV2Short@csm':
+    id: 'DeleteSecretV2Short@csm'
+    name: 'DeleteSecretV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
+
+      Delete an environment secret by its config id
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.DeleteSecretV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.DeleteSecretV2Params{ ... }
+      res, err := configurationV2Service.DeleteSecretV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'secret'
+      - 'v2'
+
+  'DeleteSubscriptionAppNotificationByUserIDV2Short@csm':
+    id: 'DeleteSubscriptionAppNotificationByUserIDV2Short@csm'
+    name: 'DeleteSubscriptionAppNotificationByUserIDV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription by user ID.
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.DeleteSubscriptionAppNotificationByUserIDV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.DeleteSubscriptionAppNotificationByUserIDV2Params{ ... }
+      res, err := notificationSubscriptionService.DeleteSubscriptionAppNotificationByUserIDV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'by'
+      - 'delete'
+      - 'idv2'
+      - 'notification'
+      - 'subscription'
+      - 'user'
+
+  'DeleteSubscriptionAppNotificationV2Short@csm':
+    id: 'DeleteSubscriptionAppNotificationV2Short@csm'
+    name: 'DeleteSubscriptionAppNotificationV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription.
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.DeleteSubscriptionAppNotificationV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.DeleteSubscriptionAppNotificationV2Params{ ... }
+      res, err := notificationSubscriptionService.DeleteSubscriptionAppNotificationV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'notification'
+      - 'subscription'
+      - 'v2'
+
+  'DeleteSubscriptionAppNotificationV3Short@csm':
+    id: 'DeleteSubscriptionAppNotificationV3Short@csm'
+    name: 'DeleteSubscriptionAppNotificationV3Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription using either user ID or email address.
+      Only one of them should be provided.
+    struct: 'NotificationSubscriptionV3Service'
+    parameters:
+      params:
+        type: '*notification_subscription_v3.DeleteSubscriptionAppNotificationV3Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription_v3'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscriptionV3.go'
+    example: |-
+      notificationSubscriptionV3Service := csm.NotificationSubscriptionV3Service{ ... }
+      params := notification_subscription_v3.DeleteSubscriptionAppNotificationV3Params{ ... }
+      res, err := notificationSubscriptionV3Service.DeleteSubscriptionAppNotificationV3Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'notification'
+      - 'subscription'
+      - 'v3'
+
+  'DeleteVariableV1Short@csm':
+    id: 'DeleteVariableV1Short@csm'
+    name: 'DeleteVariableV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
+
+      Delete an environment variable.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.DeleteVariableV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.DeleteVariableV1Params{ ... }
+      res, err := configurationService.DeleteVariableV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'v1'
+      - 'variable'
+
+  'DeleteVariableV2Short@csm':
+    id: 'DeleteVariableV2Short@csm'
+    name: 'DeleteVariableV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
+
+      Delete an environment variable by its config id
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.DeleteVariableV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.DeleteVariableV2Params{ ... }
+      res, err := configurationV2Service.DeleteVariableV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'v2'
+      - 'variable'
+
+  'GetAppImageListV1Short@csm':
+    id: 'GetAppImageListV1Short@csm'
+    name: 'GetAppImageListV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
+
+      Get a list of container images
+
+      Default 'cached' parameter is 'true'
+    struct: 'ImageService'
+    parameters:
+      params:
+        type: '*image.GetAppImageListV1Params'
+        required: true
+    return_type: '(*image.GetAppImageListV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/image.go'
+    example: |-
+      imageService := csm.ImageService{ ... }
+      params := image.GetAppImageListV1Params{ ... }
+      res, err := imageService.GetAppImageListV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'image'
+      - 'list'
+      - 'v1'
+
+  'GetAppImageListV2Short@csm':
+    id: 'GetAppImageListV2Short@csm'
+    name: 'GetAppImageListV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
+
+      Get a list of container images
+
+      Default 'cached' parameter is 'true'
+    struct: 'ImageV2Service'
+    parameters:
+      params:
+        type: '*image_v2.GetAppImageListV2Params'
+        required: true
+    return_type: '(*image_v2.GetAppImageListV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/imageV2.go'
+    example: |-
+      imageV2Service := csm.ImageV2Service{ ... }
+      params := image_v2.GetAppImageListV2Params{ ... }
+      res, err := imageV2Service.GetAppImageListV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'image'
+      - 'list'
+      - 'v2'
+
+  'GetAppListV1Short@csm':
+    id: 'GetAppListV1Short@csm'
+    name: 'GetAppListV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the List of Apps for AB-Extend Customer
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.GetAppListV1Params'
+        required: true
+    return_type: '(*app.GetAppListV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.GetAppListV1Params{ ... }
+      res, err := appService.GetAppListV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'v1'
+
+  'GetAppListV2Short@csm':
+    id: 'GetAppListV2Short@csm'
+    name: 'GetAppListV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Get list of extend apps on a given game namespace
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.GetAppListV2Params'
+        required: true
+    return_type: '(*app_v2.GetAppListV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.GetAppListV2Params{ ... }
+      res, err := appV2Service.GetAppListV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'v2'
+
+  'GetAppReleaseV1Short@csm':
+    id: 'GetAppReleaseV1Short@csm'
+    name: 'GetAppReleaseV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the Latest Release Version info of this App
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.GetAppReleaseV1Params'
+        required: true
+    return_type: '(*app.GetAppReleaseV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.GetAppReleaseV1Params{ ... }
+      res, err := appService.GetAppReleaseV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'release'
+      - 'v1'
+
+  'GetAppV1Short@csm':
+    id: 'GetAppV1Short@csm'
+    name: 'GetAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the App By Name
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.GetAppV1Params'
+        required: true
+    return_type: '(*app.GetAppV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.GetAppV1Params{ ... }
+      res, err := appService.GetAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'v1'
+
+  'GetAppV2Short@csm':
+    id: 'GetAppV2Short@csm'
+    name: 'GetAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Get extend app by name
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.GetAppV2Params'
+        required: true
+    return_type: '(*app_v2.GetAppV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.GetAppV2Params{ ... }
+      res, err := appV2Service.GetAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'v2'
+
+  'GetDeploymentV1Short@csm':
+    id: 'GetDeploymentV1Short@csm'
+    name: 'GetDeploymentV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Get Deployment information by given DeploymentID
+
+      This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
+
+      Required: Valid Access Token
+    struct: 'DeploymentService'
+    parameters:
+      params:
+        type: '*deployment.GetDeploymentV1Params'
+        required: true
+    return_type: '(*deployment.GetDeploymentV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deployment.go'
+    example: |-
+      deploymentService := csm.DeploymentService{ ... }
+      params := deployment.GetDeploymentV1Params{ ... }
+      res, err := deploymentService.GetDeploymentV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'v1'
+
+  'GetDeploymentV2Short@csm':
+    id: 'GetDeploymentV2Short@csm'
+    name: 'GetDeploymentV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Get Deployment information by given DeploymentID
+
+      This endpoint intended to get Deployment information.
+
+      Required: Valid Access Token
+    struct: 'DeploymentV2Service'
+    parameters:
+      params:
+        type: '*deployment_v2.GetDeploymentV2Params'
+        required: true
+    return_type: '(*deployment_v2.GetDeploymentV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deploymentV2.go'
+    example: |-
+      deploymentV2Service := csm.DeploymentV2Service{ ... }
+      params := deployment_v2.GetDeploymentV2Params{ ... }
+      res, err := deploymentV2Service.GetDeploymentV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'v2'
+
+  'GetListOfDeploymentV1Short@csm':
+    id: 'GetListOfDeploymentV1Short@csm'
+    name: 'GetListOfDeploymentV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Filters the List of Deployments
+
+      This endpoint intended to get list of Deployment done for the given publisher and game.
+
+      Required: Valid Access Token
+    struct: 'DeploymentService'
+    parameters:
+      params:
+        type: '*deployment.GetListOfDeploymentV1Params'
+        required: true
+    return_type: '(*deployment.GetListOfDeploymentV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deployment.go'
+    example: |-
+      deploymentService := csm.DeploymentService{ ... }
+      params := deployment.GetListOfDeploymentV1Params{ ... }
+      res, err := deploymentService.GetListOfDeploymentV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v1'
+
+  'GetListOfDeploymentV2Short@csm':
+    id: 'GetListOfDeploymentV2Short@csm'
+    name: 'GetListOfDeploymentV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Filters the List of Deployments
+
+      This endpoint intended to get list of Deployment done for the given publisher and game.
+      Request :
+      - appIds : list of app ids
+      - deploymentIds: list of deployment ids
+      - statuses:
+      deployment-in-progress
+      deployment-failed
+      deployment-timeout
+      deployment-running
+      deployment-down
+      Required: Valid Access Token
+    struct: 'DeploymentV2Service'
+    parameters:
+      params:
+        type: '*deployment_v2.GetListOfDeploymentV2Params'
+        required: true
+    return_type: '(*deployment_v2.GetListOfDeploymentV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/deploymentV2.go'
+    example: |-
+      deploymentV2Service := csm.DeploymentV2Service{ ... }
+      params := deployment_v2.GetListOfDeploymentV2Params{ ... }
+      res, err := deploymentV2Service.GetListOfDeploymentV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v2'
+
+  'GetListOfSecretsV1Short@csm':
+    id: 'GetListOfSecretsV1Short@csm'
+    name: 'GetListOfSecretsV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
+
+      Get list of environment secrets per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.GetListOfSecretsV1Params'
+        required: true
+    return_type: '(*configuration.GetListOfSecretsV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.GetListOfSecretsV1Params{ ... }
+      res, err := configurationService.GetListOfSecretsV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'secrets'
+      - 'v1'
+
+  'GetListOfSecretsV2Short@csm':
+    id: 'GetListOfSecretsV2Short@csm'
+    name: 'GetListOfSecretsV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
+
+      Get list of environment secrets per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.GetListOfSecretsV2Params'
+        required: true
+    return_type: '(*configuration_v2.GetListOfSecretsV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.GetListOfSecretsV2Params{ ... }
+      res, err := configurationV2Service.GetListOfSecretsV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'secrets'
+      - 'v2'
+
+  'GetListOfVariablesV1Short@csm':
+    id: 'GetListOfVariablesV1Short@csm'
+    name: 'GetListOfVariablesV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
+
+      Get list of environment variables per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.GetListOfVariablesV1Params'
+        required: true
+    return_type: '(*configuration.GetListOfVariablesV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.GetListOfVariablesV1Params{ ... }
+      res, err := configurationService.GetListOfVariablesV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v1'
+      - 'variables'
+
+  'GetListOfVariablesV2Short@csm':
+    id: 'GetListOfVariablesV2Short@csm'
+    name: 'GetListOfVariablesV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
+
+      Get list of environment variables per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.GetListOfVariablesV2Params'
+        required: true
+    return_type: '(*configuration_v2.GetListOfVariablesV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.GetListOfVariablesV2Params{ ... }
+      res, err := configurationV2Service.GetListOfVariablesV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v2'
+      - 'variables'
+
+  'GetNotificationSubscriberListV2Short@csm':
+    id: 'GetNotificationSubscriberListV2Short@csm'
+    name: 'GetNotificationSubscriberListV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
+
+      Request param:
+      - notificationType : type of the subscribed app notification
+      - values:
+      - all
+      - app-down
+      - critical-vulnerability
+
+      Get a list of the app notification subscriber
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.GetNotificationSubscriberListV2Params'
+        required: true
+    return_type: '(*notification_subscription.GetNotificationSubscriberListV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.GetNotificationSubscriberListV2Params{ ... }
+      res, err := notificationSubscriptionService.GetNotificationSubscriberListV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'list'
+      - 'notification'
+      - 'subscriber'
+      - 'subscription'
+      - 'v2'
+
+  'GetNotificationSubscriberListV3Short@csm':
+    id: 'GetNotificationSubscriberListV3Short@csm'
+    name: 'GetNotificationSubscriberListV3Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
+
+      Request param:
+      - notificationType : type of the subscribed app notification
+      - values:
+      - all
+      - app-down
+      - critical-vulnerability
+
+      Get a list of the app notification subscriber
+    struct: 'NotificationSubscriptionV3Service'
+    parameters:
+      params:
+        type: '*notification_subscription_v3.GetNotificationSubscriberListV3Params'
+        required: true
+    return_type: '(*notification_subscription_v3.GetNotificationSubscriberListV3Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription_v3'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscriptionV3.go'
+    example: |-
+      notificationSubscriptionV3Service := csm.NotificationSubscriptionV3Service{ ... }
+      params := notification_subscription_v3.GetNotificationSubscriberListV3Params{ ... }
+      res, err := notificationSubscriptionV3Service.GetNotificationSubscriberListV3Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'list'
+      - 'notification'
+      - 'subscriber'
+      - 'subscription'
+      - 'v3'
+
+  'GetResourcesLimitsShort@csm':
+    id: 'GetResourcesLimitsShort@csm'
+    name: 'GetResourcesLimitsShort'
+    description: |-
+      This endpoint return the Extend Apps Configurable Limits for front end to use for initial validation before app creation
+      e.g.
+      Replica Limit will be used to check max replica that can be created for the said environment by default
+      CPU Limit will be used to validate max allowed CPU for the extend app that hasn't been created
+      Memory Limit will be used to validate max allowed Memory for the extend app that hasn't been created
+      MaxAppNotificationSubscription will be used to validate the maximum number of subscriber for an app status notification
+    struct: 'ResourcesLimitsService'
+    parameters:
+      params:
+        type: '*resources_limits.GetResourcesLimitsParams'
+        required: true
+    return_type: '(*resources_limits.GetResourcesLimitsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/resources_limits'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/resourcesLimits.go'
+    example: |-
+      resourcesLimitsService := csm.ResourcesLimitsService{ ... }
+      params := resources_limits.GetResourcesLimitsParams{ ... }
+      res, err := resourcesLimitsService.GetResourcesLimitsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'limits'
+      - 'resources'
+
+  'GetSubscriptionV2HandlerShort@csm':
+    id: 'GetSubscriptionV2HandlerShort@csm'
+    name: 'GetSubscriptionV2HandlerShort'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
+
+      Get Subscription status of a user
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.GetSubscriptionV2HandlerParams'
+        required: true
+    return_type: '(*notification_subscription.GetSubscriptionV2HandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.GetSubscriptionV2HandlerParams{ ... }
+      res, err := notificationSubscriptionService.GetSubscriptionV2HandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'handler'
+      - 'notification'
+      - 'subscription'
+      - 'v2'
+
+  'PublicGetMessagesShort@csm':
+    id: 'PublicGetMessagesShort@csm'
+    name: 'PublicGetMessagesShort'
+    description: |-
+      get the list of messages.
+    struct: 'MessagesService'
+    parameters:
+      params:
+        type: '*messages.PublicGetMessagesParams'
+        required: true
+    return_type: '(*messages.PublicGetMessagesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/messages'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/messages.go'
+    example: |-
+      messagesService := csm.MessagesService{ ... }
+      params := messages.PublicGetMessagesParams{ ... }
+      res, err := messagesService.PublicGetMessagesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'messages'
+      - 'public'
+
+  'SaveSecretV1Short@csm':
+    id: 'SaveSecretV1Short@csm'
+    name: 'SaveSecretV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
+
+      Save an environment secret.
+      Request body:
+      - configName : environment secret name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.SaveSecretV1Params'
+        required: true
+    return_type: '(*configuration.SaveSecretV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.SaveSecretV1Params{ ... }
+      res, err := configurationService.SaveSecretV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'secret'
+      - 'v1'
+
+  'SaveSecretV2Short@csm':
+    id: 'SaveSecretV2Short@csm'
+    name: 'SaveSecretV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
+
+      Save an environment secret.
+      Secret will always be masked.
+      Request body:
+      - configName : environment secret name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.SaveSecretV2Params'
+        required: true
+    return_type: '(*configuration_v2.SaveSecretV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.SaveSecretV2Params{ ... }
+      res, err := configurationV2Service.SaveSecretV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'secret'
+      - 'v2'
+
+  'SaveVariableV1Short@csm':
+    id: 'SaveVariableV1Short@csm'
+    name: 'SaveVariableV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
+
+      Save an environment variable.
+      Request body:
+      - configName : environment variable name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.SaveVariableV1Params'
+        required: true
+    return_type: '(*configuration.SaveVariableV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.SaveVariableV1Params{ ... }
+      res, err := configurationService.SaveVariableV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'v1'
+      - 'variable'
+
+  'SaveVariableV2Short@csm':
+    id: 'SaveVariableV2Short@csm'
+    name: 'SaveVariableV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
+
+      Save an environment variable.
+      Request body:
+      - configName : environment variable name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.SaveVariableV2Params'
+        required: true
+    return_type: '(*configuration_v2.SaveVariableV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.SaveVariableV2Params{ ... }
+      res, err := configurationV2Service.SaveVariableV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'v2'
+      - 'variable'
+
+  'StartAppV1Short@csm':
+    id: 'StartAppV1Short@csm'
+    name: 'StartAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Starts the Application
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.StartAppV1Params'
+        required: true
+    return_type: '(*app.StartAppV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.StartAppV1Params{ ... }
+      res, err := appService.StartAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'start'
+      - 'v1'
+
+  'StartAppV2Short@csm':
+    id: 'StartAppV2Short@csm'
+    name: 'StartAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Starts the Application
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.StartAppV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.StartAppV2Params{ ... }
+      res, err := appV2Service.StartAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'start'
+      - 'v2'
+
+  'StopAppV1Short@csm':
+    id: 'StopAppV1Short@csm'
+    name: 'StopAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Stops the Application
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.StopAppV1Params'
+        required: true
+    return_type: '(*app.StopAppV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.StopAppV1Params{ ... }
+      res, err := appService.StopAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'stop'
+      - 'v1'
+
+  'StopAppV2Short@csm':
+    id: 'StopAppV2Short@csm'
+    name: 'StopAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Stops the Application
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.StopAppV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.StopAppV2Params{ ... }
+      res, err := appV2Service.StopAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'stop'
+      - 'v2'
+
+  'SubscribeAppNotificationV2Short@csm':
+    id: 'SubscribeAppNotificationV2Short@csm'
+    name: 'SubscribeAppNotificationV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
+
+      Subscribe the user(s) an app notification.
+
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+      - subscribers : user(s) to subscribe the app notification - Required.
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.SubscribeAppNotificationV2Params'
+        required: true
+    return_type: '(*notification_subscription.SubscribeAppNotificationV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.SubscribeAppNotificationV2Params{ ... }
+      res, err := notificationSubscriptionService.SubscribeAppNotificationV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'notification'
+      - 'subscribe'
+      - 'subscription'
+      - 'v2'
+
+  'SubscribeV2HandlerShort@csm':
+    id: 'SubscribeV2HandlerShort@csm'
+    name: 'SubscribeV2HandlerShort'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
+
+      Subscribe to app notification
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.SubscribeV2HandlerParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.SubscribeV2HandlerParams{ ... }
+      res, err := notificationSubscriptionService.SubscribeV2HandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'handler'
+      - 'notification'
+      - 'subscribe'
+      - 'subscription'
+      - 'v2'
+
+  'UnsubscribeV2HandlerShort@csm':
+    id: 'UnsubscribeV2HandlerShort@csm'
+    name: 'UnsubscribeV2HandlerShort'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
+
+      Unsubscribe to app notification
+    struct: 'NotificationSubscriptionService'
+    parameters:
+      params:
+        type: '*notification_subscription.UnsubscribeV2HandlerParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/notificationSubscription.go'
+    example: |-
+      notificationSubscriptionService := csm.NotificationSubscriptionService{ ... }
+      params := notification_subscription.UnsubscribeV2HandlerParams{ ... }
+      res, err := notificationSubscriptionService.UnsubscribeV2HandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'handler'
+      - 'notification'
+      - 'subscription'
+      - 'unsubscribe'
+      - 'v2'
+
+  'UpdateAppResourcesResourceLimitFormV2Short@csm':
+    id: 'UpdateAppResourcesResourceLimitFormV2Short@csm'
+    name: 'UpdateAppResourcesResourceLimitFormV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app resources provided on request body
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.UpdateAppResourcesResourceLimitFormV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.UpdateAppResourcesResourceLimitFormV2Params{ ... }
+      res, err := appV2Service.UpdateAppResourcesResourceLimitFormV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'form'
+      - 'limit'
+      - 'resource'
+      - 'resources'
+      - 'update'
+      - 'v2'
+
+  'UpdateAppResourcesV2Short@csm':
+    id: 'UpdateAppResourcesV2Short@csm'
+    name: 'UpdateAppResourcesV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app resources provided on request body
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.UpdateAppResourcesV2Params'
+        required: true
+    return_type: '(*app_v2.UpdateAppResourcesV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.UpdateAppResourcesV2Params{ ... }
+      res, err := appV2Service.UpdateAppResourcesV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'resources'
+      - 'update'
+      - 'v2'
+
+  'UpdateAppV1Short@csm':
+    id: 'UpdateAppV1Short@csm'
+    name: 'UpdateAppV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update App Partially
+    struct: 'AppService'
+    parameters:
+      params:
+        type: '*app.UpdateAppV1Params'
+        required: true
+    return_type: '(*app.UpdateAppV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/app.go'
+    example: |-
+      appService := csm.AppService{ ... }
+      params := app.UpdateAppV1Params{ ... }
+      res, err := appService.UpdateAppV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'update'
+      - 'v1'
+
+  'UpdateAppV2Short@csm':
+    id: 'UpdateAppV2Short@csm'
+    name: 'UpdateAppV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app info provided on request body
+    struct: 'AppV2Service'
+    parameters:
+      params:
+        type: '*app_v2.UpdateAppV2Params'
+        required: true
+    return_type: '(*app_v2.UpdateAppV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.UpdateAppV2Params{ ... }
+      res, err := appV2Service.UpdateAppV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'update'
+      - 'v2'
+
+  'UpdateSecretV1Short@csm':
+    id: 'UpdateSecretV1Short@csm'
+    name: 'UpdateSecretV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
+
+      Update an environment secret.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.UpdateSecretV1Params'
+        required: true
+    return_type: '(*configuration.UpdateSecretV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.UpdateSecretV1Params{ ... }
+      res, err := configurationService.UpdateSecretV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'secret'
+      - 'update'
+      - 'v1'
+
+  'UpdateSecretV2Short@csm':
+    id: 'UpdateSecretV2Short@csm'
+    name: 'UpdateSecretV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
+
+      Update an environment secret.
+      Secret will always be masked.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.UpdateSecretV2Params'
+        required: true
+    return_type: '(*configuration_v2.UpdateSecretV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.UpdateSecretV2Params{ ... }
+      res, err := configurationV2Service.UpdateSecretV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'secret'
+      - 'update'
+      - 'v2'
+
+  'UpdateVariableV1Short@csm':
+    id: 'UpdateVariableV1Short@csm'
+    name: 'UpdateVariableV1Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
+
+      Update an environment variable.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.UpdateVariableV1Params'
+        required: true
+    return_type: '(*configuration.UpdateVariableV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configuration.go'
+    example: |-
+      configurationService := csm.ConfigurationService{ ... }
+      params := configuration.UpdateVariableV1Params{ ... }
+      res, err := configurationService.UpdateVariableV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'update'
+      - 'v1'
+      - 'variable'
+
+  'UpdateVariableV2Short@csm':
+    id: 'UpdateVariableV2Short@csm'
+    name: 'UpdateVariableV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
+
+      Update an environment variable.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    struct: 'ConfigurationV2Service'
+    parameters:
+      params:
+        type: '*configuration_v2.UpdateVariableV2Params'
+        required: true
+    return_type: '(*configuration_v2.UpdateVariableV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/configurationV2.go'
+    example: |-
+      configurationV2Service := csm.ConfigurationV2Service{ ... }
+      params := configuration_v2.UpdateVariableV2Params{ ... }
+      res, err := configurationV2Service.UpdateVariableV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'update'
+      - 'v2'
+      - 'variable'

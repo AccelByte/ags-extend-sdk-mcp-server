@@ -1,0 +1,3758 @@
+structs:
+  'JusticeMatch2Service@match2':
+    id: 'JusticeMatch2Service@match2'
+    name: 'JusticeMatch2Service'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/justice_match2_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/match2clientfactory.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo)
+
+  # region wrappers
+
+  'EmptyService@match2':
+    id: 'EmptyService@match2'
+    name: 'EmptyService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      Service := EmptyService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'BackfillService@match2':
+    id: 'BackfillService@match2'
+    name: 'BackfillService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      backfillService := BackfillService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ConfigService@match2':
+    id: 'ConfigService@match2'
+    name: 'ConfigService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      configService := ConfigService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'EnvironmentVariablesService@match2':
+    id: 'EnvironmentVariablesService@match2'
+    name: 'EnvironmentVariablesService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/environmentVariables.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      environmentVariablesService := EnvironmentVariablesService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MatchFunctionsService@match2':
+    id: 'MatchFunctionsService@match2'
+    name: 'MatchFunctionsService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      matchFunctionsService := MatchFunctionsService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MatchPoolsService@match2':
+    id: 'MatchPoolsService@match2'
+    name: 'MatchPoolsService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      matchPoolsService := MatchPoolsService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'MatchTicketsService@match2':
+    id: 'MatchTicketsService@match2'
+    name: 'MatchTicketsService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchTickets.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      matchTicketsService := MatchTicketsService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PlayFeatureFlagService@match2':
+    id: 'PlayFeatureFlagService@match2'
+    name: 'PlayFeatureFlagService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/playFeatureFlag.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      playFeatureFlagService := PlayFeatureFlagService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'RuleSetsService@match2':
+    id: 'RuleSetsService@match2'
+    name: 'RuleSetsService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      ruleSetsService := RuleSetsService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'XRayConfigService@match2':
+    id: 'XRayConfigService@match2'
+    name: 'XRayConfigService'
+    fields:
+      Client:
+        type: '*match2client.JusticeMatch2Service'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/xRayConfig.go'
+    example: |-
+      match2Client := factory.NewMatch2Client(configRepo) // re-use if it exists already
+      xRayConfigService := XRayConfigService{
+          Client:           match2Client,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AcceptBackfillParams@match2':
+    id: 'AcceptBackfillParams@match2'
+    name: 'AcceptBackfillParams'
+    fields:
+      'BackfillID':
+        type: '*string'
+        required: true
+        description: |-
+          backfill Ticket ID
+      'Body':
+        type: '*APIBackFillAcceptRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/accept_backfill_parameters.go'
+
+  'AdminDeletePlayFeatureFlagParams@match2':
+    id: 'AdminDeletePlayFeatureFlagParams@match2'
+    name: 'AdminDeletePlayFeatureFlagParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/play_feature_flag/admin_delete_play_feature_flag_parameters.go'
+
+  'AdminGetAllConfigV1Params@match2':
+    id: 'AdminGetAllConfigV1Params@match2'
+    name: 'AdminGetAllConfigV1Params'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/config/admin_get_all_config_v1_parameters.go'
+
+  'AdminGetConfigV1Params@match2':
+    id: 'AdminGetConfigV1Params@match2'
+    name: 'AdminGetConfigV1Params'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/config/admin_get_config_v1_parameters.go'
+
+  'AdminGetLogConfigParams@match2':
+    id: 'AdminGetLogConfigParams@match2'
+    name: 'AdminGetLogConfigParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/config/admin_get_log_config_parameters.go'
+
+  'AdminGetMatchPoolTicketsParams@match2':
+    id: 'AdminGetMatchPoolTicketsParams@match2'
+    name: 'AdminGetMatchPoolTicketsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination offset
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/admin_get_match_pool_tickets_parameters.go'
+
+  'AdminGetPlayFeatureFlagParams@match2':
+    id: 'AdminGetPlayFeatureFlagParams@match2'
+    name: 'AdminGetPlayFeatureFlagParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/play_feature_flag/admin_get_play_feature_flag_parameters.go'
+
+  'AdminGetXRayConfigParams@match2':
+    id: 'AdminGetXRayConfigParams@match2'
+    name: 'AdminGetXRayConfigParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/x_ray_config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/x_ray_config/admin_get_x_ray_config_parameters.go'
+
+  'AdminPatchConfigV1Params@match2':
+    id: 'AdminPatchConfigV1Params@match2'
+    name: 'AdminPatchConfigV1Params'
+    fields:
+      'Body':
+        type: '*APIPatchNamespaceConfigRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/config/admin_patch_config_v1_parameters.go'
+
+  'AdminPatchUpdateLogConfigParams@match2':
+    id: 'AdminPatchUpdateLogConfigParams@match2'
+    name: 'AdminPatchUpdateLogConfigParams'
+    fields:
+      'Body':
+        type: '*LogconfigConfiguration'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/config/admin_patch_update_log_config_parameters.go'
+
+  'AdminQueryBackfillParams@match2':
+    id: 'AdminQueryBackfillParams@match2'
+    name: 'AdminQueryBackfillParams'
+    fields:
+      'FromTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          beginning of backfill ticket creation time range in RFC 3339 format e.g. 2022-10-21T07:20:50Z
+      'IsActive':
+        type: 'bool'
+        required: false
+        description: |-
+          backfill isActive flag
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit of the returned data
+      'MatchPool':
+        type: 'string'
+        required: false
+        description: |-
+          ticket match pool
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset of the data
+      'PlayerID':
+        type: 'string'
+        required: false
+        description: |-
+          player ID of the backfilled session (WARNING: slow)
+      'Region':
+        type: 'string'
+        required: false
+        description: |-
+          preferred region of the backfilled session (WARNING: slow)
+      'SessionID':
+        type: 'string'
+        required: false
+        description: |-
+          backfill Session ID
+      'ToTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          end of backfill ticket creation time range in RFC 3339 format e.g. 2022-10-21T07:20:50Z
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/admin_query_backfill_parameters.go'
+
+  'AdminUpdateXRayConfigParams@match2':
+    id: 'AdminUpdateXRayConfigParams@match2'
+    name: 'AdminUpdateXRayConfigParams'
+    fields:
+      'Body':
+        type: '*ModelsXRayConfigHTTPUpdateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/x_ray_config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/x_ray_config/admin_update_x_ray_config_parameters.go'
+
+  'AdminUpsertPlayFeatureFlagParams@match2':
+    id: 'AdminUpsertPlayFeatureFlagParams@match2'
+    name: 'AdminUpsertPlayFeatureFlagParams'
+    fields:
+      'Body':
+        type: '*ModelsPlayFeatureFlag'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/play_feature_flag/admin_upsert_play_feature_flag_parameters.go'
+
+  'CreateBackfillParams@match2':
+    id: 'CreateBackfillParams@match2'
+    name: 'CreateBackfillParams'
+    fields:
+      'Body':
+        type: '*APIBackFillCreateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/create_backfill_parameters.go'
+
+  'CreateMatchFunctionParams@match2':
+    id: 'CreateMatchFunctionParams@match2'
+    name: 'CreateMatchFunctionParams'
+    fields:
+      'Body':
+        type: '*APIMatchFunctionRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_functions/create_match_function_parameters.go'
+
+  'CreateMatchPoolParams@match2':
+    id: 'CreateMatchPoolParams@match2'
+    name: 'CreateMatchPoolParams'
+    fields:
+      'Body':
+        type: '*APIMatchPool'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/create_match_pool_parameters.go'
+
+  'CreateMatchTicketParams@match2':
+    id: 'CreateMatchTicketParams@match2'
+    name: 'CreateMatchTicketParams'
+    fields:
+      'Body':
+        type: '*APIMatchTicketRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_tickets/create_match_ticket_parameters.go'
+
+  'CreateRuleSetParams@match2':
+    id: 'CreateRuleSetParams@match2'
+    name: 'CreateRuleSetParams'
+    fields:
+      'Body':
+        type: '*APIRuleSetPayload'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/rule_sets/create_rule_set_parameters.go'
+
+  'DeleteBackfillParams@match2':
+    id: 'DeleteBackfillParams@match2'
+    name: 'DeleteBackfillParams'
+    fields:
+      'BackfillID':
+        type: '*string'
+        required: true
+        description: |-
+          backfill Ticket ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/delete_backfill_parameters.go'
+
+  'DeleteMatchFunctionParams@match2':
+    id: 'DeleteMatchFunctionParams@match2'
+    name: 'DeleteMatchFunctionParams'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name of the match function
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_functions/delete_match_function_parameters.go'
+
+  'DeleteMatchPoolParams@match2':
+    id: 'DeleteMatchPoolParams@match2'
+    name: 'DeleteMatchPoolParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/delete_match_pool_parameters.go'
+
+  'DeleteMatchTicketParams@match2':
+    id: 'DeleteMatchTicketParams@match2'
+    name: 'DeleteMatchTicketParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Ticketid':
+        type: '*string'
+        required: true
+        description: |-
+          ID of the match ticket
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_tickets/delete_match_ticket_parameters.go'
+
+  'DeleteRuleSetParams@match2':
+    id: 'DeleteRuleSetParams@match2'
+    name: 'DeleteRuleSetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Ruleset':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the rule set
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/rule_sets/delete_rule_set_parameters.go'
+
+  'EnvironmentVariableListParams@match2':
+    id: 'EnvironmentVariableListParams@match2'
+    name: 'EnvironmentVariableListParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/environment_variables'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/environment_variables/environment_variable_list_parameters.go'
+
+  'GetBackfillParams@match2':
+    id: 'GetBackfillParams@match2'
+    name: 'GetBackfillParams'
+    fields:
+      'BackfillID':
+        type: '*string'
+        required: true
+        description: |-
+          backfill Ticket ID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/get_backfill_parameters.go'
+
+  'GetBackfillProposalParams@match2':
+    id: 'GetBackfillProposalParams@match2'
+    name: 'GetBackfillProposalParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'SessionID':
+        type: '*string'
+        required: true
+        description: |-
+          Session ID information
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/get_backfill_proposal_parameters.go'
+
+  'GetHealthcheckInfoParams@match2':
+    id: 'GetHealthcheckInfoParams@match2'
+    name: 'GetHealthcheckInfoParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client//get_healthcheck_info_parameters.go'
+
+  'GetHealthcheckInfoV1Params@match2':
+    id: 'GetHealthcheckInfoV1Params@match2'
+    name: 'GetHealthcheckInfoV1Params'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client//get_healthcheck_info_v1_parameters.go'
+
+  'GetMyMatchTicketsParams@match2':
+    id: 'GetMyMatchTicketsParams@match2'
+    name: 'GetMyMatchTicketsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit of the returned data
+      'MatchPool':
+        type: 'string'
+        required: false
+        description: |-
+          ticket match pool
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset of the data
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_tickets/get_my_match_tickets_parameters.go'
+
+  'GetPlayerMetricParams@match2':
+    id: 'GetPlayerMetricParams@match2'
+    name: 'GetPlayerMetricParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/get_player_metric_parameters.go'
+
+  'MatchFunctionGetParams@match2':
+    id: 'MatchFunctionGetParams@match2'
+    name: 'MatchFunctionGetParams'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name of the custom match function
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_functions/match_function_get_parameters.go'
+
+  'MatchFunctionListParams@match2':
+    id: 'MatchFunctionListParams@match2'
+    name: 'MatchFunctionListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_functions/match_function_list_parameters.go'
+
+  'MatchPoolDetailsParams@match2':
+    id: 'MatchPoolDetailsParams@match2'
+    name: 'MatchPoolDetailsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/match_pool_details_parameters.go'
+
+  'MatchPoolListParams@match2':
+    id: 'MatchPoolListParams@match2'
+    name: 'MatchPoolListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination limit
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          Match Pool name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/match_pool_list_parameters.go'
+
+  'MatchPoolMetricParams@match2':
+    id: 'MatchPoolMetricParams@match2'
+    name: 'MatchPoolMetricParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/match_pool_metric_parameters.go'
+
+  'MatchTicketDetailsParams@match2':
+    id: 'MatchTicketDetailsParams@match2'
+    name: 'MatchTicketDetailsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Ticketid':
+        type: '*string'
+        required: true
+        description: |-
+          id of the ticket to get the status of
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_tickets/match_ticket_details_parameters.go'
+
+  'PostMatchErrorMetricParams@match2':
+    id: 'PostMatchErrorMetricParams@match2'
+    name: 'PostMatchErrorMetricParams'
+    fields:
+      'Body':
+        type: '*APIExternalFailureMetricRecord'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/post_match_error_metric_parameters.go'
+
+  'PublicGetPlayerMetricParams@match2':
+    id: 'PublicGetPlayerMetricParams@match2'
+    name: 'PublicGetPlayerMetricParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/public_get_player_metric_parameters.go'
+
+  'RejectBackfillParams@match2':
+    id: 'RejectBackfillParams@match2'
+    name: 'RejectBackfillParams'
+    fields:
+      'BackfillID':
+        type: '*string'
+        required: true
+        description: |-
+          backfill Ticket ID
+      'Body':
+        type: '*APIBackFillRejectRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/backfill/reject_backfill_parameters.go'
+
+  'RuleSetDetailsParams@match2':
+    id: 'RuleSetDetailsParams@match2'
+    name: 'RuleSetDetailsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Ruleset':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the rule set
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/rule_sets/rule_set_details_parameters.go'
+
+  'RuleSetListParams@match2':
+    id: 'RuleSetListParams@match2'
+    name: 'RuleSetListParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination limit
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          Rule Set name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Pagination offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/rule_sets/rule_set_list_parameters.go'
+
+  'UpdateMatchFunctionParams@match2':
+    id: 'UpdateMatchFunctionParams@match2'
+    name: 'UpdateMatchFunctionParams'
+    fields:
+      'Body':
+        type: '*APIMatchFunctionRequest'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name of the match function
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_functions/update_match_function_parameters.go'
+
+  'UpdateMatchPoolParams@match2':
+    id: 'UpdateMatchPoolParams@match2'
+    name: 'UpdateMatchPoolParams'
+    fields:
+      'Body':
+        type: '*APIMatchPoolConfig'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Pool':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match pool
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/match_pools/update_match_pool_parameters.go'
+
+  'UpdateRuleSetParams@match2':
+    id: 'UpdateRuleSetParams@match2'
+    name: 'UpdateRuleSetParams'
+    fields:
+      'Body':
+        type: '*APIRuleSetPayload'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Ruleset':
+        type: '*string'
+        required: true
+        description: |-
+          Name of the match rule set
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client/rule_sets/update_rule_set_parameters.go'
+
+  'VersionCheckHandlerParams@match2':
+    id: 'VersionCheckHandlerParams@match2'
+    name: 'VersionCheckHandlerParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2client//version_check_handler_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'APIBackFillAcceptRequest@match2':
+    id: 'APIBackFillAcceptRequest@match2'
+    name: 'APIBackFillAcceptRequest'
+    fields:
+      'AcceptedTicketIds':
+        type: '[]string'
+        required: false
+      'ProposalID':
+        type: '*string'
+        required: true
+      'Stop':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_back_fill_accept_request.go'
+
+  'APIBackFillCreateRequest@match2':
+    id: 'APIBackFillCreateRequest@match2'
+    name: 'APIBackFillCreateRequest'
+    fields:
+      'MatchPool':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_back_fill_create_request.go'
+
+  'APIBackfillCreateResponse@match2':
+    id: 'APIBackfillCreateResponse@match2'
+    name: 'APIBackfillCreateResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_backfill_create_response.go'
+
+  'APIBackfillGetResponse@match2':
+    id: 'APIBackfillGetResponse@match2'
+    name: 'APIBackfillGetResponse'
+    fields:
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'MatchPool':
+        type: 'string'
+        required: false
+      'MatchSessionID':
+        type: 'string'
+        required: false
+      'PartialMatch':
+        type: '*APIMatch'
+        required: false
+      'TicketID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_backfill_get_response.go'
+
+  'APIBackfillProposalResponse@match2':
+    id: 'APIBackfillProposalResponse@match2'
+    name: 'APIBackfillProposalResponse'
+    fields:
+      'BackfillTicketID':
+        type: 'string'
+        required: false
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'MatchPool':
+        type: 'string'
+        required: false
+      'MatchSessionID':
+        type: 'string'
+        required: false
+      'ProposalID':
+        type: 'string'
+        required: false
+      'ProposedTeams':
+        type: '[]*APITeam'
+        required: false
+      'Tickets':
+        type: '[]*APITicket'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_backfill_proposal_response.go'
+
+  'APIBackFillRejectRequest@match2':
+    id: 'APIBackFillRejectRequest@match2'
+    name: 'APIBackFillRejectRequest'
+    fields:
+      'ProposalID':
+        type: '*string'
+        required: true
+      'Stop':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_back_fill_reject_request.go'
+
+  'APIExternalFailureMetricRecord@match2':
+    id: 'APIExternalFailureMetricRecord@match2'
+    name: 'APIExternalFailureMetricRecord'
+    fields:
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_external_failure_metric_record.go'
+
+  'APIListBackfillQueryResponse@match2':
+    id: 'APIListBackfillQueryResponse@match2'
+    name: 'APIListBackfillQueryResponse'
+    fields:
+      'Data':
+        type: '[]*APIBackfillGetResponse'
+        required: true
+      'Pagination':
+        type: '*ModelsPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_backfill_query_response.go'
+
+  'APIListEnvironmentVariablesResponse@match2':
+    id: 'APIListEnvironmentVariablesResponse@match2'
+    name: 'APIListEnvironmentVariablesResponse'
+    fields:
+      'Data':
+        type: '[]*ConfigEnvironmentVariable'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_environment_variables_response.go'
+
+  'APIListMatchFunctionsResponse@match2':
+    id: 'APIListMatchFunctionsResponse@match2'
+    name: 'APIListMatchFunctionsResponse'
+    fields:
+      'Configs':
+        type: '[]*APIMatchFunctionConfig'
+        required: false
+      'Functions':
+        type: '[]string'
+        required: true
+      'Pagination':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_match_functions_response.go'
+
+  'APIListMatchPoolsResponse@match2':
+    id: 'APIListMatchPoolsResponse@match2'
+    name: 'APIListMatchPoolsResponse'
+    fields:
+      'Data':
+        type: '[]*APIMatchPool'
+        required: false
+      'Pagination':
+        type: '*ModelsPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_match_pools_response.go'
+
+  'APIListMatchPoolTicketsResponse@match2':
+    id: 'APIListMatchPoolTicketsResponse@match2'
+    name: 'APIListMatchPoolTicketsResponse'
+    fields:
+      'Data':
+        type: '[]*MatchmakerMatchTicketRecord'
+        required: true
+      'Pagination':
+        type: '*ModelsPagination'
+        required: false
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_match_pool_tickets_response.go'
+
+  'APIListRuleSetsResponse@match2':
+    id: 'APIListRuleSetsResponse@match2'
+    name: 'APIListRuleSetsResponse'
+    fields:
+      'Data':
+        type: '[]*APIMatchRuleSetNameData'
+        required: false
+      'Pagination':
+        type: '*ModelsPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_list_rule_sets_response.go'
+
+  'APIMatch@match2':
+    id: 'APIMatch@match2'
+    name: 'APIMatch'
+    fields:
+      'Backfill':
+        type: 'bool'
+        required: false
+      'ClientVersion':
+        type: 'string'
+        required: false
+      'MatchAttributes':
+        type: 'interface{}'
+        required: false
+      'RegionPreference':
+        type: '[]string'
+        required: false
+      'ServerName':
+        type: 'string'
+        required: false
+      'Teams':
+        type: '[]*APITeam'
+        required: false
+      'Tickets':
+        type: '[]*APITicket'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match.go'
+
+  'APIMatchFunctionConfig@match2':
+    id: 'APIMatchFunctionConfig@match2'
+    name: 'APIMatchFunctionConfig'
+    fields:
+      'MatchFunction':
+        type: '*string'
+        required: true
+      'ServiceAppName':
+        type: 'string'
+        required: false
+      'URL':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_function_config.go'
+
+  'APIMatchFunctionOverride@match2':
+    id: 'APIMatchFunctionOverride@match2'
+    name: 'APIMatchFunctionOverride'
+    fields:
+      'BackfillMatches':
+        type: 'string'
+        required: false
+      'Enrichment':
+        type: '[]string'
+        required: false
+      'MakeMatches':
+        type: 'string'
+        required: false
+      'StatCodes':
+        type: '[]string'
+        required: false
+      'Validation':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_function_override.go'
+
+  'APIMatchFunctionRequest@match2':
+    id: 'APIMatchFunctionRequest@match2'
+    name: 'APIMatchFunctionRequest'
+    fields:
+      'MatchFunction':
+        type: '*string'
+        required: true
+      'ServiceAppName':
+        type: 'string'
+        required: false
+      'URL':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_function_request.go'
+
+  'APIMatchPool@match2':
+    id: 'APIMatchPool@match2'
+    name: 'APIMatchPool'
+    fields:
+      'AutoAcceptBackfillProposal':
+        type: '*bool'
+        required: true
+      'BackfillProposalExpirationSeconds':
+        type: '*int32'
+        required: true
+      'BackfillTicketExpirationSeconds':
+        type: '*int32'
+        required: true
+      'BestLatencyCalculationMethod':
+        type: 'string'
+        required: false
+      'CrossplayDisabled':
+        type: 'bool'
+        required: false
+      'MatchFunction':
+        type: '*string'
+        required: true
+      'MatchFunctionOverride':
+        type: '*APIMatchFunctionOverride'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'PlatformGroupEnabled':
+        type: 'bool'
+        required: false
+      'RuleSet':
+        type: '*string'
+        required: true
+      'SessionTemplate':
+        type: '*string'
+        required: true
+      'TicketExpirationSeconds':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_pool.go'
+
+  'APIMatchPoolConfig@match2':
+    id: 'APIMatchPoolConfig@match2'
+    name: 'APIMatchPoolConfig'
+    fields:
+      'AutoAcceptBackfillProposal':
+        type: '*bool'
+        required: true
+      'BackfillProposalExpirationSeconds':
+        type: '*int32'
+        required: true
+      'BackfillTicketExpirationSeconds':
+        type: '*int32'
+        required: true
+      'BestLatencyCalculationMethod':
+        type: 'string'
+        required: false
+      'CrossplayDisabled':
+        type: 'bool'
+        required: false
+      'MatchFunction':
+        type: '*string'
+        required: true
+      'MatchFunctionOverride':
+        type: '*APIMatchFunctionOverride'
+        required: true
+      'PlatformGroupEnabled':
+        type: 'bool'
+        required: false
+      'RuleSet':
+        type: '*string'
+        required: true
+      'SessionTemplate':
+        type: '*string'
+        required: true
+      'TicketExpirationSeconds':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_pool_config.go'
+
+  'APIMatchRuleSetNameData@match2':
+    id: 'APIMatchRuleSetNameData@match2'
+    name: 'APIMatchRuleSetNameData'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_rule_set_name_data.go'
+
+  'APIMatchTicketRequest@match2':
+    id: 'APIMatchTicketRequest@match2'
+    name: 'APIMatchTicketRequest'
+    fields:
+      'Attributes':
+        type: 'interface{}'
+        required: true
+      'ExcludedSessions':
+        type: '[]string'
+        required: false
+      'Latencies':
+        type: 'map[string]int64'
+        required: true
+      'MatchPool':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: 'string'
+        required: false
+      'Storage':
+        type: 'interface{}'
+        required: false
+        description: |-
+          leader session storage
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_ticket_request.go'
+
+  'APIMatchTicketResponse@match2':
+    id: 'APIMatchTicketResponse@match2'
+    name: 'APIMatchTicketResponse'
+    fields:
+      'MatchTicketID':
+        type: '*string'
+        required: true
+      'QueueTime':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_ticket_response.go'
+
+  'APIMatchTicketStatus@match2':
+    id: 'APIMatchTicketStatus@match2'
+    name: 'APIMatchTicketStatus'
+    fields:
+      'IsActive':
+        type: 'bool'
+        required: false
+      'MatchFound':
+        type: '*bool'
+        required: true
+      'MatchPool':
+        type: 'string'
+        required: false
+      'MatchTicketID':
+        type: 'string'
+        required: false
+      'ProposedProposal':
+        type: '*APIProposedProposal'
+        required: false
+      'SessionID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_ticket_status.go'
+
+  'APIMatchTicketStatuses@match2':
+    id: 'APIMatchTicketStatuses@match2'
+    name: 'APIMatchTicketStatuses'
+    fields:
+      'Data':
+        type: '[]*APIMatchTicketStatus'
+        required: true
+      'Pagination':
+        type: '*ModelsPagination'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_match_ticket_statuses.go'
+
+  'APINamespaceConfigList@match2':
+    id: 'APINamespaceConfigList@match2'
+    name: 'APINamespaceConfigList'
+    fields:
+      'Configs':
+        type: '[]*ConfigmodelsNamespaceConfig'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_namespace_config_list.go'
+
+  'APIParty@match2':
+    id: 'APIParty@match2'
+    name: 'APIParty'
+    fields:
+      'PartyID':
+        type: 'string'
+        required: false
+      'UserIDs':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_party.go'
+
+  'APIPatchNamespaceConfigRequest@match2':
+    id: 'APIPatchNamespaceConfigRequest@match2'
+    name: 'APIPatchNamespaceConfigRequest'
+    fields:
+      'CrossPlatformNoCurrentPlatform':
+        type: 'bool'
+        required: false
+      'ExtraPlatforms':
+        type: '[]string'
+        required: false
+        description: |-
+          additional platforms that will be included in the cross_platform attribute alongside the login method
+      'MatchAnyCommon':
+        type: 'bool'
+        required: false
+      'PlatformGroup':
+        type: 'map[string][]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_patch_namespace_config_request.go'
+
+  'APIPlayerData@match2':
+    id: 'APIPlayerData@match2'
+    name: 'APIPlayerData'
+    fields:
+      'Attributes':
+        type: 'interface{}'
+        required: false
+      'PartyID':
+        type: 'string'
+        required: false
+      'PlayerID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_player_data.go'
+
+  'APIPlayerMetricRecord@match2':
+    id: 'APIPlayerMetricRecord@match2'
+    name: 'APIPlayerMetricRecord'
+    fields:
+      'PlayerInQueue':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_player_metric_record.go'
+
+  'APIProposedProposal@match2':
+    id: 'APIProposedProposal@match2'
+    name: 'APIProposedProposal'
+    fields:
+      'BackfillID':
+        type: 'string'
+        required: false
+      'ProposalID':
+        type: 'string'
+        required: false
+      'Status':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_proposed_proposal.go'
+
+  'APIRuleSetPayload@match2':
+    id: 'APIRuleSetPayload@match2'
+    name: 'APIRuleSetPayload'
+    fields:
+      'Data':
+        type: 'interface{}'
+        required: true
+      'EnableCustomMatchFunction':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_rule_set_payload.go'
+
+  'APITeam@match2':
+    id: 'APITeam@match2'
+    name: 'APITeam'
+    fields:
+      'Parties':
+        type: '[]*APIParty'
+        required: false
+      'TeamID':
+        type: 'string'
+        required: false
+      'UserIDs':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_team.go'
+
+  'APITicket@match2':
+    id: 'APITicket@match2'
+    name: 'APITicket'
+    fields:
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'Latencies':
+        type: 'map[string]int64'
+        required: false
+      'MatchPool':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: false
+      'PartySessionID':
+        type: 'string'
+        required: false
+      'Players':
+        type: '[]*APIPlayerData'
+        required: false
+      'TicketAttributes':
+        type: 'interface{}'
+        required: false
+      'TicketID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_ticket.go'
+
+  'APITicketMetricResultRecord@match2':
+    id: 'APITicketMetricResultRecord@match2'
+    name: 'APITicketMetricResultRecord'
+    fields:
+      'QueueTime':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/api_ticket_metric_result_record.go'
+
+  'ConfigEnvironmentVariable@match2':
+    id: 'ConfigEnvironmentVariable@match2'
+    name: 'ConfigEnvironmentVariable'
+    fields:
+      'ActualValue':
+        type: 'string'
+        required: false
+      'DefaultValue':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/config_environment_variable.go'
+
+  'ConfigmodelsNamespaceConfig@match2':
+    id: 'ConfigmodelsNamespaceConfig@match2'
+    name: 'ConfigmodelsNamespaceConfig'
+    fields:
+      'CrossPlatformNoCurrentPlatform':
+        type: 'bool'
+        required: false
+      'ExtraPlatforms':
+        type: '[]string'
+        required: false
+      'MatchAnyCommon':
+        type: 'bool'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'PlatformGroup':
+        type: 'map[string][]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/configmodels_namespace_config.go'
+
+  'LogconfigConfiguration@match2':
+    id: 'LogconfigConfiguration@match2'
+    name: 'LogconfigConfiguration'
+    fields:
+      'LogLevel':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/logconfig_configuration.go'
+
+  'MatchmakerMatchTicketRecord@match2':
+    id: 'MatchmakerMatchTicketRecord@match2'
+    name: 'MatchmakerMatchTicketRecord'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ExpiredAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'IsActive':
+        type: '*bool'
+        required: true
+      'PartySessionID':
+        type: '*string'
+        required: true
+      'ProposedProposal':
+        type: '*MatchmakerProposedProposal'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+      'Ticket':
+        type: '*MatchmakerTicket'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'UniqueTicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/matchmaker_match_ticket_record.go'
+
+  'MatchmakerParty@match2':
+    id: 'MatchmakerParty@match2'
+    name: 'MatchmakerParty'
+    fields:
+      'PartyID':
+        type: 'string'
+        required: false
+      'UserIDs':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/matchmaker_party.go'
+
+  'MatchmakerProposedProposal@match2':
+    id: 'MatchmakerProposedProposal@match2'
+    name: 'MatchmakerProposedProposal'
+    fields:
+      'BackfillID':
+        type: '*string'
+        required: true
+      'ProposalID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/matchmaker_proposed_proposal.go'
+
+  'MatchmakerTeam@match2':
+    id: 'MatchmakerTeam@match2'
+    name: 'MatchmakerTeam'
+    fields:
+      'Parties':
+        type: '[]*MatchmakerParty'
+        required: false
+      'TeamID':
+        type: 'string'
+        required: false
+      'UserIDs':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/matchmaker_team.go'
+
+  'MatchmakerTicket@match2':
+    id: 'MatchmakerTicket@match2'
+    name: 'MatchmakerTicket'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ExcludedSessions':
+        type: '[]string'
+        required: true
+      'IsActive':
+        type: '*bool'
+        required: true
+      'IsPivot':
+        type: '*bool'
+        required: true
+      'IsSinglePlay':
+        type: '*bool'
+        required: true
+      'Latencies':
+        type: 'map[string]int64'
+        required: true
+      'MatchedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'MatchPool':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'PartySessionID':
+        type: '*string'
+        required: true
+      'Players':
+        type: '[]*PlayerPlayerData'
+        required: true
+      'ProposedProposal':
+        type: '*MatchmakerProposedProposal'
+        required: true
+      'TicketAttributes':
+        type: 'interface{}'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'TicketInformation':
+        type: 'interface{}'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/matchmaker_ticket.go'
+
+  'ModelsConfiguration@match2':
+    id: 'ModelsConfiguration@match2'
+    name: 'ModelsConfiguration'
+    fields:
+      'ClientVersion':
+        type: '*string'
+        required: true
+      'Deployment':
+        type: '*string'
+        required: true
+      'InactiveTimeout':
+        type: '*int32'
+        required: true
+      'InviteTimeout':
+        type: '*int32'
+        required: true
+      'Joinability':
+        type: '*string'
+        required: true
+      'MaxPlayers':
+        type: '*int32'
+        required: true
+      'MinPlayers':
+        type: '*int32'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'RequestedRegions':
+        type: '[]string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_configuration.go'
+
+  'ModelsDSInformation@match2':
+    id: 'ModelsDSInformation@match2'
+    name: 'ModelsDSInformation'
+    fields:
+      'MinPlayers':
+        type: '*int32'
+        required: true
+      'RequestedAt':
+        type: '*string'
+        required: true
+      'RequestedRegions':
+        type: '[]string'
+        required: true
+      'Server':
+        type: '*ModelsServer'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_d_s_information.go'
+
+  'ModelsGameSession@match2':
+    id: 'ModelsGameSession@match2'
+    name: 'ModelsGameSession'
+    fields:
+      'Attributes':
+        type: 'interface{}'
+        required: true
+      'BackfillTicketID':
+        type: '*string'
+        required: true
+      'Configuration':
+        type: '*ModelsConfiguration'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'DSInformation':
+        type: '*ModelsDSInformation'
+        required: true
+      'GameMode':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'IsFull':
+        type: '*bool'
+        required: true
+      'JoinType':
+        type: '*string'
+        required: true
+      'LeaderID':
+        type: '*string'
+        required: true
+      'MatchPool':
+        type: '*string'
+        required: true
+      'Members':
+        type: '[]*ModelsUser'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Teams':
+        type: '[]*MatchmakerTeam'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'Version':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_game_session.go'
+
+  'ModelsPagination@match2':
+    id: 'ModelsPagination@match2'
+    name: 'ModelsPagination'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_pagination.go'
+
+  'ModelsPlayFeatureFlag@match2':
+    id: 'ModelsPlayFeatureFlag@match2'
+    name: 'ModelsPlayFeatureFlag'
+    fields:
+      'ENABLEAUTOCANCELMATCHUSERDISCONNECT':
+        type: '*bool'
+        required: true
+      'ENABLEAUTOCANCELMATCHUSERLEAVE':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_play_feature_flag.go'
+
+  'ModelsServer@match2':
+    id: 'ModelsServer@match2'
+    name: 'ModelsServer'
+    fields:
+      'AlternateIps':
+        type: '[]string'
+        required: true
+      'CustomAttribute':
+        type: '*string'
+        required: true
+      'Deployment':
+        type: '*string'
+        required: true
+      'GameVersion':
+        type: '*string'
+        required: true
+      'ImageVersion':
+        type: '*string'
+        required: true
+      'IP':
+        type: '*string'
+        required: true
+      'IsOverrideGameVersion':
+        type: '*bool'
+        required: true
+      'LastUpdate':
+        type: 'strfmt.DateTime'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'PodName':
+        type: '*string'
+        required: true
+      'Port':
+        type: '*int32'
+        required: true
+      'Ports':
+        type: 'map[string]int64'
+        required: true
+      'Protocol':
+        type: '*string'
+        required: true
+      'Provider':
+        type: '*string'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_server.go'
+
+  'ModelsUser@match2':
+    id: 'ModelsUser@match2'
+    name: 'ModelsUser'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'PlatformID':
+        type: '*string'
+        required: true
+      'PlatformUserID':
+        type: '*string'
+        required: true
+      'PreviousStatus':
+        type: 'string'
+        required: false
+      'Status':
+        type: '*string'
+        required: true
+      'StatusV2':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_user.go'
+
+  'ModelsXRayConfigHTTPResponse@match2':
+    id: 'ModelsXRayConfigHTTPResponse@match2'
+    name: 'ModelsXRayConfigHTTPResponse'
+    fields:
+      'WhitelistedUsers':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_x_ray_config_http_response.go'
+
+  'ModelsXRayConfigHTTPUpdateRequest@match2':
+    id: 'ModelsXRayConfigHTTPUpdateRequest@match2'
+    name: 'ModelsXRayConfigHTTPUpdateRequest'
+    fields:
+      'WhitelistedUsers':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/models_x_ray_config_http_update_request.go'
+
+  'PlayerPlayerData@match2':
+    id: 'PlayerPlayerData@match2'
+    name: 'PlayerPlayerData'
+    fields:
+      'Attributes':
+        type: 'interface{}'
+        required: true
+      'PartyID':
+        type: '*string'
+        required: true
+      'PlatformID':
+        type: '*string'
+        required: true
+      'PlayerID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/player_player_data.go'
+
+  'ResponseError@match2':
+    id: 'ResponseError@match2'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: 'int32'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/match2-sdk/pkg/match2clientmodels/response_error.go'
+
+  # endregion models
+
+functions:
+
+  'AcceptBackfillShort@match2':
+    id: 'AcceptBackfillShort@match2'
+    name: 'AcceptBackfillShort'
+    description: |-
+      Accept backfill proposal.
+      Field **acceptedTicketIds** can be used to accept specific tickets within a backfill proposal. If the ticketIDs are not mentioned in this field, those tickets will be rejected and reactivated for future proposals.
+      If **acceptedTicketIds** is nil or not specified, then all tickets in the proposal will be accepted.
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.AcceptBackfillParams'
+        required: true
+    return_type: '(*backfill.AcceptBackfillResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.AcceptBackfillParams{ ... }
+      res, err := backfillService.AcceptBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'accept'
+      - 'backfill'
+      - 'public'
+
+  'AdminDeletePlayFeatureFlagShort@match2':
+    id: 'AdminDeletePlayFeatureFlagShort@match2'
+    name: 'AdminDeletePlayFeatureFlagShort'
+    description: |-
+      Delete matchmaking Play Feature Flag.
+      Deleting the current namespace's custom config only removes it from the database, the system will then use the environment variable defined in the ConfigMap instead.
+    struct: 'PlayFeatureFlagService'
+    parameters:
+      params:
+        type: '*play_feature_flag.AdminDeletePlayFeatureFlagParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/playFeatureFlag.go'
+    example: |-
+      playFeatureFlagService := match2.PlayFeatureFlagService{ ... }
+      params := play_feature_flag.AdminDeletePlayFeatureFlagParams{ ... }
+      res, err := playFeatureFlagService.AdminDeletePlayFeatureFlagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'feature'
+      - 'flag'
+      - 'play'
+
+  'AdminGetAllConfigV1Short@match2':
+    id: 'AdminGetAllConfigV1Short@match2'
+    name: 'AdminGetAllConfigV1Short'
+    description: |-
+      Get matchmaking config of all namespaces. Will only return namespace configs than have been updated.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetAllConfigV1Params'
+        required: true
+    return_type: '(*config.AdminGetAllConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      configService := match2.ConfigService{ ... }
+      params := config.AdminGetAllConfigV1Params{ ... }
+      res, err := configService.AdminGetAllConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'all'
+      - 'config'
+      - 'get'
+      - 'v1'
+
+  'AdminGetConfigV1Short@match2':
+    id: 'AdminGetConfigV1Short@match2'
+    name: 'AdminGetConfigV1Short'
+    description: |-
+      Get matchmaking config of a namespaces.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetConfigV1Params'
+        required: true
+    return_type: '(*config.AdminGetConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      configService := match2.ConfigService{ ... }
+      params := config.AdminGetConfigV1Params{ ... }
+      res, err := configService.AdminGetConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'get'
+      - 'v1'
+
+  'AdminGetLogConfigShort@match2':
+    id: 'AdminGetLogConfigShort@match2'
+    name: 'AdminGetLogConfigShort'
+    description: |-
+      Get Log Configuration.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminGetLogConfigParams'
+        required: true
+    return_type: '(*config.AdminGetLogConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      configService := match2.ConfigService{ ... }
+      params := config.AdminGetLogConfigParams{ ... }
+      res, err := configService.AdminGetLogConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'get'
+      - 'log'
+
+  'AdminGetMatchPoolTicketsShort@match2':
+    id: 'AdminGetMatchPoolTicketsShort@match2'
+    name: 'AdminGetMatchPoolTicketsShort'
+    description: |-
+      Get tickets in queue for a specific match pool
+
+      Result: number of tickets and list of ticket detail in a match pool.
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.AdminGetMatchPoolTicketsParams'
+        required: true
+    return_type: '(*match_pools.AdminGetMatchPoolTicketsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.AdminGetMatchPoolTicketsParams{ ... }
+      res, err := matchPoolsService.AdminGetMatchPoolTicketsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'match'
+      - 'pool'
+      - 'pools'
+      - 'tickets'
+
+  'AdminGetPlayFeatureFlagShort@match2':
+    id: 'AdminGetPlayFeatureFlagShort@match2'
+    name: 'AdminGetPlayFeatureFlagShort'
+    description: |-
+      Get matchmaking Play Feature Flag.
+    struct: 'PlayFeatureFlagService'
+    parameters:
+      params:
+        type: '*play_feature_flag.AdminGetPlayFeatureFlagParams'
+        required: true
+    return_type: '(*play_feature_flag.AdminGetPlayFeatureFlagResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/playFeatureFlag.go'
+    example: |-
+      playFeatureFlagService := match2.PlayFeatureFlagService{ ... }
+      params := play_feature_flag.AdminGetPlayFeatureFlagParams{ ... }
+      res, err := playFeatureFlagService.AdminGetPlayFeatureFlagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'feature'
+      - 'flag'
+      - 'get'
+      - 'play'
+
+  'AdminGetXRayConfigShort@match2':
+    id: 'AdminGetXRayConfigShort@match2'
+    name: 'AdminGetXRayConfigShort'
+    description: |-
+      Get XRay config
+    struct: 'XRayConfigService'
+    parameters:
+      params:
+        type: '*x_ray_config.AdminGetXRayConfigParams'
+        required: true
+    return_type: '(*x_ray_config.AdminGetXRayConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/x_ray_config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/xRayConfig.go'
+    example: |-
+      xRayConfigService := match2.XRayConfigService{ ... }
+      params := x_ray_config.AdminGetXRayConfigParams{ ... }
+      res, err := xRayConfigService.AdminGetXRayConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'get'
+      - 'ray'
+      - 'x'
+
+  'AdminPatchConfigV1Short@match2':
+    id: 'AdminPatchConfigV1Short@match2'
+    name: 'AdminPatchConfigV1Short'
+    description: |-
+      Patch update matchmaking config of a namespaces. Partially update matchmaking config, will only update value that defined on the request.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminPatchConfigV1Params'
+        required: true
+    return_type: '(*config.AdminPatchConfigV1Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      configService := match2.ConfigService{ ... }
+      params := config.AdminPatchConfigV1Params{ ... }
+      res, err := configService.AdminPatchConfigV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'patch'
+      - 'v1'
+
+  'AdminPatchUpdateLogConfigShort@match2':
+    id: 'AdminPatchUpdateLogConfigShort@match2'
+    name: 'AdminPatchUpdateLogConfigShort'
+    description: |-
+      Update Log Configuration.
+    struct: 'ConfigService'
+    parameters:
+      params:
+        type: '*config.AdminPatchUpdateLogConfigParams'
+        required: true
+    return_type: '(*config.AdminPatchUpdateLogConfigResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/config.go'
+    example: |-
+      configService := match2.ConfigService{ ... }
+      params := config.AdminPatchUpdateLogConfigParams{ ... }
+      res, err := configService.AdminPatchUpdateLogConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'log'
+      - 'patch'
+      - 'update'
+
+  'AdminQueryBackfillShort@match2':
+    id: 'AdminQueryBackfillShort@match2'
+    name: 'AdminQueryBackfillShort'
+    description: |-
+      Admin Query backfill ticket
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.AdminQueryBackfillParams'
+        required: true
+    return_type: '(*backfill.AdminQueryBackfillResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.AdminQueryBackfillParams{ ... }
+      res, err := backfillService.AdminQueryBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'backfill'
+      - 'query'
+
+  'AdminUpdateXRayConfigShort@match2':
+    id: 'AdminUpdateXRayConfigShort@match2'
+    name: 'AdminUpdateXRayConfigShort'
+    description: |-
+      Admin update XRay config
+    struct: 'XRayConfigService'
+    parameters:
+      params:
+        type: '*x_ray_config.AdminUpdateXRayConfigParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/x_ray_config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/xRayConfig.go'
+    example: |-
+      xRayConfigService := match2.XRayConfigService{ ... }
+      params := x_ray_config.AdminUpdateXRayConfigParams{ ... }
+      res, err := xRayConfigService.AdminUpdateXRayConfigShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'config'
+      - 'ray'
+      - 'update'
+      - 'x'
+
+  'AdminUpsertPlayFeatureFlagShort@match2':
+    id: 'AdminUpsertPlayFeatureFlagShort@match2'
+    name: 'AdminUpsertPlayFeatureFlagShort'
+    description: |-
+      Upsert matchmaking Play Feature Flag.
+    struct: 'PlayFeatureFlagService'
+    parameters:
+      params:
+        type: '*play_feature_flag.AdminUpsertPlayFeatureFlagParams'
+        required: true
+    return_type: '(*play_feature_flag.AdminUpsertPlayFeatureFlagResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/play_feature_flag'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/playFeatureFlag.go'
+    example: |-
+      playFeatureFlagService := match2.PlayFeatureFlagService{ ... }
+      params := play_feature_flag.AdminUpsertPlayFeatureFlagParams{ ... }
+      res, err := playFeatureFlagService.AdminUpsertPlayFeatureFlagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'feature'
+      - 'flag'
+      - 'play'
+      - 'upsert'
+
+  'CreateBackfillShort@match2':
+    id: 'CreateBackfillShort@match2'
+    name: 'CreateBackfillShort'
+    description: |-
+      Create backfill ticket.
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.CreateBackfillParams'
+        required: true
+    return_type: '(*backfill.CreateBackfillResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.CreateBackfillParams{ ... }
+      res, err := backfillService.CreateBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'backfill'
+      - 'create'
+      - 'public'
+
+  'CreateMatchFunctionShort@match2':
+    id: 'CreateMatchFunctionShort@match2'
+    name: 'CreateMatchFunctionShort'
+    description: |-
+      Creates a new matchmaking function.
+    struct: 'MatchFunctionsService'
+    parameters:
+      params:
+        type: '*match_functions.CreateMatchFunctionParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      matchFunctionsService := match2.MatchFunctionsService{ ... }
+      params := match_functions.CreateMatchFunctionParams{ ... }
+      res, err := matchFunctionsService.CreateMatchFunctionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'function'
+      - 'functions'
+      - 'match'
+
+  'CreateMatchPoolShort@match2':
+    id: 'CreateMatchPoolShort@match2'
+    name: 'CreateMatchPoolShort'
+    description: |-
+      Creates a new matchmaking pool.
+
+      A pool is isolated from other pools (i.e. tickets may be matched with other tickets in the same pool, but not with tickets in other pools).
+      Each pool has its own matchmaking rules and/or logic.
+
+      ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled.
+
+      Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide ("default" and "basic").
+      Match Function will be used as reference value for Match Function Overrides if not set.
+      In case Customer would like to use matchmaking service default match logic, then specify it in "match_function_overrides".
+      This sample configuration will let matchmaking service will use "default" match logic for make matches, while validation will hit both "default" and "custom" match logics.
+      e.g.
+      {
+      "match_function": "custom",
+      "match_function_overrides": {
+      "validation": []{"default","custom"},
+      "make_matches": "default",
+      }
+      }
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.CreateMatchPoolParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.CreateMatchPoolParams{ ... }
+      res, err := matchPoolsService.CreateMatchPoolShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'match'
+      - 'pool'
+      - 'pools'
+
+  'CreateMatchTicketShort@match2':
+    id: 'CreateMatchTicketShort@match2'
+    name: 'CreateMatchTicketShort'
+    description: |-
+      Creates a new request for matchmaking.
+
+      Cross Platform: Allow player to play game with "all" registered platforms.
+      1. Cross Platform can be enabled through session service or create match ticket.
+      a. via ticket: specify several cross_platform on create match ticket attributes. **[DEPRECATED]** client should not send from attribute `cross_platform` will be populated from backend
+      This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]
+      b. via session service: set player/party cross_platform attributes.
+      c. Enable match options ruleset with name cross_platform and type "all".
+      ```
+      {
+      "name": "co-op",
+      "data": {
+      "alliance": {
+      "min_number": 1,
+      "max_number": 1,
+      "player_min_number": 1,
+      "player_max_number": 4
+      },
+      "match_options": {
+      "options": [
+      {"name": "cross_platform", "type": "all"}
+      ]
+      }
+      }
+      }
+      ```
+      2. Cross Platform can be disabled from the matchpool configuration `crossplay_disabled=true`
+      3. When matchpool `crossplay_disabled=false`
+      * request attribute cross_platform is empty **[Recommended]**:
+      * Matchmaking will consider Party leader `crossplayEnabled` preference or Session attribute `crossplayEnabled` preference.
+      * When `crossplayEnabled=true` `cross_platforms` attributes will be populated from [active login methods](/iam/apidocs/#/Third%20Party%20Credential/RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3) otherwise it will set to leader current platform
+      * When `crossplayEnabled=false` `cross_platforms` attributes will be set to user's currentPlatform
+      * request attribute cross_platform is not empty **[Not Recommended]**:
+      * Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox]
+      * Multiple cross_platform values is considered to be crossplay enabled
+      4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.
+
+      ExcludedSessions: allow player to list out game sessions that they want to avoid matching, for example a match that they've recently left or get kicked out from.
+    struct: 'MatchTicketsService'
+    parameters:
+      params:
+        type: '*match_tickets.CreateMatchTicketParams'
+        required: true
+    return_type: '(*match_tickets.CreateMatchTicketResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchTickets.go'
+    example: |-
+      matchTicketsService := match2.MatchTicketsService{ ... }
+      params := match_tickets.CreateMatchTicketParams{ ... }
+      res, err := matchTicketsService.CreateMatchTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'match'
+      - 'public'
+      - 'ticket'
+      - 'tickets'
+
+  'CreateRuleSetShort@match2':
+    id: 'CreateRuleSetShort@match2'
+    name: 'CreateRuleSetShort'
+    description: |-
+      Creates a new rules set.
+
+      A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
+      The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
+
+      To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+      When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+    struct: 'RuleSetsService'
+    parameters:
+      params:
+        type: '*rule_sets.CreateRuleSetParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      ruleSetsService := match2.RuleSetsService{ ... }
+      params := rule_sets.CreateRuleSetParams{ ... }
+      res, err := ruleSetsService.CreateRuleSetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'rule'
+      - 'set'
+      - 'sets'
+
+  'DeleteBackfillShort@match2':
+    id: 'DeleteBackfillShort@match2'
+    name: 'DeleteBackfillShort'
+    description: |-
+      Delete backfill ticket.
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.DeleteBackfillParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.DeleteBackfillParams{ ... }
+      res, err := backfillService.DeleteBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'backfill'
+      - 'delete'
+      - 'public'
+
+  'DeleteMatchFunctionShort@match2':
+    id: 'DeleteMatchFunctionShort@match2'
+    name: 'DeleteMatchFunctionShort'
+    description: |-
+      Deletes an existing match function.
+    struct: 'MatchFunctionsService'
+    parameters:
+      params:
+        type: '*match_functions.DeleteMatchFunctionParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      matchFunctionsService := match2.MatchFunctionsService{ ... }
+      params := match_functions.DeleteMatchFunctionParams{ ... }
+      res, err := matchFunctionsService.DeleteMatchFunctionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'function'
+      - 'functions'
+      - 'match'
+
+  'DeleteMatchPoolShort@match2':
+    id: 'DeleteMatchPoolShort@match2'
+    name: 'DeleteMatchPoolShort'
+    description: |-
+      Deletes an existing matchmaking pool.
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.DeleteMatchPoolParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.DeleteMatchPoolParams{ ... }
+      res, err := matchPoolsService.DeleteMatchPoolShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'match'
+      - 'pool'
+      - 'pools'
+
+  'DeleteMatchTicketShort@match2':
+    id: 'DeleteMatchTicketShort@match2'
+    name: 'DeleteMatchTicketShort'
+    description: |-
+      Deletes an existing matchmaking ticket.
+    struct: 'MatchTicketsService'
+    parameters:
+      params:
+        type: '*match_tickets.DeleteMatchTicketParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchTickets.go'
+    example: |-
+      matchTicketsService := match2.MatchTicketsService{ ... }
+      params := match_tickets.DeleteMatchTicketParams{ ... }
+      res, err := matchTicketsService.DeleteMatchTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'match'
+      - 'public'
+      - 'ticket'
+      - 'tickets'
+
+  'DeleteRuleSetShort@match2':
+    id: 'DeleteRuleSetShort@match2'
+    name: 'DeleteRuleSetShort'
+    description: |-
+      Deletes an existing rule set.
+    struct: 'RuleSetsService'
+    parameters:
+      params:
+        type: '*rule_sets.DeleteRuleSetParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      ruleSetsService := match2.RuleSetsService{ ... }
+      params := rule_sets.DeleteRuleSetParams{ ... }
+      res, err := ruleSetsService.DeleteRuleSetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'rule'
+      - 'set'
+      - 'sets'
+
+  'EnvironmentVariableListShort@match2':
+    id: 'EnvironmentVariableListShort@match2'
+    name: 'EnvironmentVariableListShort'
+    description: |-
+      List environment variables.
+    struct: 'EnvironmentVariablesService'
+    parameters:
+      params:
+        type: '*environment_variables.EnvironmentVariableListParams'
+        required: true
+    return_type: '(*environment_variables.EnvironmentVariableListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/environment_variables'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/environmentVariables.go'
+    example: |-
+      environmentVariablesService := match2.EnvironmentVariablesService{ ... }
+      params := environment_variables.EnvironmentVariableListParams{ ... }
+      res, err := environmentVariablesService.EnvironmentVariableListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'environment'
+      - 'list'
+      - 'variable'
+      - 'variables'
+
+  'GetBackfillShort@match2':
+    id: 'GetBackfillShort@match2'
+    name: 'GetBackfillShort'
+    description: |-
+      Get backfill ticket by ID
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.GetBackfillParams'
+        required: true
+    return_type: '(*backfill.GetBackfillResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.GetBackfillParams{ ... }
+      res, err := backfillService.GetBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'backfill'
+      - 'get'
+      - 'public'
+
+  'GetBackfillProposalShort@match2':
+    id: 'GetBackfillProposalShort@match2'
+    name: 'GetBackfillProposalShort'
+    description: |-
+      Get backfill proposal
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.GetBackfillProposalParams'
+        required: true
+    return_type: '(*backfill.GetBackfillProposalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.GetBackfillProposalParams{ ... }
+      res, err := backfillService.GetBackfillProposalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'backfill'
+      - 'get'
+      - 'proposal'
+      - 'public'
+
+  'GetHealthcheckInfoShort@match2':
+    id: 'GetHealthcheckInfoShort@match2'
+    name: 'GetHealthcheckInfoShort'
+    struct: 'EmptyService'
+    parameters:
+      params:
+        type: '*.GetHealthcheckInfoParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/.go'
+    example: |-
+      emptyService := match2.EmptyService{ ... }
+      params := .GetHealthcheckInfoParams{ ... }
+      res, err := emptyService.GetHealthcheckInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'healthcheck'
+      - 'info'
+
+  'GetHealthcheckInfoV1Short@match2':
+    id: 'GetHealthcheckInfoV1Short@match2'
+    name: 'GetHealthcheckInfoV1Short'
+    struct: 'EmptyService'
+    parameters:
+      params:
+        type: '*.GetHealthcheckInfoV1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/.go'
+    example: |-
+      emptyService := match2.EmptyService{ ... }
+      params := .GetHealthcheckInfoV1Params{ ... }
+      res, err := emptyService.GetHealthcheckInfoV1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'healthcheck'
+      - 'info'
+      - 'v1'
+
+  'GetMyMatchTicketsShort@match2':
+    id: 'GetMyMatchTicketsShort@match2'
+    name: 'GetMyMatchTicketsShort'
+    description: |-
+      Get my match tickets.
+    struct: 'MatchTicketsService'
+    parameters:
+      params:
+        type: '*match_tickets.GetMyMatchTicketsParams'
+        required: true
+    return_type: '(*match_tickets.GetMyMatchTicketsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchTickets.go'
+    example: |-
+      matchTicketsService := match2.MatchTicketsService{ ... }
+      params := match_tickets.GetMyMatchTicketsParams{ ... }
+      res, err := matchTicketsService.GetMyMatchTicketsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'match'
+      - 'my'
+      - 'public'
+      - 'tickets'
+
+  'GetPlayerMetricShort@match2':
+    id: 'GetPlayerMetricShort@match2'
+    name: 'GetPlayerMetricShort'
+    description: |-
+      Get player metric for a specific match pool
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.GetPlayerMetricParams'
+        required: true
+    return_type: '(*match_pools.GetPlayerMetricResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.GetPlayerMetricParams{ ... }
+      res, err := matchPoolsService.GetPlayerMetricShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'match'
+      - 'metric'
+      - 'player'
+      - 'pools'
+
+  'MatchFunctionGetShort@match2':
+    id: 'MatchFunctionGetShort@match2'
+    name: 'MatchFunctionGetShort'
+    description: |-
+      Get custom match function by name.
+    struct: 'MatchFunctionsService'
+    parameters:
+      params:
+        type: '*match_functions.MatchFunctionGetParams'
+        required: true
+    return_type: '(*match_functions.MatchFunctionGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      matchFunctionsService := match2.MatchFunctionsService{ ... }
+      params := match_functions.MatchFunctionGetParams{ ... }
+      res, err := matchFunctionsService.MatchFunctionGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'function'
+      - 'functions'
+      - 'get'
+      - 'match'
+
+  'MatchFunctionListShort@match2':
+    id: 'MatchFunctionListShort@match2'
+    name: 'MatchFunctionListShort'
+    description: |-
+      List existing match functions.
+    struct: 'MatchFunctionsService'
+    parameters:
+      params:
+        type: '*match_functions.MatchFunctionListParams'
+        required: true
+    return_type: '(*match_functions.MatchFunctionListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      matchFunctionsService := match2.MatchFunctionsService{ ... }
+      params := match_functions.MatchFunctionListParams{ ... }
+      res, err := matchFunctionsService.MatchFunctionListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'function'
+      - 'functions'
+      - 'list'
+      - 'match'
+
+  'MatchPoolDetailsShort@match2':
+    id: 'MatchPoolDetailsShort@match2'
+    name: 'MatchPoolDetailsShort'
+    description: |-
+      Get details for a specific match pool
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.MatchPoolDetailsParams'
+        required: true
+    return_type: '(*match_pools.MatchPoolDetailsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.MatchPoolDetailsParams{ ... }
+      res, err := matchPoolsService.MatchPoolDetailsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'details'
+      - 'match'
+      - 'pool'
+      - 'pools'
+
+  'MatchPoolListShort@match2':
+    id: 'MatchPoolListShort@match2'
+    name: 'MatchPoolListShort'
+    description: |-
+      List matchmaking pools.
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.MatchPoolListParams'
+        required: true
+    return_type: '(*match_pools.MatchPoolListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.MatchPoolListParams{ ... }
+      res, err := matchPoolsService.MatchPoolListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'match'
+      - 'pool'
+      - 'pools'
+
+  'MatchPoolMetricShort@match2':
+    id: 'MatchPoolMetricShort@match2'
+    name: 'MatchPoolMetricShort'
+    description: |-
+      Get metric for a specific match pool
+
+      Result: queueTime in seconds
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.MatchPoolMetricParams'
+        required: true
+    return_type: '(*match_pools.MatchPoolMetricResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.MatchPoolMetricParams{ ... }
+      res, err := matchPoolsService.MatchPoolMetricShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'match'
+      - 'metric'
+      - 'pool'
+      - 'pools'
+      - 'public'
+
+  'MatchTicketDetailsShort@match2':
+    id: 'MatchTicketDetailsShort@match2'
+    name: 'MatchTicketDetailsShort'
+    description: |-
+      Get details for a specific match ticket
+    struct: 'MatchTicketsService'
+    parameters:
+      params:
+        type: '*match_tickets.MatchTicketDetailsParams'
+        required: true
+    return_type: '(*match_tickets.MatchTicketDetailsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchTickets.go'
+    example: |-
+      matchTicketsService := match2.MatchTicketsService{ ... }
+      params := match_tickets.MatchTicketDetailsParams{ ... }
+      res, err := matchTicketsService.MatchTicketDetailsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'details'
+      - 'match'
+      - 'public'
+      - 'ticket'
+      - 'tickets'
+
+  'PostMatchErrorMetricShort@match2':
+    id: 'PostMatchErrorMetricShort@match2'
+    name: 'PostMatchErrorMetricShort'
+    description: |-
+      Post metrics for external flow failure in a specific match pool
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.PostMatchErrorMetricParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.PostMatchErrorMetricParams{ ... }
+      res, err := matchPoolsService.PostMatchErrorMetricShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'error'
+      - 'match'
+      - 'metric'
+      - 'pools'
+      - 'post'
+
+  'PublicGetPlayerMetricShort@match2':
+    id: 'PublicGetPlayerMetricShort@match2'
+    name: 'PublicGetPlayerMetricShort'
+    description: |-
+      Public get player metric for a specific match pool
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.PublicGetPlayerMetricParams'
+        required: true
+    return_type: '(*match_pools.PublicGetPlayerMetricResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.PublicGetPlayerMetricParams{ ... }
+      res, err := matchPoolsService.PublicGetPlayerMetricShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'match'
+      - 'metric'
+      - 'player'
+      - 'pools'
+      - 'public'
+
+  'RejectBackfillShort@match2':
+    id: 'RejectBackfillShort@match2'
+    name: 'RejectBackfillShort'
+    description: |-
+      Reject backfill proposal
+    struct: 'BackfillService'
+    parameters:
+      params:
+        type: '*backfill.RejectBackfillParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/backfill'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/backfill.go'
+    example: |-
+      backfillService := match2.BackfillService{ ... }
+      params := backfill.RejectBackfillParams{ ... }
+      res, err := backfillService.RejectBackfillShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'backfill'
+      - 'public'
+      - 'reject'
+
+  'RuleSetDetailsShort@match2':
+    id: 'RuleSetDetailsShort@match2'
+    name: 'RuleSetDetailsShort'
+    description: |-
+      Get details for a specific rule set
+    struct: 'RuleSetsService'
+    parameters:
+      params:
+        type: '*rule_sets.RuleSetDetailsParams'
+        required: true
+    return_type: '(*rule_sets.RuleSetDetailsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      ruleSetsService := match2.RuleSetsService{ ... }
+      params := rule_sets.RuleSetDetailsParams{ ... }
+      res, err := ruleSetsService.RuleSetDetailsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'details'
+      - 'rule'
+      - 'set'
+      - 'sets'
+
+  'RuleSetListShort@match2':
+    id: 'RuleSetListShort@match2'
+    name: 'RuleSetListShort'
+    description: |-
+      List rule sets.
+    struct: 'RuleSetsService'
+    parameters:
+      params:
+        type: '*rule_sets.RuleSetListParams'
+        required: true
+    return_type: '(*rule_sets.RuleSetListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      ruleSetsService := match2.RuleSetsService{ ... }
+      params := rule_sets.RuleSetListParams{ ... }
+      res, err := ruleSetsService.RuleSetListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'rule'
+      - 'set'
+      - 'sets'
+
+  'UpdateMatchFunctionShort@match2':
+    id: 'UpdateMatchFunctionShort@match2'
+    name: 'UpdateMatchFunctionShort'
+    description: |-
+      Update existing matchmaking function.
+    struct: 'MatchFunctionsService'
+    parameters:
+      params:
+        type: '*match_functions.UpdateMatchFunctionParams'
+        required: true
+    return_type: '(*match_functions.UpdateMatchFunctionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_functions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchFunctions.go'
+    example: |-
+      matchFunctionsService := match2.MatchFunctionsService{ ... }
+      params := match_functions.UpdateMatchFunctionParams{ ... }
+      res, err := matchFunctionsService.UpdateMatchFunctionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'function'
+      - 'functions'
+      - 'match'
+      - 'update'
+
+  'UpdateMatchPoolShort@match2':
+    id: 'UpdateMatchPoolShort@match2'
+    name: 'UpdateMatchPoolShort'
+    description: |-
+      Updates an existing matchmaking pool.
+
+      ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled.
+
+      Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide ("default" and "basic").
+      Match Function will be used as reference value for Match Function Overrides if not set.
+      In case Customer would like to use matchmaking service default match logic, then specify it in "match_function_overrides".
+      This sample configuration will let matchmaking service will use "default" match logic for make matches, while validation will hit both "default" and "custom" match logics.
+      e.g.
+      {
+      "match_function": "custom",
+      "match_function_overrides": {
+      "validation": []{"default","custom"},
+      "make_matches": "default",
+      }
+      }
+    struct: 'MatchPoolsService'
+    parameters:
+      params:
+        type: '*match_pools.UpdateMatchPoolParams'
+        required: true
+    return_type: '(*match_pools.UpdateMatchPoolResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/match_pools'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/matchPools.go'
+    example: |-
+      matchPoolsService := match2.MatchPoolsService{ ... }
+      params := match_pools.UpdateMatchPoolParams{ ... }
+      res, err := matchPoolsService.UpdateMatchPoolShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'match'
+      - 'pool'
+      - 'pools'
+      - 'update'
+
+  'UpdateRuleSetShort@match2':
+    id: 'UpdateRuleSetShort@match2'
+    name: 'UpdateRuleSetShort'
+    description: |-
+      Updates an existing matchmaking rule set.
+
+      To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+      When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+    struct: 'RuleSetsService'
+    parameters:
+      params:
+        type: '*rule_sets.UpdateRuleSetParams'
+        required: true
+    return_type: '(*rule_sets.UpdateRuleSetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/rule_sets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/ruleSets.go'
+    example: |-
+      ruleSetsService := match2.RuleSetsService{ ... }
+      params := rule_sets.UpdateRuleSetParams{ ... }
+      res, err := ruleSetsService.UpdateRuleSetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'rule'
+      - 'set'
+      - 'sets'
+      - 'update'
+
+  'VersionCheckHandlerShort@match2':
+    id: 'VersionCheckHandlerShort@match2'
+    name: 'VersionCheckHandlerShort'
+    struct: 'EmptyService'
+    parameters:
+      params:
+        type: '*.VersionCheckHandlerParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2clientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/match2-sdk/pkg/match2client/'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/match2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/match2/.go'
+    example: |-
+      emptyService := match2.EmptyService{ ... }
+      params := .VersionCheckHandlerParams{ ... }
+      res, err := emptyService.VersionCheckHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'check'
+      - 'handler'
+      - 'version'

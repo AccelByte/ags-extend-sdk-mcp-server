@@ -1,0 +1,4318 @@
+structs:
+  'JusticeSeasonpassService@seasonpass':
+    id: 'JusticeSeasonpassService@seasonpass'
+    name: 'JusticeSeasonpassService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/justice_seasonpass_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/seasonpassclientfactory.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo)
+
+  # region wrappers
+
+  'ExportService@seasonpass':
+    id: 'ExportService@seasonpass'
+    name: 'ExportService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/export.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      exportService := ExportService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PassService@seasonpass':
+    id: 'PassService@seasonpass'
+    name: 'PassService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      passService := PassService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'RewardService@seasonpass':
+    id: 'RewardService@seasonpass'
+    name: 'RewardService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      rewardService := RewardService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'SeasonService@seasonpass':
+    id: 'SeasonService@seasonpass'
+    name: 'SeasonService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      seasonService := SeasonService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'TierService@seasonpass':
+    id: 'TierService@seasonpass'
+    name: 'TierService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      tierService := TierService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'UtilitiesService@seasonpass':
+    id: 'UtilitiesService@seasonpass'
+    name: 'UtilitiesService'
+    fields:
+      Client:
+        type: '*seasonpassclient.JusticeSeasonpassService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/utilities.go'
+    example: |-
+      seasonpassClient := factory.NewSeasonpassClient(configRepo) // re-use if it exists already
+      utilitiesService := UtilitiesService{
+          Client:           seasonpassClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'BulkGetUserSeasonProgressionParams@seasonpass':
+    id: 'BulkGetUserSeasonProgressionParams@seasonpass'
+    name: 'BulkGetUserSeasonProgressionParams'
+    fields:
+      'Body':
+        type: '*BulkUserProgressionRequest'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/bulk_get_user_season_progression_parameters.go'
+
+  'CheckSeasonPurchasableParams@seasonpass':
+    id: 'CheckSeasonPurchasableParams@seasonpass'
+    name: 'CheckSeasonPurchasableParams'
+    fields:
+      'Body':
+        type: '*UserPurchasable'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/check_season_purchasable_parameters.go'
+
+  'CloneSeasonParams@seasonpass':
+    id: 'CloneSeasonParams@seasonpass'
+    name: 'CloneSeasonParams'
+    fields:
+      'Body':
+        type: '*SeasonCloneRequest'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/clone_season_parameters.go'
+
+  'CreatePassParams@seasonpass':
+    id: 'CreatePassParams@seasonpass'
+    name: 'CreatePassParams'
+    fields:
+      'Body':
+        type: '*PassCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/create_pass_parameters.go'
+
+  'CreateRewardParams@seasonpass':
+    id: 'CreateRewardParams@seasonpass'
+    name: 'CreateRewardParams'
+    fields:
+      'Body':
+        type: '*RewardCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/create_reward_parameters.go'
+
+  'CreateSeasonParams@seasonpass':
+    id: 'CreateSeasonParams@seasonpass'
+    name: 'CreateSeasonParams'
+    fields:
+      'Body':
+        type: '*SeasonCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/create_season_parameters.go'
+
+  'CreateTierParams@seasonpass':
+    id: 'CreateTierParams@seasonpass'
+    name: 'CreateTierParams'
+    fields:
+      'Body':
+        type: '*TierCreate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/create_tier_parameters.go'
+
+  'DeletePassParams@seasonpass':
+    id: 'DeletePassParams@seasonpass'
+    name: 'DeletePassParams'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/delete_pass_parameters.go'
+
+  'DeleteRewardParams@seasonpass':
+    id: 'DeleteRewardParams@seasonpass'
+    name: 'DeleteRewardParams'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/delete_reward_parameters.go'
+
+  'DeleteSeasonParams@seasonpass':
+    id: 'DeleteSeasonParams@seasonpass'
+    name: 'DeleteSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/delete_season_parameters.go'
+
+  'DeleteTierParams@seasonpass':
+    id: 'DeleteTierParams@seasonpass'
+    name: 'DeleteTierParams'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/delete_tier_parameters.go'
+
+  'ExistsAnyPassByPassCodesParams@seasonpass':
+    id: 'ExistsAnyPassByPassCodesParams@seasonpass'
+    name: 'ExistsAnyPassByPassCodesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'PassCodes':
+        type: '[]string'
+        required: false
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/exists_any_pass_by_pass_codes_parameters.go'
+
+  'ExportSeasonParams@seasonpass':
+    id: 'ExportSeasonParams@seasonpass'
+    name: 'ExportSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/export'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/export/export_season_parameters.go'
+
+  'GetCurrentSeasonParams@seasonpass':
+    id: 'GetCurrentSeasonParams@seasonpass'
+    name: 'GetCurrentSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_current_season_parameters.go'
+
+  'GetCurrentUserSeasonProgressionParams@seasonpass':
+    id: 'GetCurrentUserSeasonProgressionParams@seasonpass'
+    name: 'GetCurrentUserSeasonProgressionParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_current_user_season_progression_parameters.go'
+
+  'GetFullSeasonParams@seasonpass':
+    id: 'GetFullSeasonParams@seasonpass'
+    name: 'GetFullSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_full_season_parameters.go'
+
+  'GetItemReferencesParams@seasonpass':
+    id: 'GetItemReferencesParams@seasonpass'
+    name: 'GetItemReferencesParams'
+    fields:
+      'ItemID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the ecommerce item
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/utilities'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/utilities/get_item_references_parameters.go'
+
+  'GetPassParams@seasonpass':
+    id: 'GetPassParams@seasonpass'
+    name: 'GetPassParams'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/get_pass_parameters.go'
+
+  'GetRewardParams@seasonpass':
+    id: 'GetRewardParams@seasonpass'
+    name: 'GetRewardParams'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/get_reward_parameters.go'
+
+  'GetSeasonParams@seasonpass':
+    id: 'GetSeasonParams@seasonpass'
+    name: 'GetSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_season_parameters.go'
+
+  'GetUserParticipatedSeasonsParams@seasonpass':
+    id: 'GetUserParticipatedSeasonsParams@seasonpass'
+    name: 'GetUserParticipatedSeasonsParams'
+    fields:
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int32'
+        required: false
+        description: |-
+          offset
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_user_participated_seasons_parameters.go'
+
+  'GetUserSeasonParams@seasonpass':
+    id: 'GetUserSeasonParams@seasonpass'
+    name: 'GetUserSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_user_season_parameters.go'
+
+  'GrantUserExpParams@seasonpass':
+    id: 'GrantUserExpParams@seasonpass'
+    name: 'GrantUserExpParams'
+    fields:
+      'Body':
+        type: '*UserExpGrant'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/grant_user_exp_parameters.go'
+
+  'GrantUserPassParams@seasonpass':
+    id: 'GrantUserPassParams@seasonpass'
+    name: 'GrantUserPassParams'
+    fields:
+      'Body':
+        type: '*UserPassGrant'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/grant_user_pass_parameters.go'
+
+  'GrantUserTierParams@seasonpass':
+    id: 'GrantUserTierParams@seasonpass'
+    name: 'GrantUserTierParams'
+    fields:
+      'Body':
+        type: '*UserTierGrant'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/grant_user_tier_parameters.go'
+
+  'PublicBulkClaimUserRewardsParams@seasonpass':
+    id: 'PublicBulkClaimUserRewardsParams@seasonpass'
+    name: 'PublicBulkClaimUserRewardsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/public_bulk_claim_user_rewards_parameters.go'
+
+  'PublicClaimUserRewardParams@seasonpass':
+    id: 'PublicClaimUserRewardParams@seasonpass'
+    name: 'PublicClaimUserRewardParams'
+    fields:
+      'Body':
+        type: '*UserRewardClaim'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/public_claim_user_reward_parameters.go'
+
+  'PublicGetCurrentSeasonParams@seasonpass':
+    id: 'PublicGetCurrentSeasonParams@seasonpass'
+    name: 'PublicGetCurrentSeasonParams'
+    fields:
+      'Language':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_current_season_parameters.go'
+
+  'PublicGetCurrentUserSeasonParams@seasonpass':
+    id: 'PublicGetCurrentUserSeasonParams@seasonpass'
+    name: 'PublicGetCurrentUserSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_current_user_season_parameters.go'
+
+  'PublicGetUserSeasonParams@seasonpass':
+    id: 'PublicGetUserSeasonParams@seasonpass'
+    name: 'PublicGetUserSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_user_season_parameters.go'
+
+  'PublishSeasonParams@seasonpass':
+    id: 'PublishSeasonParams@seasonpass'
+    name: 'PublishSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/publish_season_parameters.go'
+
+  'QueryPassesParams@seasonpass':
+    id: 'QueryPassesParams@seasonpass'
+    name: 'QueryPassesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/query_passes_parameters.go'
+
+  'QueryRewardsParams@seasonpass':
+    id: 'QueryRewardsParams@seasonpass'
+    name: 'QueryRewardsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'Q':
+        type: 'string'
+        required: false
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/query_rewards_parameters.go'
+
+  'QuerySeasonsParams@seasonpass':
+    id: 'QuerySeasonsParams@seasonpass'
+    name: 'QuerySeasonsParams'
+    fields:
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int32'
+        required: false
+        description: |-
+          offset
+      'Status':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_seasons_parameters.go'
+
+  'QueryTiersParams@seasonpass':
+    id: 'QueryTiersParams@seasonpass'
+    name: 'QueryTiersParams'
+    fields:
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int32'
+        required: false
+        description: |-
+          offset
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/query_tiers_parameters.go'
+
+  'QueryUserExpGrantHistoryParams@seasonpass':
+    id: 'QueryUserExpGrantHistoryParams@seasonpass'
+    name: 'QueryUserExpGrantHistoryParams'
+    fields:
+      'From':
+        type: 'string'
+        required: false
+        description: |-
+          section active range time start , using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int32'
+        required: false
+        description: |-
+          offset
+      'SeasonID':
+        type: 'string'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          exp grant source
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          exp grant tags
+      'To':
+        type: 'string'
+        required: false
+        description: |-
+          section active range time end, using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_user_exp_grant_history_parameters.go'
+
+  'QueryUserExpGrantHistoryTagParams@seasonpass':
+    id: 'QueryUserExpGrantHistoryTagParams@seasonpass'
+    name: 'QueryUserExpGrantHistoryTagParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonID':
+        type: 'string'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_user_exp_grant_history_tag_parameters.go'
+
+  'ReorderTierParams@seasonpass':
+    id: 'ReorderTierParams@seasonpass'
+    name: 'ReorderTierParams'
+    fields:
+      'Body':
+        type: '*TierReorder'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/reorder_tier_parameters.go'
+
+  'ResetUserSeasonParams@seasonpass':
+    id: 'ResetUserSeasonParams@seasonpass'
+    name: 'ResetUserSeasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/reset_user_season_parameters.go'
+
+  'RetireSeasonParams@seasonpass':
+    id: 'RetireSeasonParams@seasonpass'
+    name: 'RetireSeasonParams'
+    fields:
+      'Force':
+        type: 'bool'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/retire_season_parameters.go'
+
+  'UnpublishSeasonParams@seasonpass':
+    id: 'UnpublishSeasonParams@seasonpass'
+    name: 'UnpublishSeasonParams'
+    fields:
+      'Force':
+        type: 'bool'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/unpublish_season_parameters.go'
+
+  'UpdatePassParams@seasonpass':
+    id: 'UpdatePassParams@seasonpass'
+    name: 'UpdatePassParams'
+    fields:
+      'Body':
+        type: '*PassUpdate'
+        required: false
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/update_pass_parameters.go'
+
+  'UpdateRewardParams@seasonpass':
+    id: 'UpdateRewardParams@seasonpass'
+    name: 'UpdateRewardParams'
+    fields:
+      'Body':
+        type: '*RewardUpdate'
+        required: false
+      'Code':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/update_reward_parameters.go'
+
+  'UpdateSeasonParams@seasonpass':
+    id: 'UpdateSeasonParams@seasonpass'
+    name: 'UpdateSeasonParams'
+    fields:
+      'Body':
+        type: '*SeasonUpdate'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/update_season_parameters.go'
+
+  'UpdateTierParams@seasonpass':
+    id: 'UpdateTierParams@seasonpass'
+    name: 'UpdateTierParams'
+    fields:
+      'Body':
+        type: '*TierInput'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SeasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/update_tier_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'BulkUserProgressionRequest@seasonpass':
+    id: 'BulkUserProgressionRequest@seasonpass'
+    name: 'BulkUserProgressionRequest'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/bulk_user_progression_request.go'
+
+  'ClaimableRewards@seasonpass':
+    id: 'ClaimableRewards@seasonpass'
+    name: 'ClaimableRewards'
+    description: |-
+      A DTO object for claimable rewards.
+    fields:
+      'ClaimingRewards':
+        type: 'interface{}'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'ToClaimRewards':
+        type: 'interface{}'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/claimable_rewards.go'
+
+  'ClaimableUserSeasonInfo@seasonpass':
+    id: 'ClaimableUserSeasonInfo@seasonpass'
+    name: 'ClaimableUserSeasonInfo'
+    description: |-
+      A DTO object for claimable user season data.
+    fields:
+      'ClaimingRewards':
+        type: 'interface{}'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'Cleared':
+        type: '*bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'CurrentExp':
+        type: '*int32'
+        required: true
+        description: |-
+          gained exp for current tier
+      'CurrentTierIndex':
+        type: '*int32'
+        required: true
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          enroll date time
+      'EnrolledPasses':
+        type: '[]string'
+        required: true
+        description: |-
+          enrolled passes
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'LastTierIndex':
+        type: '*int32'
+        required: true
+        description: |-
+          last tier index, zero based
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'RequiredExp':
+        type: '*int32'
+        required: true
+        description: |-
+          required exp for current tier
+      'Season':
+        type: '*SeasonSummary'
+        required: false
+        description: |-
+          season summary
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          season id
+      'ToClaimRewards':
+        type: 'interface{}'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+      'TotalExp':
+        type: 'int64'
+        required: false
+        description: |-
+          total exp
+      'TotalPaidForExp':
+        type: 'int64'
+        required: false
+        description: |-
+          total paid-for exp
+      'TotalSweatExp':
+        type: 'int64'
+        required: false
+        description: |-
+          total sweat exp
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/claimable_user_season_info.go'
+
+  'ErrorEntity@seasonpass':
+    id: 'ErrorEntity@seasonpass'
+    name: 'ErrorEntity'
+    fields:
+      'DevStackTrace':
+        type: 'string'
+        required: false
+        description: |-
+          internal server error stack trace in configured environment
+      'ErrorCode':
+        type: '*int32'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: '*string'
+        required: true
+        description: |-
+          error message
+      'MessageVariables':
+        type: 'map[string]string'
+        required: false
+        description: |-
+          message variables
+      'RequiredPermission':
+        type: '*Permission'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/error_entity.go'
+
+  'ExcessStrategy@seasonpass':
+    id: 'ExcessStrategy@seasonpass'
+    name: 'ExcessStrategy'
+    fields:
+      'Currency':
+        type: 'string'
+        required: false
+        description: |-
+          virtual currency for grant, required while method is CURRENCY
+      'Method':
+        type: '*string'
+        required: true
+        description: |-
+          method while excess the final tier exp
+      'PercentPerExp':
+        type: 'int32'
+        required: false
+        description: |-
+          percent per exp, required while method is CURRENCY
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/excess_strategy.go'
+
+  'ExpGrantHistoryInfo@seasonpass':
+    id: 'ExpGrantHistoryInfo@seasonpass'
+    name: 'ExpGrantHistoryInfo'
+    description: |-
+      A DTO object for exp grant history details.
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          acquired at
+      'GrantExp':
+        type: '*int64'
+        required: true
+        description: |-
+          grant exp
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          season id
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          id
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          id
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/exp_grant_history_info.go'
+
+  'ExpGrantHistoryPagingSlicedResult@seasonpass':
+    id: 'ExpGrantHistoryPagingSlicedResult@seasonpass'
+    name: 'ExpGrantHistoryPagingSlicedResult'
+    fields:
+      'Data':
+        type: '[]*ExpGrantHistoryInfo'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: '*Paging'
+        required: false
+      'Total':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/exp_grant_history_paging_sliced_result.go'
+
+  'FieldValidationError@seasonpass':
+    id: 'FieldValidationError@seasonpass'
+    name: 'FieldValidationError'
+    fields:
+      'ErrorCode':
+        type: 'string'
+        required: false
+      'ErrorField':
+        type: 'string'
+        required: false
+      'ErrorMessage':
+        type: 'string'
+        required: false
+      'ErrorValue':
+        type: 'string'
+        required: false
+      'MessageVariables':
+        type: 'map[string]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/field_validation_error.go'
+
+  'FullSeasonInfo@seasonpass':
+    id: 'FullSeasonInfo@seasonpass'
+    name: 'FullSeasonInfo'
+    description: |-
+      A DTO object for season full content.
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Passes':
+        type: '[]*PassInfo'
+        required: true
+        description: |-
+          passes info
+      'Rewards':
+        type: 'map[string]RewardInfo'
+        required: true
+        description: |-
+          rewards info
+      'Tiers':
+        type: '[]*Tier'
+        required: true
+        description: |-
+          tiers info
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/full_season_info.go'
+
+  'Image@seasonpass':
+    id: 'Image@seasonpass'
+    name: 'Image'
+    fields:
+      'As':
+        type: 'string'
+        required: false
+        description: |-
+          image for
+      'Caption':
+        type: 'string'
+        required: false
+        description: |-
+          image caption
+      'Height':
+        type: '*int32'
+        required: true
+        description: |-
+          height
+      'ImageURL':
+        type: '*string'
+        required: true
+        description: |-
+          imageUrl
+      'SmallImageURL':
+        type: 'string'
+        required: false
+        description: |-
+          smallImageUrl
+      'Width':
+        type: '*int32'
+        required: true
+        description: |-
+          width
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/image.go'
+
+  'ItemReference@seasonpass':
+    id: 'ItemReference@seasonpass'
+    name: 'ItemReference'
+    description: |-
+      A DTO object for item references.
+    fields:
+      'Module':
+        type: 'string'
+        required: false
+        description: |-
+          module
+      'References':
+        type: '[]map[string]interface{}'
+        required: false
+        description: |-
+          references
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/item_reference.go'
+
+  'ItemReferenceInfo@seasonpass':
+    id: 'ItemReferenceInfo@seasonpass'
+    name: 'ItemReferenceInfo'
+    description: |-
+      A DTO object for item references info.
+    fields:
+      'References':
+        type: '[]*ItemReference'
+        required: false
+        description: |-
+          item references
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/item_reference_info.go'
+
+  'ListSeasonInfo@seasonpass':
+    id: 'ListSeasonInfo@seasonpass'
+    name: 'ListSeasonInfo'
+    description: |-
+      A DTO object for listing season info.
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'DefaultLanguage':
+        type: '*string'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassCodes':
+        type: '[]string'
+        required: false
+        description: |-
+          pass codes
+      'PublishedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          publishedAt
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          status
+      'TierItemID':
+        type: '*string'
+        required: true
+        description: |-
+          tier item id
+      'TierItemName':
+        type: '*string'
+        required: true
+        description: |-
+          tier item name
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_season_info.go'
+
+  'ListSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListSeasonInfoPagingSlicedResult'
+    fields:
+      'Data':
+        type: '[]*ListSeasonInfo'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: '*Paging'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_season_info_paging_sliced_result.go'
+
+  'ListUserSeasonInfo@seasonpass':
+    id: 'ListUserSeasonInfo@seasonpass'
+    name: 'ListUserSeasonInfo'
+    description: |-
+      A DTO object for listing user season data.
+    fields:
+      'Cleared':
+        type: '*bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'CurrentTierIndex':
+        type: '*int32'
+        required: true
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          enroll date time
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'LastTierIndex':
+        type: '*int32'
+        required: true
+        description: |-
+          last tier index, zero based
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Season':
+        type: '*SeasonSummary'
+        required: false
+        description: |-
+          season summary
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          season id
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_user_season_info.go'
+
+  'ListUserSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListUserSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListUserSeasonInfoPagingSlicedResult'
+    fields:
+      'Data':
+        type: '[]*ListUserSeasonInfo'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: '*Paging'
+        required: false
+      'Total':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_user_season_info_paging_sliced_result.go'
+
+  'Localization@seasonpass':
+    id: 'Localization@seasonpass'
+    name: 'Localization'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localization.go'
+
+  'LocalizedPassInfo@seasonpass':
+    id: 'LocalizedPassInfo@seasonpass'
+    name: 'LocalizedPassInfo'
+    description: |-
+      A DTO object for public user retrieving pass info.
+    fields:
+      'AutoEnroll':
+        type: '*bool'
+        required: true
+        description: |-
+          autoEnroll
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          code
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'DisplayOrder':
+        type: '*string'
+        required: true
+        description: |-
+          displayOrder
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Language':
+        type: '*string'
+        required: true
+        description: |-
+          current language
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassItemID':
+        type: '*string'
+        required: true
+        description: |-
+          pass item id
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          season id
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localized_pass_info.go'
+
+  'LocalizedSeasonInfo@seasonpass':
+    id: 'LocalizedSeasonInfo@seasonpass'
+    name: 'LocalizedSeasonInfo'
+    description: |-
+      A DTO object for public user retrieving season info.
+    fields:
+      'AutoClaim':
+        type: '*bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Language':
+        type: '*string'
+        required: true
+        description: |-
+          current language
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassCodes':
+        type: '[]string'
+        required: false
+        description: |-
+          pass codes
+      'Passes':
+        type: '[]*LocalizedPassInfo'
+        required: true
+        description: |-
+          passes info
+      'PublishedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          publishedAt
+      'Rewards':
+        type: 'map[string]RewardInfo'
+        required: true
+        description: |-
+          rewards info
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          status
+      'TierItemID':
+        type: '*string'
+        required: true
+        description: |-
+          tier item id
+      'Tiers':
+        type: '[]*Tier'
+        required: true
+        description: |-
+          tiers info
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localized_season_info.go'
+
+  'Ownership@seasonpass':
+    id: 'Ownership@seasonpass'
+    name: 'Ownership'
+    fields:
+      'Owned':
+        type: '*bool'
+        required: true
+        description: |-
+          ownership
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/ownership.go'
+
+  'Paging@seasonpass':
+    id: 'Paging@seasonpass'
+    name: 'Paging'
+    fields:
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/paging.go'
+
+  'PassCreate@seasonpass':
+    id: 'PassCreate@seasonpass'
+    name: 'PassCreate'
+    description: |-
+      A DTO object for creating pass API call.
+    fields:
+      'AutoEnroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass, default false
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'DisplayOrder':
+        type: '*int32'
+        required: true
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'PassItemID':
+        type: '*string'
+        required: true
+        description: |-
+          pass item id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_create.go'
+
+  'PassInfo@seasonpass':
+    id: 'PassInfo@seasonpass'
+    name: 'PassInfo'
+    description: |-
+      A DTO object for pass info.
+    fields:
+      'AutoEnroll':
+        type: '*bool'
+        required: true
+        description: |-
+          autoEnroll
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          code
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'DisplayOrder':
+        type: '*string'
+        required: true
+        description: |-
+          displayOrder
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassItemID':
+        type: '*string'
+        required: true
+        description: |-
+          pass item id
+      'PassItemName':
+        type: '*string'
+        required: true
+        description: |-
+          pass item name
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          season id
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_info.go'
+
+  'PassUpdate@seasonpass':
+    id: 'PassUpdate@seasonpass'
+    name: 'PassUpdate'
+    description: |-
+      A DTO object for updating pass API call.
+    fields:
+      'AutoEnroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass
+      'DisplayOrder':
+        type: 'int32'
+        required: false
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'PassItemID':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_update.go'
+
+  'Permission@seasonpass':
+    id: 'Permission@seasonpass'
+    name: 'Permission'
+    fields:
+      'Action':
+        type: 'int32'
+        required: false
+      'Resource':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/permission.go'
+
+  'ReasonTagsResult@seasonpass':
+    id: 'ReasonTagsResult@seasonpass'
+    name: 'ReasonTagsResult'
+    description: |-
+      A DTO object for reason tags.
+    fields:
+      'Tags':
+        type: '[]string'
+        required: true
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reason_tags_result.go'
+
+  'RewardCreate@seasonpass':
+    id: 'RewardCreate@seasonpass'
+    name: 'RewardCreate'
+    description: |-
+      A DTO object for creating reward API call.
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'Currency':
+        type: '*RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: '*Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemID':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'Quantity':
+        type: 'int32'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'Type':
+        type: '*string'
+        required: true
+        description: |-
+          type, at current only support ITEM
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_create.go'
+
+  'RewardCurrency@seasonpass':
+    id: 'RewardCurrency@seasonpass'
+    name: 'RewardCurrency'
+    description: |-
+      A DTO object for reward currency.
+    fields:
+      'CurrencyCode':
+        type: '*string'
+        required: true
+        description: |-
+          currency code, alphabet uppercase
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace, allowed values: game namespace or publisher namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_currency.go'
+
+  'RewardInfo@seasonpass':
+    id: 'RewardInfo@seasonpass'
+    name: 'RewardInfo'
+    description: |-
+      A DTO object for reward info.
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          code
+      'Currency':
+        type: '*RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: '*Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemID':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM
+      'ItemName':
+        type: 'string'
+        required: false
+        description: |-
+          itemName, required when reward type is ITEM
+      'ItemSku':
+        type: 'string'
+        required: false
+        description: |-
+          itemSku, required when reward type is ITEM
+      'ItemType':
+        type: 'string'
+        required: false
+        description: |-
+          itemType, required when reward type is ITEM
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Quantity':
+        type: 'int32'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'SeasonID':
+        type: '*string'
+        required: true
+        description: |-
+          seasonId
+      'Type':
+        type: '*string'
+        required: true
+        description: |-
+          type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_info.go'
+
+  'RewardUpdate@seasonpass':
+    id: 'RewardUpdate@seasonpass'
+    name: 'RewardUpdate'
+    description: |-
+      A DTO object for updating reward API call.
+    fields:
+      'Currency':
+        type: '*RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: '*Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemID':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'NullFields':
+        type: '[]string'
+        required: false
+        description: |-
+          nullFields
+      'Quantity':
+        type: 'int32'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'Type':
+        type: 'string'
+        required: false
+        description: |-
+          type, at current only support ITEM
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_update.go'
+
+  'SeasonCloneRequest@seasonpass':
+    id: 'SeasonCloneRequest@seasonpass'
+    name: 'SeasonCloneRequest'
+    description: |-
+      A DTO object for clone season API call.
+    fields:
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_clone_request.go'
+
+  'SeasonCreate@seasonpass':
+    id: 'SeasonCreate@seasonpass'
+    name: 'SeasonCreate'
+    description: |-
+      A DTO object for creating season API call.
+    fields:
+      'AutoClaim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards, default true
+      'DefaultLanguage':
+        type: 'string'
+        required: false
+        description: |-
+          default language, BCP 47 language tag, default is en
+      'DefaultRequiredExp':
+        type: '*int32'
+        required: true
+        description: |-
+          default exp required for a tier
+      'DraftStoreID':
+        type: '*string'
+        required: true
+        description: |-
+          draft store id
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'ExcessStrategy':
+        type: '*ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp, default NONE
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+      'TierItemID':
+        type: '*string'
+        required: true
+        description: |-
+          tier item id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_create.go'
+
+  'SeasonInfo@seasonpass':
+    id: 'SeasonInfo@seasonpass'
+    name: 'SeasonInfo'
+    description: |-
+      A DTO object for season info.
+    fields:
+      'AutoClaim':
+        type: '*bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          created at
+      'DefaultLanguage':
+        type: '*string'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'DefaultRequiredExp':
+        type: '*int32'
+        required: true
+        description: |-
+          default required exp for a tier
+      'DraftStoreID':
+        type: '*string'
+        required: true
+        description: |-
+          draft store id
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'ExcessStrategy':
+        type: '*ExcessStrategy'
+        required: true
+        description: |-
+          strategy while exceed final tier exp
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassCodes':
+        type: '[]string'
+        required: false
+        description: |-
+          pass codes
+      'PublishedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          publishedAt
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          status
+      'TierItemID':
+        type: '*string'
+        required: true
+        description: |-
+          tier item id
+      'TierItemName':
+        type: '*string'
+        required: true
+        description: |-
+          tier item name
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          updated at
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_info.go'
+
+  'SeasonSummary@seasonpass':
+    id: 'SeasonSummary@seasonpass'
+    name: 'SeasonSummary'
+    description: |-
+      A DTO object for season summary.
+    fields:
+      'End':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          end date time
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          id
+      'Name':
+        type: '*string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'PassCodes':
+        type: '[]string'
+        required: false
+        description: |-
+          season pass codes
+      'Previous':
+        type: '*SeasonSummary'
+        required: false
+        description: |-
+          previous season, only present in some situation
+      'PublishedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          publishedAt
+      'Start':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          status
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_summary.go'
+
+  'SeasonUpdate@seasonpass':
+    id: 'SeasonUpdate@seasonpass'
+    name: 'SeasonUpdate'
+    description: |-
+      A DTO object for updating season API call.
+    fields:
+      'AutoClaim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards
+      'DefaultLanguage':
+        type: 'string'
+        required: false
+        description: |-
+          default language, BCP 47 language tag
+      'DefaultRequiredExp':
+        type: 'int32'
+        required: false
+        description: |-
+          default exp required for a tier
+      'DraftStoreID':
+        type: 'string'
+        required: false
+        description: |-
+          draft store id
+      'End':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          end date time
+      'ExcessStrategy':
+        type: '*ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp
+      'Images':
+        type: '[]*Image'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'map[string]Localization'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          name, max length is 127
+      'Start':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          start date time
+      'TierItemID':
+        type: 'string'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_update.go'
+
+  'Tier@seasonpass':
+    id: 'Tier@seasonpass'
+    name: 'Tier'
+    fields:
+      'ID':
+        type: 'string'
+        required: false
+        description: |-
+          tier id, auto generated.
+      'RequiredExp':
+        type: 'int32'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'Rewards':
+        type: 'map[string][]string'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier.go'
+
+  'TierCreate@seasonpass':
+    id: 'TierCreate@seasonpass'
+    name: 'TierCreate'
+    description: |-
+      A DTO object for creating tier API call.
+    fields:
+      'Index':
+        type: 'int32'
+        required: false
+        description: |-
+          zero based tier index to be inserted at, -1 means appending to the end, default -1
+      'Quantity':
+        type: 'int32'
+        required: false
+        description: |-
+          create tier quantity, default 1
+      'Tier':
+        type: '*TierInput'
+        required: false
+        description: |-
+          tier content, default null tier
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_create.go'
+
+  'TierInput@seasonpass':
+    id: 'TierInput@seasonpass'
+    name: 'TierInput'
+    description: |-
+      A DTO object for tier input.
+    fields:
+      'RequiredExp':
+        type: 'int32'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'Rewards':
+        type: 'map[string][]string'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_input.go'
+
+  'TierPagingSlicedResult@seasonpass':
+    id: 'TierPagingSlicedResult@seasonpass'
+    name: 'TierPagingSlicedResult'
+    fields:
+      'Data':
+        type: '[]*Tier'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: '*Paging'
+        required: false
+      'Total':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_paging_sliced_result.go'
+
+  'TierReorder@seasonpass':
+    id: 'TierReorder@seasonpass'
+    name: 'TierReorder'
+    fields:
+      'NewIndex':
+        type: 'int32'
+        required: false
+        description: |-
+          new index tier should be moved to, zero based, -1 means appending to the end
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_reorder.go'
+
+  'UserExpGrant@seasonpass':
+    id: 'UserExpGrant@seasonpass'
+    name: 'UserExpGrant'
+    description: |-
+      A DTO object for granting user exp.
+    fields:
+      'Exp':
+        type: 'int32'
+        required: false
+        description: |-
+          exp to grant
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          source
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_exp_grant.go'
+
+  'UserPassGrant@seasonpass':
+    id: 'UserPassGrant@seasonpass'
+    name: 'UserPassGrant'
+    description: |-
+      A DTO object for granting user pass.
+    fields:
+      'PassCode':
+        type: 'string'
+        required: false
+        description: |-
+          pass code, required if passItemId null
+      'PassItemID':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id, required if passCode null and ignored if passCode present
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_pass_grant.go'
+
+  'UserPurchasable@seasonpass':
+    id: 'UserPurchasable@seasonpass'
+    name: 'UserPurchasable'
+    description: |-
+      A DTO object for user purchasable.
+    fields:
+      'PassItemID':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id
+      'TierItemCount':
+        type: 'int32'
+        required: false
+        description: |-
+          tier item count, default 1
+      'TierItemID':
+        type: 'string'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_purchasable.go'
+
+  'UserRewardClaim@seasonpass':
+    id: 'UserRewardClaim@seasonpass'
+    name: 'UserRewardClaim'
+    description: |-
+      A DTO object for claiming user reward.
+    fields:
+      'PassCode':
+        type: '*string'
+        required: true
+        description: |-
+          pass code
+      'RewardCode':
+        type: '*string'
+        required: true
+        description: |-
+          reward code
+      'TierIndex':
+        type: '*int32'
+        required: true
+        description: |-
+          tier index
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_reward_claim.go'
+
+  'UserSeasonSummary@seasonpass':
+    id: 'UserSeasonSummary@seasonpass'
+    name: 'UserSeasonSummary'
+    description: |-
+      A DTO object for user season summary.
+    fields:
+      'Cleared':
+        type: 'bool'
+        required: false
+        description: |-
+          whether cleared all tiers
+      'CreatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          created at
+      'CurrentExp':
+        type: 'int32'
+        required: false
+        description: |-
+          gained exp for current tier
+      'CurrentTierIndex':
+        type: 'int32'
+        required: false
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          enroll date time
+      'EnrolledPasses':
+        type: '[]string'
+        required: false
+        description: |-
+          enrolled passes
+      'ID':
+        type: 'string'
+        required: false
+        description: |-
+          id
+      'LastTierIndex':
+        type: 'int32'
+        required: false
+        description: |-
+          last tier index, zero based
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'RequiredExp':
+        type: 'int32'
+        required: false
+        description: |-
+          required exp for current tier
+      'SeasonID':
+        type: 'string'
+        required: false
+        description: |-
+          season id
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          updated at
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_season_summary.go'
+
+  'UserTierGrant@seasonpass':
+    id: 'UserTierGrant@seasonpass'
+    name: 'UserTierGrant'
+    description: |-
+      A DTO object for granting user tier.
+    fields:
+      'Count':
+        type: 'int32'
+        required: false
+        description: |-
+          count to grant
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          source
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_tier_grant.go'
+
+  'ValidationErrorEntity@seasonpass':
+    id: 'ValidationErrorEntity@seasonpass'
+    name: 'ValidationErrorEntity'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: '*string'
+        required: true
+        description: |-
+          error message
+      'Errors':
+        type: '[]*FieldValidationError'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/validation_error_entity.go'
+
+  # endregion models
+
+functions:
+
+  'BulkGetUserSeasonProgressionShort@seasonpass':
+    id: 'BulkGetUserSeasonProgressionShort@seasonpass'
+    name: 'BulkGetUserSeasonProgressionShort'
+    description: |-
+      This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.BulkGetUserSeasonProgressionParams'
+        required: true
+    return_type: '(*season.BulkGetUserSeasonProgressionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.BulkGetUserSeasonProgressionParams{ ... }
+      res, err := seasonService.BulkGetUserSeasonProgressionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'CheckSeasonPurchasableShort@seasonpass':
+    id: 'CheckSeasonPurchasableShort@seasonpass'
+    name: 'CheckSeasonPurchasableShort'
+    description: |-
+      This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.CheckSeasonPurchasableParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.CheckSeasonPurchasableParams{ ... }
+      res, err := seasonService.CheckSeasonPurchasableShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'check'
+      - 'purchasable'
+      - 'season'
+
+  'CloneSeasonShort@seasonpass':
+    id: 'CloneSeasonShort@seasonpass'
+    name: 'CloneSeasonShort'
+    description: |-
+      This API is used to clone a season.
+
+      Other detail info:
+
+        * Returns : cloned season info
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.CloneSeasonParams'
+        required: true
+    return_type: '(*season.CloneSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.CloneSeasonParams{ ... }
+      res, err := seasonService.CloneSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'clone'
+      - 'season'
+
+  'CreatePassShort@seasonpass':
+    id: 'CreatePassShort@seasonpass'
+    name: 'CreatePassShort'
+    description: |-
+      This API is used to create a pass for a draft season.
+
+      Other detail info:
+
+        * Returns : created pass
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.CreatePassParams'
+        required: true
+    return_type: '(*pass.CreatePassResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.CreatePassParams{ ... }
+      res, err := passService.CreatePassShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'pass'
+
+  'CreateRewardShort@seasonpass':
+    id: 'CreateRewardShort@seasonpass'
+    name: 'CreateRewardShort'
+    description: |-
+      This API is used to create a reward for a draft season.
+
+      Other detail info:
+
+        * Returns : created reward
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.CreateRewardParams'
+        required: true
+    return_type: '(*reward.CreateRewardResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.CreateRewardParams{ ... }
+      res, err := rewardService.CreateRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'reward'
+
+  'CreateSeasonShort@seasonpass':
+    id: 'CreateSeasonShort@seasonpass'
+    name: 'CreateSeasonShort'
+    description: |-
+      This API is used to create a season, season only allowed in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : created season
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.CreateSeasonParams'
+        required: true
+    return_type: '(*season.CreateSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.CreateSeasonParams{ ... }
+      res, err := seasonService.CreateSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'season'
+
+  'CreateTierShort@seasonpass':
+    id: 'CreateTierShort@seasonpass'
+    name: 'CreateTierShort'
+    description: |-
+      This API is used to create tier for a draft season, can create multiple tiers at same time.
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.CreateTierParams'
+        required: true
+    return_type: '(*tier.CreateTierResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.CreateTierParams{ ... }
+      res, err := tierService.CreateTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'tier'
+
+  'DeletePassShort@seasonpass':
+    id: 'DeletePassShort@seasonpass'
+    name: 'DeletePassShort'
+    description: |-
+      This API is used to delete a pass permanently, only draft season pass can be deleted.
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.DeletePassParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.DeletePassParams{ ... }
+      res, err := passService.DeletePassShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'pass'
+
+  'DeleteRewardShort@seasonpass':
+    id: 'DeleteRewardShort@seasonpass'
+    name: 'DeleteRewardShort'
+    description: |-
+      This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+      Other detail info:
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.DeleteRewardParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.DeleteRewardParams{ ... }
+      res, err := rewardService.DeleteRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'reward'
+
+  'DeleteSeasonShort@seasonpass':
+    id: 'DeleteSeasonShort@seasonpass'
+    name: 'DeleteSeasonShort'
+    description: |-
+      This API is used to delete a season permanently, only draft season can be deleted.
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.DeleteSeasonParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.DeleteSeasonParams{ ... }
+      res, err := seasonService.DeleteSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'season'
+
+  'DeleteTierShort@seasonpass':
+    id: 'DeleteTierShort@seasonpass'
+    name: 'DeleteTierShort'
+    description: |-
+      This API is used to delete a tier permanently, only draft season pass can be deleted.
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.DeleteTierParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.DeleteTierParams{ ... }
+      res, err := tierService.DeleteTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'tier'
+
+  'ExistsAnyPassByPassCodesShort@seasonpass':
+    id: 'ExistsAnyPassByPassCodesShort@seasonpass'
+    name: 'ExistsAnyPassByPassCodesShort'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : ownership
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.ExistsAnyPassByPassCodesParams'
+        required: true
+    return_type: '(*season.ExistsAnyPassByPassCodesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.ExistsAnyPassByPassCodesParams{ ... }
+      res, err := seasonService.ExistsAnyPassByPassCodesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'any'
+      - 'by'
+      - 'codes'
+      - 'exists'
+      - 'pass'
+      - 'season'
+
+  'ExportSeasonShort@seasonpass':
+    id: 'ExportSeasonShort@seasonpass'
+    name: 'ExportSeasonShort'
+    description: |-
+      This API is used to export all of season service data files with csv format.
+    struct: 'ExportService'
+    parameters:
+      params:
+        type: '*export.ExportSeasonParams'
+        required: true
+    return_type: '(*export.ExportSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/export'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/export.go'
+    example: |-
+      exportService := seasonpass.ExportService{ ... }
+      params := export.ExportSeasonParams{ ... }
+      res, err := exportService.ExportSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'export'
+      - 'season'
+
+  'GetCurrentSeasonShort@seasonpass':
+    id: 'GetCurrentSeasonShort@seasonpass'
+    name: 'GetCurrentSeasonShort'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season summary data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetCurrentSeasonParams'
+        required: true
+    return_type: '(*season.GetCurrentSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetCurrentSeasonParams{ ... }
+      res, err := seasonService.GetCurrentSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'current'
+      - 'get'
+      - 'season'
+
+  'GetCurrentUserSeasonProgressionShort@seasonpass':
+    id: 'GetCurrentUserSeasonProgressionShort@seasonpass'
+    name: 'GetCurrentUserSeasonProgressionShort'
+    description: |-
+      This API is used to get current user season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetCurrentUserSeasonProgressionParams'
+        required: true
+    return_type: '(*season.GetCurrentUserSeasonProgressionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetCurrentUserSeasonProgressionParams{ ... }
+      res, err := seasonService.GetCurrentUserSeasonProgressionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'current'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'GetFullSeasonShort@seasonpass':
+    id: 'GetFullSeasonShort@seasonpass'
+    name: 'GetFullSeasonShort'
+    description: |-
+      This API is used to get a season full content, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetFullSeasonParams'
+        required: true
+    return_type: '(*season.GetFullSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetFullSeasonParams{ ... }
+      res, err := seasonService.GetFullSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'full'
+      - 'get'
+      - 'season'
+
+  'GetItemReferencesShort@seasonpass':
+    id: 'GetItemReferencesShort@seasonpass'
+    name: 'GetItemReferencesShort'
+    description: |-
+      This API is used to get season pass ecommerce item references.
+
+      Other detail info:
+
+        * Returns : item references data
+    struct: 'UtilitiesService'
+    parameters:
+      params:
+        type: '*utilities.GetItemReferencesParams'
+        required: true
+    return_type: '(*utilities.GetItemReferencesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/utilities'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/utilities.go'
+    example: |-
+      utilitiesService := seasonpass.UtilitiesService{ ... }
+      params := utilities.GetItemReferencesParams{ ... }
+      res, err := utilitiesService.GetItemReferencesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'item'
+      - 'references'
+      - 'utilities'
+
+  'GetPassShort@seasonpass':
+    id: 'GetPassShort@seasonpass'
+    name: 'GetPassShort'
+    description: |-
+      This API is used to get a pass for a season.
+
+      Other detail info:
+
+        * Returns : pass data
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.GetPassParams'
+        required: true
+    return_type: '(*pass.GetPassResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.GetPassParams{ ... }
+      res, err := passService.GetPassShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'pass'
+
+  'GetRewardShort@seasonpass':
+    id: 'GetRewardShort@seasonpass'
+    name: 'GetRewardShort'
+    description: |-
+      This API is used to get a reward for a season.
+
+      Other detail info:
+
+        * Returns : reward data
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.GetRewardParams'
+        required: true
+    return_type: '(*reward.GetRewardResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.GetRewardParams{ ... }
+      res, err := rewardService.GetRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'reward'
+
+  'GetSeasonShort@seasonpass':
+    id: 'GetSeasonShort@seasonpass'
+    name: 'GetSeasonShort'
+    description: |-
+      This API is used to get a season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetSeasonParams'
+        required: true
+    return_type: '(*season.GetSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetSeasonParams{ ... }
+      res, err := seasonService.GetSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'season'
+
+  'GetUserParticipatedSeasonsShort@seasonpass':
+    id: 'GetUserParticipatedSeasonsShort@seasonpass'
+    name: 'GetUserParticipatedSeasonsShort'
+    description: |-
+      This API is used to get user participated season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user participated season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetUserParticipatedSeasonsParams'
+        required: true
+    return_type: '(*season.GetUserParticipatedSeasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetUserParticipatedSeasonsParams{ ... }
+      res, err := seasonService.GetUserParticipatedSeasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'participated'
+      - 'season'
+      - 'seasons'
+      - 'user'
+
+  'GetUserSeasonShort@seasonpass':
+    id: 'GetUserSeasonShort@seasonpass'
+    name: 'GetUserSeasonShort'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.GetUserSeasonParams'
+        required: true
+    return_type: '(*season.GetUserSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.GetUserSeasonParams{ ... }
+      res, err := seasonService.GetUserSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'season'
+      - 'user'
+
+  'GrantUserExpShort@seasonpass':
+    id: 'GrantUserExpShort@seasonpass'
+    name: 'GrantUserExpShort'
+    description: |-
+      This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.GrantUserExpParams'
+        required: true
+    return_type: '(*tier.GrantUserExpResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.GrantUserExpParams{ ... }
+      res, err := tierService.GrantUserExpShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'GrantUserPassShort@seasonpass':
+    id: 'GrantUserPassShort@seasonpass'
+    name: 'GrantUserPassShort'
+    description: |-
+      This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.GrantUserPassParams'
+        required: true
+    return_type: '(*pass.GrantUserPassResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.GrantUserPassParams{ ... }
+      res, err := passService.GrantUserPassShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'grant'
+      - 'pass'
+      - 'user'
+
+  'GrantUserTierShort@seasonpass':
+    id: 'GrantUserTierShort@seasonpass'
+    name: 'GrantUserTierShort'
+    description: |-
+      This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.GrantUserTierParams'
+        required: true
+    return_type: '(*tier.GrantUserTierResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.GrantUserTierParams{ ... }
+      res, err := tierService.GrantUserTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'PublicBulkClaimUserRewardsShort@seasonpass':
+    id: 'PublicBulkClaimUserRewardsShort@seasonpass'
+    name: 'PublicBulkClaimUserRewardsShort'
+    description: |-
+      This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.PublicBulkClaimUserRewardsParams'
+        required: true
+    return_type: '(*reward.PublicBulkClaimUserRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.PublicBulkClaimUserRewardsParams{ ... }
+      res, err := rewardService.PublicBulkClaimUserRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicClaimUserRewardShort@seasonpass':
+    id: 'PublicClaimUserRewardShort@seasonpass'
+    name: 'PublicClaimUserRewardShort'
+    description: |-
+      This API is used to claim reward, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.PublicClaimUserRewardParams'
+        required: true
+    return_type: '(*reward.PublicClaimUserRewardResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.PublicClaimUserRewardParams{ ... }
+      res, err := rewardService.PublicClaimUserRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'user'
+
+  'PublicGetCurrentSeasonShort@seasonpass':
+    id: 'PublicGetCurrentSeasonShort@seasonpass'
+    name: 'PublicGetCurrentSeasonShort'
+    description: |-
+      This API is used to get current published season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : localized season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.PublicGetCurrentSeasonParams'
+        required: true
+    return_type: '(*season.PublicGetCurrentSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.PublicGetCurrentSeasonParams{ ... }
+      res, err := seasonService.PublicGetCurrentSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+
+  'PublicGetCurrentUserSeasonShort@seasonpass':
+    id: 'PublicGetCurrentUserSeasonShort@seasonpass'
+    name: 'PublicGetCurrentUserSeasonShort'
+    description: |-
+      This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.PublicGetCurrentUserSeasonParams'
+        required: true
+    return_type: '(*season.PublicGetCurrentUserSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.PublicGetCurrentUserSeasonParams{ ... }
+      res, err := seasonService.PublicGetCurrentUserSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublicGetUserSeasonShort@seasonpass':
+    id: 'PublicGetUserSeasonShort@seasonpass'
+    name: 'PublicGetUserSeasonShort'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.PublicGetUserSeasonParams'
+        required: true
+    return_type: '(*season.PublicGetUserSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.PublicGetUserSeasonParams{ ... }
+      res, err := seasonService.PublicGetUserSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublishSeasonShort@seasonpass':
+    id: 'PublishSeasonShort@seasonpass'
+    name: 'PublishSeasonShort'
+    description: |-
+      This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+      Other detail info:
+
+        * Returns : published season
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.PublishSeasonParams'
+        required: true
+    return_type: '(*season.PublishSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.PublishSeasonParams{ ... }
+      res, err := seasonService.PublishSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'publish'
+      - 'season'
+
+  'QueryPassesShort@seasonpass':
+    id: 'QueryPassesShort@seasonpass'
+    name: 'QueryPassesShort'
+    description: |-
+      This API is used to query all passes for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.QueryPassesParams'
+        required: true
+    return_type: '(*pass.QueryPassesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.QueryPassesParams{ ... }
+      res, err := passService.QueryPassesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'pass'
+      - 'passes'
+      - 'query'
+
+  'QueryRewardsShort@seasonpass':
+    id: 'QueryRewardsShort@seasonpass'
+    name: 'QueryRewardsShort'
+    description: |-
+      This API is used to query rewards for a season.
+
+      Other detail info:
+
+        * Returns : the list of rewards
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.QueryRewardsParams'
+        required: true
+    return_type: '(*reward.QueryRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.QueryRewardsParams{ ... }
+      res, err := rewardService.QueryRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'query'
+      - 'reward'
+      - 'rewards'
+
+  'QuerySeasonsShort@seasonpass':
+    id: 'QuerySeasonsShort@seasonpass'
+    name: 'QuerySeasonsShort'
+    description: |-
+      This API is used to query seasons, seasons only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : the list of season basic info
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.QuerySeasonsParams'
+        required: true
+    return_type: '(*season.QuerySeasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.QuerySeasonsParams{ ... }
+      res, err := seasonService.QuerySeasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'query'
+      - 'season'
+      - 'seasons'
+
+  'QueryTiersShort@seasonpass':
+    id: 'QueryTiersShort@seasonpass'
+    name: 'QueryTiersShort'
+    description: |-
+      This API is used to query paginated tiers for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.QueryTiersParams'
+        required: true
+    return_type: '(*tier.QueryTiersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.QueryTiersParams{ ... }
+      res, err := tierService.QueryTiersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'query'
+      - 'tier'
+      - 'tiers'
+
+  'QueryUserExpGrantHistoryShort@seasonpass':
+    id: 'QueryUserExpGrantHistoryShort@seasonpass'
+    name: 'QueryUserExpGrantHistoryShort'
+    description: |-
+      This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : paginated grant history
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.QueryUserExpGrantHistoryParams'
+        required: true
+    return_type: '(*season.QueryUserExpGrantHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.QueryUserExpGrantHistoryParams{ ... }
+      res, err := seasonService.QueryUserExpGrantHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'user'
+
+  'QueryUserExpGrantHistoryTagShort@seasonpass':
+    id: 'QueryUserExpGrantHistoryTagShort@seasonpass'
+    name: 'QueryUserExpGrantHistoryTagShort'
+    description: |-
+      This API is used to get user exp acquisition history's tag list.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : exp grant history tags list
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.QueryUserExpGrantHistoryTagParams'
+        required: true
+    return_type: '(*season.QueryUserExpGrantHistoryTagResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.QueryUserExpGrantHistoryTagParams{ ... }
+      res, err := seasonService.QueryUserExpGrantHistoryTagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'tag'
+      - 'user'
+
+  'ReorderTierShort@seasonpass':
+    id: 'ReorderTierShort@seasonpass'
+    name: 'ReorderTierShort'
+    description: |-
+      This API is used to reorder a tier. Only draft season pass can be updated.
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.ReorderTierParams'
+        required: true
+    return_type: '(*tier.ReorderTierResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.ReorderTierParams{ ... }
+      res, err := tierService.ReorderTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'reorder'
+      - 'tier'
+
+  'ResetUserSeasonShort@seasonpass':
+    id: 'ResetUserSeasonShort@seasonpass'
+    name: 'ResetUserSeasonShort'
+    description: |-
+      [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.ResetUserSeasonParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.ResetUserSeasonParams{ ... }
+      res, err := seasonService.ResetUserSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'reset'
+      - 'season'
+      - 'user'
+
+  'RetireSeasonShort@seasonpass':
+    id: 'RetireSeasonShort@seasonpass'
+    name: 'RetireSeasonShort'
+    description: |-
+      This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.RetireSeasonParams'
+        required: true
+    return_type: '(*season.RetireSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.RetireSeasonParams{ ... }
+      res, err := seasonService.RetireSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'retire'
+      - 'season'
+
+  'UnpublishSeasonShort@seasonpass':
+    id: 'UnpublishSeasonShort@seasonpass'
+    name: 'UnpublishSeasonShort'
+    description: |-
+      This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.UnpublishSeasonParams'
+        required: true
+    return_type: '(*season.UnpublishSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.UnpublishSeasonParams{ ... }
+      res, err := seasonService.UnpublishSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'season'
+      - 'unpublish'
+
+  'UpdatePassShort@seasonpass':
+    id: 'UpdatePassShort@seasonpass'
+    name: 'UpdatePassShort'
+    description: |-
+      This API is used to update a pass. Only draft season pass can be updated.
+
+      Other detail info:
+
+        * Returns : updated pass
+    struct: 'PassService'
+    parameters:
+      params:
+        type: '*pass.UpdatePassParams'
+        required: true
+    return_type: '(*pass.UpdatePassResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/pass'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/pass.go'
+    example: |-
+      passService := seasonpass.PassService{ ... }
+      params := pass.UpdatePassParams{ ... }
+      res, err := passService.UpdatePassShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'pass'
+      - 'update'
+
+  'UpdateRewardShort@seasonpass':
+    id: 'UpdateRewardShort@seasonpass'
+    name: 'UpdateRewardShort'
+    description: |-
+      This API is used to update a reward. Only draft season reward can be updated.
+
+      Other detail info:
+
+        * Returns : updated reward
+    struct: 'RewardService'
+    parameters:
+      params:
+        type: '*reward.UpdateRewardParams'
+        required: true
+    return_type: '(*reward.UpdateRewardResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/reward.go'
+    example: |-
+      rewardService := seasonpass.RewardService{ ... }
+      params := reward.UpdateRewardParams{ ... }
+      res, err := rewardService.UpdateRewardShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'reward'
+      - 'update'
+
+  'UpdateSeasonShort@seasonpass':
+    id: 'UpdateSeasonShort@seasonpass'
+    name: 'UpdateSeasonShort'
+    description: |-
+      This API is used to update a season. Only draft season can be updated.
+
+      Other detail info:
+
+        * Returns : updated season
+    struct: 'SeasonService'
+    parameters:
+      params:
+        type: '*season.UpdateSeasonParams'
+        required: true
+    return_type: '(*season.UpdateSeasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/season'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/season.go'
+    example: |-
+      seasonService := seasonpass.SeasonService{ ... }
+      params := season.UpdateSeasonParams{ ... }
+      res, err := seasonService.UpdateSeasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'season'
+      - 'update'
+
+  'UpdateTierShort@seasonpass':
+    id: 'UpdateTierShort@seasonpass'
+    name: 'UpdateTierShort'
+    description: |-
+      This API is used to update a tier. Only draft season pass can be updated.
+    struct: 'TierService'
+    parameters:
+      params:
+        type: '*tier.UpdateTierParams'
+        required: true
+    return_type: '(*tier.UpdateTierResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/seasonpass-sdk/pkg/seasonpassclient/tier'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/seasonpass'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/seasonpass/tier.go'
+    example: |-
+      tierService := seasonpass.TierService{ ... }
+      params := tier.UpdateTierParams{ ... }
+      res, err := tierService.UpdateTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'tier'
+      - 'update'

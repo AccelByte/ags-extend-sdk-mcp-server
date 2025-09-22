@@ -1,0 +1,360 @@
+structs:
+  'JusticeSessionhistoryService@sessionhistory':
+    id: 'JusticeSessionhistoryService@sessionhistory'
+    name: 'JusticeSessionhistoryService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclient/justice_sessionhistory_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/sessionhistoryclientfactory.go'
+    example: |-
+      sessionhistoryClient := factory.NewSessionhistoryClient(configRepo)
+
+  # region wrappers
+
+  'XRayService@sessionhistory':
+    id: 'XRayService@sessionhistory'
+    name: 'XRayService'
+    fields:
+      Client:
+        type: '*sessionhistoryclient.JusticeSessionhistoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/sessionhistory/xRay.go'
+    example: |-
+      sessionhistoryClient := factory.NewSessionhistoryClient(configRepo) // re-use if it exists already
+      xRayService := XRayService{
+          Client:           sessionhistoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'CreateXrayBulkTicketObservabilityParams@sessionhistory':
+    id: 'CreateXrayBulkTicketObservabilityParams@sessionhistory'
+    name: 'CreateXrayBulkTicketObservabilityParams'
+    fields:
+      'Body':
+        type: '*ApimodelsXRayBulkTicketObservabilityRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray/create_xray_bulk_ticket_observability_parameters.go'
+
+  'CreateXrayTicketObservabilityParams@sessionhistory':
+    id: 'CreateXrayTicketObservabilityParams@sessionhistory'
+    name: 'CreateXrayTicketObservabilityParams'
+    fields:
+      'Body':
+        type: '*ApimodelsXRayTicketObservabilityRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray/create_xray_ticket_observability_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ApimodelsXRayBulkTicketObservabilityRequest@sessionhistory':
+    id: 'ApimodelsXRayBulkTicketObservabilityRequest@sessionhistory'
+    name: 'ApimodelsXRayBulkTicketObservabilityRequest'
+    fields:
+      'TicketObservabilities':
+        type: '[]*ApimodelsXRayTicketObservabilityRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/apimodels_x_ray_bulk_ticket_observability_request.go'
+
+  'ApimodelsXRayBulkTicketObservabilityResponse@sessionhistory':
+    id: 'ApimodelsXRayBulkTicketObservabilityResponse@sessionhistory'
+    name: 'ApimodelsXRayBulkTicketObservabilityResponse'
+    fields:
+      'TicketIDs':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/apimodels_x_ray_bulk_ticket_observability_response.go'
+
+  'ApimodelsXRayTicketObservabilityRequest@sessionhistory':
+    id: 'ApimodelsXRayTicketObservabilityRequest@sessionhistory'
+    name: 'ApimodelsXRayTicketObservabilityRequest'
+    fields:
+      'Action':
+        type: '*string'
+        required: true
+      'ActiveAllianceRule':
+        type: '*ModelsAllianceRule'
+        required: false
+      'ActiveMatchingRule':
+        type: '[]*ModelsMatchingRule'
+        required: false
+      'Function':
+        type: 'string'
+        required: false
+      'GameMode':
+        type: '*string'
+        required: true
+      'IsBackfillMatch':
+        type: '*bool'
+        required: true
+      'IsRuleSetFlexed':
+        type: '*bool'
+        required: true
+      'Iteration':
+        type: 'int32'
+        required: false
+      'MatchID':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'RemainingPlayersPerTicket':
+        type: '[]int32'
+        required: false
+      'RemainingTickets':
+        type: 'int32'
+        required: false
+      'SessionTickID':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'TickID':
+        type: '*int64'
+        required: true
+      'Timestamp':
+        type: 'strfmt.DateTime'
+        required: true
+      'TimeToMatchSec':
+        type: 'float64'
+        required: false
+      'UnbackfillReason':
+        type: 'string'
+        required: false
+      'UnmatchReason':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/apimodels_x_ray_ticket_observability_request.go'
+
+  'ApimodelsXRayTicketObservabilityResponse@sessionhistory':
+    id: 'ApimodelsXRayTicketObservabilityResponse@sessionhistory'
+    name: 'ApimodelsXRayTicketObservabilityResponse'
+    fields:
+      'TicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/apimodels_x_ray_ticket_observability_response.go'
+
+  'ModelsAllianceRule@sessionhistory':
+    id: 'ModelsAllianceRule@sessionhistory'
+    name: 'ModelsAllianceRule'
+    fields:
+      'MaxNumber':
+        type: '*int32'
+        required: true
+      'MinNumber':
+        type: '*int32'
+        required: true
+      'PlayerMaxNumber':
+        type: '*int32'
+        required: true
+      'PlayerMinNumber':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/models_alliance_rule.go'
+
+  'ModelsMatchingRule@sessionhistory':
+    id: 'ModelsMatchingRule@sessionhistory'
+    name: 'ModelsMatchingRule'
+    fields:
+      'Attribute':
+        type: 'string'
+        required: true
+      'Criteria':
+        type: 'string'
+        required: true
+      'Reference':
+        type: 'float64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/models_matching_rule.go'
+
+  'ResponseError@sessionhistory':
+    id: 'ResponseError@sessionhistory'
+    name: 'ResponseError'
+    fields:
+      'Attributes':
+        type: 'map[string]string'
+        required: true
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/sessionhistory-sdk/pkg/sessionhistoryclientmodels/response_error.go'
+
+  # endregion models
+
+functions:
+
+  'CreateXrayBulkTicketObservabilityShort@sessionhistory':
+    id: 'CreateXrayBulkTicketObservabilityShort@sessionhistory'
+    name: 'CreateXrayBulkTicketObservabilityShort'
+    description: |-
+      Create bulk ticket observability request
+      Request body details (all attributes are optional):
+      Timestamp : timestamp when calling this endpoint
+      Action : support one of the following value:
+      1. "matchFound"
+      2. "matchNotFound"
+      3. "flexed"
+      PartyID : ticket Party ID
+      MatchID : match ID will be filled only when match found
+      Namespace : ticket current namespace
+      GameMode : ticket current matchpool
+      ActiveAllianceRule : current active alliance ruleset
+      ActiveMatchingRule : current active matching ruleset
+      Function : name of the function that called the endpoint
+      Iteration : total iteration before match found
+      TimeToMatchSec : time to match (in seconds) will be filled only when match found
+      UnmatchReason : reason when unable to find match
+      RemainingTickets : remaining ticket when unable to find match
+      RemainingPlayersPerTicket : remaining players when unable to find match
+      UnbackfillReason : reason when unable to backfill
+      IsBackfillMatch : flag to distinguish between new match and backfill match
+      IsRuleSetFlexed : flag if ruleset is getting flexed
+      TickID : tick id for the matchmaking tick
+      SessionTickID : session tick id for differentiate session when doing matches
+    struct: 'XRayService'
+    parameters:
+      params:
+        type: '*x_ray.CreateXrayBulkTicketObservabilityParams'
+        required: true
+    return_type: '(*x_ray.CreateXrayBulkTicketObservabilityResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/sessionhistory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/sessionhistory/xRay.go'
+    example: |-
+      xRayService := sessionhistory.XRayService{ ... }
+      params := x_ray.CreateXrayBulkTicketObservabilityParams{ ... }
+      res, err := xRayService.CreateXrayBulkTicketObservabilityShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'create'
+      - 'observability'
+      - 'ray'
+      - 'ticket'
+      - 'x'
+      - 'xray'
+
+  'CreateXrayTicketObservabilityShort@sessionhistory':
+    id: 'CreateXrayTicketObservabilityShort@sessionhistory'
+    name: 'CreateXrayTicketObservabilityShort'
+    description: |-
+      Create ticket observability request
+      Request body details (all attributes are optional):
+      Timestamp : timestamp when calling this endpoint
+      Action : support one of the following value:
+      1. "matchFound"
+      2. "matchNotFound"
+      3. "flexed"
+      TicketID : ticket ID
+      MatchID : match ID will be filled only when match found
+      Namespace : ticket current namespace
+      GameMode : ticket current matchpool
+      ActiveAllianceRule : current active alliance ruleset
+      ActiveMatchingRule : current active matching ruleset
+      Function : name of the function that called the endpoint
+      Iteration : total iteration before match found
+      TimeToMatchSec : time to match (in seconds) will be filled only when match found
+      UnmatchReason : reason when unable to find match
+      RemainingTickets : remaining ticket when unable to find match
+      RemainingPlayersPerTicket : remaining players when unable to find match
+      UnbackfillReason : reason when unable to backfill
+      IsBackfillMatch : flag to distinguish between new match and backfill match
+      IsRuleSetFlexed : flag if ruleset is getting flexed
+      TickID : tick id for the matchmaking tick
+      SessionTickID : session tick id for differentiate session when doing matches
+    struct: 'XRayService'
+    parameters:
+      params:
+        type: '*x_ray.CreateXrayTicketObservabilityParams'
+        required: true
+    return_type: '(*x_ray.CreateXrayTicketObservabilityResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/sessionhistory-sdk/pkg/sessionhistoryclient/x_ray'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/sessionhistory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/sessionhistory/xRay.go'
+    example: |-
+      xRayService := sessionhistory.XRayService{ ... }
+      params := x_ray.CreateXrayTicketObservabilityParams{ ... }
+      res, err := xRayService.CreateXrayTicketObservabilityShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'observability'
+      - 'ray'
+      - 'ticket'
+      - 'x'
+      - 'xray'

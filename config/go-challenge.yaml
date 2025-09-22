@@ -1,0 +1,3698 @@
+structs:
+  'JusticeChallengeService@challenge':
+    id: 'JusticeChallengeService@challenge'
+    name: 'JusticeChallengeService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/justice_challenge_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/challengeclientfactory.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo)
+
+  # region wrappers
+
+  'ChallengeConfigurationService@challenge':
+    id: 'ChallengeConfigurationService@challenge'
+    name: 'ChallengeConfigurationService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      challengeConfigurationService := ChallengeConfigurationService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ChallengeListService@challenge':
+    id: 'ChallengeListService@challenge'
+    name: 'ChallengeListService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeList.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      challengeListService := ChallengeListService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ChallengeProgressionService@challenge':
+    id: 'ChallengeProgressionService@challenge'
+    name: 'ChallengeProgressionService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      challengeProgressionService := ChallengeProgressionService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'GoalConfigurationService@challenge':
+    id: 'GoalConfigurationService@challenge'
+    name: 'GoalConfigurationService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      goalConfigurationService := GoalConfigurationService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PlayerRewardService@challenge':
+    id: 'PlayerRewardService@challenge'
+    name: 'PlayerRewardService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      playerRewardService := PlayerRewardService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PluginsService@challenge':
+    id: 'PluginsService@challenge'
+    name: 'PluginsService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/plugins.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      pluginsService := PluginsService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'SchedulesService@challenge':
+    id: 'SchedulesService@challenge'
+    name: 'SchedulesService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/schedules.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      schedulesService := SchedulesService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'UtilitiesService@challenge':
+    id: 'UtilitiesService@challenge'
+    name: 'UtilitiesService'
+    fields:
+      Client:
+        type: '*challengeclient.JusticeChallengeService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/utilities.go'
+    example: |-
+      challengeClient := factory.NewChallengeClient(configRepo) // re-use if it exists already
+      utilitiesService := UtilitiesService{
+          Client:           challengeClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminClaimUserRewardsParams@challenge':
+    id: 'AdminClaimUserRewardsParams@challenge'
+    name: 'AdminClaimUserRewardsParams'
+    fields:
+      'Body':
+        type: '*ModelClaimUserRewardsReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_user_rewards_parameters.go'
+
+  'AdminClaimUserRewardsByGoalCodeParams@challenge':
+    id: 'AdminClaimUserRewardsByGoalCodeParams@challenge'
+    name: 'AdminClaimUserRewardsByGoalCodeParams'
+    fields:
+      'Body':
+        type: '*ModelClaimUserRewardsByGoalCodeRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_user_rewards_by_goal_code_parameters.go'
+
+  'AdminClaimUsersRewardsParams@challenge':
+    id: 'AdminClaimUsersRewardsParams@challenge'
+    name: 'AdminClaimUsersRewardsParams'
+    fields:
+      'Body':
+        type: '[]*ModelClaimUsersRewardsRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_users_rewards_parameters.go'
+
+  'AdminCreateAssignmentPluginParams@challenge':
+    id: 'AdminCreateAssignmentPluginParams@challenge'
+    name: 'AdminCreateAssignmentPluginParams'
+    fields:
+      'Body':
+        type: '*ModelPluginAssignmentRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_create_assignment_plugin_parameters.go'
+
+  'AdminCreateChallengeParams@challenge':
+    id: 'AdminCreateChallengeParams@challenge'
+    name: 'AdminCreateChallengeParams'
+    fields:
+      'Body':
+        type: '*ModelCreateChallengeRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_create_challenge_parameters.go'
+
+  'AdminCreateGoalParams@challenge':
+    id: 'AdminCreateGoalParams@challenge'
+    name: 'AdminCreateGoalParams'
+    fields:
+      'Body':
+        type: '*ModelCreateGoalRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_create_goal_parameters.go'
+
+  'AdminDeleteAssignmentPluginParams@challenge':
+    id: 'AdminDeleteAssignmentPluginParams@challenge'
+    name: 'AdminDeleteAssignmentPluginParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_delete_assignment_plugin_parameters.go'
+
+  'AdminDeleteChallengeParams@challenge':
+    id: 'AdminDeleteChallengeParams@challenge'
+    name: 'AdminDeleteChallengeParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          the code of the challenge data to be deleted
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_delete_challenge_parameters.go'
+
+  'AdminDeleteGoalParams@challenge':
+    id: 'AdminDeleteGoalParams@challenge'
+    name: 'AdminDeleteGoalParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          goal code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_delete_goal_parameters.go'
+
+  'AdminDeleteTiedChallengeParams@challenge':
+    id: 'AdminDeleteTiedChallengeParams@challenge'
+    name: 'AdminDeleteTiedChallengeParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          the code of the challenge data to be deleted
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_delete_tied_challenge_parameters.go'
+
+  'AdminEvaluateProgressParams@challenge':
+    id: 'AdminEvaluateProgressParams@challenge'
+    name: 'AdminEvaluateProgressParams'
+    fields:
+      'Body':
+        type: '*ModelEvaluatePlayerProgressionRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/admin_evaluate_progress_parameters.go'
+
+  'AdminGetActiveChallengesParams@challenge':
+    id: 'AdminGetActiveChallengesParams@challenge'
+    name: 'AdminGetActiveChallengesParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_active_challenges_parameters.go'
+
+  'AdminGetAssignmentPluginParams@challenge':
+    id: 'AdminGetAssignmentPluginParams@challenge'
+    name: 'AdminGetAssignmentPluginParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_get_assignment_plugin_parameters.go'
+
+  'AdminGetChallengeParams@challenge':
+    id: 'AdminGetChallengeParams@challenge'
+    name: 'AdminGetChallengeParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          the code of the challenge data to get
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_challenge_parameters.go'
+
+  'AdminGetChallengesParams@challenge':
+    id: 'AdminGetChallengesParams@challenge'
+    name: 'AdminGetChallengesParams'
+    fields:
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          filter challenges by code with likes behavior
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          challenge status
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter challenges by tags, comma separated value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_challenges_parameters.go'
+
+  'AdminGetGoalParams@challenge':
+    id: 'AdminGetGoalParams@challenge'
+    name: 'AdminGetGoalParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          goal code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_get_goal_parameters.go'
+
+  'AdminGetGoalsParams@challenge':
+    id: 'AdminGetGoalsParams@challenge'
+    name: 'AdminGetGoalsParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter list by tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_get_goals_parameters.go'
+
+  'AdminGetItemReferencesParams@challenge':
+    id: 'AdminGetItemReferencesParams@challenge'
+    name: 'AdminGetItemReferencesParams'
+    fields:
+      'ItemID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the ecommerce item
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/utilities'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/utilities/admin_get_item_references_parameters.go'
+
+  'AdminGetPeriodsParams@challenge':
+    id: 'AdminGetPeriodsParams@challenge'
+    name: 'AdminGetPeriodsParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_periods_parameters.go'
+
+  'AdminGetUserProgressionParams@challenge':
+    id: 'AdminGetUserProgressionParams@challenge'
+    name: 'AdminGetUserProgressionParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'DateTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          specific schedule date time. use RFC3339 format(2006-01-02T15:04:05Z).
+      'GoalCode':
+        type: 'string'
+        required: false
+        description: |-
+          goal code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter goals by tags, comma separated value
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/admin_get_user_progression_parameters.go'
+
+  'AdminGetUserRewardsParams@challenge':
+    id: 'AdminGetUserRewardsParams@challenge'
+    name: 'AdminGetUserRewardsParams'
+    fields:
+      'ChallengeCode':
+        type: 'string'
+        required: false
+        description: |-
+          reward's challenge code
+      'GoalProgressionID':
+        type: 'string'
+        required: false
+        description: |-
+          reward's goal progression id
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          user reward status
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_get_user_rewards_parameters.go'
+
+  'AdminListSchedulesParams@challenge':
+    id: 'AdminListSchedulesParams@challenge'
+    name: 'AdminListSchedulesParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'DateTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          use RFC3339 format(2006-01-02T15:04:05Z).
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userId, UUIDv4 format without hyphen, required when querying CUSTOM challenge schedule
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/admin_list_schedules_parameters.go'
+
+  'AdminListSchedulesByGoalParams@challenge':
+    id: 'AdminListSchedulesByGoalParams@challenge'
+    name: 'AdminListSchedulesByGoalParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          goal code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          userId, UUIDv4 format without hyphen, required when querying CUSTOM challenge schedule
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/admin_list_schedules_by_goal_parameters.go'
+
+  'AdminRandomizeChallengeParams@challenge':
+    id: 'AdminRandomizeChallengeParams@challenge'
+    name: 'AdminRandomizeChallengeParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_randomize_challenge_parameters.go'
+
+  'AdminUpdateAssignmentPluginParams@challenge':
+    id: 'AdminUpdateAssignmentPluginParams@challenge'
+    name: 'AdminUpdateAssignmentPluginParams'
+    fields:
+      'Body':
+        type: '*ModelPluginAssignmentRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_update_assignment_plugin_parameters.go'
+
+  'AdminUpdateChallengeParams@challenge':
+    id: 'AdminUpdateChallengeParams@challenge'
+    name: 'AdminUpdateChallengeParams'
+    fields:
+      'Body':
+        type: '*ModelUpdateChallengeRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          the code of the challenge data to update
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_update_challenge_parameters.go'
+
+  'AdminUpdateGoalsParams@challenge':
+    id: 'AdminUpdateGoalsParams@challenge'
+    name: 'AdminUpdateGoalsParams'
+    fields:
+      'Body':
+        type: '*ModelUpdateGoalRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          goal code
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_update_goals_parameters.go'
+
+  'AdminUpdateTiedChallengeScheduleParams@challenge':
+    id: 'AdminUpdateTiedChallengeScheduleParams@challenge'
+    name: 'AdminUpdateTiedChallengeScheduleParams'
+    fields:
+      'Body':
+        type: '*ModelUpdateChallengeScheduleRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          the code of the challenge data to be updated
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_update_tied_challenge_schedule_parameters.go'
+
+  'EvaluateMyProgressParams@challenge':
+    id: 'EvaluateMyProgressParams@challenge'
+    name: 'EvaluateMyProgressParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/evaluate_my_progress_parameters.go'
+
+  'GetChallengesParams@challenge':
+    id: 'GetChallengesParams@challenge'
+    name: 'GetChallengesParams'
+    fields:
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          filter challenges by code with likes behavior
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          challenge status
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter challenges by tags, comma separated value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_list'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_list/get_challenges_parameters.go'
+
+  'PublicClaimUserRewardsParams@challenge':
+    id: 'PublicClaimUserRewardsParams@challenge'
+    name: 'PublicClaimUserRewardsParams'
+    fields:
+      'Body':
+        type: '*ModelClaimUserRewardsReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_claim_user_rewards_parameters.go'
+
+  'PublicClaimUserRewardsByGoalCodeParams@challenge':
+    id: 'PublicClaimUserRewardsByGoalCodeParams@challenge'
+    name: 'PublicClaimUserRewardsByGoalCodeParams'
+    fields:
+      'Body':
+        type: '*ModelClaimUserRewardsByGoalCodeRequest'
+        required: true
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_claim_user_rewards_by_goal_code_parameters.go'
+
+  'PublicGetPastUserProgressionParams@challenge':
+    id: 'PublicGetPastUserProgressionParams@challenge'
+    name: 'PublicGetPastUserProgressionParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'GoalCode':
+        type: 'string'
+        required: false
+        description: |-
+          goal code
+      'Index':
+        type: '*int64'
+        required: true
+        description: |-
+          rotation index. Treat rotation as an array sorted by the start time of a rotation in descending manner. positive integer. 0 indicates current or latest active rotation. increment the value to refer to specific past rotation.
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter goals by tags, comma separated value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/public_get_past_user_progression_parameters.go'
+
+  'PublicGetScheduledGoalsParams@challenge':
+    id: 'PublicGetScheduledGoalsParams@challenge'
+    name: 'PublicGetScheduledGoalsParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          				default value: updatedAt:desc.
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter list by tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_list'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_list/public_get_scheduled_goals_parameters.go'
+
+  'PublicGetUserProgressionParams@challenge':
+    id: 'PublicGetUserProgressionParams@challenge'
+    name: 'PublicGetUserProgressionParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'DateTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          specific schedule date time. use RFC3339 format(2006-01-02T15:04:05Z).
+      'GoalCode':
+        type: 'string'
+        required: false
+        description: |-
+          goal code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Tags':
+        type: '[]string'
+        required: false
+        description: |-
+          filter goals by tags, comma separated value
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/public_get_user_progression_parameters.go'
+
+  'PublicGetUserRewardsParams@challenge':
+    id: 'PublicGetUserRewardsParams@challenge'
+    name: 'PublicGetUserRewardsParams'
+    fields:
+      'ChallengeCode':
+        type: 'string'
+        required: false
+        description: |-
+          reward's challenge code
+      'GoalProgressionID':
+        type: 'string'
+        required: false
+        description: |-
+          reward's goal progression id
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          user reward status
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_get_user_rewards_parameters.go'
+
+  'PublicListSchedulesParams@challenge':
+    id: 'PublicListSchedulesParams@challenge'
+    name: 'PublicListSchedulesParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'DateTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          use RFC3339 format(2006-01-02T15:04:05Z).
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/public_list_schedules_parameters.go'
+
+  'PublicListSchedulesByGoalParams@challenge':
+    id: 'PublicListSchedulesByGoalParams@challenge'
+    name: 'PublicListSchedulesByGoalParams'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          goal code
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/public_list_schedules_by_goal_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'IamErrorResponse@challenge':
+    id: 'IamErrorResponse@challenge'
+    name: 'IamErrorResponse'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'RequiredPermission':
+        type: '*IamPermission'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/iam_error_response.go'
+
+  'IamPermission@challenge':
+    id: 'IamPermission@challenge'
+    name: 'IamPermission'
+    fields:
+      'Action':
+        type: '*int32'
+        required: true
+      'Resource':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/iam_permission.go'
+
+  'ModelChallengeReference@challenge':
+    id: 'ModelChallengeReference@challenge'
+    name: 'ModelChallengeReference'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'GoalCode':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_challenge_reference.go'
+
+  'ModelChallengeResponse@challenge':
+    id: 'ModelChallengeResponse@challenge'
+    name: 'ModelChallengeResponse'
+    fields:
+      'ActiveGoalsPerRotation':
+        type: '*int32'
+        required: true
+      'AssignmentRule':
+        type: '*string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'EndAfter':
+        type: 'int32'
+        required: false
+      'EndDate':
+        type: 'string'
+        required: false
+      'GoalsVisibility':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'RandomizedPerRotation':
+        type: '*bool'
+        required: true
+      'RepeatAfter':
+        type: 'int32'
+        required: false
+      'ResetConfig':
+        type: '*ModelResetConfig'
+        required: true
+      'Rotation':
+        type: '*string'
+        required: true
+      'StartDate':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: false
+      'UpdatedAt':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_challenge_response.go'
+
+  'ModelClaimableUserReward@challenge':
+    id: 'ModelClaimableUserReward@challenge'
+    name: 'ModelClaimableUserReward'
+    fields:
+      'GoalProgressionID':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'ItemID':
+        type: '*string'
+        required: true
+      'ItemName':
+        type: '*string'
+        required: true
+      'Qty':
+        type: '*float32'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claimable_user_reward.go'
+
+  'ModelClaimUserRewardsByGoalCodeRequest@challenge':
+    id: 'ModelClaimUserRewardsByGoalCodeRequest@challenge'
+    name: 'ModelClaimUserRewardsByGoalCodeRequest'
+    fields:
+      'GoalCode':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_user_rewards_by_goal_code_request.go'
+
+  'ModelClaimUserRewardsReq@challenge':
+    id: 'ModelClaimUserRewardsReq@challenge'
+    name: 'ModelClaimUserRewardsReq'
+    fields:
+      'RewardIDs':
+        type: '[]string'
+        required: true
+        description: |-
+          max 100 items
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_user_rewards_req.go'
+
+  'ModelClaimUsersRewardsRequest@challenge':
+    id: 'ModelClaimUsersRewardsRequest@challenge'
+    name: 'ModelClaimUsersRewardsRequest'
+    fields:
+      'RewardIds':
+        type: '[]string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_users_rewards_request.go'
+
+  'ModelClaimUsersRewardsResponse@challenge':
+    id: 'ModelClaimUsersRewardsResponse@challenge'
+    name: 'ModelClaimUsersRewardsResponse'
+    fields:
+      'ErrorDetail':
+        type: '*ResponseError'
+        required: false
+      'IsSuccess':
+        type: '*bool'
+        required: true
+      'Rewards':
+        type: '[]*ModelUserReward'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_users_rewards_response.go'
+
+  'ModelCreateChallengeRequest@challenge':
+    id: 'ModelCreateChallengeRequest@challenge'
+    name: 'ModelCreateChallengeRequest'
+    fields:
+      'ActiveGoalsPerRotation':
+        type: 'int32'
+        required: false
+      'AssignmentRule':
+        type: '*string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          only lowercase letters, numbers, and the separator - are allowed; must start and end with letter
+      'Description':
+        type: 'string'
+        required: false
+      'EndAfter':
+        type: 'int32'
+        required: false
+      'EndDate':
+        type: '*strfmt.DateTime'
+        required: false
+      'GoalsVisibility':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'RandomizedPerRotation':
+        type: 'bool'
+        required: false
+      'RepeatAfter':
+        type: 'int32'
+        required: false
+      'ResetConfig':
+        type: '*ModelResetConfig'
+        required: false
+      'Rotation':
+        type: '*string'
+        required: true
+      'StartDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_create_challenge_request.go'
+
+  'ModelCreateGoalRequest@challenge':
+    id: 'ModelCreateGoalRequest@challenge'
+    name: 'ModelCreateGoalRequest'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'IsActive':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'RequirementGroups':
+        type: '[]*ModelRequirement'
+        required: false
+      'Rewards':
+        type: '[]*ModelReward'
+        required: false
+      'Schedule':
+        type: '*ModelGoalScheduleRequest'
+        required: false
+      'Tags':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_create_goal_request.go'
+
+  'ModelEvaluatePlayerProgressionRequest@challenge':
+    id: 'ModelEvaluatePlayerProgressionRequest@challenge'
+    name: 'ModelEvaluatePlayerProgressionRequest'
+    fields:
+      'UserIds':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_evaluate_player_progression_request.go'
+
+  'ModelGetGoalsResponse@challenge':
+    id: 'ModelGetGoalsResponse@challenge'
+    name: 'ModelGetGoalsResponse'
+    fields:
+      'Data':
+        type: '[]*ModelGoalResponse'
+        required: true
+      'Meta':
+        type: '*ModelChallengeResponse'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_get_goals_response.go'
+
+  'ModelGoalInSchedulesResponse@challenge':
+    id: 'ModelGoalInSchedulesResponse@challenge'
+    name: 'ModelGoalInSchedulesResponse'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'IsActive':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'RequirementGroups':
+        type: '[]*ModelRequirement'
+        required: true
+      'Rewards':
+        type: '[]*ModelReward'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: false
+      'UpdatedAt':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_in_schedules_response.go'
+
+  'ModelGoalMeta@challenge':
+    id: 'ModelGoalMeta@challenge'
+    name: 'ModelGoalMeta'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'RequirementGroups':
+        type: '[]*ModelRequirement'
+        required: true
+      'Rewards':
+        type: '[]*ModelReward'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_meta.go'
+
+  'ModelGoalOrder@challenge':
+    id: 'ModelGoalOrder@challenge'
+    name: 'ModelGoalOrder'
+    fields:
+      'Goal':
+        type: '*ModelGoalResponse'
+        required: true
+      'Order':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_order.go'
+
+  'ModelGoalProgressionResponse@challenge':
+    id: 'ModelGoalProgressionResponse@challenge'
+    name: 'ModelGoalProgressionResponse'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'CompletedAt':
+        type: 'string'
+        required: false
+      'Goal':
+        type: '*ModelGoalMeta'
+        required: true
+      'GoalCode':
+        type: '*string'
+        required: true
+      'GoalProgressionID':
+        type: '*string'
+        required: true
+      'RequirementProgressions':
+        type: '[]*ModelRequirementProgressionResponse'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'ToClaimRewards':
+        type: '[]*ModelClaimableUserReward'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_progression_response.go'
+
+  'ModelGoalResponse@challenge':
+    id: 'ModelGoalResponse@challenge'
+    name: 'ModelGoalResponse'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'Code':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'IsActive':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'RequirementGroups':
+        type: '[]*ModelRequirement'
+        required: true
+      'Rewards':
+        type: '[]*ModelReward'
+        required: true
+      'Schedule':
+        type: '*ModelGoalSchedule'
+        required: false
+        description: |-
+          this field will be deprecated
+      'Tags':
+        type: '[]string'
+        required: false
+      'UpdatedAt':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_response.go'
+
+  'ModelGoalSchedule@challenge':
+    id: 'ModelGoalSchedule@challenge'
+    name: 'ModelGoalSchedule'
+    fields:
+      'EndTime':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          this field will be deprecated
+      'Order':
+        type: '*int32'
+        required: true
+        description: |-
+          this field will be deprecated
+      'StartTime':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          this field will be deprecated
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_schedule.go'
+
+  'ModelGoalScheduleRequest@challenge':
+    id: 'ModelGoalScheduleRequest@challenge'
+    name: 'ModelGoalScheduleRequest'
+    fields:
+      'EndTime':
+        type: '*strfmt.DateTime'
+        required: false
+      'Order':
+        type: '*int32'
+        required: true
+      'StartTime':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_schedule_request.go'
+
+  'ModelItemReference@challenge':
+    id: 'ModelItemReference@challenge'
+    name: 'ModelItemReference'
+    fields:
+      'Module':
+        type: '*string'
+        required: true
+      'References':
+        type: '[]*ModelChallengeReference'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_item_reference.go'
+
+  'ModelItemReferenceResponse@challenge':
+    id: 'ModelItemReferenceResponse@challenge'
+    name: 'ModelItemReferenceResponse'
+    fields:
+      'References':
+        type: '[]*ModelItemReference'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_item_reference_response.go'
+
+  'ModelListChallengeResponse@challenge':
+    id: 'ModelListChallengeResponse@challenge'
+    name: 'ModelListChallengeResponse'
+    fields:
+      'Data':
+        type: '[]*ModelChallengeResponse'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_challenge_response.go'
+
+  'ModelListPeriodsResponse@challenge':
+    id: 'ModelListPeriodsResponse@challenge'
+    name: 'ModelListPeriodsResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsPeriod'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_periods_response.go'
+
+  'ModelListScheduleByGoalResponse@challenge':
+    id: 'ModelListScheduleByGoalResponse@challenge'
+    name: 'ModelListScheduleByGoalResponse'
+    fields:
+      'Data':
+        type: '[]*ModelScheduleByGoalResponse'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_schedule_by_goal_response.go'
+
+  'ModelListSchedulesResponse@challenge':
+    id: 'ModelListSchedulesResponse@challenge'
+    name: 'ModelListSchedulesResponse'
+    fields:
+      'Data':
+        type: '[]*ModelScheduleResponse'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_schedules_response.go'
+
+  'ModelListUserRewardsResponse@challenge':
+    id: 'ModelListUserRewardsResponse@challenge'
+    name: 'ModelListUserRewardsResponse'
+    fields:
+      'Data':
+        type: '[]*ModelUserReward'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_user_rewards_response.go'
+
+  'ModelPagination@challenge':
+    id: 'ModelPagination@challenge'
+    name: 'ModelPagination'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_pagination.go'
+
+  'ModelPluginAsignmentAppConfig@challenge':
+    id: 'ModelPluginAsignmentAppConfig@challenge'
+    name: 'ModelPluginAsignmentAppConfig'
+    fields:
+      'AppName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_asignment_app_config.go'
+
+  'ModelPluginAssignmentCustomConfig@challenge':
+    id: 'ModelPluginAssignmentCustomConfig@challenge'
+    name: 'ModelPluginAssignmentCustomConfig'
+    fields:
+      'GrpcServerAddress':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_custom_config.go'
+
+  'ModelPluginAssignmentRequest@challenge':
+    id: 'ModelPluginAssignmentRequest@challenge'
+    name: 'ModelPluginAssignmentRequest'
+    fields:
+      'AppName':
+        type: 'string'
+        required: false
+      'ExtendType':
+        type: '*string'
+        required: true
+      'GrpcServerAddress':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_request.go'
+
+  'ModelPluginAssignmentResponse@challenge':
+    id: 'ModelPluginAssignmentResponse@challenge'
+    name: 'ModelPluginAssignmentResponse'
+    fields:
+      'AppConfig':
+        type: '*ModelPluginAsignmentAppConfig'
+        required: false
+      'CustomConfig':
+        type: '*ModelPluginAssignmentCustomConfig'
+        required: false
+      'ExtendType':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_response.go'
+
+  'ModelPredicate@challenge':
+    id: 'ModelPredicate@challenge'
+    name: 'ModelPredicate'
+    fields:
+      'Matcher':
+        type: '*string'
+        required: true
+      'ParameterName':
+        type: '*string'
+        required: true
+      'ParameterType':
+        type: '*string'
+        required: true
+      'StatCycleID':
+        type: 'string'
+        required: false
+      'TargetValue':
+        type: '*float64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_predicate.go'
+
+  'ModelRequirement@challenge':
+    id: 'ModelRequirement@challenge'
+    name: 'ModelRequirement'
+    fields:
+      'Operator':
+        type: '*string'
+        required: true
+      'Predicates':
+        type: '[]*ModelPredicate'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_requirement.go'
+
+  'ModelRequirementProgressionResponse@challenge':
+    id: 'ModelRequirementProgressionResponse@challenge'
+    name: 'ModelRequirementProgressionResponse'
+    fields:
+      'CompletedAt':
+        type: 'string'
+        required: false
+      'CurrentValue':
+        type: '*float64'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Matcher':
+        type: '*string'
+        required: true
+      'ParameterName':
+        type: '*string'
+        required: true
+      'ParameterType':
+        type: '*string'
+        required: true
+      'StatCycleID':
+        type: 'string'
+        required: false
+      'TargetValue':
+        type: '*float64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_requirement_progression_response.go'
+
+  'ModelResetConfig@challenge':
+    id: 'ModelResetConfig@challenge'
+    name: 'ModelResetConfig'
+    fields:
+      'ResetDate':
+        type: 'int32'
+        required: false
+        description: |-
+          valid value are 1 to 31, default to 1 for MONTHLY rotation
+      'ResetDay':
+        type: 'int32'
+        required: false
+        description: |-
+          valid value are 1 (Monday) to 7 (Sunday), default to 1 for WEEKLY rotation
+      'ResetTime':
+        type: 'string'
+        required: false
+        description: |-
+          format hh:mm, must be in UTC timezone, default '00:00' for all rotation
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_reset_config.go'
+
+  'ModelReward@challenge':
+    id: 'ModelReward@challenge'
+    name: 'ModelReward'
+    fields:
+      'ItemID':
+        type: '*string'
+        required: true
+      'ItemName':
+        type: '*string'
+        required: true
+      'Qty':
+        type: '*float32'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_reward.go'
+
+  'ModelSchedule@challenge':
+    id: 'ModelSchedule@challenge'
+    name: 'ModelSchedule'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'EndTime':
+        type: '*string'
+        required: true
+      'Goals':
+        type: '[]*ModelGoalOrder'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'StartTime':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule.go'
+
+  'ModelScheduleByGoalResponse@challenge':
+    id: 'ModelScheduleByGoalResponse@challenge'
+    name: 'ModelScheduleByGoalResponse'
+    fields:
+      'EndTime':
+        type: 'strfmt.DateTime'
+        required: true
+      'StartTime':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule_by_goal_response.go'
+
+  'ModelScheduleResponse@challenge':
+    id: 'ModelScheduleResponse@challenge'
+    name: 'ModelScheduleResponse'
+    fields:
+      'EndTime':
+        type: 'strfmt.DateTime'
+        required: true
+      'Goals':
+        type: '[]*ModelGoalInSchedulesResponse'
+        required: true
+      'StartTime':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule_response.go'
+
+  'ModelUpdateChallengeRequest@challenge':
+    id: 'ModelUpdateChallengeRequest@challenge'
+    name: 'ModelUpdateChallengeRequest'
+    fields:
+      'ActiveGoalsPerRotation':
+        type: 'int32'
+        required: false
+      'AssignmentRule':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'EndAfter':
+        type: 'int32'
+        required: false
+      'EndDate':
+        type: '*strfmt.DateTime'
+        required: false
+      'GoalsVisibility':
+        type: 'string'
+        required: false
+      'Name':
+        type: 'string'
+        required: false
+      'RandomizedPerRotation':
+        type: 'bool'
+        required: false
+      'RepeatAfter':
+        type: 'int32'
+        required: false
+      'ResetConfig':
+        type: '*ModelResetConfig'
+        required: false
+      'Rotation':
+        type: 'string'
+        required: false
+      'StartDate':
+        type: '*strfmt.DateTime'
+        required: false
+      'Tags':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_challenge_request.go'
+
+  'ModelUpdateChallengeScheduleRequest@challenge':
+    id: 'ModelUpdateChallengeScheduleRequest@challenge'
+    name: 'ModelUpdateChallengeScheduleRequest'
+    fields:
+      'Action':
+        type: '*string'
+        required: true
+      'EndDate':
+        type: '*strfmt.DateTime'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_challenge_schedule_request.go'
+
+  'ModelUpdateGoalRequest@challenge':
+    id: 'ModelUpdateGoalRequest@challenge'
+    name: 'ModelUpdateGoalRequest'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'IsActive':
+        type: 'bool'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'RequirementGroups':
+        type: '[]*ModelRequirement'
+        required: false
+      'Rewards':
+        type: '[]*ModelReward'
+        required: false
+      'Schedule':
+        type: '*ModelGoalScheduleRequest'
+        required: false
+      'Tags':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_goal_request.go'
+
+  'ModelUserProgressionPeriodResponseMeta@challenge':
+    id: 'ModelUserProgressionPeriodResponseMeta@challenge'
+    name: 'ModelUserProgressionPeriodResponseMeta'
+    fields:
+      'EndTime':
+        type: '*string'
+        required: true
+      'StartTime':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_period_response_meta.go'
+
+  'ModelUserProgressionResponse@challenge':
+    id: 'ModelUserProgressionResponse@challenge'
+    name: 'ModelUserProgressionResponse'
+    fields:
+      'Data':
+        type: '[]*ModelGoalProgressionResponse'
+        required: true
+      'Meta':
+        type: '*ModelUserProgressionResponseMeta'
+        required: true
+      'Paging':
+        type: '*ModelPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_response.go'
+
+  'ModelUserProgressionResponseMeta@challenge':
+    id: 'ModelUserProgressionResponseMeta@challenge'
+    name: 'ModelUserProgressionResponseMeta'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+        description: |-
+          challenge code
+      'Description':
+        type: '*string'
+        required: true
+      'EndDate':
+        type: 'string'
+        required: false
+      'Name':
+        type: '*string'
+        required: true
+      'Period':
+        type: '*ModelUserProgressionPeriodResponseMeta'
+        required: true
+      'StartDate':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_response_meta.go'
+
+  'ModelUserReward@challenge':
+    id: 'ModelUserReward@challenge'
+    name: 'ModelUserReward'
+    fields:
+      'ChallengeCode':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'GoalCode':
+        type: '*string'
+        required: true
+      'GoalProgressionID':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'ItemID':
+        type: '*string'
+        required: true
+      'ItemName':
+        type: '*string'
+        required: true
+      'Qty':
+        type: '*float32'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_reward.go'
+
+  'ModelsPeriod@challenge':
+    id: 'ModelsPeriod@challenge'
+    name: 'ModelsPeriod'
+    fields:
+      'EndTime':
+        type: 'strfmt.DateTime'
+        required: true
+      'Slot':
+        type: '*int32'
+        required: true
+      'StartTime':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/models_period.go'
+
+  'ResponseError@challenge':
+    id: 'ResponseError@challenge'
+    name: 'ResponseError'
+    fields:
+      'Attributes':
+        type: 'map[string]string'
+        required: true
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/response_error.go'
+
+  # endregion models
+
+functions:
+
+  'AdminClaimUserRewardsShort@challenge':
+    id: 'AdminClaimUserRewardsShort@challenge'
+    name: 'AdminClaimUserRewardsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.AdminClaimUserRewardsParams'
+        required: true
+    return_type: '(*player_reward.AdminClaimUserRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.AdminClaimUserRewardsParams{ ... }
+      res, err := playerRewardService.AdminClaimUserRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'claim'
+      - 'player'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'AdminClaimUserRewardsByGoalCodeShort@challenge':
+    id: 'AdminClaimUserRewardsByGoalCodeShort@challenge'
+    name: 'AdminClaimUserRewardsByGoalCodeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.AdminClaimUserRewardsByGoalCodeParams'
+        required: true
+    return_type: '(*player_reward.AdminClaimUserRewardsByGoalCodeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.AdminClaimUserRewardsByGoalCodeParams{ ... }
+      res, err := playerRewardService.AdminClaimUserRewardsByGoalCodeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'claim'
+      - 'code'
+      - 'goal'
+      - 'player'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'AdminClaimUsersRewardsShort@challenge':
+    id: 'AdminClaimUsersRewardsShort@challenge'
+    name: 'AdminClaimUsersRewardsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.AdminClaimUsersRewardsParams'
+        required: true
+    return_type: '(*player_reward.AdminClaimUsersRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.AdminClaimUsersRewardsParams{ ... }
+      res, err := playerRewardService.AdminClaimUsersRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'claim'
+      - 'player'
+      - 'reward'
+      - 'rewards'
+      - 'users'
+
+  'AdminCreateAssignmentPluginShort@challenge':
+    id: 'AdminCreateAssignmentPluginShort@challenge'
+    name: 'AdminCreateAssignmentPluginShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
+    struct: 'PluginsService'
+    parameters:
+      params:
+        type: '*plugins.AdminCreateAssignmentPluginParams'
+        required: true
+    return_type: '(*plugins.AdminCreateAssignmentPluginResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/plugins.go'
+    example: |-
+      pluginsService := challenge.PluginsService{ ... }
+      params := plugins.AdminCreateAssignmentPluginParams{ ... }
+      res, err := pluginsService.AdminCreateAssignmentPluginShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'assignment'
+      - 'create'
+      - 'plugin'
+      - 'plugins'
+
+  'AdminCreateChallengeShort@challenge':
+    id: 'AdminCreateChallengeShort@challenge'
+    name: 'AdminCreateChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
+      Challenge is a collection of goals that can be completed by players. Challenge can have rules that specify what and when goals will be available for players to be taken.
+      #### Request body:
+      - code: only lowercase letters, numbers, and the separator - are allowed; must start and end with letter
+      - name: name of the challenge
+      - description: text describing about the challenge (optional)
+      - startDate: timestamp of when the challenge is started
+      - endDate: timestamp of when the challenge is ended (optional)
+      - endAfter: describe number of period challenge will be retired after (optional). To configure challenge that never end, leave the endDate and endAfter field null/empty.
+      - repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      - rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
+      - activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
+      - assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED|CUSTOM)
+      - goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      - resetConfig: describe when rotation reset will happen (optional).
+      - resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+      - resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+      - resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      - randomizedPerRotation:
+      - true: each goal will be randomly assigned to multiple periods
+      - false: a goal will only be assigned to one period
+      - tags: challenge's labels.
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminCreateChallengeParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminCreateChallengeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminCreateChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminCreateChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'create'
+
+  'AdminCreateGoalShort@challenge':
+    id: 'AdminCreateGoalShort@challenge'
+    name: 'AdminCreateGoalShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
+      Request body:
+      - code: unique within a challenge.
+      - name: name of the goal.
+      - description: text describing the goal (optional).
+      - schedule: a time range that indicated the availability of a goal within a timeframe. Used in FIXED assignment rule, this will be required in that case.
+      - requirementGroups: contains array of objects consisting of operator and predicates attribute. When requirements evaluation happened, each item's predicates will be evaluated first, by operating the predicates with given operator.
+      After all items evaluated, the results of the evaluation on each item then will be logically evaluated using OR operator.
+      - operator: logical operator used to validate the completion of a goal. a goal is considered complete once complete predicates operated with operator result in true.
+      - predicates: list of progression parameters to be tracked.
+      - parameterType: the type of parameter for challenge to be progressed with. the available options are:
+      - STATISTIC: progress by user statistic item value.
+      - STATISTIC_CYCLE: progress user statistic cycle item value. statCycleId must be included.
+      - ACHIEVEMENT: progress by user achievement.
+      - USERACCOUNT: progress by user account event.
+      - ENTITLEMENT: progress by user's item entitlement ownership. Supported item types are APP, CODE, INGAMEITEM, LOOTBOX, MEDIA, and OPTIONBOX.
+      - parameterName: the name of the parameter for challenge to be progressed with.
+      - STATISTIC: refers to stat code.
+      - STATISTIC_CYCLE: refers to stat code with statCycleId must be included.
+      - ACHIEVEMENT: refers to achievement code.
+      - USERACCOUNT: refers to a specific event related to user accounts. The current possible events include: userAccountCreated, gameUserAccountCreated, userAccountVerified, userAccountLinked, userAccountUpgraded, thirdPartyAccountCreated, userLoggedIn, userThirdPartyLoggedIn and fullAccount.
+      - For the **userAccountLinked** event, **parameterName** will utilize **platformId** rather than the event name. This will be validated against the list of active third-party accounts configuration within the namespace, such as *psn*, *steam*, or *device*.
+      - ENTITLEMENT: ecommerce store's item SKU.
+      - matcher: the comparison operator used to compare the current value of a parameter and targetValue to validate the completion of a predicate. Possible values are EQUAL, LESS_THAN, GREATER_THAN, LESS_THAN_EQUAL, and GREATER_THAN_EQUAL.
+      - targetValue: the target number to be reached by the parameter.
+      - statCycleId: specify the statCycleId used to track statistic value in a cycle with STATISTIC_CYCLE parameterType (optional).
+      - rewards: list of rewards that will be claimable once a goal is complete.
+      - tags: goal's labels.
+      - isActive: when goal is in a schedule, isActive determine whether goal is active to progress or not.
+      Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
+      The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
+      Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
+      Number of goals per challenge is **limited to 100 goals**.
+    struct: 'GoalConfigurationService'
+    parameters:
+      params:
+        type: '*goal_configuration.AdminCreateGoalParams'
+        required: true
+    return_type: '(*goal_configuration.AdminCreateGoalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      goalConfigurationService := challenge.GoalConfigurationService{ ... }
+      params := goal_configuration.AdminCreateGoalParams{ ... }
+      res, err := goalConfigurationService.AdminCreateGoalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'create'
+      - 'goal'
+
+  'AdminDeleteAssignmentPluginShort@challenge':
+    id: 'AdminDeleteAssignmentPluginShort@challenge'
+    name: 'AdminDeleteAssignmentPluginShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
+    struct: 'PluginsService'
+    parameters:
+      params:
+        type: '*plugins.AdminDeleteAssignmentPluginParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/plugins.go'
+    example: |-
+      pluginsService := challenge.PluginsService{ ... }
+      params := plugins.AdminDeleteAssignmentPluginParams{ ... }
+      res, err := pluginsService.AdminDeleteAssignmentPluginShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'assignment'
+      - 'delete'
+      - 'plugin'
+      - 'plugins'
+
+  'AdminDeleteChallengeShort@challenge':
+    id: 'AdminDeleteChallengeShort@challenge'
+    name: 'AdminDeleteChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminDeleteChallengeParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminDeleteChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminDeleteChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'delete'
+
+  'AdminDeleteGoalShort@challenge':
+    id: 'AdminDeleteGoalShort@challenge'
+    name: 'AdminDeleteGoalShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+    struct: 'GoalConfigurationService'
+    parameters:
+      params:
+        type: '*goal_configuration.AdminDeleteGoalParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      goalConfigurationService := challenge.GoalConfigurationService{ ... }
+      params := goal_configuration.AdminDeleteGoalParams{ ... }
+      res, err := goalConfigurationService.AdminDeleteGoalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'goal'
+
+  'AdminDeleteTiedChallengeShort@challenge':
+    id: 'AdminDeleteTiedChallengeShort@challenge'
+    name: 'AdminDeleteTiedChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+      - This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminDeleteTiedChallengeParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminDeleteTiedChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminDeleteTiedChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'delete'
+      - 'tied'
+
+  'AdminEvaluateProgressShort@challenge':
+    id: 'AdminEvaluateProgressShort@challenge'
+    name: 'AdminEvaluateProgressShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+      - Limited up to 10 users per request
+    struct: 'ChallengeProgressionService'
+    parameters:
+      params:
+        type: '*challenge_progression.AdminEvaluateProgressParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeProgressionService := challenge.ChallengeProgressionService{ ... }
+      params := challenge_progression.AdminEvaluateProgressParams{ ... }
+      res, err := challengeProgressionService.AdminEvaluateProgressShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'evaluate'
+      - 'progress'
+      - 'progression'
+
+  'AdminGetActiveChallengesShort@challenge':
+    id: 'AdminGetActiveChallengesShort@challenge'
+    name: 'AdminGetActiveChallengesShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+      The endpoint provides you an access to list of currently active challenges in which the player is participating
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminGetActiveChallengesParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminGetActiveChallengesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminGetActiveChallengesParams{ ... }
+      res, err := challengeConfigurationService.AdminGetActiveChallengesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'active'
+      - 'admin'
+      - 'challenge'
+      - 'challenges'
+      - 'configuration'
+      - 'get'
+
+  'AdminGetAssignmentPluginShort@challenge':
+    id: 'AdminGetAssignmentPluginShort@challenge'
+    name: 'AdminGetAssignmentPluginShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
+    struct: 'PluginsService'
+    parameters:
+      params:
+        type: '*plugins.AdminGetAssignmentPluginParams'
+        required: true
+    return_type: '(*plugins.AdminGetAssignmentPluginResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/plugins.go'
+    example: |-
+      pluginsService := challenge.PluginsService{ ... }
+      params := plugins.AdminGetAssignmentPluginParams{ ... }
+      res, err := pluginsService.AdminGetAssignmentPluginShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'assignment'
+      - 'get'
+      - 'plugin'
+      - 'plugins'
+
+  'AdminGetChallengeShort@challenge':
+    id: 'AdminGetChallengeShort@challenge'
+    name: 'AdminGetChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminGetChallengeParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminGetChallengeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminGetChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminGetChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'get'
+
+  'AdminGetChallengesShort@challenge':
+    id: 'AdminGetChallengesShort@challenge'
+    name: 'AdminGetChallengesShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminGetChallengesParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminGetChallengesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminGetChallengesParams{ ... }
+      res, err := challengeConfigurationService.AdminGetChallengesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'challenges'
+      - 'configuration'
+      - 'get'
+
+  'AdminGetGoalShort@challenge':
+    id: 'AdminGetGoalShort@challenge'
+    name: 'AdminGetGoalShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'GoalConfigurationService'
+    parameters:
+      params:
+        type: '*goal_configuration.AdminGetGoalParams'
+        required: true
+    return_type: '(*goal_configuration.AdminGetGoalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      goalConfigurationService := challenge.GoalConfigurationService{ ... }
+      params := goal_configuration.AdminGetGoalParams{ ... }
+      res, err := goalConfigurationService.AdminGetGoalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'goal'
+
+  'AdminGetGoalsShort@challenge':
+    id: 'AdminGetGoalsShort@challenge'
+    name: 'AdminGetGoalsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'GoalConfigurationService'
+    parameters:
+      params:
+        type: '*goal_configuration.AdminGetGoalsParams'
+        required: true
+    return_type: '(*goal_configuration.AdminGetGoalsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      goalConfigurationService := challenge.GoalConfigurationService{ ... }
+      params := goal_configuration.AdminGetGoalsParams{ ... }
+      res, err := goalConfigurationService.AdminGetGoalsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'goal'
+      - 'goals'
+
+  'AdminGetItemReferencesShort@challenge':
+    id: 'AdminGetItemReferencesShort@challenge'
+    name: 'AdminGetItemReferencesShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'UtilitiesService'
+    parameters:
+      params:
+        type: '*utilities.AdminGetItemReferencesParams'
+        required: true
+    return_type: '(*utilities.AdminGetItemReferencesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/utilities'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/utilities.go'
+    example: |-
+      utilitiesService := challenge.UtilitiesService{ ... }
+      params := utilities.AdminGetItemReferencesParams{ ... }
+      res, err := utilitiesService.AdminGetItemReferencesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'item'
+      - 'references'
+      - 'utilities'
+
+  'AdminGetPeriodsShort@challenge':
+    id: 'AdminGetPeriodsShort@challenge'
+    name: 'AdminGetPeriodsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminGetPeriodsParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminGetPeriodsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminGetPeriodsParams{ ... }
+      res, err := challengeConfigurationService.AdminGetPeriodsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'get'
+      - 'periods'
+
+  'AdminGetUserProgressionShort@challenge':
+    id: 'AdminGetUserProgressionShort@challenge'
+    name: 'AdminGetUserProgressionShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    struct: 'ChallengeProgressionService'
+    parameters:
+      params:
+        type: '*challenge_progression.AdminGetUserProgressionParams'
+        required: true
+    return_type: '(*challenge_progression.AdminGetUserProgressionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeProgressionService := challenge.ChallengeProgressionService{ ... }
+      params := challenge_progression.AdminGetUserProgressionParams{ ... }
+      res, err := challengeProgressionService.AdminGetUserProgressionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'get'
+      - 'progression'
+      - 'user'
+
+  'AdminGetUserRewardsShort@challenge':
+    id: 'AdminGetUserRewardsShort@challenge'
+    name: 'AdminGetUserRewardsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.AdminGetUserRewardsParams'
+        required: true
+    return_type: '(*player_reward.AdminGetUserRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.AdminGetUserRewardsParams{ ... }
+      res, err := playerRewardService.AdminGetUserRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'player'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'AdminListSchedulesShort@challenge':
+    id: 'AdminListSchedulesShort@challenge'
+    name: 'AdminListSchedulesShort'
+    description: |-
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+
+      List schedules of given challenge for specific user. To query schedules prior to specific date time, use dateTime parameter.
+    struct: 'SchedulesService'
+    parameters:
+      params:
+        type: '*schedules.AdminListSchedulesParams'
+        required: true
+    return_type: '(*schedules.AdminListSchedulesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/schedules.go'
+    example: |-
+      schedulesService := challenge.SchedulesService{ ... }
+      params := schedules.AdminListSchedulesParams{ ... }
+      res, err := schedulesService.AdminListSchedulesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'schedules'
+
+  'AdminListSchedulesByGoalShort@challenge':
+    id: 'AdminListSchedulesByGoalShort@challenge'
+    name: 'AdminListSchedulesByGoalShort'
+    description: |-
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+
+      List schedules of given goal in a challenge for specific user.
+    struct: 'SchedulesService'
+    parameters:
+      params:
+        type: '*schedules.AdminListSchedulesByGoalParams'
+        required: true
+    return_type: '(*schedules.AdminListSchedulesByGoalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/schedules.go'
+    example: |-
+      schedulesService := challenge.SchedulesService{ ... }
+      params := schedules.AdminListSchedulesByGoalParams{ ... }
+      res, err := schedulesService.AdminListSchedulesByGoalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'goal'
+      - 'list'
+      - 'schedules'
+
+  'AdminRandomizeChallengeShort@challenge':
+    id: 'AdminRandomizeChallengeShort@challenge'
+    name: 'AdminRandomizeChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminRandomizeChallengeParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminRandomizeChallengeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminRandomizeChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminRandomizeChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'randomize'
+
+  'AdminUpdateAssignmentPluginShort@challenge':
+    id: 'AdminUpdateAssignmentPluginShort@challenge'
+    name: 'AdminUpdateAssignmentPluginShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
+    struct: 'PluginsService'
+    parameters:
+      params:
+        type: '*plugins.AdminUpdateAssignmentPluginParams'
+        required: true
+    return_type: '(*plugins.AdminUpdateAssignmentPluginResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/plugins'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/plugins.go'
+    example: |-
+      pluginsService := challenge.PluginsService{ ... }
+      params := plugins.AdminUpdateAssignmentPluginParams{ ... }
+      res, err := pluginsService.AdminUpdateAssignmentPluginShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'assignment'
+      - 'plugin'
+      - 'plugins'
+      - 'update'
+
+  'AdminUpdateChallengeShort@challenge':
+    id: 'AdminUpdateChallengeShort@challenge'
+    name: 'AdminUpdateChallengeShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      Request body:
+      - name: name of the challenge
+      - description: text describing about the challenge (optional)
+      - startDate: timestamp of when the challenge is started
+      - endDate: timestamp of when the challenge is ended (optional)
+      - endAfter: describe number of period challenge will be retired after (optional). To configure challenge that never end, leave the endDate and endAfter field null/empty.
+      - repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      - rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
+      - activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
+      - assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED|CUSTOM)
+      - goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      - resetConfig: describe when rotation reset will happen (optional).
+      - resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+      - resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+      - resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      - randomizedPerRotation:
+      - true: each goal will be randomly assigned to multiple periods
+      - false: a goal will only be assigned to one period
+      - tags: challenge's labels.
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminUpdateChallengeParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminUpdateChallengeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminUpdateChallengeParams{ ... }
+      res, err := challengeConfigurationService.AdminUpdateChallengeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'update'
+
+  'AdminUpdateGoalsShort@challenge':
+    id: 'AdminUpdateGoalsShort@challenge'
+    name: 'AdminUpdateGoalsShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      ### Request body:
+      - name: name of the goal.
+      - description: text describing the goal (optional).
+      - schedule: a time range that indicated the availability of a goal within a timeframe. Used in FIXED assignment rule, this will be required in that case.
+      - requirementGroups: contains array of objects consisting of operator and predicates attribute. When requirements evaluation happened, each item's predicates will be evaluated first, by operating the predicates with given operator. After all items evaluated, the results of the evaluation on each item then will be logically evaluated using OR operator.
+      - operator: logical operator used to validate the completion of a goal. a goal is considered complete once complete predicates operated with operator result in true.
+      - predicates: list of progression parameters to be tracked.
+      - parameterType: the type of parameter for challenge to be progressed with. the available options are:
+      - STATISTIC: progress by user statistic item value.
+      - STATISTIC_CYCLE: progress user statistic cycle item value. statCycleId must be included.
+      - ACHIEVEMENT: progress by user achievement.
+      - USERACCOUNT: progress by user account event.
+      - ENTITLEMENT: progress by user's item entitlement ownership. Supported item types are APP, CODE, INGAMEITEM, LOOTBOX, MEDIA, and OPTIONBOX.
+      - parameterName: the name of the parameter for challenge to be progressed with.
+      - STATISTIC: refers to stat code.
+      - STATISTIC_CYCLE: refers to stat code with statCycleId must be included.
+      - ACHIEVEMENT: refers to achievement code.
+      - USERACCOUNT: one of the user account event. Current possible values are (userAccountCreated, gameUserAccountCreated, userAccountVerified, userAccountLinked, userAccountUpgraded,thirdPartyAccountCreated).
+      - ENTITLEMENT: ecommerce store's item SKU.
+      - matcher: the comparison operator used to compare the curent value of a parameter and targetValue to validate the completion of a predicate. Possible values are EQUAL, LESS_THAN, GREATER_THAN, LESS_THAN_EQUAL, and GREATER_THAN_EQUAL.
+      - targetValue: the target number to be reached by the parameter.
+      - statCycleId: specify the statCycleId used to track statistic value in a cycle with STATISTIC_CYCLE parameterType (optional).
+      - rewards: list of rewards that will be claimable once a goal is complete.
+      - tags: goal's labels.
+      - isActive: when goal is in a schedule, isActive determine whether goal is active to progress or not (optional).
+      Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
+      The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
+      Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
+    struct: 'GoalConfigurationService'
+    parameters:
+      params:
+        type: '*goal_configuration.AdminUpdateGoalsParams'
+        required: true
+    return_type: '(*goal_configuration.AdminUpdateGoalsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/goal_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/goalConfiguration.go'
+    example: |-
+      goalConfigurationService := challenge.GoalConfigurationService{ ... }
+      params := goal_configuration.AdminUpdateGoalsParams{ ... }
+      res, err := goalConfigurationService.AdminUpdateGoalsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'goal'
+      - 'goals'
+      - 'update'
+
+  'AdminUpdateTiedChallengeScheduleShort@challenge':
+    id: 'AdminUpdateTiedChallengeScheduleShort@challenge'
+    name: 'AdminUpdateTiedChallengeScheduleShort'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      ### Request body:
+      - action: Update the challenge schedule. The available options are:
+      - STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.
+      - ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
+      - endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
+    struct: 'ChallengeConfigurationService'
+    parameters:
+      params:
+        type: '*challenge_configuration.AdminUpdateTiedChallengeScheduleParams'
+        required: true
+    return_type: '(*challenge_configuration.AdminUpdateTiedChallengeScheduleResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeConfiguration.go'
+    example: |-
+      challengeConfigurationService := challenge.ChallengeConfigurationService{ ... }
+      params := challenge_configuration.AdminUpdateTiedChallengeScheduleParams{ ... }
+      res, err := challengeConfigurationService.AdminUpdateTiedChallengeScheduleShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'schedule'
+      - 'tied'
+      - 'update'
+
+  'EvaluateMyProgressShort@challenge':
+    id: 'EvaluateMyProgressShort@challenge'
+    name: 'EvaluateMyProgressShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    struct: 'ChallengeProgressionService'
+    parameters:
+      params:
+        type: '*challenge_progression.EvaluateMyProgressParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeProgressionService := challenge.ChallengeProgressionService{ ... }
+      params := challenge_progression.EvaluateMyProgressParams{ ... }
+      res, err := challengeProgressionService.EvaluateMyProgressShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'challenge'
+      - 'evaluate'
+      - 'my'
+      - 'progress'
+      - 'progression'
+
+  'GetChallengesShort@challenge':
+    id: 'GetChallengesShort@challenge'
+    name: 'GetChallengesShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'ChallengeListService'
+    parameters:
+      params:
+        type: '*challenge_list.GetChallengesParams'
+        required: true
+    return_type: '(*challenge_list.GetChallengesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_list'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeList.go'
+    example: |-
+      challengeListService := challenge.ChallengeListService{ ... }
+      params := challenge_list.GetChallengesParams{ ... }
+      res, err := challengeListService.GetChallengesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'challenge'
+      - 'challenges'
+      - 'get'
+      - 'list'
+
+  'PublicClaimUserRewardsShort@challenge':
+    id: 'PublicClaimUserRewardsShort@challenge'
+    name: 'PublicClaimUserRewardsShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.PublicClaimUserRewardsParams'
+        required: true
+    return_type: '(*player_reward.PublicClaimUserRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.PublicClaimUserRewardsParams{ ... }
+      res, err := playerRewardService.PublicClaimUserRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'claim'
+      - 'player'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicClaimUserRewardsByGoalCodeShort@challenge':
+    id: 'PublicClaimUserRewardsByGoalCodeShort@challenge'
+    name: 'PublicClaimUserRewardsByGoalCodeShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.PublicClaimUserRewardsByGoalCodeParams'
+        required: true
+    return_type: '(*player_reward.PublicClaimUserRewardsByGoalCodeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.PublicClaimUserRewardsByGoalCodeParams{ ... }
+      res, err := playerRewardService.PublicClaimUserRewardsByGoalCodeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'claim'
+      - 'code'
+      - 'goal'
+      - 'player'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicGetPastUserProgressionShort@challenge':
+    id: 'PublicGetPastUserProgressionShort@challenge'
+    name: 'PublicGetPastUserProgressionShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    struct: 'ChallengeProgressionService'
+    parameters:
+      params:
+        type: '*challenge_progression.PublicGetPastUserProgressionParams'
+        required: true
+    return_type: '(*challenge_progression.PublicGetPastUserProgressionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeProgressionService := challenge.ChallengeProgressionService{ ... }
+      params := challenge_progression.PublicGetPastUserProgressionParams{ ... }
+      res, err := challengeProgressionService.PublicGetPastUserProgressionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'challenge'
+      - 'get'
+      - 'past'
+      - 'progression'
+      - 'public'
+      - 'user'
+
+  'PublicGetScheduledGoalsShort@challenge':
+    id: 'PublicGetScheduledGoalsShort@challenge'
+    name: 'PublicGetScheduledGoalsShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    struct: 'ChallengeListService'
+    parameters:
+      params:
+        type: '*challenge_list.PublicGetScheduledGoalsParams'
+        required: true
+    return_type: '(*challenge_list.PublicGetScheduledGoalsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_list'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeList.go'
+    example: |-
+      challengeListService := challenge.ChallengeListService{ ... }
+      params := challenge_list.PublicGetScheduledGoalsParams{ ... }
+      res, err := challengeListService.PublicGetScheduledGoalsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'challenge'
+      - 'get'
+      - 'goals'
+      - 'list'
+      - 'public'
+      - 'scheduled'
+
+  'PublicGetUserProgressionShort@challenge':
+    id: 'PublicGetUserProgressionShort@challenge'
+    name: 'PublicGetUserProgressionShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    struct: 'ChallengeProgressionService'
+    parameters:
+      params:
+        type: '*challenge_progression.PublicGetUserProgressionParams'
+        required: true
+    return_type: '(*challenge_progression.PublicGetUserProgressionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/challenge_progression'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/challengeProgression.go'
+    example: |-
+      challengeProgressionService := challenge.ChallengeProgressionService{ ... }
+      params := challenge_progression.PublicGetUserProgressionParams{ ... }
+      res, err := challengeProgressionService.PublicGetUserProgressionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'challenge'
+      - 'get'
+      - 'progression'
+      - 'public'
+      - 'user'
+
+  'PublicGetUserRewardsShort@challenge':
+    id: 'PublicGetUserRewardsShort@challenge'
+    name: 'PublicGetUserRewardsShort'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    struct: 'PlayerRewardService'
+    parameters:
+      params:
+        type: '*player_reward.PublicGetUserRewardsParams'
+        required: true
+    return_type: '(*player_reward.PublicGetUserRewardsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/player_reward'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/playerReward.go'
+    example: |-
+      playerRewardService := challenge.PlayerRewardService{ ... }
+      params := player_reward.PublicGetUserRewardsParams{ ... }
+      res, err := playerRewardService.PublicGetUserRewardsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'player'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicListSchedulesShort@challenge':
+    id: 'PublicListSchedulesShort@challenge'
+    name: 'PublicListSchedulesShort'
+    description: |-
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+
+      List schedules of given challenge for specific user. To query schedules prior to specific date time, use dateTime parameter.
+    struct: 'SchedulesService'
+    parameters:
+      params:
+        type: '*schedules.PublicListSchedulesParams'
+        required: true
+    return_type: '(*schedules.PublicListSchedulesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/schedules.go'
+    example: |-
+      schedulesService := challenge.SchedulesService{ ... }
+      params := schedules.PublicListSchedulesParams{ ... }
+      res, err := schedulesService.PublicListSchedulesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'list'
+      - 'public'
+      - 'schedules'
+
+  'PublicListSchedulesByGoalShort@challenge':
+    id: 'PublicListSchedulesByGoalShort@challenge'
+    name: 'PublicListSchedulesByGoalShort'
+    description: |-
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+
+      List schedules of given goal in a challenge for specific user.
+    struct: 'SchedulesService'
+    parameters:
+      params:
+        type: '*schedules.PublicListSchedulesByGoalParams'
+        required: true
+    return_type: '(*schedules.PublicListSchedulesByGoalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/challenge-sdk/pkg/challengeclient/schedules'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/challenge'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/challenge/schedules.go'
+    example: |-
+      schedulesService := challenge.SchedulesService{ ... }
+      params := schedules.PublicListSchedulesByGoalParams{ ... }
+      res, err := schedulesService.PublicListSchedulesByGoalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'goal'
+      - 'list'
+      - 'public'
+      - 'schedules'

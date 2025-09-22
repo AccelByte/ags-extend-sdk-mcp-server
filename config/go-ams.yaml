@@ -1,0 +1,4029 @@
+structs:
+  'JusticeAmsService@ams':
+    id: 'JusticeAmsService@ams'
+    name: 'JusticeAmsService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/justice_ams_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/amsclientfactory.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo)
+
+  # region wrappers
+
+  'AccountService@ams':
+    id: 'AccountService@ams'
+    name: 'AccountService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      accountService := AccountService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AMSInfoService@ams':
+    id: 'AMSInfoService@ams'
+    name: 'AMSInfoService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/amsInfo.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      aMSInfoService := AMSInfoService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AMSQoSService@ams':
+    id: 'AMSQoSService@ams'
+    name: 'AMSQoSService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/amsQoS.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      aMSQoSService := AMSQoSService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ArtifactsService@ams':
+    id: 'ArtifactsService@ams'
+    name: 'ArtifactsService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      artifactsService := ArtifactsService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AuthService@ams':
+    id: 'AuthService@ams'
+    name: 'AuthService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/auth.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      authService := AuthService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DevelopmentService@ams':
+    id: 'DevelopmentService@ams'
+    name: 'DevelopmentService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      developmentService := DevelopmentService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'FleetCommanderService@ams':
+    id: 'FleetCommanderService@ams'
+    name: 'FleetCommanderService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      fleetCommanderService := FleetCommanderService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'FleetsService@ams':
+    id: 'FleetsService@ams'
+    name: 'FleetsService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      fleetsService := FleetsService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ImagesService@ams':
+    id: 'ImagesService@ams'
+    name: 'ImagesService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      imagesService := ImagesService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ServersService@ams':
+    id: 'ServersService@ams'
+    name: 'ServersService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/servers.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      serversService := ServersService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'WatchdogsService@ams':
+    id: 'WatchdogsService@ams'
+    name: 'WatchdogsService'
+    fields:
+      Client:
+        type: '*amsclient.JusticeAmsService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/watchdogs.go'
+    example: |-
+      amsClient := factory.NewAmsClient(configRepo) // re-use if it exists already
+      watchdogsService := WatchdogsService{
+          Client:           amsClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AccountGetParams@ams':
+    id: 'AccountGetParams@ams'
+    name: 'AccountGetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/account/account_get_parameters.go'
+
+  'AdminAccountCreateParams@ams':
+    id: 'AdminAccountCreateParams@ams'
+    name: 'AdminAccountCreateParams'
+    fields:
+      'Body':
+        type: '*APIAccountCreateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/account/admin_account_create_parameters.go'
+
+  'AdminAccountGetParams@ams':
+    id: 'AdminAccountGetParams@ams'
+    name: 'AdminAccountGetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/account/admin_account_get_parameters.go'
+
+  'AdminAccountLinkParams@ams':
+    id: 'AdminAccountLinkParams@ams'
+    name: 'AdminAccountLinkParams'
+    fields:
+      'Body':
+        type: '*APIAccountLinkRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/account/admin_account_link_parameters.go'
+
+  'AdminAccountLinkTokenGetParams@ams':
+    id: 'AdminAccountLinkTokenGetParams@ams'
+    name: 'AdminAccountLinkTokenGetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/account/admin_account_link_token_get_parameters.go'
+
+  'ArtifactBulkDeleteParams@ams':
+    id: 'ArtifactBulkDeleteParams@ams'
+    name: 'ArtifactBulkDeleteParams'
+    fields:
+      'ArtifactType':
+        type: 'string'
+        required: false
+        description: |-
+          artifact type (can be repeated)
+      'FleetID':
+        type: 'string'
+        required: false
+        description: |-
+          fleet ID (can be repeated)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'UploadedBefore':
+        type: '*string'
+        required: false
+        description: |-
+          uploaded before date
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/artifact_bulk_delete_parameters.go'
+
+  'ArtifactDeleteParams@ams':
+    id: 'ArtifactDeleteParams@ams'
+    name: 'ArtifactDeleteParams'
+    fields:
+      'ArtifactID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the artifact
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/artifact_delete_parameters.go'
+
+  'ArtifactGetParams@ams':
+    id: 'ArtifactGetParams@ams'
+    name: 'ArtifactGetParams'
+    fields:
+      'ArtifactType':
+        type: 'string'
+        required: false
+        description: |-
+          one of: log, coredump
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          defines the maximum number of records returned in one page.
+      'EndDate':
+        type: 'string'
+        required: false
+        description: |-
+          omit artifacts with collection dates newer than
+      'FleetID':
+        type: 'string'
+        required: false
+        description: |-
+          id of the fleet where the artifact was collected
+      'ImageID':
+        type: 'string'
+        required: false
+        description: |-
+          id of the image being used on the server when artifact was collected
+      'MaxSize':
+        type: 'int64'
+        required: false
+        description: |-
+          maximum artifact size in bytes
+      'MinSize':
+        type: 'int64'
+        required: false
+        description: |-
+          minimum artifact size in bytes
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          specifies the start index for the records returned. Useful for implementing pagination.
+      'Region':
+        type: 'string'
+        required: false
+        description: |-
+          region of the server where the artifact was collected
+      'ServerID':
+        type: 'string'
+        required: false
+        description: |-
+          id of the server (ds) where the artifact was collected
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          field name to sort the artifact
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          the sort direction
+      'StartDate':
+        type: 'string'
+        required: false
+        description: |-
+          omit artifacts with collection dates older than
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          one of: success, skipped_sample, skipped_usage, failed
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/artifact_get_parameters.go'
+
+  'ArtifactGetURLParams@ams':
+    id: 'ArtifactGetURLParams@ams'
+    name: 'ArtifactGetURLParams'
+    fields:
+      'ArtifactID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the artifact
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/artifact_get_url_parameters.go'
+
+  'ArtifactUsageGetParams@ams':
+    id: 'ArtifactUsageGetParams@ams'
+    name: 'ArtifactUsageGetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/artifact_usage_get_parameters.go'
+
+  'AuthCheckParams@ams':
+    id: 'AuthCheckParams@ams'
+    name: 'AuthCheckParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/auth'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/auth/auth_check_parameters.go'
+
+  'BasicHealthCheckParams@ams':
+    id: 'BasicHealthCheckParams@ams'
+    name: 'BasicHealthCheckParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/basic_health_check_parameters.go'
+
+  'DevelopmentServerConfigurationCreateParams@ams':
+    id: 'DevelopmentServerConfigurationCreateParams@ams'
+    name: 'DevelopmentServerConfigurationCreateParams'
+    fields:
+      'Body':
+        type: '*APIDevelopmentServerConfigurationCreateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/development/development_server_configuration_create_parameters.go'
+
+  'DevelopmentServerConfigurationDeleteParams@ams':
+    id: 'DevelopmentServerConfigurationDeleteParams@ams'
+    name: 'DevelopmentServerConfigurationDeleteParams'
+    fields:
+      'DevelopmentServerConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          the name of the development server configuration
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/development/development_server_configuration_delete_parameters.go'
+
+  'DevelopmentServerConfigurationGetParams@ams':
+    id: 'DevelopmentServerConfigurationGetParams@ams'
+    name: 'DevelopmentServerConfigurationGetParams'
+    fields:
+      'DevelopmentServerConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          the name of the development server configuration
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/development/development_server_configuration_get_parameters.go'
+
+  'DevelopmentServerConfigurationListParams@ams':
+    id: 'DevelopmentServerConfigurationListParams@ams'
+    name: 'DevelopmentServerConfigurationListParams'
+    fields:
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          defines the maximum number of records returned in one page.
+      'ImageID':
+        type: 'string'
+        required: false
+        description: |-
+          filter by image ID
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          filter by config name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          specifies the start index for the records returned.
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort records by the given field
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          sort direction (ascending or descending)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/development/development_server_configuration_list_parameters.go'
+
+  'DevelopmentServerConfigurationPatchParams@ams':
+    id: 'DevelopmentServerConfigurationPatchParams@ams'
+    name: 'DevelopmentServerConfigurationPatchParams'
+    fields:
+      'Body':
+        type: '*APIDevelopmentServerConfigurationUpdateRequest'
+        required: true
+      'DevelopmentServerConfigID':
+        type: '*string'
+        required: true
+        description: |-
+          the name of the development server configuration
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/development/development_server_configuration_patch_parameters.go'
+
+  'FleetArtifactSamplingRulesGetParams@ams':
+    id: 'FleetArtifactSamplingRulesGetParams@ams'
+    name: 'FleetArtifactSamplingRulesGetParams'
+    fields:
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/fleet_artifact_sampling_rules_get_parameters.go'
+
+  'FleetArtifactSamplingRulesSetParams@ams':
+    id: 'FleetArtifactSamplingRulesSetParams@ams'
+    name: 'FleetArtifactSamplingRulesSetParams'
+    fields:
+      'Body':
+        type: '*APIFleetArtifactsSampleRules'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/artifacts/fleet_artifact_sampling_rules_set_parameters.go'
+
+  'FleetClaimByIDParams@ams':
+    id: 'FleetClaimByIDParams@ams'
+    name: 'FleetClaimByIDParams'
+    fields:
+      'Body':
+        type: '*APIFleetClaimReq'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_claim_by_id_parameters.go'
+
+  'FleetClaimByKeysParams@ams':
+    id: 'FleetClaimByKeysParams@ams'
+    name: 'FleetClaimByKeysParams'
+    fields:
+      'Body':
+        type: '*APIFleetClaimByKeysReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_claim_by_keys_parameters.go'
+
+  'FleetCreateParams@ams':
+    id: 'FleetCreateParams@ams'
+    name: 'FleetCreateParams'
+    fields:
+      'Body':
+        type: '*APIFleetParameters'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_create_parameters.go'
+
+  'FleetDeleteParams@ams':
+    id: 'FleetDeleteParams@ams'
+    name: 'FleetDeleteParams'
+    fields:
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_delete_parameters.go'
+
+  'FleetGetParams@ams':
+    id: 'FleetGetParams@ams'
+    name: 'FleetGetParams'
+    fields:
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_get_parameters.go'
+
+  'FleetListParams@ams':
+    id: 'FleetListParams@ams'
+    name: 'FleetListParams'
+    fields:
+      'Active':
+        type: 'bool'
+        required: false
+        description: |-
+          filter fleets by active status
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          the number of fleets to return
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          filter fleets by name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          the pagination offset
+      'Region':
+        type: 'string'
+        required: false
+        description: |-
+          filter fleets by region
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort fleets by column name
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          sort direction (ascending or descending)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_list_parameters.go'
+
+  'FleetServerConnectionInfoParams@ams':
+    id: 'FleetServerConnectionInfoParams@ams'
+    name: 'FleetServerConnectionInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'ServerID':
+        type: '*string'
+        required: true
+        description: |-
+          the ID of the dedicated server
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/servers/fleet_server_connection_info_parameters.go'
+
+  'FleetServerHistoryParams@ams':
+    id: 'FleetServerHistoryParams@ams'
+    name: 'FleetServerHistoryParams'
+    fields:
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          Defines the maximum number of records returned in one page. Default is 1000 when not provided.
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          ID of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Specifies the start index for the records returned. Useful for implementing pagination. Default is 0 when not provided.
+      'Reason':
+        type: 'string'
+        required: false
+        description: |-
+          Exit reason
+      'Region':
+        type: 'string'
+        required: false
+        description: |-
+          Region
+      'ServerID':
+        type: 'string'
+        required: false
+        description: |-
+          Dedicated server ID
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          The direction of the sort on the 'createdAt' column, 'asc' for ascending and 'desc' for descending. Defaults to 'asc' when not provided.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          Status of the dedicated server
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/servers/fleet_server_history_parameters.go'
+
+  'FleetServerInfoParams@ams':
+    id: 'FleetServerInfoParams@ams'
+    name: 'FleetServerInfoParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'ServerID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the dedicated server
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/servers/fleet_server_info_parameters.go'
+
+  'FleetServersParams@ams':
+    id: 'FleetServersParams@ams'
+    name: 'FleetServersParams'
+    fields:
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          the data limit
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          the data offset
+      'Region':
+        type: 'string'
+        required: false
+        description: |-
+          the servers region
+      'ServerID':
+        type: 'string'
+        required: false
+        description: |-
+          the id of the server
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          the field by which to order the data
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          the data ordering direction
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          the servers status
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_servers_parameters.go'
+
+  'FleetUpdateParams@ams':
+    id: 'FleetUpdateParams@ams'
+    name: 'FleetUpdateParams'
+    fields:
+      'Body':
+        type: '*APIFleetParameters'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the fleet
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_update_parameters.go'
+
+  'Func1Params@ams':
+    id: 'Func1Params@ams'
+    name: 'Func1Params'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/func1_parameters.go'
+
+  'ImageGetParams@ams':
+    id: 'ImageGetParams@ams'
+    name: 'ImageGetParams'
+    fields:
+      'ImageID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the image
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/image_get_parameters.go'
+
+  'ImageListParams@ams':
+    id: 'ImageListParams@ams'
+    name: 'ImageListParams'
+    fields:
+      'Count':
+        type: 'int64'
+        required: false
+        description: |-
+          the count of image list
+      'InUse':
+        type: 'string'
+        required: false
+        description: |-
+          the inUse filter
+      'IsProtected':
+        type: 'bool'
+        required: false
+        description: |-
+          the image protected
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          the image name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          the offset of image list
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          the sortBy parameter specifies the attribute by which to sort the results
+      'SortDirection':
+        type: 'string'
+        required: false
+        description: |-
+          the sort direction parameter
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          the image status
+      'Tag':
+        type: 'string'
+        required: false
+        description: |-
+          the image tag
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/image_list_parameters.go'
+
+  'ImageMarkForDeletionParams@ams':
+    id: 'ImageMarkForDeletionParams@ams'
+    name: 'ImageMarkForDeletionParams'
+    fields:
+      'ImageID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the image
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/image_mark_for_deletion_parameters.go'
+
+  'ImagePatchParams@ams':
+    id: 'ImagePatchParams@ams'
+    name: 'ImagePatchParams'
+    fields:
+      'Body':
+        type: '*APIImageUpdate'
+        required: true
+      'ImageID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the image
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/image_patch_parameters.go'
+
+  'ImagesStorageParams@ams':
+    id: 'ImagesStorageParams@ams'
+    name: 'ImagesStorageParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/images_storage_parameters.go'
+
+  'ImageUnmarkForDeletionParams@ams':
+    id: 'ImageUnmarkForDeletionParams@ams'
+    name: 'ImageUnmarkForDeletionParams'
+    fields:
+      'ImageID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the image
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/images/image_unmark_for_deletion_parameters.go'
+
+  'InfoRegionsParams@ams':
+    id: 'InfoRegionsParams@ams'
+    name: 'InfoRegionsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_info/info_regions_parameters.go'
+
+  'InfoSupportedInstancesParams@ams':
+    id: 'InfoSupportedInstancesParams@ams'
+    name: 'InfoSupportedInstancesParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_info/info_supported_instances_parameters.go'
+
+  'LocalWatchdogConnectParams@ams':
+    id: 'LocalWatchdogConnectParams@ams'
+    name: 'LocalWatchdogConnectParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'WatchdogID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the watchdog
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/watchdogs'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/watchdogs/local_watchdog_connect_parameters.go'
+
+  'PortalHealthCheckParams@ams':
+    id: 'PortalHealthCheckParams@ams'
+    name: 'PortalHealthCheckParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/portal_health_check_parameters.go'
+
+  'QoSRegionsGetParams@ams':
+    id: 'QoSRegionsGetParams@ams'
+    name: 'QoSRegionsGetParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          QoS status, available value: ACTIVE, INACTIVE
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_qo_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_qo_s/qo_s_regions_get_parameters.go'
+
+  'QoSRegionsUpdateParams@ams':
+    id: 'QoSRegionsUpdateParams@ams'
+    name: 'QoSRegionsUpdateParams'
+    fields:
+      'Body':
+        type: '*APIUpdateServerRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'Region':
+        type: '*string'
+        required: true
+        description: |-
+          region of the QoS
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_qo_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_qo_s/qo_s_regions_update_parameters.go'
+
+  'ServerHistoryParams@ams':
+    id: 'ServerHistoryParams@ams'
+    name: 'ServerHistoryParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'ServerID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the dedicated server
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/servers/server_history_parameters.go'
+
+  'UploadURLGetParams@ams':
+    id: 'UploadURLGetParams@ams'
+    name: 'UploadURLGetParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_info/upload_url_get_parameters.go'
+
+  'WatchdogConnectParams@ams':
+    id: 'WatchdogConnectParams@ams'
+    name: 'WatchdogConnectParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the game
+      'WatchdogID':
+        type: '*string'
+        required: true
+        description: |-
+          the id of the watchdog
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/watchdogs'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/watchdogs/watchdog_connect_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'APIAccountCreateRequest@ams':
+    id: 'APIAccountCreateRequest@ams'
+    name: 'APIAccountCreateRequest'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_create_request.go'
+
+  'APIAccountCreateResponse@ams':
+    id: 'APIAccountCreateResponse@ams'
+    name: 'APIAccountCreateResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Limits':
+        type: '*APIAccountLimits'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespaces':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_create_response.go'
+
+  'APIAccountLimits@ams':
+    id: 'APIAccountLimits@ams'
+    name: 'APIAccountLimits'
+    fields:
+      'AllowedNodeClasses':
+        type: '[]string'
+        required: false
+      'AllowedRegions':
+        type: '[]string'
+        required: false
+      'FleetCount':
+        type: 'int32'
+        required: false
+      'FleetVMCount':
+        type: 'int32'
+        required: false
+      'ImageStorageQuotaBytes':
+        type: 'int64'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_limits.go'
+
+  'APIAccountLinkRequest@ams':
+    id: 'APIAccountLinkRequest@ams'
+    name: 'APIAccountLinkRequest'
+    fields:
+      'Token':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_link_request.go'
+
+  'APIAccountLinkResponse@ams':
+    id: 'APIAccountLinkResponse@ams'
+    name: 'APIAccountLinkResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Limits':
+        type: '*APIAccountLimits'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespaces':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_link_response.go'
+
+  'APIAccountLinkTokenResponse@ams':
+    id: 'APIAccountLinkTokenResponse@ams'
+    name: 'APIAccountLinkTokenResponse'
+    fields:
+      'Token':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_link_token_response.go'
+
+  'APIAccountResponse@ams':
+    id: 'APIAccountResponse@ams'
+    name: 'APIAccountResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Limits':
+        type: '*APIAccountLimits'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespaces':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_account_response.go'
+
+  'APIAMSRegionsResponse@ams':
+    id: 'APIAMSRegionsResponse@ams'
+    name: 'APIAMSRegionsResponse'
+    fields:
+      'Regions':
+        type: '[]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_a_m_s_regions_response.go'
+
+  'APIArtifactListResponse@ams':
+    id: 'APIArtifactListResponse@ams'
+    name: 'APIArtifactListResponse'
+    fields:
+      'Data':
+        type: '[]*APIArtifactResponse'
+        required: true
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_list_response.go'
+
+  'APIArtifactResponse@ams':
+    id: 'APIArtifactResponse@ams'
+    name: 'APIArtifactResponse'
+    fields:
+      'ArtifactType':
+        type: '*string'
+        required: true
+      'CreatedOn':
+        type: '*string'
+        required: true
+      'DsID':
+        type: '*string'
+        required: true
+      'ExpiresOn':
+        type: '*string'
+        required: true
+      'Filename':
+        type: '*string'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'ImageID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Reason':
+        type: 'string'
+        required: false
+      'Region':
+        type: '*string'
+        required: true
+      'SizeBytes':
+        type: '*int64'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_response.go'
+
+  'APIArtifactSamplingRule@ams':
+    id: 'APIArtifactSamplingRule@ams'
+    name: 'APIArtifactSamplingRule'
+    fields:
+      'Collect':
+        type: '*bool'
+        required: true
+      'Percentage':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_sampling_rule.go'
+
+  'APIArtifactTypeSamplingRules@ams':
+    id: 'APIArtifactTypeSamplingRules@ams'
+    name: 'APIArtifactTypeSamplingRules'
+    fields:
+      'Crashed':
+        type: '*APIArtifactSamplingRule'
+        required: true
+      'Success':
+        type: '*APIArtifactSamplingRule'
+        required: true
+      'Unclaimed':
+        type: '*APIArtifactSamplingRule'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_type_sampling_rules.go'
+
+  'APIArtifactURLResponse@ams':
+    id: 'APIArtifactURLResponse@ams'
+    name: 'APIArtifactURLResponse'
+    fields:
+      'URL':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_url_response.go'
+
+  'APIArtifactUsageResponse@ams':
+    id: 'APIArtifactUsageResponse@ams'
+    name: 'APIArtifactUsageResponse'
+    fields:
+      'QuotaBytes':
+        type: '*int64'
+        required: true
+      'RemainingBytes':
+        type: '*int64'
+        required: true
+      'UsedBytes':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_artifact_usage_response.go'
+
+  'APICapacity@ams':
+    id: 'APICapacity@ams'
+    name: 'APICapacity'
+    fields:
+      'Region':
+        type: '*string'
+        required: true
+      'VMCount':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_capacity.go'
+
+  'APICoredumpSamplingRules@ams':
+    id: 'APICoredumpSamplingRules@ams'
+    name: 'APICoredumpSamplingRules'
+    fields:
+      'Crashed':
+        type: '*APIArtifactSamplingRule'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_coredump_sampling_rules.go'
+
+  'APIDevelopmentServerConfigurationCreateRequest@ams':
+    id: 'APIDevelopmentServerConfigurationCreateRequest@ams'
+    name: 'APIDevelopmentServerConfigurationCreateRequest'
+    fields:
+      'CommandLineArguments':
+        type: '*string'
+        required: true
+      'ExpiresAt':
+        type: 'string'
+        required: false
+      'ImageID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_development_server_configuration_create_request.go'
+
+  'APIDevelopmentServerConfigurationCreateResponse@ams':
+    id: 'APIDevelopmentServerConfigurationCreateResponse@ams'
+    name: 'APIDevelopmentServerConfigurationCreateResponse'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_development_server_configuration_create_response.go'
+
+  'APIDevelopmentServerConfigurationGetResponse@ams':
+    id: 'APIDevelopmentServerConfigurationGetResponse@ams'
+    name: 'APIDevelopmentServerConfigurationGetResponse'
+    fields:
+      'CommandLineArguments':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'string'
+        required: false
+      'ExpiresAt':
+        type: 'string'
+        required: false
+      'ImageID':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_development_server_configuration_get_response.go'
+
+  'APIDevelopmentServerConfigurationListResponse@ams':
+    id: 'APIDevelopmentServerConfigurationListResponse@ams'
+    name: 'APIDevelopmentServerConfigurationListResponse'
+    fields:
+      'Data':
+        type: '[]*APIDevelopmentServerConfigurationGetResponse'
+        required: true
+      'Paging':
+        type: '*PaginationPaginationInfo'
+        required: true
+      'TotalData':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_development_server_configuration_list_response.go'
+
+  'APIDevelopmentServerConfigurationUpdateRequest@ams':
+    id: 'APIDevelopmentServerConfigurationUpdateRequest@ams'
+    name: 'APIDevelopmentServerConfigurationUpdateRequest'
+    fields:
+      'CommandLineArguments':
+        type: 'string'
+        required: false
+      'ExpiresAt':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_development_server_configuration_update_request.go'
+
+  'APIDSHistoryEvent@ams':
+    id: 'APIDSHistoryEvent@ams'
+    name: 'APIDSHistoryEvent'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'ExitCode':
+        type: '*int32'
+        required: true
+      'IPAddress':
+        type: '*string'
+        required: true
+      'Reason':
+        type: '*string'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'ServerID':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_d_s_history_event.go'
+
+  'APIDSHistoryList@ams':
+    id: 'APIDSHistoryList@ams'
+    name: 'APIDSHistoryList'
+    fields:
+      'Events':
+        type: '[]*APIDSHistoryEvent'
+        required: true
+      'Paging':
+        type: '*APIPagingInfo'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_d_s_history_list.go'
+
+  'APIDSHostConfiguration@ams':
+    id: 'APIDSHostConfiguration@ams'
+    name: 'APIDSHostConfiguration'
+    fields:
+      'InstanceID':
+        type: '*string'
+        required: true
+      'InstanceProvider':
+        type: '*string'
+        required: true
+      'InstanceType':
+        type: '*string'
+        required: true
+      'ServersPerVM':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_d_s_host_configuration.go'
+
+  'APIDSHostConfigurationParameters@ams':
+    id: 'APIDSHostConfigurationParameters@ams'
+    name: 'APIDSHostConfigurationParameters'
+    fields:
+      'InstanceID':
+        type: '*string'
+        required: true
+      'ServersPerVM':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_d_s_host_configuration_parameters.go'
+
+  'APIFleetArtifactsSampleRules@ams':
+    id: 'APIFleetArtifactsSampleRules@ams'
+    name: 'APIFleetArtifactsSampleRules'
+    fields:
+      'Coredumps':
+        type: '*APICoredumpSamplingRules'
+        required: true
+      'Logs':
+        type: '*APIArtifactTypeSamplingRules'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_artifacts_sample_rules.go'
+
+  'APIFleetClaimByKeysReq@ams':
+    id: 'APIFleetClaimByKeysReq@ams'
+    name: 'APIFleetClaimByKeysReq'
+    fields:
+      'ClaimKeys':
+        type: '[]string'
+        required: true
+      'Regions':
+        type: '[]string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_claim_by_keys_req.go'
+
+  'APIFleetClaimReq@ams':
+    id: 'APIFleetClaimReq@ams'
+    name: 'APIFleetClaimReq'
+    fields:
+      'Region':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_claim_req.go'
+
+  'APIFleetClaimResponse@ams':
+    id: 'APIFleetClaimResponse@ams'
+    name: 'APIFleetClaimResponse'
+    fields:
+      'FleetID':
+        type: '*string'
+        required: true
+      'IP':
+        type: '*string'
+        required: true
+      'Ports':
+        type: 'map[string]int64'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'ServerID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_claim_response.go'
+
+  'APIFleetCreateResponse@ams':
+    id: 'APIFleetCreateResponse@ams'
+    name: 'APIFleetCreateResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_create_response.go'
+
+  'APIFleetGetResponse@ams':
+    id: 'APIFleetGetResponse@ams'
+    name: 'APIFleetGetResponse'
+    fields:
+      'Active':
+        type: '*bool'
+        required: true
+      'ClaimKeys':
+        type: '[]string'
+        required: true
+      'DsHostConfiguration':
+        type: '*APIDSHostConfiguration'
+        required: true
+      'FallbackFleet':
+        type: '*string'
+        required: true
+      'HibernateAfterPeriod':
+        type: 'string'
+        required: false
+        description: |-
+          Maximum amount of time before an unused on-demand fleet is hibernated, e.g. '1h'
+      'ID':
+        type: '*string'
+        required: true
+      'ImageDeploymentProfile':
+        type: '*APIImageDeploymentProfile'
+        required: true
+      'IsLocal':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'OnDemand':
+        type: '*bool'
+        required: true
+      'PrimaryFleet':
+        type: '*string'
+        required: true
+      'Regions':
+        type: '[]*APIRegionConfig'
+        required: true
+      'SamplingRules':
+        type: '*APIFleetArtifactsSampleRules'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_get_response.go'
+
+  'APIFleetListItemResponse@ams':
+    id: 'APIFleetListItemResponse@ams'
+    name: 'APIFleetListItemResponse'
+    fields:
+      'Active':
+        type: '*bool'
+        required: true
+      'Counts':
+        type: '[]*APIFleetRegionalServerCounts'
+        required: true
+      'FallbackFleet':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'Image':
+        type: '*string'
+        required: true
+      'InstanceProvider':
+        type: '*string'
+        required: true
+      'IsLocal':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'OnDemand':
+        type: '*bool'
+        required: true
+      'PrimaryFleet':
+        type: '*string'
+        required: true
+      'Regions':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_list_item_response.go'
+
+  'APIFleetListResponse@ams':
+    id: 'APIFleetListResponse@ams'
+    name: 'APIFleetListResponse'
+    fields:
+      'Fleets':
+        type: '[]*APIFleetListItemResponse'
+        required: true
+      'Paging':
+        type: '*PaginationPaginationInfo'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_list_response.go'
+
+  'APIFleetParameters@ams':
+    id: 'APIFleetParameters@ams'
+    name: 'APIFleetParameters'
+    fields:
+      'Active':
+        type: '*bool'
+        required: true
+      'ClaimKeys':
+        type: '[]string'
+        required: false
+      'DsHostConfiguration':
+        type: '*APIDSHostConfigurationParameters'
+        required: true
+      'FallbackFleet':
+        type: 'string'
+        required: false
+      'HibernateAfterPeriod':
+        type: 'string'
+        required: false
+        description: |-
+          Amount of time before an unused on-demand fleet is hibernated, e.g. '1h'
+      'ImageDeploymentProfile':
+        type: '*APIImageDeploymentProfile'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'OnDemand':
+        type: '*bool'
+        required: true
+      'Regions':
+        type: '[]*APIRegionConfig'
+        required: true
+      'SamplingRules':
+        type: '*APIFleetArtifactsSampleRules'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_parameters.go'
+
+  'APIFleetRegionalServerCounts@ams':
+    id: 'APIFleetRegionalServerCounts@ams'
+    name: 'APIFleetRegionalServerCounts'
+    fields:
+      'ClaimedServerCount':
+        type: '*int32'
+        required: true
+      'ReadyServerCount':
+        type: '*int32'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'RunningVMCount':
+        type: '*int32'
+        required: true
+      'TargetDsCount':
+        type: '*int32'
+        required: true
+      'TargetVMCount':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_regional_server_counts.go'
+
+  'APIFleetServerConnectionInfoResponse@ams':
+    id: 'APIFleetServerConnectionInfoResponse@ams'
+    name: 'APIFleetServerConnectionInfoResponse'
+    fields:
+      'ExpiresAt':
+        type: '*string'
+        required: true
+      'Host':
+        type: '*string'
+        required: true
+      'LogstreamPort':
+        type: '*int32'
+        required: true
+      'Secret':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_server_connection_info_response.go'
+
+  'APIFleetServerHistoryEventResponse@ams':
+    id: 'APIFleetServerHistoryEventResponse@ams'
+    name: 'APIFleetServerHistoryEventResponse'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'ExitCode':
+        type: '*int32'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+      'NewState':
+        type: '*string'
+        required: true
+      'OldState':
+        type: '*string'
+        required: true
+      'Reason':
+        type: '*string'
+        required: true
+      'ServerID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_server_history_event_response.go'
+
+  'APIFleetServerHistoryResponse@ams':
+    id: 'APIFleetServerHistoryResponse@ams'
+    name: 'APIFleetServerHistoryResponse'
+    fields:
+      'Events':
+        type: '[]*APIFleetServerHistoryEventResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_server_history_response.go'
+
+  'APIFleetServerInfoResponse@ams':
+    id: 'APIFleetServerInfoResponse@ams'
+    name: 'APIFleetServerInfoResponse'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+      'FleetName':
+        type: '*string'
+        required: true
+      'ImageCmd':
+        type: '*string'
+        required: true
+      'ImageID':
+        type: '*string'
+        required: true
+      'InstanceType':
+        type: '*string'
+        required: true
+      'IPAddress':
+        type: '*string'
+        required: true
+      'PortConfiguration':
+        type: '[]*APIPortConfiguration'
+        required: true
+      'Ports':
+        type: 'map[string]int64'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'ServerConfiguration':
+        type: '*string'
+        required: true
+      'ServerID':
+        type: '*string'
+        required: true
+      'SessionID':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_server_info_response.go'
+
+  'APIFleetServersResponse@ams':
+    id: 'APIFleetServersResponse@ams'
+    name: 'APIFleetServersResponse'
+    fields:
+      'Paging':
+        type: '*APIPagingInfo'
+        required: true
+      'Regions':
+        type: '[]*APIFleetRegionalServerCounts'
+        required: true
+      'Servers':
+        type: '[]*APIFleetServerInfoResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_servers_response.go'
+
+  'APIImageDeploymentProfile@ams':
+    id: 'APIImageDeploymentProfile@ams'
+    name: 'APIImageDeploymentProfile'
+    fields:
+      'CommandLine':
+        type: '*string'
+        required: true
+      'ImageID':
+        type: '*string'
+        required: true
+      'PortConfigurations':
+        type: '[]*APIPortConfiguration'
+        required: true
+      'Timeout':
+        type: '*APITimeout'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_deployment_profile.go'
+
+  'APIImageDetails@ams':
+    id: 'APIImageDetails@ams'
+    name: 'APIImageDetails'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'DeleteAt':
+        type: 'string'
+        required: false
+      'Executable':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'IsProtected':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'ReferencingFleets':
+        type: '[]*APIReferencingFleet'
+        required: true
+      'SizeInByte':
+        type: '*int64'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'UploadedAt':
+        type: '*string'
+        required: true
+      'UploadedBy':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_details.go'
+
+  'APIImageList@ams':
+    id: 'APIImageList@ams'
+    name: 'APIImageList'
+    fields:
+      'Images':
+        type: '[]*APIImageListItem'
+        required: true
+      'Paging':
+        type: '*APIPagingInfo'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_list.go'
+
+  'APIImageListItem@ams':
+    id: 'APIImageListItem@ams'
+    name: 'APIImageListItem'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'DeleteAt':
+        type: 'string'
+        required: false
+      'Executable':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'IsProtected':
+        type: '*bool'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'ReferencingConfigs':
+        type: '*int32'
+        required: true
+      'ReferencingFleets':
+        type: '*int32'
+        required: true
+      'SizeInByte':
+        type: '*int64'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'UploadedAt':
+        type: '*string'
+        required: true
+      'UploadedBy':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_list_item.go'
+
+  'APIImageStorage@ams':
+    id: 'APIImageStorage@ams'
+    name: 'APIImageStorage'
+    fields:
+      'CurrentMarkedForDeletionBytes':
+        type: '*int64'
+        required: true
+      'CurrentUsageBytes':
+        type: '*int64'
+        required: true
+      'QuotaBytes':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_storage.go'
+
+  'APIImageUpdate@ams':
+    id: 'APIImageUpdate@ams'
+    name: 'APIImageUpdate'
+    fields:
+      'AddedTags':
+        type: '[]string'
+        required: true
+      'IsProtected':
+        type: 'bool'
+        required: false
+      'Name':
+        type: 'string'
+        required: false
+      'RemovedTags':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_image_update.go'
+
+  'APIInstanceType@ams':
+    id: 'APIInstanceType@ams'
+    name: 'APIInstanceType'
+    fields:
+      'Capacity':
+        type: '[]*APICapacity'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'IsBaremetal':
+        type: '*bool'
+        required: true
+      'MemoryGiB':
+        type: '*float64'
+        required: true
+      'MinSpeed':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'OwnerAccountID':
+        type: '*string'
+        required: true
+      'Provider':
+        type: '*string'
+        required: true
+      'VirtualCPU':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_instance_type.go'
+
+  'APIInstanceTypesResponse@ams':
+    id: 'APIInstanceTypesResponse@ams'
+    name: 'APIInstanceTypesResponse'
+    fields:
+      'AvailableInstanceTypes':
+        type: '[]*APIInstanceType'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_instance_types_response.go'
+
+  'APIPagingInfo@ams':
+    id: 'APIPagingInfo@ams'
+    name: 'APIPagingInfo'
+    fields:
+      'CurrentPage':
+        type: '*int32'
+        required: true
+      'HasNext':
+        type: '*bool'
+        required: true
+      'HasPages':
+        type: '*bool'
+        required: true
+      'HasPrev':
+        type: '*bool'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'PageNums':
+        type: '[]int32'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+      'Total':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_paging_info.go'
+
+  'APIPortConfiguration@ams':
+    id: 'APIPortConfiguration@ams'
+    name: 'APIPortConfiguration'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+      'Protocol':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_port_configuration.go'
+
+  'APIQoSEndpointResponse@ams':
+    id: 'APIQoSEndpointResponse@ams'
+    name: 'APIQoSEndpointResponse'
+    fields:
+      'Servers':
+        type: '[]*APIQoSServer'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_qo_s_endpoint_response.go'
+
+  'APIQoSServer@ams':
+    id: 'APIQoSServer@ams'
+    name: 'APIQoSServer'
+    fields:
+      'Alias':
+        type: '*string'
+        required: true
+      'IP':
+        type: '*string'
+        required: true
+      'LastUpdate':
+        type: '*string'
+        required: true
+      'Port':
+        type: '*int32'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_qo_s_server.go'
+
+  'APIReferencingFleet@ams':
+    id: 'APIReferencingFleet@ams'
+    name: 'APIReferencingFleet'
+    fields:
+      'Environment':
+        type: '*string'
+        required: true
+      'FleetID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_referencing_fleet.go'
+
+  'APIRegionConfig@ams':
+    id: 'APIRegionConfig@ams'
+    name: 'APIRegionConfig'
+    fields:
+      'BufferSize':
+        type: '*int32'
+        required: true
+      'DynamicBuffer':
+        type: '*bool'
+        required: true
+      'MaxServerCount':
+        type: '*int32'
+        required: true
+      'MinServerCount':
+        type: '*int32'
+        required: true
+      'Region':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_region_config.go'
+
+  'APITimeout@ams':
+    id: 'APITimeout@ams'
+    name: 'APITimeout'
+    description: |-
+      Contains fleet timeout configuration. Fields accept duration strings (e.g. '30s', '1h30m'), an integer number of seconds.
+    fields:
+      'Claim':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum time allowed for the DS to be claimed after it is created. (e.g. '4h')
+      'Creation':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum time allowed for the DS to become ready. (e.g. '30s')
+      'Drain':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum time allowed for the DS to drain gracefully after a drain signal before being terminated. (e.g. '30s')
+      'Session':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum time the game session will be allowed to run, (e.g. '1h30m')
+      'Unresponsive':
+        type: 'int64'
+        required: false
+        description: |-
+          Maximum time allowed for the DS to be unresponsive before being terminated. (e.g. '1m')
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_timeout.go'
+
+  'APIUpdateServerRequest@ams':
+    id: 'APIUpdateServerRequest@ams'
+    name: 'APIUpdateServerRequest'
+    fields:
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_update_server_request.go'
+
+  'PaginationPaginationInfo@ams':
+    id: 'PaginationPaginationInfo@ams'
+    name: 'PaginationPaginationInfo'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+      'Total':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/pagination_pagination_info.go'
+
+  'ResponseErrorResponse@ams':
+    id: 'ResponseErrorResponse@ams'
+    name: 'ResponseErrorResponse'
+    fields:
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'ErrorType':
+        type: '*string'
+        required: true
+      'TraceID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/response_error_response.go'
+
+  # endregion models
+
+functions:
+
+  'AccountGetShort@ams':
+    id: 'AccountGetShort@ams'
+    name: 'AccountGetShort'
+    description: |-
+      Required Permission: NAMESPACE:{namespace}:AMS:ACCOUNT [READ]
+    struct: 'AccountService'
+    parameters:
+      params:
+        type: '*account.AccountGetParams'
+        required: true
+    return_type: '(*account.AccountGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      accountService := ams.AccountService{ ... }
+      params := account.AccountGetParams{ ... }
+      res, err := accountService.AccountGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'get'
+
+  'AdminAccountCreateShort@ams':
+    id: 'AdminAccountCreateShort@ams'
+    name: 'AdminAccountCreateShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+    struct: 'AccountService'
+    parameters:
+      params:
+        type: '*account.AdminAccountCreateParams'
+        required: true
+    return_type: '(*account.AdminAccountCreateResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      accountService := ams.AccountService{ ... }
+      params := account.AdminAccountCreateParams{ ... }
+      res, err := accountService.AdminAccountCreateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'create'
+
+  'AdminAccountGetShort@ams':
+    id: 'AdminAccountGetShort@ams'
+    name: 'AdminAccountGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    struct: 'AccountService'
+    parameters:
+      params:
+        type: '*account.AdminAccountGetParams'
+        required: true
+    return_type: '(*account.AdminAccountGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      accountService := ams.AccountService{ ... }
+      params := account.AdminAccountGetParams{ ... }
+      res, err := accountService.AdminAccountGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'get'
+
+  'AdminAccountLinkShort@ams':
+    id: 'AdminAccountLinkShort@ams'
+    name: 'AdminAccountLinkShort'
+    description: |-
+      This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+    struct: 'AccountService'
+    parameters:
+      params:
+        type: '*account.AdminAccountLinkParams'
+        required: true
+    return_type: '(*account.AdminAccountLinkResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      accountService := ams.AccountService{ ... }
+      params := account.AdminAccountLinkParams{ ... }
+      res, err := accountService.AdminAccountLinkShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'link'
+
+  'AdminAccountLinkTokenGetShort@ams':
+    id: 'AdminAccountLinkTokenGetShort@ams'
+    name: 'AdminAccountLinkTokenGetShort'
+    description: |-
+      The link token returned can be used to connect another namespace to the account in which the provided namespace is linked. This route fails if there is no account linked to the specified namespace.
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    struct: 'AccountService'
+    parameters:
+      params:
+        type: '*account.AdminAccountLinkTokenGetParams'
+        required: true
+    return_type: '(*account.AdminAccountLinkTokenGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/account'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/account.go'
+    example: |-
+      accountService := ams.AccountService{ ... }
+      params := account.AdminAccountLinkTokenGetParams{ ... }
+      res, err := accountService.AdminAccountLinkTokenGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'get'
+      - 'link'
+      - 'token'
+
+  'ArtifactBulkDeleteShort@ams':
+    id: 'ArtifactBulkDeleteShort@ams'
+    name: 'ArtifactBulkDeleteShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.ArtifactBulkDeleteParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.ArtifactBulkDeleteParams{ ... }
+      res, err := artifactsService.ArtifactBulkDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'bulk'
+      - 'delete'
+
+  'ArtifactDeleteShort@ams':
+    id: 'ArtifactDeleteShort@ams'
+    name: 'ArtifactDeleteShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.ArtifactDeleteParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.ArtifactDeleteParams{ ... }
+      res, err := artifactsService.ArtifactDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'delete'
+
+  'ArtifactGetShort@ams':
+    id: 'ArtifactGetShort@ams'
+    name: 'ArtifactGetShort'
+    description: |-
+      Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won't have been filtered on those parameters
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.ArtifactGetParams'
+        required: true
+    return_type: '(*artifacts.ArtifactGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.ArtifactGetParams{ ... }
+      res, err := artifactsService.ArtifactGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'get'
+
+  'ArtifactGetURLShort@ams':
+    id: 'ArtifactGetURLShort@ams'
+    name: 'ArtifactGetURLShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.ArtifactGetURLParams'
+        required: true
+    return_type: '(*artifacts.ArtifactGetURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.ArtifactGetURLParams{ ... }
+      res, err := artifactsService.ArtifactGetURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'get'
+      - 'url'
+
+  'ArtifactUsageGetShort@ams':
+    id: 'ArtifactUsageGetShort@ams'
+    name: 'ArtifactUsageGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.ArtifactUsageGetParams'
+        required: true
+    return_type: '(*artifacts.ArtifactUsageGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.ArtifactUsageGetParams{ ... }
+      res, err := artifactsService.ArtifactUsageGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'get'
+      - 'usage'
+
+  'AuthCheckShort@ams':
+    id: 'AuthCheckShort@ams'
+    name: 'AuthCheckShort'
+    description: |-
+      Check if fleet commander is authorized to talk to AMS with this IAM
+    struct: 'AuthService'
+    parameters:
+      params:
+        type: '*auth.AuthCheckParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/auth'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/auth.go'
+    example: |-
+      authService := ams.AuthService{ ... }
+      params := auth.AuthCheckParams{ ... }
+      res, err := authService.AuthCheckShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'auth'
+      - 'check'
+
+  'BasicHealthCheckShort@ams':
+    id: 'BasicHealthCheckShort@ams'
+    name: 'BasicHealthCheckShort'
+    struct: 'FleetCommanderService'
+    parameters:
+      params:
+        type: '*fleet_commander.BasicHealthCheckParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
+    example: |-
+      fleetCommanderService := ams.FleetCommanderService{ ... }
+      params := fleet_commander.BasicHealthCheckParams{ ... }
+      res, err := fleetCommanderService.BasicHealthCheckShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'basic'
+      - 'check'
+      - 'commander'
+      - 'fleet'
+      - 'health'
+
+  'DevelopmentServerConfigurationCreateShort@ams':
+    id: 'DevelopmentServerConfigurationCreateShort@ams'
+    name: 'DevelopmentServerConfigurationCreateShort'
+    description: |-
+      Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+    struct: 'DevelopmentService'
+    parameters:
+      params:
+        type: '*development.DevelopmentServerConfigurationCreateParams'
+        required: true
+    return_type: '(*development.DevelopmentServerConfigurationCreateResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      developmentService := ams.DevelopmentService{ ... }
+      params := development.DevelopmentServerConfigurationCreateParams{ ... }
+      res, err := developmentService.DevelopmentServerConfigurationCreateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'create'
+      - 'development'
+      - 'server'
+
+  'DevelopmentServerConfigurationDeleteShort@ams':
+    id: 'DevelopmentServerConfigurationDeleteShort@ams'
+    name: 'DevelopmentServerConfigurationDeleteShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    struct: 'DevelopmentService'
+    parameters:
+      params:
+        type: '*development.DevelopmentServerConfigurationDeleteParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      developmentService := ams.DevelopmentService{ ... }
+      params := development.DevelopmentServerConfigurationDeleteParams{ ... }
+      res, err := developmentService.DevelopmentServerConfigurationDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'development'
+      - 'server'
+
+  'DevelopmentServerConfigurationGetShort@ams':
+    id: 'DevelopmentServerConfigurationGetShort@ams'
+    name: 'DevelopmentServerConfigurationGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'DevelopmentService'
+    parameters:
+      params:
+        type: '*development.DevelopmentServerConfigurationGetParams'
+        required: true
+    return_type: '(*development.DevelopmentServerConfigurationGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      developmentService := ams.DevelopmentService{ ... }
+      params := development.DevelopmentServerConfigurationGetParams{ ... }
+      res, err := developmentService.DevelopmentServerConfigurationGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'development'
+      - 'get'
+      - 'server'
+
+  'DevelopmentServerConfigurationListShort@ams':
+    id: 'DevelopmentServerConfigurationListShort@ams'
+    name: 'DevelopmentServerConfigurationListShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'DevelopmentService'
+    parameters:
+      params:
+        type: '*development.DevelopmentServerConfigurationListParams'
+        required: true
+    return_type: '(*development.DevelopmentServerConfigurationListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      developmentService := ams.DevelopmentService{ ... }
+      params := development.DevelopmentServerConfigurationListParams{ ... }
+      res, err := developmentService.DevelopmentServerConfigurationListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'development'
+      - 'list'
+      - 'server'
+
+  'DevelopmentServerConfigurationPatchShort@ams':
+    id: 'DevelopmentServerConfigurationPatchShort@ams'
+    name: 'DevelopmentServerConfigurationPatchShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    struct: 'DevelopmentService'
+    parameters:
+      params:
+        type: '*development.DevelopmentServerConfigurationPatchParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/development'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/development.go'
+    example: |-
+      developmentService := ams.DevelopmentService{ ... }
+      params := development.DevelopmentServerConfigurationPatchParams{ ... }
+      res, err := developmentService.DevelopmentServerConfigurationPatchShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configuration'
+      - 'development'
+      - 'patch'
+      - 'server'
+
+  'FleetArtifactSamplingRulesGetShort@ams':
+    id: 'FleetArtifactSamplingRulesGetShort@ams'
+    name: 'FleetArtifactSamplingRulesGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.FleetArtifactSamplingRulesGetParams'
+        required: true
+    return_type: '(*artifacts.FleetArtifactSamplingRulesGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.FleetArtifactSamplingRulesGetParams{ ... }
+      res, err := artifactsService.FleetArtifactSamplingRulesGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'fleet'
+      - 'get'
+      - 'rules'
+      - 'sampling'
+
+  'FleetArtifactSamplingRulesSetShort@ams':
+    id: 'FleetArtifactSamplingRulesSetShort@ams'
+    name: 'FleetArtifactSamplingRulesSetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
+    struct: 'ArtifactsService'
+    parameters:
+      params:
+        type: '*artifacts.FleetArtifactSamplingRulesSetParams'
+        required: true
+    return_type: '(*artifacts.FleetArtifactSamplingRulesSetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/artifacts'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/artifacts.go'
+    example: |-
+      artifactsService := ams.ArtifactsService{ ... }
+      params := artifacts.FleetArtifactSamplingRulesSetParams{ ... }
+      res, err := artifactsService.FleetArtifactSamplingRulesSetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'artifact'
+      - 'artifacts'
+      - 'fleet'
+      - 'rules'
+      - 'sampling'
+      - 'set'
+
+  'FleetClaimByIDShort@ams':
+    id: 'FleetClaimByIDShort@ams'
+    name: 'FleetClaimByIDShort'
+    description: |-
+      Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetClaimByIDParams'
+        required: true
+    return_type: '(*fleets.FleetClaimByIDResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetClaimByIDParams{ ... }
+      res, err := fleetsService.FleetClaimByIDShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'claim'
+      - 'fleet'
+      - 'fleets'
+      - 'id'
+
+  'FleetClaimByKeysShort@ams':
+    id: 'FleetClaimByKeysShort@ams'
+    name: 'FleetClaimByKeysShort'
+    description: |-
+      Claim a dedicated server from fleets with matching claim keys.
+      If the claim key is for a regular fleet (non development), the request will instantly fail if there are no DS available (HTTP 404).
+      If the claim key is for a development fleet and there are no DS available, a new DS will be launched and the request might take up to 8 seconds to return (depending on the environment configuration). If it's not ready after that duration the request will still return HTTP 404. In either case, the call to this endpoint may be retried at any time to check if a DS has become available.
+
+      Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetClaimByKeysParams'
+        required: true
+    return_type: '(*fleets.FleetClaimByKeysResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetClaimByKeysParams{ ... }
+      res, err := fleetsService.FleetClaimByKeysShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'claim'
+      - 'fleet'
+      - 'fleets'
+      - 'keys'
+
+  'FleetCreateShort@ams':
+    id: 'FleetCreateShort@ams'
+    name: 'FleetCreateShort'
+    description: |-
+      Optionally, sampling rules for the fleet can also be specified
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetCreateParams'
+        required: true
+    return_type: '(*fleets.FleetCreateResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetCreateParams{ ... }
+      res, err := fleetsService.FleetCreateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'fleet'
+      - 'fleets'
+
+  'FleetDeleteShort@ams':
+    id: 'FleetDeleteShort@ams'
+    name: 'FleetDeleteShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetDeleteParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetDeleteParams{ ... }
+      res, err := fleetsService.FleetDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'fleet'
+      - 'fleets'
+
+  'FleetGetShort@ams':
+    id: 'FleetGetShort@ams'
+    name: 'FleetGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetGetParams'
+        required: true
+    return_type: '(*fleets.FleetGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetGetParams{ ... }
+      res, err := fleetsService.FleetGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'fleets'
+      - 'get'
+
+  'FleetListShort@ams':
+    id: 'FleetListShort@ams'
+    name: 'FleetListShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetListParams'
+        required: true
+    return_type: '(*fleets.FleetListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetListParams{ ... }
+      res, err := fleetsService.FleetListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'fleets'
+      - 'list'
+
+  'FleetServerConnectionInfoShort@ams':
+    id: 'FleetServerConnectionInfoShort@ams'
+    name: 'FleetServerConnectionInfoShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
+    struct: 'ServersService'
+    parameters:
+      params:
+        type: '*servers.FleetServerConnectionInfoParams'
+        required: true
+    return_type: '(*servers.FleetServerConnectionInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/servers.go'
+    example: |-
+      serversService := ams.ServersService{ ... }
+      params := servers.FleetServerConnectionInfoParams{ ... }
+      res, err := serversService.FleetServerConnectionInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'connection'
+      - 'fleet'
+      - 'info'
+      - 'server'
+      - 'servers'
+
+  'FleetServerHistoryShort@ams':
+    id: 'FleetServerHistoryShort@ams'
+    name: 'FleetServerHistoryShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'ServersService'
+    parameters:
+      params:
+        type: '*servers.FleetServerHistoryParams'
+        required: true
+    return_type: '(*servers.FleetServerHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/servers.go'
+    example: |-
+      serversService := ams.ServersService{ ... }
+      params := servers.FleetServerHistoryParams{ ... }
+      res, err := serversService.FleetServerHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'history'
+      - 'server'
+      - 'servers'
+
+  'FleetServerInfoShort@ams':
+    id: 'FleetServerInfoShort@ams'
+    name: 'FleetServerInfoShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'ServersService'
+    parameters:
+      params:
+        type: '*servers.FleetServerInfoParams'
+        required: true
+    return_type: '(*servers.FleetServerInfoResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/servers.go'
+    example: |-
+      serversService := ams.ServersService{ ... }
+      params := servers.FleetServerInfoParams{ ... }
+      res, err := serversService.FleetServerInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'info'
+      - 'server'
+      - 'servers'
+
+  'FleetServersShort@ams':
+    id: 'FleetServersShort@ams'
+    name: 'FleetServersShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetServersParams'
+        required: true
+    return_type: '(*fleets.FleetServersResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetServersParams{ ... }
+      res, err := fleetsService.FleetServersShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'fleets'
+      - 'servers'
+
+  'FleetUpdateShort@ams':
+    id: 'FleetUpdateShort@ams'
+    name: 'FleetUpdateShort'
+    description: |-
+      Optionally, sampling rules for the fleet can also be updated
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    struct: 'FleetsService'
+    parameters:
+      params:
+        type: '*fleets.FleetUpdateParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.FleetUpdateParams{ ... }
+      res, err := fleetsService.FleetUpdateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'fleet'
+      - 'fleets'
+      - 'update'
+
+  'Func1Short@ams':
+    id: 'Func1Short@ams'
+    name: 'Func1Short'
+    struct: 'FleetCommanderService'
+    parameters:
+      params:
+        type: '*fleet_commander.Func1Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
+    example: |-
+      fleetCommanderService := ams.FleetCommanderService{ ... }
+      params := fleet_commander.Func1Params{ ... }
+      res, err := fleetCommanderService.Func1Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'commander'
+      - 'fleet'
+      - 'func1'
+
+  'ImageGetShort@ams':
+    id: 'ImageGetShort@ams'
+    name: 'ImageGetShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImageGetParams'
+        required: true
+    return_type: '(*images.ImageGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImageGetParams{ ... }
+      res, err := imagesService.ImageGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'image'
+      - 'images'
+
+  'ImageListShort@ams':
+    id: 'ImageListShort@ams'
+    name: 'ImageListShort'
+    description: |-
+      Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImageListParams'
+        required: true
+    return_type: '(*images.ImageListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImageListParams{ ... }
+      res, err := imagesService.ImageListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'image'
+      - 'images'
+      - 'list'
+
+  'ImageMarkForDeletionShort@ams':
+    id: 'ImageMarkForDeletionShort@ams'
+    name: 'ImageMarkForDeletionShort'
+    description: |-
+      Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted.
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImageMarkForDeletionParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImageMarkForDeletionParams{ ... }
+      res, err := imagesService.ImageMarkForDeletionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deletion'
+      - 'for'
+      - 'image'
+      - 'images'
+      - 'mark'
+
+  'ImagePatchShort@ams':
+    id: 'ImagePatchShort@ams'
+    name: 'ImagePatchShort'
+    description: |-
+      This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImagePatchParams'
+        required: true
+    return_type: '(*images.ImagePatchResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImagePatchParams{ ... }
+      res, err := imagesService.ImagePatchShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'image'
+      - 'images'
+      - 'patch'
+
+  'ImagesStorageShort@ams':
+    id: 'ImagesStorageShort@ams'
+    name: 'ImagesStorageShort'
+    description: |-
+      Returns information regarding the account's usage for images storage including the free tier quota
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImagesStorageParams'
+        required: true
+    return_type: '(*images.ImagesStorageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImagesStorageParams{ ... }
+      res, err := imagesService.ImagesStorageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'images'
+      - 'storage'
+
+  'ImageUnmarkForDeletionShort@ams':
+    id: 'ImageUnmarkForDeletionShort@ams'
+    name: 'ImageUnmarkForDeletionShort'
+    description: |-
+      Unmarks an image for deletion. The image will be available for fleets.
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+    struct: 'ImagesService'
+    parameters:
+      params:
+        type: '*images.ImageUnmarkForDeletionParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/images'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/images.go'
+    example: |-
+      imagesService := ams.ImagesService{ ... }
+      params := images.ImageUnmarkForDeletionParams{ ... }
+      res, err := imagesService.ImageUnmarkForDeletionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'deletion'
+      - 'for'
+      - 'image'
+      - 'images'
+      - 'unmark'
+
+  'InfoRegionsShort@ams':
+    id: 'InfoRegionsShort@ams'
+    name: 'InfoRegionsShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
+    struct: 'AMSInfoService'
+    parameters:
+      params:
+        type: '*a_m_s_info.InfoRegionsParams'
+        required: true
+    return_type: '(*a_m_s_info.InfoRegionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/aMSInfo.go'
+    example: |-
+      amsInfoService := ams.AMSInfoService{ ... }
+      params := a_m_s_info.InfoRegionsParams{ ... }
+      res, err := amsInfoService.InfoRegionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ams'
+      - 'info'
+      - 'regions'
+
+  'InfoSupportedInstancesShort@ams':
+    id: 'InfoSupportedInstancesShort@ams'
+    name: 'InfoSupportedInstancesShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
+    struct: 'AMSInfoService'
+    parameters:
+      params:
+        type: '*a_m_s_info.InfoSupportedInstancesParams'
+        required: true
+    return_type: '(*a_m_s_info.InfoSupportedInstancesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/aMSInfo.go'
+    example: |-
+      amsInfoService := ams.AMSInfoService{ ... }
+      params := a_m_s_info.InfoSupportedInstancesParams{ ... }
+      res, err := amsInfoService.InfoSupportedInstancesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ams'
+      - 'info'
+      - 'instances'
+      - 'supported'
+
+  'LocalWatchdogConnectShort@ams':
+    id: 'LocalWatchdogConnectShort@ams'
+    name: 'LocalWatchdogConnectShort'
+    description: |-
+      This is to support local ds development scenarios
+
+      Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
+    struct: 'WatchdogsService'
+    parameters:
+      params:
+        type: '*watchdogs.LocalWatchdogConnectParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/watchdogs'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/watchdogs.go'
+    example: |-
+      watchdogsService := ams.WatchdogsService{ ... }
+      params := watchdogs.LocalWatchdogConnectParams{ ... }
+      res, err := watchdogsService.LocalWatchdogConnectShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'connect'
+      - 'local'
+      - 'watchdog'
+      - 'watchdogs'
+
+  'PortalHealthCheckShort@ams':
+    id: 'PortalHealthCheckShort@ams'
+    name: 'PortalHealthCheckShort'
+    struct: 'FleetCommanderService'
+    parameters:
+      params:
+        type: '*fleet_commander.PortalHealthCheckParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
+    example: |-
+      fleetCommanderService := ams.FleetCommanderService{ ... }
+      params := fleet_commander.PortalHealthCheckParams{ ... }
+      res, err := fleetCommanderService.PortalHealthCheckShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'check'
+      - 'commander'
+      - 'fleet'
+      - 'health'
+      - 'portal'
+
+  'QoSRegionsGetShort@ams':
+    id: 'QoSRegionsGetShort@ams'
+    name: 'QoSRegionsGetShort'
+    description: |-
+      ```
+      Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
+
+      This endpoint lists all QoS services available in all regions.
+
+      This endpoint is intended to be called by game client to find out all available regions.
+      After getting a list of QoS on each region, game client is expected to ping each one with UDP
+      connection as described below:
+
+      1. Make UDP connection to each QoS's IP:Port
+      2. Send string "PING" after connection established
+      3. Wait for string "PONG" response
+      4. Note the request-response latency for each QoS in each region
+
+      The game then can use ping latency information to either:
+      1. Inform the player on these latencies and let player choose preferred region
+      2. Send the latency list to Matchmaking Service so that player can be matched with other players
+      in nearby regions
+    struct: 'AMSQoSService'
+    parameters:
+      params:
+        type: '*a_m_s_qo_s.QoSRegionsGetParams'
+        required: true
+    return_type: '(*a_m_s_qo_s.QoSRegionsGetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_qo_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/aMSQoS.go'
+    example: |-
+      amsQoSService := ams.AMSQoSService{ ... }
+      params := a_m_s_qo_s.QoSRegionsGetParams{ ... }
+      res, err := amsQoSService.QoSRegionsGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ams'
+      - 'get'
+      - 'qo'
+      - 'regions'
+      - 's'
+
+  'QoSRegionsUpdateShort@ams':
+    id: 'QoSRegionsUpdateShort@ams'
+    name: 'QoSRegionsUpdateShort'
+    description: |-
+      ```
+      Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+      This endpoint updates the registered QoS service's configurable configuration.
+    struct: 'AMSQoSService'
+    parameters:
+      params:
+        type: '*a_m_s_qo_s.QoSRegionsUpdateParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_qo_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/aMSQoS.go'
+    example: |-
+      amsQoSService := ams.AMSQoSService{ ... }
+      params := a_m_s_qo_s.QoSRegionsUpdateParams{ ... }
+      res, err := amsQoSService.QoSRegionsUpdateShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ams'
+      - 'qo'
+      - 'regions'
+      - 's'
+      - 'update'
+
+  'ServerHistoryShort@ams':
+    id: 'ServerHistoryShort@ams'
+    name: 'ServerHistoryShort'
+    description: |-
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+    struct: 'ServersService'
+    parameters:
+      params:
+        type: '*servers.ServerHistoryParams'
+        required: true
+    return_type: '(*servers.ServerHistoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/servers'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/servers.go'
+    example: |-
+      serversService := ams.ServersService{ ... }
+      params := servers.ServerHistoryParams{ ... }
+      res, err := serversService.ServerHistoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'history'
+      - 'server'
+      - 'servers'
+
+  'UploadURLGetShort@ams':
+    id: 'UploadURLGetShort@ams'
+    name: 'UploadURLGetShort'
+    struct: 'AMSInfoService'
+    parameters:
+      params:
+        type: '*a_m_s_info.UploadURLGetParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/aMSInfo.go'
+    example: |-
+      amsInfoService := ams.AMSInfoService{ ... }
+      params := a_m_s_info.UploadURLGetParams{ ... }
+      res, err := amsInfoService.UploadURLGetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'ams'
+      - 'get'
+      - 'info'
+      - 'upload'
+      - 'url'
+
+  'WatchdogConnectShort@ams':
+    id: 'WatchdogConnectShort@ams'
+    name: 'WatchdogConnectShort'
+    description: |-
+      Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
+    struct: 'WatchdogsService'
+    parameters:
+      params:
+        type: '*watchdogs.WatchdogConnectParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/watchdogs'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/watchdogs.go'
+    example: |-
+      watchdogsService := ams.WatchdogsService{ ... }
+      params := watchdogs.WatchdogConnectParams{ ... }
+      res, err := watchdogsService.WatchdogConnectShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'connect'
+      - 'watchdog'
+      - 'watchdogs'

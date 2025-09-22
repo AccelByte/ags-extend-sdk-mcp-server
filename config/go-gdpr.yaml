@@ -1,0 +1,3267 @@
+structs:
+  'JusticeGdprService@gdpr':
+    id: 'JusticeGdprService@gdpr'
+    name: 'JusticeGdprService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/justice_gdpr_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/gdprclientfactory.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo)
+
+  # region wrappers
+
+  'ConfigurationService@gdpr':
+    id: 'ConfigurationService@gdpr'
+    name: 'ConfigurationService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      configurationService := ConfigurationService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DataDeletionService@gdpr':
+    id: 'DataDeletionService@gdpr'
+    name: 'DataDeletionService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataDeletionService := DataDeletionService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DataDeletionS2SService@gdpr':
+    id: 'DataDeletionS2SService@gdpr'
+    name: 'DataDeletionS2SService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionS2S.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataDeletionS2SService := DataDeletionS2SService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DataRetrievalService@gdpr':
+    id: 'DataRetrievalService@gdpr'
+    name: 'DataRetrievalService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataRetrievalService := DataRetrievalService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DataRetrievalS2SService@gdpr':
+    id: 'DataRetrievalS2SService@gdpr'
+    name: 'DataRetrievalS2SService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalS2S.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataRetrievalS2SService := DataRetrievalS2SService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PlatformAccountClosureClientService@gdpr':
+    id: 'PlatformAccountClosureClientService@gdpr'
+    name: 'PlatformAccountClosureClientService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      platformAccountClosureClientService := PlatformAccountClosureClientService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PlatformAccountClosureHistoryService@gdpr':
+    id: 'PlatformAccountClosureHistoryService@gdpr'
+    name: 'PlatformAccountClosureHistoryService'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureHistory.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      platformAccountClosureHistoryService := PlatformAccountClosureHistoryService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminCancelUserAccountDeletionRequestParams@gdpr':
+    id: 'AdminCancelUserAccountDeletionRequestParams@gdpr'
+    name: 'AdminCancelUserAccountDeletionRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_cancel_user_account_deletion_request_parameters.go'
+
+  'AdminCancelUserPersonalDataRequestParams@gdpr':
+    id: 'AdminCancelUserPersonalDataRequestParams@gdpr'
+    name: 'AdminCancelUserPersonalDataRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'RequestDate':
+        type: '*string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_cancel_user_personal_data_request_parameters.go'
+
+  'AdminDeletePlatformAccountClosureClientParams@gdpr':
+    id: 'AdminDeletePlatformAccountClosureClientParams@gdpr'
+    name: 'AdminDeletePlatformAccountClosureClientParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: '*string'
+        required: true
+        description: |-
+          3rd party platform
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_delete_platform_account_closure_client_parameters.go'
+
+  'AdminGeneratePersonalDataURLParams@gdpr':
+    id: 'AdminGeneratePersonalDataURLParams@gdpr'
+    name: 'AdminGeneratePersonalDataURLParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          If admin request data for themselves, then password is required
+      'RequestDate':
+        type: '*string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_generate_personal_data_url_parameters.go'
+
+  'AdminGetListDeletionDataRequestParams@gdpr':
+    id: 'AdminGetListDeletionDataRequestParams@gdpr'
+    name: 'AdminGetListDeletionDataRequestParams'
+    fields:
+      'After':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list after that. format : YYYY-MM-DD
+      'Before':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list before that. format : YYYY-MM-DD
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'RequestDate':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC of the deletion request. format : YYYY-MM-DD. Default : today time in UTC.
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_get_list_deletion_data_request_parameters.go'
+
+  'AdminGetListPersonalDataRequestParams@gdpr':
+    id: 'AdminGetListPersonalDataRequestParams@gdpr'
+    name: 'AdminGetListPersonalDataRequestParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'RequestDate':
+        type: 'string'
+        required: false
+        description: |-
+          request date with format YYYY-MM-DD. Default value today UTC
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_get_list_personal_data_request_parameters.go'
+
+  'AdminGetPlatformAccountClosureClientParams@gdpr':
+    id: 'AdminGetPlatformAccountClosureClientParams@gdpr'
+    name: 'AdminGetPlatformAccountClosureClientParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: '*string'
+        required: true
+        description: |-
+          3rd party platform
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_get_platform_account_closure_client_parameters.go'
+
+  'AdminGetPlatformAccountClosureClientsParams@gdpr':
+    id: 'AdminGetPlatformAccountClosureClientsParams@gdpr'
+    name: 'AdminGetPlatformAccountClosureClientsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_get_platform_account_closure_clients_parameters.go'
+
+  'AdminGetPlatformAccountClosureServicesConfigurationParams@gdpr':
+    id: 'AdminGetPlatformAccountClosureServicesConfigurationParams@gdpr'
+    name: 'AdminGetPlatformAccountClosureServicesConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_get_platform_account_closure_services_configuration_parameters.go'
+
+  'AdminGetServicesConfigurationParams@gdpr':
+    id: 'AdminGetServicesConfigurationParams@gdpr'
+    name: 'AdminGetServicesConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_get_services_configuration_parameters.go'
+
+  'AdminGetUserAccountDeletionRequestParams@gdpr':
+    id: 'AdminGetUserAccountDeletionRequestParams@gdpr'
+    name: 'AdminGetUserAccountDeletionRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_get_user_account_deletion_request_parameters.go'
+
+  'AdminGetUserPersonalDataRequestsParams@gdpr':
+    id: 'AdminGetUserPersonalDataRequestsParams@gdpr'
+    name: 'AdminGetUserPersonalDataRequestsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_get_user_personal_data_requests_parameters.go'
+
+  'AdminGetUserPlatformAccountClosureHistoriesParams@gdpr':
+    id: 'AdminGetUserPlatformAccountClosureHistoriesParams@gdpr'
+    name: 'AdminGetUserPlatformAccountClosureHistoriesParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          offset
+      'Platform':
+        type: 'string'
+        required: false
+        description: |-
+          3rd party platform
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_history'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_history/admin_get_user_platform_account_closure_histories_parameters.go'
+
+  'AdminMockPlatformAccountClosureDataParams@gdpr':
+    id: 'AdminMockPlatformAccountClosureDataParams@gdpr'
+    name: 'AdminMockPlatformAccountClosureDataParams'
+    fields:
+      'Body':
+        type: '*DTOPlatformAccountClosureMockRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: '*string'
+        required: true
+        description: |-
+          3rd party platform
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_mock_platform_account_closure_data_parameters.go'
+
+  'AdminRequestDataRetrievalParams@gdpr':
+    id: 'AdminRequestDataRetrievalParams@gdpr'
+    name: 'AdminRequestDataRetrievalParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          IAM password of the user, required if admin requests their own data
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM user ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_request_data_retrieval_parameters.go'
+
+  'AdminResetPlatformAccountClosureServicesConfigurationParams@gdpr':
+    id: 'AdminResetPlatformAccountClosureServicesConfigurationParams@gdpr'
+    name: 'AdminResetPlatformAccountClosureServicesConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_reset_platform_account_closure_services_configuration_parameters.go'
+
+  'AdminResetServicesConfigurationParams@gdpr':
+    id: 'AdminResetServicesConfigurationParams@gdpr'
+    name: 'AdminResetServicesConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_reset_services_configuration_parameters.go'
+
+  'AdminSubmitUserAccountDeletionRequestParams@gdpr':
+    id: 'AdminSubmitUserAccountDeletionRequestParams@gdpr'
+    name: 'AdminSubmitUserAccountDeletionRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_submit_user_account_deletion_request_parameters.go'
+
+  'AdminUpdatePlatformAccountClosureClientParams@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureClientParams@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureClientParams'
+    fields:
+      'Body':
+        type: '*DTOPlatformAccountClosureClientRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: '*string'
+        required: true
+        description: |-
+          3rd party platform
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_update_platform_account_closure_client_parameters.go'
+
+  'AdminUpdatePlatformAccountClosureServicesConfigurationParams@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationParams@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureServicesConfigurationParams'
+    fields:
+      'Body':
+        type: '*DTOServiceConfigurationUpdateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_update_platform_account_closure_services_configuration_parameters.go'
+
+  'AdminUpdateServicesConfigurationParams@gdpr':
+    id: 'AdminUpdateServicesConfigurationParams@gdpr'
+    name: 'AdminUpdateServicesConfigurationParams'
+    fields:
+      'Body':
+        type: '*DTOServiceConfigurationUpdateRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_update_services_configuration_parameters.go'
+
+  'AdminValidateXboxBPCertFileParams@gdpr':
+    id: 'AdminValidateXboxBPCertFileParams@gdpr'
+    name: 'AdminValidateXboxBPCertFileParams'
+    fields:
+      'Body':
+        type: '*DTOXboxBPCertValidationRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_validate_xbox_b_p_cert_file_parameters.go'
+
+  'DeleteAdminEmailConfigurationParams@gdpr':
+    id: 'DeleteAdminEmailConfigurationParams@gdpr'
+    name: 'DeleteAdminEmailConfigurationParams'
+    fields:
+      'Emails':
+        type: '[]string'
+        required: true
+        description: |-
+          list of admin email to delete
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/delete_admin_email_configuration_parameters.go'
+
+  'GetAdminEmailConfigurationParams@gdpr':
+    id: 'GetAdminEmailConfigurationParams@gdpr'
+    name: 'GetAdminEmailConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/get_admin_email_configuration_parameters.go'
+
+  'PublicCancelMyAccountDeletionRequestParams@gdpr':
+    id: 'PublicCancelMyAccountDeletionRequestParams@gdpr'
+    name: 'PublicCancelMyAccountDeletionRequestParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_cancel_my_account_deletion_request_parameters.go'
+
+  'PublicCancelUserAccountDeletionRequestParams@gdpr':
+    id: 'PublicCancelUserAccountDeletionRequestParams@gdpr'
+    name: 'PublicCancelUserAccountDeletionRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_cancel_user_account_deletion_request_parameters.go'
+
+  'PublicCancelUserPersonalDataRequestParams@gdpr':
+    id: 'PublicCancelUserPersonalDataRequestParams@gdpr'
+    name: 'PublicCancelUserPersonalDataRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'RequestDate':
+        type: '*string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_cancel_user_personal_data_request_parameters.go'
+
+  'PublicGeneratePersonalDataURLParams@gdpr':
+    id: 'PublicGeneratePersonalDataURLParams@gdpr'
+    name: 'PublicGeneratePersonalDataURLParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: '*string'
+        required: true
+        description: |-
+          IAM password of the user
+      'RequestDate':
+        type: '*string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_generate_personal_data_url_parameters.go'
+
+  'PublicGetMyAccountDeletionStatusParams@gdpr':
+    id: 'PublicGetMyAccountDeletionStatusParams@gdpr'
+    name: 'PublicGetMyAccountDeletionStatusParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_get_my_account_deletion_status_parameters.go'
+
+  'PublicGetUserAccountDeletionStatusParams@gdpr':
+    id: 'PublicGetUserAccountDeletionStatusParams@gdpr'
+    name: 'PublicGetUserAccountDeletionStatusParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_get_user_account_deletion_status_parameters.go'
+
+  'PublicGetUserPersonalDataRequestsParams@gdpr':
+    id: 'PublicGetUserPersonalDataRequestsParams@gdpr'
+    name: 'PublicGetUserPersonalDataRequestsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          The start position that points to query data
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_get_user_personal_data_requests_parameters.go'
+
+  'PublicRequestDataRetrievalParams@gdpr':
+    id: 'PublicRequestDataRetrievalParams@gdpr'
+    name: 'PublicRequestDataRetrievalParams'
+    fields:
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: '*string'
+        required: true
+        description: |-
+          IAM password of the user
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM id of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_request_data_retrieval_parameters.go'
+
+  'PublicSubmitMyAccountDeletionRequestParams@gdpr':
+    id: 'PublicSubmitMyAccountDeletionRequestParams@gdpr'
+    name: 'PublicSubmitMyAccountDeletionRequestParams'
+    fields:
+      'PlatformID':
+        type: '*string'
+        required: true
+        description: |-
+          Platform ID which used to generate current token
+      'PlatformToken':
+        type: '*string'
+        required: true
+        description: |-
+          Platform token of current logged platform
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_submit_my_account_deletion_request_parameters.go'
+
+  'PublicSubmitUserAccountDeletionRequestParams@gdpr':
+    id: 'PublicSubmitUserAccountDeletionRequestParams@gdpr'
+    name: 'PublicSubmitUserAccountDeletionRequestParams'
+    fields:
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: '*string'
+        required: true
+        description: |-
+          IAM password of the user
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          IAM ID of the user
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_submit_user_account_deletion_request_parameters.go'
+
+  'S2SGeneratePersonalDataURLParams@gdpr':
+    id: 'S2SGeneratePersonalDataURLParams@gdpr'
+    name: 'S2SGeneratePersonalDataURLParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'RequestDate':
+        type: '*string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher User Id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_generate_personal_data_url_parameters.go'
+
+  'S2SGetDataRequestByRequestIDParams@gdpr':
+    id: 'S2SGetDataRequestByRequestIDParams@gdpr'
+    name: 'S2SGetDataRequestByRequestIDParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'RequestID':
+        type: '*string'
+        required: true
+        description: |-
+          Request Id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_get_data_request_by_request_id_parameters.go'
+
+  'S2SGetListFinishedAccountDeletionRequestParams@gdpr':
+    id: 'S2SGetListFinishedAccountDeletionRequestParams@gdpr'
+    name: 'S2SGetListFinishedAccountDeletionRequestParams'
+    fields:
+      'End':
+        type: '*string'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'Start':
+        type: '*string'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s/s2_s_get_list_finished_account_deletion_request_parameters.go'
+
+  'S2SGetListFinishedPersonalDataRequestParams@gdpr':
+    id: 'S2SGetListFinishedPersonalDataRequestParams@gdpr'
+    name: 'S2SGetListFinishedPersonalDataRequestParams'
+    fields:
+      'End':
+        type: '*string'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'Start':
+        type: '*string'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_get_list_finished_personal_data_request_parameters.go'
+
+  'S2SRequestDataRetrievalParams@gdpr':
+    id: 'S2SRequestDataRetrievalParams@gdpr'
+    name: 'S2SRequestDataRetrievalParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher User Id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_request_data_retrieval_parameters.go'
+
+  'S2SSubmitUserAccountDeletionRequestParams@gdpr':
+    id: 'S2SSubmitUserAccountDeletionRequestParams@gdpr'
+    name: 'S2SSubmitUserAccountDeletionRequestParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          Publisher User Id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s/s2_s_submit_user_account_deletion_request_parameters.go'
+
+  'SaveAdminEmailConfigurationParams@gdpr':
+    id: 'SaveAdminEmailConfigurationParams@gdpr'
+    name: 'SaveAdminEmailConfigurationParams'
+    fields:
+      'Body':
+        type: '[]string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/save_admin_email_configuration_parameters.go'
+
+  'UpdateAdminEmailConfigurationParams@gdpr':
+    id: 'UpdateAdminEmailConfigurationParams@gdpr'
+    name: 'UpdateAdminEmailConfigurationParams'
+    fields:
+      'Body':
+        type: '[]string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/update_admin_email_configuration_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'DTOExtendConfigDTO@gdpr':
+    id: 'DTOExtendConfigDTO@gdpr'
+    name: 'DTOExtendConfigDTO'
+    fields:
+      'AppName':
+        type: '*string'
+        required: true
+        description: |-
+          extend app name
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          extend app namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_extend_config_dto.go'
+
+  'DTOFinishedDataDeletion@gdpr':
+    id: 'DTOFinishedDataDeletion@gdpr'
+    name: 'DTOFinishedDataDeletion'
+    fields:
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'FinishedDate':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          Finished deletion date
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          Request deletion date
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          Status of request
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User Id. This userId will be anonymized automatically after 7 days from the **Success** deletion
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_finished_data_deletion.go'
+
+  'DTOFinishedDataRequest@gdpr':
+    id: 'DTOFinishedDataRequest@gdpr'
+    name: 'DTOFinishedDataRequest'
+    fields:
+      'DataExpirationDate':
+        type: '*strfmt.DateTime'
+        required: false
+        description: |-
+          The expiration date of generated data, it was 28 days after finishedDate. Available only if the status is Completed
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'FinishedDate':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          Finished date
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+        description: |-
+          Request date
+      'RequestID':
+        type: '*string'
+        required: true
+        description: |-
+          Request id
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          Status of request
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_finished_data_request.go'
+
+  'DTOListFinishedDataDeletion@gdpr':
+    id: 'DTOListFinishedDataDeletion@gdpr'
+    name: 'DTOListFinishedDataDeletion'
+    fields:
+      'Data':
+        type: '[]*DTOFinishedDataDeletion'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_list_finished_data_deletion.go'
+
+  'DTOListFinishedDataRequests@gdpr':
+    id: 'DTOListFinishedDataRequests@gdpr'
+    name: 'DTOListFinishedDataRequests'
+    fields:
+      'Data':
+        type: '[]*DTOFinishedDataRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_list_finished_data_requests.go'
+
+  'DTOPlatformAccountClosureClientRequest@gdpr':
+    id: 'DTOPlatformAccountClosureClientRequest@gdpr'
+    name: 'DTOPlatformAccountClosureClientRequest'
+    fields:
+      'BpCert':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'BpCertFileName':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'ClientID':
+        type: 'string'
+        required: false
+        description: |-
+          required for psn
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'PublisherKey':
+        type: 'string'
+        required: false
+        description: |-
+          required for steam
+      'SandboxID':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'Secret':
+        type: 'string'
+        required: false
+        description: |-
+          required for psn
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_client_request.go'
+
+  'DTOPlatformAccountClosureClientResponse@gdpr':
+    id: 'DTOPlatformAccountClosureClientResponse@gdpr'
+    name: 'DTOPlatformAccountClosureClientResponse'
+    fields:
+      'BpCertExpireAt':
+        type: 'int64'
+        required: false
+      'BpCertFileName':
+        type: 'string'
+        required: false
+      'ClientID':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'Platform':
+        type: '*string'
+        required: true
+      'PublisherKey':
+        type: 'string'
+        required: false
+      'SandboxID':
+        type: 'string'
+        required: false
+      'Secret':
+        type: 'string'
+        required: false
+      'UpdatedAt':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_client_response.go'
+
+  'DTOPlatformAccountClosureClientsResponse@gdpr':
+    id: 'DTOPlatformAccountClosureClientsResponse@gdpr'
+    name: 'DTOPlatformAccountClosureClientsResponse'
+    fields:
+      'Data':
+        type: '[]*DTOPlatformAccountClosureClientResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_clients_response.go'
+
+  'DTOPlatformAccountClosureMockRequest@gdpr':
+    id: 'DTOPlatformAccountClosureMockRequest@gdpr'
+    name: 'DTOPlatformAccountClosureMockRequest'
+    fields:
+      'PlatformUserID':
+        type: '*string'
+        required: true
+      'Sandbox':
+        type: '*string'
+        required: true
+      'StartImmediately':
+        type: '*bool'
+        required: true
+        description: |-
+          start the account closure process immediately
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_mock_request.go'
+
+  'DTOS2SDataRequestSummary@gdpr':
+    id: 'DTOS2SDataRequestSummary@gdpr'
+    name: 'DTOS2SDataRequestSummary'
+    fields:
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          Status of the request
+      'URL':
+        type: 'string'
+        required: false
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_s2_s_data_request_summary.go'
+
+  'DTOServiceConfigDTO@gdpr':
+    id: 'DTOServiceConfigDTO@gdpr'
+    name: 'DTOServiceConfigDTO'
+    fields:
+      'Protocol':
+        type: '*string'
+        required: true
+        description: |-
+          protocol type
+      'SkipAck':
+        type: 'bool'
+        required: false
+        description: |-
+          skip waiting for ack event from this service, used in "EVENT" protocol only.
+      'URL':
+        type: 'string'
+        required: false
+        description: |-
+          url of the service with port number, required in "GRPC" protocol
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_config_dto.go'
+
+  'DTOServiceConfigurationDTO@gdpr':
+    id: 'DTOServiceConfigurationDTO@gdpr'
+    name: 'DTOServiceConfigurationDTO'
+    fields:
+      'ExtendConfig':
+        type: '*DTOExtendConfigDTO'
+        required: false
+        description: |-
+          extend configuration detail, required when "type" is "EXTEND"
+      'ID':
+        type: '*string'
+        required: true
+        description: |-
+          service id
+      'ServiceConfig':
+        type: '*DTOServiceConfigDTO'
+        required: false
+        description: |-
+          service configuration detail, required when "type" is "SERVICE"
+      'Type':
+        type: '*string'
+        required: true
+        description: |-
+          service type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_configuration_dto.go'
+
+  'DTOServiceConfigurationUpdateRequest@gdpr':
+    id: 'DTOServiceConfigurationUpdateRequest@gdpr'
+    name: 'DTOServiceConfigurationUpdateRequest'
+    fields:
+      'Services':
+        type: '[]*DTOServiceConfigurationDTO'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_configuration_update_request.go'
+
+  'DTOServicesConfigurationResponse@gdpr':
+    id: 'DTOServicesConfigurationResponse@gdpr'
+    name: 'DTOServicesConfigurationResponse'
+    fields:
+      'Services':
+        type: '[]*DTOServiceConfigurationDTO'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_services_configuration_response.go'
+
+  'DTOUserPlatformAccountClosureHistoriesResponse@gdpr':
+    id: 'DTOUserPlatformAccountClosureHistoriesResponse@gdpr'
+    name: 'DTOUserPlatformAccountClosureHistoriesResponse'
+    fields:
+      'Data':
+        type: '[]*DTOUserPlatformAccountClosureHistory'
+        required: true
+      'Pagination':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_user_platform_account_closure_histories_response.go'
+
+  'DTOUserPlatformAccountClosureHistory@gdpr':
+    id: 'DTOUserPlatformAccountClosureHistory@gdpr'
+    name: 'DTOUserPlatformAccountClosureHistory'
+    fields:
+      'ClosedDate':
+        type: '*int64'
+        required: true
+      'Environment':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Platform':
+        type: '*string'
+        required: true
+      'PlatformUserID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_user_platform_account_closure_history.go'
+
+  'DTOXboxBPCertValidationRequest@gdpr':
+    id: 'DTOXboxBPCertValidationRequest@gdpr'
+    name: 'DTOXboxBPCertValidationRequest'
+    fields:
+      'BpCert':
+        type: '*string'
+        required: true
+      'Password':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_xbox_b_p_cert_validation_request.go'
+
+  'DTOXboxBPCertValidationResponse@gdpr':
+    id: 'DTOXboxBPCertValidationResponse@gdpr'
+    name: 'DTOXboxBPCertValidationResponse'
+    fields:
+      'ExpirationDate':
+        type: '*int64'
+        required: true
+      'Expired':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_xbox_b_p_cert_validation_response.go'
+
+  'ModelsDataRetrievalResponse@gdpr':
+    id: 'ModelsDataRetrievalResponse@gdpr'
+    name: 'ModelsDataRetrievalResponse'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_data_retrieval_response.go'
+
+  'ModelsDeletionData@gdpr':
+    id: 'ModelsDeletionData@gdpr'
+    name: 'ModelsDeletionData'
+    fields:
+      'DisplayName':
+        type: '*string'
+        required: true
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UniqueDisplayName':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_deletion_data.go'
+
+  'ModelsDeletionStatus@gdpr':
+    id: 'ModelsDeletionStatus@gdpr'
+    name: 'ModelsDeletionStatus'
+    fields:
+      'DeletionDate':
+        type: '*string'
+        required: true
+      'DeletionStatus':
+        type: '*bool'
+        required: true
+      'DisplayName':
+        type: '*string'
+        required: true
+      'ExecutionDate':
+        type: '*strfmt.DateTime'
+        required: false
+      'Status':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_deletion_status.go'
+
+  'ModelsListDeletionDataResponse@gdpr':
+    id: 'ModelsListDeletionDataResponse@gdpr'
+    name: 'ModelsListDeletionDataResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsDeletionData'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_list_deletion_data_response.go'
+
+  'ModelsListPersonalDataResponse@gdpr':
+    id: 'ModelsListPersonalDataResponse@gdpr'
+    name: 'ModelsListPersonalDataResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsPersonalData'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_list_personal_data_response.go'
+
+  'ModelsPagination@gdpr':
+    id: 'ModelsPagination@gdpr'
+    name: 'ModelsPagination'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_pagination.go'
+
+  'ModelsPersonalData@gdpr':
+    id: 'ModelsPersonalData@gdpr'
+    name: 'ModelsPersonalData'
+    fields:
+      'DataExpirationDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'DisplayName':
+        type: '*string'
+        required: true
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'ServiceErrors':
+        type: 'map[string]string'
+        required: true
+      'ServiceStatuses':
+        type: 'map[string]string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_personal_data.go'
+
+  'ModelsRequestDeleteResponse@gdpr':
+    id: 'ModelsRequestDeleteResponse@gdpr'
+    name: 'ModelsRequestDeleteResponse'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_request_delete_response.go'
+
+  'ModelsS2SDataRetrievalResponse@gdpr':
+    id: 'ModelsS2SDataRetrievalResponse@gdpr'
+    name: 'ModelsS2SDataRetrievalResponse'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'RequestID':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_data_retrieval_response.go'
+
+  'ModelsS2SRequestDeleteResponse@gdpr':
+    id: 'ModelsS2SRequestDeleteResponse@gdpr'
+    name: 'ModelsS2SRequestDeleteResponse'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_request_delete_response.go'
+
+  'ModelsS2SUserDataURL@gdpr':
+    id: 'ModelsS2SUserDataURL@gdpr'
+    name: 'ModelsS2SUserDataURL'
+    fields:
+      'URL':
+        type: '*string'
+        required: true
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_user_data_url.go'
+
+  'ModelsUserDataURL@gdpr':
+    id: 'ModelsUserDataURL@gdpr'
+    name: 'ModelsUserDataURL'
+    fields:
+      'URL':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_data_url.go'
+
+  'ModelsUserPersonalData@gdpr':
+    id: 'ModelsUserPersonalData@gdpr'
+    name: 'ModelsUserPersonalData'
+    fields:
+      'DataExpirationDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'RequestDate':
+        type: 'strfmt.DateTime'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_personal_data.go'
+
+  'ModelsUserPersonalDataResponse@gdpr':
+    id: 'ModelsUserPersonalDataResponse@gdpr'
+    name: 'ModelsUserPersonalDataResponse'
+    fields:
+      'Data':
+        type: '[]*ModelsUserPersonalData'
+        required: true
+      'Paging':
+        type: '*ModelsPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_personal_data_response.go'
+
+  'ResponseError@gdpr':
+    id: 'ResponseError@gdpr'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'MessageVariables':
+        type: 'map[string]string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/response_error.go'
+
+  # endregion models
+
+functions:
+
+  'AdminCancelUserAccountDeletionRequestShort@gdpr':
+    id: 'AdminCancelUserAccountDeletionRequestShort@gdpr'
+    name: 'AdminCancelUserAccountDeletionRequestShort'
+    description: |-
+      Cancel user's account deletion request
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.AdminCancelUserAccountDeletionRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.AdminCancelUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.AdminCancelUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'user'
+
+  'AdminCancelUserPersonalDataRequestShort@gdpr':
+    id: 'AdminCancelUserPersonalDataRequestShort@gdpr'
+    name: 'AdminCancelUserPersonalDataRequestShort'
+    description: |-
+      Cancel user's personal data requests
+      Scope: account
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.AdminCancelUserPersonalDataRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.AdminCancelUserPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalService.AdminCancelUserPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'AdminDeletePlatformAccountClosureClientShort@gdpr':
+    id: 'AdminDeletePlatformAccountClosureClientShort@gdpr'
+    name: 'AdminDeletePlatformAccountClosureClientShort'
+    description: |-
+      Delete platform account closure client.
+      The namespace should be **publisher or studio namespace**
+      -------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminDeletePlatformAccountClosureClientParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminDeletePlatformAccountClosureClientParams{ ... }
+      res, err := platformAccountClosureClientService.AdminDeletePlatformAccountClosureClientShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'delete'
+      - 'platform'
+
+  'AdminGeneratePersonalDataURLShort@gdpr':
+    id: 'AdminGeneratePersonalDataURLShort@gdpr'
+    name: 'AdminGeneratePersonalDataURLShort'
+    description: |-
+      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
+
+
+
+
+      If admin request data for themselves, password is need to be set
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.AdminGeneratePersonalDataURLParams'
+        required: true
+    return_type: '(*data_retrieval.AdminGeneratePersonalDataURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.AdminGeneratePersonalDataURLParams{ ... }
+      res, err := dataRetrievalService.AdminGeneratePersonalDataURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 'url'
+
+  'AdminGetListDeletionDataRequestShort@gdpr':
+    id: 'AdminGetListDeletionDataRequestShort@gdpr'
+    name: 'AdminGetListDeletionDataRequestShort'
+    description: |-
+      Retrieve all user's account deletion requests in specified date
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.AdminGetListDeletionDataRequestParams'
+        required: true
+    return_type: '(*data_deletion.AdminGetListDeletionDataRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.AdminGetListDeletionDataRequestParams{ ... }
+      res, err := dataDeletionService.AdminGetListDeletionDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'list'
+      - 'request'
+
+  'AdminGetListPersonalDataRequestShort@gdpr':
+    id: 'AdminGetListPersonalDataRequestShort@gdpr'
+    name: 'AdminGetListPersonalDataRequestShort'
+    description: |-
+      Get list personal data requests
+      Scope: account
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.AdminGetListPersonalDataRequestParams'
+        required: true
+    return_type: '(*data_retrieval.AdminGetListPersonalDataRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.AdminGetListPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalService.AdminGetListPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+
+  'AdminGetPlatformAccountClosureClientShort@gdpr':
+    id: 'AdminGetPlatformAccountClosureClientShort@gdpr'
+    name: 'AdminGetPlatformAccountClosureClientShort'
+    description: |-
+      Get platform account closure config.
+      The namespace should be **publisher or studio namespace**
+      ----------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminGetPlatformAccountClosureClientParams'
+        required: true
+    return_type: '(*platform_account_closure_client.AdminGetPlatformAccountClosureClientResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminGetPlatformAccountClosureClientParams{ ... }
+      res, err := platformAccountClosureClientService.AdminGetPlatformAccountClosureClientShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureClientsShort@gdpr':
+    id: 'AdminGetPlatformAccountClosureClientsShort@gdpr'
+    name: 'AdminGetPlatformAccountClosureClientsShort'
+    description: |-
+      Get platform account closure configs.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminGetPlatformAccountClosureClientsParams'
+        required: true
+    return_type: '(*platform_account_closure_client.AdminGetPlatformAccountClosureClientsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminGetPlatformAccountClosureClientsParams{ ... }
+      res, err := platformAccountClosureClientService.AdminGetPlatformAccountClosureClientsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'clients'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureServicesConfigurationShort@gdpr':
+    id: 'AdminGetPlatformAccountClosureServicesConfigurationShort@gdpr'
+    name: 'AdminGetPlatformAccountClosureServicesConfigurationShort'
+    description: |-
+      Get registered platform account closure services configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminGetPlatformAccountClosureServicesConfigurationParams'
+        required: true
+    return_type: '(*configuration.AdminGetPlatformAccountClosureServicesConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminGetPlatformAccountClosureServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminGetPlatformAccountClosureServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'get'
+      - 'platform'
+      - 'services'
+
+  'AdminGetServicesConfigurationShort@gdpr':
+    id: 'AdminGetServicesConfigurationShort@gdpr'
+    name: 'AdminGetServicesConfigurationShort'
+    description: |-
+      Get Registered Services Configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminGetServicesConfigurationParams'
+        required: true
+    return_type: '(*configuration.AdminGetServicesConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminGetServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminGetServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'services'
+
+  'AdminGetUserAccountDeletionRequestShort@gdpr':
+    id: 'AdminGetUserAccountDeletionRequestShort@gdpr'
+    name: 'AdminGetUserAccountDeletionRequestShort'
+    description: |-
+      Retrieve specific user's account deletion request
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.AdminGetUserAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion.AdminGetUserAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.AdminGetUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.AdminGetUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'request'
+      - 'user'
+
+  'AdminGetUserPersonalDataRequestsShort@gdpr':
+    id: 'AdminGetUserPersonalDataRequestsShort@gdpr'
+    name: 'AdminGetUserPersonalDataRequestsShort'
+    description: |-
+      Get user's personal data requests
+      Scope: account
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.AdminGetUserPersonalDataRequestsParams'
+        required: true
+    return_type: '(*data_retrieval.AdminGetUserPersonalDataRequestsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.AdminGetUserPersonalDataRequestsParams{ ... }
+      res, err := dataRetrievalService.AdminGetUserPersonalDataRequestsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'AdminGetUserPlatformAccountClosureHistoriesShort@gdpr':
+    id: 'AdminGetUserPlatformAccountClosureHistoriesShort@gdpr'
+    name: 'AdminGetUserPlatformAccountClosureHistoriesShort'
+    description: |-
+      Get user's platform account closure histories.
+      Scope: account
+
+      ------
+      Supported platforms:
+      - psn
+      - steamnetwork
+      - xbox
+    struct: 'PlatformAccountClosureHistoryService'
+    parameters:
+      params:
+        type: '*platform_account_closure_history.AdminGetUserPlatformAccountClosureHistoriesParams'
+        required: true
+    return_type: '(*platform_account_closure_history.AdminGetUserPlatformAccountClosureHistoriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_history'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureHistory.go'
+    example: |-
+      platformAccountClosureHistoryService := gdpr.PlatformAccountClosureHistoryService{ ... }
+      params := platform_account_closure_history.AdminGetUserPlatformAccountClosureHistoriesParams{ ... }
+      res, err := platformAccountClosureHistoryService.AdminGetUserPlatformAccountClosureHistoriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'get'
+      - 'histories'
+      - 'history'
+      - 'platform'
+      - 'user'
+
+  'AdminMockPlatformAccountClosureDataShort@gdpr':
+    id: 'AdminMockPlatformAccountClosureDataShort@gdpr'
+    name: 'AdminMockPlatformAccountClosureDataShort'
+    description: |-
+      Mock platform account closure data.
+      -----
+      **This is only for testing**
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminMockPlatformAccountClosureDataParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminMockPlatformAccountClosureDataParams{ ... }
+      res, err := platformAccountClosureClientService.AdminMockPlatformAccountClosureDataShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'data'
+      - 'mock'
+      - 'platform'
+
+  'AdminRequestDataRetrievalShort@gdpr':
+    id: 'AdminRequestDataRetrievalShort@gdpr'
+    name: 'AdminRequestDataRetrievalShort'
+    description: |-
+      Submit user personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.AdminRequestDataRetrievalParams'
+        required: true
+    return_type: '(*data_retrieval.AdminRequestDataRetrievalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.AdminRequestDataRetrievalParams{ ... }
+      res, err := dataRetrievalService.AdminRequestDataRetrievalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'request'
+      - 'retrieval'
+
+  'AdminResetPlatformAccountClosureServicesConfigurationShort@gdpr':
+    id: 'AdminResetPlatformAccountClosureServicesConfigurationShort@gdpr'
+    name: 'AdminResetPlatformAccountClosureServicesConfigurationShort'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset registered platform account closure services configuration to use the default configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminResetPlatformAccountClosureServicesConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminResetPlatformAccountClosureServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminResetPlatformAccountClosureServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'reset'
+      - 'services'
+
+  'AdminResetServicesConfigurationShort@gdpr':
+    id: 'AdminResetServicesConfigurationShort@gdpr'
+    name: 'AdminResetServicesConfigurationShort'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset Registered Services Configuration to use the default configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminResetServicesConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminResetServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminResetServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'reset'
+      - 'services'
+
+  'AdminSubmitUserAccountDeletionRequestShort@gdpr':
+    id: 'AdminSubmitUserAccountDeletionRequestShort@gdpr'
+    name: 'AdminSubmitUserAccountDeletionRequestShort'
+    description: |-
+      Submit user's account deletion request.
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.AdminSubmitUserAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion.AdminSubmitUserAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.AdminSubmitUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.AdminSubmitUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'AdminUpdatePlatformAccountClosureClientShort@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureClientShort@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureClientShort'
+    description: |-
+      Update platform account closure client.
+      The namespace should be the **publisher or studio namespace**.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminUpdatePlatformAccountClosureClientParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminUpdatePlatformAccountClosureClientParams{ ... }
+      res, err := platformAccountClosureClientService.AdminUpdatePlatformAccountClosureClientShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'platform'
+      - 'update'
+
+  'AdminUpdatePlatformAccountClosureServicesConfigurationShort@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationShort@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureServicesConfigurationShort'
+    description: |-
+      Update registered platform account closure services configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminUpdatePlatformAccountClosureServicesConfigurationParams'
+        required: true
+    return_type: '(*configuration.AdminUpdatePlatformAccountClosureServicesConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminUpdatePlatformAccountClosureServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminUpdatePlatformAccountClosureServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'services'
+      - 'update'
+
+  'AdminUpdateServicesConfigurationShort@gdpr':
+    id: 'AdminUpdateServicesConfigurationShort@gdpr'
+    name: 'AdminUpdateServicesConfigurationShort'
+    description: |-
+      Update Registered Services Configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.AdminUpdateServicesConfigurationParams'
+        required: true
+    return_type: '(*configuration.AdminUpdateServicesConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.AdminUpdateServicesConfigurationParams{ ... }
+      res, err := configurationService.AdminUpdateServicesConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'services'
+      - 'update'
+
+  'AdminValidateXboxBPCertFileShort@gdpr':
+    id: 'AdminValidateXboxBPCertFileShort@gdpr'
+    name: 'AdminValidateXboxBPCertFileShort'
+    description: |-
+      Check xbox BP cert file whether it's expired and return expiration date
+    struct: 'PlatformAccountClosureClientService'
+    parameters:
+      params:
+        type: '*platform_account_closure_client.AdminValidateXboxBPCertFileParams'
+        required: true
+    return_type: '(*platform_account_closure_client.AdminValidateXboxBPCertFileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/platform_account_closure_client'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/platformAccountClosureClient.go'
+    example: |-
+      platformAccountClosureClientService := gdpr.PlatformAccountClosureClientService{ ... }
+      params := platform_account_closure_client.AdminValidateXboxBPCertFileParams{ ... }
+      res, err := platformAccountClosureClientService.AdminValidateXboxBPCertFileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'bp'
+      - 'cert'
+      - 'client'
+      - 'closure'
+      - 'file'
+      - 'platform'
+      - 'validate'
+      - 'xbox'
+
+  'DeleteAdminEmailConfigurationShort@gdpr':
+    id: 'DeleteAdminEmailConfigurationShort@gdpr'
+    name: 'DeleteAdminEmailConfigurationShort'
+    description: |-
+      Delete a list of admin email addresses to stop receiving personal data request notification.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.DeleteAdminEmailConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.DeleteAdminEmailConfigurationParams{ ... }
+      res, err := configurationService.DeleteAdminEmailConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'email'
+
+  'GetAdminEmailConfigurationShort@gdpr':
+    id: 'GetAdminEmailConfigurationShort@gdpr'
+    name: 'GetAdminEmailConfigurationShort'
+    description: |-
+      Get list of admin email address configuration.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.GetAdminEmailConfigurationParams'
+        required: true
+    return_type: '(*configuration.GetAdminEmailConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.GetAdminEmailConfigurationParams{ ... }
+      res, err := configurationService.GetAdminEmailConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'get'
+
+  'PublicCancelMyAccountDeletionRequestShort@gdpr':
+    id: 'PublicCancelMyAccountDeletionRequestShort@gdpr'
+    name: 'PublicCancelMyAccountDeletionRequestShort'
+    description: |-
+      Cancel my account deletion request
+      Requires valid user access token
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicCancelMyAccountDeletionRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicCancelMyAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.PublicCancelMyAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+
+  'PublicCancelUserAccountDeletionRequestShort@gdpr':
+    id: 'PublicCancelUserAccountDeletionRequestShort@gdpr'
+    name: 'PublicCancelUserAccountDeletionRequestShort'
+    description: |-
+      Cancel user's account deletion request
+      Requires valid user access token
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicCancelUserAccountDeletionRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicCancelUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.PublicCancelUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'user'
+
+  'PublicCancelUserPersonalDataRequestShort@gdpr':
+    id: 'PublicCancelUserPersonalDataRequestShort@gdpr'
+    name: 'PublicCancelUserPersonalDataRequestShort'
+    description: |-
+      Cancel user's personal data requests
+      Requires valid user access token
+      Scope: account
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.PublicCancelUserPersonalDataRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.PublicCancelUserPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalService.PublicCancelUserPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'PublicGeneratePersonalDataURLShort@gdpr':
+    id: 'PublicGeneratePersonalDataURLShort@gdpr'
+    name: 'PublicGeneratePersonalDataURLShort'
+    description: |-
+      Generate personal data download url
+      Requires valid user access token
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.PublicGeneratePersonalDataURLParams'
+        required: true
+    return_type: '(*data_retrieval.PublicGeneratePersonalDataURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.PublicGeneratePersonalDataURLParams{ ... }
+      res, err := dataRetrievalService.PublicGeneratePersonalDataURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
+  'PublicGetMyAccountDeletionStatusShort@gdpr':
+    id: 'PublicGetMyAccountDeletionStatusShort@gdpr'
+    name: 'PublicGetMyAccountDeletionStatusShort'
+    description: |-
+      Retrieve my account deletion status
+      Requires valid user access token
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicGetMyAccountDeletionStatusParams'
+        required: true
+    return_type: '(*data_deletion.PublicGetMyAccountDeletionStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicGetMyAccountDeletionStatusParams{ ... }
+      res, err := dataDeletionService.PublicGetMyAccountDeletionStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'my'
+      - 'public'
+      - 'status'
+
+  'PublicGetUserAccountDeletionStatusShort@gdpr':
+    id: 'PublicGetUserAccountDeletionStatusShort@gdpr'
+    name: 'PublicGetUserAccountDeletionStatusShort'
+    description: |-
+      Retrieve specific user's account deletion status
+      Requires valid user access token
+      Scope: account
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicGetUserAccountDeletionStatusParams'
+        required: true
+    return_type: '(*data_deletion.PublicGetUserAccountDeletionStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicGetUserAccountDeletionStatusParams{ ... }
+      res, err := dataDeletionService.PublicGetUserAccountDeletionStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'public'
+      - 'status'
+      - 'user'
+
+  'PublicGetUserPersonalDataRequestsShort@gdpr':
+    id: 'PublicGetUserPersonalDataRequestsShort@gdpr'
+    name: 'PublicGetUserPersonalDataRequestsShort'
+    description: |-
+      Get user's personal data requests
+      Requires valid user access token
+      Scope: account
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.PublicGetUserPersonalDataRequestsParams'
+        required: true
+    return_type: '(*data_retrieval.PublicGetUserPersonalDataRequestsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.PublicGetUserPersonalDataRequestsParams{ ... }
+      res, err := dataRetrievalService.PublicGetUserPersonalDataRequestsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'PublicRequestDataRetrievalShort@gdpr':
+    id: 'PublicRequestDataRetrievalShort@gdpr'
+    name: 'PublicRequestDataRetrievalShort'
+    description: |-
+      Submit personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataRetrievalService'
+    parameters:
+      params:
+        type: '*data_retrieval.PublicRequestDataRetrievalParams'
+        required: true
+    return_type: '(*data_retrieval.PublicRequestDataRetrievalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrieval.go'
+    example: |-
+      dataRetrievalService := gdpr.DataRetrievalService{ ... }
+      params := data_retrieval.PublicRequestDataRetrievalParams{ ... }
+      res, err := dataRetrievalService.PublicRequestDataRetrievalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+
+  'PublicSubmitMyAccountDeletionRequestShort@gdpr':
+    id: 'PublicSubmitMyAccountDeletionRequestShort@gdpr'
+    name: 'PublicSubmitMyAccountDeletionRequestShort'
+    description: |-
+      Submit my account deletion requests.
+      Requires valid user access token
+      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicSubmitMyAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion.PublicSubmitMyAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicSubmitMyAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.PublicSubmitMyAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitUserAccountDeletionRequestShort@gdpr':
+    id: 'PublicSubmitUserAccountDeletionRequestShort@gdpr'
+    name: 'PublicSubmitUserAccountDeletionRequestShort'
+    description: |-
+      Submit user's account deletion request.
+      Requires valid user access token and password
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataDeletionService'
+    parameters:
+      params:
+        type: '*data_deletion.PublicSubmitUserAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion.PublicSubmitUserAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+    example: |-
+      dataDeletionService := gdpr.DataDeletionService{ ... }
+      params := data_deletion.PublicSubmitUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionService.PublicSubmitUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'S2SGeneratePersonalDataURLShort@gdpr':
+    id: 'S2SGeneratePersonalDataURLShort@gdpr'
+    name: 'S2SGeneratePersonalDataURLShort'
+    description: |-
+      Scope: account
+
+      Generate personal data download url.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+    struct: 'DataRetrievalS2SService'
+    parameters:
+      params:
+        type: '*data_retrieval_s2_s.S2SGeneratePersonalDataURLParams'
+        required: true
+    return_type: '(*data_retrieval_s2_s.S2SGeneratePersonalDataURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalS2S.go'
+    example: |-
+      dataRetrievalS2SService := gdpr.DataRetrievalS2SService{ ... }
+      params := data_retrieval_s2_s.S2SGeneratePersonalDataURLParams{ ... }
+      res, err := dataRetrievalS2SService.S2SGeneratePersonalDataURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 's2s'
+      - 'url'
+
+  'S2SGetDataRequestByRequestIDShort@gdpr':
+    id: 'S2SGetDataRequestByRequestIDShort@gdpr'
+    name: 'S2SGetDataRequestByRequestIDShort'
+    description: |-
+      Scope: account
+
+      Get Personal Data Request by Request Id.
+      If the request has been completed, it will return a download url for the data package.
+
+      ---
+      ## This API for S2S integration purpose only
+    struct: 'DataRetrievalS2SService'
+    parameters:
+      params:
+        type: '*data_retrieval_s2_s.S2SGetDataRequestByRequestIDParams'
+        required: true
+    return_type: '(*data_retrieval_s2_s.S2SGetDataRequestByRequestIDResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalS2S.go'
+    example: |-
+      dataRetrievalS2SService := gdpr.DataRetrievalS2SService{ ... }
+      params := data_retrieval_s2_s.S2SGetDataRequestByRequestIDParams{ ... }
+      res, err := dataRetrievalS2SService.S2SGetDataRequestByRequestIDShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'by'
+      - 'data'
+      - 'get'
+      - 'id'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SGetListFinishedAccountDeletionRequestShort@gdpr':
+    id: 'S2SGetListFinishedAccountDeletionRequestShort@gdpr'
+    name: 'S2SGetListFinishedAccountDeletionRequestShort'
+    description: |-
+      Scope: account
+
+      Get list of finished account deletion requests based on the finished time period.
+      Unfinished deletion requests will not appear here, i.e. have Status **Request**, **Pending** or **In-Progress**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    struct: 'DataDeletionS2SService'
+    parameters:
+      params:
+        type: '*data_deletion_s2_s.S2SGetListFinishedAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion_s2_s.S2SGetListFinishedAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionS2S.go'
+    example: |-
+      dataDeletionS2SService := gdpr.DataDeletionS2SService{ ... }
+      params := data_deletion_s2_s.S2SGetListFinishedAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionS2SService.S2SGetListFinishedAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'request'
+      - 's2s'
+
+  'S2SGetListFinishedPersonalDataRequestShort@gdpr':
+    id: 'S2SGetListFinishedPersonalDataRequestShort@gdpr'
+    name: 'S2SGetListFinishedPersonalDataRequestShort'
+    description: |-
+      Scope: account
+
+      Get list of finished personal data requests based on the finished time period.
+      Unfinished personal data requests will not appear here, i.e. have Status **Pending**, **In-Progress** or **Canceled**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    struct: 'DataRetrievalS2SService'
+    parameters:
+      params:
+        type: '*data_retrieval_s2_s.S2SGetListFinishedPersonalDataRequestParams'
+        required: true
+    return_type: '(*data_retrieval_s2_s.S2SGetListFinishedPersonalDataRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalS2S.go'
+    example: |-
+      dataRetrievalS2SService := gdpr.DataRetrievalS2SService{ ... }
+      params := data_retrieval_s2_s.S2SGetListFinishedPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalS2SService.S2SGetListFinishedPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SRequestDataRetrievalShort@gdpr':
+    id: 'S2SRequestDataRetrievalShort@gdpr'
+    name: 'S2SRequestDataRetrievalShort'
+    description: |-
+      Scope: account
+
+      Submit user personal data retrieval request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+    struct: 'DataRetrievalS2SService'
+    parameters:
+      params:
+        type: '*data_retrieval_s2_s.S2SRequestDataRetrievalParams'
+        required: true
+    return_type: '(*data_retrieval_s2_s.S2SRequestDataRetrievalResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalS2S.go'
+    example: |-
+      dataRetrievalS2SService := gdpr.DataRetrievalS2SService{ ... }
+      params := data_retrieval_s2_s.S2SRequestDataRetrievalParams{ ... }
+      res, err := dataRetrievalS2SService.S2SRequestDataRetrievalShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SSubmitUserAccountDeletionRequestShort@gdpr':
+    id: 'S2SSubmitUserAccountDeletionRequestShort@gdpr'
+    name: 'S2SSubmitUserAccountDeletionRequestShort'
+    description: |-
+      Scope: account
+
+      Submit user's account deletion request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+      2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
+    struct: 'DataDeletionS2SService'
+    parameters:
+      params:
+        type: '*data_deletion_s2_s.S2SSubmitUserAccountDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion_s2_s.S2SSubmitUserAccountDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionS2S.go'
+    example: |-
+      dataDeletionS2SService := gdpr.DataDeletionS2SService{ ... }
+      params := data_deletion_s2_s.S2SSubmitUserAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionS2SService.S2SSubmitUserAccountDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 's2s'
+      - 'submit'
+      - 'user'
+
+  'SaveAdminEmailConfigurationShort@gdpr':
+    id: 'SaveAdminEmailConfigurationShort@gdpr'
+    name: 'SaveAdminEmailConfigurationShort'
+    description: |-
+      Add admin email address for receiving personal data request notification.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.SaveAdminEmailConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.SaveAdminEmailConfigurationParams{ ... }
+      res, err := configurationService.SaveAdminEmailConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'save'
+
+  'UpdateAdminEmailConfigurationShort@gdpr':
+    id: 'UpdateAdminEmailConfigurationShort@gdpr'
+    name: 'UpdateAdminEmailConfigurationShort'
+    description: |-
+      Update admin email address for receiving personal data request notification.
+      Scope: account
+    struct: 'ConfigurationService'
+    parameters:
+      params:
+        type: '*configuration.UpdateAdminEmailConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/configuration'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/configuration.go'
+    example: |-
+      configurationService := gdpr.ConfigurationService{ ... }
+      params := configuration.UpdateAdminEmailConfigurationParams{ ... }
+      res, err := configurationService.UpdateAdminEmailConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'update'

@@ -1,0 +1,3913 @@
+structs:
+  'JusticeInventoryService@inventory':
+    id: 'JusticeInventoryService@inventory'
+    name: 'JusticeInventoryService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/justice_inventory_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/inventoryclientfactory.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo)
+
+  # region wrappers
+
+  'AdminChainingOperationsService@inventory':
+    id: 'AdminChainingOperationsService@inventory'
+    name: 'AdminChainingOperationsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminChainingOperations.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminChainingOperationsService := AdminChainingOperationsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminIntegrationConfigurationsService@inventory':
+    id: 'AdminIntegrationConfigurationsService@inventory'
+    name: 'AdminIntegrationConfigurationsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminIntegrationConfigurations.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminIntegrationConfigurationsService := AdminIntegrationConfigurationsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminInventoriesService@inventory':
+    id: 'AdminInventoriesService@inventory'
+    name: 'AdminInventoriesService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminInventoriesService := AdminInventoriesService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminInventoryConfigurationsService@inventory':
+    id: 'AdminInventoryConfigurationsService@inventory'
+    name: 'AdminInventoryConfigurationsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminInventoryConfigurationsService := AdminInventoryConfigurationsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminItemTypesService@inventory':
+    id: 'AdminItemTypesService@inventory'
+    name: 'AdminItemTypesService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItemTypes.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminItemTypesService := AdminItemTypesService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminItemsService@inventory':
+    id: 'AdminItemsService@inventory'
+    name: 'AdminItemsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminItemsService := AdminItemsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminTagsService@inventory':
+    id: 'AdminTagsService@inventory'
+    name: 'AdminTagsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminTags.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      adminTagsService := AdminTagsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicInventoriesService@inventory':
+    id: 'PublicInventoriesService@inventory'
+    name: 'PublicInventoriesService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicInventories.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      publicInventoriesService := PublicInventoriesService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicInventoryConfigurationsService@inventory':
+    id: 'PublicInventoryConfigurationsService@inventory'
+    name: 'PublicInventoryConfigurationsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicInventoryConfigurations.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      publicInventoryConfigurationsService := PublicInventoryConfigurationsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicItemTypesService@inventory':
+    id: 'PublicItemTypesService@inventory'
+    name: 'PublicItemTypesService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItemTypes.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      publicItemTypesService := PublicItemTypesService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicItemsService@inventory':
+    id: 'PublicItemsService@inventory'
+    name: 'PublicItemsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      publicItemsService := PublicItemsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicTagsService@inventory':
+    id: 'PublicTagsService@inventory'
+    name: 'PublicTagsService'
+    fields:
+      Client:
+        type: '*inventoryclient.JusticeInventoryService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicTags.go'
+    example: |-
+      inventoryClient := factory.NewInventoryClient(configRepo) // re-use if it exists already
+      publicTagsService := PublicTagsService{
+          Client:           inventoryClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminBulkRemoveItemsParams@inventory':
+    id: 'AdminBulkRemoveItemsParams@inventory'
+    name: 'AdminBulkRemoveItemsParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsRemoveInventoryItemReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_bulk_remove_items_parameters.go'
+
+  'AdminBulkSaveItemParams@inventory':
+    id: 'AdminBulkSaveItemParams@inventory'
+    name: 'AdminBulkSaveItemParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsSaveItemReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_bulk_save_item_parameters.go'
+
+  'AdminBulkSaveItemToInventoryParams@inventory':
+    id: 'AdminBulkSaveItemToInventoryParams@inventory'
+    name: 'AdminBulkSaveItemToInventoryParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsSaveItemToInventoryReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          inventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_bulk_save_item_to_inventory_parameters.go'
+
+  'AdminBulkUpdateMyItemsParams@inventory':
+    id: 'AdminBulkUpdateMyItemsParams@inventory'
+    name: 'AdminBulkUpdateMyItemsParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsAdminUpdateItemReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_bulk_update_my_items_parameters.go'
+
+  'AdminConsumeUserItemParams@inventory':
+    id: 'AdminConsumeUserItemParams@inventory'
+    name: 'AdminConsumeUserItemParams'
+    fields:
+      'Body':
+        type: '*ApimodelsConsumeItemReq'
+        required: true
+      'DateRangeValidation':
+        type: 'string'
+        required: false
+        description: |-
+          default is false
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_consume_user_item_parameters.go'
+
+  'AdminCreateChainingOperationsParams@inventory':
+    id: 'AdminCreateChainingOperationsParams@inventory'
+    name: 'AdminCreateChainingOperationsParams'
+    fields:
+      'Body':
+        type: '*ApimodelsChainingOperationReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_chaining_operations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_chaining_operations/admin_create_chaining_operations_parameters.go'
+
+  'AdminCreateIntegrationConfigurationParams@inventory':
+    id: 'AdminCreateIntegrationConfigurationParams@inventory'
+    name: 'AdminCreateIntegrationConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsCreateIntegrationConfigurationReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_integration_configurations/admin_create_integration_configuration_parameters.go'
+
+  'AdminCreateInventoryParams@inventory':
+    id: 'AdminCreateInventoryParams@inventory'
+    name: 'AdminCreateInventoryParams'
+    fields:
+      'Body':
+        type: '*ApimodelsCreateInventoryReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_create_inventory_parameters.go'
+
+  'AdminCreateInventoryConfigurationParams@inventory':
+    id: 'AdminCreateInventoryConfigurationParams@inventory'
+    name: 'AdminCreateInventoryConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsCreateInventoryConfigurationReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations/admin_create_inventory_configuration_parameters.go'
+
+  'AdminCreateItemTypeParams@inventory':
+    id: 'AdminCreateItemTypeParams@inventory'
+    name: 'AdminCreateItemTypeParams'
+    fields:
+      'Body':
+        type: '*ApimodelsCreateItemTypeReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_item_types/admin_create_item_type_parameters.go'
+
+  'AdminCreateTagParams@inventory':
+    id: 'AdminCreateTagParams@inventory'
+    name: 'AdminCreateTagParams'
+    fields:
+      'Body':
+        type: '*ApimodelsCreateTagReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_tags/admin_create_tag_parameters.go'
+
+  'AdminDeleteInventoryConfigurationParams@inventory':
+    id: 'AdminDeleteInventoryConfigurationParams@inventory'
+    name: 'AdminDeleteInventoryConfigurationParams'
+    fields:
+      'InventoryConfigurationID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations/admin_delete_inventory_configuration_parameters.go'
+
+  'AdminDeleteItemTypeParams@inventory':
+    id: 'AdminDeleteItemTypeParams@inventory'
+    name: 'AdminDeleteItemTypeParams'
+    fields:
+      'ItemTypeName':
+        type: '*string'
+        required: true
+        description: |-
+          ItemTypeName
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_item_types/admin_delete_item_type_parameters.go'
+
+  'AdminDeleteTagParams@inventory':
+    id: 'AdminDeleteTagParams@inventory'
+    name: 'AdminDeleteTagParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'TagName':
+        type: '*string'
+        required: true
+        description: |-
+          TagName
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_tags/admin_delete_tag_parameters.go'
+
+  'AdminGetInventoryParams@inventory':
+    id: 'AdminGetInventoryParams@inventory'
+    name: 'AdminGetInventoryParams'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_get_inventory_parameters.go'
+
+  'AdminGetInventoryConfigurationParams@inventory':
+    id: 'AdminGetInventoryConfigurationParams@inventory'
+    name: 'AdminGetInventoryConfigurationParams'
+    fields:
+      'InventoryConfigurationID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations/admin_get_inventory_configuration_parameters.go'
+
+  'AdminGetInventoryItemParams@inventory':
+    id: 'AdminGetInventoryItemParams@inventory'
+    name: 'AdminGetInventoryItemParams'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SlotID':
+        type: '*string'
+        required: true
+        description: |-
+          slotID
+      'SourceItemID':
+        type: '*string'
+        required: true
+        description: |-
+          sourceItemID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_get_inventory_item_parameters.go'
+
+  'AdminListIntegrationConfigurationsParams@inventory':
+    id: 'AdminListIntegrationConfigurationsParams@inventory'
+    name: 'AdminListIntegrationConfigurationsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_integration_configurations/admin_list_integration_configurations_parameters.go'
+
+  'AdminListInventoriesParams@inventory':
+    id: 'AdminListInventoriesParams@inventory'
+    name: 'AdminListInventoriesParams'
+    fields:
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'UserID':
+        type: 'string'
+        required: false
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_list_inventories_parameters.go'
+
+  'AdminListInventoryConfigurationsParams@inventory':
+    id: 'AdminListInventoryConfigurationsParams@inventory'
+    name: 'AdminListInventoryConfigurationsParams'
+    fields:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations/admin_list_inventory_configurations_parameters.go'
+
+  'AdminListItemsParams@inventory':
+    id: 'AdminListItemsParams@inventory'
+    name: 'AdminListItemsParams'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'SourceItemID':
+        type: 'string'
+        required: false
+        description: |-
+          SourceItemID
+      'Tags':
+        type: 'string'
+        required: false
+        description: |-
+          Tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_list_items_parameters.go'
+
+  'AdminListItemTypesParams@inventory':
+    id: 'AdminListItemTypesParams@inventory'
+    name: 'AdminListItemTypesParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_item_types/admin_list_item_types_parameters.go'
+
+  'AdminListTagsParams@inventory':
+    id: 'AdminListTagsParams@inventory'
+    name: 'AdminListTagsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'Owner':
+        type: 'string'
+        required: false
+        description: |-
+          supported parameter SERVER or CLIENT
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_tags/admin_list_tags_parameters.go'
+
+  'AdminPurchasableParams@inventory':
+    id: 'AdminPurchasableParams@inventory'
+    name: 'AdminPurchasableParams'
+    fields:
+      'Body':
+        type: '*ApimodelsPurchaseValidationReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_purchasable_parameters.go'
+
+  'AdminSaveItemParams@inventory':
+    id: 'AdminSaveItemParams@inventory'
+    name: 'AdminSaveItemParams'
+    fields:
+      'Body':
+        type: '*ApimodelsSaveItemReq'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_save_item_parameters.go'
+
+  'AdminSaveItemToInventoryParams@inventory':
+    id: 'AdminSaveItemToInventoryParams@inventory'
+    name: 'AdminSaveItemToInventoryParams'
+    fields:
+      'Body':
+        type: '*ApimodelsSaveItemToInventoryReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          inventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_save_item_to_inventory_parameters.go'
+
+  'AdminSyncUserEntitlementsParams@inventory':
+    id: 'AdminSyncUserEntitlementsParams@inventory'
+    name: 'AdminSyncUserEntitlementsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_items/admin_sync_user_entitlements_parameters.go'
+
+  'AdminUpdateIntegrationConfigurationParams@inventory':
+    id: 'AdminUpdateIntegrationConfigurationParams@inventory'
+    name: 'AdminUpdateIntegrationConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdateIntegrationConfigurationReq'
+        required: true
+      'IntegrationConfigurationID':
+        type: '*string'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_integration_configurations/admin_update_integration_configuration_parameters.go'
+
+  'AdminUpdateInventoryParams@inventory':
+    id: 'AdminUpdateInventoryParams@inventory'
+    name: 'AdminUpdateInventoryParams'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdateInventoryReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_update_inventory_parameters.go'
+
+  'AdminUpdateInventoryConfigurationParams@inventory':
+    id: 'AdminUpdateInventoryConfigurationParams@inventory'
+    name: 'AdminUpdateInventoryConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsInventoryConfigurationReq'
+        required: true
+      'InventoryConfigurationID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations/admin_update_inventory_configuration_parameters.go'
+
+  'AdminUpdateStatusIntegrationConfigurationParams@inventory':
+    id: 'AdminUpdateStatusIntegrationConfigurationParams@inventory'
+    name: 'AdminUpdateStatusIntegrationConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdateStatusIntegrationConfigurationReq'
+        required: true
+      'IntegrationConfigurationID':
+        type: '*string'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_integration_configurations/admin_update_status_integration_configuration_parameters.go'
+
+  'AdminUpdateUserInventoriesByInventoryCodeParams@inventory':
+    id: 'AdminUpdateUserInventoriesByInventoryCodeParams@inventory'
+    name: 'AdminUpdateUserInventoriesByInventoryCodeParams'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdateInventoryReq'
+        required: true
+      'InventoryConfigurationCode':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryConfigurationCode
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          UserID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/admin_update_user_inventories_by_inventory_code_parameters.go'
+
+  'DeleteInventoryParams@inventory':
+    id: 'DeleteInventoryParams@inventory'
+    name: 'DeleteInventoryParams'
+    fields:
+      'Body':
+        type: '*ApimodelsDeleteInventoryReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/admin_inventories/delete_inventory_parameters.go'
+
+  'PublicBulkRemoveMyItemsParams@inventory':
+    id: 'PublicBulkRemoveMyItemsParams@inventory'
+    name: 'PublicBulkRemoveMyItemsParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsRemoveInventoryItemReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_bulk_remove_my_items_parameters.go'
+
+  'PublicBulkUpdateMyItemsParams@inventory':
+    id: 'PublicBulkUpdateMyItemsParams@inventory'
+    name: 'PublicBulkUpdateMyItemsParams'
+    fields:
+      'Body':
+        type: '[]*ApimodelsUpdateItemReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_bulk_update_my_items_parameters.go'
+
+  'PublicConsumeMyItemParams@inventory':
+    id: 'PublicConsumeMyItemParams@inventory'
+    name: 'PublicConsumeMyItemParams'
+    fields:
+      'Body':
+        type: '*ApimodelsConsumeItemReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_consume_my_item_parameters.go'
+
+  'PublicGetItemParams@inventory':
+    id: 'PublicGetItemParams@inventory'
+    name: 'PublicGetItemParams'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'SlotID':
+        type: '*string'
+        required: true
+        description: |-
+          slotID
+      'SourceItemID':
+        type: '*string'
+        required: true
+        description: |-
+          sourceItemID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_get_item_parameters.go'
+
+  'PublicListInventoriesParams@inventory':
+    id: 'PublicListInventoriesParams@inventory'
+    name: 'PublicListInventoriesParams'
+    fields:
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_inventories'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_inventories/public_list_inventories_parameters.go'
+
+  'PublicListInventoryConfigurationsParams@inventory':
+    id: 'PublicListInventoryConfigurationsParams@inventory'
+    name: 'PublicListInventoryConfigurationsParams'
+    fields:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_inventory_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_inventory_configurations/public_list_inventory_configurations_parameters.go'
+
+  'PublicListItemsParams@inventory':
+    id: 'PublicListItemsParams@inventory'
+    name: 'PublicListItemsParams'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'SourceItemID':
+        type: 'string'
+        required: false
+        description: |-
+          SourceItemID
+      'Tags':
+        type: 'string'
+        required: false
+        description: |-
+          Tags
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_list_items_parameters.go'
+
+  'PublicListItemTypesParams@inventory':
+    id: 'PublicListItemTypesParams@inventory'
+    name: 'PublicListItemTypesParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_item_types'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_item_types/public_list_item_types_parameters.go'
+
+  'PublicListTagsParams@inventory':
+    id: 'PublicListTagsParams@inventory'
+    name: 'PublicListTagsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_tags'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_tags/public_list_tags_parameters.go'
+
+  'PublicMoveMyItemsParams@inventory':
+    id: 'PublicMoveMyItemsParams@inventory'
+    name: 'PublicMoveMyItemsParams'
+    fields:
+      'Body':
+        type: '*ApimodelsMoveItemsReq'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclient/public_items/public_move_my_items_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ApimodelsAdminUpdateItemReq@inventory':
+    id: 'ApimodelsAdminUpdateItemReq@inventory'
+    name: 'ApimodelsAdminUpdateItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'Type':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_admin_update_item_req.go'
+
+  'ApimodelsBulkSaveItemError@inventory':
+    id: 'ApimodelsBulkSaveItemError@inventory'
+    name: 'ApimodelsBulkSaveItemError'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_bulk_save_item_error.go'
+
+  'ApimodelsBulkSaveItemResp@inventory':
+    id: 'ApimodelsBulkSaveItemResp@inventory'
+    name: 'ApimodelsBulkSaveItemResp'
+    fields:
+      'ErrorDetails':
+        type: '*ApimodelsBulkSaveItemError'
+        required: false
+      'Item':
+        type: '*ApimodelsItemResp'
+        required: false
+      'Success':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_bulk_save_item_resp.go'
+
+  'ApimodelsChainingOperationReq@inventory':
+    id: 'ApimodelsChainingOperationReq@inventory'
+    name: 'ApimodelsChainingOperationReq'
+    fields:
+      'Message':
+        type: '*string'
+        required: true
+      'Operations':
+        type: '[]*ApimodelsOperation'
+        required: true
+      'RequestID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_chaining_operation_req.go'
+
+  'ApimodelsChainingOperationResp@inventory':
+    id: 'ApimodelsChainingOperationResp@inventory'
+    name: 'ApimodelsChainingOperationResp'
+    fields:
+      'ErrorDetails':
+        type: '*ApimodelsErrorResponse'
+        required: false
+      'Message':
+        type: '*string'
+        required: true
+      'Replayed':
+        type: 'bool'
+        required: false
+      'RequestID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_chaining_operation_resp.go'
+
+  'ApimodelsConsumeItem@inventory':
+    id: 'ApimodelsConsumeItem@inventory'
+    name: 'ApimodelsConsumeItem'
+    fields:
+      'DateRangeValidation':
+        type: 'bool'
+        required: false
+      'InventoryID':
+        type: '*string'
+        required: true
+      'Options':
+        type: '[]string'
+        required: false
+      'Qty':
+        type: '*int32'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_consume_item.go'
+
+  'ApimodelsConsumeItemReq@inventory':
+    id: 'ApimodelsConsumeItemReq@inventory'
+    name: 'ApimodelsConsumeItemReq'
+    fields:
+      'Options':
+        type: '[]string'
+        required: false
+        description: |-
+          options, it is only available when item type is OPTIONBOX and value should be item id.
+      'Qty':
+        type: '*int32'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_consume_item_req.go'
+
+  'ApimodelsCreateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsCreateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsCreateIntegrationConfigurationReq'
+    fields:
+      'MapItemType':
+        type: '[]string'
+        required: false
+      'ServiceName':
+        type: '*string'
+        required: true
+      'TargetInventoryCode':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_integration_configuration_req.go'
+
+  'ApimodelsCreateInventoryConfigurationReq@inventory':
+    id: 'ApimodelsCreateInventoryConfigurationReq@inventory'
+    name: 'ApimodelsCreateInventoryConfigurationReq'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'InitialMaxSlots':
+        type: '*int32'
+        required: true
+      'MaxInstancesPerUser':
+        type: '*int32'
+        required: true
+      'MaxUpgradeSlots':
+        type: '*int32'
+        required: true
+      'Name':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_inventory_configuration_req.go'
+
+  'ApimodelsCreateInventoryReq@inventory':
+    id: 'ApimodelsCreateInventoryReq@inventory'
+    name: 'ApimodelsCreateInventoryReq'
+    fields:
+      'InventoryConfigurationCode':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_inventory_req.go'
+
+  'ApimodelsCreateItem@inventory':
+    id: 'ApimodelsCreateItem@inventory'
+    name: 'ApimodelsCreateItem'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+      'InventoryID':
+        type: 'string'
+        required: false
+      'Qty':
+        type: '*int32'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SlotUsed':
+        type: '*int32'
+        required: true
+      'Source':
+        type: 'string'
+        required: false
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'ToSpecificInventory':
+        type: '*bool'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_item.go'
+
+  'ApimodelsCreateItemTypeReq@inventory':
+    id: 'ApimodelsCreateItemTypeReq@inventory'
+    name: 'ApimodelsCreateItemTypeReq'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_item_type_req.go'
+
+  'ApimodelsCreateItemTypeResp@inventory':
+    id: 'ApimodelsCreateItemTypeResp@inventory'
+    name: 'ApimodelsCreateItemTypeResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_item_type_resp.go'
+
+  'ApimodelsCreateTagReq@inventory':
+    id: 'ApimodelsCreateTagReq@inventory'
+    name: 'ApimodelsCreateTagReq'
+    fields:
+      'Name':
+        type: '*string'
+        required: true
+      'Owner':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_tag_req.go'
+
+  'ApimodelsCreateTagResp@inventory':
+    id: 'ApimodelsCreateTagResp@inventory'
+    name: 'ApimodelsCreateTagResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Owner':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_create_tag_resp.go'
+
+  'ApimodelsDeleteInventoryReq@inventory':
+    id: 'ApimodelsDeleteInventoryReq@inventory'
+    name: 'ApimodelsDeleteInventoryReq'
+    fields:
+      'Message':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_delete_inventory_req.go'
+
+  'ApimodelsErrorResponse@inventory':
+    id: 'ApimodelsErrorResponse@inventory'
+    name: 'ApimodelsErrorResponse'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_error_response.go'
+
+  'ApimodelsIntegrationConfigurationResp@inventory':
+    id: 'ApimodelsIntegrationConfigurationResp@inventory'
+    name: 'ApimodelsIntegrationConfigurationResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'ItemTypes':
+        type: '[]string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ServiceName':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'TargetInventoryCode':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_integration_configuration_resp.go'
+
+  'ApimodelsInventoryConfig@inventory':
+    id: 'ApimodelsInventoryConfig@inventory'
+    name: 'ApimodelsInventoryConfig'
+    fields:
+      'SlotUsed':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_inventory_config.go'
+
+  'ApimodelsInventoryConfigurationReq@inventory':
+    id: 'ApimodelsInventoryConfigurationReq@inventory'
+    name: 'ApimodelsInventoryConfigurationReq'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'InitialMaxSlots':
+        type: '*int32'
+        required: true
+      'MaxInstancesPerUser':
+        type: '*int32'
+        required: true
+      'MaxUpgradeSlots':
+        type: '*int32'
+        required: true
+      'Name':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_inventory_configuration_req.go'
+
+  'ApimodelsInventoryConfigurationResp@inventory':
+    id: 'ApimodelsInventoryConfigurationResp@inventory'
+    name: 'ApimodelsInventoryConfigurationResp'
+    fields:
+      'Code':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'InitialMaxSlots':
+        type: '*int32'
+        required: true
+      'MaxInstancesPerUser':
+        type: '*int32'
+        required: true
+      'MaxUpgradeSlots':
+        type: '*int32'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_inventory_configuration_resp.go'
+
+  'ApimodelsInventoryResp@inventory':
+    id: 'ApimodelsInventoryResp@inventory'
+    name: 'ApimodelsInventoryResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'InventoryConfigurationCode':
+        type: '*string'
+        required: true
+      'InventoryConfigurationID':
+        type: '*string'
+        required: true
+      'MaxSlots':
+        type: '*int32'
+        required: true
+      'MaxUpgradeSlots':
+        type: '*int32'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'UsedCountSlots':
+        type: '*int32'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_inventory_resp.go'
+
+  'ApimodelsItemResp@inventory':
+    id: 'ApimodelsItemResp@inventory'
+    name: 'ApimodelsItemResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'ID':
+        type: '*string'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+      'ItemInfo':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'PlatformAvailable':
+        type: 'bool'
+        required: false
+      'Qty':
+        type: '*int32'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SlotUsed':
+        type: '*int32'
+        required: true
+      'Source':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_item_resp.go'
+
+  'ApimodelsListIntegrationConfigurationsResp@inventory':
+    id: 'ApimodelsListIntegrationConfigurationsResp@inventory'
+    name: 'ApimodelsListIntegrationConfigurationsResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsIntegrationConfigurationResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_integration_configurations_resp.go'
+
+  'ApimodelsListInventoryConfigurationsResp@inventory':
+    id: 'ApimodelsListInventoryConfigurationsResp@inventory'
+    name: 'ApimodelsListInventoryConfigurationsResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsInventoryConfigurationResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_inventory_configurations_resp.go'
+
+  'ApimodelsListInventoryResp@inventory':
+    id: 'ApimodelsListInventoryResp@inventory'
+    name: 'ApimodelsListInventoryResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsInventoryResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_inventory_resp.go'
+
+  'ApimodelsListItemResp@inventory':
+    id: 'ApimodelsListItemResp@inventory'
+    name: 'ApimodelsListItemResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsItemResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_item_resp.go'
+
+  'ApimodelsListItemTypesResp@inventory':
+    id: 'ApimodelsListItemTypesResp@inventory'
+    name: 'ApimodelsListItemTypesResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsCreateItemTypeResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_item_types_resp.go'
+
+  'ApimodelsListTagsResp@inventory':
+    id: 'ApimodelsListTagsResp@inventory'
+    name: 'ApimodelsListTagsResp'
+    fields:
+      'Data':
+        type: '[]*ApimodelsCreateTagResp'
+        required: true
+      'Paging':
+        type: '*ApimodelsPaging'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_list_tags_resp.go'
+
+  'ApimodelsMoveItemsReq@inventory':
+    id: 'ApimodelsMoveItemsReq@inventory'
+    name: 'ApimodelsMoveItemsReq'
+    fields:
+      'Items':
+        type: '[]*ApimodelsTradeItem'
+        required: true
+      'SrcInventoryID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_move_items_req.go'
+
+  'ApimodelsMoveItemsResp@inventory':
+    id: 'ApimodelsMoveItemsResp@inventory'
+    name: 'ApimodelsMoveItemsResp'
+    fields:
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'DstInventoryID':
+        type: '*string'
+        required: true
+      'Items':
+        type: '[]*ApimodelsTradeItemResp'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'SrcInventoryID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_move_items_resp.go'
+
+  'ApimodelsOperation@inventory':
+    id: 'ApimodelsOperation@inventory'
+    name: 'ApimodelsOperation'
+    fields:
+      'ConsumeItems':
+        type: '[]*ApimodelsConsumeItem'
+        required: true
+      'CreateItems':
+        type: '[]*ApimodelsCreateItem'
+        required: true
+      'RemoveItems':
+        type: '[]*ApimodelsRemoveItem'
+        required: true
+      'TargetUserID':
+        type: '*string'
+        required: true
+      'UpdateItems':
+        type: '[]*ApimodelsUpdateItem'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_operation.go'
+
+  'ApimodelsPaging@inventory':
+    id: 'ApimodelsPaging@inventory'
+    name: 'ApimodelsPaging'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_paging.go'
+
+  'ApimodelsPurchaseValidationItemReq@inventory':
+    id: 'ApimodelsPurchaseValidationItemReq@inventory'
+    name: 'ApimodelsPurchaseValidationItemReq'
+    fields:
+      'BundledQty':
+        type: '*int32'
+        required: true
+      'EntitlementType':
+        type: '*string'
+        required: true
+      'InventoryConfig':
+        type: '*ApimodelsInventoryConfig'
+        required: true
+      'ItemID':
+        type: '*string'
+        required: true
+      'ItemType':
+        type: '*string'
+        required: true
+      'Sku':
+        type: '*string'
+        required: true
+      'Stackable':
+        type: '*bool'
+        required: true
+      'UseCount':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_purchase_validation_item_req.go'
+
+  'ApimodelsPurchaseValidationReq@inventory':
+    id: 'ApimodelsPurchaseValidationReq@inventory'
+    name: 'ApimodelsPurchaseValidationReq'
+    fields:
+      'EntitlementType':
+        type: 'string'
+        required: false
+      'InventoryConfig':
+        type: '*ApimodelsInventoryConfig'
+        required: false
+      'ItemID':
+        type: '*string'
+        required: true
+      'Items':
+        type: '[]*ApimodelsPurchaseValidationItemReq'
+        required: false
+      'ItemType':
+        type: '*string'
+        required: true
+      'Quantity':
+        type: '*int32'
+        required: true
+      'Sku':
+        type: '*string'
+        required: true
+      'Stackable':
+        type: 'bool'
+        required: false
+      'UseCount':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_purchase_validation_req.go'
+
+  'ApimodelsRemoveInventoryItemReq@inventory':
+    id: 'ApimodelsRemoveInventoryItemReq@inventory'
+    name: 'ApimodelsRemoveInventoryItemReq'
+    fields:
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_remove_inventory_item_req.go'
+
+  'ApimodelsRemoveItem@inventory':
+    id: 'ApimodelsRemoveItem@inventory'
+    name: 'ApimodelsRemoveItem'
+    fields:
+      'InventoryID':
+        type: '*string'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_remove_item.go'
+
+  'ApimodelsSaveItemReq@inventory':
+    id: 'ApimodelsSaveItemReq@inventory'
+    name: 'ApimodelsSaveItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'InventoryConfigurationCode':
+        type: '*string'
+        required: true
+      'Qty':
+        type: '*int32'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SlotUsed':
+        type: '*int32'
+        required: true
+      'Source':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_save_item_req.go'
+
+  'ApimodelsSaveItemToInventoryReq@inventory':
+    id: 'ApimodelsSaveItemToInventoryReq@inventory'
+    name: 'ApimodelsSaveItemToInventoryReq'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'Qty':
+        type: '*int32'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SlotUsed':
+        type: '*int32'
+        required: true
+      'Source':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_save_item_to_inventory_req.go'
+
+  'ApimodelsTradeItem@inventory':
+    id: 'ApimodelsTradeItem@inventory'
+    name: 'ApimodelsTradeItem'
+    fields:
+      'Qty':
+        type: '*int32'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_trade_item.go'
+
+  'ApimodelsTradeItemResp@inventory':
+    id: 'ApimodelsTradeItemResp@inventory'
+    name: 'ApimodelsTradeItemResp'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Qty':
+        type: '*int32'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_trade_item_resp.go'
+
+  'ApimodelsUpdateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateIntegrationConfigurationReq'
+    fields:
+      'MapItemType':
+        type: '[]string'
+        required: false
+      'ServiceName':
+        type: '*string'
+        required: true
+      'TargetInventoryCode':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_integration_configuration_req.go'
+
+  'ApimodelsUpdateInventoryReq@inventory':
+    id: 'ApimodelsUpdateInventoryReq@inventory'
+    name: 'ApimodelsUpdateInventoryReq'
+    fields:
+      'IncMaxSlots':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_inventory_req.go'
+
+  'ApimodelsUpdateItem@inventory':
+    id: 'ApimodelsUpdateItem@inventory'
+    name: 'ApimodelsUpdateItem'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'InventoryID':
+        type: '*string'
+        required: true
+      'ServerCustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+      'Type':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_item.go'
+
+  'ApimodelsUpdateItemReq@inventory':
+    id: 'ApimodelsUpdateItemReq@inventory'
+    name: 'ApimodelsUpdateItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'interface{}'
+        required: true
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Tags':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_item_req.go'
+
+  'ApimodelsUpdateItemResp@inventory':
+    id: 'ApimodelsUpdateItemResp@inventory'
+    name: 'ApimodelsUpdateItemResp'
+    fields:
+      'ErrorDetails':
+        type: '*ApimodelsErrorResponse'
+        required: false
+      'SlotID':
+        type: '*string'
+        required: true
+      'SourceItemID':
+        type: '*string'
+        required: true
+      'Success':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_item_resp.go'
+
+  'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateStatusIntegrationConfigurationReq'
+    fields:
+      'Status':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/inventory-sdk/pkg/inventoryclientmodels/apimodels_update_status_integration_configuration_req.go'
+
+  # endregion models
+
+functions:
+
+  'AdminBulkRemoveItemsShort@inventory':
+    id: 'AdminBulkRemoveItemsShort@inventory'
+    name: 'AdminBulkRemoveItemsShort'
+    description: |-
+      Bulk remove user's own items'.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminBulkRemoveItemsParams'
+        required: true
+    return_type: '(*admin_items.AdminBulkRemoveItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminBulkRemoveItemsParams{ ... }
+      res, err := adminItemsService.AdminBulkRemoveItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'remove'
+
+  'AdminBulkSaveItemShort@inventory':
+    id: 'AdminBulkSaveItemShort@inventory'
+    name: 'AdminBulkSaveItemShort'
+    description: |-
+      **This endpoint is used used for bulk saving purchased items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created for the player.
+      - If the player already has one, it will be added to the existing inventory.
+      >- If the same item exists within the inventory, the quantity (qty) will be increased.
+      >- If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      >- If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+
+      - For E-commerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminBulkSaveItemParams'
+        required: true
+    return_type: '(*admin_items.AdminBulkSaveItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminBulkSaveItemParams{ ... }
+      res, err := adminItemsService.AdminBulkSaveItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminBulkSaveItemToInventoryShort@inventory':
+    id: 'AdminBulkSaveItemToInventoryShort@inventory'
+    name: 'AdminBulkSaveItemToInventoryShort'
+    description: |-
+      **This endpoint is used for bulk saving purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM[CREATE]**
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminBulkSaveItemToInventoryParams'
+        required: true
+    return_type: '(*admin_items.AdminBulkSaveItemToInventoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminBulkSaveItemToInventoryParams{ ... }
+      res, err := adminItemsService.AdminBulkSaveItemToInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminBulkUpdateMyItemsShort@inventory':
+    id: 'AdminBulkUpdateMyItemsShort@inventory'
+    name: 'AdminBulkUpdateMyItemsShort'
+    description: |-
+      Bulk Updating user's own items.
+      Tags will be auto-created.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminBulkUpdateMyItemsParams'
+        required: true
+    return_type: '(*admin_items.AdminBulkUpdateMyItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminBulkUpdateMyItemsParams{ ... }
+      res, err := adminItemsService.AdminBulkUpdateMyItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'update'
+
+  'AdminConsumeUserItemShort@inventory':
+    id: 'AdminConsumeUserItemShort@inventory'
+    name: 'AdminConsumeUserItemShort'
+    description: |-
+      Consume user's own item
+      Client should pass item ID in options if item type is OPTIONBOX
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminConsumeUserItemParams'
+        required: true
+    return_type: '(*admin_items.AdminConsumeUserItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminConsumeUserItemParams{ ... }
+      res, err := adminItemsService.AdminConsumeUserItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'user'
+
+  'AdminCreateChainingOperationsShort@inventory':
+    id: 'AdminCreateChainingOperationsShort@inventory'
+    name: 'AdminCreateChainingOperationsShort'
+    description: |-
+      Create chaining Operations.
+      This process will run sequentially
+      1. remove item process
+      2. consume item process
+      3. update item process
+      4. create item process
+      if toSpecificInventory set as true, then inventoryId field will be mandatory, vice versa
+
+      The behavior of each process is same with current admin level endpoint
+
+      requestId: Request id(Optional), client should provide a unique request id to perform at most once execution, When a request id is resubmitted,
+      it will return original successful response
+      replayed : replayed, if true,the response is original successful response. This will not be included in response if client have not pass request id.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+    struct: 'AdminChainingOperationsService'
+    parameters:
+      params:
+        type: '*admin_chaining_operations.AdminCreateChainingOperationsParams'
+        required: true
+    return_type: '(*admin_chaining_operations.AdminCreateChainingOperationsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_chaining_operations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminChainingOperations.go'
+    example: |-
+      adminChainingOperationsService := inventory.AdminChainingOperationsService{ ... }
+      params := admin_chaining_operations.AdminCreateChainingOperationsParams{ ... }
+      res, err := adminChainingOperationsService.AdminCreateChainingOperationsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'chaining'
+      - 'create'
+      - 'operations'
+
+  'AdminCreateIntegrationConfigurationShort@inventory':
+    id: 'AdminCreateIntegrationConfigurationShort@inventory'
+    name: 'AdminCreateIntegrationConfigurationShort'
+    description: |-
+      Creating integration configuration.
+      There cannot be one duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
+    struct: 'AdminIntegrationConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_integration_configurations.AdminCreateIntegrationConfigurationParams'
+        required: true
+    return_type: '(*admin_integration_configurations.AdminCreateIntegrationConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminIntegrationConfigurations.go'
+    example: |-
+      adminIntegrationConfigurationsService := inventory.AdminIntegrationConfigurationsService{ ... }
+      params := admin_integration_configurations.AdminCreateIntegrationConfigurationParams{ ... }
+      res, err := adminIntegrationConfigurationsService.AdminCreateIntegrationConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'integration'
+
+  'AdminCreateInventoryShort@inventory':
+    id: 'AdminCreateInventoryShort@inventory'
+    name: 'AdminCreateInventoryShort'
+    description: |-
+      Creating an inventory.
+      The inventory configuration must exists otherwise it will fail.
+      The max slots and max upgrade slots of an inventory will be initialized according to the inventory configuration it used,
+      but it can be changed later when using AdminUpdateInventory endpoint.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [CREATE]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminCreateInventoryParams'
+        required: true
+    return_type: '(*admin_inventories.AdminCreateInventoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminCreateInventoryParams{ ... }
+      res, err := adminInventoriesService.AdminCreateInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminCreateInventoryConfigurationShort@inventory':
+    id: 'AdminCreateInventoryConfigurationShort@inventory'
+    name: 'AdminCreateInventoryConfigurationShort'
+    description: |-
+      Creating inventory configuration.
+      There cannot be one inventory configuration duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
+    struct: 'AdminInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_inventory_configurations.AdminCreateInventoryConfigurationParams'
+        required: true
+    return_type: '(*admin_inventory_configurations.AdminCreateInventoryConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      adminInventoryConfigurationsService := inventory.AdminInventoryConfigurationsService{ ... }
+      params := admin_inventory_configurations.AdminCreateInventoryConfigurationParams{ ... }
+      res, err := adminInventoryConfigurationsService.AdminCreateInventoryConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'inventory'
+
+  'AdminCreateItemTypeShort@inventory':
+    id: 'AdminCreateItemTypeShort@inventory'
+    name: 'AdminCreateItemTypeShort'
+    description: |-
+      This endpoint will create a new itemtype.
+      The itemtype name must be unique per namespace.
+      It is safe to call this endpoint even if the itemtype already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [CREATE]
+    struct: 'AdminItemTypesService'
+    parameters:
+      params:
+        type: '*admin_item_types.AdminCreateItemTypeParams'
+        required: true
+    return_type: '(*admin_item_types.AdminCreateItemTypeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItemTypes.go'
+    example: |-
+      adminItemTypesService := inventory.AdminItemTypesService{ ... }
+      params := admin_item_types.AdminCreateItemTypeParams{ ... }
+      res, err := adminItemTypesService.AdminCreateItemTypeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminCreateTagShort@inventory':
+    id: 'AdminCreateTagShort@inventory'
+    name: 'AdminCreateTagShort'
+    description: |-
+      This endpoint will create a new tag.
+      The tag name must be unique per namespace.
+      It is safe to call this endpoint even if the tag already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
+    struct: 'AdminTagsService'
+    parameters:
+      params:
+        type: '*admin_tags.AdminCreateTagParams'
+        required: true
+    return_type: '(*admin_tags.AdminCreateTagResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminTags.go'
+    example: |-
+      adminTagsService := inventory.AdminTagsService{ ... }
+      params := admin_tags.AdminCreateTagParams{ ... }
+      res, err := adminTagsService.AdminCreateTagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'tag'
+      - 'tags'
+
+  'AdminDeleteInventoryConfigurationShort@inventory':
+    id: 'AdminDeleteInventoryConfigurationShort@inventory'
+    name: 'AdminDeleteInventoryConfigurationShort'
+    description: |-
+      Deleting an inventory configuration.
+      If an inventory already reference this type (i.e. STATUS is "TIED"), then the type cannot be deleted anymore.
+
+      ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
+    struct: 'AdminInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_inventory_configurations.AdminDeleteInventoryConfigurationParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      adminInventoryConfigurationsService := inventory.AdminInventoryConfigurationsService{ ... }
+      params := admin_inventory_configurations.AdminDeleteInventoryConfigurationParams{ ... }
+      res, err := adminInventoryConfigurationsService.AdminDeleteInventoryConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'delete'
+      - 'inventory'
+
+  'AdminDeleteItemTypeShort@inventory':
+    id: 'AdminDeleteItemTypeShort@inventory'
+    name: 'AdminDeleteItemTypeShort'
+    description: |-
+      This endpoint will delete a item type by itemtypeName in a specified namespace.
+      If the itemtypeName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [DELETE]
+    struct: 'AdminItemTypesService'
+    parameters:
+      params:
+        type: '*admin_item_types.AdminDeleteItemTypeParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItemTypes.go'
+    example: |-
+      adminItemTypesService := inventory.AdminItemTypesService{ ... }
+      params := admin_item_types.AdminDeleteItemTypeParams{ ... }
+      res, err := adminItemTypesService.AdminDeleteItemTypeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminDeleteTagShort@inventory':
+    id: 'AdminDeleteTagShort@inventory'
+    name: 'AdminDeleteTagShort'
+    description: |-
+      This endpoint will delete a tag by tagName in a specified namespace.
+      If the tagName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
+    struct: 'AdminTagsService'
+    parameters:
+      params:
+        type: '*admin_tags.AdminDeleteTagParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminTags.go'
+    example: |-
+      adminTagsService := inventory.AdminTagsService{ ... }
+      params := admin_tags.AdminDeleteTagParams{ ... }
+      res, err := adminTagsService.AdminDeleteTagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'tag'
+      - 'tags'
+
+  'AdminGetInventoryShort@inventory':
+    id: 'AdminGetInventoryShort@inventory'
+    name: 'AdminGetInventoryShort'
+    description: |-
+      Getting an inventory info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminGetInventoryParams'
+        required: true
+    return_type: '(*admin_inventories.AdminGetInventoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminGetInventoryParams{ ... }
+      res, err := adminInventoriesService.AdminGetInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminGetInventoryConfigurationShort@inventory':
+    id: 'AdminGetInventoryConfigurationShort@inventory'
+    name: 'AdminGetInventoryConfigurationShort'
+    description: |-
+      Getting an inventory configuration info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    struct: 'AdminInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_inventory_configurations.AdminGetInventoryConfigurationParams'
+        required: true
+    return_type: '(*admin_inventory_configurations.AdminGetInventoryConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      adminInventoryConfigurationsService := inventory.AdminInventoryConfigurationsService{ ... }
+      params := admin_inventory_configurations.AdminGetInventoryConfigurationParams{ ... }
+      res, err := adminInventoryConfigurationsService.AdminGetInventoryConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'get'
+      - 'inventory'
+
+  'AdminGetInventoryItemShort@inventory':
+    id: 'AdminGetInventoryItemShort@inventory'
+    name: 'AdminGetInventoryItemShort'
+    description: |-
+      Getting an item info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminGetInventoryItemParams'
+        required: true
+    return_type: '(*admin_items.AdminGetInventoryItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminGetInventoryItemParams{ ... }
+      res, err := adminItemsService.AdminGetInventoryItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventory'
+      - 'item'
+      - 'items'
+
+  'AdminListIntegrationConfigurationsShort@inventory':
+    id: 'AdminListIntegrationConfigurationsShort@inventory'
+    name: 'AdminListIntegrationConfigurationsShort'
+    description: |-
+      Listing all integration configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
+    struct: 'AdminIntegrationConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_integration_configurations.AdminListIntegrationConfigurationsParams'
+        required: true
+    return_type: '(*admin_integration_configurations.AdminListIntegrationConfigurationsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminIntegrationConfigurations.go'
+    example: |-
+      adminIntegrationConfigurationsService := inventory.AdminIntegrationConfigurationsService{ ... }
+      params := admin_integration_configurations.AdminListIntegrationConfigurationsParams{ ... }
+      res, err := adminIntegrationConfigurationsService.AdminListIntegrationConfigurationsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'integration'
+      - 'list'
+
+  'AdminListInventoriesShort@inventory':
+    id: 'AdminListInventoriesShort@inventory'
+    name: 'AdminListInventoriesShort'
+    description: |-
+      Listing all inventories in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminListInventoriesParams'
+        required: true
+    return_type: '(*admin_inventories.AdminListInventoriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminListInventoriesParams{ ... }
+      res, err := adminInventoriesService.AdminListInventoriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'list'
+
+  'AdminListInventoryConfigurationsShort@inventory':
+    id: 'AdminListInventoryConfigurationsShort@inventory'
+    name: 'AdminListInventoryConfigurationsShort'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    struct: 'AdminInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_inventory_configurations.AdminListInventoryConfigurationsParams'
+        required: true
+    return_type: '(*admin_inventory_configurations.AdminListInventoryConfigurationsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      adminInventoryConfigurationsService := inventory.AdminInventoryConfigurationsService{ ... }
+      params := admin_inventory_configurations.AdminListInventoryConfigurationsParams{ ... }
+      res, err := adminInventoryConfigurationsService.AdminListInventoryConfigurationsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+
+  'AdminListItemsShort@inventory':
+    id: 'AdminListItemsShort@inventory'
+    name: 'AdminListItemsShort'
+    description: |-
+      Listing all items in an inventory.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminListItemsParams'
+        required: true
+    return_type: '(*admin_items.AdminListItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminListItemsParams{ ... }
+      res, err := adminItemsService.AdminListItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'items'
+      - 'list'
+
+  'AdminListItemTypesShort@inventory':
+    id: 'AdminListItemTypesShort@inventory'
+    name: 'AdminListItemTypesShort'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [READ]
+    struct: 'AdminItemTypesService'
+    parameters:
+      params:
+        type: '*admin_item_types.AdminListItemTypesParams'
+        required: true
+    return_type: '(*admin_item_types.AdminListItemTypesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_item_types'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItemTypes.go'
+    example: |-
+      adminItemTypesService := inventory.AdminItemTypesService{ ... }
+      params := admin_item_types.AdminListItemTypesParams{ ... }
+      res, err := adminItemTypesService.AdminListItemTypesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'list'
+      - 'types'
+
+  'AdminListTagsShort@inventory':
+    id: 'AdminListTagsShort@inventory'
+    name: 'AdminListTagsShort'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
+    struct: 'AdminTagsService'
+    parameters:
+      params:
+        type: '*admin_tags.AdminListTagsParams'
+        required: true
+    return_type: '(*admin_tags.AdminListTagsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminTags.go'
+    example: |-
+      adminTagsService := inventory.AdminTagsService{ ... }
+      params := admin_tags.AdminListTagsParams{ ... }
+      res, err := adminTagsService.AdminListTagsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tags'
+
+  'AdminPurchasableShort@inventory':
+    id: 'AdminPurchasableShort@inventory'
+    name: 'AdminPurchasableShort'
+    description: |-
+      Validate purchase ecommerce item.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminPurchasableParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminPurchasableParams{ ... }
+      res, err := adminInventoriesService.AdminPurchasableShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'purchasable'
+
+  'AdminSaveItemShort@inventory':
+    id: 'AdminSaveItemShort@inventory'
+    name: 'AdminSaveItemShort'
+    description: |-
+      **This endpoint is used to save items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created.
+      - If the user already has one, it will be added to the existing inventory.
+      - If the same item exists within the inventory, the quantity (qty) will be increased.
+      - If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      - If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+      - For Ecommerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      You must have this permission to access this endpoint:
+      **Permission:ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminSaveItemParams'
+        required: true
+    return_type: '(*admin_items.AdminSaveItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminSaveItemParams{ ... }
+      res, err := adminItemsService.AdminSaveItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminSaveItemToInventoryShort@inventory':
+    id: 'AdminSaveItemToInventoryShort@inventory'
+    name: 'AdminSaveItemToInventoryShort'
+    description: |-
+      **This endpoint is used to save purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      You must have this permission to access this endpoint:
+
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminSaveItemToInventoryParams'
+        required: true
+    return_type: '(*admin_items.AdminSaveItemToInventoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminSaveItemToInventoryParams{ ... }
+      res, err := adminItemsService.AdminSaveItemToInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminSyncUserEntitlementsShort@inventory':
+    id: 'AdminSyncUserEntitlementsShort@inventory'
+    name: 'AdminSyncUserEntitlementsShort'
+    description: |-
+      Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+      will skip the item if already exist at user inventory.
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    struct: 'AdminItemsService'
+    parameters:
+      params:
+        type: '*admin_items.AdminSyncUserEntitlementsParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminItems.go'
+    example: |-
+      adminItemsService := inventory.AdminItemsService{ ... }
+      params := admin_items.AdminSyncUserEntitlementsParams{ ... }
+      res, err := adminItemsService.AdminSyncUserEntitlementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'entitlements'
+      - 'items'
+      - 'sync'
+      - 'user'
+
+  'AdminUpdateIntegrationConfigurationShort@inventory':
+    id: 'AdminUpdateIntegrationConfigurationShort@inventory'
+    name: 'AdminUpdateIntegrationConfigurationShort'
+    description: |-
+      to update integration configuration
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    struct: 'AdminIntegrationConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_integration_configurations.AdminUpdateIntegrationConfigurationParams'
+        required: true
+    return_type: '(*admin_integration_configurations.AdminUpdateIntegrationConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminIntegrationConfigurations.go'
+    example: |-
+      adminIntegrationConfigurationsService := inventory.AdminIntegrationConfigurationsService{ ... }
+      params := admin_integration_configurations.AdminUpdateIntegrationConfigurationParams{ ... }
+      res, err := adminIntegrationConfigurationsService.AdminUpdateIntegrationConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'update'
+
+  'AdminUpdateInventoryShort@inventory':
+    id: 'AdminUpdateInventoryShort@inventory'
+    name: 'AdminUpdateInventoryShort'
+    description: |-
+      Updating an inventory.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminUpdateInventoryParams'
+        required: true
+    return_type: '(*admin_inventories.AdminUpdateInventoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminUpdateInventoryParams{ ... }
+      res, err := adminInventoriesService.AdminUpdateInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateInventoryConfigurationShort@inventory':
+    id: 'AdminUpdateInventoryConfigurationShort@inventory'
+    name: 'AdminUpdateInventoryConfigurationShort'
+    description: |-
+      Updating inventory configuration.
+      There cannot be duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
+    struct: 'AdminInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_inventory_configurations.AdminUpdateInventoryConfigurationParams'
+        required: true
+    return_type: '(*admin_inventory_configurations.AdminUpdateInventoryConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventoryConfigurations.go'
+    example: |-
+      adminInventoryConfigurationsService := inventory.AdminInventoryConfigurationsService{ ... }
+      params := admin_inventory_configurations.AdminUpdateInventoryConfigurationParams{ ... }
+      res, err := adminInventoryConfigurationsService.AdminUpdateInventoryConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateStatusIntegrationConfigurationShort@inventory':
+    id: 'AdminUpdateStatusIntegrationConfigurationShort@inventory'
+    name: 'AdminUpdateStatusIntegrationConfigurationShort'
+    description: |-
+      to update status integration configuration to be Active / Not Active.
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    struct: 'AdminIntegrationConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_integration_configurations.AdminUpdateStatusIntegrationConfigurationParams'
+        required: true
+    return_type: '(*admin_integration_configurations.AdminUpdateStatusIntegrationConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_integration_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminIntegrationConfigurations.go'
+    example: |-
+      adminIntegrationConfigurationsService := inventory.AdminIntegrationConfigurationsService{ ... }
+      params := admin_integration_configurations.AdminUpdateStatusIntegrationConfigurationParams{ ... }
+      res, err := adminIntegrationConfigurationsService.AdminUpdateStatusIntegrationConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'status'
+      - 'update'
+
+  'AdminUpdateUserInventoriesByInventoryCodeShort@inventory':
+    id: 'AdminUpdateUserInventoriesByInventoryCodeShort@inventory'
+    name: 'AdminUpdateUserInventoriesByInventoryCodeShort'
+    description: |-
+      Updating user inventories.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.AdminUpdateUserInventoriesByInventoryCodeParams'
+        required: true
+    return_type: '(*admin_inventories.AdminUpdateUserInventoriesByInventoryCodeResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.AdminUpdateUserInventoriesByInventoryCodeParams{ ... }
+      res, err := adminInventoriesService.AdminUpdateUserInventoriesByInventoryCodeShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'code'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+      - 'user'
+
+  'DeleteInventoryShort@inventory':
+    id: 'DeleteInventoryShort@inventory'
+    name: 'DeleteInventoryShort'
+    description: |-
+      Deleting an inventory.
+      If an inventory still has items, it cannot be deleted.
+
+      ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [DELETE]
+    struct: 'AdminInventoriesService'
+    parameters:
+      params:
+        type: '*admin_inventories.DeleteInventoryParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/admin_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/adminInventories.go'
+    example: |-
+      adminInventoriesService := inventory.AdminInventoriesService{ ... }
+      params := admin_inventories.DeleteInventoryParams{ ... }
+      res, err := adminInventoriesService.DeleteInventoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'inventories'
+      - 'inventory'
+
+  'PublicBulkRemoveMyItemsShort@inventory':
+    id: 'PublicBulkRemoveMyItemsShort@inventory'
+    name: 'PublicBulkRemoveMyItemsShort'
+    description: |-
+      Bulk remove user's own items.
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicBulkRemoveMyItemsParams'
+        required: true
+    return_type: '(*public_items.PublicBulkRemoveMyItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicBulkRemoveMyItemsParams{ ... }
+      res, err := publicItemsService.PublicBulkRemoveMyItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'remove'
+
+  'PublicBulkUpdateMyItemsShort@inventory':
+    id: 'PublicBulkUpdateMyItemsShort@inventory'
+    name: 'PublicBulkUpdateMyItemsShort'
+    description: |-
+      Bulk Updating user's own items.
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicBulkUpdateMyItemsParams'
+        required: true
+    return_type: '(*public_items.PublicBulkUpdateMyItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicBulkUpdateMyItemsParams{ ... }
+      res, err := publicItemsService.PublicBulkUpdateMyItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'update'
+
+  'PublicConsumeMyItemShort@inventory':
+    id: 'PublicConsumeMyItemShort@inventory'
+    name: 'PublicConsumeMyItemShort'
+    description: |-
+      Consume user's own item.
+      Client should pass item ID in options if item type is OPTIONBOX
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicConsumeMyItemParams'
+        required: true
+    return_type: '(*public_items.PublicConsumeMyItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicConsumeMyItemParams{ ... }
+      res, err := publicItemsService.PublicConsumeMyItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'my'
+      - 'public'
+
+  'PublicGetItemShort@inventory':
+    id: 'PublicGetItemShort@inventory'
+    name: 'PublicGetItemShort'
+    description: |-
+      Getting an user's owned item info.
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicGetItemParams'
+        required: true
+    return_type: '(*public_items.PublicGetItemResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicGetItemParams{ ... }
+      res, err := publicItemsService.PublicGetItemShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'item'
+      - 'items'
+      - 'public'
+
+  'PublicListInventoriesShort@inventory':
+    id: 'PublicListInventoriesShort@inventory'
+    name: 'PublicListInventoriesShort'
+    description: |-
+      Listing all my inventories in a namespace.
+      The response body will be in the form of standard pagination.
+    struct: 'PublicInventoriesService'
+    parameters:
+      params:
+        type: '*public_inventories.PublicListInventoriesParams'
+        required: true
+    return_type: '(*public_inventories.PublicListInventoriesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_inventories'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicInventories.go'
+    example: |-
+      publicInventoriesService := inventory.PublicInventoriesService{ ... }
+      params := public_inventories.PublicListInventoriesParams{ ... }
+      res, err := publicInventoriesService.PublicListInventoriesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'inventories'
+      - 'list'
+      - 'public'
+
+  'PublicListInventoryConfigurationsShort@inventory':
+    id: 'PublicListInventoryConfigurationsShort@inventory'
+    name: 'PublicListInventoryConfigurationsShort'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+    struct: 'PublicInventoryConfigurationsService'
+    parameters:
+      params:
+        type: '*public_inventory_configurations.PublicListInventoryConfigurationsParams'
+        required: true
+    return_type: '(*public_inventory_configurations.PublicListInventoryConfigurationsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_inventory_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicInventoryConfigurations.go'
+    example: |-
+      publicInventoryConfigurationsService := inventory.PublicInventoryConfigurationsService{ ... }
+      params := public_inventory_configurations.PublicListInventoryConfigurationsParams{ ... }
+      res, err := publicInventoryConfigurationsService.PublicListInventoryConfigurationsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+      - 'public'
+
+  'PublicListItemsShort@inventory':
+    id: 'PublicListItemsShort@inventory'
+    name: 'PublicListItemsShort'
+    description: |-
+      Listing all user's owned items in an inventory.
+      The response body will be in the form of standard pagination.
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicListItemsParams'
+        required: true
+    return_type: '(*public_items.PublicListItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicListItemsParams{ ... }
+      res, err := publicItemsService.PublicListItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'items'
+      - 'list'
+      - 'public'
+
+  'PublicListItemTypesShort@inventory':
+    id: 'PublicListItemTypesShort@inventory'
+    name: 'PublicListItemTypesShort'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+    struct: 'PublicItemTypesService'
+    parameters:
+      params:
+        type: '*public_item_types.PublicListItemTypesParams'
+        required: true
+    return_type: '(*public_item_types.PublicListItemTypesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_item_types'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItemTypes.go'
+    example: |-
+      publicItemTypesService := inventory.PublicItemTypesService{ ... }
+      params := public_item_types.PublicListItemTypesParams{ ... }
+      res, err := publicItemTypesService.PublicListItemTypesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'item'
+      - 'list'
+      - 'public'
+      - 'types'
+
+  'PublicListTagsShort@inventory':
+    id: 'PublicListTagsShort@inventory'
+    name: 'PublicListTagsShort'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+    struct: 'PublicTagsService'
+    parameters:
+      params:
+        type: '*public_tags.PublicListTagsParams'
+        required: true
+    return_type: '(*public_tags.PublicListTagsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_tags'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicTags.go'
+    example: |-
+      publicTagsService := inventory.PublicTagsService{ ... }
+      params := public_tags.PublicListTagsParams{ ... }
+      res, err := publicTagsService.PublicListTagsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'list'
+      - 'public'
+      - 'tags'
+
+  'PublicMoveMyItemsShort@inventory':
+    id: 'PublicMoveMyItemsShort@inventory'
+    name: 'PublicMoveMyItemsShort'
+    description: |-
+      Move items between inventories that is owned by the same user.
+
+      For Ecommerce items, the *qty* is *useCount*. For example, moving 2 of an item's *qty* will move 2 of the entitlement's *useCount*.
+    struct: 'PublicItemsService'
+    parameters:
+      params:
+        type: '*public_items.PublicMoveMyItemsParams'
+        required: true
+    return_type: '(*public_items.PublicMoveMyItemsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/inventory-sdk/pkg/inventoryclient/public_items'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/inventory'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/inventory/publicItems.go'
+    example: |-
+      publicItemsService := inventory.PublicItemsService{ ... }
+      params := public_items.PublicMoveMyItemsParams{ ... }
+      res, err := publicItemsService.PublicMoveMyItemsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'items'
+      - 'move'
+      - 'my'
+      - 'public'

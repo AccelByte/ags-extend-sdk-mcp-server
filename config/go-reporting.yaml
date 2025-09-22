@@ -1,0 +1,2927 @@
+structs:
+  'JusticeReportingService@reporting':
+    id: 'JusticeReportingService@reporting'
+    name: 'JusticeReportingService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/justice_reporting_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/reportingclientfactory.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo)
+
+  # region wrappers
+
+  'AdminConfigurationsService@reporting':
+    id: 'AdminConfigurationsService@reporting'
+    name: 'AdminConfigurationsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminConfigurations.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminConfigurationsService := AdminConfigurationsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminExtensionCategoriesAndAutoModerationActionsService@reporting':
+    id: 'AdminExtensionCategoriesAndAutoModerationActionsService@reporting'
+    name: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminExtensionCategoriesAndAutoModerationActions.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminExtensionCategoriesAndAutoModerationActionsService := AdminExtensionCategoriesAndAutoModerationActionsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminModerationRuleService@reporting':
+    id: 'AdminModerationRuleService@reporting'
+    name: 'AdminModerationRuleService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminModerationRuleService := AdminModerationRuleService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminReasonsService@reporting':
+    id: 'AdminReasonsService@reporting'
+    name: 'AdminReasonsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminReasonsService := AdminReasonsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminReportsService@reporting':
+    id: 'AdminReportsService@reporting'
+    name: 'AdminReportsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReports.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminReportsService := AdminReportsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AdminTicketsService@reporting':
+    id: 'AdminTicketsService@reporting'
+    name: 'AdminTicketsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      adminTicketsService := AdminTicketsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicReasonsService@reporting':
+    id: 'PublicReasonsService@reporting'
+    name: 'PublicReasonsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/publicReasons.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      publicReasonsService := PublicReasonsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'PublicReportsService@reporting':
+    id: 'PublicReportsService@reporting'
+    name: 'PublicReportsService'
+    fields:
+      Client:
+        type: '*reportingclient.JusticeReportingService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/publicReports.go'
+    example: |-
+      reportingClient := factory.NewReportingClient(configRepo) // re-use if it exists already
+      publicReportsService := PublicReportsService{
+          Client:           reportingClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminCreateExtensionCategoryParams@reporting':
+    id: 'AdminCreateExtensionCategoryParams@reporting'
+    name: 'AdminCreateExtensionCategoryParams'
+    fields:
+      'Body':
+        type: '*RestapiExtensionCategoryAPIRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_create_extension_category_parameters.go'
+
+  'AdminCreateModActionParams@reporting':
+    id: 'AdminCreateModActionParams@reporting'
+    name: 'AdminCreateModActionParams'
+    fields:
+      'Body':
+        type: '*RestapiActionAPIRequest'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_create_mod_action_parameters.go'
+
+  'AdminFindActionListParams@reporting':
+    id: 'AdminFindActionListParams@reporting'
+    name: 'AdminFindActionListParams'
+    fields:
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_find_action_list_parameters.go'
+
+  'AdminFindExtensionCategoryListParams@reporting':
+    id: 'AdminFindExtensionCategoryListParams@reporting'
+    name: 'AdminFindExtensionCategoryListParams'
+    fields:
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          data order, asc or desc (default: asc)
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          data order key, valid key : 'extensionCategory', and 'extensionCategoryName'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_find_extension_category_list_parameters.go'
+
+  'AdminGetAllReasonsParams@reporting':
+    id: 'AdminGetAllReasonsParams@reporting'
+    name: 'AdminGetAllReasonsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_all_reasons_parameters.go'
+
+  'AdminGetReasonParams@reporting':
+    id: 'AdminGetReasonParams@reporting'
+    name: 'AdminGetReasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'ReasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_reason_parameters.go'
+
+  'AdminGetReasonsParams@reporting':
+    id: 'AdminGetReasonsParams@reporting'
+    name: 'AdminGetReasonsParams'
+    fields:
+      'Group':
+        type: 'string'
+        required: false
+        description: |-
+          query reasons under specified reason group
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          query reason(s) by title
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_reasons_parameters.go'
+
+  'AdminGetUnusedReasonsParams@reporting':
+    id: 'AdminGetUnusedReasonsParams@reporting'
+    name: 'AdminGetUnusedReasonsParams'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_unused_reasons_parameters.go'
+
+  'AdminListReasonGroupsParams@reporting':
+    id: 'AdminListReasonGroupsParams@reporting'
+    name: 'AdminListReasonGroupsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_list_reason_groups_parameters.go'
+
+  'AdminSubmitReportParams@reporting':
+    id: 'AdminSubmitReportParams@reporting'
+    name: 'AdminSubmitReportParams'
+    fields:
+      'Body':
+        type: '*RestapiSubmitReportRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reports'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reports/admin_submit_report_parameters.go'
+
+  'CreateModerationRuleParams@reporting':
+    id: 'CreateModerationRuleParams@reporting'
+    name: 'CreateModerationRuleParams'
+    fields:
+      'Body':
+        type: '*RestapiModerationRuleRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/create_moderation_rule_parameters.go'
+
+  'CreateReasonParams@reporting':
+    id: 'CreateReasonParams@reporting'
+    name: 'CreateReasonParams'
+    fields:
+      'Body':
+        type: '*RestapiCreateReasonRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/create_reason_parameters.go'
+
+  'CreateReasonGroupParams@reporting':
+    id: 'CreateReasonGroupParams@reporting'
+    name: 'CreateReasonGroupParams'
+    fields:
+      'Body':
+        type: '*RestapiCreateReasonGroupRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/create_reason_group_parameters.go'
+
+  'DeleteModerationRuleParams@reporting':
+    id: 'DeleteModerationRuleParams@reporting'
+    name: 'DeleteModerationRuleParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'RuleID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/delete_moderation_rule_parameters.go'
+
+  'DeleteReasonParams@reporting':
+    id: 'DeleteReasonParams@reporting'
+    name: 'DeleteReasonParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'ReasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/delete_reason_parameters.go'
+
+  'DeleteReasonGroupParams@reporting':
+    id: 'DeleteReasonGroupParams@reporting'
+    name: 'DeleteReasonGroupParams'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Reason group ID
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/delete_reason_group_parameters.go'
+
+  'DeleteTicketParams@reporting':
+    id: 'DeleteTicketParams@reporting'
+    name: 'DeleteTicketParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/delete_ticket_parameters.go'
+
+  'GetParams@reporting':
+    id: 'GetParams@reporting'
+    name: 'GetParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          configuration category flag.
+          			set this to 'all' to retrieve all category configurations
+          			set this to 'extension' to retrieve [EXTENSION] category configurations
+          			leave it blank to retrieve core categories [UGC,USER,CHAT] configurations
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_configurations/get_parameters.go'
+
+  'GetModerationRuleDetailsParams@reporting':
+    id: 'GetModerationRuleDetailsParams@reporting'
+    name: 'GetModerationRuleDetailsParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'RuleID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/get_moderation_rule_details_parameters.go'
+
+  'GetModerationRulesParams@reporting':
+    id: 'GetModerationRulesParams@reporting'
+    name: 'GetModerationRulesParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          filter rules by category
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+        description: |-
+          filter rules by extension category
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/get_moderation_rules_parameters.go'
+
+  'GetReasonGroupParams@reporting':
+    id: 'GetReasonGroupParams@reporting'
+    name: 'GetReasonGroupParams'
+    fields:
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Reason group ID
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/get_reason_group_parameters.go'
+
+  'GetReportsByTicketParams@reporting':
+    id: 'GetReportsByTicketParams@reporting'
+    name: 'GetReportsByTicketParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'TicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/get_reports_by_ticket_parameters.go'
+
+  'GetTicketDetailParams@reporting':
+    id: 'GetTicketDetailParams@reporting'
+    name: 'GetTicketDetailParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/get_ticket_detail_parameters.go'
+
+  'ListReportsParams@reporting':
+    id: 'ListReportsParams@reporting'
+    name: 'ListReportsParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          filter reports by category
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'ReportedUserID':
+        type: 'string'
+        required: false
+        description: |-
+          filter reports by reportedUserId
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt:desc
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reports'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reports/list_reports_parameters.go'
+
+  'ListTicketsParams@reporting':
+    id: 'ListTicketsParams@reporting'
+    name: 'ListTicketsParams'
+    fields:
+      'Category':
+        type: 'string'
+        required: false
+        description: |-
+          filter tickets by category
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+        description: |-
+          filter tickets by extension category
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'Order':
+        type: 'string'
+        required: false
+        description: |-
+          data order, asc or desc (default: desc)
+      'ReportedUserID':
+        type: 'string'
+        required: false
+        description: |-
+          filter reports by reportedUserId
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          data order key, valid keys are createdAt, reportsCount, and status (default: createdAt)
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          filter tickets by status (OPEN, AUTO_MODERATED or CLOSED)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/list_tickets_parameters.go'
+
+  'PublicGetReasonsParams@reporting':
+    id: 'PublicGetReasonsParams@reporting'
+    name: 'PublicGetReasonsParams'
+    fields:
+      'Group':
+        type: 'string'
+        required: false
+        description: |-
+          query reasons under specified reason group
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          query reason(s) by title
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reasons/public_get_reasons_parameters.go'
+
+  'PublicListReasonGroupsParams@reporting':
+    id: 'PublicListReasonGroupsParams@reporting'
+    name: 'PublicListReasonGroupsParams'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'Namespace':
+        type: '*string'
+        required: true
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reasons/public_list_reason_groups_parameters.go'
+
+  'SubmitReportParams@reporting':
+    id: 'SubmitReportParams@reporting'
+    name: 'SubmitReportParams'
+    fields:
+      'Body':
+        type: '*RestapiSubmitReportRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reports'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reports/submit_report_parameters.go'
+
+  'TicketStatisticParams@reporting':
+    id: 'TicketStatisticParams@reporting'
+    name: 'TicketStatisticParams'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          filter statistic by category
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+        description: |-
+          filter statistic by extension category
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/ticket_statistic_parameters.go'
+
+  'UpdateModerationRuleParams@reporting':
+    id: 'UpdateModerationRuleParams@reporting'
+    name: 'UpdateModerationRuleParams'
+    fields:
+      'Body':
+        type: '*RestapiModerationRuleRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'RuleID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/update_moderation_rule_parameters.go'
+
+  'UpdateModerationRuleStatusParams@reporting':
+    id: 'UpdateModerationRuleStatusParams@reporting'
+    name: 'UpdateModerationRuleStatusParams'
+    fields:
+      'Body':
+        type: '*RestapiModerationRuleActiveRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'RuleID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/update_moderation_rule_status_parameters.go'
+
+  'UpdateReasonParams@reporting':
+    id: 'UpdateReasonParams@reporting'
+    name: 'UpdateReasonParams'
+    fields:
+      'Body':
+        type: '*RestapiCreateReasonRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ReasonID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/update_reason_parameters.go'
+
+  'UpdateReasonGroupParams@reporting':
+    id: 'UpdateReasonGroupParams@reporting'
+    name: 'UpdateReasonGroupParams'
+    fields:
+      'Body':
+        type: '*RestapiUpdateReasonGroupRequest'
+        required: true
+      'GroupID':
+        type: '*string'
+        required: true
+        description: |-
+          Reason group ID
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/update_reason_group_parameters.go'
+
+  'UpdateTicketResolutionsParams@reporting':
+    id: 'UpdateTicketResolutionsParams@reporting'
+    name: 'UpdateTicketResolutionsParams'
+    fields:
+      'Body':
+        type: '*RestapiUpdateTicketResolutionsRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/update_ticket_resolutions_parameters.go'
+
+  'UpsertParams@reporting':
+    id: 'UpsertParams@reporting'
+    name: 'UpsertParams'
+    fields:
+      'Body':
+        type: '*RestapiReportingLimit'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_configurations'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_configurations/upsert_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'RestapiActionAPIRequest@reporting':
+    id: 'RestapiActionAPIRequest@reporting'
+    name: 'RestapiActionAPIRequest'
+    fields:
+      'ActionID':
+        type: '*string'
+        required: true
+        description: |-
+          Auto mod action ID
+      'ActionName':
+        type: '*string'
+        required: true
+        description: |-
+          Auto mod action display name
+      'EventName':
+        type: '*string'
+        required: true
+        description: |-
+          Kafka publish event name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_api_request.go'
+
+  'RestapiActionAPIResponse@reporting':
+    id: 'RestapiActionAPIResponse@reporting'
+    name: 'RestapiActionAPIResponse'
+    fields:
+      'ActionID':
+        type: '*string'
+        required: true
+      'ActionName':
+        type: '*string'
+        required: true
+      'EventName':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_api_response.go'
+
+  'RestapiActionListAPIResponse@reporting':
+    id: 'RestapiActionListAPIResponse@reporting'
+    name: 'RestapiActionListAPIResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiActionAPIResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_list_api_response.go'
+
+  'RestapiAdminAllReasonsResponse@reporting':
+    id: 'RestapiAdminAllReasonsResponse@reporting'
+    name: 'RestapiAdminAllReasonsResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiPublicReasonResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_all_reasons_response.go'
+
+  'RestapiAdminReasonListResponse@reporting':
+    id: 'RestapiAdminReasonListResponse@reporting'
+    name: 'RestapiAdminReasonListResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiAdminReasonResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_reason_list_response.go'
+
+  'RestapiAdminReasonResponse@reporting':
+    id: 'RestapiAdminReasonResponse@reporting'
+    name: 'RestapiAdminReasonResponse'
+    fields:
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'Description':
+        type: '*string'
+        required: true
+      'Groups':
+        type: '[]*RestapiPublicReasonGroupResponse'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Title':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_reason_response.go'
+
+  'RestapiBanAccountActionRequest@reporting':
+    id: 'RestapiBanAccountActionRequest@reporting'
+    name: 'RestapiBanAccountActionRequest'
+    fields:
+      'Comment':
+        type: 'string'
+        required: false
+        description: |-
+          Ban comment
+      'Duration':
+        type: '*int32'
+        required: true
+        description: |-
+          Ban duration in minutes, -1 means unlimited duration
+      'Reason':
+        type: '*string'
+        required: true
+        description: |-
+          Ban reason
+      'SkipNotif':
+        type: '*bool'
+        required: true
+        description: |-
+          Skip notification for banned user (e.g. email notification)
+      'Type':
+        type: '*string'
+        required: true
+        description: |-
+          Ban type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ban_account_action_request.go'
+
+  'RestapiBanAccountActionResponse@reporting':
+    id: 'RestapiBanAccountActionResponse@reporting'
+    name: 'RestapiBanAccountActionResponse'
+    fields:
+      'Comment':
+        type: 'string'
+        required: false
+        description: |-
+          Ban comment
+      'Duration':
+        type: '*int32'
+        required: true
+        description: |-
+          Ban duration in minutes, -1 means unlimited duration
+      'Reason':
+        type: '*string'
+        required: true
+        description: |-
+          Ban reason
+      'SkipNotif':
+        type: '*bool'
+        required: true
+        description: |-
+          Skip notification for banned user (e.g. email notification)
+      'Type':
+        type: '*string'
+        required: true
+        description: |-
+          Ban type
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ban_account_action_response.go'
+
+  'RestapiCategoryLimit@reporting':
+    id: 'RestapiCategoryLimit@reporting'
+    name: 'RestapiCategoryLimit'
+    fields:
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'MaxReportPerTicket':
+        type: '*int32'
+        required: true
+        description: |-
+          must between 1 to 2147483647
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_category_limit.go'
+
+  'RestapiConfigResponse@reporting':
+    id: 'RestapiConfigResponse@reporting'
+    name: 'RestapiConfigResponse'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+      'ReportingLimit':
+        type: '*RestapiReportingLimit'
+        required: true
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_config_response.go'
+
+  'RestapiCreateReasonGroupRequest@reporting':
+    id: 'RestapiCreateReasonGroupRequest@reporting'
+    name: 'RestapiCreateReasonGroupRequest'
+    fields:
+      'ReasonIds':
+        type: '[]string'
+        required: false
+      'Title':
+        type: '*string'
+        required: true
+        description: |-
+          max 256 chars
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_create_reason_group_request.go'
+
+  'RestapiCreateReasonRequest@reporting':
+    id: 'RestapiCreateReasonRequest@reporting'
+    name: 'RestapiCreateReasonRequest'
+    fields:
+      'Description':
+        type: '*string'
+        required: true
+        description: |-
+          max 280 chars
+      'GroupIds':
+        type: '[]string'
+        required: true
+      'Title':
+        type: '*string'
+        required: true
+        description: |-
+          max 256 chars
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_create_reason_request.go'
+
+  'RestapiErrorResponse@reporting':
+    id: 'RestapiErrorResponse@reporting'
+    name: 'RestapiErrorResponse'
+    fields:
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_error_response.go'
+
+  'RestapiExtensionCategoryAPIRequest@reporting':
+    id: 'RestapiExtensionCategoryAPIRequest@reporting'
+    name: 'RestapiExtensionCategoryAPIRequest'
+    fields:
+      'ExtensionCategory':
+        type: '*string'
+        required: true
+        description: |-
+          Report extension category, consist of custom services sub-category (eg. salesItem,challenge,etc)
+      'ExtensionCategoryName':
+        type: '*string'
+        required: true
+        description: |-
+          Report extension category display name)
+      'ServiceSource':
+        type: '*string'
+        required: true
+        description: |-
+          Extension category service source (eg. service source 'marketplace' for extension category 'salesItem')
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_api_request.go'
+
+  'RestapiExtensionCategoryAPIResponse@reporting':
+    id: 'RestapiExtensionCategoryAPIResponse@reporting'
+    name: 'RestapiExtensionCategoryAPIResponse'
+    fields:
+      'ExtensionCategory':
+        type: '*string'
+        required: true
+      'ExtensionCategoryName':
+        type: '*string'
+        required: true
+      'ServiceSource':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_api_response.go'
+
+  'RestapiExtensionCategoryListAPIResponse@reporting':
+    id: 'RestapiExtensionCategoryListAPIResponse@reporting'
+    name: 'RestapiExtensionCategoryListAPIResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiExtensionCategoryAPIResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_list_api_response.go'
+
+  'RestapiModerationRuleActionsRequest@reporting':
+    id: 'RestapiModerationRuleActionsRequest@reporting'
+    name: 'RestapiModerationRuleActionsRequest'
+    fields:
+      'BanAccount':
+        type: '*RestapiBanAccountActionRequest'
+        required: false
+        description: |-
+          Ban account action configuration
+      'DeleteChat':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable delete chat action
+      'ExtensionActionIds':
+        type: '[]string'
+        required: false
+        description: |-
+          Custom services moderation actions
+      'HideContent':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable hide content action
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_actions_request.go'
+
+  'RestapiModerationRuleActionsResponse@reporting':
+    id: 'RestapiModerationRuleActionsResponse@reporting'
+    name: 'RestapiModerationRuleActionsResponse'
+    fields:
+      'BanAccount':
+        type: '*RestapiBanAccountActionResponse'
+        required: false
+        description: |-
+          Ban account action configuration
+      'DeleteChat':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable delete chat action
+      'ExtensionActionIds':
+        type: '[]string'
+        required: false
+        description: |-
+          custom service mod actions
+      'HideContent':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable hide content action
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_actions_response.go'
+
+  'RestapiModerationRuleActiveRequest@reporting':
+    id: 'RestapiModerationRuleActiveRequest@reporting'
+    name: 'RestapiModerationRuleActiveRequest'
+    fields:
+      'Active':
+        type: '*bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_active_request.go'
+
+  'RestapiModerationRuleRequest@reporting':
+    id: 'RestapiModerationRuleRequest@reporting'
+    name: 'RestapiModerationRuleRequest'
+    fields:
+      'Action':
+        type: 'string'
+        required: false
+        description: |-
+          GOING TO DEPRECATE, PLEASE DO NOT USE, for replacement use the "actions" field
+      'Actions':
+        type: '*RestapiModerationRuleActionsRequest'
+        required: false
+        description: |-
+          Action configurations for moderation rule
+      'Active':
+        type: '*bool'
+        required: true
+        description: |-
+          status of this rule
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          Report category, must select from pre defined list
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+        description: |-
+          Report extension category, consist of custom services sub-category (eg. salesItem,challenge,etc)
+      'Reason':
+        type: '*string'
+        required: true
+        description: |-
+          Reason of report, can select from pre defined list, max 128 chars
+      'Threshold':
+        type: '*int32'
+        required: true
+        description: |-
+          the threshold to trigger auto moderation
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_request.go'
+
+  'RestapiModerationRuleResponse@reporting':
+    id: 'RestapiModerationRuleResponse@reporting'
+    name: 'RestapiModerationRuleResponse'
+    fields:
+      'Action':
+        type: 'string'
+        required: false
+        description: |-
+          GOING TO DEPRECATE, PLEASE DO NOT USE, for replacement use the "actions" field
+      'Actions':
+        type: '*RestapiModerationRuleActionsResponse'
+        required: true
+        description: |-
+          Action configurations for moderation rule
+      'Active':
+        type: '*bool'
+        required: true
+      'Category':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Reason':
+        type: '*string'
+        required: true
+      'Threshold':
+        type: '*int32'
+        required: true
+      'UpdatedAt':
+        type: '*strfmt.DateTime'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_response.go'
+
+  'RestapiModerationRulesList@reporting':
+    id: 'RestapiModerationRulesList@reporting'
+    name: 'RestapiModerationRulesList'
+    fields:
+      'Data':
+        type: '[]*RestapiModerationRuleResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rules_list.go'
+
+  'RestapiPagination@reporting':
+    id: 'RestapiPagination@reporting'
+    name: 'RestapiPagination'
+    fields:
+      'First':
+        type: '*string'
+        required: true
+      'Last':
+        type: '*string'
+        required: true
+      'Next':
+        type: '*string'
+        required: true
+      'Previous':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_pagination.go'
+
+  'RestapiPublicReasonGroupResponse@reporting':
+    id: 'RestapiPublicReasonGroupResponse@reporting'
+    name: 'RestapiPublicReasonGroupResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Title':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_group_response.go'
+
+  'RestapiPublicReasonListResponse@reporting':
+    id: 'RestapiPublicReasonListResponse@reporting'
+    name: 'RestapiPublicReasonListResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiPublicReasonResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_list_response.go'
+
+  'RestapiPublicReasonResponse@reporting':
+    id: 'RestapiPublicReasonResponse@reporting'
+    name: 'RestapiPublicReasonResponse'
+    fields:
+      'Description':
+        type: '*string'
+        required: true
+      'Title':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_response.go'
+
+  'RestapiReasonGroupListResponse@reporting':
+    id: 'RestapiReasonGroupListResponse@reporting'
+    name: 'RestapiReasonGroupListResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiPublicReasonGroupResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reason_group_list_response.go'
+
+  'RestapiReasonGroupResponse@reporting':
+    id: 'RestapiReasonGroupResponse@reporting'
+    name: 'RestapiReasonGroupResponse'
+    fields:
+      'ID':
+        type: '*string'
+        required: true
+      'Reasons':
+        type: '[]*RestapiAdminReasonResponse'
+        required: false
+      'Title':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reason_group_response.go'
+
+  'RestapiReportingLimit@reporting':
+    id: 'RestapiReportingLimit@reporting'
+    name: 'RestapiReportingLimit'
+    fields:
+      'CategoryLimits':
+        type: '[]*RestapiCategoryLimit'
+        required: true
+      'TimeInterval':
+        type: '*int64'
+        required: true
+        description: |-
+          the unit is nanoseconds, must between 1 to 6000000 seconds
+      'UserMaxReportPerTimeInterval':
+        type: '*int32'
+        required: true
+        description: |-
+          must between 1 to 2147483647
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reporting_limit.go'
+
+  'RestapiReportListResponse@reporting':
+    id: 'RestapiReportListResponse@reporting'
+    name: 'RestapiReportListResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiReportResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_report_list_response.go'
+
+  'RestapiReportResponse@reporting':
+    id: 'RestapiReportResponse@reporting'
+    name: 'RestapiReportResponse'
+    fields:
+      'AdditionalInfo':
+        type: 'interface{}'
+        required: true
+      'Category':
+        type: '*string'
+        required: true
+      'Comment':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'ObjectID':
+        type: '*string'
+        required: true
+      'ObjectType':
+        type: '*string'
+        required: true
+      'Reason':
+        type: '*string'
+        required: true
+      'ReporterID':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_report_response.go'
+
+  'RestapiSubmitReportRequest@reporting':
+    id: 'RestapiSubmitReportRequest@reporting'
+    name: 'RestapiSubmitReportRequest'
+    fields:
+      'AdditionalInfo':
+        type: 'interface{}'
+        required: false
+        description: |-
+          Additional info regarding reported user / content, JSON formatted
+      'Category':
+        type: '*string'
+        required: true
+        description: |-
+          Report category, must select from pre defined list
+      'Comment':
+        type: 'string'
+        required: false
+        description: |-
+          Additional comment if any, max 280 chars
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+        description: |-
+          Report extension category, must select from pre defined list
+      'ObjectID':
+        type: 'string'
+        required: false
+        description: |-
+          ID of content being reported, uuid4WithoutHyphens. Required for UGC category
+      'ObjectType':
+        type: 'string'
+        required: false
+        description: |-
+          Type of content being reported, max 64 chars. Required for UGC category
+      'Reason':
+        type: '*string'
+        required: true
+        description: |-
+          Reason of report, can select from pre defined list, max 128 chars
+      'UserID':
+        type: '*string'
+        required: true
+        description: |-
+          User ID being reported, in UUID4 format
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_submit_report_request.go'
+
+  'RestapiSubmitReportResponse@reporting':
+    id: 'RestapiSubmitReportResponse@reporting'
+    name: 'RestapiSubmitReportResponse'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: '*string'
+        required: true
+      'ObjectID':
+        type: '*string'
+        required: true
+      'ObjectType':
+        type: '*string'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'TicketID':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_submit_report_response.go'
+
+  'RestapiTicketListResponse@reporting':
+    id: 'RestapiTicketListResponse@reporting'
+    name: 'RestapiTicketListResponse'
+    fields:
+      'Data':
+        type: '[]*RestapiTicketResponse'
+        required: true
+      'Paging':
+        type: '*RestapiPagination'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_list_response.go'
+
+  'RestapiTicketResponse@reporting':
+    id: 'RestapiTicketResponse@reporting'
+    name: 'RestapiTicketResponse'
+    fields:
+      'Category':
+        type: '*string'
+        required: true
+      'CreatedAt':
+        type: '*string'
+        required: true
+      'ExtensionCategory':
+        type: 'string'
+        required: false
+      'ID':
+        type: '*string'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'Notes':
+        type: '*string'
+        required: true
+      'ObjectID':
+        type: '*string'
+        required: true
+      'ObjectType':
+        type: '*string'
+        required: true
+      'ReportsCount':
+        type: '*int32'
+        required: true
+      'Status':
+        type: '*string'
+        required: true
+      'UpdatedAt':
+        type: '*string'
+        required: true
+      'UserID':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_response.go'
+
+  'RestapiTicketStatisticResponse@reporting':
+    id: 'RestapiTicketStatisticResponse@reporting'
+    name: 'RestapiTicketStatisticResponse'
+    fields:
+      'ModeratedCount':
+        type: '*int64'
+        required: true
+      'OpenCount':
+        type: '*int64'
+        required: true
+      'TotalCount':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_statistic_response.go'
+
+  'RestapiUnusedReasonListResponse@reporting':
+    id: 'RestapiUnusedReasonListResponse@reporting'
+    name: 'RestapiUnusedReasonListResponse'
+    fields:
+      'Reasons':
+        type: '[]*RestapiPublicReasonResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_unused_reason_list_response.go'
+
+  'RestapiUpdateReasonGroupRequest@reporting':
+    id: 'RestapiUpdateReasonGroupRequest@reporting'
+    name: 'RestapiUpdateReasonGroupRequest'
+    fields:
+      'ReasonIds':
+        type: '[]string'
+        required: false
+      'Title':
+        type: '*string'
+        required: true
+        description: |-
+          max 256 chars
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_update_reason_group_request.go'
+
+  'RestapiUpdateTicketResolutionsRequest@reporting':
+    id: 'RestapiUpdateTicketResolutionsRequest@reporting'
+    name: 'RestapiUpdateTicketResolutionsRequest'
+    fields:
+      'Notes':
+        type: '*string'
+        required: true
+        description: |-
+          Info regarding the resolution status, max 280 chars
+      'Status':
+        type: '*string'
+        required: true
+        description: |-
+          Ticket status is open, closed, auto moderated
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_update_ticket_resolutions_request.go'
+
+  # endregion models
+
+functions:
+
+  'AdminCreateExtensionCategoryShort@reporting':
+    id: 'AdminCreateExtensionCategoryShort@reporting'
+    name: 'AdminCreateExtensionCategoryShort'
+    description: |-
+      Create extension category data
+    struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    parameters:
+      params:
+        type: '*admin_extension_categories_and_auto_moderation_actions.AdminCreateExtensionCategoryParams'
+        required: true
+    return_type: '(*admin_extension_categories_and_auto_moderation_actions.AdminCreateExtensionCategoryResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminExtensionCategoriesAndAutoModerationActions.go'
+    example: |-
+      adminExtensionCategoriesAndAutoModerationActionsService := reporting.AdminExtensionCategoriesAndAutoModerationActionsService{ ... }
+      params := admin_extension_categories_and_auto_moderation_actions.AdminCreateExtensionCategoryParams{ ... }
+      res, err := adminExtensionCategoriesAndAutoModerationActionsService.AdminCreateExtensionCategoryShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'category'
+      - 'create'
+      - 'extension'
+      - 'moderation'
+
+  'AdminCreateModActionShort@reporting':
+    id: 'AdminCreateModActionShort@reporting'
+    name: 'AdminCreateModActionShort'
+    description: |-
+      Create auto moderation action
+    struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    parameters:
+      params:
+        type: '*admin_extension_categories_and_auto_moderation_actions.AdminCreateModActionParams'
+        required: true
+    return_type: '(*admin_extension_categories_and_auto_moderation_actions.AdminCreateModActionResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminExtensionCategoriesAndAutoModerationActions.go'
+    example: |-
+      adminExtensionCategoriesAndAutoModerationActionsService := reporting.AdminExtensionCategoriesAndAutoModerationActionsService{ ... }
+      params := admin_extension_categories_and_auto_moderation_actions.AdminCreateModActionParams{ ... }
+      res, err := adminExtensionCategoriesAndAutoModerationActionsService.AdminCreateModActionShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'action'
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'create'
+      - 'extension'
+      - 'mod'
+      - 'moderation'
+
+  'AdminFindActionListShort@reporting':
+    id: 'AdminFindActionListShort@reporting'
+    name: 'AdminFindActionListShort'
+    description: |-
+      Get a list of auto moderation actions
+    struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    parameters:
+      params:
+        type: '*admin_extension_categories_and_auto_moderation_actions.AdminFindActionListParams'
+        required: true
+    return_type: '(*admin_extension_categories_and_auto_moderation_actions.AdminFindActionListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminExtensionCategoriesAndAutoModerationActions.go'
+    example: |-
+      adminExtensionCategoriesAndAutoModerationActionsService := reporting.AdminExtensionCategoriesAndAutoModerationActionsService{ ... }
+      params := admin_extension_categories_and_auto_moderation_actions.AdminFindActionListParams{ ... }
+      res, err := adminExtensionCategoriesAndAutoModerationActionsService.AdminFindActionListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'action'
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'extension'
+      - 'find'
+      - 'list'
+      - 'moderation'
+
+  'AdminFindExtensionCategoryListShort@reporting':
+    id: 'AdminFindExtensionCategoryListShort@reporting'
+    name: 'AdminFindExtensionCategoryListShort'
+    description: |-
+      Get a list of extension category data with the specified name
+    struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    parameters:
+      params:
+        type: '*admin_extension_categories_and_auto_moderation_actions.AdminFindExtensionCategoryListParams'
+        required: true
+    return_type: '(*admin_extension_categories_and_auto_moderation_actions.AdminFindExtensionCategoryListResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminExtensionCategoriesAndAutoModerationActions.go'
+    example: |-
+      adminExtensionCategoriesAndAutoModerationActionsService := reporting.AdminExtensionCategoriesAndAutoModerationActionsService{ ... }
+      params := admin_extension_categories_and_auto_moderation_actions.AdminFindExtensionCategoryListParams{ ... }
+      res, err := adminExtensionCategoriesAndAutoModerationActionsService.AdminFindExtensionCategoryListShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'category'
+      - 'extension'
+      - 'find'
+      - 'list'
+      - 'moderation'
+
+  'AdminGetAllReasonsShort@reporting':
+    id: 'AdminGetAllReasonsShort@reporting'
+    name: 'AdminGetAllReasonsShort'
+    description: |-
+      This endpoint get all reasons without pagination.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.AdminGetAllReasonsParams'
+        required: true
+    return_type: '(*admin_reasons.AdminGetAllReasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.AdminGetAllReasonsParams{ ... }
+      res, err := adminReasonsService.AdminGetAllReasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'all'
+      - 'get'
+      - 'reasons'
+
+  'AdminGetReasonShort@reporting':
+    id: 'AdminGetReasonShort@reporting'
+    name: 'AdminGetReasonShort'
+    description: |-
+      This endpoint get a single reason.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.AdminGetReasonParams'
+        required: true
+    return_type: '(*admin_reasons.AdminGetReasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.AdminGetReasonParams{ ... }
+      res, err := adminReasonsService.AdminGetReasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reason'
+      - 'reasons'
+
+  'AdminGetReasonsShort@reporting':
+    id: 'AdminGetReasonsShort@reporting'
+    name: 'AdminGetReasonsShort'
+    description: |-
+      This endpoint get reasons with pagination
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.AdminGetReasonsParams'
+        required: true
+    return_type: '(*admin_reasons.AdminGetReasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.AdminGetReasonsParams{ ... }
+      res, err := adminReasonsService.AdminGetReasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reasons'
+
+  'AdminGetUnusedReasonsShort@reporting':
+    id: 'AdminGetUnusedReasonsShort@reporting'
+    name: 'AdminGetUnusedReasonsShort'
+    description: |-
+      This endpoint get reasons not used by moderation rules.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.AdminGetUnusedReasonsParams'
+        required: true
+    return_type: '(*admin_reasons.AdminGetUnusedReasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.AdminGetUnusedReasonsParams{ ... }
+      res, err := adminReasonsService.AdminGetUnusedReasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reasons'
+      - 'unused'
+
+  'AdminListReasonGroupsShort@reporting':
+    id: 'AdminListReasonGroupsShort@reporting'
+    name: 'AdminListReasonGroupsShort'
+    description: |-
+      Return list of reason groups ID and title under given namespace.
+      To fetch the reasons inside a group, use get reason group endpoint.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.AdminListReasonGroupsParams'
+        required: true
+    return_type: '(*admin_reasons.AdminListReasonGroupsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.AdminListReasonGroupsParams{ ... }
+      res, err := adminReasonsService.AdminListReasonGroupsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'groups'
+      - 'list'
+      - 'reason'
+      - 'reasons'
+
+  'AdminSubmitReportShort@reporting':
+    id: 'AdminSubmitReportShort@reporting'
+    name: 'AdminSubmitReportShort'
+    description: |-
+      Submit a report and will return ticket for reported object.
+      New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+      Admin can only submit report once for each different user / object reported in the same OPEN ticket.
+      Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+      Fill the 'reason' field with a 'reason title'
+      Supported category: - UGC - USER - CHAT - EXTENSION
+    struct: 'AdminReportsService'
+    parameters:
+      params:
+        type: '*admin_reports.AdminSubmitReportParams'
+        required: true
+    return_type: '(*admin_reports.AdminSubmitReportResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reports'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReports.go'
+    example: |-
+      adminReportsService := reporting.AdminReportsService{ ... }
+      params := admin_reports.AdminSubmitReportParams{ ... }
+      res, err := adminReportsService.AdminSubmitReportShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'report'
+      - 'reports'
+      - 'submit'
+
+  'CreateModerationRuleShort@reporting':
+    id: 'CreateModerationRuleShort@reporting'
+    name: 'CreateModerationRuleShort'
+    description: |-
+      This endpoint create moderation rule.
+      Supported Category: - UGC - USER - CHAT - EXTENSION
+      Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+      * HideContent
+
+      Supported Actions:
+
+      * **hideContent**: Hide the content
+      * **banAccount**: Ban the user account
+      * **deleteChat**: Delete chat
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.CreateModerationRuleParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.CreateModerationRuleParams{ ... }
+      res, err := adminModerationRuleService.CreateModerationRuleShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'moderation'
+      - 'rule'
+
+  'CreateReasonShort@reporting':
+    id: 'CreateReasonShort@reporting'
+    name: 'CreateReasonShort'
+    description: |-
+      This endpoint create a reason for a namespace.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.CreateReasonParams'
+        required: true
+    return_type: '(*admin_reasons.CreateReasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.CreateReasonParams{ ... }
+      res, err := adminReasonsService.CreateReasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'reason'
+      - 'reasons'
+
+  'CreateReasonGroupShort@reporting':
+    id: 'CreateReasonGroupShort@reporting'
+    name: 'CreateReasonGroupShort'
+    description: |-
+      Create a reason group for easier query. You can query reasons by specifying
+      the group title in the list reasons query. Reason group title is case insensitive,
+      meaning you can't have **reason** if you already create a reason titled **Reason**
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.CreateReasonGroupParams'
+        required: true
+    return_type: '(*admin_reasons.CreateReasonGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.CreateReasonGroupParams{ ... }
+      res, err := adminReasonsService.CreateReasonGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'DeleteModerationRuleShort@reporting':
+    id: 'DeleteModerationRuleShort@reporting'
+    name: 'DeleteModerationRuleShort'
+    description: |-
+      This endpoint delete moderation rule.
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.DeleteModerationRuleParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.DeleteModerationRuleParams{ ... }
+      res, err := adminModerationRuleService.DeleteModerationRuleShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'moderation'
+      - 'rule'
+
+  'DeleteReasonShort@reporting':
+    id: 'DeleteReasonShort@reporting'
+    name: 'DeleteReasonShort'
+    description: |-
+      This endpoint delete a reason for a namespace with ID.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.DeleteReasonParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.DeleteReasonParams{ ... }
+      res, err := adminReasonsService.DeleteReasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'reason'
+      - 'reasons'
+
+  'DeleteReasonGroupShort@reporting':
+    id: 'DeleteReasonGroupShort@reporting'
+    name: 'DeleteReasonGroupShort'
+    description: |-
+      This endpoint delete a reason group for a namespace with ID.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.DeleteReasonGroupParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.DeleteReasonGroupParams{ ... }
+      res, err := adminReasonsService.DeleteReasonGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'DeleteTicketShort@reporting':
+    id: 'DeleteTicketShort@reporting'
+    name: 'DeleteTicketShort'
+    description: |-
+      This endpoint will delete ticket and all its reports.
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.DeleteTicketParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.DeleteTicketParams{ ... }
+      res, err := adminTicketsService.DeleteTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'ticket'
+      - 'tickets'
+
+  'GetShort@reporting':
+    id: 'GetShort@reporting'
+    name: 'GetShort'
+    description: |-
+      TimeInterval is in nanoseconds.
+      When there's no configuration set, the response is the default value (configurable through envar).
+    struct: 'AdminConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_configurations.GetParams'
+        required: true
+    return_type: '(*admin_configurations.GetResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminConfigurations.go'
+    example: |-
+      adminConfigurationsService := reporting.AdminConfigurationsService{ ... }
+      params := admin_configurations.GetParams{ ... }
+      res, err := adminConfigurationsService.GetShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'get'
+
+  'GetModerationRuleDetailsShort@reporting':
+    id: 'GetModerationRuleDetailsShort@reporting'
+    name: 'GetModerationRuleDetailsShort'
+    description: |-
+      This endpoint get moderation rule.
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.GetModerationRuleDetailsParams'
+        required: true
+    return_type: '(*admin_moderation_rule.GetModerationRuleDetailsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.GetModerationRuleDetailsParams{ ... }
+      res, err := adminModerationRuleService.GetModerationRuleDetailsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'details'
+      - 'get'
+      - 'moderation'
+      - 'rule'
+
+  'GetModerationRulesShort@reporting':
+    id: 'GetModerationRulesShort@reporting'
+    name: 'GetModerationRulesShort'
+    description: |-
+      This endpoint get moderation rules.
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.GetModerationRulesParams'
+        required: true
+    return_type: '(*admin_moderation_rule.GetModerationRulesResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.GetModerationRulesParams{ ... }
+      res, err := adminModerationRuleService.GetModerationRulesShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'moderation'
+      - 'rule'
+      - 'rules'
+
+  'GetReasonGroupShort@reporting':
+    id: 'GetReasonGroupShort@reporting'
+    name: 'GetReasonGroupShort'
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.GetReasonGroupParams'
+        required: true
+    return_type: '(*admin_reasons.GetReasonGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.GetReasonGroupParams{ ... }
+      res, err := adminReasonsService.GetReasonGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'GetReportsByTicketShort@reporting':
+    id: 'GetReportsByTicketShort@reporting'
+    name: 'GetReportsByTicketShort'
+    description: |-
+      List reports ordered by createdAt in descending order.
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.GetReportsByTicketParams'
+        required: true
+    return_type: '(*admin_tickets.GetReportsByTicketResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.GetReportsByTicketParams{ ... }
+      res, err := adminTicketsService.GetReportsByTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'get'
+      - 'reports'
+      - 'ticket'
+      - 'tickets'
+
+  'GetTicketDetailShort@reporting':
+    id: 'GetTicketDetailShort@reporting'
+    name: 'GetTicketDetailShort'
+    description: |-
+      This endpoint will return ticket detail with ticket id.
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.GetTicketDetailParams'
+        required: true
+    return_type: '(*admin_tickets.GetTicketDetailResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.GetTicketDetailParams{ ... }
+      res, err := adminTicketsService.GetTicketDetailShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'detail'
+      - 'get'
+      - 'ticket'
+      - 'tickets'
+
+  'ListReportsShort@reporting':
+    id: 'ListReportsShort@reporting'
+    name: 'ListReportsShort'
+    description: |-
+      Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      Reports list can be ordered by:
+      - createdAt
+      - updatedAt
+    struct: 'AdminReportsService'
+    parameters:
+      params:
+        type: '*admin_reports.ListReportsParams'
+        required: true
+    return_type: '(*admin_reports.ListReportsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reports'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReports.go'
+    example: |-
+      adminReportsService := reporting.AdminReportsService{ ... }
+      params := admin_reports.ListReportsParams{ ... }
+      res, err := adminReportsService.ListReportsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'reports'
+
+  'ListTicketsShort@reporting':
+    id: 'ListTicketsShort@reporting'
+    name: 'ListTicketsShort'
+    description: |-
+      Tickets list can be ordered by:
+      - createdAt
+      - reportsCount
+      - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.ListTicketsParams'
+        required: true
+    return_type: '(*admin_tickets.ListTicketsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.ListTicketsParams{ ... }
+      res, err := adminTicketsService.ListTicketsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tickets'
+
+  'PublicGetReasonsShort@reporting':
+    id: 'PublicGetReasonsShort@reporting'
+    name: 'PublicGetReasonsShort'
+    struct: 'PublicReasonsService'
+    parameters:
+      params:
+        type: '*public_reasons.PublicGetReasonsParams'
+        required: true
+    return_type: '(*public_reasons.PublicGetReasonsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/publicReasons.go'
+    example: |-
+      publicReasonsService := reporting.PublicReasonsService{ ... }
+      params := public_reasons.PublicGetReasonsParams{ ... }
+      res, err := publicReasonsService.PublicGetReasonsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'public'
+      - 'reasons'
+
+  'PublicListReasonGroupsShort@reporting':
+    id: 'PublicListReasonGroupsShort@reporting'
+    name: 'PublicListReasonGroupsShort'
+    description: |-
+      Return list of reason groups ID and title under given namespace.
+    struct: 'PublicReasonsService'
+    parameters:
+      params:
+        type: '*public_reasons.PublicListReasonGroupsParams'
+        required: true
+    return_type: '(*public_reasons.PublicListReasonGroupsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/publicReasons.go'
+    example: |-
+      publicReasonsService := reporting.PublicReasonsService{ ... }
+      params := public_reasons.PublicListReasonGroupsParams{ ... }
+      res, err := publicReasonsService.PublicListReasonGroupsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'groups'
+      - 'list'
+      - 'public'
+      - 'reason'
+      - 'reasons'
+
+  'SubmitReportShort@reporting':
+    id: 'SubmitReportShort@reporting'
+    name: 'SubmitReportShort'
+    description: |-
+      User need to be authenticated to access this endpoint.
+      Submit a report and will return ticket for reported object.
+      New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+      User can only submit report once for each different user / object reported in the same OPEN ticket.
+      Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+      Fill the 'reason' field with a 'reason title'
+      Supported category: - UGC - USER - CHAT - EXTENSION
+    struct: 'PublicReportsService'
+    parameters:
+      params:
+        type: '*public_reports.SubmitReportParams'
+        required: true
+    return_type: '(*public_reports.SubmitReportResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/public_reports'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/publicReports.go'
+    example: |-
+      publicReportsService := reporting.PublicReportsService{ ... }
+      params := public_reports.SubmitReportParams{ ... }
+      res, err := publicReportsService.SubmitReportShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'public'
+      - 'report'
+      - 'reports'
+      - 'submit'
+
+  'TicketStatisticShort@reporting':
+    id: 'TicketStatisticShort@reporting'
+    name: 'TicketStatisticShort'
+    description: |-
+      Ticket statistic can be filtered by:
+      - category
+      - extension category
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.TicketStatisticParams'
+        required: true
+    return_type: '(*admin_tickets.TicketStatisticResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.TicketStatisticParams{ ... }
+      res, err := adminTicketsService.TicketStatisticShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'statistic'
+      - 'ticket'
+      - 'tickets'
+
+  'UpdateModerationRuleShort@reporting':
+    id: 'UpdateModerationRuleShort@reporting'
+    name: 'UpdateModerationRuleShort'
+    description: |-
+      This endpoint update moderation rule.
+      Supported Category:- UGC - USER - CHAT - EXTENSION
+      Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+      * HideContent
+
+      Supported Actions:
+      * **hideContent**: Hide the content
+      * **banAccount**: Ban the user account
+      * **deleteChat**: Delete chat
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.UpdateModerationRuleParams'
+        required: true
+    return_type: '(*admin_moderation_rule.UpdateModerationRuleResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.UpdateModerationRuleParams{ ... }
+      res, err := adminModerationRuleService.UpdateModerationRuleShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'moderation'
+      - 'rule'
+      - 'update'
+
+  'UpdateModerationRuleStatusShort@reporting':
+    id: 'UpdateModerationRuleStatusShort@reporting'
+    name: 'UpdateModerationRuleStatusShort'
+    description: |-
+      This endpoint enable/disable moderation rule status.
+    struct: 'AdminModerationRuleService'
+    parameters:
+      params:
+        type: '*admin_moderation_rule.UpdateModerationRuleStatusParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_moderation_rule'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminModerationRule.go'
+    example: |-
+      adminModerationRuleService := reporting.AdminModerationRuleService{ ... }
+      params := admin_moderation_rule.UpdateModerationRuleStatusParams{ ... }
+      res, err := adminModerationRuleService.UpdateModerationRuleStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'moderation'
+      - 'rule'
+      - 'status'
+      - 'update'
+
+  'UpdateReasonShort@reporting':
+    id: 'UpdateReasonShort@reporting'
+    name: 'UpdateReasonShort'
+    description: |-
+      This endpoint update a reason for a namespace with ID.
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.UpdateReasonParams'
+        required: true
+    return_type: '(*admin_reasons.UpdateReasonResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.UpdateReasonParams{ ... }
+      res, err := adminReasonsService.UpdateReasonShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'reason'
+      - 'reasons'
+      - 'update'
+
+  'UpdateReasonGroupShort@reporting':
+    id: 'UpdateReasonGroupShort@reporting'
+    name: 'UpdateReasonGroupShort'
+    description: |-
+      Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
+      If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
+    struct: 'AdminReasonsService'
+    parameters:
+      params:
+        type: '*admin_reasons.UpdateReasonGroupParams'
+        required: true
+    return_type: '(*admin_reasons.UpdateReasonGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_reasons'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminReasons.go'
+    example: |-
+      adminReasonsService := reporting.AdminReasonsService{ ... }
+      params := admin_reasons.UpdateReasonGroupParams{ ... }
+      res, err := adminReasonsService.UpdateReasonGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+      - 'update'
+
+  'UpdateTicketResolutionsShort@reporting':
+    id: 'UpdateTicketResolutionsShort@reporting'
+    name: 'UpdateTicketResolutionsShort'
+    description: |-
+      Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
+    struct: 'AdminTicketsService'
+    parameters:
+      params:
+        type: '*admin_tickets.UpdateTicketResolutionsParams'
+        required: true
+    return_type: '(*admin_tickets.UpdateTicketResolutionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_tickets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminTickets.go'
+    example: |-
+      adminTicketsService := reporting.AdminTicketsService{ ... }
+      params := admin_tickets.UpdateTicketResolutionsParams{ ... }
+      res, err := adminTicketsService.UpdateTicketResolutionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'resolutions'
+      - 'ticket'
+      - 'tickets'
+      - 'update'
+
+  'UpsertShort@reporting':
+    id: 'UpsertShort@reporting'
+    name: 'UpsertShort'
+    description: |-
+      The behaviour of this endpoint is upsert based on the namespace.
+      So, you can use this for both creating & updating the configuration.
+      TimeInterval is in nanoseconds.
+    struct: 'AdminConfigurationsService'
+    parameters:
+      params:
+        type: '*admin_configurations.UpsertParams'
+        required: true
+    return_type: '(*admin_configurations.UpsertResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_configurations'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/reporting'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/reporting/adminConfigurations.go'
+    example: |-
+      adminConfigurationsService := reporting.AdminConfigurationsService{ ... }
+      params := admin_configurations.UpsertParams{ ... }
+      res, err := adminConfigurationsService.UpsertShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'upsert'

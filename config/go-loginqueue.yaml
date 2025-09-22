@@ -1,0 +1,474 @@
+structs:
+  'JusticeLoginqueueService@loginqueue':
+    id: 'JusticeLoginqueueService@loginqueue'
+    name: 'JusticeLoginqueueService'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/justice_loginqueue_service_client.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/loginqueueclientfactory.go'
+    example: |-
+      loginqueueClient := factory.NewLoginqueueClient(configRepo)
+
+  # region wrappers
+
+  'AdminV1Service@loginqueue':
+    id: 'AdminV1Service@loginqueue'
+    name: 'AdminV1Service'
+    fields:
+      Client:
+        type: '*loginqueueclient.JusticeLoginqueueService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/adminV1.go'
+    example: |-
+      loginqueueClient := factory.NewLoginqueueClient(configRepo) // re-use if it exists already
+      adminV1Service := AdminV1Service{
+          Client:           loginqueueClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'TicketV1Service@loginqueue':
+    id: 'TicketV1Service@loginqueue'
+    name: 'TicketV1Service'
+    fields:
+      Client:
+        type: '*loginqueueclient.JusticeLoginqueueService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/ticketV1.go'
+    example: |-
+      loginqueueClient := factory.NewLoginqueueClient(configRepo) // re-use if it exists already
+      ticketV1Service := TicketV1Service{
+          Client:           loginqueueClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  # endregion wrappers
+
+  # region params
+
+  'AdminGetConfigurationParams@loginqueue':
+    id: 'AdminGetConfigurationParams@loginqueue'
+    name: 'AdminGetConfigurationParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_get_configuration_parameters.go'
+
+  'AdminGetStatusParams@loginqueue':
+    id: 'AdminGetStatusParams@loginqueue'
+    name: 'AdminGetStatusParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_get_status_parameters.go'
+
+  'AdminUpdateConfigurationParams@loginqueue':
+    id: 'AdminUpdateConfigurationParams@loginqueue'
+    name: 'AdminUpdateConfigurationParams'
+    fields:
+      'Body':
+        type: '*ApimodelsConfigurationRequest'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_update_configuration_parameters.go'
+
+  'CancelTicketParams@loginqueue':
+    id: 'CancelTicketParams@loginqueue'
+    name: 'CancelTicketParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/ticket_v1'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/ticket_v1/cancel_ticket_parameters.go'
+
+  'RefreshTicketParams@loginqueue':
+    id: 'RefreshTicketParams@loginqueue'
+    name: 'RefreshTicketParams'
+    fields:
+      'Namespace':
+        type: '*string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/ticket_v1'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/ticket_v1/refresh_ticket_parameters.go'
+
+  # endregion params
+
+  # region models
+
+  'ApimodelsConfigurationRequest@loginqueue':
+    id: 'ApimodelsConfigurationRequest@loginqueue'
+    name: 'ApimodelsConfigurationRequest'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'MaxConcurrency':
+        type: '*int32'
+        required: true
+      'MaxLoginRate':
+        type: '*int32'
+        required: true
+      'MinActivationPeriodInSecond':
+        type: '*int32'
+        required: true
+      'PlayerPollingTimeInSecond':
+        type: '*int32'
+        required: true
+      'PlayerReconnectGracePeriodInSecond':
+        type: '*int32'
+        required: true
+      'QueueReconnectGracePeriodInSecond':
+        type: '*int32'
+        required: true
+      'SafetyMarginPercentage':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_configuration_request.go'
+
+  'ApimodelsConfigurationResponse@loginqueue':
+    id: 'ApimodelsConfigurationResponse@loginqueue'
+    name: 'ApimodelsConfigurationResponse'
+    fields:
+      'Enabled':
+        type: '*bool'
+        required: true
+      'MaxConcurrency':
+        type: '*int32'
+        required: true
+      'MaxLoginRate':
+        type: '*int32'
+        required: true
+      'MinActivationPeriodInSecond':
+        type: '*int32'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'PlayerPollingTimeInSecond':
+        type: '*int32'
+        required: true
+      'PlayerReconnectGracePeriodInSecond':
+        type: '*int32'
+        required: true
+      'QueueReconnectGracePeriodInSecond':
+        type: '*int32'
+        required: true
+      'SafetyMarginPercentage':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_configuration_response.go'
+
+  'ApimodelsLink@loginqueue':
+    id: 'ApimodelsLink@loginqueue'
+    name: 'ApimodelsLink'
+    fields:
+      'Action':
+        type: '*string'
+        required: true
+      'Href':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_link.go'
+
+  'ApimodelsQueueStatusResponse@loginqueue':
+    id: 'ApimodelsQueueStatusResponse@loginqueue'
+    name: 'ApimodelsQueueStatusResponse'
+    fields:
+      'IsActive':
+        type: '*bool'
+        required: true
+      'LoggedUserCount':
+        type: '*int32'
+        required: true
+      'LoginRPS':
+        type: '*int32'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'QueueCount':
+        type: '*int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_queue_status_response.go'
+
+  'ApimodelsRefreshTicketResponse@loginqueue':
+    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+    name: 'ApimodelsRefreshTicketResponse'
+    fields:
+      'Cancel':
+        type: '*ApimodelsLink'
+        required: true
+      'EstimatedWaitingTimeInSeconds':
+        type: '*int32'
+        required: true
+      'Namespace':
+        type: '*string'
+        required: true
+      'PlayerPollingTimeInSeconds':
+        type: '*int32'
+        required: true
+      'Position':
+        type: '*int32'
+        required: true
+      'ReconnectExpiredAt':
+        type: '*int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_refresh_ticket_response.go'
+
+  'ResponseError@loginqueue':
+    id: 'ResponseError@loginqueue'
+    name: 'ResponseError'
+    fields:
+      'Attributes':
+        type: 'map[string]string'
+        required: false
+      'ErrorCode':
+        type: '*int32'
+        required: true
+      'ErrorMessage':
+        type: '*string'
+        required: true
+      'Message':
+        type: '*string'
+        required: true
+      'Name':
+        type: '*string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/response_error.go'
+
+  # endregion models
+
+functions:
+
+  'AdminGetConfigurationShort@loginqueue':
+    id: 'AdminGetConfigurationShort@loginqueue'
+    name: 'AdminGetConfigurationShort'
+    description: |-
+      This API is used to get log queue configuration of a namespace.
+      Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
+    struct: 'AdminV1Service'
+    parameters:
+      params:
+        type: '*admin_v1.AdminGetConfigurationParams'
+        required: true
+    return_type: '(*admin_v1.AdminGetConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/loginqueue'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/adminV1.go'
+    example: |-
+      adminV1Service := loginqueue.AdminV1Service{ ... }
+      params := admin_v1.AdminGetConfigurationParams{ ... }
+      res, err := adminV1Service.AdminGetConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'v1'
+
+  'AdminGetStatusShort@loginqueue':
+    id: 'AdminGetStatusShort@loginqueue'
+    name: 'AdminGetStatusShort'
+    description: |-
+      Get login queue status
+    struct: 'AdminV1Service'
+    parameters:
+      params:
+        type: '*admin_v1.AdminGetStatusParams'
+        required: true
+    return_type: '(*admin_v1.AdminGetStatusResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/loginqueue'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/adminV1.go'
+    example: |-
+      adminV1Service := loginqueue.AdminV1Service{ ... }
+      params := admin_v1.AdminGetStatusParams{ ... }
+      res, err := adminV1Service.AdminGetStatusShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'status'
+      - 'v1'
+
+  'AdminUpdateConfigurationShort@loginqueue':
+    id: 'AdminUpdateConfigurationShort@loginqueue'
+    name: 'AdminUpdateConfigurationShort'
+    description: |-
+      This API is used to set/update log queue configuration of a namespace.
+      This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
+      When creating new configuration, empty field will have default value:
+      * enabled = false
+      * maxConcurrency = 1000000
+      * maxLoginRate = 500
+      * safetyMarginPercentage = 5
+      * minActivationPeriodInSecond = 600
+      * playerReconnectGracePeriodInSecond = 300
+      * queueReconnectGracePeriodInSecond = 60
+      * playerPollingTimeInSecond = 20
+
+      Calling this endpoint with namespace that has configuration will replace the old configuration.
+
+      Input validation:
+      * maxConcurrency must be > 0 and <= 10000000 (0 < x <= 10000000)
+      * maxLoginRate must be > 0 and <= 100000 (0 < x <= 100000)
+      * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
+      * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
+      * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
+    struct: 'AdminV1Service'
+    parameters:
+      params:
+        type: '*admin_v1.AdminUpdateConfigurationParams'
+        required: true
+    return_type: '(*admin_v1.AdminUpdateConfigurationResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/admin_v1'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/loginqueue'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/adminV1.go'
+    example: |-
+      adminV1Service := loginqueue.AdminV1Service{ ... }
+      params := admin_v1.AdminUpdateConfigurationParams{ ... }
+      res, err := adminV1Service.AdminUpdateConfigurationShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'update'
+      - 'v1'
+
+  'CancelTicketShort@loginqueue':
+    id: 'CancelTicketShort@loginqueue'
+    name: 'CancelTicketShort'
+    description: |-
+      Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
+    struct: 'TicketV1Service'
+    parameters:
+      params:
+        type: '*ticket_v1.CancelTicketParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/ticket_v1'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/loginqueue'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/ticketV1.go'
+    example: |-
+      ticketV1Service := loginqueue.TicketV1Service{ ... }
+      params := ticket_v1.CancelTicketParams{ ... }
+      res, err := ticketV1Service.CancelTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cancel'
+      - 'ticket'
+      - 'v1'
+
+  'RefreshTicketShort@loginqueue':
+    id: 'RefreshTicketShort@loginqueue'
+    name: 'RefreshTicketShort'
+    description: |-
+      Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
+    struct: 'TicketV1Service'
+    parameters:
+      params:
+        type: '*ticket_v1.RefreshTicketParams'
+        required: true
+    return_type: '(*ticket_v1.RefreshTicketResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/loginqueue-sdk/pkg/loginqueueclient/ticket_v1'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/loginqueue'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/loginqueue/ticketV1.go'
+    example: |-
+      ticketV1Service := loginqueue.TicketV1Service{ ... }
+      params := ticket_v1.RefreshTicketParams{ ... }
+      res, err := ticketV1Service.RefreshTicketShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'refresh'
+      - 'ticket'
+      - 'v1'
