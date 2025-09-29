@@ -7,7 +7,7 @@ This project provides a **Model Context Protocol (MCP) server** that exposes Ext
 - **`describe_function`** – Get detailed information about a specific function by its ID
 - **`describe_model`** – Get detailed information about a specific model by its ID
 - **`get_bulk_functions`** – Retrieve multiple functions with pagination
-- **`get_bulk_structs`** – Retrieve multiple structs with pagination
+- **`get_bulk_models`** – Retrieve multiple models with pagination
 
 ## Prerequisites
 

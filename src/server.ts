@@ -103,7 +103,7 @@ function registerTools() {
 
 ## Recommended Workflow:
 1. Search: search_models("user model") → get model IDs
-2. Bulk Get: get_bulk_structs(struct_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"])
+2. Bulk Get: get_bulk_models(model_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"])
 3. Analyze: Use detailed struct information for instantiation and usage
 
 ## Example Usage:
@@ -128,21 +128,21 @@ function registerTools() {
 2. Bulk: get_bulk_functions(function_ids=["AdminCreateUserV4@iam"]) → get detailed info
 3. Analyze: Use function.parameters, function.return_type, function.example, function.imports, function.description for implementation`;
 
-  const GET_BULK_STRUCTS_DESCRIPTION = `Get multiple structs at once for efficient analysis with pagination.
+  const GET_BULK_MODELS_DESCRIPTION = `Get multiple models at once for efficient analysis with pagination.
 
 ## Parameter Format Examples:
-✅ Correct: struct_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"]
-✅ Also correct: struct_ids="User@iam" (single string, auto-converted to array)
-✅ All structs: struct_ids=null (or omit parameter)
+✅ Correct: model_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"]
+✅ Also correct: model_ids="User@iam" (single string, auto-converted to array)
+✅ All structs: model_ids=null (or omit parameter)
 
 ## Usage Patterns:
-- Get all structs: get_bulk_structs(limit=100, offset=0) → returns all structs (paginated)
-- Get single struct: get_bulk_structs(struct_ids="UserProfile@iam") → returns one struct
-- Get multiple structs: get_bulk_structs(struct_ids=["UserProfile@iam", "Struct@service"]) → returns multiple structs
+- Get all structs: get_bulk_models(limit=100, offset=0) → returns all structs (paginated)
+- Get single struct: get_bulk_models(model_ids="UserProfile@iam") → returns one struct
+- Get multiple structs: get_bulk_models(model_ids=["UserProfile@iam", "Struct@service"]) → returns multiple structs
 
 ## Recommended Workflow:
 1. Search: search_models("user model") → discover model IDs
-2. Bulk: get_bulk_structs(struct_ids=["UserProfile@iam"]) → get detailed info
+2. Bulk: get_bulk_models(model_ids=["UserProfile@iam"]) → get detailed info
 3. Analyze: Use struct.fields, struct.imports, struct.description for instantiation and usage`;
   const describeFunctionSchema = { id: z.string() };
   const describeStructSchema = { id: z.string() };
@@ -157,7 +157,7 @@ function registerTools() {
     offset: z.number().int().min(0).optional(),
   };
   const bulkStructsSchema = {
-    struct_ids: z.union([z.string(), z.array(z.string())]).optional(),
+    model_ids: z.union([z.string(), z.array(z.string())]).optional(),
     limit: z.number().int().min(1).max(200).optional(),
     offset: z.number().int().min(0).optional(),
   };
@@ -234,11 +234,11 @@ function registerTools() {
     return { content: [{ type: "text", text: JSON.stringify({ data, total, next }) }] };
   });
 
-  server.registerTool("get_bulk_structs", {
-    description: GET_BULK_STRUCTS_DESCRIPTION,
+  server.registerTool("get_bulk_models", {
+    description: GET_BULK_MODELS_DESCRIPTION,
     inputSchema: bulkStructsSchema,
-  }, async (args: { struct_ids?: string | string[]; limit?: number; offset?: number }) => {
-    const ids = args.struct_ids == null ? null : Array.isArray(args.struct_ids) ? args.struct_ids : [args.struct_ids];
+  }, async (args: { model_ids?: string | string[]; limit?: number; offset?: number }) => {
+    const ids = args.model_ids == null ? null : Array.isArray(args.model_ids) ? args.model_ids : [args.model_ids];
     const list = ids ? Object.entries(configData.structs).filter(([id]) => ids.includes(id)).map(([, v]) => v) : Object.values(configData.structs);
     const { data, total, next } = paginateResults(list, args.limit ?? 100, args.offset ?? 0);
     return { content: [{ type: "text", text: JSON.stringify({ data, total, next }) }] };
