@@ -92,7 +92,7 @@ function registerTools() {
 - search_functions("create, user") → finds user creation functions (paginated)
 - search_functions("") → returns all functions (paginated)`;
 
-  const SEARCH_STRUCTS_DESCRIPTION = `Search for structs by name, tags, or description with fuzzy matching support.
+  const SEARCH_MODELS_DESCRIPTION = `Search for models by name, tags, or description with fuzzy matching support.
 
 ## Query Formats:
 - Space-separated: 'user profile'
@@ -102,14 +102,14 @@ function registerTools() {
 ## Scoring Priority: name > tags > description
 
 ## Recommended Workflow:
-1. Search: search_structs("user model") → get struct IDs
+1. Search: search_models("user model") → get model IDs
 2. Bulk Get: get_bulk_structs(struct_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"])
 3. Analyze: Use detailed struct information for instantiation and usage
 
 ## Example Usage:
-- search_structs("response") → finds response structs (paginated)
-- search_structs("user, data") → finds user-related data structures (paginated)
-- search_structs("") → returns all structs (paginated)`;
+- search_models("response") → finds response models (paginated)
+- search_models("user, data") → finds user-related data models (paginated)
+- search_models("") → returns all models (paginated)`;
 
   const GET_BULK_FUNCTIONS_DESCRIPTION = `Get multiple functions at once for efficient analysis with pagination.
 
@@ -141,7 +141,7 @@ function registerTools() {
 - Get multiple structs: get_bulk_structs(struct_ids=["UserProfile@iam", "Struct@service"]) → returns multiple structs
 
 ## Recommended Workflow:
-1. Search: search_structs("user model") → discover struct IDs
+1. Search: search_models("user model") → discover model IDs
 2. Bulk: get_bulk_structs(struct_ids=["UserProfile@iam"]) → get detailed info
 3. Analyze: Use struct.fields, struct.imports, struct.description for instantiation and usage`;
   const describeFunctionSchema = { id: z.string() };
@@ -201,8 +201,8 @@ function registerTools() {
     return { content: [{ type: "text", text: JSON.stringify({ data, total, next }) }] };
   });
 
-  server.registerTool("search_structs", {
-    description: SEARCH_STRUCTS_DESCRIPTION,
+  server.registerTool("search_models", {
+    description: SEARCH_MODELS_DESCRIPTION,
     inputSchema: searchSchema,
   }, async (args: { query?: string; limit?: number; offset?: number }) => {
     const terms = parseSearchQuery(args.query ?? "");

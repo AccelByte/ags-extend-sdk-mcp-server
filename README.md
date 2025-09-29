@@ -3,7 +3,7 @@
 This project provides a **Model Context Protocol (MCP) server** that exposes Extend SDK functions and models as context to language models. It helps AI assistants and other MCP clients via six tools.
 
 - **`search_functions`** – Search for functions by name, tags, description (fuzzy)
-- **`search_structs`** – Search for structs by name, tags, description (fuzzy)
+- **`search_models`** – Search for models by name, tags, description (fuzzy)
 - **`describe_function`** – Get detailed information about a specific function by its ID
 - **`describe_struct`** – Get detailed information about a specific struct by its ID
 - **`get_bulk_functions`** – Retrieve multiple functions with pagination
