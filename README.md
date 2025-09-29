@@ -66,7 +66,7 @@ docker run -p 3000:3000 \
   -e NODE_ENV=production \
   -e PORT=3000 \
   -e LOG_LEVEL=info \
-  -e CONFIG_DIR=/app/config \
+  -e CONFIG_DIR=/app/config/default \
   extend-sdk-mcp-server:latest
 ```
 
