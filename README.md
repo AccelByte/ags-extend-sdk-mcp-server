@@ -5,7 +5,7 @@ This project provides a **Model Context Protocol (MCP) server** that exposes Ext
 - **`search_functions`** – Search for functions by name, tags, description (fuzzy)
 - **`search_models`** – Search for models by name, tags, description (fuzzy)
 - **`describe_function`** – Get detailed information about a specific function by its ID
-- **`describe_struct`** – Get detailed information about a specific struct by its ID
+- **`describe_model`** – Get detailed information about a specific model by its ID
 - **`get_bulk_functions`** – Retrieve multiple functions with pagination
 - **`get_bulk_structs`** – Retrieve multiple structs with pagination
 
@@ -102,13 +102,13 @@ docker run -p 3000:3000 \
         http://localhost:3000/
     ```
 
-4. Test describe struct
+4. Test describe model
 
     ```bash
     curl -N -H "Accept: application/json, text/event-stream" \
         -H "Content-Type: application/json" \
         -X POST \
-        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_struct","arguments":{"id":"User@iam"}}}' \
+        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_model","arguments":{"id":"User@iam"}}}' \
         http://localhost:3000/
     ```
 

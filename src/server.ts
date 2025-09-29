@@ -170,8 +170,8 @@ function registerTools() {
     return { content: [{ type: "text", text: JSON.stringify(fn ?? null) }] };
   });
 
-  server.registerTool("describe_struct", {
-    description: "Get detailed information about a specific struct by its ID.",
+  server.registerTool("describe_model", {
+    description: "Get detailed information about a specific model by its ID.",
     inputSchema: describeStructSchema,
   }, async (args: { id: string }) => {
     const st = configData.structs[args.id];

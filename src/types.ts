@@ -8,7 +8,7 @@ export interface Version {
 }
 
 export interface Field {
-  /** Struct type of the field. Use 'describe_struct' tool to get type information. */
+  /** Struct type of the field. Use 'describe_model' tool to get type information. */
   type: string;
   /** Whether the field is required. */
   required?: boolean;
@@ -24,7 +24,7 @@ export interface Struct {
   /** Description of what the struct represents. */
   description?: string;
   /**
-   * Struct fields. Use 'describe_struct' tool to get parameter type information.
+   * Struct fields. Use 'describe_model' tool to get parameter type information.
    */
   fields?: Record<string, Field>;
   /** Required imports to use the struct. */
@@ -34,7 +34,7 @@ export interface Struct {
    */
   files?: string[];
   /**
-   * Code snippet demonstrating struct declaration and/or instantiation. Use 'describe_struct' tool to get type information on structs referenced in the example.
+   * Code snippet demonstrating model declaration and/or instantiation. Use 'describe_model' tool to get type information on structs referenced in the example.
    */
   example?: string;
   /** Tags related to the function. */
@@ -49,15 +49,15 @@ export interface FunctionDef {
   /** Description of what the function does. */
   description?: string;
   /**
-   * Struct containing the function. Use 'describe_struct' tool to get struct type information.
+   * Struct containing the function. Use 'describe_model' tool to get model type information.
    */
   struct?: string;
   /**
-   * Function parameters. Use 'describe_struct' tool to get parameter type information.
+   * Function parameters. Use 'describe_model' tool to get parameter type information.
    */
   parameters?: Record<string, Field>;
   /**
-   * Function return type. Use 'describe_struct' tool to get return type information.
+   * Function return type. Use 'describe_model' tool to get return type information.
    */
   return_type?: string;
   /** Required imports to use the function. */
@@ -67,7 +67,7 @@ export interface FunctionDef {
    */
   files?: string[];
   /**
-   * Code snippet demonstrating function usage. Use 'describe_struct' tool to get type information on structs referenced in the example.
+   * Code snippet demonstrating function usage. Use 'describe_model' tool to get type information on models referenced in the example.
    */
   example?: string;
   /** Tags related to the function. */
