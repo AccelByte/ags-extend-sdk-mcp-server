@@ -133,12 +133,12 @@ function registerTools() {
 ## Parameter Format Examples:
 ✅ Correct: model_ids=["User@iam", "UserProfile@iam", "UserResponse@iam", "OtherStruct@service"]
 ✅ Also correct: model_ids="User@iam" (single string, auto-converted to array)
-✅ All structs: model_ids=null (or omit parameter)
+✅ All models: model_ids=null (or omit parameter)
 
 ## Usage Patterns:
-- Get all structs: get_bulk_models(limit=100, offset=0) → returns all structs (paginated)
+- Get all models: get_bulk_models(limit=100, offset=0) → returns all structs (paginated)
 - Get single struct: get_bulk_models(model_ids="UserProfile@iam") → returns one struct
-- Get multiple structs: get_bulk_models(model_ids=["UserProfile@iam", "Struct@service"]) → returns multiple structs
+- Get multiple models: get_bulk_models(model_ids=["UserProfile@iam", "Struct@service"]) → returns multiple structs
 
 ## Recommended Workflow:
 1. Search: search_models("user model") → discover model IDs
