@@ -1,0 +1,349 @@
+structs:
+  # region models
+
+  'ApimodelsConfigurationRequest@loginqueue':
+    id: 'ApimodelsConfigurationRequest@loginqueue'
+    name: 'ApimodelsConfigurationRequest'
+    fields:
+      'enabled':
+        type: 'bool'
+        required: true
+      'max_concurrency':
+        type: 'int'
+        required: true
+      'max_login_rate':
+        type: 'int'
+        required: true
+      'min_activation_period_in_second':
+        type: 'int'
+        required: true
+      'player_polling_time_in_second':
+        type: 'int'
+        required: true
+      'player_reconnect_grace_period_in_second':
+        type: 'int'
+        required: true
+      'queue_reconnect_grace_period_in_second':
+        type: 'int'
+        required: true
+      'safety_margin_percentage':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/apimodels_configuration_request.py'
+    example: |-
+      apimodels_configuration_request = loginqueue_models.ApimodelsConfigurationRequest.create(...)
+
+  'ApimodelsConfigurationResponse@loginqueue':
+    id: 'ApimodelsConfigurationResponse@loginqueue'
+    name: 'ApimodelsConfigurationResponse'
+    fields:
+      'enabled':
+        type: 'bool'
+        required: true
+      'max_concurrency':
+        type: 'int'
+        required: true
+      'max_login_rate':
+        type: 'int'
+        required: true
+      'min_activation_period_in_second':
+        type: 'int'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'player_polling_time_in_second':
+        type: 'int'
+        required: true
+      'player_reconnect_grace_period_in_second':
+        type: 'int'
+        required: true
+      'queue_reconnect_grace_period_in_second':
+        type: 'int'
+        required: true
+      'safety_margin_percentage':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/apimodels_configuration_response.py'
+    example: |-
+      apimodels_configuration_response = loginqueue_models.ApimodelsConfigurationResponse.create(...)
+
+  'ApimodelsLink@loginqueue':
+    id: 'ApimodelsLink@loginqueue'
+    name: 'ApimodelsLink'
+    fields:
+      'action':
+        type: 'str'
+        required: true
+      'href':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/apimodels_link.py'
+    example: |-
+      apimodels_link = loginqueue_models.ApimodelsLink.create(...)
+
+  'ApimodelsQueueStatusResponse@loginqueue':
+    id: 'ApimodelsQueueStatusResponse@loginqueue'
+    name: 'ApimodelsQueueStatusResponse'
+    fields:
+      'is_active':
+        type: 'bool'
+        required: true
+      'logged_user_count':
+        type: 'int'
+        required: true
+      'login_rps':
+        type: 'int'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'queue_count':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/apimodels_queue_status_response.py'
+    example: |-
+      apimodels_queue_status_response = loginqueue_models.ApimodelsQueueStatusResponse.create(...)
+
+  'ApimodelsRefreshTicketResponse@loginqueue':
+    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+    name: 'ApimodelsRefreshTicketResponse'
+    fields:
+      'cancel':
+        type: 'ApimodelsLink'
+        required: true
+      'estimated_waiting_time_in_seconds':
+        type: 'int'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'player_polling_time_in_seconds':
+        type: 'int'
+        required: true
+      'position':
+        type: 'int'
+        required: true
+      'reconnect_expired_at':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/apimodels_refresh_ticket_response.py'
+    example: |-
+      apimodels_refresh_ticket_response = loginqueue_models.ApimodelsRefreshTicketResponse.create(...)
+
+  'ResponseError@loginqueue':
+    id: 'ResponseError@loginqueue'
+    name: 'ResponseError'
+    fields:
+      'error_code':
+        type: 'int'
+        required: true
+      'error_message':
+        type: 'str'
+        required: true
+      'message':
+        type: 'str'
+        required: true
+      'name':
+        type: 'str'
+        required: true
+      'attributes':
+        type: 'Dict[str, str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/models/response_error.py'
+    example: |-
+      response_error = loginqueue_models.ResponseError.create(...)
+
+  # endregion models
+
+functions:
+
+  'admin_get_configuration@loginqueue':
+    id: 'admin_get_configuration@loginqueue'
+    name: 'admin_get_configuration'
+    description: |-
+      This API is used to get log queue configuration of a namespace.
+      Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'Tuple[Union[None, ApimodelsConfigurationResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.loginqueue as loginqueue'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/operations/admin_v1/admin_get_configuration.py'
+    example: |-
+      result, error = loginqueue.admin_get_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'v1'
+
+  'admin_get_status@loginqueue':
+    id: 'admin_get_status@loginqueue'
+    name: 'admin_get_status'
+    description: |-
+      Get login queue status
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'Tuple[Union[None, ApimodelsQueueStatusResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.loginqueue as loginqueue'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/operations/admin_v1/admin_get_status.py'
+    example: |-
+      result, error = loginqueue.admin_get_status(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'status'
+      - 'v1'
+
+  'admin_update_configuration@loginqueue':
+    id: 'admin_update_configuration@loginqueue'
+    name: 'admin_update_configuration'
+    description: |-
+      This API is used to set/update log queue configuration of a namespace.
+      This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
+      When creating new configuration, empty field will have default value:
+      * enabled = false
+      * maxConcurrency = 1000000
+      * maxLoginRate = 500
+      * safetyMarginPercentage = 5
+      * minActivationPeriodInSecond = 600
+      * playerReconnectGracePeriodInSecond = 300
+      * queueReconnectGracePeriodInSecond = 60
+      * playerPollingTimeInSecond = 20
+
+      Calling this endpoint with namespace that has configuration will replace the old configuration.
+
+      Input validation:
+      * maxConcurrency must be > 0 and <= 10000000 (0 < x <= 10000000)
+      * maxLoginRate must be > 0 and <= 100000 (0 < x <= 100000)
+      * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
+      * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
+      * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
+    parameters:
+      'body':
+        type: 'ApimodelsConfigurationRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'Tuple[Union[None, ApimodelsConfigurationResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.loginqueue as loginqueue'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/operations/admin_v1/admin_update_configuration.py'
+    example: |-
+      result, error = loginqueue.admin_update_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'update'
+      - 'v1'
+
+  'cancel_ticket@loginqueue':
+    id: 'cancel_ticket@loginqueue'
+    name: 'cancel_ticket'
+    description: |-
+      Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.loginqueue as loginqueue'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/operations/ticket_v1/cancel_ticket.py'
+    example: |-
+      result, error = loginqueue.cancel_ticket(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cancel'
+      - 'ticket'
+      - 'v1'
+
+  'refresh_ticket@loginqueue':
+    id: 'refresh_ticket@loginqueue'
+    name: 'refresh_ticket'
+    description: |-
+      Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'Tuple[Union[None, ApimodelsRefreshTicketResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.loginqueue as loginqueue'
+      - 'import accelbyte_py_sdk.api.loginqueue.models as loginqueue_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/loginqueue/operations/ticket_v1/refresh_ticket.py'
+    example: |-
+      result, error = loginqueue.refresh_ticket(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'refresh'
+      - 'ticket'
+      - 'v1'

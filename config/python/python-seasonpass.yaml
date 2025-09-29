@@ -1,0 +1,3620 @@
+structs:
+  # region models
+
+  'BulkUserProgressionRequest@seasonpass':
+    id: 'BulkUserProgressionRequest@seasonpass'
+    name: 'BulkUserProgressionRequest'
+    fields:
+      'user_ids':
+        type: 'List[str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/bulk_user_progression_request.py'
+    example: |-
+      bulk_user_progression_request = seasonpass_models.BulkUserProgressionRequest.create(...)
+
+  'ClaimableRewards@seasonpass':
+    id: 'ClaimableRewards@seasonpass'
+    name: 'ClaimableRewards'
+    description: |-
+      A DTO object for claimable rewards.
+    fields:
+      'claiming_rewards':
+        type: 'Dict[str, Any]'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'to_claim_rewards':
+        type: 'Dict[str, Any]'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/claimable_rewards.py'
+    example: |-
+      claimable_rewards = seasonpass_models.ClaimableRewards.create(...)
+
+  'ClaimableUserSeasonInfo@seasonpass':
+    id: 'ClaimableUserSeasonInfo@seasonpass'
+    name: 'ClaimableUserSeasonInfo'
+    description: |-
+      A DTO object for claimable user season data.
+    fields:
+      'claiming_rewards':
+        type: 'Dict[str, Any]'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'cleared':
+        type: 'bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'current_exp':
+        type: 'int'
+        required: true
+        description: |-
+          gained exp for current tier
+      'current_tier_index':
+        type: 'int'
+        required: true
+        description: |-
+          current tier index, zero based
+      'enrolled_at':
+        type: 'str'
+        required: true
+        description: |-
+          enroll date time
+      'enrolled_passes':
+        type: 'List[str]'
+        required: true
+        description: |-
+          enrolled passes
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'last_tier_index':
+        type: 'int'
+        required: true
+        description: |-
+          last tier index, zero based
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'required_exp':
+        type: 'int'
+        required: true
+        description: |-
+          required exp for current tier
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          season id
+      'to_claim_rewards':
+        type: 'Dict[str, Any]'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          user id
+      'season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+      'total_exp':
+        type: 'int'
+        required: false
+        description: |-
+          total exp
+      'total_paid_for_exp':
+        type: 'int'
+        required: false
+        description: |-
+          total paid-for exp
+      'total_sweat_exp':
+        type: 'int'
+        required: false
+        description: |-
+          total sweat exp
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/claimable_user_season_info.py'
+    example: |-
+      claimable_user_season_info = seasonpass_models.ClaimableUserSeasonInfo.create(...)
+
+  'ErrorEntity@seasonpass':
+    id: 'ErrorEntity@seasonpass'
+    name: 'ErrorEntity'
+    fields:
+      'error_code':
+        type: 'int'
+        required: true
+        description: |-
+          numeric error code
+      'error_message':
+        type: 'str'
+        required: true
+        description: |-
+          error message
+      'dev_stack_trace':
+        type: 'str'
+        required: false
+        description: |-
+          internal server error stack trace in configured environment
+      'message_variables':
+        type: 'Dict[str, str]'
+        required: false
+        description: |-
+          message variables
+      'required_permission':
+        type: 'Permission'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/error_entity.py'
+    example: |-
+      error_entity = seasonpass_models.ErrorEntity.create(...)
+
+  'ExcessStrategy@seasonpass':
+    id: 'ExcessStrategy@seasonpass'
+    name: 'ExcessStrategy'
+    fields:
+      'method':
+        type: 'Union[str, MethodEnum]'
+        required: true
+        description: |-
+          method while excess the final tier exp
+      'currency':
+        type: 'str'
+        required: false
+        description: |-
+          virtual currency for grant, required while method is CURRENCY
+      'percent_per_exp':
+        type: 'int'
+        required: false
+        description: |-
+          percent per exp, required while method is CURRENCY
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/excess_strategy.py'
+    example: |-
+      excess_strategy = seasonpass_models.ExcessStrategy.create(...)
+
+  'ExpGrantHistoryInfo@seasonpass':
+    id: 'ExpGrantHistoryInfo@seasonpass'
+    name: 'ExpGrantHistoryInfo'
+    description: |-
+      A DTO object for exp grant history details.
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          acquired at
+      'grant_exp':
+        type: 'int'
+        required: true
+        description: |-
+          grant exp
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          season id
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          user id
+      'source':
+        type: 'Union[str, SourceEnum]'
+        required: false
+        description: |-
+          id
+      'tags':
+        type: 'List[str]'
+        required: false
+        description: |-
+          id
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_info.py'
+    example: |-
+      exp_grant_history_info = seasonpass_models.ExpGrantHistoryInfo.create(...)
+
+  'ExpGrantHistoryPagingSlicedResult@seasonpass':
+    id: 'ExpGrantHistoryPagingSlicedResult@seasonpass'
+    name: 'ExpGrantHistoryPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List[ExpGrantHistoryInfo]'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'int'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_paging_sliced_result.py'
+    example: |-
+      exp_grant_history_paging_sliced_result = seasonpass_models.ExpGrantHistoryPagingSlicedResult.create(...)
+
+  'FieldValidationError@seasonpass':
+    id: 'FieldValidationError@seasonpass'
+    name: 'FieldValidationError'
+    fields:
+      'error_code':
+        type: 'str'
+        required: false
+      'error_field':
+        type: 'str'
+        required: false
+      'error_message':
+        type: 'str'
+        required: false
+      'error_value':
+        type: 'str'
+        required: false
+      'message_variables':
+        type: 'Dict[str, str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/field_validation_error.py'
+    example: |-
+      field_validation_error = seasonpass_models.FieldValidationError.create(...)
+
+  'FullSeasonInfo@seasonpass':
+    id: 'FullSeasonInfo@seasonpass'
+    name: 'FullSeasonInfo'
+    description: |-
+      A DTO object for season full content.
+    fields:
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'passes':
+        type: 'List[PassInfo]'
+        required: true
+        description: |-
+          passes info
+      'rewards':
+        type: 'Dict[str, RewardInfo]'
+        required: true
+        description: |-
+          rewards info
+      'tiers':
+        type: 'List[Tier]'
+        required: true
+        description: |-
+          tiers info
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/full_season_info.py'
+    example: |-
+      full_season_info = seasonpass_models.FullSeasonInfo.create(...)
+
+  'Image@seasonpass':
+    id: 'Image@seasonpass'
+    name: 'Image'
+    fields:
+      'height':
+        type: 'int'
+        required: true
+        description: |-
+          height
+      'image_url':
+        type: 'str'
+        required: true
+        description: |-
+          imageUrl
+      'width':
+        type: 'int'
+        required: true
+        description: |-
+          width
+      'as_':
+        type: 'str'
+        required: false
+        description: |-
+          image for
+      'caption':
+        type: 'str'
+        required: false
+        description: |-
+          image caption
+      'small_image_url':
+        type: 'str'
+        required: false
+        description: |-
+          smallImageUrl
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/image.py'
+    example: |-
+      image = seasonpass_models.Image.create(...)
+
+  'ItemReference@seasonpass':
+    id: 'ItemReference@seasonpass'
+    name: 'ItemReference'
+    description: |-
+      A DTO object for item references.
+    fields:
+      'module':
+        type: 'str'
+        required: false
+        description: |-
+          module
+      'references':
+        type: 'List[Dict[str, Any]]'
+        required: false
+        description: |-
+          references
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/item_reference.py'
+    example: |-
+      item_reference = seasonpass_models.ItemReference.create(...)
+
+  'ItemReferenceInfo@seasonpass':
+    id: 'ItemReferenceInfo@seasonpass'
+    name: 'ItemReferenceInfo'
+    description: |-
+      A DTO object for item references info.
+    fields:
+      'references':
+        type: 'List[ItemReference]'
+        required: false
+        description: |-
+          item references
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/item_reference_info.py'
+    example: |-
+      item_reference_info = seasonpass_models.ItemReferenceInfo.create(...)
+
+  'ListSeasonInfo@seasonpass':
+    id: 'ListSeasonInfo@seasonpass'
+    name: 'ListSeasonInfo'
+    description: |-
+      A DTO object for listing season info.
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'default_language':
+        type: 'str'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          status
+      'tier_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          tier item id
+      'tier_item_name':
+        type: 'str'
+        required: true
+        description: |-
+          tier item name
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'pass_codes':
+        type: 'List[str]'
+        required: false
+        description: |-
+          pass codes
+      'published_at':
+        type: 'str'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/list_season_info.py'
+    example: |-
+      list_season_info = seasonpass_models.ListSeasonInfo.create(...)
+
+  'ListSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListSeasonInfoPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List[ListSeasonInfo]'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/list_season_info_paging_sliced_result.py'
+    example: |-
+      list_season_info_paging_sliced_result = seasonpass_models.ListSeasonInfoPagingSlicedResult.create(...)
+
+  'ListUserSeasonInfo@seasonpass':
+    id: 'ListUserSeasonInfo@seasonpass'
+    name: 'ListUserSeasonInfo'
+    description: |-
+      A DTO object for listing user season data.
+    fields:
+      'cleared':
+        type: 'bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'current_tier_index':
+        type: 'int'
+        required: true
+        description: |-
+          current tier index, zero based
+      'enrolled_at':
+        type: 'str'
+        required: true
+        description: |-
+          enroll date time
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'last_tier_index':
+        type: 'int'
+        required: true
+        description: |-
+          last tier index, zero based
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          season id
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          user id
+      'season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/list_user_season_info.py'
+    example: |-
+      list_user_season_info = seasonpass_models.ListUserSeasonInfo.create(...)
+
+  'ListUserSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListUserSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListUserSeasonInfoPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List[ListUserSeasonInfo]'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'int'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/list_user_season_info_paging_sliced_result.py'
+    example: |-
+      list_user_season_info_paging_sliced_result = seasonpass_models.ListUserSeasonInfoPagingSlicedResult.create(...)
+
+  'Localization@seasonpass':
+    id: 'Localization@seasonpass'
+    name: 'Localization'
+    fields:
+      'description':
+        type: 'str'
+        required: false
+        description: |-
+          description info
+      'title':
+        type: 'str'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/localization.py'
+    example: |-
+      localization = seasonpass_models.Localization.create(...)
+
+  'LocalizedPassInfo@seasonpass':
+    id: 'LocalizedPassInfo@seasonpass'
+    name: 'LocalizedPassInfo'
+    description: |-
+      A DTO object for public user retrieving pass info.
+    fields:
+      'auto_enroll':
+        type: 'bool'
+        required: true
+        description: |-
+          autoEnroll
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          code
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'display_order':
+        type: 'str'
+        required: true
+        description: |-
+          displayOrder
+      'language':
+        type: 'str'
+        required: true
+        description: |-
+          current language
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'pass_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          pass item id
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          season id
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'description':
+        type: 'str'
+        required: false
+        description: |-
+          description info
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+      'title':
+        type: 'str'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/localized_pass_info.py'
+    example: |-
+      localized_pass_info = seasonpass_models.LocalizedPassInfo.create(...)
+
+  'LocalizedSeasonInfo@seasonpass':
+    id: 'LocalizedSeasonInfo@seasonpass'
+    name: 'LocalizedSeasonInfo'
+    description: |-
+      A DTO object for public user retrieving season info.
+    fields:
+      'auto_claim':
+        type: 'bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'language':
+        type: 'str'
+        required: true
+        description: |-
+          current language
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'passes':
+        type: 'List[LocalizedPassInfo]'
+        required: true
+        description: |-
+          passes info
+      'rewards':
+        type: 'Dict[str, RewardInfo]'
+        required: true
+        description: |-
+          rewards info
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          status
+      'tier_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          tier item id
+      'tiers':
+        type: 'List[Tier]'
+        required: true
+        description: |-
+          tiers info
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'description':
+        type: 'str'
+        required: false
+        description: |-
+          description info
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+      'pass_codes':
+        type: 'List[str]'
+        required: false
+        description: |-
+          pass codes
+      'published_at':
+        type: 'str'
+        required: false
+        description: |-
+          publishedAt
+      'title':
+        type: 'str'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/localized_season_info.py'
+    example: |-
+      localized_season_info = seasonpass_models.LocalizedSeasonInfo.create(...)
+
+  'Ownership@seasonpass':
+    id: 'Ownership@seasonpass'
+    name: 'Ownership'
+    fields:
+      'owned':
+        type: 'bool'
+        required: true
+        description: |-
+          ownership
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/ownership.py'
+    example: |-
+      ownership = seasonpass_models.Ownership.create(...)
+
+  'Paging@seasonpass':
+    id: 'Paging@seasonpass'
+    name: 'Paging'
+    fields:
+      'next_':
+        type: 'str'
+        required: false
+      'previous':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/paging.py'
+    example: |-
+      paging = seasonpass_models.Paging.create(...)
+
+  'PassCreate@seasonpass':
+    id: 'PassCreate@seasonpass'
+    name: 'PassCreate'
+    description: |-
+      A DTO object for creating pass API call.
+    fields:
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'display_order':
+        type: 'int'
+        required: true
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'pass_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          pass item id
+      'auto_enroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass, default false
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/pass_create.py'
+    example: |-
+      pass_create = seasonpass_models.PassCreate.create(...)
+
+  'PassInfo@seasonpass':
+    id: 'PassInfo@seasonpass'
+    name: 'PassInfo'
+    description: |-
+      A DTO object for pass info.
+    fields:
+      'auto_enroll':
+        type: 'bool'
+        required: true
+        description: |-
+          autoEnroll
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          code
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'display_order':
+        type: 'str'
+        required: true
+        description: |-
+          displayOrder
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'pass_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          pass item id
+      'pass_item_name':
+        type: 'str'
+        required: true
+        description: |-
+          pass item name
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          season id
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/pass_info.py'
+    example: |-
+      pass_info = seasonpass_models.PassInfo.create(...)
+
+  'PassUpdate@seasonpass':
+    id: 'PassUpdate@seasonpass'
+    name: 'PassUpdate'
+    description: |-
+      A DTO object for updating pass API call.
+    fields:
+      'auto_enroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass
+      'display_order':
+        type: 'int'
+        required: false
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'pass_item_id':
+        type: 'str'
+        required: false
+        description: |-
+          pass item id
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/pass_update.py'
+    example: |-
+      pass_update = seasonpass_models.PassUpdate.create(...)
+
+  'Permission@seasonpass':
+    id: 'Permission@seasonpass'
+    name: 'Permission'
+    fields:
+      'action':
+        type: 'int'
+        required: false
+      'resource':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/permission.py'
+    example: |-
+      permission = seasonpass_models.Permission.create(...)
+
+  'ReasonTagsResult@seasonpass':
+    id: 'ReasonTagsResult@seasonpass'
+    name: 'ReasonTagsResult'
+    description: |-
+      A DTO object for reason tags.
+    fields:
+      'tags':
+        type: 'List[str]'
+        required: true
+        description: |-
+          tags
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/reason_tags_result.py'
+    example: |-
+      reason_tags_result = seasonpass_models.ReasonTagsResult.create(...)
+
+  'RewardCreate@seasonpass':
+    id: 'RewardCreate@seasonpass'
+    name: 'RewardCreate'
+    description: |-
+      A DTO object for creating reward API call.
+    fields:
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'type_':
+        type: 'Union[str, TypeEnum]'
+        required: true
+        description: |-
+          type, at current only support ITEM
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'item_id':
+        type: 'str'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/reward_create.py'
+    example: |-
+      reward_create = seasonpass_models.RewardCreate.create(...)
+
+  'RewardCurrency@seasonpass':
+    id: 'RewardCurrency@seasonpass'
+    name: 'RewardCurrency'
+    description: |-
+      A DTO object for reward currency.
+    fields:
+      'currency_code':
+        type: 'str'
+        required: true
+        description: |-
+          currency code, alphabet uppercase
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace, allowed values: game namespace or publisher namespace
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/reward_currency.py'
+    example: |-
+      reward_currency = seasonpass_models.RewardCurrency.create(...)
+
+  'RewardInfo@seasonpass':
+    id: 'RewardInfo@seasonpass'
+    name: 'RewardInfo'
+    description: |-
+      A DTO object for reward info.
+    fields:
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          code
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'season_id':
+        type: 'str'
+        required: true
+        description: |-
+          seasonId
+      'type_':
+        type: 'Union[str, TypeEnum]'
+        required: true
+        description: |-
+          type
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'item_id':
+        type: 'str'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM
+      'item_name':
+        type: 'str'
+        required: false
+        description: |-
+          itemName, required when reward type is ITEM
+      'item_sku':
+        type: 'str'
+        required: false
+        description: |-
+          itemSku, required when reward type is ITEM
+      'item_type':
+        type: 'Union[str, ItemTypeEnum]'
+        required: false
+        description: |-
+          itemType, required when reward type is ITEM
+      'quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/reward_info.py'
+    example: |-
+      reward_info = seasonpass_models.RewardInfo.create(...)
+
+  'RewardUpdate@seasonpass':
+    id: 'RewardUpdate@seasonpass'
+    name: 'RewardUpdate'
+    description: |-
+      A DTO object for updating reward API call.
+    fields:
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'item_id':
+        type: 'str'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'null_fields':
+        type: 'List[str]'
+        required: false
+        description: |-
+          nullFields
+      'quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'type_':
+        type: 'Union[str, TypeEnum]'
+        required: false
+        description: |-
+          type, at current only support ITEM
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/reward_update.py'
+    example: |-
+      reward_update = seasonpass_models.RewardUpdate.create(...)
+
+  'SeasonCloneRequest@seasonpass':
+    id: 'SeasonCloneRequest@seasonpass'
+    name: 'SeasonCloneRequest'
+    description: |-
+      A DTO object for clone season API call.
+    fields:
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/season_clone_request.py'
+    example: |-
+      season_clone_request = seasonpass_models.SeasonCloneRequest.create(...)
+
+  'SeasonCreate@seasonpass':
+    id: 'SeasonCreate@seasonpass'
+    name: 'SeasonCreate'
+    description: |-
+      A DTO object for creating season API call.
+    fields:
+      'default_required_exp':
+        type: 'int'
+        required: true
+        description: |-
+          default exp required for a tier
+      'draft_store_id':
+        type: 'str'
+        required: true
+        description: |-
+          draft store id
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+      'tier_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          tier item id
+      'auto_claim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards, default true
+      'default_language':
+        type: 'str'
+        required: false
+        description: |-
+          default language, BCP 47 language tag, default is en
+      'excess_strategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp, default NONE
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/season_create.py'
+    example: |-
+      season_create = seasonpass_models.SeasonCreate.create(...)
+
+  'SeasonInfo@seasonpass':
+    id: 'SeasonInfo@seasonpass'
+    name: 'SeasonInfo'
+    description: |-
+      A DTO object for season info.
+    fields:
+      'auto_claim':
+        type: 'bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'created_at':
+        type: 'str'
+        required: true
+        description: |-
+          created at
+      'default_language':
+        type: 'str'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'default_required_exp':
+        type: 'int'
+        required: true
+        description: |-
+          default required exp for a tier
+      'draft_store_id':
+        type: 'str'
+        required: true
+        description: |-
+          draft store id
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'excess_strategy':
+        type: 'ExcessStrategy'
+        required: true
+        description: |-
+          strategy while exceed final tier exp
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          status
+      'tier_item_id':
+        type: 'str'
+        required: true
+        description: |-
+          tier item id
+      'tier_item_name':
+        type: 'str'
+        required: true
+        description: |-
+          tier item name
+      'updated_at':
+        type: 'str'
+        required: true
+        description: |-
+          updated at
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+      'pass_codes':
+        type: 'List[str]'
+        required: false
+        description: |-
+          pass codes
+      'published_at':
+        type: 'str'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/season_info.py'
+    example: |-
+      season_info = seasonpass_models.SeasonInfo.create(...)
+
+  'SeasonSummary@seasonpass':
+    id: 'SeasonSummary@seasonpass'
+    name: 'SeasonSummary'
+    description: |-
+      A DTO object for season summary.
+    fields:
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          end date time
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          id
+      'name':
+        type: 'str'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          status
+      'pass_codes':
+        type: 'List[str]'
+        required: false
+        description: |-
+          season pass codes
+      'previous':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          previous season, only present in some situation
+      'published_at':
+        type: 'str'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/season_summary.py'
+    example: |-
+      season_summary = seasonpass_models.SeasonSummary.create(...)
+
+  'SeasonUpdate@seasonpass':
+    id: 'SeasonUpdate@seasonpass'
+    name: 'SeasonUpdate'
+    description: |-
+      A DTO object for updating season API call.
+    fields:
+      'auto_claim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards
+      'default_language':
+        type: 'str'
+        required: false
+        description: |-
+          default language, BCP 47 language tag
+      'default_required_exp':
+        type: 'int'
+        required: false
+        description: |-
+          default exp required for a tier
+      'draft_store_id':
+        type: 'str'
+        required: false
+        description: |-
+          draft store id
+      'end':
+        type: 'str'
+        required: false
+        description: |-
+          end date time
+      'excess_strategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp
+      'images':
+        type: 'List[Image]'
+        required: false
+        description: |-
+          images
+      'localizations':
+        type: 'Dict[str, Localization]'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'str'
+        required: false
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'str'
+        required: false
+        description: |-
+          start date time
+      'tier_item_id':
+        type: 'str'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/season_update.py'
+    example: |-
+      season_update = seasonpass_models.SeasonUpdate.create(...)
+
+  'Tier@seasonpass':
+    id: 'Tier@seasonpass'
+    name: 'Tier'
+    fields:
+      'id_':
+        type: 'str'
+        required: false
+        description: |-
+          tier id, auto generated.
+      'required_exp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'rewards':
+        type: 'Dict[str, List[str]]'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/tier.py'
+    example: |-
+      tier = seasonpass_models.Tier.create(...)
+
+  'TierCreate@seasonpass':
+    id: 'TierCreate@seasonpass'
+    name: 'TierCreate'
+    description: |-
+      A DTO object for creating tier API call.
+    fields:
+      'index':
+        type: 'int'
+        required: false
+        description: |-
+          zero based tier index to be inserted at, -1 means appending to the end, default -1
+      'quantity':
+        type: 'int'
+        required: false
+        description: |-
+          create tier quantity, default 1
+      'tier':
+        type: 'TierInput'
+        required: false
+        description: |-
+          tier content, default null tier
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/tier_create.py'
+    example: |-
+      tier_create = seasonpass_models.TierCreate.create(...)
+
+  'TierInput@seasonpass':
+    id: 'TierInput@seasonpass'
+    name: 'TierInput'
+    description: |-
+      A DTO object for tier input.
+    fields:
+      'required_exp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'rewards':
+        type: 'Dict[str, List[str]]'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/tier_input.py'
+    example: |-
+      tier_input = seasonpass_models.TierInput.create(...)
+
+  'TierPagingSlicedResult@seasonpass':
+    id: 'TierPagingSlicedResult@seasonpass'
+    name: 'TierPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List[Tier]'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'int'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/tier_paging_sliced_result.py'
+    example: |-
+      tier_paging_sliced_result = seasonpass_models.TierPagingSlicedResult.create(...)
+
+  'TierReorder@seasonpass':
+    id: 'TierReorder@seasonpass'
+    name: 'TierReorder'
+    fields:
+      'new_index':
+        type: 'int'
+        required: false
+        description: |-
+          new index tier should be moved to, zero based, -1 means appending to the end
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/tier_reorder.py'
+    example: |-
+      tier_reorder = seasonpass_models.TierReorder.create(...)
+
+  'UserExpGrant@seasonpass':
+    id: 'UserExpGrant@seasonpass'
+    name: 'UserExpGrant'
+    description: |-
+      A DTO object for granting user exp.
+    fields:
+      'exp':
+        type: 'int'
+        required: false
+        description: |-
+          exp to grant
+      'source':
+        type: 'Union[str, SourceEnum]'
+        required: false
+        description: |-
+          source
+      'tags':
+        type: 'List[str]'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_exp_grant.py'
+    example: |-
+      user_exp_grant = seasonpass_models.UserExpGrant.create(...)
+
+  'UserPassGrant@seasonpass':
+    id: 'UserPassGrant@seasonpass'
+    name: 'UserPassGrant'
+    description: |-
+      A DTO object for granting user pass.
+    fields:
+      'pass_code':
+        type: 'str'
+        required: false
+        description: |-
+          pass code, required if passItemId null
+      'pass_item_id':
+        type: 'str'
+        required: false
+        description: |-
+          pass item id, required if passCode null and ignored if passCode present
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_pass_grant.py'
+    example: |-
+      user_pass_grant = seasonpass_models.UserPassGrant.create(...)
+
+  'UserPurchasable@seasonpass':
+    id: 'UserPurchasable@seasonpass'
+    name: 'UserPurchasable'
+    description: |-
+      A DTO object for user purchasable.
+    fields:
+      'pass_item_id':
+        type: 'str'
+        required: false
+        description: |-
+          pass item id
+      'tier_item_count':
+        type: 'int'
+        required: false
+        description: |-
+          tier item count, default 1
+      'tier_item_id':
+        type: 'str'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_purchasable.py'
+    example: |-
+      user_purchasable = seasonpass_models.UserPurchasable.create(...)
+
+  'UserRewardClaim@seasonpass':
+    id: 'UserRewardClaim@seasonpass'
+    name: 'UserRewardClaim'
+    description: |-
+      A DTO object for claiming user reward.
+    fields:
+      'pass_code':
+        type: 'str'
+        required: true
+        description: |-
+          pass code
+      'reward_code':
+        type: 'str'
+        required: true
+        description: |-
+          reward code
+      'tier_index':
+        type: 'int'
+        required: true
+        description: |-
+          tier index
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_reward_claim.py'
+    example: |-
+      user_reward_claim = seasonpass_models.UserRewardClaim.create(...)
+
+  'UserSeasonSummary@seasonpass':
+    id: 'UserSeasonSummary@seasonpass'
+    name: 'UserSeasonSummary'
+    description: |-
+      A DTO object for user season summary.
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          user id
+      'cleared':
+        type: 'bool'
+        required: false
+        description: |-
+          whether cleared all tiers
+      'created_at':
+        type: 'str'
+        required: false
+        description: |-
+          created at
+      'current_exp':
+        type: 'int'
+        required: false
+        description: |-
+          gained exp for current tier
+      'current_tier_index':
+        type: 'int'
+        required: false
+        description: |-
+          current tier index, zero based
+      'enrolled_at':
+        type: 'str'
+        required: false
+        description: |-
+          enroll date time
+      'enrolled_passes':
+        type: 'List[str]'
+        required: false
+        description: |-
+          enrolled passes
+      'id_':
+        type: 'str'
+        required: false
+        description: |-
+          id
+      'last_tier_index':
+        type: 'int'
+        required: false
+        description: |-
+          last tier index, zero based
+      'required_exp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for current tier
+      'season_id':
+        type: 'str'
+        required: false
+        description: |-
+          season id
+      'updated_at':
+        type: 'str'
+        required: false
+        description: |-
+          updated at
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_season_summary.py'
+    example: |-
+      user_season_summary = seasonpass_models.UserSeasonSummary.create(...)
+
+  'UserTierGrant@seasonpass':
+    id: 'UserTierGrant@seasonpass'
+    name: 'UserTierGrant'
+    description: |-
+      A DTO object for granting user tier.
+    fields:
+      'count':
+        type: 'int'
+        required: false
+        description: |-
+          count to grant
+      'source':
+        type: 'Union[str, SourceEnum]'
+        required: false
+        description: |-
+          source
+      'tags':
+        type: 'List[str]'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/user_tier_grant.py'
+    example: |-
+      user_tier_grant = seasonpass_models.UserTierGrant.create(...)
+
+  'ValidationErrorEntity@seasonpass':
+    id: 'ValidationErrorEntity@seasonpass'
+    name: 'ValidationErrorEntity'
+    fields:
+      'error_code':
+        type: 'int'
+        required: true
+        description: |-
+          numeric error code
+      'error_message':
+        type: 'str'
+        required: true
+        description: |-
+          error message
+      'errors':
+        type: 'List[FieldValidationError]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/models/validation_error_entity.py'
+    example: |-
+      validation_error_entity = seasonpass_models.ValidationErrorEntity.create(...)
+
+  # endregion models
+
+functions:
+
+  'bulk_get_user_season_progression@seasonpass':
+    id: 'bulk_get_user_season_progression@seasonpass'
+    name: 'bulk_get_user_season_progression'
+    description: |-
+      This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'body':
+        type: 'Optional[BulkUserProgressionRequest]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, List[UserSeasonSummary]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/bulk_get_user_season_pr_a15d63.py'
+    example: |-
+      result, error = seasonpass.bulk_get_user_season_progression(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'bulk'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'check_season_purchasable@seasonpass':
+    id: 'check_season_purchasable@seasonpass'
+    name: 'check_season_purchasable'
+    description: |-
+      This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+    parameters:
+      'body':
+        type: 'Optional[UserPurchasable]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/check_season_purchasable.py'
+    example: |-
+      result, error = seasonpass.check_season_purchasable(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'check'
+      - 'purchasable'
+      - 'season'
+
+  'clone_season@seasonpass':
+    id: 'clone_season@seasonpass'
+    name: 'clone_season'
+    description: |-
+      This API is used to clone a season.
+
+      Other detail info:
+
+        * Returns : cloned season info
+    parameters:
+      'body':
+        type: 'Optional[SeasonCloneRequest]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/clone_season.py'
+    example: |-
+      result, error = seasonpass.clone_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'clone'
+      - 'season'
+
+  'create_pass@seasonpass':
+    id: 'create_pass@seasonpass'
+    name: 'create_pass'
+    description: |-
+      This API is used to create a pass for a draft season.
+
+      Other detail info:
+
+        * Returns : created pass
+    parameters:
+      'body':
+        type: 'Optional[PassCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, PassInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/create_pass.py'
+    example: |-
+      result, error = seasonpass.create_pass(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'pass'
+
+  'create_reward@seasonpass':
+    id: 'create_reward@seasonpass'
+    name: 'create_reward'
+    description: |-
+      This API is used to create a reward for a draft season.
+
+      Other detail info:
+
+        * Returns : created reward
+    parameters:
+      'body':
+        type: 'Optional[RewardCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RewardInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/create_reward.py'
+    example: |-
+      result, error = seasonpass.create_reward(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'reward'
+
+  'create_season@seasonpass':
+    id: 'create_season@seasonpass'
+    name: 'create_season'
+    description: |-
+      This API is used to create a season, season only allowed in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : created season
+    parameters:
+      'body':
+        type: 'Optional[SeasonCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/create_season.py'
+    example: |-
+      result, error = seasonpass.create_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'season'
+
+  'create_tier@seasonpass':
+    id: 'create_tier@seasonpass'
+    name: 'create_tier'
+    description: |-
+      This API is used to create tier for a draft season, can create multiple tiers at same time.
+    parameters:
+      'body':
+        type: 'Optional[TierCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[Tier]], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/create_tier.py'
+    example: |-
+      result, error = seasonpass.create_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'tier'
+
+  'delete_pass@seasonpass':
+    id: 'delete_pass@seasonpass'
+    name: 'delete_pass'
+    description: |-
+      This API is used to delete a pass permanently, only draft season pass can be deleted.
+    parameters:
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/delete_pass.py'
+    example: |-
+      result, error = seasonpass.delete_pass(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'pass'
+
+  'delete_reward@seasonpass':
+    id: 'delete_reward@seasonpass'
+    name: 'delete_reward'
+    description: |-
+      This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+      Other detail info:
+    parameters:
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/delete_reward.py'
+    example: |-
+      result, error = seasonpass.delete_reward(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'reward'
+
+  'delete_season@seasonpass':
+    id: 'delete_season@seasonpass'
+    name: 'delete_season'
+    description: |-
+      This API is used to delete a season permanently, only draft season can be deleted.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/delete_season.py'
+    example: |-
+      result, error = seasonpass.delete_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'season'
+
+  'delete_tier@seasonpass':
+    id: 'delete_tier@seasonpass'
+    name: 'delete_tier'
+    description: |-
+      This API is used to delete a tier permanently, only draft season pass can be deleted.
+    parameters:
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/delete_tier.py'
+    example: |-
+      result, error = seasonpass.delete_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'tier'
+
+  'exists_any_pass_by_pass_codes@seasonpass':
+    id: 'exists_any_pass_by_pass_codes@seasonpass'
+    name: 'exists_any_pass_by_pass_codes'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : ownership
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'pass_codes':
+        type: 'Optional[List[str]]'
+        required: false
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, Ownership], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/exists_any_pass_by_pass_codes.py'
+    example: |-
+      result, error = seasonpass.exists_any_pass_by_pass_codes(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'any'
+      - 'by'
+      - 'codes'
+      - 'exists'
+      - 'pass'
+      - 'season'
+
+  'export_season@seasonpass':
+    id: 'export_season@seasonpass'
+    name: 'export_season'
+    description: |-
+      This API is used to export all of season service data files with csv format.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, Any], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/export/export_season.py'
+    example: |-
+      result, error = seasonpass.export_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'export'
+      - 'season'
+
+  'get_current_season@seasonpass':
+    id: 'get_current_season@seasonpass'
+    name: 'get_current_season'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season summary data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, SeasonSummary], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_current_season.py'
+    example: |-
+      result, error = seasonpass.get_current_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'current'
+      - 'get'
+      - 'season'
+
+  'get_current_user_season_progression@seasonpass':
+    id: 'get_current_user_season_progression@seasonpass'
+    name: 'get_current_user_season_progression'
+    description: |-
+      This API is used to get current user season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, UserSeasonSummary], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_current_user_season_eed4c8.py'
+    example: |-
+      result, error = seasonpass.get_current_user_season_progression(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'current'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'get_full_season@seasonpass':
+    id: 'get_full_season@seasonpass'
+    name: 'get_full_season'
+    description: |-
+      This API is used to get a season full content, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, FullSeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_full_season.py'
+    example: |-
+      result, error = seasonpass.get_full_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'full'
+      - 'get'
+      - 'season'
+
+  'get_item_references@seasonpass':
+    id: 'get_item_references@seasonpass'
+    name: 'get_item_references'
+    description: |-
+      This API is used to get season pass ecommerce item references.
+
+      Other detail info:
+
+        * Returns : item references data
+    parameters:
+      'item_id':
+        type: 'str'
+        required: true
+        description: |-
+          the id of the ecommerce item
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, ItemReferenceInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/utilities/get_item_references.py'
+    example: |-
+      result, error = seasonpass.get_item_references(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'item'
+      - 'references'
+      - 'utilities'
+
+  'get_pass@seasonpass':
+    id: 'get_pass@seasonpass'
+    name: 'get_pass'
+    description: |-
+      This API is used to get a pass for a season.
+
+      Other detail info:
+
+        * Returns : pass data
+    parameters:
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, PassInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/get_pass.py'
+    example: |-
+      result, error = seasonpass.get_pass(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'pass'
+
+  'get_reward@seasonpass':
+    id: 'get_reward@seasonpass'
+    name: 'get_reward'
+    description: |-
+      This API is used to get a reward for a season.
+
+      Other detail info:
+
+        * Returns : reward data
+    parameters:
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RewardInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/get_reward.py'
+    example: |-
+      result, error = seasonpass.get_reward(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'reward'
+
+  'get_season@seasonpass':
+    id: 'get_season@seasonpass'
+    name: 'get_season'
+    description: |-
+      This API is used to get a season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_season.py'
+    example: |-
+      result, error = seasonpass.get_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'season'
+
+  'get_user_participated_seasons@seasonpass':
+    id: 'get_user_participated_seasons@seasonpass'
+    name: 'get_user_participated_seasons'
+    description: |-
+      This API is used to get user participated season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user participated season data
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ListUserSeasonInfoPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_user_participated_seasons.py'
+    example: |-
+      result, error = seasonpass.get_user_participated_seasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'participated'
+      - 'season'
+      - 'seasons'
+      - 'user'
+
+  'get_user_season@seasonpass':
+    id: 'get_user_season@seasonpass'
+    name: 'get_user_season'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ClaimableUserSeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/get_user_season.py'
+    example: |-
+      result, error = seasonpass.get_user_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'season'
+      - 'user'
+
+  'grant_user_exp@seasonpass':
+    id: 'grant_user_exp@seasonpass'
+    name: 'grant_user_exp'
+    description: |-
+      This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'Optional[UserExpGrant]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, UserSeasonSummary], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/grant_user_exp.py'
+    example: |-
+      result, error = seasonpass.grant_user_exp(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'grant_user_pass@seasonpass':
+    id: 'grant_user_pass@seasonpass'
+    name: 'grant_user_pass'
+    description: |-
+      This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'Optional[UserPassGrant]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, UserSeasonSummary], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/grant_user_pass.py'
+    example: |-
+      result, error = seasonpass.grant_user_pass(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'grant'
+      - 'pass'
+      - 'user'
+
+  'grant_user_tier@seasonpass':
+    id: 'grant_user_tier@seasonpass'
+    name: 'grant_user_tier'
+    description: |-
+      This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'Optional[UserTierGrant]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, UserSeasonSummary], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/grant_user_tier.py'
+    example: |-
+      result, error = seasonpass.grant_user_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'public_bulk_claim_user_rewards@seasonpass':
+    id: 'public_bulk_claim_user_rewards@seasonpass'
+    name: 'public_bulk_claim_user_rewards'
+    description: |-
+      This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ClaimableRewards], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/public_bulk_claim_user_rewards.py'
+    example: |-
+      result, error = seasonpass.public_bulk_claim_user_rewards(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'bulk'
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'public_claim_user_reward@seasonpass':
+    id: 'public_claim_user_reward@seasonpass'
+    name: 'public_claim_user_reward'
+    description: |-
+      This API is used to claim reward, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'Optional[UserRewardClaim]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ClaimableRewards], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/public_claim_user_reward.py'
+    example: |-
+      result, error = seasonpass.public_claim_user_reward(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'user'
+
+  'public_get_current_season@seasonpass':
+    id: 'public_get_current_season@seasonpass'
+    name: 'public_get_current_season'
+    description: |-
+      This API is used to get current published season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : localized season data
+    parameters:
+      'language':
+        type: 'Optional[str]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, LocalizedSeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/public_get_current_season.py'
+    example: |-
+      result, error = seasonpass.public_get_current_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+
+  'public_get_current_user_season@seasonpass':
+    id: 'public_get_current_user_season@seasonpass'
+    name: 'public_get_current_user_season'
+    description: |-
+      This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ClaimableUserSeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/public_get_current_user_season.py'
+    example: |-
+      result, error = seasonpass.public_get_current_user_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'public_get_user_season@seasonpass':
+    id: 'public_get_user_season@seasonpass'
+    name: 'public_get_user_season'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ClaimableUserSeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/public_get_user_season.py'
+    example: |-
+      result, error = seasonpass.public_get_user_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'publish_season@seasonpass':
+    id: 'publish_season@seasonpass'
+    name: 'publish_season'
+    description: |-
+      This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+      Other detail info:
+
+        * Returns : published season
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/publish_season.py'
+    example: |-
+      result, error = seasonpass.publish_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'publish'
+      - 'season'
+
+  'query_passes@seasonpass':
+    id: 'query_passes@seasonpass'
+    name: 'query_passes'
+    description: |-
+      This API is used to query all passes for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[PassInfo]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/query_passes.py'
+    example: |-
+      result, error = seasonpass.query_passes(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'pass'
+      - 'passes'
+      - 'query'
+
+  'query_rewards@seasonpass':
+    id: 'query_rewards@seasonpass'
+    name: 'query_rewards'
+    description: |-
+      This API is used to query rewards for a season.
+
+      Other detail info:
+
+        * Returns : the list of rewards
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'q':
+        type: 'Optional[str]'
+        required: false
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[RewardInfo]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/query_rewards.py'
+    example: |-
+      result, error = seasonpass.query_rewards(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'query'
+      - 'reward'
+      - 'rewards'
+
+  'query_seasons@seasonpass':
+    id: 'query_seasons@seasonpass'
+    name: 'query_seasons'
+    description: |-
+      This API is used to query seasons, seasons only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : the list of season basic info
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'status':
+        type: 'Optional[Union[List[str], List[QuerySeasonsStatusEnum]]]'
+        required: false
+    return_type: 'Tuple[Union[None, ListSeasonInfoPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/query_seasons.py'
+    example: |-
+      result, error = seasonpass.query_seasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'query'
+      - 'season'
+      - 'seasons'
+
+  'query_tiers@seasonpass':
+    id: 'query_tiers@seasonpass'
+    name: 'query_tiers'
+    description: |-
+      This API is used to query paginated tiers for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, TierPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/query_tiers.py'
+    example: |-
+      result, error = seasonpass.query_tiers(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'query'
+      - 'tier'
+      - 'tiers'
+
+  'query_user_exp_grant_history@seasonpass':
+    id: 'query_user_exp_grant_history@seasonpass'
+    name: 'query_user_exp_grant_history'
+    description: |-
+      This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : paginated grant history
+    parameters:
+      'from_':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          section active range time start , using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'season_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'source':
+        type: 'Optional[Union[str, QueryUserExpGrantHistorySourceEnum]]'
+        required: false
+        description: |-
+          exp grant source
+      'tags':
+        type: 'Optional[List[str]]'
+        required: false
+        description: |-
+          exp grant tags
+      'to':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          section active range time end, using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ExpGrantHistoryPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/query_user_exp_grant_history.py'
+    example: |-
+      result, error = seasonpass.query_user_exp_grant_history(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'user'
+
+  'query_user_exp_grant_history_tag@seasonpass':
+    id: 'query_user_exp_grant_history_tag@seasonpass'
+    name: 'query_user_exp_grant_history_tag'
+    description: |-
+      This API is used to get user exp acquisition history's tag list.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : exp grant history tags list
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'season_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ReasonTagsResult], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/query_user_exp_grant_hi_12346c.py'
+    example: |-
+      result, error = seasonpass.query_user_exp_grant_history_tag(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'tag'
+      - 'user'
+
+  'reorder_tier@seasonpass':
+    id: 'reorder_tier@seasonpass'
+    name: 'reorder_tier'
+    description: |-
+      This API is used to reorder a tier. Only draft season pass can be updated.
+    parameters:
+      'body':
+        type: 'Optional[TierReorder]'
+        required: false
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, Tier], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/reorder_tier.py'
+    example: |-
+      result, error = seasonpass.reorder_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'reorder'
+      - 'tier'
+
+  'reset_user_season@seasonpass':
+    id: 'reset_user_season@seasonpass'
+    name: 'reset_user_season'
+    description: |-
+      [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/reset_user_season.py'
+    example: |-
+      result, error = seasonpass.reset_user_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'reset'
+      - 'season'
+      - 'user'
+
+  'retire_season@seasonpass':
+    id: 'retire_season@seasonpass'
+    name: 'retire_season'
+    description: |-
+      This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'force':
+        type: 'Optional[bool]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/retire_season.py'
+    example: |-
+      result, error = seasonpass.retire_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'retire'
+      - 'season'
+
+  'unpublish_season@seasonpass':
+    id: 'unpublish_season@seasonpass'
+    name: 'unpublish_season'
+    description: |-
+      This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'force':
+        type: 'Optional[bool]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/unpublish_season.py'
+    example: |-
+      result, error = seasonpass.unpublish_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'season'
+      - 'unpublish'
+
+  'update_pass@seasonpass':
+    id: 'update_pass@seasonpass'
+    name: 'update_pass'
+    description: |-
+      This API is used to update a pass. Only draft season pass can be updated.
+
+      Other detail info:
+
+        * Returns : updated pass
+    parameters:
+      'body':
+        type: 'Optional[PassUpdate]'
+        required: false
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, PassInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/pass_/update_pass.py'
+    example: |-
+      result, error = seasonpass.update_pass(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'pass'
+      - 'update'
+
+  'update_reward@seasonpass':
+    id: 'update_reward@seasonpass'
+    name: 'update_reward'
+    description: |-
+      This API is used to update a reward. Only draft season reward can be updated.
+
+      Other detail info:
+
+        * Returns : updated reward
+    parameters:
+      'body':
+        type: 'Optional[RewardUpdate]'
+        required: false
+      'code':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RewardInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/reward/update_reward.py'
+    example: |-
+      result, error = seasonpass.update_reward(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'reward'
+      - 'update'
+
+  'update_season@seasonpass':
+    id: 'update_season@seasonpass'
+    name: 'update_season'
+    description: |-
+      This API is used to update a season. Only draft season can be updated.
+
+      Other detail info:
+
+        * Returns : updated season
+    parameters:
+      'body':
+        type: 'Optional[SeasonUpdate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, SeasonInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/season/update_season.py'
+    example: |-
+      result, error = seasonpass.update_season(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'season'
+      - 'update'
+
+  'update_tier@seasonpass':
+    id: 'update_tier@seasonpass'
+    name: 'update_tier'
+    description: |-
+      This API is used to update a tier. Only draft season pass can be updated.
+    parameters:
+      'body':
+        type: 'Optional[TierInput]'
+        required: false
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'season_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, Tier], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.seasonpass as seasonpass'
+      - 'import accelbyte_py_sdk.api.seasonpass.models as seasonpass_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/seasonpass/operations/tier/update_tier.py'
+    example: |-
+      result, error = seasonpass.update_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'tier'
+      - 'update'

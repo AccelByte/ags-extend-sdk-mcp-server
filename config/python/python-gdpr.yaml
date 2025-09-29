@@ -1,0 +1,2548 @@
+structs:
+  # region models
+
+  'DtoExtendConfigDTO@gdpr':
+    id: 'DtoExtendConfigDTO@gdpr'
+    name: 'DtoExtendConfigDTO'
+    fields:
+      'app_name':
+        type: 'str'
+        required: true
+        description: |-
+          extend app name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          extend app namespace
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_extend_config_dto.py'
+    example: |-
+      dto_extend_config_dto = gdpr_models.DtoExtendConfigDTO.create(...)
+
+  'DtoFinishedDataDeletion@gdpr':
+    id: 'DtoFinishedDataDeletion@gdpr'
+    name: 'DtoFinishedDataDeletion'
+    fields:
+      'finished_date':
+        type: 'str'
+        required: true
+        description: |-
+          Finished deletion date
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request deletion date
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          Status of request
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          User Id. This userId will be anonymized automatically after 7 days from the **Success** deletion
+      'failed_message':
+        type: 'str'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_finished_data_deletion.py'
+    example: |-
+      dto_finished_data_deletion = gdpr_models.DtoFinishedDataDeletion.create(...)
+
+  'DtoFinishedDataRequest@gdpr':
+    id: 'DtoFinishedDataRequest@gdpr'
+    name: 'DtoFinishedDataRequest'
+    fields:
+      'finished_date':
+        type: 'str'
+        required: true
+        description: |-
+          Finished date
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date
+      'request_id':
+        type: 'str'
+        required: true
+        description: |-
+          Request id
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          Status of request
+      'user_id':
+        type: 'str'
+        required: true
+      'data_expiration_date':
+        type: 'str'
+        required: false
+        description: |-
+          The expiration date of generated data, it was 28 days after finishedDate. Available only if the status is Completed
+      'failed_message':
+        type: 'str'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_finished_data_request.py'
+    example: |-
+      dto_finished_data_request = gdpr_models.DtoFinishedDataRequest.create(...)
+
+  'DtoListFinishedDataDeletion@gdpr':
+    id: 'DtoListFinishedDataDeletion@gdpr'
+    name: 'DtoListFinishedDataDeletion'
+    fields:
+      'data':
+        type: 'List[DtoFinishedDataDeletion]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_deletion.py'
+    example: |-
+      dto_list_finished_data_deletion = gdpr_models.DtoListFinishedDataDeletion.create(...)
+
+  'DtoListFinishedDataRequests@gdpr':
+    id: 'DtoListFinishedDataRequests@gdpr'
+    name: 'DtoListFinishedDataRequests'
+    fields:
+      'data':
+        type: 'List[DtoFinishedDataRequest]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_requests.py'
+    example: |-
+      dto_list_finished_data_requests = gdpr_models.DtoListFinishedDataRequests.create(...)
+
+  'DtoPlatformAccountClosureClientRequest@gdpr':
+    id: 'DtoPlatformAccountClosureClientRequest@gdpr'
+    name: 'DtoPlatformAccountClosureClientRequest'
+    fields:
+      'bp_cert':
+        type: 'str'
+        required: false
+        description: |-
+          required for xbox
+      'bp_cert_file_name':
+        type: 'str'
+        required: false
+        description: |-
+          required for xbox
+      'client_id':
+        type: 'str'
+        required: false
+        description: |-
+          required for psn
+      'password':
+        type: 'str'
+        required: false
+        description: |-
+          required for xbox
+      'publisher_key':
+        type: 'str'
+        required: false
+        description: |-
+          required for steam
+      'sandbox_id':
+        type: 'str'
+        required: false
+        description: |-
+          required for xbox
+      'secret':
+        type: 'str'
+        required: false
+        description: |-
+          required for psn
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_request.py'
+    example: |-
+      dto_platform_account_closure_client_request = gdpr_models.DtoPlatformAccountClosureClientRequest.create(...)
+
+  'DtoPlatformAccountClosureClientResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'platform':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'int'
+        required: true
+      'bp_cert_expire_at':
+        type: 'int'
+        required: false
+      'bp_cert_file_name':
+        type: 'str'
+        required: false
+      'client_id':
+        type: 'str'
+        required: false
+      'publisher_key':
+        type: 'str'
+        required: false
+      'sandbox_id':
+        type: 'str'
+        required: false
+      'secret':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_response.py'
+    example: |-
+      dto_platform_account_closure_client_response = gdpr_models.DtoPlatformAccountClosureClientResponse.create(...)
+
+  'DtoPlatformAccountClosureClientsResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientsResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientsResponse'
+    fields:
+      'data':
+        type: 'List[DtoPlatformAccountClosureClientResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_clients_response.py'
+    example: |-
+      dto_platform_account_closure_clients_response = gdpr_models.DtoPlatformAccountClosureClientsResponse.create(...)
+
+  'DtoPlatformAccountClosureMockRequest@gdpr':
+    id: 'DtoPlatformAccountClosureMockRequest@gdpr'
+    name: 'DtoPlatformAccountClosureMockRequest'
+    fields:
+      'platform_user_id':
+        type: 'str'
+        required: true
+      'sandbox':
+        type: 'str'
+        required: true
+      'start_immediately':
+        type: 'bool'
+        required: true
+        description: |-
+          start the account closure process immediately
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_mock_request.py'
+    example: |-
+      dto_platform_account_closure_mock_request = gdpr_models.DtoPlatformAccountClosureMockRequest.create(...)
+
+  'DtoS2SDataRequestSummary@gdpr':
+    id: 'DtoS2SDataRequestSummary@gdpr'
+    name: 'DtoS2SDataRequestSummary'
+    fields:
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          Status of the request
+      'failed_message':
+        type: 'str'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'url':
+        type: 'str'
+        required: false
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_s2s_data_request_summary.py'
+    example: |-
+      dto_s2s_data_request_summary = gdpr_models.DtoS2SDataRequestSummary.create(...)
+
+  'DtoServiceConfigDTO@gdpr':
+    id: 'DtoServiceConfigDTO@gdpr'
+    name: 'DtoServiceConfigDTO'
+    fields:
+      'protocol':
+        type: 'Union[str, ProtocolEnum]'
+        required: true
+        description: |-
+          protocol type
+      'skip_ack':
+        type: 'bool'
+        required: false
+        description: |-
+          skip waiting for ack event from this service, used in "EVENT" protocol only.
+      'url':
+        type: 'str'
+        required: false
+        description: |-
+          url of the service with port number, required in "GRPC" protocol
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_service_config_dto.py'
+    example: |-
+      dto_service_config_dto = gdpr_models.DtoServiceConfigDTO.create(...)
+
+  'DtoServiceConfigurationDTO@gdpr':
+    id: 'DtoServiceConfigurationDTO@gdpr'
+    name: 'DtoServiceConfigurationDTO'
+    fields:
+      'id_':
+        type: 'str'
+        required: true
+        description: |-
+          service id
+      'type_':
+        type: 'Union[str, TypeEnum]'
+        required: true
+        description: |-
+          service type
+      'extend_config':
+        type: 'DtoExtendConfigDTO'
+        required: false
+        description: |-
+          extend configuration detail, required when "type" is "EXTEND"
+      'service_config':
+        type: 'DtoServiceConfigDTO'
+        required: false
+        description: |-
+          service configuration detail, required when "type" is "SERVICE"
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_dto.py'
+    example: |-
+      dto_service_configuration_dto = gdpr_models.DtoServiceConfigurationDTO.create(...)
+
+  'DtoServiceConfigurationUpdateRequest@gdpr':
+    id: 'DtoServiceConfigurationUpdateRequest@gdpr'
+    name: 'DtoServiceConfigurationUpdateRequest'
+    fields:
+      'services':
+        type: 'List[DtoServiceConfigurationDTO]'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_update_request.py'
+    example: |-
+      dto_service_configuration_update_request = gdpr_models.DtoServiceConfigurationUpdateRequest.create(...)
+
+  'DtoServicesConfigurationResponse@gdpr':
+    id: 'DtoServicesConfigurationResponse@gdpr'
+    name: 'DtoServicesConfigurationResponse'
+    fields:
+      'services':
+        type: 'List[DtoServiceConfigurationDTO]'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_services_configuration_response.py'
+    example: |-
+      dto_services_configuration_response = gdpr_models.DtoServicesConfigurationResponse.create(...)
+
+  'DtoUserPlatformAccountClosureHistoriesResponse@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistoriesResponse@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistoriesResponse'
+    fields:
+      'data':
+        type: 'List[DtoUserPlatformAccountClosureHistory]'
+        required: true
+      'pagination':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_histories_response.py'
+    example: |-
+      dto_user_platform_account_closure_histories_response = gdpr_models.DtoUserPlatformAccountClosureHistoriesResponse.create(...)
+
+  'DtoUserPlatformAccountClosureHistory@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistory@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistory'
+    fields:
+      'closed_date':
+        type: 'int'
+        required: true
+      'environment':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'platform':
+        type: 'str'
+        required: true
+      'platform_user_id':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_history.py'
+    example: |-
+      dto_user_platform_account_closure_history = gdpr_models.DtoUserPlatformAccountClosureHistory.create(...)
+
+  'DtoXboxBPCertValidationRequest@gdpr':
+    id: 'DtoXboxBPCertValidationRequest@gdpr'
+    name: 'DtoXboxBPCertValidationRequest'
+    fields:
+      'bp_cert':
+        type: 'str'
+        required: true
+      'password':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_xbox_bp_cert_validation_request.py'
+    example: |-
+      dto_xbox_bp_cert_validation_request = gdpr_models.DtoXboxBPCertValidationRequest.create(...)
+
+  'DtoXboxBPCertValidationResponse@gdpr':
+    id: 'DtoXboxBPCertValidationResponse@gdpr'
+    name: 'DtoXboxBPCertValidationResponse'
+    fields:
+      'expiration_date':
+        type: 'int'
+        required: true
+      'expired':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/dto_xbox_bp_cert_validation_response.py'
+    example: |-
+      dto_xbox_bp_cert_validation_response = gdpr_models.DtoXboxBPCertValidationResponse.create(...)
+
+  'ModelsDataRetrievalResponse@gdpr':
+    id: 'ModelsDataRetrievalResponse@gdpr'
+    name: 'ModelsDataRetrievalResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'request_date':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_data_retrieval_response.py'
+    example: |-
+      models_data_retrieval_response = gdpr_models.ModelsDataRetrievalResponse.create(...)
+
+  'ModelsDeletionData@gdpr':
+    id: 'ModelsDeletionData@gdpr'
+    name: 'ModelsDeletionData'
+    fields:
+      'display_name':
+        type: 'str'
+        required: true
+      'request_date':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'unique_display_name':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_deletion_data.py'
+    example: |-
+      models_deletion_data = gdpr_models.ModelsDeletionData.create(...)
+
+  'ModelsDeletionStatus@gdpr':
+    id: 'ModelsDeletionStatus@gdpr'
+    name: 'ModelsDeletionStatus'
+    fields:
+      'deletion_date':
+        type: 'str'
+        required: true
+      'deletion_status':
+        type: 'bool'
+        required: true
+      'display_name':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+      'execution_date':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_deletion_status.py'
+    example: |-
+      models_deletion_status = gdpr_models.ModelsDeletionStatus.create(...)
+
+  'ModelsListDeletionDataResponse@gdpr':
+    id: 'ModelsListDeletionDataResponse@gdpr'
+    name: 'ModelsListDeletionDataResponse'
+    fields:
+      'data':
+        type: 'List[ModelsDeletionData]'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_list_deletion_data_response.py'
+    example: |-
+      models_list_deletion_data_response = gdpr_models.ModelsListDeletionDataResponse.create(...)
+
+  'ModelsListPersonalDataResponse@gdpr':
+    id: 'ModelsListPersonalDataResponse@gdpr'
+    name: 'ModelsListPersonalDataResponse'
+    fields:
+      'data':
+        type: 'List[ModelsPersonalData]'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_list_personal_data_response.py'
+    example: |-
+      models_list_personal_data_response = gdpr_models.ModelsListPersonalDataResponse.create(...)
+
+  'ModelsPagination@gdpr':
+    id: 'ModelsPagination@gdpr'
+    name: 'ModelsPagination'
+    fields:
+      'first':
+        type: 'str'
+        required: true
+      'last':
+        type: 'str'
+        required: true
+      'next_':
+        type: 'str'
+        required: true
+      'previous':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_pagination.py'
+    example: |-
+      models_pagination = gdpr_models.ModelsPagination.create(...)
+
+  'ModelsPersonalData@gdpr':
+    id: 'ModelsPersonalData@gdpr'
+    name: 'ModelsPersonalData'
+    fields:
+      'data_expiration_date':
+        type: 'str'
+        required: true
+      'display_name':
+        type: 'str'
+        required: true
+      'request_date':
+        type: 'str'
+        required: true
+      'service_errors':
+        type: 'Dict[str, str]'
+        required: true
+      'service_statuses':
+        type: 'Dict[str, str]'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_personal_data.py'
+    example: |-
+      models_personal_data = gdpr_models.ModelsPersonalData.create(...)
+
+  'ModelsRequestDeleteResponse@gdpr':
+    id: 'ModelsRequestDeleteResponse@gdpr'
+    name: 'ModelsRequestDeleteResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_request_delete_response.py'
+    example: |-
+      models_request_delete_response = gdpr_models.ModelsRequestDeleteResponse.create(...)
+
+  'ModelsS2SDataRetrievalResponse@gdpr':
+    id: 'ModelsS2SDataRetrievalResponse@gdpr'
+    name: 'ModelsS2SDataRetrievalResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'request_date':
+        type: 'str'
+        required: true
+      'request_id':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_s2s_data_retrieval_response.py'
+    example: |-
+      models_s2s_data_retrieval_response = gdpr_models.ModelsS2SDataRetrievalResponse.create(...)
+
+  'ModelsS2SRequestDeleteResponse@gdpr':
+    id: 'ModelsS2SRequestDeleteResponse@gdpr'
+    name: 'ModelsS2SRequestDeleteResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_s2s_request_delete_response.py'
+    example: |-
+      models_s2s_request_delete_response = gdpr_models.ModelsS2SRequestDeleteResponse.create(...)
+
+  'ModelsS2SUserDataURL@gdpr':
+    id: 'ModelsS2SUserDataURL@gdpr'
+    name: 'ModelsS2SUserDataURL'
+    fields:
+      'url':
+        type: 'str'
+        required: true
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_s2s_user_data_url.py'
+    example: |-
+      models_s2s_user_data_url = gdpr_models.ModelsS2SUserDataURL.create(...)
+
+  'ModelsUserDataURL@gdpr':
+    id: 'ModelsUserDataURL@gdpr'
+    name: 'ModelsUserDataURL'
+    fields:
+      'url':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_user_data_url.py'
+    example: |-
+      models_user_data_url = gdpr_models.ModelsUserDataURL.create(...)
+
+  'ModelsUserPersonalData@gdpr':
+    id: 'ModelsUserPersonalData@gdpr'
+    name: 'ModelsUserPersonalData'
+    fields:
+      'data_expiration_date':
+        type: 'str'
+        required: true
+      'request_date':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_user_personal_data.py'
+    example: |-
+      models_user_personal_data = gdpr_models.ModelsUserPersonalData.create(...)
+
+  'ModelsUserPersonalDataResponse@gdpr':
+    id: 'ModelsUserPersonalDataResponse@gdpr'
+    name: 'ModelsUserPersonalDataResponse'
+    fields:
+      'data':
+        type: 'List[ModelsUserPersonalData]'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/models_user_personal_data_response.py'
+    example: |-
+      models_user_personal_data_response = gdpr_models.ModelsUserPersonalDataResponse.create(...)
+
+  'ResponseError@gdpr':
+    id: 'ResponseError@gdpr'
+    name: 'ResponseError'
+    fields:
+      'error_code':
+        type: 'int'
+        required: true
+      'error_message':
+        type: 'str'
+        required: true
+      'message_variables':
+        type: 'Dict[str, str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/models/response_error.py'
+    example: |-
+      response_error = gdpr_models.ResponseError.create(...)
+
+  # endregion models
+
+functions:
+
+  'admin_cancel_user_account_deletion_request@gdpr':
+    id: 'admin_cancel_user_account_deletion_request@gdpr'
+    name: 'admin_cancel_user_account_deletion_request'
+    description: |-
+      Cancel user's account deletion request
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/admin_cancel_user_accou_de1ba5.py'
+    example: |-
+      result, error = gdpr.admin_cancel_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'user'
+
+  'admin_cancel_user_personal_data_request@gdpr':
+    id: 'admin_cancel_user_personal_data_request@gdpr'
+    name: 'admin_cancel_user_personal_data_request'
+    description: |-
+      Cancel user's personal data requests
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/admin_cancel_user_perso_78952d.py'
+    example: |-
+      result, error = gdpr.admin_cancel_user_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'admin_delete_platform_account_closure_client@gdpr':
+    id: 'admin_delete_platform_account_closure_client@gdpr'
+    name: 'admin_delete_platform_account_closure_client'
+    description: |-
+      Delete platform account closure client.
+      The namespace should be **publisher or studio namespace**
+      -------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'str'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_delete_platform_a_6b01ab.py'
+    example: |-
+      result, error = gdpr.admin_delete_platform_account_closure_client(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'delete'
+      - 'platform'
+
+  'admin_generate_personal_data_url@gdpr':
+    id: 'admin_generate_personal_data_url@gdpr'
+    name: 'admin_generate_personal_data_url'
+    description: |-
+      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
+
+
+
+
+      If admin request data for themselves, password is need to be set
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'password':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          If admin request data for themselves, then password is required
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[Union[None, ModelsUserDataURL], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/admin_generate_personal_48c32b.py'
+    example: |-
+      result, error = gdpr.admin_generate_personal_data_url(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 'url'
+
+  'admin_get_list_deletion_data_request@gdpr':
+    id: 'admin_get_list_deletion_data_request@gdpr'
+    name: 'admin_get_list_deletion_data_request'
+    description: |-
+      Retrieve all user's account deletion requests in specified date
+      Scope: account
+    parameters:
+      'after':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list after that. format : YYYY-MM-DD
+      'before':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list before that. format : YYYY-MM-DD
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          The start position that points to query data
+      'request_date':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          The day in UTC of the deletion request. format : YYYY-MM-DD. Default : today time in UTC.
+    return_type: 'Tuple[Union[None, ModelsListDeletionDataResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/admin_get_list_deletion_227d7d.py'
+    example: |-
+      result, error = gdpr.admin_get_list_deletion_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'list'
+      - 'request'
+
+  'admin_get_list_personal_data_request@gdpr':
+    id: 'admin_get_list_personal_data_request@gdpr'
+    name: 'admin_get_list_personal_data_request'
+    description: |-
+      Get list personal data requests
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          The start position that points to query data
+      'request_date':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          request date with format YYYY-MM-DD. Default value today UTC
+    return_type: 'Tuple[Union[None, ModelsListPersonalDataResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/admin_get_list_personal_424fda.py'
+    example: |-
+      result, error = gdpr.admin_get_list_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+
+  'admin_get_platform_account_closure_client@gdpr':
+    id: 'admin_get_platform_account_closure_client@gdpr'
+    name: 'admin_get_platform_account_closure_client'
+    description: |-
+      Get platform account closure config.
+      The namespace should be **publisher or studio namespace**
+      ----------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'str'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'Tuple[Union[None, DtoPlatformAccountClosureClientResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_get_platform_acco_4a3f07.py'
+    example: |-
+      result, error = gdpr.admin_get_platform_account_closure_client(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'admin_get_platform_account_closure_clients@gdpr':
+    id: 'admin_get_platform_account_closure_clients@gdpr'
+    name: 'admin_get_platform_account_closure_clients'
+    description: |-
+      Get platform account closure configs.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoPlatformAccountClosureClientsResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_get_platform_acco_f2bbf3.py'
+    example: |-
+      result, error = gdpr.admin_get_platform_account_closure_clients(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'clients'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'admin_get_platform_account_closure_services_configuration@gdpr':
+    id: 'admin_get_platform_account_closure_services_configuration@gdpr'
+    name: 'admin_get_platform_account_closure_services_configuration'
+    description: |-
+      Get registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoServicesConfigurationResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_get_platform_acco_c23147.py'
+    example: |-
+      result, error = gdpr.admin_get_platform_account_closure_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'get'
+      - 'platform'
+      - 'services'
+
+  'admin_get_services_configuration@gdpr':
+    id: 'admin_get_services_configuration@gdpr'
+    name: 'admin_get_services_configuration'
+    description: |-
+      Get Registered Services Configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoServicesConfigurationResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_get_services_conf_be46ef.py'
+    example: |-
+      result, error = gdpr.admin_get_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'services'
+
+  'admin_get_user_account_deletion_request@gdpr':
+    id: 'admin_get_user_account_deletion_request@gdpr'
+    name: 'admin_get_user_account_deletion_request'
+    description: |-
+      Retrieve specific user's account deletion request
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[Union[None, ModelsDeletionData], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/admin_get_user_account__84ef5a.py'
+    example: |-
+      result, error = gdpr.admin_get_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'request'
+      - 'user'
+
+  'admin_get_user_personal_data_requests@gdpr':
+    id: 'admin_get_user_personal_data_requests@gdpr'
+    name: 'admin_get_user_personal_data_requests'
+    description: |-
+      Get user's personal data requests
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          The start position that points to query data
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[Union[None, ModelsUserPersonalDataResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/admin_get_user_personal_a892c0.py'
+    example: |-
+      result, error = gdpr.admin_get_user_personal_data_requests(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'admin_get_user_platform_account_closure_histories@gdpr':
+    id: 'admin_get_user_platform_account_closure_histories@gdpr'
+    name: 'admin_get_user_platform_account_closure_histories'
+    description: |-
+      Get user's platform account closure histories.
+      Scope: account
+
+      ------
+      Supported platforms:
+      - psn
+      - steamnetwork
+      - xbox
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'platform':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          3rd party platform
+      'user_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[Union[None, DtoUserPlatformAccountClosureHistoriesResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_history/admin_get_user_platform_8a8aa4.py'
+    example: |-
+      result, error = gdpr.admin_get_user_platform_account_closure_histories(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'get'
+      - 'histories'
+      - 'history'
+      - 'platform'
+      - 'user'
+
+  'admin_mock_platform_account_closure_data@gdpr':
+    id: 'admin_mock_platform_account_closure_data@gdpr'
+    name: 'admin_mock_platform_account_closure_data'
+    description: |-
+      Mock platform account closure data.
+      -----
+      **This is only for testing**
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoPlatformAccountClosureMockRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'str'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_mock_platform_acc_903642.py'
+    example: |-
+      result, error = gdpr.admin_mock_platform_account_closure_data(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'data'
+      - 'mock'
+      - 'platform'
+
+  'admin_request_data_retrieval@gdpr':
+    id: 'admin_request_data_retrieval@gdpr'
+    name: 'admin_request_data_retrieval'
+    description: |-
+      Submit user personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'password':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          IAM password of the user, required if admin requests their own data
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM user ID
+    return_type: 'Tuple[Union[None, ModelsDataRetrievalResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/admin_request_data_retrieval.py'
+    example: |-
+      result, error = gdpr.admin_request_data_retrieval(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'data'
+      - 'request'
+      - 'retrieval'
+
+  'admin_reset_platform_account_closure_services_configuration@gdpr':
+    id: 'admin_reset_platform_account_closure_services_configuration@gdpr'
+    name: 'admin_reset_platform_account_closure_services_configuration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset registered platform account closure services configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_reset_platform_ac_c4b31b.py'
+    example: |-
+      result, error = gdpr.admin_reset_platform_account_closure_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'reset'
+      - 'services'
+
+  'admin_reset_services_configuration@gdpr':
+    id: 'admin_reset_services_configuration@gdpr'
+    name: 'admin_reset_services_configuration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset Registered Services Configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_reset_services_co_abf06c.py'
+    example: |-
+      result, error = gdpr.admin_reset_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'reset'
+      - 'services'
+
+  'admin_submit_user_account_deletion_request@gdpr':
+    id: 'admin_submit_user_account_deletion_request@gdpr'
+    name: 'admin_submit_user_account_deletion_request'
+    description: |-
+      Submit user's account deletion request.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[Union[None, ModelsRequestDeleteResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/admin_submit_user_accou_b7780f.py'
+    example: |-
+      result, error = gdpr.admin_submit_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'admin_update_platform_account_closure_client@gdpr':
+    id: 'admin_update_platform_account_closure_client@gdpr'
+    name: 'admin_update_platform_account_closure_client'
+    description: |-
+      Update platform account closure client.
+      The namespace should be the **publisher or studio namespace**.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoPlatformAccountClosureClientRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'str'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_update_platform_a_818a23.py'
+    example: |-
+      result, error = gdpr.admin_update_platform_account_closure_client(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'platform'
+      - 'update'
+
+  'admin_update_platform_account_closure_services_configuration@gdpr':
+    id: 'admin_update_platform_account_closure_services_configuration@gdpr'
+    name: 'admin_update_platform_account_closure_services_configuration'
+    description: |-
+      Update registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoServiceConfigurationUpdateRequest], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_update_platform_a_1f24aa.py'
+    example: |-
+      result, error = gdpr.admin_update_platform_account_closure_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'services'
+      - 'update'
+
+  'admin_update_services_configuration@gdpr':
+    id: 'admin_update_services_configuration@gdpr'
+    name: 'admin_update_services_configuration'
+    description: |-
+      Update Registered Services Configuration.
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoServiceConfigurationUpdateRequest], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/admin_update_services_c_ea010e.py'
+    example: |-
+      result, error = gdpr.admin_update_services_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'services'
+      - 'update'
+
+  'admin_validate_xbox_bp_cert_file@gdpr':
+    id: 'admin_validate_xbox_bp_cert_file@gdpr'
+    name: 'admin_validate_xbox_bp_cert_file'
+    description: |-
+      Check xbox BP cert file whether it's expired and return expiration date
+    parameters:
+      'body':
+        type: 'DtoXboxBPCertValidationRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, DtoXboxBPCertValidationResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_validate_xbox_bp__812c1c.py'
+    example: |-
+      result, error = gdpr.admin_validate_xbox_bp_cert_file(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'admin'
+      - 'bp'
+      - 'cert'
+      - 'client'
+      - 'closure'
+      - 'file'
+      - 'platform'
+      - 'validate'
+      - 'xbox'
+
+  'delete_admin_email_configuration@gdpr':
+    id: 'delete_admin_email_configuration@gdpr'
+    name: 'delete_admin_email_configuration'
+    description: |-
+      Delete a list of admin email addresses to stop receiving personal data request notification.
+      Scope: account
+    parameters:
+      'emails':
+        type: 'List[str]'
+        required: true
+        description: |-
+          list of admin email to delete
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/delete_admin_email_conf_009cca.py'
+    example: |-
+      result, error = gdpr.delete_admin_email_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'email'
+
+  'get_admin_email_configuration@gdpr':
+    id: 'get_admin_email_configuration@gdpr'
+    name: 'get_admin_email_configuration'
+    description: |-
+      Get list of admin email address configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[Union[None, List[str]], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/get_admin_email_configuration.py'
+    example: |-
+      result, error = gdpr.get_admin_email_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'get'
+
+  'public_cancel_my_account_deletion_request@gdpr':
+    id: 'public_cancel_my_account_deletion_request@gdpr'
+    name: 'public_cancel_my_account_deletion_request'
+    description: |-
+      Cancel my account deletion request
+      Requires valid user access token
+    parameters:
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_cancel_my_accoun_107811.py'
+    example: |-
+      result, error = gdpr.public_cancel_my_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+
+  'public_cancel_user_account_deletion_request@gdpr':
+    id: 'public_cancel_user_account_deletion_request@gdpr'
+    name: 'public_cancel_user_account_deletion_request'
+    description: |-
+      Cancel user's account deletion request
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_cancel_user_acco_16b962.py'
+    example: |-
+      result, error = gdpr.public_cancel_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'user'
+
+  'public_cancel_user_personal_data_request@gdpr':
+    id: 'public_cancel_user_personal_data_request@gdpr'
+    name: 'public_cancel_user_personal_data_request'
+    description: |-
+      Cancel user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_cancel_user_pers_19dafa.py'
+    example: |-
+      result, error = gdpr.public_cancel_user_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'public_generate_personal_data_url@gdpr':
+    id: 'public_generate_personal_data_url@gdpr'
+    name: 'public_generate_personal_data_url'
+    description: |-
+      Generate personal data download url
+      Requires valid user access token
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'str'
+        required: true
+        description: |-
+          IAM password of the user
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[Union[None, ModelsUserDataURL], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_generate_persona_6b68a4.py'
+    example: |-
+      result, error = gdpr.public_generate_personal_data_url(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
+  'public_get_my_account_deletion_status@gdpr':
+    id: 'public_get_my_account_deletion_status@gdpr'
+    name: 'public_get_my_account_deletion_status'
+    description: |-
+      Retrieve my account deletion status
+      Requires valid user access token
+    parameters:
+    return_type: 'Tuple[Union[None, ModelsDeletionStatus], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_get_my_account_d_8595d0.py'
+    example: |-
+      result, error = gdpr.public_get_my_account_deletion_status(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'my'
+      - 'public'
+      - 'status'
+
+  'public_get_user_account_deletion_status@gdpr':
+    id: 'public_get_user_account_deletion_status@gdpr'
+    name: 'public_get_user_account_deletion_status'
+    description: |-
+      Retrieve specific user's account deletion status
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[Union[None, ModelsDeletionStatus], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_get_user_account_09e4f2.py'
+    example: |-
+      result, error = gdpr.public_get_user_account_deletion_status(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'public'
+      - 'status'
+      - 'user'
+
+  'public_get_user_personal_data_requests@gdpr':
+    id: 'public_get_user_personal_data_requests@gdpr'
+    name: 'public_get_user_personal_data_requests'
+    description: |-
+      Get user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          The start position that points to query data
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[Union[None, ModelsUserPersonalDataResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_get_user_persona_7e40c3.py'
+    example: |-
+      result, error = gdpr.public_get_user_personal_data_requests(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'public_request_data_retrieval@gdpr':
+    id: 'public_request_data_retrieval@gdpr'
+    name: 'public_request_data_retrieval'
+    description: |-
+      Submit personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'language_tag':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Language tag
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'str'
+        required: true
+        description: |-
+          IAM password of the user
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'Tuple[Union[None, ModelsDataRetrievalResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_request_data_retrieval.py'
+    example: |-
+      result, error = gdpr.public_request_data_retrieval(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+
+  'public_submit_my_account_deletion_request@gdpr':
+    id: 'public_submit_my_account_deletion_request@gdpr'
+    name: 'public_submit_my_account_deletion_request'
+    description: |-
+      Submit my account deletion requests.
+      Requires valid user access token
+      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID which used to generate current token
+      'platform_token':
+        type: 'str'
+        required: true
+        description: |-
+          Platform token of current logged platform
+    return_type: 'Tuple[Union[None, ModelsRequestDeleteResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_submit_my_accoun_f5ded3.py'
+    example: |-
+      result, error = gdpr.public_submit_my_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'public_submit_user_account_deletion_request@gdpr':
+    id: 'public_submit_user_account_deletion_request@gdpr'
+    name: 'public_submit_user_account_deletion_request'
+    description: |-
+      Submit user's account deletion request.
+      Requires valid user access token and password
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'language_tag':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Language tag
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'str'
+        required: true
+        description: |-
+          IAM password of the user
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'Tuple[Union[None, ModelsRequestDeleteResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_submit_user_acco_a6db4f.py'
+    example: |-
+      result, error = gdpr.public_submit_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  's2s_generate_personal_data_url@gdpr':
+    id: 's2s_generate_personal_data_url@gdpr'
+    name: 's2s_generate_personal_data_url'
+    description: |-
+      Scope: account
+
+      Generate personal data download url.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'Tuple[Union[None, ModelsS2SUserDataURL], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_generate_personal_data_url.py'
+    example: |-
+      result, error = gdpr.s2s_generate_personal_data_url(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 's2s'
+      - 'url'
+
+  's2s_get_data_request_by_request_id@gdpr':
+    id: 's2s_get_data_request_by_request_id@gdpr'
+    name: 's2s_get_data_request_by_request_id'
+    description: |-
+      Scope: account
+
+      Get Personal Data Request by Request Id.
+      If the request has been completed, it will return a download url for the data package.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'request_id':
+        type: 'str'
+        required: true
+        description: |-
+          Request Id
+    return_type: 'Tuple[Union[None, DtoS2SDataRequestSummary], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_get_data_request_by_21f4a4.py'
+    example: |-
+      result, error = gdpr.s2s_get_data_request_by_request_id(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'by'
+      - 'data'
+      - 'get'
+      - 'id'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  's2s_get_list_finished_account_deletion_request@gdpr':
+    id: 's2s_get_list_finished_account_deletion_request@gdpr'
+    name: 's2s_get_list_finished_account_deletion_request'
+    description: |-
+      Scope: account
+
+      Get list of finished account deletion requests based on the finished time period.
+      Unfinished deletion requests will not appear here, i.e. have Status **Request**, **Pending** or **In-Progress**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'Tuple[Union[None, DtoListFinishedDataDeletion], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_s2s/s2s_get_list_finished_a_52b7a0.py'
+    example: |-
+      result, error = gdpr.s2s_get_list_finished_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'request'
+      - 's2s'
+
+  's2s_get_list_finished_personal_data_request@gdpr':
+    id: 's2s_get_list_finished_personal_data_request@gdpr'
+    name: 's2s_get_list_finished_personal_data_request'
+    description: |-
+      Scope: account
+
+      Get list of finished personal data requests based on the finished time period.
+      Unfinished personal data requests will not appear here, i.e. have Status **Pending**, **In-Progress** or **Canceled**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'end':
+        type: 'str'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'start':
+        type: 'str'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'Tuple[Union[None, DtoListFinishedDataRequests], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_get_list_finished_p_06385b.py'
+    example: |-
+      result, error = gdpr.s2s_get_list_finished_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  's2s_request_data_retrieval@gdpr':
+    id: 's2s_request_data_retrieval@gdpr'
+    name: 's2s_request_data_retrieval'
+    description: |-
+      Scope: account
+
+      Submit user personal data retrieval request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'Tuple[Union[None, ModelsS2SDataRetrievalResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_request_data_retrieval.py'
+    example: |-
+      result, error = gdpr.s2s_request_data_retrieval(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  's2s_submit_user_account_deletion_request@gdpr':
+    id: 's2s_submit_user_account_deletion_request@gdpr'
+    name: 's2s_submit_user_account_deletion_request'
+    description: |-
+      Scope: account
+
+      Submit user's account deletion request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+      2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher Namespace
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'Tuple[Union[None, ModelsS2SRequestDeleteResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_s2s/s2s_submit_user_account_5c299d.py'
+    example: |-
+      result, error = gdpr.s2s_submit_user_account_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 's2s'
+      - 'submit'
+      - 'user'
+
+  'save_admin_email_configuration@gdpr':
+    id: 'save_admin_email_configuration@gdpr'
+    name: 'save_admin_email_configuration'
+    description: |-
+      Add admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'body':
+        type: 'List[str]'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/save_admin_email_configuration.py'
+    example: |-
+      result, error = gdpr.save_admin_email_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'save'
+
+  'update_admin_email_configuration@gdpr':
+    id: 'update_admin_email_configuration@gdpr'
+    name: 'update_admin_email_configuration'
+    description: |-
+      Update admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'body':
+        type: 'List[str]'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/configuration/update_admin_email_conf_71e966.py'
+    example: |-
+      result, error = gdpr.update_admin_email_configuration(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'update'

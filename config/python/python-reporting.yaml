@@ -1,0 +1,2307 @@
+structs:
+  # region models
+
+  'RestapiActionApiRequest@reporting':
+    id: 'RestapiActionApiRequest@reporting'
+    name: 'RestapiActionApiRequest'
+    fields:
+      'action_id':
+        type: 'str'
+        required: true
+        description: |-
+          Auto mod action ID
+      'action_name':
+        type: 'str'
+        required: true
+        description: |-
+          Auto mod action display name
+      'event_name':
+        type: 'str'
+        required: true
+        description: |-
+          Kafka publish event name
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_action_api_request.py'
+    example: |-
+      restapi_action_api_request = reporting_models.RestapiActionApiRequest.create(...)
+
+  'RestapiActionApiResponse@reporting':
+    id: 'RestapiActionApiResponse@reporting'
+    name: 'RestapiActionApiResponse'
+    fields:
+      'action_id':
+        type: 'str'
+        required: true
+      'action_name':
+        type: 'str'
+        required: true
+      'event_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_action_api_response.py'
+    example: |-
+      restapi_action_api_response = reporting_models.RestapiActionApiResponse.create(...)
+
+  'RestapiActionListApiResponse@reporting':
+    id: 'RestapiActionListApiResponse@reporting'
+    name: 'RestapiActionListApiResponse'
+    fields:
+      'data':
+        type: 'List[RestapiActionApiResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_action_list_api_response.py'
+    example: |-
+      restapi_action_list_api_response = reporting_models.RestapiActionListApiResponse.create(...)
+
+  'RestapiAdminAllReasonsResponse@reporting':
+    id: 'RestapiAdminAllReasonsResponse@reporting'
+    name: 'RestapiAdminAllReasonsResponse'
+    fields:
+      'data':
+        type: 'List[RestapiPublicReasonResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_admin_all_reasons_response.py'
+    example: |-
+      restapi_admin_all_reasons_response = reporting_models.RestapiAdminAllReasonsResponse.create(...)
+
+  'RestapiAdminReasonListResponse@reporting':
+    id: 'RestapiAdminReasonListResponse@reporting'
+    name: 'RestapiAdminReasonListResponse'
+    fields:
+      'data':
+        type: 'List[RestapiAdminReasonResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_admin_reason_list_response.py'
+    example: |-
+      restapi_admin_reason_list_response = reporting_models.RestapiAdminReasonListResponse.create(...)
+
+  'RestapiAdminReasonResponse@reporting':
+    id: 'RestapiAdminReasonResponse@reporting'
+    name: 'RestapiAdminReasonResponse'
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+      'description':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'title':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'groups':
+        type: 'List[RestapiPublicReasonGroupResponse]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_admin_reason_response.py'
+    example: |-
+      restapi_admin_reason_response = reporting_models.RestapiAdminReasonResponse.create(...)
+
+  'RestapiBanAccountActionRequest@reporting':
+    id: 'RestapiBanAccountActionRequest@reporting'
+    name: 'RestapiBanAccountActionRequest'
+    fields:
+      'duration':
+        type: 'int'
+        required: true
+        description: |-
+          Ban duration in minutes, -1 means unlimited duration
+      'reason':
+        type: 'str'
+        required: true
+        description: |-
+          Ban reason
+      'skip_notif':
+        type: 'bool'
+        required: true
+        description: |-
+          Skip notification for banned user (e.g. email notification)
+      'type_':
+        type: 'str'
+        required: true
+        description: |-
+          Ban type
+      'comment':
+        type: 'str'
+        required: false
+        description: |-
+          Ban comment
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_ban_account_action_request.py'
+    example: |-
+      restapi_ban_account_action_request = reporting_models.RestapiBanAccountActionRequest.create(...)
+
+  'RestapiBanAccountActionResponse@reporting':
+    id: 'RestapiBanAccountActionResponse@reporting'
+    name: 'RestapiBanAccountActionResponse'
+    fields:
+      'duration':
+        type: 'int'
+        required: true
+        description: |-
+          Ban duration in minutes, -1 means unlimited duration
+      'reason':
+        type: 'str'
+        required: true
+        description: |-
+          Ban reason
+      'skip_notif':
+        type: 'bool'
+        required: true
+        description: |-
+          Skip notification for banned user (e.g. email notification)
+      'type_':
+        type: 'str'
+        required: true
+        description: |-
+          Ban type
+      'comment':
+        type: 'str'
+        required: false
+        description: |-
+          Ban comment
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_ban_account_action_response.py'
+    example: |-
+      restapi_ban_account_action_response = reporting_models.RestapiBanAccountActionResponse.create(...)
+
+  'RestapiCategoryLimit@reporting':
+    id: 'RestapiCategoryLimit@reporting'
+    name: 'RestapiCategoryLimit'
+    fields:
+      'max_report_per_ticket':
+        type: 'int'
+        required: true
+        description: |-
+          must between 1 to 2147483647
+      'name':
+        type: 'str'
+        required: true
+      'extension_category':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_category_limit.py'
+    example: |-
+      restapi_category_limit = reporting_models.RestapiCategoryLimit.create(...)
+
+  'RestapiConfigResponse@reporting':
+    id: 'RestapiConfigResponse@reporting'
+    name: 'RestapiConfigResponse'
+    fields:
+      'namespace':
+        type: 'str'
+        required: true
+      'reporting_limit':
+        type: 'RestapiReportingLimit'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_config_response.py'
+    example: |-
+      restapi_config_response = reporting_models.RestapiConfigResponse.create(...)
+
+  'RestapiCreateReasonGroupRequest@reporting':
+    id: 'RestapiCreateReasonGroupRequest@reporting'
+    name: 'RestapiCreateReasonGroupRequest'
+    fields:
+      'title':
+        type: 'str'
+        required: true
+        description: |-
+          max 256 chars
+      'reason_ids':
+        type: 'List[str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_create_reason_group_request.py'
+    example: |-
+      restapi_create_reason_group_request = reporting_models.RestapiCreateReasonGroupRequest.create(...)
+
+  'RestapiCreateReasonRequest@reporting':
+    id: 'RestapiCreateReasonRequest@reporting'
+    name: 'RestapiCreateReasonRequest'
+    fields:
+      'description':
+        type: 'str'
+        required: true
+        description: |-
+          max 280 chars
+      'group_ids':
+        type: 'List[str]'
+        required: true
+      'title':
+        type: 'str'
+        required: true
+        description: |-
+          max 256 chars
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_create_reason_request.py'
+    example: |-
+      restapi_create_reason_request = reporting_models.RestapiCreateReasonRequest.create(...)
+
+  'RestapiErrorResponse@reporting':
+    id: 'RestapiErrorResponse@reporting'
+    name: 'RestapiErrorResponse'
+    fields:
+      'error_code':
+        type: 'int'
+        required: true
+      'error_message':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_error_response.py'
+    example: |-
+      restapi_error_response = reporting_models.RestapiErrorResponse.create(...)
+
+  'RestapiExtensionCategoryApiRequest@reporting':
+    id: 'RestapiExtensionCategoryApiRequest@reporting'
+    name: 'RestapiExtensionCategoryApiRequest'
+    fields:
+      'extension_category':
+        type: 'str'
+        required: true
+        description: |-
+          Report extension category, consist of custom services sub-category (eg. salesItem,challenge,etc)
+      'extension_category_name':
+        type: 'str'
+        required: true
+        description: |-
+          Report extension category display name)
+      'service_source':
+        type: 'str'
+        required: true
+        description: |-
+          Extension category service source (eg. service source 'marketplace' for extension category 'salesItem')
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_extension_category_api_request.py'
+    example: |-
+      restapi_extension_category_api_request = reporting_models.RestapiExtensionCategoryApiRequest.create(...)
+
+  'RestapiExtensionCategoryApiResponse@reporting':
+    id: 'RestapiExtensionCategoryApiResponse@reporting'
+    name: 'RestapiExtensionCategoryApiResponse'
+    fields:
+      'extension_category':
+        type: 'str'
+        required: true
+      'extension_category_name':
+        type: 'str'
+        required: true
+      'service_source':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_extension_category_api_response.py'
+    example: |-
+      restapi_extension_category_api_response = reporting_models.RestapiExtensionCategoryApiResponse.create(...)
+
+  'RestapiExtensionCategoryListApiResponse@reporting':
+    id: 'RestapiExtensionCategoryListApiResponse@reporting'
+    name: 'RestapiExtensionCategoryListApiResponse'
+    fields:
+      'data':
+        type: 'List[RestapiExtensionCategoryApiResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_extension_category_list_api_response.py'
+    example: |-
+      restapi_extension_category_list_api_response = reporting_models.RestapiExtensionCategoryListApiResponse.create(...)
+
+  'RestapiModerationRuleActionsRequest@reporting':
+    id: 'RestapiModerationRuleActionsRequest@reporting'
+    name: 'RestapiModerationRuleActionsRequest'
+    fields:
+      'ban_account':
+        type: 'RestapiBanAccountActionRequest'
+        required: false
+        description: |-
+          Ban account action configuration
+      'delete_chat':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable delete chat action
+      'extension_action_ids':
+        type: 'List[str]'
+        required: false
+        description: |-
+          Custom services moderation actions
+      'hide_content':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable hide content action
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rule_actions_request.py'
+    example: |-
+      restapi_moderation_rule_actions_request = reporting_models.RestapiModerationRuleActionsRequest.create(...)
+
+  'RestapiModerationRuleActionsResponse@reporting':
+    id: 'RestapiModerationRuleActionsResponse@reporting'
+    name: 'RestapiModerationRuleActionsResponse'
+    fields:
+      'ban_account':
+        type: 'RestapiBanAccountActionResponse'
+        required: false
+        description: |-
+          Ban account action configuration
+      'delete_chat':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable delete chat action
+      'extension_action_ids':
+        type: 'List[str]'
+        required: false
+        description: |-
+          custom service mod actions
+      'hide_content':
+        type: 'bool'
+        required: false
+        description: |-
+          Enable hide content action
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rule_actions_response.py'
+    example: |-
+      restapi_moderation_rule_actions_response = reporting_models.RestapiModerationRuleActionsResponse.create(...)
+
+  'RestapiModerationRuleActiveRequest@reporting':
+    id: 'RestapiModerationRuleActiveRequest@reporting'
+    name: 'RestapiModerationRuleActiveRequest'
+    fields:
+      'active':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rule_active_request.py'
+    example: |-
+      restapi_moderation_rule_active_request = reporting_models.RestapiModerationRuleActiveRequest.create(...)
+
+  'RestapiModerationRuleRequest@reporting':
+    id: 'RestapiModerationRuleRequest@reporting'
+    name: 'RestapiModerationRuleRequest'
+    fields:
+      'active':
+        type: 'bool'
+        required: true
+        description: |-
+          status of this rule
+      'category':
+        type: 'Union[str, CategoryEnum]'
+        required: true
+        description: |-
+          Report category, must select from pre defined list
+      'reason':
+        type: 'str'
+        required: true
+        description: |-
+          Reason of report, can select from pre defined list, max 128 chars
+      'threshold':
+        type: 'int'
+        required: true
+        description: |-
+          the threshold to trigger auto moderation
+      'action':
+        type: 'Union[str, ActionEnum]'
+        required: false
+        description: |-
+          GOING TO DEPRECATE, PLEASE DO NOT USE, for replacement use the "actions" field
+      'actions':
+        type: 'RestapiModerationRuleActionsRequest'
+        required: false
+        description: |-
+          Action configurations for moderation rule
+      'extension_category':
+        type: 'str'
+        required: false
+        description: |-
+          Report extension category, consist of custom services sub-category (eg. salesItem,challenge,etc)
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rule_request.py'
+    example: |-
+      restapi_moderation_rule_request = reporting_models.RestapiModerationRuleRequest.create(...)
+
+  'RestapiModerationRuleResponse@reporting':
+    id: 'RestapiModerationRuleResponse@reporting'
+    name: 'RestapiModerationRuleResponse'
+    fields:
+      'actions':
+        type: 'RestapiModerationRuleActionsResponse'
+        required: true
+        description: |-
+          Action configurations for moderation rule
+      'active':
+        type: 'bool'
+        required: true
+      'category':
+        type: 'str'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'reason':
+        type: 'str'
+        required: true
+      'threshold':
+        type: 'int'
+        required: true
+      'action':
+        type: 'str'
+        required: false
+        description: |-
+          GOING TO DEPRECATE, PLEASE DO NOT USE, for replacement use the "actions" field
+      'extension_category':
+        type: 'str'
+        required: false
+      'updated_at':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rule_response.py'
+    example: |-
+      restapi_moderation_rule_response = reporting_models.RestapiModerationRuleResponse.create(...)
+
+  'RestapiModerationRulesList@reporting':
+    id: 'RestapiModerationRulesList@reporting'
+    name: 'RestapiModerationRulesList'
+    fields:
+      'data':
+        type: 'List[RestapiModerationRuleResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_moderation_rules_list.py'
+    example: |-
+      restapi_moderation_rules_list = reporting_models.RestapiModerationRulesList.create(...)
+
+  'RestapiPagination@reporting':
+    id: 'RestapiPagination@reporting'
+    name: 'RestapiPagination'
+    fields:
+      'first':
+        type: 'str'
+        required: true
+      'last':
+        type: 'str'
+        required: true
+      'next_':
+        type: 'str'
+        required: true
+      'previous':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_pagination.py'
+    example: |-
+      restapi_pagination = reporting_models.RestapiPagination.create(...)
+
+  'RestapiPublicReasonGroupResponse@reporting':
+    id: 'RestapiPublicReasonGroupResponse@reporting'
+    name: 'RestapiPublicReasonGroupResponse'
+    fields:
+      'id_':
+        type: 'str'
+        required: true
+      'title':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_public_reason_group_response.py'
+    example: |-
+      restapi_public_reason_group_response = reporting_models.RestapiPublicReasonGroupResponse.create(...)
+
+  'RestapiPublicReasonListResponse@reporting':
+    id: 'RestapiPublicReasonListResponse@reporting'
+    name: 'RestapiPublicReasonListResponse'
+    fields:
+      'data':
+        type: 'List[RestapiPublicReasonResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_public_reason_list_response.py'
+    example: |-
+      restapi_public_reason_list_response = reporting_models.RestapiPublicReasonListResponse.create(...)
+
+  'RestapiPublicReasonResponse@reporting':
+    id: 'RestapiPublicReasonResponse@reporting'
+    name: 'RestapiPublicReasonResponse'
+    fields:
+      'description':
+        type: 'str'
+        required: true
+      'title':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_public_reason_response.py'
+    example: |-
+      restapi_public_reason_response = reporting_models.RestapiPublicReasonResponse.create(...)
+
+  'RestapiReasonGroupListResponse@reporting':
+    id: 'RestapiReasonGroupListResponse@reporting'
+    name: 'RestapiReasonGroupListResponse'
+    fields:
+      'data':
+        type: 'List[RestapiPublicReasonGroupResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_reason_group_list_response.py'
+    example: |-
+      restapi_reason_group_list_response = reporting_models.RestapiReasonGroupListResponse.create(...)
+
+  'RestapiReasonGroupResponse@reporting':
+    id: 'RestapiReasonGroupResponse@reporting'
+    name: 'RestapiReasonGroupResponse'
+    fields:
+      'id_':
+        type: 'str'
+        required: true
+      'title':
+        type: 'str'
+        required: true
+      'reasons':
+        type: 'List[RestapiAdminReasonResponse]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_reason_group_response.py'
+    example: |-
+      restapi_reason_group_response = reporting_models.RestapiReasonGroupResponse.create(...)
+
+  'RestapiReportingLimit@reporting':
+    id: 'RestapiReportingLimit@reporting'
+    name: 'RestapiReportingLimit'
+    fields:
+      'category_limits':
+        type: 'List[RestapiCategoryLimit]'
+        required: true
+      'time_interval':
+        type: 'int'
+        required: true
+        description: |-
+          the unit is nanoseconds, must between 1 to 6000000 seconds
+      'user_max_report_per_time_interval':
+        type: 'int'
+        required: true
+        description: |-
+          must between 1 to 2147483647
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_reporting_limit.py'
+    example: |-
+      restapi_reporting_limit = reporting_models.RestapiReportingLimit.create(...)
+
+  'RestapiReportListResponse@reporting':
+    id: 'RestapiReportListResponse@reporting'
+    name: 'RestapiReportListResponse'
+    fields:
+      'data':
+        type: 'List[RestapiReportResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_report_list_response.py'
+    example: |-
+      restapi_report_list_response = reporting_models.RestapiReportListResponse.create(...)
+
+  'RestapiReportResponse@reporting':
+    id: 'RestapiReportResponse@reporting'
+    name: 'RestapiReportResponse'
+    fields:
+      'additional_info':
+        type: 'Dict[str, Any]'
+        required: true
+      'category':
+        type: 'Union[str, CategoryEnum]'
+        required: true
+      'comment':
+        type: 'str'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'object_id':
+        type: 'str'
+        required: true
+      'object_type':
+        type: 'str'
+        required: true
+      'reason':
+        type: 'str'
+        required: true
+      'reporter_id':
+        type: 'str'
+        required: true
+      'ticket_id':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+      'extension_category':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_report_response.py'
+    example: |-
+      restapi_report_response = reporting_models.RestapiReportResponse.create(...)
+
+  'RestapiSubmitReportRequest@reporting':
+    id: 'RestapiSubmitReportRequest@reporting'
+    name: 'RestapiSubmitReportRequest'
+    fields:
+      'category':
+        type: 'Union[str, CategoryEnum]'
+        required: true
+        description: |-
+          Report category, must select from pre defined list
+      'reason':
+        type: 'str'
+        required: true
+        description: |-
+          Reason of report, can select from pre defined list, max 128 chars
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          User ID being reported, in UUID4 format
+      'additional_info':
+        type: 'Dict[str, Any]'
+        required: false
+        description: |-
+          Additional info regarding reported user / content, JSON formatted
+      'comment':
+        type: 'str'
+        required: false
+        description: |-
+          Additional comment if any, max 280 chars
+      'extension_category':
+        type: 'str'
+        required: false
+        description: |-
+          Report extension category, must select from pre defined list
+      'object_id':
+        type: 'str'
+        required: false
+        description: |-
+          ID of content being reported, uuid4WithoutHyphens. Required for UGC category
+      'object_type':
+        type: 'str'
+        required: false
+        description: |-
+          Type of content being reported, max 64 chars. Required for UGC category
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_submit_report_request.py'
+    example: |-
+      restapi_submit_report_request = reporting_models.RestapiSubmitReportRequest.create(...)
+
+  'RestapiSubmitReportResponse@reporting':
+    id: 'RestapiSubmitReportResponse@reporting'
+    name: 'RestapiSubmitReportResponse'
+    fields:
+      'category':
+        type: 'Union[str, CategoryEnum]'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'object_id':
+        type: 'str'
+        required: true
+      'object_type':
+        type: 'str'
+        required: true
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+      'ticket_id':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+      'extension_category':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_submit_report_response.py'
+    example: |-
+      restapi_submit_report_response = reporting_models.RestapiSubmitReportResponse.create(...)
+
+  'RestapiTicketListResponse@reporting':
+    id: 'RestapiTicketListResponse@reporting'
+    name: 'RestapiTicketListResponse'
+    fields:
+      'data':
+        type: 'List[RestapiTicketResponse]'
+        required: true
+      'paging':
+        type: 'RestapiPagination'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_ticket_list_response.py'
+    example: |-
+      restapi_ticket_list_response = reporting_models.RestapiTicketListResponse.create(...)
+
+  'RestapiTicketResponse@reporting':
+    id: 'RestapiTicketResponse@reporting'
+    name: 'RestapiTicketResponse'
+    fields:
+      'category':
+        type: 'Union[str, CategoryEnum]'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'notes':
+        type: 'str'
+        required: true
+      'object_id':
+        type: 'str'
+        required: true
+      'object_type':
+        type: 'str'
+        required: true
+      'reports_count':
+        type: 'int'
+        required: true
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+      'extension_category':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_ticket_response.py'
+    example: |-
+      restapi_ticket_response = reporting_models.RestapiTicketResponse.create(...)
+
+  'RestapiTicketStatisticResponse@reporting':
+    id: 'RestapiTicketStatisticResponse@reporting'
+    name: 'RestapiTicketStatisticResponse'
+    fields:
+      'moderated_count':
+        type: 'int'
+        required: true
+      'open_count':
+        type: 'int'
+        required: true
+      'total_count':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_ticket_statistic_response.py'
+    example: |-
+      restapi_ticket_statistic_response = reporting_models.RestapiTicketStatisticResponse.create(...)
+
+  'RestapiUnusedReasonListResponse@reporting':
+    id: 'RestapiUnusedReasonListResponse@reporting'
+    name: 'RestapiUnusedReasonListResponse'
+    fields:
+      'reasons':
+        type: 'List[RestapiPublicReasonResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_unused_reason_list_response.py'
+    example: |-
+      restapi_unused_reason_list_response = reporting_models.RestapiUnusedReasonListResponse.create(...)
+
+  'RestapiUpdateReasonGroupRequest@reporting':
+    id: 'RestapiUpdateReasonGroupRequest@reporting'
+    name: 'RestapiUpdateReasonGroupRequest'
+    fields:
+      'title':
+        type: 'str'
+        required: true
+        description: |-
+          max 256 chars
+      'reason_ids':
+        type: 'List[str]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_update_reason_group_request.py'
+    example: |-
+      restapi_update_reason_group_request = reporting_models.RestapiUpdateReasonGroupRequest.create(...)
+
+  'RestapiUpdateTicketResolutionsRequest@reporting':
+    id: 'RestapiUpdateTicketResolutionsRequest@reporting'
+    name: 'RestapiUpdateTicketResolutionsRequest'
+    fields:
+      'notes':
+        type: 'str'
+        required: true
+        description: |-
+          Info regarding the resolution status, max 280 chars
+      'status':
+        type: 'Union[str, StatusEnum]'
+        required: true
+        description: |-
+          Ticket status is open, closed, auto moderated
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/models/restapi_update_ticket_resolutions_request.py'
+    example: |-
+      restapi_update_ticket_resolutions_request = reporting_models.RestapiUpdateTicketResolutionsRequest.create(...)
+
+  # endregion models
+
+functions:
+
+  'admin_create_extension_category@reporting':
+    id: 'admin_create_extension_category@reporting'
+    name: 'admin_create_extension_category'
+    description: |-
+      Create extension category data
+    parameters:
+      'body':
+        type: 'RestapiExtensionCategoryApiRequest'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiExtensionCategoryApiResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_extension_categories_and_auto_moderation_actions/admin_create_extension__954f3a.py'
+    example: |-
+      result, error = reporting.admin_create_extension_category(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'category'
+      - 'create'
+      - 'extension'
+      - 'moderation'
+
+  'admin_create_mod_action@reporting':
+    id: 'admin_create_mod_action@reporting'
+    name: 'admin_create_mod_action'
+    description: |-
+      Create auto moderation action
+    parameters:
+      'body':
+        type: 'RestapiActionApiRequest'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiActionApiResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_extension_categories_and_auto_moderation_actions/admin_create_mod_action.py'
+    example: |-
+      result, error = reporting.admin_create_mod_action(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'action'
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'create'
+      - 'extension'
+      - 'mod'
+      - 'moderation'
+
+  'admin_find_action_list@reporting':
+    id: 'admin_find_action_list@reporting'
+    name: 'admin_find_action_list'
+    description: |-
+      Get a list of auto moderation actions
+    parameters:
+    return_type: 'Tuple[Union[None, RestapiActionListApiResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_extension_categories_and_auto_moderation_actions/admin_find_action_list.py'
+    example: |-
+      result, error = reporting.admin_find_action_list(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'action'
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'extension'
+      - 'find'
+      - 'list'
+      - 'moderation'
+
+  'admin_find_extension_category_list@reporting':
+    id: 'admin_find_extension_category_list@reporting'
+    name: 'admin_find_extension_category_list'
+    description: |-
+      Get a list of extension category data with the specified name
+    parameters:
+      'order':
+        type: 'Optional[Union[str, AdminFindExtensionCategoryListOrderEnum]]'
+        required: false
+        description: |-
+          data order, asc or desc (default: asc)
+      'sort_by':
+        type: 'Optional[Union[str, AdminFindExtensionCategoryListSortByEnum]]'
+        required: false
+        description: |-
+          data order key, valid key : 'extensionCategory', and 'extensionCategoryName'
+    return_type: 'Tuple[Union[None, RestapiExtensionCategoryListApiResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_extension_categories_and_auto_moderation_actions/admin_find_extension_ca_6e8210.py'
+    example: |-
+      result, error = reporting.admin_find_extension_category_list(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'actions'
+      - 'admin'
+      - 'and'
+      - 'auto'
+      - 'categories'
+      - 'category'
+      - 'extension'
+      - 'find'
+      - 'list'
+      - 'moderation'
+
+  'admin_get_all_reasons@reporting':
+    id: 'admin_get_all_reasons@reporting'
+    name: 'admin_get_all_reasons'
+    description: |-
+      This endpoint get all reasons without pagination.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiAdminAllReasonsResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/admin_get_all_reasons.py'
+    example: |-
+      result, error = reporting.admin_get_all_reasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'all'
+      - 'get'
+      - 'reasons'
+
+  'admin_get_reason@reporting':
+    id: 'admin_get_reason@reporting'
+    name: 'admin_get_reason'
+    description: |-
+      This endpoint get a single reason.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'reason_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiAdminReasonResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/admin_get_reason.py'
+    example: |-
+      result, error = reporting.admin_get_reason(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reason'
+      - 'reasons'
+
+  'admin_get_reasons@reporting':
+    id: 'admin_get_reasons@reporting'
+    name: 'admin_get_reasons'
+    description: |-
+      This endpoint get reasons with pagination
+    parameters:
+      'group':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          query reasons under specified reason group
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'title':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          query reason(s) by title
+    return_type: 'Tuple[Union[None, RestapiAdminReasonListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/admin_get_reasons.py'
+    example: |-
+      result, error = reporting.admin_get_reasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reasons'
+
+  'admin_get_unused_reasons@reporting':
+    id: 'admin_get_unused_reasons@reporting'
+    name: 'admin_get_unused_reasons'
+    description: |-
+      This endpoint get reasons not used by moderation rules.
+    parameters:
+      'category':
+        type: 'str'
+        required: true
+      'extension_category':
+        type: 'Optional[str]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiUnusedReasonListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/admin_get_unused_reasons.py'
+    example: |-
+      result, error = reporting.admin_get_unused_reasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'reasons'
+      - 'unused'
+
+  'admin_list_reason_groups@reporting':
+    id: 'admin_list_reason_groups@reporting'
+    name: 'admin_list_reason_groups'
+    description: |-
+      Return list of reason groups ID and title under given namespace.
+      To fetch the reasons inside a group, use get reason group endpoint.
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    return_type: 'Tuple[Union[None, RestapiReasonGroupListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/admin_list_reason_groups.py'
+    example: |-
+      result, error = reporting.admin_list_reason_groups(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'groups'
+      - 'list'
+      - 'reason'
+      - 'reasons'
+
+  'admin_submit_report@reporting':
+    id: 'admin_submit_report@reporting'
+    name: 'admin_submit_report'
+    description: |-
+      Submit a report and will return ticket for reported object.
+      New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+      Admin can only submit report once for each different user / object reported in the same OPEN ticket.
+      Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+      Fill the 'reason' field with a 'reason title'
+      Supported category: - UGC - USER - CHAT - EXTENSION
+    parameters:
+      'body':
+        type: 'RestapiSubmitReportRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiSubmitReportResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reports/admin_submit_report.py'
+    example: |-
+      result, error = reporting.admin_submit_report(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'report'
+      - 'reports'
+      - 'submit'
+
+  'create_moderation_rule@reporting':
+    id: 'create_moderation_rule@reporting'
+    name: 'create_moderation_rule'
+    description: |-
+      This endpoint create moderation rule.
+      Supported Category: - UGC - USER - CHAT - EXTENSION
+      Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+      * HideContent
+
+      Supported Actions:
+
+      * **hideContent**: Hide the content
+      * **banAccount**: Ban the user account
+      * **deleteChat**: Delete chat
+    parameters:
+      'body':
+        type: 'RestapiModerationRuleRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, Optional[str]], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/create_moderation_rule.py'
+    example: |-
+      result, error = reporting.create_moderation_rule(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'create'
+      - 'moderation'
+      - 'rule'
+
+  'create_reason@reporting':
+    id: 'create_reason@reporting'
+    name: 'create_reason'
+    description: |-
+      This endpoint create a reason for a namespace.
+    parameters:
+      'body':
+        type: 'RestapiCreateReasonRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiAdminReasonResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/create_reason.py'
+    example: |-
+      result, error = reporting.create_reason(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'create'
+      - 'reason'
+      - 'reasons'
+
+  'create_reason_group@reporting':
+    id: 'create_reason_group@reporting'
+    name: 'create_reason_group'
+    description: |-
+      Create a reason group for easier query. You can query reasons by specifying
+      the group title in the list reasons query. Reason group title is case insensitive,
+      meaning you can't have **reason** if you already create a reason titled **Reason**
+    parameters:
+      'body':
+        type: 'RestapiCreateReasonGroupRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiReasonGroupResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/create_reason_group.py'
+    example: |-
+      result, error = reporting.create_reason_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'create'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'delete_moderation_rule@reporting':
+    id: 'delete_moderation_rule@reporting'
+    name: 'delete_moderation_rule'
+    description: |-
+      This endpoint delete moderation rule.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'rule_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/delete_moderation_rule.py'
+    example: |-
+      result, error = reporting.delete_moderation_rule(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'moderation'
+      - 'rule'
+
+  'delete_reason@reporting':
+    id: 'delete_reason@reporting'
+    name: 'delete_reason'
+    description: |-
+      This endpoint delete a reason for a namespace with ID.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'reason_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/delete_reason.py'
+    example: |-
+      result, error = reporting.delete_reason(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'reason'
+      - 'reasons'
+
+  'delete_reason_group@reporting':
+    id: 'delete_reason_group@reporting'
+    name: 'delete_reason_group'
+    description: |-
+      This endpoint delete a reason group for a namespace with ID.
+    parameters:
+      'group_id':
+        type: 'str'
+        required: true
+        description: |-
+          Reason group ID
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/delete_reason_group.py'
+    example: |-
+      result, error = reporting.delete_reason_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'delete_ticket@reporting':
+    id: 'delete_ticket@reporting'
+    name: 'delete_ticket'
+    description: |-
+      This endpoint will delete ticket and all its reports.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'ticket_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/delete_ticket.py'
+    example: |-
+      result, error = reporting.delete_ticket(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'ticket'
+      - 'tickets'
+
+  'get@reporting':
+    id: 'get@reporting'
+    name: 'get'
+    description: |-
+      TimeInterval is in nanoseconds.
+      When there's no configuration set, the response is the default value (configurable through envar).
+    parameters:
+      'category':
+        type: 'Optional[Union[str, GetCategoryEnum]]'
+        required: false
+        description: |-
+          configuration category flag.
+          			set this to 'all' to retrieve all category configurations
+          			set this to 'extension' to retrieve [EXTENSION] category configurations
+          			leave it blank to retrieve core categories [UGC,USER,CHAT] configurations
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiConfigResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_configurations/get.py'
+    example: |-
+      result, error = reporting.get(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'get'
+
+  'get_moderation_rule_details@reporting':
+    id: 'get_moderation_rule_details@reporting'
+    name: 'get_moderation_rule_details'
+    description: |-
+      This endpoint get moderation rule.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'rule_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiModerationRuleResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/get_moderation_rule_details.py'
+    example: |-
+      result, error = reporting.get_moderation_rule_details(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'details'
+      - 'get'
+      - 'moderation'
+      - 'rule'
+
+  'get_moderation_rules@reporting':
+    id: 'get_moderation_rules@reporting'
+    name: 'get_moderation_rules'
+    description: |-
+      This endpoint get moderation rules.
+    parameters:
+      'category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter rules by category
+      'extension_category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter rules by extension category
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    return_type: 'Tuple[Union[None, RestapiModerationRulesList], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/get_moderation_rules.py'
+    example: |-
+      result, error = reporting.get_moderation_rules(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'moderation'
+      - 'rule'
+      - 'rules'
+
+  'get_reason_group@reporting':
+    id: 'get_reason_group@reporting'
+    name: 'get_reason_group'
+    parameters:
+      'group_id':
+        type: 'str'
+        required: true
+        description: |-
+          Reason group ID
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiReasonGroupResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/get_reason_group.py'
+    example: |-
+      result, error = reporting.get_reason_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'get'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+
+  'get_reports_by_ticket@reporting':
+    id: 'get_reports_by_ticket@reporting'
+    name: 'get_reports_by_ticket'
+    description: |-
+      List reports ordered by createdAt in descending order.
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'ticket_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiReportListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/get_reports_by_ticket.py'
+    example: |-
+      result, error = reporting.get_reports_by_ticket(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'by'
+      - 'get'
+      - 'reports'
+      - 'ticket'
+      - 'tickets'
+
+  'get_ticket_detail@reporting':
+    id: 'get_ticket_detail@reporting'
+    name: 'get_ticket_detail'
+    description: |-
+      This endpoint will return ticket detail with ticket id.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'ticket_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiTicketResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/get_ticket_detail.py'
+    example: |-
+      result, error = reporting.get_ticket_detail(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'detail'
+      - 'get'
+      - 'ticket'
+      - 'tickets'
+
+  'list_reports@reporting':
+    id: 'list_reports@reporting'
+    name: 'list_reports'
+    description: |-
+      Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      Reports list can be ordered by:
+      - createdAt
+      - updatedAt
+    parameters:
+      'category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter reports by category
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'reported_user_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter reports by reportedUserId
+      'sort_by':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt:desc
+    return_type: 'Tuple[Union[None, RestapiReportListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reports/list_reports.py'
+    example: |-
+      result, error = reporting.list_reports(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'list'
+      - 'reports'
+
+  'list_tickets@reporting':
+    id: 'list_tickets@reporting'
+    name: 'list_tickets'
+    description: |-
+      Tickets list can be ordered by:
+      - createdAt
+      - reportsCount
+      - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
+    parameters:
+      'category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter tickets by category
+      'extension_category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter tickets by extension category
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'order':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          data order, asc or desc (default: desc)
+      'reported_user_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter reports by reportedUserId
+      'sort_by':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          data order key, valid keys are createdAt, reportsCount, and status (default: createdAt)
+      'status':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter tickets by status (OPEN, AUTO_MODERATED or CLOSED)
+    return_type: 'Tuple[Union[None, RestapiTicketListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/list_tickets.py'
+    example: |-
+      result, error = reporting.list_tickets(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tickets'
+
+  'public_get_reasons@reporting':
+    id: 'public_get_reasons@reporting'
+    name: 'public_get_reasons'
+    parameters:
+      'group':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          query reasons under specified reason group
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+      'title':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          query reason(s) by title
+    return_type: 'Tuple[Union[None, RestapiPublicReasonListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/public_reasons/public_get_reasons.py'
+    example: |-
+      result, error = reporting.public_get_reasons(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'get'
+      - 'public'
+      - 'reasons'
+
+  'public_list_reason_groups@reporting':
+    id: 'public_list_reason_groups@reporting'
+    name: 'public_list_reason_groups'
+    description: |-
+      Return list of reason groups ID and title under given namespace.
+    parameters:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data requested (default 25)
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          number of data offset (default 0)
+    return_type: 'Tuple[Union[None, RestapiReasonGroupListResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/public_reasons/public_list_reason_groups.py'
+    example: |-
+      result, error = reporting.public_list_reason_groups(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'groups'
+      - 'list'
+      - 'public'
+      - 'reason'
+      - 'reasons'
+
+  'submit_report@reporting':
+    id: 'submit_report@reporting'
+    name: 'submit_report'
+    description: |-
+      User need to be authenticated to access this endpoint.
+      Submit a report and will return ticket for reported object.
+      New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+      User can only submit report once for each different user / object reported in the same OPEN ticket.
+      Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+      Fill the 'reason' field with a 'reason title'
+      Supported category: - UGC - USER - CHAT - EXTENSION
+    parameters:
+      'body':
+        type: 'RestapiSubmitReportRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiSubmitReportResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/public_reports/submit_report.py'
+    example: |-
+      result, error = reporting.submit_report(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'public'
+      - 'report'
+      - 'reports'
+      - 'submit'
+
+  'ticket_statistic@reporting':
+    id: 'ticket_statistic@reporting'
+    name: 'ticket_statistic'
+    description: |-
+      Ticket statistic can be filtered by:
+      - category
+      - extension category
+    parameters:
+      'category':
+        type: 'str'
+        required: true
+        description: |-
+          filter statistic by category
+      'extension_category':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter statistic by extension category
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiTicketStatisticResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/ticket_statistic.py'
+    example: |-
+      result, error = reporting.ticket_statistic(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'statistic'
+      - 'ticket'
+      - 'tickets'
+
+  'update_moderation_rule@reporting':
+    id: 'update_moderation_rule@reporting'
+    name: 'update_moderation_rule'
+    description: |-
+      This endpoint update moderation rule.
+      Supported Category:- UGC - USER - CHAT - EXTENSION
+      Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+      * HideContent
+
+      Supported Actions:
+      * **hideContent**: Hide the content
+      * **banAccount**: Ban the user account
+      * **deleteChat**: Delete chat
+    parameters:
+      'body':
+        type: 'RestapiModerationRuleRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'rule_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiModerationRuleResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/update_moderation_rule.py'
+    example: |-
+      result, error = reporting.update_moderation_rule(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'moderation'
+      - 'rule'
+      - 'update'
+
+  'update_moderation_rule_status@reporting':
+    id: 'update_moderation_rule_status@reporting'
+    name: 'update_moderation_rule_status'
+    description: |-
+      This endpoint enable/disable moderation rule status.
+    parameters:
+      'body':
+        type: 'RestapiModerationRuleActiveRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'rule_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_moderation_rule/update_moderation_rule_status.py'
+    example: |-
+      result, error = reporting.update_moderation_rule_status(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'moderation'
+      - 'rule'
+      - 'status'
+      - 'update'
+
+  'update_reason@reporting':
+    id: 'update_reason@reporting'
+    name: 'update_reason'
+    description: |-
+      This endpoint update a reason for a namespace with ID.
+    parameters:
+      'body':
+        type: 'RestapiCreateReasonRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'reason_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiAdminReasonResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/update_reason.py'
+    example: |-
+      result, error = reporting.update_reason(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'reason'
+      - 'reasons'
+      - 'update'
+
+  'update_reason_group@reporting':
+    id: 'update_reason_group@reporting'
+    name: 'update_reason_group'
+    description: |-
+      Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
+      If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
+    parameters:
+      'body':
+        type: 'RestapiUpdateReasonGroupRequest'
+        required: true
+      'group_id':
+        type: 'str'
+        required: true
+        description: |-
+          Reason group ID
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiReasonGroupResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_reasons/update_reason_group.py'
+    example: |-
+      result, error = reporting.update_reason_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'group'
+      - 'reason'
+      - 'reasons'
+      - 'update'
+
+  'update_ticket_resolutions@reporting':
+    id: 'update_ticket_resolutions@reporting'
+    name: 'update_ticket_resolutions'
+    description: |-
+      Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
+    parameters:
+      'body':
+        type: 'RestapiUpdateTicketResolutionsRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'ticket_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiTicketResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_tickets/update_ticket_resolutions.py'
+    example: |-
+      result, error = reporting.update_ticket_resolutions(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'resolutions'
+      - 'ticket'
+      - 'tickets'
+      - 'update'
+
+  'upsert@reporting':
+    id: 'upsert@reporting'
+    name: 'upsert'
+    description: |-
+      The behaviour of this endpoint is upsert based on the namespace.
+      So, you can use this for both creating & updating the configuration.
+      TimeInterval is in nanoseconds.
+    parameters:
+      'body':
+        type: 'RestapiReportingLimit'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RestapiConfigResponse], Union[None, HttpResponse, RestapiErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.reporting as reporting'
+      - 'import accelbyte_py_sdk.api.reporting.models as reporting_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/reporting/operations/admin_configurations/upsert.py'
+    example: |-
+      result, error = reporting.upsert(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'upsert'
