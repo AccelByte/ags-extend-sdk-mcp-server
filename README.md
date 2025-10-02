@@ -32,23 +32,38 @@ This project provides a **Model Context Protocol (MCP) server** that exposes Ext
 pnpm install
 ```
 
+### Start MCP server with the default STDIO transport (development)
+
+```bash
+pnpm dev stdio
+```
+
+
+### Start MCP server with Streamable HTTP transport (development)
+
+```bash
+pnpm dev streamableHttp
+```
+
 ### Build MCP server
 
 ```bash
 pnpm build
 ```
 
-### Start MCP server
+### Start MCP server with the default STDIO transport (after build)
 
 ```bash
-CONFIG_DIR=config pnpm start
+pnpm start stdio
 ```
 
-### Start MCP server (development)
+### Start MCP server with Streamable HTTP transport (after build)
 
 ```bash
-CONFIG_DIR=config pnpm dev
+pnpm start streamableHttp
 ```
+
+
 
 ## Container
 
@@ -58,18 +73,29 @@ CONFIG_DIR=config pnpm dev
 docker build -t extend-sdk-mcp-server:latest .
 ```
 
-### Start MCP server container image
+### Start MCP server with the default STDIO transport (after container build)
 
 ```bash
 docker run -p 3000:3000 \
   -e NODE_ENV=production \
   -e PORT=3000 \
   -e LOG_LEVEL=info \
-  -e CONFIG_DIR=/app/config/default \
-  extend-sdk-mcp-server:latest
+  extend-sdk-mcp-server:latest \
+  stdio
 ```
 
-## Testing
+### Start MCP server with Streamable HTTP transport (after container build)
+
+```bash
+docker run -p 3000:3000 \
+  -e NODE_ENV=production \
+  -e PORT=3000 \
+  -e LOG_LEVEL=info \
+  extend-sdk-mcp-server:latest \
+  streamableHttp
+```
+
+## Testing MCP server with Streamable HTTP transport
 
 1. Initialize the MCP connection
 
@@ -113,7 +139,7 @@ docker run -p 3000:3000 \
 
 ## Add to Cursor
 
-1. Start the MCP server.
+1. Start the MCP server with streamable HTTP transport.
 
 2. Create `.cursor/mcp.json` in your project with the following content.
 
@@ -127,7 +153,7 @@ docker run -p 3000:3000 \
     }
     ```
 
-3. Open `File` > `Preferences` > `Cursor Settings`, click `MCP`, and enable `extend-sdk-mcp-server`
+3. Open `File` > `Preferences` > `Cursor Settings`, click `MCP`, and enable `extend-sdk-mcp-server`.
 
 ## Sample prompts
 

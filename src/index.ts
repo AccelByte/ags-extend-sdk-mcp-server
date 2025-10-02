@@ -1,15 +1,19 @@
 import { config as loadEnv } from "dotenv";
 import { getLogger } from "./logger.js";
 
-loadEnv();
+loadEnv({quiet: true});
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const options: { help?: boolean } = {};
+  const options: { streamableHttp?: boolean, stdio?: boolean, help?: boolean } = {};
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
-    if (arg === "--help" || arg === "-h") {
-      options.help = true;
+      if (arg === "--help" || arg === "-h") {
+        options.help = true;
+    } else if (arg === "stdio") {
+        options.stdio = true;
+    } else if (arg === "streamableHttp") {
+      options.streamableHttp = true;
     } else {
       console.error(`Error: Unknown argument: ${arg}`);
       console.error("Use --help to see available options");
@@ -42,7 +46,13 @@ async function main() {
     process.exit(0);
   }
   
-  await import('./streamableHttp.js');
+  if (options.stdio) {
+    await import('./stdio.js');
+  } else if (options.streamableHttp) {
+    await import('./streamableHttp.js');
+  } else {
+    await import('./stdio.js');
+  }
 }
 
 main().catch((err) => {
