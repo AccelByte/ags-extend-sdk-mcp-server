@@ -53,7 +53,7 @@ const logger = pino({
 
 function buildConfig(): ConfigType {
   const dir = process.env.CONFIG_DIR;
-  return loadConfigFromDir(dir ?? process.cwd());
+  return loadConfigFromDir(dir ?? "config/go");
 }
 
 async function main() {

@@ -25,15 +25,9 @@ EXPOSE 3000
 # Set environment to production
 ENV NODE_ENV=production
 
-# Default config location (override with CONFIG_DIR at runtime)
-ENV CONFIG_DIR=/app/config/default
-
 # Copy entrypoint script for proper signal handling and environment variable processing
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
-
-# Use Go as the default config
-RUN cd config && ln -s go default
 
 # Use the entrypoint script to ensure proper signal handling
 ENTRYPOINT ["/app/entrypoint.sh"]
