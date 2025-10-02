@@ -4,7 +4,7 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import pino from "pino";
 import type { IncomingMessage, ServerResponse } from "http";
 import { Config as ConfigType } from "./types.js";
-import { loadConfigFromFile, loadConfigFromDir } from "./config.js";
+import { loadConfigFromDir } from "./config.js";
 import { registerTools } from "./server.js";
 
 loadEnv();
@@ -35,7 +35,6 @@ Options:
 Environment Variables:
   PORT                        HTTP server port (default: 3000)
   LOG_LEVEL                   Logging level (default: info)
-  CONFIG_FILE                 Path to a single YAML config file
   CONFIG_DIR                  Path to a directory of YAML config files
 `);
 }
@@ -53,9 +52,7 @@ const logger = pino({
 });
 
 function buildConfig(): ConfigType {
-  const file = process.env.CONFIG_FILE;
   const dir = process.env.CONFIG_DIR;
-  if (file) return loadConfigFromFile(file);
   return loadConfigFromDir(dir ?? process.cwd());
 }
 

@@ -25,7 +25,7 @@ EXPOSE 3000
 # Set environment to production
 ENV NODE_ENV=production
 
-# Default config location (override with CONFIG_FILE or CONFIG_DIR at runtime)
+# Default config location (override with CONFIG_DIR at runtime)
 ENV CONFIG_DIR=/app/config/default
 
 # Copy entrypoint script for proper signal handling and environment variable processing

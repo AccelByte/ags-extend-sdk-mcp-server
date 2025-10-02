@@ -12,17 +12,6 @@ const logger = pino({
   },
 });
 
-export function loadConfigFromFile(filePath: string): ConfigType {
-  const resolved = resolve(filePath);
-  if (!existsSync(resolved)) {
-    throw new Error(`Config file not found: ${resolved}`);
-  }
-  logger.info({ file: resolved }, "Loading configuration from file");
-  const data = yaml.load(readFileSync(resolved, "utf-8")) as Partial<ConfigType> | null;
-  const config = normalizeConfig(data ?? {});
-  logger.info({ models: Object.keys(config.structs).length, functions: Object.keys(config.functions).length }, "Configuration loaded");
-  return config;
-}
 
 export function loadConfigFromDir(dirPath: string): ConfigType {
   const resolvedDir = resolve(dirPath);

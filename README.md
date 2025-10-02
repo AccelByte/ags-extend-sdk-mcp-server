@@ -23,7 +23,6 @@ This project provides a **Model Context Protocol (MCP) server** that exposes Ext
 - `PORT`: Server port (default: 3000)
 - `NODE_ENV`: Environment (development/production)
 - `LOG_LEVEL`: Logging level (debug/info/warn/error)
-- `CONFIG_FILE`: Single YAML config file path
 - `CONFIG_DIR`: Directory of YAML config files (recursive)
 ## Development
 
