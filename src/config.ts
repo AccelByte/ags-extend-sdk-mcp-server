@@ -1,17 +1,10 @@
 import { readFileSync, existsSync, readdirSync, statSync } from "fs";
 import { resolve, join } from "path";
 import yaml from "js-yaml";
-import pino from "pino";
 import { Config as ConfigType, Struct, FunctionDef } from "./types.js";
+import { getLogger } from "./logger.js";
 
-const logger = pino({
-  level: process.env.LOG_LEVEL || "info",
-  transport: {
-    target: "pino-pretty",
-    options: { colorize: true, translateTime: "SYS:standard", ignore: "pid,hostname" },
-  },
-});
-
+const logger = getLogger();
 
 export function loadConfigFromDir(dirPath: string): ConfigType {
   const resolvedDir = resolve(dirPath);

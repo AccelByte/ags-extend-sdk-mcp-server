@@ -3,19 +3,9 @@ import { Config as ConfigType } from "./types.js";
 import { loadConfigFromDir } from "./config.js";
 import { createServer } from "./server.js";
 import http from "http";
-import pino from "pino";
+import { getLogger } from "./logger.js";
 
-const logger = pino({
-    level: process.env.LOG_LEVEL || "info",
-    transport: {
-      target: "pino-pretty",
-      options: {
-        colorize: true,
-        translateTime: "SYS:standard",
-        ignore: "pid,hostname",
-      },
-    },
-  });
+const logger = getLogger();
 
 function buildConfig(): ConfigType {
     const dir = process.env.CONFIG_DIR;

@@ -1,5 +1,5 @@
 import { config as loadEnv } from "dotenv";
-import pino from "pino";
+import { getLogger } from "./logger.js";
 
 loadEnv();
 
@@ -33,17 +33,7 @@ Environment Variables:
 `);
 }
 
-const logger = pino({
-  level: process.env.LOG_LEVEL || "info",
-  transport: {
-    target: "pino-pretty",
-    options: {
-      colorize: true,
-      translateTime: "SYS:standard",
-      ignore: "pid,hostname",
-    },
-  },
-});
+const logger = getLogger();
 
 async function main() {
   const options = parseArgs();
