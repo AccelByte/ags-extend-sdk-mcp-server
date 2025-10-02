@@ -8,7 +8,11 @@ import {
   parseSearchQuery,
 } from "./helpers.js";
 
-export function registerTools(server: McpServer, configData: ConfigType) {
+export function registerTools(configData: ConfigType): McpServer {
+  const server = new McpServer(
+    { name: "extend-sdk-mcp-server", version: "0.1.0" },
+    { capabilities: { tools: {} } }
+  );
   const SEARCH_FUNCTIONS_DESCRIPTION = `Search for functions by name, tags, or description with fuzzy matching support.
 
 ## Query Formats:
@@ -179,6 +183,8 @@ export function registerTools(server: McpServer, configData: ConfigType) {
     const { data, total, next } = paginateResults(list, args.limit ?? 100, args.offset ?? 0);
     return { content: [{ type: "text", text: JSON.stringify({ data, total, next }) }] };
   });
+
+  return server;
 }
 
 

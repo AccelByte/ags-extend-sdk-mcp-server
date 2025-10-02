@@ -1,5 +1,4 @@
 import { config as loadEnv } from "dotenv";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import pino from "pino";
 import type { IncomingMessage, ServerResponse } from "http";
@@ -65,13 +64,8 @@ async function main() {
 
   const configData = buildConfig();
 
-  const server = new McpServer(
-    { name: "extend-sdk-mcp-server", version: "0.1.0" },
-    { capabilities: { tools: {} } }
-  );
-
-  // Call registerTools from server.ts
-  registerTools(server, configData);
+  // Call registerTools from server.ts and get the server
+  const server = registerTools(configData);
 
   // Create the HTTP transport with session management
   const transport = new StreamableHTTPServerTransport({
