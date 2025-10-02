@@ -8,7 +8,7 @@ import {
   parseSearchQuery,
 } from "./helpers.js";
 
-export function registerTools(configData: ConfigType): McpServer {
+export function createServer(configData: ConfigType): McpServer {
   const server = new McpServer(
     { name: "extend-sdk-mcp-server", version: "0.1.0" },
     { capabilities: { tools: {} } }
