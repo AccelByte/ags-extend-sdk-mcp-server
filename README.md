@@ -1,147 +1,76 @@
 # Extend SDK MCP Server
 
-This project provides a **Model Context Protocol (MCP) server** that exposes Extend SDK functions and models as context to language models. It helps AI assistants and other MCP clients via six tools.
+This **Model Context Protocol (MCP) server** exposes Extend SDK functions and models as additional context to language models. It helps AI coding assistants and other MCP clients to answer questions and generate Extend SDK code by providing the following tools.
 
 - **`search_functions`** – Search for functions by name, tags, description (fuzzy)
 - **`search_models`** – Search for models by name, tags, description (fuzzy)
 - **`describe_function`** – Get detailed information about a specific function by its ID
 - **`describe_model`** – Get detailed information about a specific model by its ID
-- **`get_bulk_functions`** – Retrieve multiple functions with pagination
-- **`get_bulk_models`** – Retrieve multiple models with pagination
+- **`get_bulk_functions`** – Retrieve multiple functions with pagination (experimetal)
+- **`get_bulk_models`** – Retrieve multiple models with pagination (experimetal)
 
-## Prerequisites
+## Quickstart
 
-- Bash
-- Curl
+### Prerequisites
+
+- [Cursor](https://cursor.com/home)
 - Docker
-- Makefile
-- Node.js 18+ 
-- pnpm
+- Git
 
-## Environment Variables
+### Alternative 1: Using STDIO transport (default)
 
-- `TRANSPORT`: Valid transports: stdio, streamableHttp (default: stdio)
-- `PORT`: HTTP server port if TRANSPORT is streamableHttp (default: 3000)
-- `CONFIG_DIR`: Directory of YAML config files (recursive)
-- `NODE_ENV`: Environment (development/production)
-- `LOG_LEVEL`: Logging level (debug/info/warn/error)
-
-## Development
-
-### Install dependencies
-
-```bash
-pnpm install
-```
-
-### Start MCP server with the default STDIO transport (development)
-
-```bash
-pnpm dev stdio
-```
-
-
-### Start MCP server with Streamable HTTP transport (development)
-
-```bash
-TRANSPORT=streamableHttp pnpm dev 
-```
-
-### Build MCP server
-
-```bash
-pnpm build
-```
-
-### Start MCP server with the default STDIO transport (after build)
-
-```bash
-pnpm start
-```
-
-### Start MCP server with Streamable HTTP transport (after build)
-
-```bash
-TRANSPORT=streamableHttp pnpm start
-```
-
-## Container
-
-### Build MCP server container image
-
-```bash
-docker build -t extend-sdk-mcp-server:latest .
-```
-
-### Start MCP server with the default STDIO transport (after container build)
-
-```bash
-docker run -p 3000:3000 \
-  -e NODE_ENV=production \
-  -e PORT=3000 \
-  -e LOG_LEVEL=info \
-  extend-sdk-mcp-server:latest \
-  stdio
-```
-
-### Start MCP server with Streamable HTTP transport (after container build)
-
-```bash
-docker run -p 3000:3000 \
-  -e NODE_ENV=production \
-  -e TRANSPORT=streamableHttp \
-  -e PORT=3000 \
-  -e LOG_LEVEL=info \
-  extend-sdk-mcp-server:latest
-```
-
-## Testing MCP server with Streamable HTTP transport
-
-1. Initialize the MCP connection
+1. Clone this repository and build MCP server container image.
 
     ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test-client","version":"1.0.0"}}}' \
-        http://localhost:3000/
+    docker build -t extend-sdk-mcp-server:latest .
     ```
 
-2. List available tools
+2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
+
+    ```json
+    {
+      "mcpServers": {
+        "extend-sdk-mcp-server": {
+          "command": "docker",
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "CONFIG_DIR",
+            "extend-sdk-mcp-server"
+          ],
+          "env": {
+            "CONFIG_DIR": "config/go"
+          }
+        }
+      }
+    }
+    ```
+
+3. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
+
+### Alternative 2: Using Streamable HTTP transport
+
+1. Clone this repository and build MCP server container image.
 
     ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
-        http://localhost:3000/
+    docker build -t extend-sdk-mcp-server:latest .
     ```
 
-3. Test the search tool
+2. Start the MCP server with streamable HTTP transport.
 
     ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search_functions","arguments":{"query":"user"}}}' \
-        http://localhost:3000/
+    docker run -p 3000:3000 \
+      -e TRANSPORT=streamableHttp \
+      -e PORT=3000 \
+      -e CONFIG_DIR=config/go \
+      -e NODE_ENV=production \
+      -e LOG_LEVEL=info \
+      extend-sdk-mcp-server:latest
     ```
 
-4. Test describe model
-
-    ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_model","arguments":{"id":"User@iam"}}}' \
-        http://localhost:3000/
-    ```
-
-## Add to Cursor
-
-1. Start the MCP server with streamable HTTP transport.
-
-2. Create `.cursor/mcp.json` in your project with the following content.
+2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
 
     ```json
     {
@@ -153,10 +82,110 @@ docker run -p 3000:3000 \
     }
     ```
 
-3. Open `File` > `Preferences` > `Cursor Settings`, click `MCP`, and enable `extend-sdk-mcp-server`.
+4. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
 
-## Sample prompts
+### Sample prompts
 
-- Search functions: "Search for functions related to 'user'"
-- Get struct details: "Describe the 'User@iam' struct"
-- Get function details: "Describe the 'AdminCreateUser@iam' function"
+In Cursor, press `CTRL+L` and try the following prompts. You should see that the tools provided by this MCP server are used. Give permission to execute the tools when requested.
+
+- Search functions: `Search for functions related to 'user'`
+- Get function details: `Describe the 'AdminCreateUser@iam' function`
+- Get model details: `Describe the 'User@iam' models`
+
+## Environment Variables
+
+- `TRANSPORT`: Valid transports: stdio, streamableHttp (default: stdio)
+- `PORT`: HTTP server port if TRANSPORT is streamableHttp (default: 3000)
+- `CONFIG_DIR`: Directory of YAML config files (recursive)
+- `NODE_ENV`: Environment (development/production)
+- `LOG_LEVEL`: Logging level (debug/info/warn/error)
+
+## Development
+
+### Prerequisites
+
+- Bash
+- Curl
+- Docker
+- Makefile
+- Node.js 18+ 
+- pnpm
+
+### Install dependencies
+
+```bash
+pnpm install
+```
+
+### Start the MCP server with the default STDIO transport (development)
+
+```bash
+pnpm dev
+```
+
+### Start the MCP server with Streamable HTTP transport (development)
+
+```bash
+TRANSPORT=streamableHttp pnpm dev 
+```
+
+### Build the MCP server
+
+```bash
+pnpm build
+```
+
+### Start the MCP server with the default STDIO transport (after building the MCP server)
+
+```bash
+pnpm start
+```
+
+### Start the MCP server with streamable HTTP transport (after building the MCP server)
+
+```bash
+TRANSPORT=streamableHttp pnpm start
+```
+## Testing
+
+1. Start the MCP server with streamable HTTP transport.
+
+2. Initialize the MCP connection.
+
+    ```bash
+    curl -N -H "Accept: application/json, text/event-stream" \
+        -H "Content-Type: application/json" \
+        -X POST \
+        -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test-client","version":"1.0.0"}}}' \
+        http://localhost:3000/
+    ```
+
+3. List available tools.
+
+    ```bash
+    curl -N -H "Accept: application/json, text/event-stream" \
+        -H "Content-Type: application/json" \
+        -X POST \
+        -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+        http://localhost:3000/
+    ```
+
+4. Test the search tool.
+
+    ```bash
+    curl -N -H "Accept: application/json, text/event-stream" \
+        -H "Content-Type: application/json" \
+        -X POST \
+        -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search_functions","arguments":{"query":"user"}}}' \
+        http://localhost:3000/
+    ```
+
+5. Test describe model.
+
+    ```bash
+    curl -N -H "Accept: application/json, text/event-stream" \
+        -H "Content-Type: application/json" \
+        -X POST \
+        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_model","arguments":{"id":"User@iam"}}}' \
+        http://localhost:3000/
+    ```
