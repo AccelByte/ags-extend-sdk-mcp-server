@@ -20,10 +20,12 @@ This project provides a **Model Context Protocol (MCP) server** that exposes Ext
 
 ## Environment Variables
 
-- `PORT`: Server port (default: 3000)
+- `TRANSPORT`: Valid transports: stdio, streamableHttp (default: stdio)
+- `PORT`: HTTP server port if TRANSPORT is streamableHttp (default: 3000)
+- `CONFIG_DIR`: Directory of YAML config files (recursive)
 - `NODE_ENV`: Environment (development/production)
 - `LOG_LEVEL`: Logging level (debug/info/warn/error)
-- `CONFIG_DIR`: Directory of YAML config files (recursive)
+
 ## Development
 
 ### Install dependencies
@@ -42,7 +44,7 @@ pnpm dev stdio
 ### Start MCP server with Streamable HTTP transport (development)
 
 ```bash
-pnpm dev streamableHttp
+TRANSPORT=streamableHttp pnpm dev 
 ```
 
 ### Build MCP server
@@ -54,16 +56,14 @@ pnpm build
 ### Start MCP server with the default STDIO transport (after build)
 
 ```bash
-pnpm start stdio
+pnpm start
 ```
 
 ### Start MCP server with Streamable HTTP transport (after build)
 
 ```bash
-pnpm start streamableHttp
+TRANSPORT=streamableHttp pnpm start
 ```
-
-
 
 ## Container
 
@@ -89,10 +89,10 @@ docker run -p 3000:3000 \
 ```bash
 docker run -p 3000:3000 \
   -e NODE_ENV=production \
+  -e TRANSPORT=streamableHttp \
   -e PORT=3000 \
   -e LOG_LEVEL=info \
-  extend-sdk-mcp-server:latest \
-  streamableHttp
+  extend-sdk-mcp-server:latest
 ```
 
 ## Testing MCP server with Streamable HTTP transport
