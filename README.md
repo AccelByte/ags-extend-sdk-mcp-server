@@ -6,8 +6,8 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 - **`search_models`** – Search for models by name, tags, description (fuzzy)
 - **`describe_function`** – Get detailed information about a specific function by its ID
 - **`describe_model`** – Get detailed information about a specific model by its ID
-- **`get_bulk_functions`** – Retrieve multiple functions with pagination (experimetal)
-- **`get_bulk_models`** – Retrieve multiple models with pagination (experimetal)
+- **`get_bulk_functions`** – Retrieve multiple functions with pagination (experimental)
+- **`get_bulk_models`** – Retrieve multiple models with pagination (experimental)
 
 ## Quickstart
 
@@ -123,7 +123,7 @@ pnpm install
 pnpm dev
 ```
 
-### Start the MCP server with Streamable HTTP transport (development)
+### Start the MCP server with streamable HTTP transport (development)
 
 ```bash
 TRANSPORT=streamableHttp pnpm dev 
