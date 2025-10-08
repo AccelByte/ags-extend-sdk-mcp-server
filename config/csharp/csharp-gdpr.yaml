@@ -1,0 +1,2856 @@
+structs:
+  # region models
+
+  'DtoExtendConfigDTO@gdpr':
+    id: 'DtoExtendConfigDTO@gdpr'
+    name: 'DtoExtendConfigDTO'
+    fields:
+      'AppName':
+        type: 'string'
+        required: true
+        description: |-
+          extend app name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          extend app namespace
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoExtendConfigDTO.cs'
+
+  'DtoFinishedDataDeletion@gdpr':
+    id: 'DtoFinishedDataDeletion@gdpr'
+    name: 'DtoFinishedDataDeletion'
+    fields:
+      'FinishedDate':
+        type: 'DateTime'
+        required: true
+        description: |-
+          Finished deletion date
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+        description: |-
+          Request deletion date
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          Status of request
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          User Id. This userId will be anonymized automatically after 7 days from the **Success** deletion
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoFinishedDataDeletion.cs'
+
+  'DtoFinishedDataRequest@gdpr':
+    id: 'DtoFinishedDataRequest@gdpr'
+    name: 'DtoFinishedDataRequest'
+    fields:
+      'FinishedDate':
+        type: 'DateTime'
+        required: true
+        description: |-
+          Finished date
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+        description: |-
+          Request date
+      'RequestId':
+        type: 'string'
+        required: true
+        description: |-
+          Request id
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          Status of request
+      'UserId':
+        type: 'string'
+        required: true
+      'DataExpirationDate':
+        type: 'DateTime'
+        required: false
+        description: |-
+          The expiration date of generated data, it was 28 days after finishedDate. Available only if the status is Completed
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoFinishedDataRequest.cs'
+
+  'DtoListFinishedDataDeletion@gdpr':
+    id: 'DtoListFinishedDataDeletion@gdpr'
+    name: 'DtoListFinishedDataDeletion'
+    fields:
+      'Data':
+        type: 'List<DtoFinishedDataDeletion>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoListFinishedDataDeletion.cs'
+
+  'DtoListFinishedDataRequests@gdpr':
+    id: 'DtoListFinishedDataRequests@gdpr'
+    name: 'DtoListFinishedDataRequests'
+    fields:
+      'Data':
+        type: 'List<DtoFinishedDataRequest>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoListFinishedDataRequests.cs'
+
+  'DtoPlatformAccountClosureClientRequest@gdpr':
+    id: 'DtoPlatformAccountClosureClientRequest@gdpr'
+    name: 'DtoPlatformAccountClosureClientRequest'
+    fields:
+      'BpCert':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'BpCertFileName':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'ClientId':
+        type: 'string'
+        required: false
+        description: |-
+          required for psn
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'PublisherKey':
+        type: 'string'
+        required: false
+        description: |-
+          required for steam
+      'SandboxId':
+        type: 'string'
+        required: false
+        description: |-
+          required for xbox
+      'Secret':
+        type: 'string'
+        required: false
+        description: |-
+          required for psn
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoPlatformAccountClosureClientRequest.cs'
+
+  'DtoPlatformAccountClosureClientResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientResponse'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Platform':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'long'
+        required: true
+      'BpCertExpireAt':
+        type: 'long'
+        required: false
+      'BpCertFileName':
+        type: 'string'
+        required: false
+      'ClientId':
+        type: 'string'
+        required: false
+      'PublisherKey':
+        type: 'string'
+        required: false
+      'SandboxId':
+        type: 'string'
+        required: false
+      'Secret':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoPlatformAccountClosureClientResponse.cs'
+
+  'DtoPlatformAccountClosureClientsResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientsResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientsResponse'
+    fields:
+      'Data':
+        type: 'List<DtoPlatformAccountClosureClientResponse>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoPlatformAccountClosureClientsResponse.cs'
+
+  'DtoPlatformAccountClosureMockRequest@gdpr':
+    id: 'DtoPlatformAccountClosureMockRequest@gdpr'
+    name: 'DtoPlatformAccountClosureMockRequest'
+    fields:
+      'PlatformUserId':
+        type: 'string'
+        required: true
+      'Sandbox':
+        type: 'string'
+        required: true
+      'StartImmediately':
+        type: 'bool'
+        required: true
+        description: |-
+          start the account closure process immediately
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoPlatformAccountClosureMockRequest.cs'
+
+  'DtoS2SDataRequestSummary@gdpr':
+    id: 'DtoS2SDataRequestSummary@gdpr'
+    name: 'DtoS2SDataRequestSummary'
+    fields:
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          Status of the request
+      'FailedMessage':
+        type: 'string'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'Url':
+        type: 'string'
+        required: false
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoS2SDataRequestSummary.cs'
+
+  'DtoServiceConfigDTO@gdpr':
+    id: 'DtoServiceConfigDTO@gdpr'
+    name: 'DtoServiceConfigDTO'
+    fields:
+      'Protocol':
+        type: 'string'
+        required: true
+        description: |-
+          protocol type
+      'SkipAck':
+        type: 'bool'
+        required: false
+        description: |-
+          skip waiting for ack event from this service, used in "EVENT" protocol only.
+      'Url':
+        type: 'string'
+        required: false
+        description: |-
+          url of the service with port number, required in "GRPC" protocol
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoServiceConfigDTO.cs'
+
+  'DtoServiceConfigurationDTO@gdpr':
+    id: 'DtoServiceConfigurationDTO@gdpr'
+    name: 'DtoServiceConfigurationDTO'
+    fields:
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          service id
+      'Type':
+        type: 'string'
+        required: true
+        description: |-
+          service type
+      'ExtendConfig':
+        type: 'DtoExtendConfigDTO'
+        required: false
+        description: |-
+          extend configuration detail, required when "type" is "EXTEND"
+      'ServiceConfig':
+        type: 'DtoServiceConfigDTO'
+        required: false
+        description: |-
+          service configuration detail, required when "type" is "SERVICE"
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoServiceConfigurationDTO.cs'
+
+  'DtoServiceConfigurationUpdateRequest@gdpr':
+    id: 'DtoServiceConfigurationUpdateRequest@gdpr'
+    name: 'DtoServiceConfigurationUpdateRequest'
+    fields:
+      'Services':
+        type: 'List<DtoServiceConfigurationDTO>'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoServiceConfigurationUpdateRequest.cs'
+
+  'DtoServicesConfigurationResponse@gdpr':
+    id: 'DtoServicesConfigurationResponse@gdpr'
+    name: 'DtoServicesConfigurationResponse'
+    fields:
+      'Services':
+        type: 'List<DtoServiceConfigurationDTO>'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoServicesConfigurationResponse.cs'
+
+  'DtoUserPlatformAccountClosureHistoriesResponse@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistoriesResponse@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistoriesResponse'
+    fields:
+      'Data':
+        type: 'List<DtoUserPlatformAccountClosureHistory>'
+        required: true
+      'Pagination':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoUserPlatformAccountClosureHistoriesResponse.cs'
+
+  'DtoUserPlatformAccountClosureHistory@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistory@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistory'
+    fields:
+      'ClosedDate':
+        type: 'long'
+        required: true
+      'Environment':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'Platform':
+        type: 'string'
+        required: true
+      'PlatformUserId':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoUserPlatformAccountClosureHistory.cs'
+
+  'DtoXboxBPCertValidationRequest@gdpr':
+    id: 'DtoXboxBPCertValidationRequest@gdpr'
+    name: 'DtoXboxBPCertValidationRequest'
+    fields:
+      'BpCert':
+        type: 'string'
+        required: true
+      'Password':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoXboxBPCertValidationRequest.cs'
+
+  'DtoXboxBPCertValidationResponse@gdpr':
+    id: 'DtoXboxBPCertValidationResponse@gdpr'
+    name: 'DtoXboxBPCertValidationResponse'
+    fields:
+      'ExpirationDate':
+        type: 'long'
+        required: true
+      'Expired':
+        type: 'bool'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/DtoXboxBPCertValidationResponse.cs'
+
+  'ModelsDataRetrievalResponse@gdpr':
+    id: 'ModelsDataRetrievalResponse@gdpr'
+    name: 'ModelsDataRetrievalResponse'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsDataRetrievalResponse.cs'
+
+  'ModelsDeletionData@gdpr':
+    id: 'ModelsDeletionData@gdpr'
+    name: 'ModelsDeletionData'
+    fields:
+      'DisplayName':
+        type: 'string'
+        required: true
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'UniqueDisplayName':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsDeletionData.cs'
+
+  'ModelsDeletionStatus@gdpr':
+    id: 'ModelsDeletionStatus@gdpr'
+    name: 'ModelsDeletionStatus'
+    fields:
+      'DeletionDate':
+        type: 'string'
+        required: true
+      'DeletionStatus':
+        type: 'bool'
+        required: true
+      'DisplayName':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+      'ExecutionDate':
+        type: 'DateTime'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsDeletionStatus.cs'
+
+  'ModelsListDeletionDataResponse@gdpr':
+    id: 'ModelsListDeletionDataResponse@gdpr'
+    name: 'ModelsListDeletionDataResponse'
+    fields:
+      'Data':
+        type: 'List<ModelsDeletionData>'
+        required: true
+      'Paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsListDeletionDataResponse.cs'
+
+  'ModelsListPersonalDataResponse@gdpr':
+    id: 'ModelsListPersonalDataResponse@gdpr'
+    name: 'ModelsListPersonalDataResponse'
+    fields:
+      'Data':
+        type: 'List<ModelsPersonalData>'
+        required: true
+      'Paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsListPersonalDataResponse.cs'
+
+  'ModelsPagination@gdpr':
+    id: 'ModelsPagination@gdpr'
+    name: 'ModelsPagination'
+    fields:
+      'First':
+        type: 'string'
+        required: true
+      'Last':
+        type: 'string'
+        required: true
+      'Next':
+        type: 'string'
+        required: true
+      'Previous':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsPagination.cs'
+
+  'ModelsPersonalData@gdpr':
+    id: 'ModelsPersonalData@gdpr'
+    name: 'ModelsPersonalData'
+    fields:
+      'DataExpirationDate':
+        type: 'DateTime'
+        required: true
+      'DisplayName':
+        type: 'string'
+        required: true
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+      'ServiceErrors':
+        type: 'Dictionary<string, string>'
+        required: true
+      'ServiceStatuses':
+        type: 'Dictionary<string, string>'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsPersonalData.cs'
+
+  'ModelsRequestDeleteResponse@gdpr':
+    id: 'ModelsRequestDeleteResponse@gdpr'
+    name: 'ModelsRequestDeleteResponse'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsRequestDeleteResponse.cs'
+
+  'ModelsS2SDataRetrievalResponse@gdpr':
+    id: 'ModelsS2SDataRetrievalResponse@gdpr'
+    name: 'ModelsS2SDataRetrievalResponse'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+      'RequestId':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsS2SDataRetrievalResponse.cs'
+
+  'ModelsS2SRequestDeleteResponse@gdpr':
+    id: 'ModelsS2SRequestDeleteResponse@gdpr'
+    name: 'ModelsS2SRequestDeleteResponse'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsS2SRequestDeleteResponse.cs'
+
+  'ModelsS2SUserDataURL@gdpr':
+    id: 'ModelsS2SUserDataURL@gdpr'
+    name: 'ModelsS2SUserDataURL'
+    fields:
+      'Url':
+        type: 'string'
+        required: true
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsS2SUserDataURL.cs'
+
+  'ModelsUserDataURL@gdpr':
+    id: 'ModelsUserDataURL@gdpr'
+    name: 'ModelsUserDataURL'
+    fields:
+      'URL':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsUserDataURL.cs'
+
+  'ModelsUserPersonalData@gdpr':
+    id: 'ModelsUserPersonalData@gdpr'
+    name: 'ModelsUserPersonalData'
+    fields:
+      'DataExpirationDate':
+        type: 'DateTime'
+        required: true
+      'RequestDate':
+        type: 'DateTime'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsUserPersonalData.cs'
+
+  'ModelsUserPersonalDataResponse@gdpr':
+    id: 'ModelsUserPersonalDataResponse@gdpr'
+    name: 'ModelsUserPersonalDataResponse'
+    fields:
+      'Data':
+        type: 'List<ModelsUserPersonalData>'
+        required: true
+      'Paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ModelsUserPersonalDataResponse.cs'
+
+  'ResponseError@gdpr':
+    id: 'ResponseError@gdpr'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: true
+      'MessageVariables':
+        type: 'Dictionary<string, string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Model/ResponseError.cs'
+
+  # endregion models
+
+functions:
+
+  'AdminCancelUserAccountDeletionRequest@gdpr':
+    id: 'AdminCancelUserAccountDeletionRequest@gdpr'
+    name: 'AdminCancelUserAccountDeletionRequest'
+    description: |-
+      Cancel user's account deletion request
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/AdminCancelUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.AdminCancelUserAccountDeletionRequestOp
+              .Build();
+
+          sdk.Gdpr.DataDeletion.AdminCancelUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'user'
+
+  'AdminCancelUserPersonalDataRequest@gdpr':
+    id: 'AdminCancelUserPersonalDataRequest@gdpr'
+    name: 'AdminCancelUserPersonalDataRequest'
+    description: |-
+      Cancel user's personal data requests
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/AdminCancelUserPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.AdminCancelUserPersonalDataRequestOp
+              .Build();
+
+          sdk.Gdpr.DataRetrieval.AdminCancelUserPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'AdminDeletePlatformAccountClosureClient@gdpr':
+    id: 'AdminDeletePlatformAccountClosureClient@gdpr'
+    name: 'AdminDeletePlatformAccountClosureClient'
+    description: |-
+      Delete platform account closure client.
+      The namespace should be **publisher or studio namespace**
+      -------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: 'string'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminDeletePlatformAccountClosureClient.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminDeletePlatformAccountClosureClientOp
+              .Build();
+
+          sdk.Gdpr.PlatformAccountClosureClient.AdminDeletePlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'delete'
+      - 'platform'
+
+  'AdminGeneratePersonalDataURL@gdpr':
+    id: 'AdminGeneratePersonalDataURL@gdpr'
+    name: 'AdminGeneratePersonalDataURL'
+    description: |-
+      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
+
+
+
+
+      If admin request data for themselves, password is need to be set
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          If admin request data for themselves, then password is required
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/AdminGeneratePersonalDataURL.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.AdminGeneratePersonalDataURLOp
+              .SetPassword(...)
+              .Build(
+                  namespace_,
+                  requestDate,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.AdminGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 'url'
+
+  'AdminGetListDeletionDataRequest@gdpr':
+    id: 'AdminGetListDeletionDataRequest@gdpr'
+    name: 'AdminGetListDeletionDataRequest'
+    description: |-
+      Retrieve all user's account deletion requests in specified date
+      Scope: account
+    parameters:
+      'After':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list after that. format : YYYY-MM-DD
+      'Before':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list before that. format : YYYY-MM-DD
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          The start position that points to query data
+      'RequestDate':
+        type: 'string'
+        required: false
+        description: |-
+          The day in UTC of the deletion request. format : YYYY-MM-DD. Default : today time in UTC.
+    return_type: 'ModelsListDeletionDataResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/AdminGetListDeletionDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.AdminGetListDeletionDataRequestOp
+              .SetAfter(...)
+              .SetBefore(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetRequestDate(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Gdpr.DataDeletion.AdminGetListDeletionDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'list'
+      - 'request'
+
+  'AdminGetListPersonalDataRequest@gdpr':
+    id: 'AdminGetListPersonalDataRequest@gdpr'
+    name: 'AdminGetListPersonalDataRequest'
+    description: |-
+      Get list personal data requests
+      Scope: account
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          The start position that points to query data
+      'RequestDate':
+        type: 'string'
+        required: false
+        description: |-
+          request date with format YYYY-MM-DD. Default value today UTC
+    return_type: 'ModelsListPersonalDataResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/AdminGetListPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.AdminGetListPersonalDataRequestOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetRequestDate(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.AdminGetListPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+
+  'AdminGetPlatformAccountClosureClient@gdpr':
+    id: 'AdminGetPlatformAccountClosureClient@gdpr'
+    name: 'AdminGetPlatformAccountClosureClient'
+    description: |-
+      Get platform account closure config.
+      The namespace should be **publisher or studio namespace**
+      ----------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: 'string'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'DtoPlatformAccountClosureClientResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminGetPlatformAccountClosureClient.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminGetPlatformAccountClosureClientOp
+              .Build();
+
+          var response = sdk.Gdpr.PlatformAccountClosureClient.AdminGetPlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureClients@gdpr':
+    id: 'AdminGetPlatformAccountClosureClients@gdpr'
+    name: 'AdminGetPlatformAccountClosureClients'
+    description: |-
+      Get platform account closure configs.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoPlatformAccountClosureClientsResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminGetPlatformAccountClosureClients.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminGetPlatformAccountClosureClientsOp
+              .Build();
+
+          var response = sdk.Gdpr.PlatformAccountClosureClient.AdminGetPlatformAccountClosureClients(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'clients'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminGetPlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminGetPlatformAccountClosureServicesConfiguration'
+    description: |-
+      Get registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServicesConfigurationResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminGetPlatformAccountClosureServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminGetPlatformAccountClosureServicesConfigurationOp
+              .Build();
+
+          var response = sdk.Gdpr.Configuration.AdminGetPlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'get'
+      - 'platform'
+      - 'services'
+
+  'AdminGetServicesConfiguration@gdpr':
+    id: 'AdminGetServicesConfiguration@gdpr'
+    name: 'AdminGetServicesConfiguration'
+    description: |-
+      Get Registered Services Configuration.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServicesConfigurationResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminGetServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminGetServicesConfigurationOp
+              .Build();
+
+          var response = sdk.Gdpr.Configuration.AdminGetServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'services'
+
+  'AdminGetUserAccountDeletionRequest@gdpr':
+    id: 'AdminGetUserAccountDeletionRequest@gdpr'
+    name: 'AdminGetUserAccountDeletionRequest'
+    description: |-
+      Retrieve specific user's account deletion request
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsDeletionData'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/AdminGetUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.AdminGetUserAccountDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletion.AdminGetUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'request'
+      - 'user'
+
+  'AdminGetUserPersonalDataRequests@gdpr':
+    id: 'AdminGetUserPersonalDataRequests@gdpr'
+    name: 'AdminGetUserPersonalDataRequests'
+    description: |-
+      Get user's personal data requests
+      Scope: account
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          The start position that points to query data
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/AdminGetUserPersonalDataRequests.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.AdminGetUserPersonalDataRequestsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.AdminGetUserPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'AdminGetUserPlatformAccountClosureHistories@gdpr':
+    id: 'AdminGetUserPlatformAccountClosureHistories@gdpr'
+    name: 'AdminGetUserPlatformAccountClosureHistories'
+    description: |-
+      Get user's platform account closure histories.
+      Scope: account
+
+      ------
+      Supported platforms:
+      - psn
+      - steamnetwork
+      - xbox
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          offset
+      'Platform':
+        type: 'string'
+        required: false
+        description: |-
+          3rd party platform
+      'UserId':
+        type: 'string'
+        required: false
+        description: |-
+          IAM ID of the user
+    return_type: 'DtoUserPlatformAccountClosureHistoriesResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureHistory.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureHistory/AdminGetUserPlatformAccountClosureHistories.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureHistory.AdminGetUserPlatformAccountClosureHistoriesOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetPlatform(...)
+              .SetUserId(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Gdpr.PlatformAccountClosureHistory.AdminGetUserPlatformAccountClosureHistories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'get'
+      - 'histories'
+      - 'history'
+      - 'platform'
+      - 'user'
+
+  'AdminMockPlatformAccountClosureData@gdpr':
+    id: 'AdminMockPlatformAccountClosureData@gdpr'
+    name: 'AdminMockPlatformAccountClosureData'
+    description: |-
+      Mock platform account closure data.
+      -----
+      **This is only for testing**
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'Body':
+        type: 'DtoPlatformAccountClosureMockRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: 'string'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminMockPlatformAccountClosureData.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminMockPlatformAccountClosureDataOp
+              .Build();
+
+          sdk.Gdpr.PlatformAccountClosureClient.AdminMockPlatformAccountClosureData(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'data'
+      - 'mock'
+      - 'platform'
+
+  'AdminRequestDataRetrieval@gdpr':
+    id: 'AdminRequestDataRetrieval@gdpr'
+    name: 'AdminRequestDataRetrieval'
+    description: |-
+      Submit user personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Password':
+        type: 'string'
+        required: false
+        description: |-
+          IAM password of the user, required if admin requests their own data
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM user ID
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/AdminRequestDataRetrieval.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.AdminRequestDataRetrievalOp
+              .SetPassword(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.AdminRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'request'
+      - 'retrieval'
+
+  'AdminResetPlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminResetPlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminResetPlatformAccountClosureServicesConfiguration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset registered platform account closure services configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminResetPlatformAccountClosureServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminResetPlatformAccountClosureServicesConfigurationOp
+              .Build();
+
+          sdk.Gdpr.Configuration.AdminResetPlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'reset'
+      - 'services'
+
+  'AdminResetServicesConfiguration@gdpr':
+    id: 'AdminResetServicesConfiguration@gdpr'
+    name: 'AdminResetServicesConfiguration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset Registered Services Configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminResetServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminResetServicesConfigurationOp
+              .Build();
+
+          sdk.Gdpr.Configuration.AdminResetServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'reset'
+      - 'services'
+
+  'AdminSubmitUserAccountDeletionRequest@gdpr':
+    id: 'AdminSubmitUserAccountDeletionRequest@gdpr'
+    name: 'AdminSubmitUserAccountDeletionRequest'
+    description: |-
+      Submit user's account deletion request.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/AdminSubmitUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.AdminSubmitUserAccountDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletion.AdminSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'AdminUpdatePlatformAccountClosureClient@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureClient@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureClient'
+    description: |-
+      Update platform account closure client.
+      The namespace should be the **publisher or studio namespace**.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'Body':
+        type: 'DtoPlatformAccountClosureClientRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Platform':
+        type: 'string'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminUpdatePlatformAccountClosureClient.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminUpdatePlatformAccountClosureClientOp
+              .Build();
+
+          sdk.Gdpr.PlatformAccountClosureClient.AdminUpdatePlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'platform'
+      - 'update'
+
+  'AdminUpdatePlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureServicesConfiguration'
+    description: |-
+      Update registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'Body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServiceConfigurationUpdateRequest'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminUpdatePlatformAccountClosureServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminUpdatePlatformAccountClosureServicesConfigurationOp
+              .Build();
+
+          var response = sdk.Gdpr.Configuration.AdminUpdatePlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'services'
+      - 'update'
+
+  'AdminUpdateServicesConfiguration@gdpr':
+    id: 'AdminUpdateServicesConfiguration@gdpr'
+    name: 'AdminUpdateServicesConfiguration'
+    description: |-
+      Update Registered Services Configuration.
+      Scope: account
+    parameters:
+      'Body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServiceConfigurationUpdateRequest'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/AdminUpdateServicesConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.AdminUpdateServicesConfigurationOp
+              .Build();
+
+          var response = sdk.Gdpr.Configuration.AdminUpdateServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'services'
+      - 'update'
+
+  'AdminValidateXboxBPCertFile@gdpr':
+    id: 'AdminValidateXboxBPCertFile@gdpr'
+    name: 'AdminValidateXboxBPCertFile'
+    description: |-
+      Check xbox BP cert file whether it's expired and return expiration date
+    parameters:
+      'Body':
+        type: 'DtoXboxBPCertValidationRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoXboxBPCertValidationResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/PlatformAccountClosureClient.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/PlatformAccountClosureClient/AdminValidateXboxBPCertFile.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.PlatformAccountClosureClient.AdminValidateXboxBPCertFileOp
+              .Build();
+
+          var response = sdk.Gdpr.PlatformAccountClosureClient.AdminValidateXboxBPCertFile(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'bp'
+      - 'cert'
+      - 'client'
+      - 'closure'
+      - 'file'
+      - 'platform'
+      - 'validate'
+      - 'xbox'
+
+  'DeleteAdminEmailConfiguration@gdpr':
+    id: 'DeleteAdminEmailConfiguration@gdpr'
+    name: 'DeleteAdminEmailConfiguration'
+    description: |-
+      Delete a list of admin email addresses to stop receiving personal data request notification.
+      Scope: account
+    parameters:
+      'Emails':
+        type: 'List<string>'
+        required: true
+        description: |-
+          list of admin email to delete
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/DeleteAdminEmailConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.DeleteAdminEmailConfigurationOp
+              .Build();
+
+          sdk.Gdpr.Configuration.DeleteAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'email'
+
+  'GetAdminEmailConfiguration@gdpr':
+    id: 'GetAdminEmailConfiguration@gdpr'
+    name: 'GetAdminEmailConfiguration'
+    description: |-
+      Get list of admin email address configuration.
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'List<string>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/GetAdminEmailConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.GetAdminEmailConfigurationOp
+              .Build();
+
+          var response = sdk.Gdpr.Configuration.GetAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'get'
+
+  'PublicCancelMyAccountDeletionRequest@gdpr':
+    id: 'PublicCancelMyAccountDeletionRequest@gdpr'
+    name: 'PublicCancelMyAccountDeletionRequest'
+    description: |-
+      Cancel my account deletion request
+      Requires valid user access token
+    parameters:
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicCancelMyAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicCancelMyAccountDeletionRequestOp
+              .Build();
+
+          sdk.Gdpr.DataDeletion.PublicCancelMyAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+
+  'PublicCancelUserAccountDeletionRequest@gdpr':
+    id: 'PublicCancelUserAccountDeletionRequest@gdpr'
+    name: 'PublicCancelUserAccountDeletionRequest'
+    description: |-
+      Cancel user's account deletion request
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicCancelUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicCancelUserAccountDeletionRequestOp
+              .Build();
+
+          sdk.Gdpr.DataDeletion.PublicCancelUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'user'
+
+  'PublicCancelUserPersonalDataRequest@gdpr':
+    id: 'PublicCancelUserPersonalDataRequest@gdpr'
+    name: 'PublicCancelUserPersonalDataRequest'
+    description: |-
+      Cancel user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/PublicCancelUserPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.PublicCancelUserPersonalDataRequestOp
+              .Build();
+
+          sdk.Gdpr.DataRetrieval.PublicCancelUserPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'PublicGeneratePersonalDataURL@gdpr':
+    id: 'PublicGeneratePersonalDataURL@gdpr'
+    name: 'PublicGeneratePersonalDataURL'
+    description: |-
+      Generate personal data download url
+      Requires valid user access token
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: 'string'
+        required: true
+        description: |-
+          IAM password of the user
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/PublicGeneratePersonalDataURL.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.PublicGeneratePersonalDataURLOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrieval.PublicGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
+  'PublicGetMyAccountDeletionStatus@gdpr':
+    id: 'PublicGetMyAccountDeletionStatus@gdpr'
+    name: 'PublicGetMyAccountDeletionStatus'
+    description: |-
+      Retrieve my account deletion status
+      Requires valid user access token
+    parameters:
+    return_type: 'ModelsDeletionStatus'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicGetMyAccountDeletionStatus.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicGetMyAccountDeletionStatusOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletion.PublicGetMyAccountDeletionStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'my'
+      - 'public'
+      - 'status'
+
+  'PublicGetUserAccountDeletionStatus@gdpr':
+    id: 'PublicGetUserAccountDeletionStatus@gdpr'
+    name: 'PublicGetUserAccountDeletionStatus'
+    description: |-
+      Retrieve specific user's account deletion status
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsDeletionStatus'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicGetUserAccountDeletionStatus.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicGetUserAccountDeletionStatusOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletion.PublicGetUserAccountDeletionStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'public'
+      - 'status'
+      - 'user'
+
+  'PublicGetUserPersonalDataRequests@gdpr':
+    id: 'PublicGetUserPersonalDataRequests@gdpr'
+    name: 'PublicGetUserPersonalDataRequests'
+    description: |-
+      Get user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          The start position that points to query data
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/PublicGetUserPersonalDataRequests.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.PublicGetUserPersonalDataRequestsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.PublicGetUserPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'PublicRequestDataRetrieval@gdpr':
+    id: 'PublicRequestDataRetrieval@gdpr'
+    name: 'PublicRequestDataRetrieval'
+    description: |-
+      Submit personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: 'string'
+        required: true
+        description: |-
+          IAM password of the user
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrieval.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrieval/PublicRequestDataRetrieval.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrieval.PublicRequestDataRetrievalOp
+              .SetLanguageTag(...)
+              .Build(
+                  namespace_,
+                  password,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataRetrieval.PublicRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+
+  'PublicSubmitMyAccountDeletionRequest@gdpr':
+    id: 'PublicSubmitMyAccountDeletionRequest@gdpr'
+    name: 'PublicSubmitMyAccountDeletionRequest'
+    description: |-
+      Submit my account deletion requests.
+      Requires valid user access token
+      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID which used to generate current token
+      'PlatformToken':
+        type: 'string'
+        required: true
+        description: |-
+          Platform token of current logged platform
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicSubmitMyAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicSubmitMyAccountDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletion.PublicSubmitMyAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitUserAccountDeletionRequest@gdpr':
+    id: 'PublicSubmitUserAccountDeletionRequest@gdpr'
+    name: 'PublicSubmitUserAccountDeletionRequest'
+    description: |-
+      Submit user's account deletion request.
+      Requires valid user access token and password
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the user
+      'Password':
+        type: 'string'
+        required: true
+        description: |-
+          IAM password of the user
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicSubmitUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletion.PublicSubmitUserAccountDeletionRequestOp
+              .SetLanguageTag(...)
+              .Build(
+                  namespace_,
+                  password,
+                  userId,
+              );
+
+          var response = sdk.Gdpr.DataDeletion.PublicSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'S2SGeneratePersonalDataURL@gdpr':
+    id: 'S2SGeneratePersonalDataURL@gdpr'
+    name: 'S2SGeneratePersonalDataURL'
+    description: |-
+      Scope: account
+
+      Generate personal data download url.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SUserDataURL'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalS2S/S2SGeneratePersonalDataURL.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalS2S.S2SGeneratePersonalDataURLOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalS2S.S2SGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 's2s'
+      - 'url'
+
+  'S2SGetDataRequestByRequestID@gdpr':
+    id: 'S2SGetDataRequestByRequestID@gdpr'
+    name: 'S2SGetDataRequestByRequestID'
+    description: |-
+      Scope: account
+
+      Get Personal Data Request by Request Id.
+      If the request has been completed, it will return a download url for the data package.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'RequestId':
+        type: 'string'
+        required: true
+        description: |-
+          Request Id
+    return_type: 'DtoS2SDataRequestSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalS2S/S2SGetDataRequestByRequestID.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalS2S.S2SGetDataRequestByRequestIDOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalS2S.S2SGetDataRequestByRequestID(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'by'
+      - 'data'
+      - 'get'
+      - 'id'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SGetListFinishedAccountDeletionRequest@gdpr':
+    id: 'S2SGetListFinishedAccountDeletionRequest@gdpr'
+    name: 'S2SGetListFinishedAccountDeletionRequest'
+    description: |-
+      Scope: account
+
+      Get list of finished account deletion requests based on the finished time period.
+      Unfinished deletion requests will not appear here, i.e. have Status **Request**, **Pending** or **In-Progress**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'End':
+        type: 'string'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'Start':
+        type: 'string'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'DtoListFinishedDataDeletion'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionS2S/S2SGetListFinishedAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletionS2S.S2SGetListFinishedAccountDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletionS2S.S2SGetListFinishedAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'request'
+      - 's2s'
+
+  'S2SGetListFinishedPersonalDataRequest@gdpr':
+    id: 'S2SGetListFinishedPersonalDataRequest@gdpr'
+    name: 'S2SGetListFinishedPersonalDataRequest'
+    description: |-
+      Scope: account
+
+      Get list of finished personal data requests based on the finished time period.
+      Unfinished personal data requests will not appear here, i.e. have Status **Pending**, **In-Progress** or **Canceled**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'End':
+        type: 'string'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'Start':
+        type: 'string'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'DtoListFinishedDataRequests'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalS2S/S2SGetListFinishedPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalS2S.S2SGetListFinishedPersonalDataRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalS2S.S2SGetListFinishedPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SRequestDataRetrieval@gdpr':
+    id: 'S2SRequestDataRetrieval@gdpr'
+    name: 'S2SRequestDataRetrieval'
+    description: |-
+      Scope: account
+
+      Submit user personal data retrieval request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SDataRetrievalResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalS2S/S2SRequestDataRetrieval.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalS2S.S2SRequestDataRetrievalOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalS2S.S2SRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SSubmitUserAccountDeletionRequest@gdpr':
+    id: 'S2SSubmitUserAccountDeletionRequest@gdpr'
+    name: 'S2SSubmitUserAccountDeletionRequest'
+    description: |-
+      Scope: account
+
+      Submit user's account deletion request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+      2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SRequestDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionS2S.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionS2S/S2SSubmitUserAccountDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletionS2S.S2SSubmitUserAccountDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletionS2S.S2SSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 's2s'
+      - 'submit'
+      - 'user'
+
+  'SaveAdminEmailConfiguration@gdpr':
+    id: 'SaveAdminEmailConfiguration@gdpr'
+    name: 'SaveAdminEmailConfiguration'
+    description: |-
+      Add admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'Body':
+        type: 'List<string>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/SaveAdminEmailConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.SaveAdminEmailConfigurationOp
+              .Build();
+
+          sdk.Gdpr.Configuration.SaveAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'save'
+
+  'UpdateAdminEmailConfiguration@gdpr':
+    id: 'UpdateAdminEmailConfiguration@gdpr'
+    name: 'UpdateAdminEmailConfiguration'
+    description: |-
+      Update admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'Body':
+        type: 'List<string>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/Configuration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/Configuration/UpdateAdminEmailConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.Configuration.UpdateAdminEmailConfigurationOp
+              .Build();
+
+          sdk.Gdpr.Configuration.UpdateAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'update'

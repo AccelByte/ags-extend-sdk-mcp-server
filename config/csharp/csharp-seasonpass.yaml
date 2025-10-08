@@ -1,0 +1,4002 @@
+structs:
+  # region models
+
+  'BulkUserProgressionRequest@seasonpass':
+    id: 'BulkUserProgressionRequest@seasonpass'
+    name: 'BulkUserProgressionRequest'
+    fields:
+      'UserIds':
+        type: 'List<string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/BulkUserProgressionRequest.cs'
+
+  'ClaimableRewards@seasonpass':
+    id: 'ClaimableRewards@seasonpass'
+    name: 'ClaimableRewards'
+    description: |-
+      A DTO object for claimable rewards.
+    fields:
+      'ClaimingRewards':
+        type: 'Dictionary<string, object>'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'ToClaimRewards':
+        type: 'Dictionary<string, object>'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ClaimableRewards.cs'
+
+  'ClaimableUserSeasonInfo@seasonpass':
+    id: 'ClaimableUserSeasonInfo@seasonpass'
+    name: 'ClaimableUserSeasonInfo'
+    description: |-
+      A DTO object for claimable user season data.
+    fields:
+      'ClaimingRewards':
+        type: 'Dictionary<string, object>'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'Cleared':
+        type: 'bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'CurrentExp':
+        type: 'int'
+        required: true
+        description: |-
+          gained exp for current tier
+      'CurrentTierIndex':
+        type: 'int'
+        required: true
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          enroll date time
+      'EnrolledPasses':
+        type: 'List<string>'
+        required: true
+        description: |-
+          enrolled passes
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'LastTierIndex':
+        type: 'int'
+        required: true
+        description: |-
+          last tier index, zero based
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'RequiredExp':
+        type: 'int'
+        required: true
+        description: |-
+          required exp for current tier
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          season id
+      'ToClaimRewards':
+        type: 'Dictionary<string, object>'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+      'Season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+      'TotalExp':
+        type: 'long'
+        required: false
+        description: |-
+          total exp
+      'TotalPaidForExp':
+        type: 'long'
+        required: false
+        description: |-
+          total paid-for exp
+      'TotalSweatExp':
+        type: 'long'
+        required: false
+        description: |-
+          total sweat exp
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ClaimableUserSeasonInfo.cs'
+
+  'ErrorEntity@seasonpass':
+    id: 'ErrorEntity@seasonpass'
+    name: 'ErrorEntity'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: 'string'
+        required: true
+        description: |-
+          error message
+      'DevStackTrace':
+        type: 'string'
+        required: false
+        description: |-
+          internal server error stack trace in configured environment
+      'MessageVariables':
+        type: 'Dictionary<string, string>'
+        required: false
+        description: |-
+          message variables
+      'RequiredPermission':
+        type: 'Permission'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ErrorEntity.cs'
+
+  'ExcessStrategy@seasonpass':
+    id: 'ExcessStrategy@seasonpass'
+    name: 'ExcessStrategy'
+    fields:
+      'Method':
+        type: 'string'
+        required: true
+        description: |-
+          method while excess the final tier exp
+      'Currency':
+        type: 'string'
+        required: false
+        description: |-
+          virtual currency for grant, required while method is CURRENCY
+      'PercentPerExp':
+        type: 'int'
+        required: false
+        description: |-
+          percent per exp, required while method is CURRENCY
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ExcessStrategy.cs'
+
+  'ExpGrantHistoryInfo@seasonpass':
+    id: 'ExpGrantHistoryInfo@seasonpass'
+    name: 'ExpGrantHistoryInfo'
+    description: |-
+      A DTO object for exp grant history details.
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          acquired at
+      'GrantExp':
+        type: 'long'
+        required: true
+        description: |-
+          grant exp
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          season id
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          id
+      'Tags':
+        type: 'List<string>'
+        required: false
+        description: |-
+          id
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ExpGrantHistoryInfo.cs'
+
+  'ExpGrantHistoryPagingSlicedResult@seasonpass':
+    id: 'ExpGrantHistoryPagingSlicedResult@seasonpass'
+    name: 'ExpGrantHistoryPagingSlicedResult'
+    fields:
+      'Data':
+        type: 'List<ExpGrantHistoryInfo>'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: 'Paging'
+        required: false
+      'Total':
+        type: 'long'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ExpGrantHistoryPagingSlicedResult.cs'
+
+  'FieldValidationError@seasonpass':
+    id: 'FieldValidationError@seasonpass'
+    name: 'FieldValidationError'
+    fields:
+      'ErrorCode':
+        type: 'string'
+        required: false
+      'ErrorField':
+        type: 'string'
+        required: false
+      'ErrorMessage':
+        type: 'string'
+        required: false
+      'ErrorValue':
+        type: 'string'
+        required: false
+      'MessageVariables':
+        type: 'Dictionary<string, string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/FieldValidationError.cs'
+
+  'FullSeasonInfo@seasonpass':
+    id: 'FullSeasonInfo@seasonpass'
+    name: 'FullSeasonInfo'
+    description: |-
+      A DTO object for season full content.
+    fields:
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Passes':
+        type: 'List<PassInfo>'
+        required: true
+        description: |-
+          passes info
+      'Rewards':
+        type: 'Dictionary<string, RewardInfo>'
+        required: true
+        description: |-
+          rewards info
+      'Tiers':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          tiers info
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/FullSeasonInfo.cs'
+
+  'Image@seasonpass':
+    id: 'Image@seasonpass'
+    name: 'Image'
+    fields:
+      'Height':
+        type: 'int'
+        required: true
+        description: |-
+          height
+      'ImageUrl':
+        type: 'string'
+        required: true
+        description: |-
+          imageUrl
+      'Width':
+        type: 'int'
+        required: true
+        description: |-
+          width
+      'As':
+        type: 'string'
+        required: false
+        description: |-
+          image for
+      'Caption':
+        type: 'string'
+        required: false
+        description: |-
+          image caption
+      'SmallImageUrl':
+        type: 'string'
+        required: false
+        description: |-
+          smallImageUrl
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Image.cs'
+
+  'ItemReference@seasonpass':
+    id: 'ItemReference@seasonpass'
+    name: 'ItemReference'
+    description: |-
+      A DTO object for item references.
+    fields:
+      'Module':
+        type: 'string'
+        required: false
+        description: |-
+          module
+      'References':
+        type: 'List<object>'
+        required: false
+        description: |-
+          references
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ItemReference.cs'
+
+  'ItemReferenceInfo@seasonpass':
+    id: 'ItemReferenceInfo@seasonpass'
+    name: 'ItemReferenceInfo'
+    description: |-
+      A DTO object for item references info.
+    fields:
+      'References':
+        type: 'List<ItemReference>'
+        required: false
+        description: |-
+          item references
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ItemReferenceInfo.cs'
+
+  'ListSeasonInfo@seasonpass':
+    id: 'ListSeasonInfo@seasonpass'
+    name: 'ListSeasonInfo'
+    description: |-
+      A DTO object for listing season info.
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'DefaultLanguage':
+        type: 'string'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          status
+      'TierItemId':
+        type: 'string'
+        required: true
+        description: |-
+          tier item id
+      'TierItemName':
+        type: 'string'
+        required: true
+        description: |-
+          tier item name
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'PassCodes':
+        type: 'List<string>'
+        required: false
+        description: |-
+          pass codes
+      'PublishedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ListSeasonInfo.cs'
+
+  'ListSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListSeasonInfoPagingSlicedResult'
+    fields:
+      'Data':
+        type: 'List<ListSeasonInfo>'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: 'Paging'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ListSeasonInfoPagingSlicedResult.cs'
+
+  'ListUserSeasonInfo@seasonpass':
+    id: 'ListUserSeasonInfo@seasonpass'
+    name: 'ListUserSeasonInfo'
+    description: |-
+      A DTO object for listing user season data.
+    fields:
+      'Cleared':
+        type: 'bool'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'CurrentTierIndex':
+        type: 'int'
+        required: true
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          enroll date time
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'LastTierIndex':
+        type: 'int'
+        required: true
+        description: |-
+          last tier index, zero based
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          season id
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+      'Season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ListUserSeasonInfo.cs'
+
+  'ListUserSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListUserSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListUserSeasonInfoPagingSlicedResult'
+    fields:
+      'Data':
+        type: 'List<ListUserSeasonInfo>'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: 'Paging'
+        required: false
+      'Total':
+        type: 'long'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ListUserSeasonInfoPagingSlicedResult.cs'
+
+  'Localization@seasonpass':
+    id: 'Localization@seasonpass'
+    name: 'Localization'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Localization.cs'
+
+  'LocalizedPassInfo@seasonpass':
+    id: 'LocalizedPassInfo@seasonpass'
+    name: 'LocalizedPassInfo'
+    description: |-
+      A DTO object for public user retrieving pass info.
+    fields:
+      'AutoEnroll':
+        type: 'bool'
+        required: true
+        description: |-
+          autoEnroll
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          code
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'DisplayOrder':
+        type: 'string'
+        required: true
+        description: |-
+          displayOrder
+      'Language':
+        type: 'string'
+        required: true
+        description: |-
+          current language
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'PassItemId':
+        type: 'string'
+        required: true
+        description: |-
+          pass item id
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          season id
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/LocalizedPassInfo.cs'
+
+  'LocalizedSeasonInfo@seasonpass':
+    id: 'LocalizedSeasonInfo@seasonpass'
+    name: 'LocalizedSeasonInfo'
+    description: |-
+      A DTO object for public user retrieving season info.
+    fields:
+      'AutoClaim':
+        type: 'bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Language':
+        type: 'string'
+        required: true
+        description: |-
+          current language
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Passes':
+        type: 'List<LocalizedPassInfo>'
+        required: true
+        description: |-
+          passes info
+      'Rewards':
+        type: 'Dictionary<string, RewardInfo>'
+        required: true
+        description: |-
+          rewards info
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          status
+      'TierItemId':
+        type: 'string'
+        required: true
+        description: |-
+          tier item id
+      'Tiers':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          tiers info
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          description info
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'PassCodes':
+        type: 'List<string>'
+        required: false
+        description: |-
+          pass codes
+      'PublishedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          publishedAt
+      'Title':
+        type: 'string'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/LocalizedSeasonInfo.cs'
+
+  'Ownership@seasonpass':
+    id: 'Ownership@seasonpass'
+    name: 'Ownership'
+    fields:
+      'Owned':
+        type: 'bool'
+        required: true
+        description: |-
+          ownership
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Ownership.cs'
+
+  'Paging@seasonpass':
+    id: 'Paging@seasonpass'
+    name: 'Paging'
+    fields:
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Paging.cs'
+
+  'PassCreate@seasonpass':
+    id: 'PassCreate@seasonpass'
+    name: 'PassCreate'
+    description: |-
+      A DTO object for creating pass API call.
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'DisplayOrder':
+        type: 'int'
+        required: true
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'PassItemId':
+        type: 'string'
+        required: true
+        description: |-
+          pass item id
+      'AutoEnroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass, default false
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/PassCreate.cs'
+
+  'PassInfo@seasonpass':
+    id: 'PassInfo@seasonpass'
+    name: 'PassInfo'
+    description: |-
+      A DTO object for pass info.
+    fields:
+      'AutoEnroll':
+        type: 'bool'
+        required: true
+        description: |-
+          autoEnroll
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          code
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'DisplayOrder':
+        type: 'string'
+        required: true
+        description: |-
+          displayOrder
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'PassItemId':
+        type: 'string'
+        required: true
+        description: |-
+          pass item id
+      'PassItemName':
+        type: 'string'
+        required: true
+        description: |-
+          pass item name
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          season id
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/PassInfo.cs'
+
+  'PassUpdate@seasonpass':
+    id: 'PassUpdate@seasonpass'
+    name: 'PassUpdate'
+    description: |-
+      A DTO object for updating pass API call.
+    fields:
+      'AutoEnroll':
+        type: 'bool'
+        required: false
+        description: |-
+          autoEnroll for free pass
+      'DisplayOrder':
+        type: 'int'
+        required: false
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'PassItemId':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/PassUpdate.cs'
+
+  'Permission@seasonpass':
+    id: 'Permission@seasonpass'
+    name: 'Permission'
+    fields:
+      'Action':
+        type: 'int'
+        required: false
+      'Resource':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Permission.cs'
+
+  'ReasonTagsResult@seasonpass':
+    id: 'ReasonTagsResult@seasonpass'
+    name: 'ReasonTagsResult'
+    description: |-
+      A DTO object for reason tags.
+    fields:
+      'Tags':
+        type: 'List<string>'
+        required: true
+        description: |-
+          tags
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ReasonTagsResult.cs'
+
+  'RewardCreate@seasonpass':
+    id: 'RewardCreate@seasonpass'
+    name: 'RewardCreate'
+    description: |-
+      A DTO object for creating reward API call.
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'Type':
+        type: 'string'
+        required: true
+        description: |-
+          type, at current only support ITEM
+      'Currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemId':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'Quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/RewardCreate.cs'
+
+  'RewardCurrency@seasonpass':
+    id: 'RewardCurrency@seasonpass'
+    name: 'RewardCurrency'
+    description: |-
+      A DTO object for reward currency.
+    fields:
+      'CurrencyCode':
+        type: 'string'
+        required: true
+        description: |-
+          currency code, alphabet uppercase
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace, allowed values: game namespace or publisher namespace
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/RewardCurrency.cs'
+
+  'RewardInfo@seasonpass':
+    id: 'RewardInfo@seasonpass'
+    name: 'RewardInfo'
+    description: |-
+      A DTO object for reward info.
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          code
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+        description: |-
+          seasonId
+      'Type':
+        type: 'string'
+        required: true
+        description: |-
+          type
+      'Currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemId':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM
+      'ItemName':
+        type: 'string'
+        required: false
+        description: |-
+          itemName, required when reward type is ITEM
+      'ItemSku':
+        type: 'string'
+        required: false
+        description: |-
+          itemSku, required when reward type is ITEM
+      'ItemType':
+        type: 'string'
+        required: false
+        description: |-
+          itemType, required when reward type is ITEM
+      'Quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/RewardInfo.cs'
+
+  'RewardUpdate@seasonpass':
+    id: 'RewardUpdate@seasonpass'
+    name: 'RewardUpdate'
+    description: |-
+      A DTO object for updating reward API call.
+    fields:
+      'Currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'Image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'ItemId':
+        type: 'string'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'NullFields':
+        type: 'List<string>'
+        required: false
+        description: |-
+          nullFields
+      'Quantity':
+        type: 'int'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'Type':
+        type: 'string'
+        required: false
+        description: |-
+          type, at current only support ITEM
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/RewardUpdate.cs'
+
+  'SeasonCloneRequest@seasonpass':
+    id: 'SeasonCloneRequest@seasonpass'
+    name: 'SeasonCloneRequest'
+    description: |-
+      A DTO object for clone season API call.
+    fields:
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/SeasonCloneRequest.cs'
+
+  'SeasonCreate@seasonpass':
+    id: 'SeasonCreate@seasonpass'
+    name: 'SeasonCreate'
+    description: |-
+      A DTO object for creating season API call.
+    fields:
+      'DefaultRequiredExp':
+        type: 'int'
+        required: true
+        description: |-
+          default exp required for a tier
+      'DraftStoreId':
+        type: 'string'
+        required: true
+        description: |-
+          draft store id
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+      'TierItemId':
+        type: 'string'
+        required: true
+        description: |-
+          tier item id
+      'AutoClaim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards, default true
+      'DefaultLanguage':
+        type: 'string'
+        required: false
+        description: |-
+          default language, BCP 47 language tag, default is en
+      'ExcessStrategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp, default NONE
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/SeasonCreate.cs'
+
+  'SeasonInfo@seasonpass':
+    id: 'SeasonInfo@seasonpass'
+    name: 'SeasonInfo'
+    description: |-
+      A DTO object for season info.
+    fields:
+      'AutoClaim':
+        type: 'bool'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          created at
+      'DefaultLanguage':
+        type: 'string'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'DefaultRequiredExp':
+        type: 'int'
+        required: true
+        description: |-
+          default required exp for a tier
+      'DraftStoreId':
+        type: 'string'
+        required: true
+        description: |-
+          draft store id
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'ExcessStrategy':
+        type: 'ExcessStrategy'
+        required: true
+        description: |-
+          strategy while exceed final tier exp
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          status
+      'TierItemId':
+        type: 'string'
+        required: true
+        description: |-
+          tier item id
+      'TierItemName':
+        type: 'string'
+        required: true
+        description: |-
+          tier item name
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+        description: |-
+          updated at
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'PassCodes':
+        type: 'List<string>'
+        required: false
+        description: |-
+          pass codes
+      'PublishedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/SeasonInfo.cs'
+
+  'SeasonSummary@seasonpass':
+    id: 'SeasonSummary@seasonpass'
+    name: 'SeasonSummary'
+    description: |-
+      A DTO object for season summary.
+    fields:
+      'End':
+        type: 'DateTime'
+        required: true
+        description: |-
+          end date time
+      'Id':
+        type: 'string'
+        required: true
+        description: |-
+          id
+      'Name':
+        type: 'string'
+        required: true
+        description: |-
+          name, max length is 127
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'Start':
+        type: 'DateTime'
+        required: true
+        description: |-
+          start date time
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          status
+      'PassCodes':
+        type: 'List<string>'
+        required: false
+        description: |-
+          season pass codes
+      'Previous':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          previous season, only present in some situation
+      'PublishedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/SeasonSummary.cs'
+
+  'SeasonUpdate@seasonpass':
+    id: 'SeasonUpdate@seasonpass'
+    name: 'SeasonUpdate'
+    description: |-
+      A DTO object for updating season API call.
+    fields:
+      'AutoClaim':
+        type: 'bool'
+        required: false
+        description: |-
+          whether auto claim rewards
+      'DefaultLanguage':
+        type: 'string'
+        required: false
+        description: |-
+          default language, BCP 47 language tag
+      'DefaultRequiredExp':
+        type: 'int'
+        required: false
+        description: |-
+          default exp required for a tier
+      'DraftStoreId':
+        type: 'string'
+        required: false
+        description: |-
+          draft store id
+      'End':
+        type: 'DateTime'
+        required: false
+        description: |-
+          end date time
+      'ExcessStrategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp
+      'Images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'Localizations':
+        type: 'Dictionary<string, Localization>'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          name, max length is 127
+      'Start':
+        type: 'DateTime'
+        required: false
+        description: |-
+          start date time
+      'TierItemId':
+        type: 'string'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/SeasonUpdate.cs'
+
+  'Tier@seasonpass':
+    id: 'Tier@seasonpass'
+    name: 'Tier'
+    fields:
+      'Id':
+        type: 'string'
+        required: false
+        description: |-
+          tier id, auto generated.
+      'RequiredExp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'Rewards':
+        type: 'Dictionary<string, object>'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/Tier.cs'
+
+  'TierCreate@seasonpass':
+    id: 'TierCreate@seasonpass'
+    name: 'TierCreate'
+    description: |-
+      A DTO object for creating tier API call.
+    fields:
+      'Index':
+        type: 'int'
+        required: false
+        description: |-
+          zero based tier index to be inserted at, -1 means appending to the end, default -1
+      'Quantity':
+        type: 'int'
+        required: false
+        description: |-
+          create tier quantity, default 1
+      'Tier':
+        type: 'TierInput'
+        required: false
+        description: |-
+          tier content, default null tier
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/TierCreate.cs'
+
+  'TierInput@seasonpass':
+    id: 'TierInput@seasonpass'
+    name: 'TierInput'
+    description: |-
+      A DTO object for tier input.
+    fields:
+      'RequiredExp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'Rewards':
+        type: 'Dictionary<string, object>'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/TierInput.cs'
+
+  'TierPagingSlicedResult@seasonpass':
+    id: 'TierPagingSlicedResult@seasonpass'
+    name: 'TierPagingSlicedResult'
+    fields:
+      'Data':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          data
+      'Paging':
+        type: 'Paging'
+        required: false
+      'Total':
+        type: 'long'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/TierPagingSlicedResult.cs'
+
+  'TierReorder@seasonpass':
+    id: 'TierReorder@seasonpass'
+    name: 'TierReorder'
+    fields:
+      'NewIndex':
+        type: 'int'
+        required: false
+        description: |-
+          new index tier should be moved to, zero based, -1 means appending to the end
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/TierReorder.cs'
+
+  'UserExpGrant@seasonpass':
+    id: 'UserExpGrant@seasonpass'
+    name: 'UserExpGrant'
+    description: |-
+      A DTO object for granting user exp.
+    fields:
+      'Exp':
+        type: 'int'
+        required: false
+        description: |-
+          exp to grant
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          source
+      'Tags':
+        type: 'List<string>'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserExpGrant.cs'
+
+  'UserPassGrant@seasonpass':
+    id: 'UserPassGrant@seasonpass'
+    name: 'UserPassGrant'
+    description: |-
+      A DTO object for granting user pass.
+    fields:
+      'PassCode':
+        type: 'string'
+        required: false
+        description: |-
+          pass code, required if passItemId null
+      'PassItemId':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id, required if passCode null and ignored if passCode present
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserPassGrant.cs'
+
+  'UserPurchasable@seasonpass':
+    id: 'UserPurchasable@seasonpass'
+    name: 'UserPurchasable'
+    description: |-
+      A DTO object for user purchasable.
+    fields:
+      'PassItemId':
+        type: 'string'
+        required: false
+        description: |-
+          pass item id
+      'TierItemCount':
+        type: 'int'
+        required: false
+        description: |-
+          tier item count, default 1
+      'TierItemId':
+        type: 'string'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserPurchasable.cs'
+
+  'UserRewardClaim@seasonpass':
+    id: 'UserRewardClaim@seasonpass'
+    name: 'UserRewardClaim'
+    description: |-
+      A DTO object for claiming user reward.
+    fields:
+      'PassCode':
+        type: 'string'
+        required: true
+        description: |-
+          pass code
+      'RewardCode':
+        type: 'string'
+        required: true
+        description: |-
+          reward code
+      'TierIndex':
+        type: 'int'
+        required: true
+        description: |-
+          tier index
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserRewardClaim.cs'
+
+  'UserSeasonSummary@seasonpass':
+    id: 'UserSeasonSummary@seasonpass'
+    name: 'UserSeasonSummary'
+    description: |-
+      A DTO object for user season summary.
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+      'Cleared':
+        type: 'bool'
+        required: false
+        description: |-
+          whether cleared all tiers
+      'CreatedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          created at
+      'CurrentExp':
+        type: 'int'
+        required: false
+        description: |-
+          gained exp for current tier
+      'CurrentTierIndex':
+        type: 'int'
+        required: false
+        description: |-
+          current tier index, zero based
+      'EnrolledAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          enroll date time
+      'EnrolledPasses':
+        type: 'List<string>'
+        required: false
+        description: |-
+          enrolled passes
+      'Id':
+        type: 'string'
+        required: false
+        description: |-
+          id
+      'LastTierIndex':
+        type: 'int'
+        required: false
+        description: |-
+          last tier index, zero based
+      'RequiredExp':
+        type: 'int'
+        required: false
+        description: |-
+          required exp for current tier
+      'SeasonId':
+        type: 'string'
+        required: false
+        description: |-
+          season id
+      'UpdatedAt':
+        type: 'DateTime'
+        required: false
+        description: |-
+          updated at
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserSeasonSummary.cs'
+
+  'UserTierGrant@seasonpass':
+    id: 'UserTierGrant@seasonpass'
+    name: 'UserTierGrant'
+    description: |-
+      A DTO object for granting user tier.
+    fields:
+      'Count':
+        type: 'int'
+        required: false
+        description: |-
+          count to grant
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          source
+      'Tags':
+        type: 'List<string>'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/UserTierGrant.cs'
+
+  'ValidationErrorEntity@seasonpass':
+    id: 'ValidationErrorEntity@seasonpass'
+    name: 'ValidationErrorEntity'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+        description: |-
+          numeric error code
+      'ErrorMessage':
+        type: 'string'
+        required: true
+        description: |-
+          error message
+      'Errors':
+        type: 'List<FieldValidationError>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Model/ValidationErrorEntity.cs'
+
+  # endregion models
+
+functions:
+
+  'BulkGetUserSeasonProgression@seasonpass':
+    id: 'BulkGetUserSeasonProgression@seasonpass'
+    name: 'BulkGetUserSeasonProgression'
+    description: |-
+      This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'Body':
+        type: 'BulkUserProgressionRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<UserSeasonSummary>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/BulkGetUserSeasonProgression.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.BulkGetUserSeasonProgressionOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Seasonpass.Season.BulkGetUserSeasonProgression(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'CheckSeasonPurchasable@seasonpass':
+    id: 'CheckSeasonPurchasable@seasonpass'
+    name: 'CheckSeasonPurchasable'
+    description: |-
+      This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+    parameters:
+      'Body':
+        type: 'UserPurchasable'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/CheckSeasonPurchasable.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.CheckSeasonPurchasableOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          sdk.Seasonpass.Season.CheckSeasonPurchasable(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'check'
+      - 'purchasable'
+      - 'season'
+
+  'CloneSeason@seasonpass':
+    id: 'CloneSeason@seasonpass'
+    name: 'CloneSeason'
+    description: |-
+      This API is used to clone a season.
+
+      Other detail info:
+
+        * Returns : cloned season info
+    parameters:
+      'Body':
+        type: 'SeasonCloneRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/CloneSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.CloneSeasonOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Season.CloneSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'clone'
+      - 'season'
+
+  'CreatePass@seasonpass':
+    id: 'CreatePass@seasonpass'
+    name: 'CreatePass'
+    description: |-
+      This API is used to create a pass for a draft season.
+
+      Other detail info:
+
+        * Returns : created pass
+    parameters:
+      'Body':
+        type: 'PassCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/CreatePass.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.CreatePassOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Pass.CreatePass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'pass'
+
+  'CreateReward@seasonpass':
+    id: 'CreateReward@seasonpass'
+    name: 'CreateReward'
+    description: |-
+      This API is used to create a reward for a draft season.
+
+      Other detail info:
+
+        * Returns : created reward
+    parameters:
+      'Body':
+        type: 'RewardCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/CreateReward.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.CreateRewardOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Reward.CreateReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'reward'
+
+  'CreateSeason@seasonpass':
+    id: 'CreateSeason@seasonpass'
+    name: 'CreateSeason'
+    description: |-
+      This API is used to create a season, season only allowed in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : created season
+    parameters:
+      'Body':
+        type: 'SeasonCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/CreateSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.CreateSeasonOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Seasonpass.Season.CreateSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'season'
+
+  'CreateTier@seasonpass':
+    id: 'CreateTier@seasonpass'
+    name: 'CreateTier'
+    description: |-
+      This API is used to create tier for a draft season, can create multiple tiers at same time.
+    parameters:
+      'Body':
+        type: 'TierCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'List<Tier>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/CreateTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.CreateTierOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Tier.CreateTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'tier'
+
+  'DeletePass@seasonpass':
+    id: 'DeletePass@seasonpass'
+    name: 'DeletePass'
+    description: |-
+      This API is used to delete a pass permanently, only draft season pass can be deleted.
+    parameters:
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/DeletePass.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.DeletePassOp
+              .Build();
+
+          sdk.Seasonpass.Pass.DeletePass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'pass'
+
+  'DeleteReward@seasonpass':
+    id: 'DeleteReward@seasonpass'
+    name: 'DeleteReward'
+    description: |-
+      This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+      Other detail info:
+    parameters:
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/DeleteReward.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.DeleteRewardOp
+              .Build();
+
+          sdk.Seasonpass.Reward.DeleteReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'reward'
+
+  'DeleteSeason@seasonpass':
+    id: 'DeleteSeason@seasonpass'
+    name: 'DeleteSeason'
+    description: |-
+      This API is used to delete a season permanently, only draft season can be deleted.
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/DeleteSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.DeleteSeasonOp
+              .Build();
+
+          sdk.Seasonpass.Season.DeleteSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'season'
+
+  'DeleteTier@seasonpass':
+    id: 'DeleteTier@seasonpass'
+    name: 'DeleteTier'
+    description: |-
+      This API is used to delete a tier permanently, only draft season pass can be deleted.
+    parameters:
+      'Id':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/DeleteTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.DeleteTierOp
+              .Build();
+
+          sdk.Seasonpass.Tier.DeleteTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'tier'
+
+  'ExistsAnyPassByPassCodes@seasonpass':
+    id: 'ExistsAnyPassByPassCodes@seasonpass'
+    name: 'ExistsAnyPassByPassCodes'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : ownership
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PassCodes':
+        type: 'List<string>'
+        required: false
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'Ownership'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/ExistsAnyPassByPassCodes.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.ExistsAnyPassByPassCodesOp
+              .SetPassCodes(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Season.ExistsAnyPassByPassCodes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'any'
+      - 'by'
+      - 'codes'
+      - 'exists'
+      - 'pass'
+      - 'season'
+
+  'ExportSeason@seasonpass':
+    id: 'ExportSeason@seasonpass'
+    name: 'ExportSeason'
+    description: |-
+      This API is used to export all of season service data files with csv format.
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Stream'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Export.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Export/ExportSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Export.ExportSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Export.ExportSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'export'
+      - 'season'
+
+  'GetCurrentSeason@seasonpass':
+    id: 'GetCurrentSeason@seasonpass'
+    name: 'GetCurrentSeason'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season summary data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'SeasonSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetCurrentSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetCurrentSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.GetCurrentSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'season'
+
+  'GetCurrentUserSeasonProgression@seasonpass':
+    id: 'GetCurrentUserSeasonProgression@seasonpass'
+    name: 'GetCurrentUserSeasonProgression'
+    description: |-
+      This API is used to get current user season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetCurrentUserSeasonProgression.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetCurrentUserSeasonProgressionOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.GetCurrentUserSeasonProgression(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'GetFullSeason@seasonpass':
+    id: 'GetFullSeason@seasonpass'
+    name: 'GetFullSeason'
+    description: |-
+      This API is used to get a season full content, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'FullSeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetFullSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetFullSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.GetFullSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'full'
+      - 'get'
+      - 'season'
+
+  'GetItemReferences@seasonpass':
+    id: 'GetItemReferences@seasonpass'
+    name: 'GetItemReferences'
+    description: |-
+      This API is used to get season pass ecommerce item references.
+
+      Other detail info:
+
+        * Returns : item references data
+    parameters:
+      'ItemId':
+        type: 'string'
+        required: true
+        description: |-
+          the id of the ecommerce item
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace
+    return_type: 'ItemReferenceInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Utilities.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Utilities/GetItemReferences.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Utilities.GetItemReferencesOp
+              .Build();
+
+          var response = sdk.Seasonpass.Utilities.GetItemReferences(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'item'
+      - 'references'
+      - 'utilities'
+
+  'GetPass@seasonpass':
+    id: 'GetPass@seasonpass'
+    name: 'GetPass'
+    description: |-
+      This API is used to get a pass for a season.
+
+      Other detail info:
+
+        * Returns : pass data
+    parameters:
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/GetPass.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.GetPassOp
+              .Build();
+
+          var response = sdk.Seasonpass.Pass.GetPass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'pass'
+
+  'GetReward@seasonpass':
+    id: 'GetReward@seasonpass'
+    name: 'GetReward'
+    description: |-
+      This API is used to get a reward for a season.
+
+      Other detail info:
+
+        * Returns : reward data
+    parameters:
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/GetReward.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.GetRewardOp
+              .Build();
+
+          var response = sdk.Seasonpass.Reward.GetReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'reward'
+
+  'GetSeason@seasonpass':
+    id: 'GetSeason@seasonpass'
+    name: 'GetSeason'
+    description: |-
+      This API is used to get a season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.GetSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'season'
+
+  'GetUserParticipatedSeasons@seasonpass':
+    id: 'GetUserParticipatedSeasons@seasonpass'
+    name: 'GetUserParticipatedSeasons'
+    description: |-
+      This API is used to get user participated season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user participated season data
+    parameters:
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          offset
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ListUserSeasonInfoPagingSlicedResult'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetUserParticipatedSeasons.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetUserParticipatedSeasonsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Season.GetUserParticipatedSeasons(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'participated'
+      - 'season'
+      - 'seasons'
+      - 'user'
+
+  'GetUserSeason@seasonpass':
+    id: 'GetUserSeason@seasonpass'
+    name: 'GetUserSeason'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/GetUserSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.GetUserSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.GetUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'season'
+      - 'user'
+
+  'GrantUserExp@seasonpass':
+    id: 'GrantUserExp@seasonpass'
+    name: 'GrantUserExp'
+    description: |-
+      This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Body':
+        type: 'UserExpGrant'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/GrantUserExp.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.GrantUserExpOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Tier.GrantUserExp(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'GrantUserPass@seasonpass':
+    id: 'GrantUserPass@seasonpass'
+    name: 'GrantUserPass'
+    description: |-
+      This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Body':
+        type: 'UserPassGrant'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/GrantUserPass.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.GrantUserPassOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Pass.GrantUserPass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'grant'
+      - 'pass'
+      - 'user'
+
+  'GrantUserTier@seasonpass':
+    id: 'GrantUserTier@seasonpass'
+    name: 'GrantUserTier'
+    description: |-
+      This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Body':
+        type: 'UserTierGrant'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/GrantUserTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.GrantUserTierOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Tier.GrantUserTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'PublicBulkClaimUserRewards@seasonpass':
+    id: 'PublicBulkClaimUserRewards@seasonpass'
+    name: 'PublicBulkClaimUserRewards'
+    description: |-
+      This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ClaimableRewards'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/PublicBulkClaimUserRewards.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.PublicBulkClaimUserRewardsOp
+              .Build();
+
+          var response = sdk.Seasonpass.Reward.PublicBulkClaimUserRewards(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicClaimUserReward@seasonpass':
+    id: 'PublicClaimUserReward@seasonpass'
+    name: 'PublicClaimUserReward'
+    description: |-
+      This API is used to claim reward, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Body':
+        type: 'UserRewardClaim'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ClaimableRewards'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/PublicClaimUserReward.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.PublicClaimUserRewardOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Reward.PublicClaimUserReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'user'
+
+  'PublicGetCurrentSeason@seasonpass':
+    id: 'PublicGetCurrentSeason@seasonpass'
+    name: 'PublicGetCurrentSeason'
+    description: |-
+      This API is used to get current published season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : localized season data
+    parameters:
+      'Language':
+        type: 'string'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'LocalizedSeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/PublicGetCurrentSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.PublicGetCurrentSeasonOp
+              .SetLanguage(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Seasonpass.Season.PublicGetCurrentSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+
+  'PublicGetCurrentUserSeason@seasonpass':
+    id: 'PublicGetCurrentUserSeason@seasonpass'
+    name: 'PublicGetCurrentUserSeason'
+    description: |-
+      This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/PublicGetCurrentUserSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.PublicGetCurrentUserSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.PublicGetCurrentUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublicGetUserSeason@seasonpass':
+    id: 'PublicGetUserSeason@seasonpass'
+    name: 'PublicGetUserSeason'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/PublicGetUserSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.PublicGetUserSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.PublicGetUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublishSeason@seasonpass':
+    id: 'PublishSeason@seasonpass'
+    name: 'PublishSeason'
+    description: |-
+      This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+      Other detail info:
+
+        * Returns : published season
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/PublishSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.PublishSeasonOp
+              .Build();
+
+          var response = sdk.Seasonpass.Season.PublishSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'publish'
+      - 'season'
+
+  'QueryPasses@seasonpass':
+    id: 'QueryPasses@seasonpass'
+    name: 'QueryPasses'
+    description: |-
+      This API is used to query all passes for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'List<PassInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/QueryPasses.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.QueryPassesOp
+              .Build();
+
+          var response = sdk.Seasonpass.Pass.QueryPasses(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'pass'
+      - 'passes'
+      - 'query'
+
+  'QueryRewards@seasonpass':
+    id: 'QueryRewards@seasonpass'
+    name: 'QueryRewards'
+    description: |-
+      This API is used to query rewards for a season.
+
+      Other detail info:
+
+        * Returns : the list of rewards
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Q':
+        type: 'string'
+        required: false
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'List<RewardInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/QueryRewards.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.QueryRewardsOp
+              .SetQ(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Reward.QueryRewards(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'reward'
+      - 'rewards'
+
+  'QuerySeasons@seasonpass':
+    id: 'QuerySeasons@seasonpass'
+    name: 'QuerySeasons'
+    description: |-
+      This API is used to query seasons, seasons only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : the list of season basic info
+    parameters:
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: 'string'
+        required: true
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          offset
+      'Status':
+        type: 'List<string>'
+        required: false
+    return_type: 'ListSeasonInfoPagingSlicedResult'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/QuerySeasons.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.QuerySeasonsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetStatus(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Seasonpass.Season.QuerySeasons(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'season'
+      - 'seasons'
+
+  'QueryTiers@seasonpass':
+    id: 'QueryTiers@seasonpass'
+    name: 'QueryTiers'
+    description: |-
+      This API is used to query paginated tiers for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: 'string'
+        required: true
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          offset
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'TierPagingSlicedResult'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/QueryTiers.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.QueryTiersOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Tier.QueryTiers(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'tier'
+      - 'tiers'
+
+  'QueryUserExpGrantHistory@seasonpass':
+    id: 'QueryUserExpGrantHistory@seasonpass'
+    name: 'QueryUserExpGrantHistory'
+    description: |-
+      This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : paginated grant history
+    parameters:
+      'From':
+        type: 'string'
+        required: false
+        description: |-
+          section active range time start , using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          limit
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          offset
+      'SeasonId':
+        type: 'string'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'Source':
+        type: 'string'
+        required: false
+        description: |-
+          exp grant source
+      'Tags':
+        type: 'List<string>'
+        required: false
+        description: |-
+          exp grant tags
+      'To':
+        type: 'string'
+        required: false
+        description: |-
+          section active range time end, using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ExpGrantHistoryPagingSlicedResult'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/QueryUserExpGrantHistory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.QueryUserExpGrantHistoryOp
+              .SetFrom(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSeasonId(...)
+              .SetSource(...)
+              .SetTags(...)
+              .SetTo(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Season.QueryUserExpGrantHistory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'user'
+
+  'QueryUserExpGrantHistoryTag@seasonpass':
+    id: 'QueryUserExpGrantHistoryTag@seasonpass'
+    name: 'QueryUserExpGrantHistoryTag'
+    description: |-
+      This API is used to get user exp acquisition history's tag list.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : exp grant history tags list
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SeasonId':
+        type: 'string'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'ReasonTagsResult'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/QueryUserExpGrantHistoryTag.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.QueryUserExpGrantHistoryTagOp
+              .SetSeasonId(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Seasonpass.Season.QueryUserExpGrantHistoryTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'tag'
+      - 'user'
+
+  'ReorderTier@seasonpass':
+    id: 'ReorderTier@seasonpass'
+    name: 'ReorderTier'
+    description: |-
+      This API is used to reorder a tier. Only draft season pass can be updated.
+    parameters:
+      'Body':
+        type: 'TierReorder'
+        required: false
+      'Id':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'Tier'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/ReorderTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.ReorderTierOp
+              .SetBody(...)
+              .Build(
+                  id,
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Tier.ReorderTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reorder'
+      - 'tier'
+
+  'ResetUserSeason@seasonpass':
+    id: 'ResetUserSeason@seasonpass'
+    name: 'ResetUserSeason'
+    description: |-
+      [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/ResetUserSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.ResetUserSeasonOp
+              .Build();
+
+          sdk.Seasonpass.Season.ResetUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reset'
+      - 'season'
+      - 'user'
+
+  'RetireSeason@seasonpass':
+    id: 'RetireSeason@seasonpass'
+    name: 'RetireSeason'
+    description: |-
+      This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'Force':
+        type: 'bool'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/RetireSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.RetireSeasonOp
+              .SetForce(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Season.RetireSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'retire'
+      - 'season'
+
+  'UnpublishSeason@seasonpass':
+    id: 'UnpublishSeason@seasonpass'
+    name: 'UnpublishSeason'
+    description: |-
+      This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'Force':
+        type: 'bool'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/UnpublishSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.UnpublishSeasonOp
+              .SetForce(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Season.UnpublishSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'season'
+      - 'unpublish'
+
+  'UpdatePass@seasonpass':
+    id: 'UpdatePass@seasonpass'
+    name: 'UpdatePass'
+    description: |-
+      This API is used to update a pass. Only draft season pass can be updated.
+
+      Other detail info:
+
+        * Returns : updated pass
+    parameters:
+      'Body':
+        type: 'PassUpdate'
+        required: false
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Pass.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Pass/UpdatePass.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Pass.UpdatePassOp
+              .SetBody(...)
+              .Build(
+                  code,
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Pass.UpdatePass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'pass'
+      - 'update'
+
+  'UpdateReward@seasonpass':
+    id: 'UpdateReward@seasonpass'
+    name: 'UpdateReward'
+    description: |-
+      This API is used to update a reward. Only draft season reward can be updated.
+
+      Other detail info:
+
+        * Returns : updated reward
+    parameters:
+      'Body':
+        type: 'RewardUpdate'
+        required: false
+      'Code':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Reward.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Reward/UpdateReward.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Reward.UpdateRewardOp
+              .SetBody(...)
+              .Build(
+                  code,
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Reward.UpdateReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reward'
+      - 'update'
+
+  'UpdateSeason@seasonpass':
+    id: 'UpdateSeason@seasonpass'
+    name: 'UpdateSeason'
+    description: |-
+      This API is used to update a season. Only draft season can be updated.
+
+      Other detail info:
+
+        * Returns : updated season
+    parameters:
+      'Body':
+        type: 'SeasonUpdate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Season.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Season/UpdateSeason.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Season.UpdateSeasonOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Season.UpdateSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'season'
+      - 'update'
+
+  'UpdateTier@seasonpass':
+    id: 'UpdateTier@seasonpass'
+    name: 'UpdateTier'
+    description: |-
+      This API is used to update a tier. Only draft season pass can be updated.
+    parameters:
+      'Body':
+        type: 'TierInput'
+        required: false
+      'Id':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'SeasonId':
+        type: 'string'
+        required: true
+    return_type: 'Tier'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Model;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Operation;'
+      - 'using AccelByte.Sdk.Api.Seasonpass.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Wrapper/Tier.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Seasonpass/Operation/Tier/UpdateTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Seasonpass.Tier.UpdateTierOp
+              .SetBody(...)
+              .Build(
+                  id,
+                  namespace_,
+                  seasonId,
+              );
+
+          var response = sdk.Seasonpass.Tier.UpdateTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'tier'
+      - 'update'

@@ -1,0 +1,378 @@
+structs:
+  # region models
+
+  'ApimodelsConfigurationRequest@loginqueue':
+    id: 'ApimodelsConfigurationRequest@loginqueue'
+    name: 'ApimodelsConfigurationRequest'
+    fields:
+      'Enabled':
+        type: 'bool'
+        required: true
+      'MaxConcurrency':
+        type: 'int'
+        required: true
+      'MaxLoginRate':
+        type: 'int'
+        required: true
+      'MinActivationPeriodInSecond':
+        type: 'int'
+        required: true
+      'PlayerPollingTimeInSecond':
+        type: 'int'
+        required: true
+      'PlayerReconnectGracePeriodInSecond':
+        type: 'int'
+        required: true
+      'QueueReconnectGracePeriodInSecond':
+        type: 'int'
+        required: true
+      'SafetyMarginPercentage':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsConfigurationRequest.cs'
+
+  'ApimodelsConfigurationResponse@loginqueue':
+    id: 'ApimodelsConfigurationResponse@loginqueue'
+    name: 'ApimodelsConfigurationResponse'
+    fields:
+      'Enabled':
+        type: 'bool'
+        required: true
+      'MaxConcurrency':
+        type: 'int'
+        required: true
+      'MaxLoginRate':
+        type: 'int'
+        required: true
+      'MinActivationPeriodInSecond':
+        type: 'int'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'PlayerPollingTimeInSecond':
+        type: 'int'
+        required: true
+      'PlayerReconnectGracePeriodInSecond':
+        type: 'int'
+        required: true
+      'QueueReconnectGracePeriodInSecond':
+        type: 'int'
+        required: true
+      'SafetyMarginPercentage':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsConfigurationResponse.cs'
+
+  'ApimodelsLink@loginqueue':
+    id: 'ApimodelsLink@loginqueue'
+    name: 'ApimodelsLink'
+    fields:
+      'Action':
+        type: 'string'
+        required: true
+      'Href':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsLink.cs'
+
+  'ApimodelsQueueStatusResponse@loginqueue':
+    id: 'ApimodelsQueueStatusResponse@loginqueue'
+    name: 'ApimodelsQueueStatusResponse'
+    fields:
+      'IsActive':
+        type: 'bool'
+        required: true
+      'LoggedUserCount':
+        type: 'int'
+        required: true
+      'LoginRPS':
+        type: 'int'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'QueueCount':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsQueueStatusResponse.cs'
+
+  'ApimodelsRefreshTicketResponse@loginqueue':
+    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+    name: 'ApimodelsRefreshTicketResponse'
+    fields:
+      'Cancel':
+        type: 'ApimodelsLink'
+        required: true
+      'EstimatedWaitingTimeInSeconds':
+        type: 'int'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'PlayerPollingTimeInSeconds':
+        type: 'int'
+        required: true
+      'Position':
+        type: 'int'
+        required: true
+      'ReconnectExpiredAt':
+        type: 'long'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsRefreshTicketResponse.cs'
+
+  'ResponseError@loginqueue':
+    id: 'ResponseError@loginqueue'
+    name: 'ResponseError'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: true
+      'Message':
+        type: 'string'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Attributes':
+        type: 'Dictionary<string, string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ResponseError.cs'
+
+  # endregion models
+
+functions:
+
+  'AdminGetConfiguration@loginqueue':
+    id: 'AdminGetConfiguration@loginqueue'
+    name: 'AdminGetConfiguration'
+    description: |-
+      This API is used to get log queue configuration of a namespace.
+      Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsConfigurationResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Operation;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Wrapper/AdminV1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Operation/AdminV1/AdminGetConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Loginqueue.AdminV1.AdminGetConfigurationOp
+              .Build();
+
+          var response = sdk.Loginqueue.AdminV1.AdminGetConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'v1'
+
+  'AdminGetStatus@loginqueue':
+    id: 'AdminGetStatus@loginqueue'
+    name: 'AdminGetStatus'
+    description: |-
+      Get login queue status
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsQueueStatusResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Operation;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Wrapper/AdminV1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Operation/AdminV1/AdminGetStatus.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Loginqueue.AdminV1.AdminGetStatusOp
+              .Build();
+
+          var response = sdk.Loginqueue.AdminV1.AdminGetStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'status'
+      - 'v1'
+
+  'AdminUpdateConfiguration@loginqueue':
+    id: 'AdminUpdateConfiguration@loginqueue'
+    name: 'AdminUpdateConfiguration'
+    description: |-
+      This API is used to set/update log queue configuration of a namespace.
+      This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
+      When creating new configuration, empty field will have default value:
+      * enabled = false
+      * maxConcurrency = 1000000
+      * maxLoginRate = 500
+      * safetyMarginPercentage = 5
+      * minActivationPeriodInSecond = 600
+      * playerReconnectGracePeriodInSecond = 300
+      * queueReconnectGracePeriodInSecond = 60
+      * playerPollingTimeInSecond = 20
+
+      Calling this endpoint with namespace that has configuration will replace the old configuration.
+
+      Input validation:
+      * maxConcurrency must be > 0 and <= 10000000 (0 < x <= 10000000)
+      * maxLoginRate must be > 0 and <= 100000 (0 < x <= 100000)
+      * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
+      * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
+      * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
+    parameters:
+      'Body':
+        type: 'ApimodelsConfigurationRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsConfigurationResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Operation;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Wrapper/AdminV1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Operation/AdminV1/AdminUpdateConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Loginqueue.AdminV1.AdminUpdateConfigurationOp
+              .Build();
+
+          var response = sdk.Loginqueue.AdminV1.AdminUpdateConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'update'
+      - 'v1'
+
+  'CancelTicket@loginqueue':
+    id: 'CancelTicket@loginqueue'
+    name: 'CancelTicket'
+    description: |-
+      Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Operation;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Wrapper/TicketV1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Operation/TicketV1/CancelTicket.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Loginqueue.TicketV1.CancelTicketOp
+              .Build();
+
+          sdk.Loginqueue.TicketV1.CancelTicket(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'ticket'
+      - 'v1'
+
+  'RefreshTicket@loginqueue':
+    id: 'RefreshTicket@loginqueue'
+    name: 'RefreshTicket'
+    description: |-
+      Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsRefreshTicketResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Model;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Operation;'
+      - 'using AccelByte.Sdk.Api.Loginqueue.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Wrapper/TicketV1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Operation/TicketV1/RefreshTicket.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Loginqueue.TicketV1.RefreshTicketOp
+              .Build();
+
+          var response = sdk.Loginqueue.TicketV1.RefreshTicket(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'refresh'
+      - 'ticket'
+      - 'v1'

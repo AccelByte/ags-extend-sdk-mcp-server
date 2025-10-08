@@ -1,0 +1,3428 @@
+structs:
+  # region models
+
+  'ApimodelsAdminUpdateItemReq@inventory':
+    id: 'ApimodelsAdminUpdateItemReq@inventory'
+    name: 'ApimodelsAdminUpdateItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'Type':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsAdminUpdateItemReq.cs'
+
+  'ApimodelsBulkSaveItemError@inventory':
+    id: 'ApimodelsBulkSaveItemError@inventory'
+    name: 'ApimodelsBulkSaveItemError'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsBulkSaveItemError.cs'
+
+  'ApimodelsBulkSaveItemResp@inventory':
+    id: 'ApimodelsBulkSaveItemResp@inventory'
+    name: 'ApimodelsBulkSaveItemResp'
+    fields:
+      'Success':
+        type: 'bool'
+        required: true
+      'ErrorDetails':
+        type: 'ApimodelsBulkSaveItemError'
+        required: false
+      'Item':
+        type: 'ApimodelsItemResp'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsBulkSaveItemResp.cs'
+
+  'ApimodelsChainingOperationReq@inventory':
+    id: 'ApimodelsChainingOperationReq@inventory'
+    name: 'ApimodelsChainingOperationReq'
+    fields:
+      'Message':
+        type: 'string'
+        required: true
+      'Operations':
+        type: 'List<ApimodelsOperation>'
+        required: true
+      'RequestId':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsChainingOperationReq.cs'
+
+  'ApimodelsChainingOperationResp@inventory':
+    id: 'ApimodelsChainingOperationResp@inventory'
+    name: 'ApimodelsChainingOperationResp'
+    fields:
+      'Message':
+        type: 'string'
+        required: true
+      'ErrorDetails':
+        type: 'ApimodelsErrorResponse'
+        required: false
+      'Replayed':
+        type: 'bool'
+        required: false
+      'RequestId':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsChainingOperationResp.cs'
+
+  'ApimodelsConsumeItem@inventory':
+    id: 'ApimodelsConsumeItem@inventory'
+    name: 'ApimodelsConsumeItem'
+    fields:
+      'InventoryId':
+        type: 'string'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'DateRangeValidation':
+        type: 'bool'
+        required: false
+      'Options':
+        type: 'List<string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsConsumeItem.cs'
+
+  'ApimodelsConsumeItemReq@inventory':
+    id: 'ApimodelsConsumeItemReq@inventory'
+    name: 'ApimodelsConsumeItemReq'
+    fields:
+      'Qty':
+        type: 'int'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Options':
+        type: 'List<string>'
+        required: false
+        description: |-
+          options, it is only available when item type is OPTIONBOX and value should be item id.
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsConsumeItemReq.cs'
+
+  'ApimodelsCreateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsCreateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsCreateIntegrationConfigurationReq'
+    fields:
+      'ServiceName':
+        type: 'string'
+        required: true
+      'TargetInventoryCode':
+        type: 'string'
+        required: true
+      'MapItemType':
+        type: 'List<string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateIntegrationConfigurationReq.cs'
+
+  'ApimodelsCreateInventoryConfigurationReq@inventory':
+    id: 'ApimodelsCreateInventoryConfigurationReq@inventory'
+    name: 'ApimodelsCreateInventoryConfigurationReq'
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+      'InitialMaxSlots':
+        type: 'int'
+        required: true
+      'MaxInstancesPerUser':
+        type: 'int'
+        required: true
+      'MaxUpgradeSlots':
+        type: 'int'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Name':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateInventoryConfigurationReq.cs'
+
+  'ApimodelsCreateInventoryReq@inventory':
+    id: 'ApimodelsCreateInventoryReq@inventory'
+    name: 'ApimodelsCreateInventoryReq'
+    fields:
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateInventoryReq.cs'
+
+  'ApimodelsCreateItem@inventory':
+    id: 'ApimodelsCreateItem@inventory'
+    name: 'ApimodelsCreateItem'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SlotUsed':
+        type: 'int'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'ToSpecificInventory':
+        type: 'bool'
+        required: true
+      'Type':
+        type: 'string'
+        required: true
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+      'InventoryId':
+        type: 'string'
+        required: false
+      'Source':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateItem.cs'
+
+  'ApimodelsCreateItemTypeReq@inventory':
+    id: 'ApimodelsCreateItemTypeReq@inventory'
+    name: 'ApimodelsCreateItemTypeReq'
+    fields:
+      'Name':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateItemTypeReq.cs'
+
+  'ApimodelsCreateItemTypeResp@inventory':
+    id: 'ApimodelsCreateItemTypeResp@inventory'
+    name: 'ApimodelsCreateItemTypeResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateItemTypeResp.cs'
+
+  'ApimodelsCreateTagReq@inventory':
+    id: 'ApimodelsCreateTagReq@inventory'
+    name: 'ApimodelsCreateTagReq'
+    fields:
+      'Name':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateTagReq.cs'
+
+  'ApimodelsCreateTagResp@inventory':
+    id: 'ApimodelsCreateTagResp@inventory'
+    name: 'ApimodelsCreateTagResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsCreateTagResp.cs'
+
+  'ApimodelsDeleteInventoryReq@inventory':
+    id: 'ApimodelsDeleteInventoryReq@inventory'
+    name: 'ApimodelsDeleteInventoryReq'
+    fields:
+      'Message':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsDeleteInventoryReq.cs'
+
+  'ApimodelsErrorResponse@inventory':
+    id: 'ApimodelsErrorResponse@inventory'
+    name: 'ApimodelsErrorResponse'
+    fields:
+      'ErrorCode':
+        type: 'int'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsErrorResponse.cs'
+
+  'ApimodelsIntegrationConfigurationResp@inventory':
+    id: 'ApimodelsIntegrationConfigurationResp@inventory'
+    name: 'ApimodelsIntegrationConfigurationResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'ItemTypes':
+        type: 'List<string>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'ServiceName':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'TargetInventoryCode':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsIntegrationConfigurationResp.cs'
+
+  'ApimodelsInventoryConfig@inventory':
+    id: 'ApimodelsInventoryConfig@inventory'
+    name: 'ApimodelsInventoryConfig'
+    fields:
+      'SlotUsed':
+        type: 'int'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsInventoryConfig.cs'
+
+  'ApimodelsInventoryConfigurationReq@inventory':
+    id: 'ApimodelsInventoryConfigurationReq@inventory'
+    name: 'ApimodelsInventoryConfigurationReq'
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+      'InitialMaxSlots':
+        type: 'int'
+        required: true
+      'MaxInstancesPerUser':
+        type: 'int'
+        required: true
+      'MaxUpgradeSlots':
+        type: 'int'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Name':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsInventoryConfigurationReq.cs'
+
+  'ApimodelsInventoryConfigurationResp@inventory':
+    id: 'ApimodelsInventoryConfigurationResp@inventory'
+    name: 'ApimodelsInventoryConfigurationResp'
+    fields:
+      'Code':
+        type: 'string'
+        required: true
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'Description':
+        type: 'string'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'InitialMaxSlots':
+        type: 'int'
+        required: true
+      'MaxInstancesPerUser':
+        type: 'int'
+        required: true
+      'MaxUpgradeSlots':
+        type: 'int'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsInventoryConfigurationResp.cs'
+
+  'ApimodelsInventoryResp@inventory':
+    id: 'ApimodelsInventoryResp@inventory'
+    name: 'ApimodelsInventoryResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: true
+      'InventoryConfigurationId':
+        type: 'string'
+        required: true
+      'MaxSlots':
+        type: 'int'
+        required: true
+      'MaxUpgradeSlots':
+        type: 'int'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+      'UsedCountSlots':
+        type: 'int'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsInventoryResp.cs'
+
+  'ApimodelsItemResp@inventory':
+    id: 'ApimodelsItemResp@inventory'
+    name: 'ApimodelsItemResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+      'ItemInfo':
+        type: 'Dictionary<string, object>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SlotUsed':
+        type: 'int'
+        required: true
+      'Source':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'Type':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'DateTime'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+      'PlatformAvailable':
+        type: 'bool'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsItemResp.cs'
+
+  'ApimodelsListIntegrationConfigurationsResp@inventory':
+    id: 'ApimodelsListIntegrationConfigurationsResp@inventory'
+    name: 'ApimodelsListIntegrationConfigurationsResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsIntegrationConfigurationResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListIntegrationConfigurationsResp.cs'
+
+  'ApimodelsListInventoryConfigurationsResp@inventory':
+    id: 'ApimodelsListInventoryConfigurationsResp@inventory'
+    name: 'ApimodelsListInventoryConfigurationsResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsInventoryConfigurationResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListInventoryConfigurationsResp.cs'
+
+  'ApimodelsListInventoryResp@inventory':
+    id: 'ApimodelsListInventoryResp@inventory'
+    name: 'ApimodelsListInventoryResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsInventoryResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListInventoryResp.cs'
+
+  'ApimodelsListItemResp@inventory':
+    id: 'ApimodelsListItemResp@inventory'
+    name: 'ApimodelsListItemResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsItemResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListItemResp.cs'
+
+  'ApimodelsListItemTypesResp@inventory':
+    id: 'ApimodelsListItemTypesResp@inventory'
+    name: 'ApimodelsListItemTypesResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsCreateItemTypeResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListItemTypesResp.cs'
+
+  'ApimodelsListTagsResp@inventory':
+    id: 'ApimodelsListTagsResp@inventory'
+    name: 'ApimodelsListTagsResp'
+    fields:
+      'Data':
+        type: 'List<ApimodelsCreateTagResp>'
+        required: true
+      'Paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsListTagsResp.cs'
+
+  'ApimodelsMoveItemsReq@inventory':
+    id: 'ApimodelsMoveItemsReq@inventory'
+    name: 'ApimodelsMoveItemsReq'
+    fields:
+      'Items':
+        type: 'List<ApimodelsTradeItem>'
+        required: true
+      'SrcInventoryId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsMoveItemsReq.cs'
+
+  'ApimodelsMoveItemsResp@inventory':
+    id: 'ApimodelsMoveItemsResp@inventory'
+    name: 'ApimodelsMoveItemsResp'
+    fields:
+      'CreatedAt':
+        type: 'DateTime'
+        required: true
+      'DstInventoryId':
+        type: 'string'
+        required: true
+      'Items':
+        type: 'List<ApimodelsTradeItemResp>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'SrcInventoryId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsMoveItemsResp.cs'
+
+  'ApimodelsOperation@inventory':
+    id: 'ApimodelsOperation@inventory'
+    name: 'ApimodelsOperation'
+    fields:
+      'ConsumeItems':
+        type: 'List<ApimodelsConsumeItem>'
+        required: true
+      'CreateItems':
+        type: 'List<ApimodelsCreateItem>'
+        required: true
+      'RemoveItems':
+        type: 'List<ApimodelsRemoveItem>'
+        required: true
+      'TargetUserId':
+        type: 'string'
+        required: true
+      'UpdateItems':
+        type: 'List<ApimodelsUpdateItem>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsOperation.cs'
+
+  'ApimodelsPaging@inventory':
+    id: 'ApimodelsPaging@inventory'
+    name: 'ApimodelsPaging'
+    fields:
+      'First':
+        type: 'string'
+        required: true
+      'Last':
+        type: 'string'
+        required: true
+      'Next':
+        type: 'string'
+        required: true
+      'Previous':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsPaging.cs'
+
+  'ApimodelsPurchaseValidationItemReq@inventory':
+    id: 'ApimodelsPurchaseValidationItemReq@inventory'
+    name: 'ApimodelsPurchaseValidationItemReq'
+    fields:
+      'BundledQty':
+        type: 'int'
+        required: true
+      'EntitlementType':
+        type: 'string'
+        required: true
+      'InventoryConfig':
+        type: 'ApimodelsInventoryConfig'
+        required: true
+      'ItemId':
+        type: 'string'
+        required: true
+      'ItemType':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+      'Stackable':
+        type: 'bool'
+        required: true
+      'UseCount':
+        type: 'int'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsPurchaseValidationItemReq.cs'
+
+  'ApimodelsPurchaseValidationReq@inventory':
+    id: 'ApimodelsPurchaseValidationReq@inventory'
+    name: 'ApimodelsPurchaseValidationReq'
+    fields:
+      'ItemId':
+        type: 'string'
+        required: true
+      'ItemType':
+        type: 'string'
+        required: true
+      'Quantity':
+        type: 'int'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+      'EntitlementType':
+        type: 'string'
+        required: false
+      'InventoryConfig':
+        type: 'ApimodelsInventoryConfig'
+        required: false
+      'Items':
+        type: 'List<ApimodelsPurchaseValidationItemReq>'
+        required: false
+      'Stackable':
+        type: 'bool'
+        required: false
+      'UseCount':
+        type: 'int'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsPurchaseValidationReq.cs'
+
+  'ApimodelsRemoveInventoryItemReq@inventory':
+    id: 'ApimodelsRemoveInventoryItemReq@inventory'
+    name: 'ApimodelsRemoveInventoryItemReq'
+    fields:
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsRemoveInventoryItemReq.cs'
+
+  'ApimodelsRemoveItem@inventory':
+    id: 'ApimodelsRemoveItem@inventory'
+    name: 'ApimodelsRemoveItem'
+    fields:
+      'InventoryId':
+        type: 'string'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsRemoveItem.cs'
+
+  'ApimodelsSaveItemReq@inventory':
+    id: 'ApimodelsSaveItemReq@inventory'
+    name: 'ApimodelsSaveItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SlotUsed':
+        type: 'int'
+        required: true
+      'Source':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'Type':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsSaveItemReq.cs'
+
+  'ApimodelsSaveItemToInventoryReq@inventory':
+    id: 'ApimodelsSaveItemToInventoryReq@inventory'
+    name: 'ApimodelsSaveItemToInventoryReq'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SlotUsed':
+        type: 'int'
+        required: true
+      'Source':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'Type':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsSaveItemToInventoryReq.cs'
+
+  'ApimodelsTradeItem@inventory':
+    id: 'ApimodelsTradeItem@inventory'
+    name: 'ApimodelsTradeItem'
+    fields:
+      'Qty':
+        type: 'int'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsTradeItem.cs'
+
+  'ApimodelsTradeItemResp@inventory':
+    id: 'ApimodelsTradeItemResp@inventory'
+    name: 'ApimodelsTradeItemResp'
+    fields:
+      'Id':
+        type: 'string'
+        required: true
+      'Qty':
+        type: 'int'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsTradeItemResp.cs'
+
+  'ApimodelsUpdateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateIntegrationConfigurationReq'
+    fields:
+      'ServiceName':
+        type: 'string'
+        required: true
+      'TargetInventoryCode':
+        type: 'string'
+        required: true
+      'MapItemType':
+        type: 'List<string>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateIntegrationConfigurationReq.cs'
+
+  'ApimodelsUpdateInventoryReq@inventory':
+    id: 'ApimodelsUpdateInventoryReq@inventory'
+    name: 'ApimodelsUpdateInventoryReq'
+    fields:
+      'IncMaxSlots':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateInventoryReq.cs'
+
+  'ApimodelsUpdateItem@inventory':
+    id: 'ApimodelsUpdateItem@inventory'
+    name: 'ApimodelsUpdateItem'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+      'ServerCustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+      'Type':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateItem.cs'
+
+  'ApimodelsUpdateItemReq@inventory':
+    id: 'ApimodelsUpdateItemReq@inventory'
+    name: 'ApimodelsUpdateItemReq'
+    fields:
+      'CustomAttributes':
+        type: 'Dictionary<string, object>'
+        required: true
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Tags':
+        type: 'List<string>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateItemReq.cs'
+
+  'ApimodelsUpdateItemResp@inventory':
+    id: 'ApimodelsUpdateItemResp@inventory'
+    name: 'ApimodelsUpdateItemResp'
+    fields:
+      'SlotId':
+        type: 'string'
+        required: true
+      'SourceItemId':
+        type: 'string'
+        required: true
+      'Success':
+        type: 'bool'
+        required: true
+      'ErrorDetails':
+        type: 'ApimodelsErrorResponse'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateItemResp.cs'
+
+  'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateStatusIntegrationConfigurationReq'
+    fields:
+      'Status':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Model/ApimodelsUpdateStatusIntegrationConfigurationReq.cs'
+
+  # endregion models
+
+functions:
+
+  'AdminBulkRemoveItems@inventory':
+    id: 'AdminBulkRemoveItems@inventory'
+    name: 'AdminBulkRemoveItems'
+    description: |-
+      Bulk remove user's own items'.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
+    parameters:
+      'Body':
+        type: 'List<ApimodelsRemoveInventoryItemReq>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminBulkRemoveItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminBulkRemoveItemsOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminBulkRemoveItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'remove'
+
+  'AdminBulkSaveItem@inventory':
+    id: 'AdminBulkSaveItem@inventory'
+    name: 'AdminBulkSaveItem'
+    description: |-
+      **This endpoint is used used for bulk saving purchased items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created for the player.
+      - If the player already has one, it will be added to the existing inventory.
+      >- If the same item exists within the inventory, the quantity (qty) will be increased.
+      >- If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      >- If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+
+      - For E-commerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'Body':
+        type: 'List<ApimodelsSaveItemReq>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsBulkSaveItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminBulkSaveItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminBulkSaveItemOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminBulkSaveItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminBulkSaveItemToInventory@inventory':
+    id: 'AdminBulkSaveItemToInventory@inventory'
+    name: 'AdminBulkSaveItemToInventory'
+    description: |-
+      **This endpoint is used for bulk saving purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM[CREATE]**
+    parameters:
+      'Body':
+        type: 'List<ApimodelsSaveItemToInventoryReq>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          inventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsBulkSaveItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminBulkSaveItemToInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminBulkSaveItemToInventoryOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminBulkSaveItemToInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminBulkUpdateMyItems@inventory':
+    id: 'AdminBulkUpdateMyItems@inventory'
+    name: 'AdminBulkUpdateMyItems'
+    description: |-
+      Bulk Updating user's own items.
+      Tags will be auto-created.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'Body':
+        type: 'List<ApimodelsAdminUpdateItemReq>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminBulkUpdateMyItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminBulkUpdateMyItemsOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminBulkUpdateMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'update'
+
+  'AdminConsumeUserItem@inventory':
+    id: 'AdminConsumeUserItem@inventory'
+    name: 'AdminConsumeUserItem'
+    description: |-
+      Consume user's own item
+      Client should pass item ID in options if item type is OPTIONBOX
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsConsumeItemReq'
+        required: true
+      'DateRangeValidation':
+        type: 'string'
+        required: false
+        description: |-
+          default is false
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminConsumeUserItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminConsumeUserItemOp
+              .SetDateRangeValidation(...)
+              .Build(
+                  body,
+                  inventoryId,
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Inventory.AdminItems.AdminConsumeUserItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'user'
+
+  'AdminCreateChainingOperations@inventory':
+    id: 'AdminCreateChainingOperations@inventory'
+    name: 'AdminCreateChainingOperations'
+    description: |-
+      Create chaining Operations.
+      This process will run sequentially
+      1. remove item process
+      2. consume item process
+      3. update item process
+      4. create item process
+      if toSpecificInventory set as true, then inventoryId field will be mandatory, vice versa
+
+      The behavior of each process is same with current admin level endpoint
+
+      requestId: Request id(Optional), client should provide a unique request id to perform at most once execution, When a request id is resubmitted,
+      it will return original successful response
+      replayed : replayed, if true,the response is original successful response. This will not be included in response if client have not pass request id.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsChainingOperationReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsChainingOperationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminChainingOperations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminChainingOperations/AdminCreateChainingOperations.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminChainingOperations.AdminCreateChainingOperationsOp
+              .Build();
+
+          var response = sdk.Inventory.AdminChainingOperations.AdminCreateChainingOperations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'chaining'
+      - 'create'
+      - 'operations'
+
+  'AdminCreateIntegrationConfiguration@inventory':
+    id: 'AdminCreateIntegrationConfiguration@inventory'
+    name: 'AdminCreateIntegrationConfiguration'
+    description: |-
+      Creating integration configuration.
+      There cannot be one duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsCreateIntegrationConfigurationReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminIntegrationConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminIntegrationConfigurations/AdminCreateIntegrationConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminIntegrationConfigurations.AdminCreateIntegrationConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminIntegrationConfigurations.AdminCreateIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'integration'
+
+  'AdminCreateInventory@inventory':
+    id: 'AdminCreateInventory@inventory'
+    name: 'AdminCreateInventory'
+    description: |-
+      Creating an inventory.
+      The inventory configuration must exists otherwise it will fail.
+      The max slots and max upgrade slots of an inventory will be initialized according to the inventory configuration it used,
+      but it can be changed later when using AdminUpdateInventory endpoint.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsCreateInventoryReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminCreateInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminCreateInventoryOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventories.AdminCreateInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminCreateInventoryConfiguration@inventory':
+    id: 'AdminCreateInventoryConfiguration@inventory'
+    name: 'AdminCreateInventoryConfiguration'
+    description: |-
+      Creating inventory configuration.
+      There cannot be one inventory configuration duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsCreateInventoryConfigurationReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventoryConfigurations/AdminCreateInventoryConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventoryConfigurations.AdminCreateInventoryConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventoryConfigurations.AdminCreateInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'inventory'
+
+  'AdminCreateItemType@inventory':
+    id: 'AdminCreateItemType@inventory'
+    name: 'AdminCreateItemType'
+    description: |-
+      This endpoint will create a new itemtype.
+      The itemtype name must be unique per namespace.
+      It is safe to call this endpoint even if the itemtype already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsCreateItemTypeReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsCreateItemTypeResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItemTypes.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItemTypes/AdminCreateItemType.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItemTypes.AdminCreateItemTypeOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItemTypes.AdminCreateItemType(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminCreateTag@inventory':
+    id: 'AdminCreateTag@inventory'
+    name: 'AdminCreateTag'
+    description: |-
+      This endpoint will create a new tag.
+      The tag name must be unique per namespace.
+      It is safe to call this endpoint even if the tag already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsCreateTagReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsCreateTagResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminTags.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminTags/AdminCreateTag.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminTags.AdminCreateTagOp
+              .Build();
+
+          var response = sdk.Inventory.AdminTags.AdminCreateTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'tag'
+      - 'tags'
+
+  'AdminDeleteInventoryConfiguration@inventory':
+    id: 'AdminDeleteInventoryConfiguration@inventory'
+    name: 'AdminDeleteInventoryConfiguration'
+    description: |-
+      Deleting an inventory configuration.
+      If an inventory already reference this type (i.e. STATUS is "TIED"), then the type cannot be deleted anymore.
+
+      ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
+    parameters:
+      'InventoryConfigurationId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventoryConfigurations/AdminDeleteInventoryConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventoryConfigurations.AdminDeleteInventoryConfigurationOp
+              .Build();
+
+          sdk.Inventory.AdminInventoryConfigurations.AdminDeleteInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'delete'
+      - 'inventory'
+
+  'AdminDeleteItemType@inventory':
+    id: 'AdminDeleteItemType@inventory'
+    name: 'AdminDeleteItemType'
+    description: |-
+      This endpoint will delete a item type by itemtypeName in a specified namespace.
+      If the itemtypeName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [DELETE]
+    parameters:
+      'ItemTypeName':
+        type: 'string'
+        required: true
+        description: |-
+          ItemTypeName
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItemTypes.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItemTypes/AdminDeleteItemType.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItemTypes.AdminDeleteItemTypeOp
+              .Build();
+
+          sdk.Inventory.AdminItemTypes.AdminDeleteItemType(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminDeleteTag@inventory':
+    id: 'AdminDeleteTag@inventory'
+    name: 'AdminDeleteTag'
+    description: |-
+      This endpoint will delete a tag by tagName in a specified namespace.
+      If the tagName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'TagName':
+        type: 'string'
+        required: true
+        description: |-
+          TagName
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminTags.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminTags/AdminDeleteTag.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminTags.AdminDeleteTagOp
+              .Build();
+
+          sdk.Inventory.AdminTags.AdminDeleteTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'tag'
+      - 'tags'
+
+  'AdminGetInventory@inventory':
+    id: 'AdminGetInventory@inventory'
+    name: 'AdminGetInventory'
+    description: |-
+      Getting an inventory info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    parameters:
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminGetInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminGetInventoryOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventories.AdminGetInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminGetInventoryConfiguration@inventory':
+    id: 'AdminGetInventoryConfiguration@inventory'
+    name: 'AdminGetInventoryConfiguration'
+    description: |-
+      Getting an inventory configuration info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    parameters:
+      'InventoryConfigurationId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventoryConfigurations/AdminGetInventoryConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventoryConfigurations.AdminGetInventoryConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventoryConfigurations.AdminGetInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'get'
+      - 'inventory'
+
+  'AdminGetInventoryItem@inventory':
+    id: 'AdminGetInventoryItem@inventory'
+    name: 'AdminGetInventoryItem'
+    description: |-
+      Getting an item info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    parameters:
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SlotId':
+        type: 'string'
+        required: true
+        description: |-
+          slotID
+      'SourceItemId':
+        type: 'string'
+        required: true
+        description: |-
+          sourceItemID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminGetInventoryItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminGetInventoryItemOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminGetInventoryItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventory'
+      - 'item'
+      - 'items'
+
+  'AdminListIntegrationConfigurations@inventory':
+    id: 'AdminListIntegrationConfigurations@inventory'
+    name: 'AdminListIntegrationConfigurations'
+    description: |-
+      Listing all integration configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListIntegrationConfigurationsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminIntegrationConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminIntegrationConfigurations/AdminListIntegrationConfigurations.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminIntegrationConfigurations.AdminListIntegrationConfigurationsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminIntegrationConfigurations.AdminListIntegrationConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'integration'
+      - 'list'
+
+  'AdminListInventories@inventory':
+    id: 'AdminListInventories@inventory'
+    name: 'AdminListInventories'
+    description: |-
+      Listing all inventories in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    parameters:
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'UserId':
+        type: 'string'
+        required: false
+        description: |-
+          UserID
+    return_type: 'ApimodelsListInventoryResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminListInventories.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminListInventoriesOp
+              .SetInventoryConfigurationCode(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .SetUserId(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminInventories.AdminListInventories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'list'
+
+  'AdminListInventoryConfigurations@inventory':
+    id: 'AdminListInventoryConfigurations@inventory'
+    name: 'AdminListInventoryConfigurations'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    parameters:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryConfigurationsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventoryConfigurations/AdminListInventoryConfigurations.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventoryConfigurations.AdminListInventoryConfigurationsOp
+              .SetCode(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminInventoryConfigurations.AdminListInventoryConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+
+  'AdminListItems@inventory':
+    id: 'AdminListItems@inventory'
+    name: 'AdminListItems'
+    description: |-
+      Listing all items in an inventory.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    parameters:
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'SourceItemId':
+        type: 'string'
+        required: false
+        description: |-
+          SourceItemID
+      'Tags':
+        type: 'string'
+        required: false
+        description: |-
+          Tags
+    return_type: 'ApimodelsListItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminListItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminListItemsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .SetSourceItemId(...)
+              .SetTags(...)
+              .Build(
+                  inventoryId,
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminItems.AdminListItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'items'
+      - 'list'
+
+  'AdminListItemTypes@inventory':
+    id: 'AdminListItemTypes@inventory'
+    name: 'AdminListItemTypes'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [READ]
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListItemTypesResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItemTypes.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItemTypes/AdminListItemTypes.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItemTypes.AdminListItemTypesOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminItemTypes.AdminListItemTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'list'
+      - 'types'
+
+  'AdminListTags@inventory':
+    id: 'AdminListTags@inventory'
+    name: 'AdminListTags'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'Owner':
+        type: 'string'
+        required: false
+        description: |-
+          supported parameter SERVER or CLIENT
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListTagsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminTags.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminTags/AdminListTags.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminTags.AdminListTagsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetOwner(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.AdminTags.AdminListTags(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tags'
+
+  'AdminPurchasable@inventory':
+    id: 'AdminPurchasable@inventory'
+    name: 'AdminPurchasable'
+    description: |-
+      Validate purchase ecommerce item.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsPurchaseValidationReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminPurchasable.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminPurchasableOp
+              .Build();
+
+          sdk.Inventory.AdminInventories.AdminPurchasable(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'purchasable'
+
+  'AdminSaveItem@inventory':
+    id: 'AdminSaveItem@inventory'
+    name: 'AdminSaveItem'
+    description: |-
+      **This endpoint is used to save items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created.
+      - If the user already has one, it will be added to the existing inventory.
+      - If the same item exists within the inventory, the quantity (qty) will be increased.
+      - If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      - If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+      - For Ecommerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      You must have this permission to access this endpoint:
+      **Permission:ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'Body':
+        type: 'ApimodelsSaveItemReq'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminSaveItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminSaveItemOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminSaveItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminSaveItemToInventory@inventory':
+    id: 'AdminSaveItemToInventory@inventory'
+    name: 'AdminSaveItemToInventory'
+    description: |-
+      **This endpoint is used to save purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      You must have this permission to access this endpoint:
+
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'Body':
+        type: 'ApimodelsSaveItemToInventoryReq'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          inventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminSaveItemToInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminSaveItemToInventoryOp
+              .Build();
+
+          var response = sdk.Inventory.AdminItems.AdminSaveItemToInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminSyncUserEntitlements@inventory':
+    id: 'AdminSyncUserEntitlements@inventory'
+    name: 'AdminSyncUserEntitlements'
+    description: |-
+      Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+      will skip the item if already exist at user inventory.
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminItems/AdminSyncUserEntitlements.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminItems.AdminSyncUserEntitlementsOp
+              .Build();
+
+          sdk.Inventory.AdminItems.AdminSyncUserEntitlements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'entitlements'
+      - 'items'
+      - 'sync'
+      - 'user'
+
+  'AdminUpdateIntegrationConfiguration@inventory':
+    id: 'AdminUpdateIntegrationConfiguration@inventory'
+    name: 'AdminUpdateIntegrationConfiguration'
+    description: |-
+      to update integration configuration
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsUpdateIntegrationConfigurationReq'
+        required: true
+      'IntegrationConfigurationId':
+        type: 'string'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminIntegrationConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminIntegrationConfigurations/AdminUpdateIntegrationConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminIntegrationConfigurations.AdminUpdateIntegrationConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminIntegrationConfigurations.AdminUpdateIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'update'
+
+  'AdminUpdateInventory@inventory':
+    id: 'AdminUpdateInventory@inventory'
+    name: 'AdminUpdateInventory'
+    description: |-
+      Updating an inventory.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsUpdateInventoryReq'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminUpdateInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminUpdateInventoryOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventories.AdminUpdateInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateInventoryConfiguration@inventory':
+    id: 'AdminUpdateInventoryConfiguration@inventory'
+    name: 'AdminUpdateInventoryConfiguration'
+    description: |-
+      Updating inventory configuration.
+      There cannot be duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsInventoryConfigurationReq'
+        required: true
+      'InventoryConfigurationId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventoryConfigurations/AdminUpdateInventoryConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventoryConfigurations.AdminUpdateInventoryConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventoryConfigurations.AdminUpdateInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateStatusIntegrationConfiguration@inventory':
+    id: 'AdminUpdateStatusIntegrationConfiguration@inventory'
+    name: 'AdminUpdateStatusIntegrationConfiguration'
+    description: |-
+      to update status integration configuration to be Active / Not Active.
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsUpdateStatusIntegrationConfigurationReq'
+        required: true
+      'IntegrationConfigurationId':
+        type: 'string'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminIntegrationConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminIntegrationConfigurations/AdminUpdateStatusIntegrationConfiguration.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminIntegrationConfigurations.AdminUpdateStatusIntegrationConfigurationOp
+              .Build();
+
+          var response = sdk.Inventory.AdminIntegrationConfigurations.AdminUpdateStatusIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'status'
+      - 'update'
+
+  'AdminUpdateUserInventoriesByInventoryCode@inventory':
+    id: 'AdminUpdateUserInventoriesByInventoryCode@inventory'
+    name: 'AdminUpdateUserInventoriesByInventoryCode'
+    description: |-
+      Updating user inventories.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'Body':
+        type: 'ApimodelsUpdateInventoryReq'
+        required: true
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryConfigurationCode
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsInventoryResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/AdminUpdateUserInventoriesByInventoryCode.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.AdminUpdateUserInventoriesByInventoryCodeOp
+              .Build();
+
+          var response = sdk.Inventory.AdminInventories.AdminUpdateUserInventoriesByInventoryCode(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'code'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+      - 'user'
+
+  'DeleteInventory@inventory':
+    id: 'DeleteInventory@inventory'
+    name: 'DeleteInventory'
+    description: |-
+      Deleting an inventory.
+      If an inventory still has items, it cannot be deleted.
+
+      ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [DELETE]
+    parameters:
+      'Body':
+        type: 'ApimodelsDeleteInventoryReq'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/AdminInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/AdminInventories/DeleteInventory.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.AdminInventories.DeleteInventoryOp
+              .Build();
+
+          sdk.Inventory.AdminInventories.DeleteInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'inventories'
+      - 'inventory'
+
+  'PublicBulkRemoveMyItems@inventory':
+    id: 'PublicBulkRemoveMyItems@inventory'
+    name: 'PublicBulkRemoveMyItems'
+    description: |-
+      Bulk remove user's own items.
+    parameters:
+      'Body':
+        type: 'List<ApimodelsRemoveInventoryItemReq>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicBulkRemoveMyItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicBulkRemoveMyItemsOp
+              .Build();
+
+          var response = sdk.Inventory.PublicItems.PublicBulkRemoveMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'remove'
+
+  'PublicBulkUpdateMyItems@inventory':
+    id: 'PublicBulkUpdateMyItems@inventory'
+    name: 'PublicBulkUpdateMyItems'
+    description: |-
+      Bulk Updating user's own items.
+    parameters:
+      'Body':
+        type: 'List<ApimodelsUpdateItemReq>'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicBulkUpdateMyItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicBulkUpdateMyItemsOp
+              .Build();
+
+          var response = sdk.Inventory.PublicItems.PublicBulkUpdateMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'update'
+
+  'PublicConsumeMyItem@inventory':
+    id: 'PublicConsumeMyItem@inventory'
+    name: 'PublicConsumeMyItem'
+    description: |-
+      Consume user's own item.
+      Client should pass item ID in options if item type is OPTIONBOX
+    parameters:
+      'Body':
+        type: 'ApimodelsConsumeItemReq'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicConsumeMyItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicConsumeMyItemOp
+              .Build();
+
+          var response = sdk.Inventory.PublicItems.PublicConsumeMyItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'my'
+      - 'public'
+
+  'PublicGetItem@inventory':
+    id: 'PublicGetItem@inventory'
+    name: 'PublicGetItem'
+    description: |-
+      Getting an user's owned item info.
+    parameters:
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SlotId':
+        type: 'string'
+        required: true
+        description: |-
+          slotID
+      'SourceItemId':
+        type: 'string'
+        required: true
+        description: |-
+          sourceItemID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicGetItem.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicGetItemOp
+              .Build();
+
+          var response = sdk.Inventory.PublicItems.PublicGetItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'item'
+      - 'items'
+      - 'public'
+
+  'PublicListInventories@inventory':
+    id: 'PublicListInventories@inventory'
+    name: 'PublicListInventories'
+    description: |-
+      Listing all my inventories in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'InventoryConfigurationCode':
+        type: 'string'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicInventories.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicInventories/PublicListInventories.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicInventories.PublicListInventoriesOp
+              .SetInventoryConfigurationCode(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.PublicInventories.PublicListInventories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'inventories'
+      - 'list'
+      - 'public'
+
+  'PublicListInventoryConfigurations@inventory':
+    id: 'PublicListInventoryConfigurations@inventory'
+    name: 'PublicListInventoryConfigurations'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryConfigurationsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicInventoryConfigurations.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicInventoryConfigurations/PublicListInventoryConfigurations.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicInventoryConfigurations.PublicListInventoryConfigurationsOp
+              .SetCode(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.PublicInventoryConfigurations.PublicListInventoryConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+      - 'public'
+
+  'PublicListItems@inventory':
+    id: 'PublicListItems@inventory'
+    name: 'PublicListItems'
+    description: |-
+      Listing all user's owned items in an inventory.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'SourceItemId':
+        type: 'string'
+        required: false
+        description: |-
+          SourceItemID
+      'Tags':
+        type: 'string'
+        required: false
+        description: |-
+          Tags
+    return_type: 'ApimodelsListItemResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicListItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicListItemsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .SetSourceItemId(...)
+              .SetTags(...)
+              .Build(
+                  inventoryId,
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.PublicItems.PublicListItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'items'
+      - 'list'
+      - 'public'
+
+  'PublicListItemTypes@inventory':
+    id: 'PublicListItemTypes@inventory'
+    name: 'PublicListItemTypes'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListItemTypesResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItemTypes.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItemTypes/PublicListItemTypes.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItemTypes.PublicListItemTypesOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.PublicItemTypes.PublicListItemTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'item'
+      - 'list'
+      - 'public'
+      - 'types'
+
+  'PublicListTags@inventory':
+    id: 'PublicListTags@inventory'
+    name: 'PublicListTags'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          default 25
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'Offset':
+        type: 'long'
+        required: false
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListTagsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicTags.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicTags/PublicListTags.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicTags.PublicListTagsOp
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Inventory.PublicTags.PublicListTags(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'list'
+      - 'public'
+      - 'tags'
+
+  'PublicMoveMyItems@inventory':
+    id: 'PublicMoveMyItems@inventory'
+    name: 'PublicMoveMyItems'
+    description: |-
+      Move items between inventories that is owned by the same user.
+
+      For Ecommerce items, the *qty* is *useCount*. For example, moving 2 of an item's *qty* will move 2 of the entitlement's *useCount*.
+    parameters:
+      'Body':
+        type: 'ApimodelsMoveItemsReq'
+        required: true
+      'InventoryId':
+        type: 'string'
+        required: true
+        description: |-
+          InventoryID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsMoveItemsResp'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Inventory.Model;'
+      - 'using AccelByte.Sdk.Api.Inventory.Operation;'
+      - 'using AccelByte.Sdk.Api.Inventory.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Wrapper/PublicItems.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Inventory/Operation/PublicItems/PublicMoveMyItems.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Inventory.PublicItems.PublicMoveMyItemsOp
+              .Build();
+
+          var response = sdk.Inventory.PublicItems.PublicMoveMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'items'
+      - 'move'
+      - 'my'
+      - 'public'
