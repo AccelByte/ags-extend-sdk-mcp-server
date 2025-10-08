@@ -27,7 +27,7 @@ ENV NODE_ENV=production
 
 # Copy entrypoint script for proper signal handling and environment variable processing
 COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+RUN sed -i "s/\r$//" /app/entrypoint.sh && chmod +x /app/entrypoint.sh
 
 # Use the entrypoint script to ensure proper signal handling
 ENTRYPOINT ["/app/entrypoint.sh"]
