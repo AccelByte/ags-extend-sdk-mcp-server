@@ -9965,6 +9965,9 @@ structs:
     id: 'AccountCreateTestUsersRequestV4@iam'
     name: 'AccountCreateTestUsersRequestV4'
     fields:
+      'AcceptedPolicies':
+        type: '[]*LegalAcceptedPoliciesRequest'
+        required: false
       'Count':
         type: 'int32'
         required: true
@@ -11921,6 +11924,8 @@ structs:
       'Namespace':
         type: 'string'
         required: false
+        description: |-
+          DEPRECATED, this field is no longer used
       'OauthAccessTokenExpiration':
         type: 'int32'
         required: false
@@ -19163,10 +19168,12 @@ functions:
     name: 'AdminCreateTestUsersV4Short'
     description: |-
       Create test users and not send verification code email.
-      Note:
-      - count : Enter the number of test users you want to create in the count field. The maximum value of the user count is 100.
-      - userInfo(optional) :
+
+      **Request Body Note:**
+      - **count**: Enter the number of test users you want to create in the count field. The maximum value of the user count is 100.
+      - **userInfo** (optional):
       - country: you can specify country for the test user. Country use ISO3166-1 alpha-2 two letter, e.g. US
+      - **acceptedPolicies** (optional): Contains the list of accepted agreements for the created users.
     struct: 'UsersV4Service'
     parameters:
       params:

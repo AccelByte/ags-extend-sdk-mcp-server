@@ -7596,35 +7596,6 @@ structs:
       'ActiveOnly':
         type: 'bool'
         required: false
-      'ItemIds':
-        type: '[]string'
-        required: false
-      'Limit':
-        type: 'int32'
-        required: false
-        description: |-
-          limit. <div style="border-left: 4px solid #ffc107; background-color: #fff8e1; padding: 10px; margin: 10px 0;">
-              For performance and stability reasons, it is recommended to keep the
-              <code>limit</code> value <strong>no greater than 100</strong>. Using higher values may lead to increased response times or degraded service performance.
-          </div>
-      'Namespace':
-        type: 'string'
-        required: true
-      'Offset':
-        type: 'int32'
-        required: false
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/entitlement'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/entitlement/query_entitlements_parameters.go'
-
-  'QueryEntitlements1Params@platform':
-    id: 'QueryEntitlements1Params@platform'
-    name: 'QueryEntitlements1Params'
-    fields:
-      'ActiveOnly':
-        type: 'bool'
-        required: false
       'AppType':
         type: 'string'
         required: false
@@ -7660,7 +7631,36 @@ structs:
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/entitlement'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/entitlement/query_entitlements_1_parameters.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/entitlement/query_entitlements_parameters.go'
+
+  'QueryEntitlementsByItemIdsParams@platform':
+    id: 'QueryEntitlementsByItemIdsParams@platform'
+    name: 'QueryEntitlementsByItemIdsParams'
+    fields:
+      'ActiveOnly':
+        type: 'bool'
+        required: false
+      'ItemIds':
+        type: '[]string'
+        required: false
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          limit. <div style="border-left: 4px solid #ffc107; background-color: #fff8e1; padding: 10px; margin: 10px 0;">
+              For performance and stability reasons, it is recommended to keep the
+              <code>limit</code> value <strong>no greater than 100</strong>. Using higher values may lead to increased response times or degraded service performance.
+          </div>
+      'Namespace':
+        type: 'string'
+        required: true
+      'Offset':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/entitlement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/entitlement/query_entitlements_by_item_ids_parameters.go'
 
   'QueryFulfillmentHistoriesParams@platform':
     id: 'QueryFulfillmentHistoriesParams@platform'
@@ -16544,7 +16544,7 @@ structs:
         type: 'string'
         required: false
         description: |-
-          rotation rule: SEQUENCE, default is SEQUENCE
+          item rotation rule: SEQUENCE/LOOP. default is SEQUENCE
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
@@ -40983,7 +40983,7 @@ functions:
     id: 'QueryEntitlementsShort@platform'
     name: 'QueryEntitlementsShort'
     description: |-
-      Query entitlements by Item Ids.
+      Query entitlements.
 
       Other detail info:
             * Returns : entitlement list
@@ -41011,20 +41011,20 @@ functions:
       - 'entitlements'
       - 'query'
 
-  'QueryEntitlements1Short@platform':
-    id: 'QueryEntitlements1Short@platform'
-    name: 'QueryEntitlements1Short'
+  'QueryEntitlementsByItemIdsShort@platform':
+    id: 'QueryEntitlementsByItemIdsShort@platform'
+    name: 'QueryEntitlementsByItemIdsShort'
     description: |-
-      Query entitlements.
+      Query entitlements by Item Ids.
 
       Other detail info:
             * Returns : entitlement list
     struct: 'EntitlementService'
     parameters:
       params:
-        type: '*entitlement.QueryEntitlements1Params'
+        type: '*entitlement.QueryEntitlementsByItemIdsParams'
         required: true
-    return_type: '(*entitlement.QueryEntitlements1Response, error)'
+    return_type: '(*entitlement.QueryEntitlementsByItemIdsResponse, error)'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/entitlement'
@@ -41033,15 +41033,17 @@ functions:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/entitlement.go'
     example: |-
       entitlementService := platform.EntitlementService{ ... }
-      params := entitlement.QueryEntitlements1Params{ ... }
-      res, err := entitlementService.QueryEntitlements1Short(params)
+      params := entitlement.QueryEntitlementsByItemIdsParams{ ... }
+      res, err := entitlementService.QueryEntitlementsByItemIdsShort(params)
       if err != nil {
           // handleError(err)
       }
     tags:
-      - '1'
+      - 'by'
       - 'entitlement'
       - 'entitlements'
+      - 'ids'
+      - 'item'
       - 'query'
 
   'QueryFulfillmentHistoriesShort@platform':
