@@ -5813,7 +5813,7 @@ structs:
         type: 'Union[str, RuleEnum]'
         required: false
         description: |-
-          rotation rule: SEQUENCE, default is SEQUENCE
+          item rotation rule: SEQUENCE/LOOP. default is SEQUENCE
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.platform.models as platform_models'
@@ -32835,6 +32835,67 @@ functions:
     id: 'query_entitlements@platform'
     name: 'query_entitlements'
     description: |-
+      Query entitlements.
+
+      Other detail info:
+            * Returns : entitlement list
+    parameters:
+      'active_only':
+        type: 'Optional[bool]'
+        required: false
+      'app_type':
+        type: 'Optional[Union[str, QueryEntitlementsAppTypeEnum]]'
+        required: false
+      'entitlement_clazz':
+        type: 'Optional[Union[str, QueryEntitlementsEntitlementClazzEnum]]'
+        required: false
+      'entitlement_name':
+        type: 'Optional[str]'
+        required: false
+      'item_id':
+        type: 'Optional[List[str]]'
+        required: false
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit. <div style="border-left: 4px solid #ffc107; background-color: #fff8e1; padding: 10px; margin: 10px 0;">
+              For performance and stability reasons, it is recommended to keep the
+              <code>limit</code> value <strong>no greater than 100</strong>. Using higher values may lead to increased response times or degraded service performance.
+          </div>
+      'namespace':
+        type: 'str'
+        required: true
+      'offset':
+        type: 'Optional[int]'
+        required: false
+      'origin':
+        type: 'Optional[Union[str, QueryEntitlementsOriginEnum]]'
+        required: false
+      'user_id':
+        type: 'Optional[str]'
+        required: false
+    return_type: 'Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py'
+    example: |-
+      result, error = platform.query_entitlements(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'entitlement'
+      - 'entitlements'
+      - 'query'
+
+  'query_entitlements_by_item_ids@platform':
+    id: 'query_entitlements_by_item_ids@platform'
+    name: 'query_entitlements_by_item_ids'
+    description: |-
       Query entitlements by Item Ids.
 
       Other detail info:
@@ -32867,76 +32928,17 @@ functions:
       - 'import accelbyte_py_sdk.api.platform as platform'
       - 'import accelbyte_py_sdk.api.platform.models as platform_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements_by_item_ids.py'
     example: |-
-      result, error = platform.query_entitlements(...)
+      result, error = platform.query_entitlements_by_item_ids(...)
       if error:
           # handle_error(error)
     tags:
+      - 'by'
       - 'entitlement'
       - 'entitlements'
-      - 'query'
-
-  'query_entitlements_1@platform':
-    id: 'query_entitlements_1@platform'
-    name: 'query_entitlements_1'
-    description: |-
-      Query entitlements.
-
-      Other detail info:
-            * Returns : entitlement list
-    parameters:
-      'active_only':
-        type: 'Optional[bool]'
-        required: false
-      'app_type':
-        type: 'Optional[Union[str, QueryEntitlements1AppTypeEnum]]'
-        required: false
-      'entitlement_clazz':
-        type: 'Optional[Union[str, QueryEntitlements1EntitlementClazzEnum]]'
-        required: false
-      'entitlement_name':
-        type: 'Optional[str]'
-        required: false
-      'item_id':
-        type: 'Optional[List[str]]'
-        required: false
-      'limit':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          limit. <div style="border-left: 4px solid #ffc107; background-color: #fff8e1; padding: 10px; margin: 10px 0;">
-              For performance and stability reasons, it is recommended to keep the
-              <code>limit</code> value <strong>no greater than 100</strong>. Using higher values may lead to increased response times or degraded service performance.
-          </div>
-      'namespace':
-        type: 'str'
-        required: true
-      'offset':
-        type: 'Optional[int]'
-        required: false
-      'origin':
-        type: 'Optional[Union[str, QueryEntitlements1OriginEnum]]'
-        required: false
-      'user_id':
-        type: 'Optional[str]'
-        required: false
-    return_type: 'Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.platform as platform'
-      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements_1.py'
-    example: |-
-      result, error = platform.query_entitlements_1(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '1'
-      - 'entitlement'
-      - 'entitlements'
+      - 'ids'
+      - 'item'
       - 'query'
 
   'query_fulfillment_histories@platform':
