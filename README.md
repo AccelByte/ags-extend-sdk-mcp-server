@@ -117,13 +117,15 @@ In Cursor, press `CTRL+L` and try the following prompts. You should see that the
 pnpm install
 ```
 
-### Start the MCP server with the default STDIO transport (development)
+### Start the MCP server for development
+
+#### With the default STDIO transport
 
 ```bash
 pnpm dev
 ```
 
-### Start the MCP server with streamable HTTP transport (development)
+#### With streamable HTTP transport
 
 ```bash
 TRANSPORT=streamableHttp pnpm dev 
@@ -135,13 +137,15 @@ TRANSPORT=streamableHttp pnpm dev
 pnpm build
 ```
 
-### Start the MCP server with the default STDIO transport (after building the MCP server)
+### Start the MCP server after build
+
+#### With the default STDIO transport
 
 ```bash
 pnpm start
 ```
 
-### Start the MCP server with streamable HTTP transport (after building the MCP server)
+#### With streamable HTTP transport 
 
 ```bash
 TRANSPORT=streamableHttp pnpm start
