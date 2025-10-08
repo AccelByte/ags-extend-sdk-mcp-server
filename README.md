@@ -48,6 +48,8 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
     }
     ```
 
+    The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
+
 3. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
 
 ### Alternative 2: Using Streamable HTTP transport
@@ -70,7 +72,9 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
       extend-sdk-mcp-server:latest
     ```
 
-2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
+    The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
+
+3. Switch to your project directory and create `.cursor/mcp.json` with the following content.
 
     ```json
     {
@@ -94,11 +98,15 @@ In Cursor, press `CTRL+L` and try the following prompts. You should see that the
 
 ## Environment Variables
 
-- `TRANSPORT`: Valid transports: stdio, streamableHttp (default: stdio)
-- `PORT`: HTTP server port if TRANSPORT is streamableHttp (default: 3000)
-- `CONFIG_DIR`: Directory of YAML config files (recursive)
-- `NODE_ENV`: Environment (development/production)
-- `LOG_LEVEL`: Logging level (debug/info/warn/error)
+- `TRANSPORT`: The MCP server transport (valid values: `stdio`, `streamableHttp`, default: `stdio`)
+- `PORT`: HTTP server port if `TRANSPORT` is `streamableHttp` (default: `3000`)
+- `CONFIG_DIR`: Directory of YAML config files (recursive, default: `config/go`)
+  - For Extend SDK C#: `config/csharp`
+  - For Extend SDK Go: `config/go`
+  - For Extend SDK Java (coming soon): `config/java`
+  - For Extend SDK Python: `config/python`
+- `NODE_ENV`: Environment (valid values: `development`, `production`)
+- `LOG_LEVEL`: Logging level (valid values: `debug`, `info`, `warn`, `error`)
 
 ## Development
 
