@@ -1,0 +1,4879 @@
+structs:
+  # region models
+
+  'ApimodelAppItem@csm':
+    id: 'ApimodelAppItem@csm'
+    name: 'ApimodelAppItem'
+    fields:
+      'appId':
+        type: 'String'
+        required: true
+      'appName':
+        type: 'String'
+        required: true
+      'appStatus':
+        type: 'String'
+        required: true
+      'createdAt':
+        type: 'String'
+        required: true
+      'gameName':
+        type: 'String'
+        required: true
+      'isResourceApplied':
+        type: 'Boolean'
+        required: true
+      'scenario':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'String'
+        required: true
+      'vmSharingConfiguration':
+        type: 'String'
+        required: true
+      'appRepoArn':
+        type: 'String'
+        required: false
+      'appRepoUrl':
+        type: 'String'
+        required: false
+      'autoscaling':
+        type: 'ApimodelAutoscalingResponse'
+        required: false
+      'basePath':
+        type: 'String'
+        required: false
+      'cpu':
+        type: 'ApimodelCPUResponse'
+        required: false
+      'deletedAt':
+        type: 'String'
+        required: false
+      'deploymentCreatedAt':
+        type: 'String'
+        required: false
+      'deploymentId':
+        type: 'String'
+        required: false
+      'deploymentImageTag':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'memory':
+        type: 'ApimodelMemoryResponse'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'replica':
+        type: 'ApimodelReplicaResponse'
+        required: false
+      'servicePublicURL':
+        type: 'String'
+        required: false
+      'serviceURL':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelAppItem.java'
+
+  'ApimodelAutoscalingRequest@csm':
+    id: 'ApimodelAutoscalingRequest@csm'
+    name: 'ApimodelAutoscalingRequest'
+    fields:
+      'targetCPUUtilizationPercent':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelAutoscalingRequest.java'
+
+  'ApimodelAutoscalingResponse@csm':
+    id: 'ApimodelAutoscalingResponse@csm'
+    name: 'ApimodelAutoscalingResponse'
+    fields:
+      'targetCPUUtilizationPercent':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelAutoscalingResponse.java'
+
+  'ApimodelBulkSubscribeItem@csm':
+    id: 'ApimodelBulkSubscribeItem@csm'
+    name: 'ApimodelBulkSubscribeItem'
+    fields:
+      'notificationType':
+        type: 'Map<String, Boolean>'
+        required: true
+      'emailAddress':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelBulkSubscribeItem.java'
+
+  'ApimodelBulkSubscribeRequest@csm':
+    id: 'ApimodelBulkSubscribeRequest@csm'
+    name: 'ApimodelBulkSubscribeRequest'
+    fields:
+      'subscribers':
+        type: 'List<ApimodelBulkSubscribeItem>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelBulkSubscribeRequest.java'
+
+  'ApimodelCPURequest@csm':
+    id: 'ApimodelCPURequest@csm'
+    name: 'ApimodelCPURequest'
+    fields:
+      'requestCPU':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCPURequest.java'
+
+  'ApimodelCPUResponse@csm':
+    id: 'ApimodelCPUResponse@csm'
+    name: 'ApimodelCPUResponse'
+    fields:
+      'requestCPU':
+        type: 'Integer'
+        required: true
+      'cpuLimit':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCPUResponse.java'
+
+  'ApimodelCreateAppV2Request@csm':
+    id: 'ApimodelCreateAppV2Request@csm'
+    name: 'ApimodelCreateAppV2Request'
+    fields:
+      'scenario':
+        type: 'String'
+        required: true
+      'autoscaling':
+        type: 'ApimodelAutoscalingRequest'
+        required: false
+      'cpu':
+        type: 'ApimodelCPURequest'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'memory':
+        type: 'ApimodelMemoryRequest'
+        required: false
+      'replica':
+        type: 'ApimodelReplicaRequest'
+        required: false
+      'vmSharingConfiguration':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateAppV2Request.java'
+
+  'ApimodelCreateDeploymentV2Request@csm':
+    id: 'ApimodelCreateDeploymentV2Request@csm'
+    name: 'ApimodelCreateDeploymentV2Request'
+    fields:
+      'imageTag':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateDeploymentV2Request.java'
+
+  'ApimodelCreateDeploymentV2Response@csm':
+    id: 'ApimodelCreateDeploymentV2Response@csm'
+    name: 'ApimodelCreateDeploymentV2Response'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateDeploymentV2Response.java'
+
+  'ApimodelCSMAppLimitsResponse@csm':
+    id: 'ApimodelCSMAppLimitsResponse@csm'
+    name: 'ApimodelCSMAppLimitsResponse'
+    fields:
+      'autoscaling':
+        type: 'ModelCSMAutoscalingDefaults'
+        required: true
+      'extendAppCPULimit':
+        type: 'Integer'
+        required: true
+      'extendAppEventHandlerCPULimit':
+        type: 'Integer'
+        required: true
+      'extendAppMemoryLimit':
+        type: 'Integer'
+        required: true
+      'extendAppReplicaLimit':
+        type: 'Integer'
+        required: true
+      'extendAppeEventHandlerMemoryLimit':
+        type: 'Integer'
+        required: true
+      'maxSubscriberCount':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCSMAppLimitsResponse.java'
+
+  'ApimodelGetAppImageListV2DataItem@csm':
+    id: 'ApimodelGetAppImageListV2DataItem@csm'
+    name: 'ApimodelGetAppImageListV2DataItem'
+    fields:
+      'imageDigest':
+        type: 'String'
+        required: true
+      'imageTag':
+        type: 'String'
+        required: true
+      'isActive':
+        type: 'Boolean'
+        required: true
+      'size':
+        type: 'Long'
+        required: true
+      'imageScanResult':
+        type: 'ApimodelGetAppImageListV2DataItemImageScanResult'
+        required: false
+      'imageScanStatus':
+        type: 'ApimodelGetAppImageListV2DataItemImageScanStatus'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2DataItem.java'
+
+  'ApimodelGetAppImageListV2DataItemImageScanResult@csm':
+    id: 'ApimodelGetAppImageListV2DataItemImageScanResult@csm'
+    name: 'ApimodelGetAppImageListV2DataItemImageScanResult'
+    fields:
+      'findingSeverityCounts':
+        type: 'Map<String, Long>'
+        required: true
+      'findings':
+        type: 'List<ModelImageScanFinding>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2DataItemImageScanResult.java'
+
+  'ApimodelGetAppImageListV2DataItemImageScanStatus@csm':
+    id: 'ApimodelGetAppImageListV2DataItemImageScanStatus@csm'
+    name: 'ApimodelGetAppImageListV2DataItemImageScanStatus'
+    fields:
+      'status':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2DataItemImageScanStatus.java'
+
+  'ApimodelGetAppImageListV2Response@csm':
+    id: 'ApimodelGetAppImageListV2Response@csm'
+    name: 'ApimodelGetAppImageListV2Response'
+    fields:
+      'data':
+        type: 'List<ApimodelGetAppImageListV2DataItem>'
+        required: true
+      'vulnerabilityStatus':
+        type: 'String'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2Response.java'
+
+  'ApimodelGetAppListV2Request@csm':
+    id: 'ApimodelGetAppListV2Request@csm'
+    name: 'ApimodelGetAppListV2Request'
+    fields:
+      'appNames':
+        type: 'List<String>'
+        required: false
+      'appStatuses':
+        type: 'List<String>'
+        required: false
+      'fuzzyAppName':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppListV2Request.java'
+
+  'ApimodelGetAppListV2Response@csm':
+    id: 'ApimodelGetAppListV2Response@csm'
+    name: 'ApimodelGetAppListV2Response'
+    fields:
+      'data':
+        type: 'List<ApimodelAppItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppListV2Response.java'
+
+  'ApimodelGetDeploymentListV2DataItem@csm':
+    id: 'ApimodelGetDeploymentListV2DataItem@csm'
+    name: 'ApimodelGetDeploymentListV2DataItem'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: true
+      'imageTag':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'deletedAt':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetDeploymentListV2DataItem.java'
+
+  'ApimodelGetDeploymentListV2Request@csm':
+    id: 'ApimodelGetDeploymentListV2Request@csm'
+    name: 'ApimodelGetDeploymentListV2Request'
+    fields:
+      'appIds':
+        type: 'List<String>'
+        required: false
+      'deploymentIds':
+        type: 'List<String>'
+        required: false
+      'statuses':
+        type: 'List<String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetDeploymentListV2Request.java'
+
+  'ApimodelGetDeploymentListV2Response@csm':
+    id: 'ApimodelGetDeploymentListV2Response@csm'
+    name: 'ApimodelGetDeploymentListV2Response'
+    fields:
+      'data':
+        type: 'List<ApimodelGetDeploymentListV2DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetDeploymentListV2Response.java'
+
+  'ApimodelGetListOfConfigurationsV2DataItem@csm':
+    id: 'ApimodelGetListOfConfigurationsV2DataItem@csm'
+    name: 'ApimodelGetListOfConfigurationsV2DataItem'
+    fields:
+      'configId':
+        type: 'String'
+        required: true
+      'configName':
+        type: 'String'
+        required: true
+      'configType':
+        type: 'String'
+        required: true
+      'deploymentStatus':
+        type: 'String'
+        required: true
+      'isHidden':
+        type: 'Boolean'
+        required: true
+      'value':
+        type: 'String'
+        required: true
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'editable':
+        type: 'Boolean'
+        required: false
+      'source':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetListOfConfigurationsV2DataItem.java'
+
+  'ApimodelGetListOfConfigurationsV2Response@csm':
+    id: 'ApimodelGetListOfConfigurationsV2Response@csm'
+    name: 'ApimodelGetListOfConfigurationsV2Response'
+    fields:
+      'data':
+        type: 'List<ApimodelGetListOfConfigurationsV2DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetListOfConfigurationsV2Response.java'
+
+  'ApimodelGetNotificationSubscriberItem@csm':
+    id: 'ApimodelGetNotificationSubscriberItem@csm'
+    name: 'ApimodelGetNotificationSubscriberItem'
+    fields:
+      'notificationType':
+        type: 'Map<String, Boolean>'
+        required: true
+      'subscriptionId':
+        type: 'String'
+        required: true
+      'displayName':
+        type: 'String'
+        required: false
+      'emailAddress':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberItem.java'
+
+  'ApimodelGetNotificationSubscriberItemV2@csm':
+    id: 'ApimodelGetNotificationSubscriberItemV2@csm'
+    name: 'ApimodelGetNotificationSubscriberItemV2'
+    fields:
+      'notificationTypes':
+        type: 'List<ApimodelNotificationType>'
+        required: true
+      'displayName':
+        type: 'String'
+        required: false
+      'emailAddress':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberItemV2.java'
+
+  'ApimodelGetNotificationSubscriberListResponse@csm':
+    id: 'ApimodelGetNotificationSubscriberListResponse@csm'
+    name: 'ApimodelGetNotificationSubscriberListResponse'
+    fields:
+      'maxSubscriptions':
+        type: 'Integer'
+        required: true
+      'subscriptions':
+        type: 'List<ApimodelGetNotificationSubscriberItem>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberListResponse.java'
+
+  'ApimodelGetNotificationSubscriberListResponseV2@csm':
+    id: 'ApimodelGetNotificationSubscriberListResponseV2@csm'
+    name: 'ApimodelGetNotificationSubscriberListResponseV2'
+    fields:
+      'maxSubscriptions':
+        type: 'Integer'
+        required: true
+      'subscriptions':
+        type: 'List<ApimodelGetNotificationSubscriberItemV2>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberListResponseV2.java'
+
+  'ApimodelGetNotificationSubscriberStatusResponse@csm':
+    id: 'ApimodelGetNotificationSubscriberStatusResponse@csm'
+    name: 'ApimodelGetNotificationSubscriberStatusResponse'
+    fields:
+      'maxSubscription':
+        type: 'Integer'
+        required: true
+      'notificationType':
+        type: 'String'
+        required: true
+      'subscribed':
+        type: 'Boolean'
+        required: true
+      'subscriptionsCount':
+        type: 'Integer'
+        required: true
+      'displayName':
+        type: 'String'
+        required: false
+      'emailAddress':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberStatusResponse.java'
+
+  'ApimodelIncreaseLimitFormRequest@csm':
+    id: 'ApimodelIncreaseLimitFormRequest@csm'
+    name: 'ApimodelIncreaseLimitFormRequest'
+    fields:
+      'clientEmail':
+        type: 'String'
+        required: true
+      'requestReason':
+        type: 'String'
+        required: true
+      'preferredLimitReplica':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelIncreaseLimitFormRequest.java'
+
+  'ApimodelMemoryRequest@csm':
+    id: 'ApimodelMemoryRequest@csm'
+    name: 'ApimodelMemoryRequest'
+    fields:
+      'requestMemory':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelMemoryRequest.java'
+
+  'ApimodelMemoryResponse@csm':
+    id: 'ApimodelMemoryResponse@csm'
+    name: 'ApimodelMemoryResponse'
+    fields:
+      'memoryLimit':
+        type: 'Integer'
+        required: false
+      'requestMemory':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelMemoryResponse.java'
+
+  'ApimodelNotificationType@csm':
+    id: 'ApimodelNotificationType@csm'
+    name: 'ApimodelNotificationType'
+    fields:
+      'subcriptionID':
+        type: 'String'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNotificationType.java'
+
+  'ApimodelReplicaRequest@csm':
+    id: 'ApimodelReplicaRequest@csm'
+    name: 'ApimodelReplicaRequest'
+    fields:
+      'maxReplica':
+        type: 'Integer'
+        required: false
+      'minReplica':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelReplicaRequest.java'
+
+  'ApimodelReplicaResponse@csm':
+    id: 'ApimodelReplicaResponse@csm'
+    name: 'ApimodelReplicaResponse'
+    fields:
+      'currentReplica':
+        type: 'Integer'
+        required: false
+      'maxReplica':
+        type: 'Integer'
+        required: false
+      'minReplica':
+        type: 'Integer'
+        required: false
+      'replicaLimit':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelReplicaResponse.java'
+
+  'ApimodelSaveConfigurationV2Request@csm':
+    id: 'ApimodelSaveConfigurationV2Request@csm'
+    name: 'ApimodelSaveConfigurationV2Request'
+    fields:
+      'configName':
+        type: 'String'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'value':
+        type: 'String'
+        required: true
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSaveConfigurationV2Request.java'
+
+  'ApimodelSaveConfigurationV2Response@csm':
+    id: 'ApimodelSaveConfigurationV2Response@csm'
+    name: 'ApimodelSaveConfigurationV2Response'
+    fields:
+      'configId':
+        type: 'String'
+        required: true
+      'configName':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSaveConfigurationV2Response.java'
+
+  'ApimodelSaveSecretConfigurationV2Request@csm':
+    id: 'ApimodelSaveSecretConfigurationV2Request@csm'
+    name: 'ApimodelSaveSecretConfigurationV2Request'
+    fields:
+      'configName':
+        type: 'String'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'value':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSaveSecretConfigurationV2Request.java'
+
+  'ApimodelSelfSubscribeNotificationRequest@csm':
+    id: 'ApimodelSelfSubscribeNotificationRequest@csm'
+    name: 'ApimodelSelfSubscribeNotificationRequest'
+    fields:
+      'notificationType':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSelfSubscribeNotificationRequest.java'
+
+  'ApimodelSubscribeNotificationRequest@csm':
+    id: 'ApimodelSubscribeNotificationRequest@csm'
+    name: 'ApimodelSubscribeNotificationRequest'
+    fields:
+      'notificationType':
+        type: 'String'
+        required: true
+      'subscribers':
+        type: 'List<ApimodelSubscriberItemRequest>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscribeNotificationRequest.java'
+
+  'ApimodelSubscribeNotificationResponse@csm':
+    id: 'ApimodelSubscribeNotificationResponse@csm'
+    name: 'ApimodelSubscribeNotificationResponse'
+    fields:
+      'notificationType':
+        type: 'String'
+        required: true
+      'subscriptions':
+        type: 'List<ApimodelSubscriberItemResponse>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscribeNotificationResponse.java'
+
+  'ApimodelSubscriberItemRequest@csm':
+    id: 'ApimodelSubscriberItemRequest@csm'
+    name: 'ApimodelSubscriberItemRequest'
+    fields:
+      'emailAddress':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscriberItemRequest.java'
+
+  'ApimodelSubscriberItemResponse@csm':
+    id: 'ApimodelSubscriberItemResponse@csm'
+    name: 'ApimodelSubscriberItemResponse'
+    fields:
+      'id':
+        type: 'String'
+        required: true
+      'displayName':
+        type: 'String'
+        required: false
+      'emailAddress':
+        type: 'String'
+        required: false
+      'notificationType':
+        type: 'String'
+        required: false
+      'userId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscriberItemResponse.java'
+
+  'ApimodelUpdateAppResourceRequest@csm':
+    id: 'ApimodelUpdateAppResourceRequest@csm'
+    name: 'ApimodelUpdateAppResourceRequest'
+    fields:
+      'autoscaling':
+        type: 'ApimodelAutoscalingRequest'
+        required: true
+      'cpu':
+        type: 'ApimodelCPURequest'
+        required: false
+      'memory':
+        type: 'ApimodelMemoryRequest'
+        required: false
+      'replica':
+        type: 'ApimodelReplicaRequest'
+        required: false
+      'vmSharingConfiguration':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateAppResourceRequest.java'
+
+  'ApimodelUpdateAppV2Request@csm':
+    id: 'ApimodelUpdateAppV2Request@csm'
+    name: 'ApimodelUpdateAppV2Request'
+    fields:
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateAppV2Request.java'
+
+  'ApimodelUpdateConfigurationV2Request@csm':
+    id: 'ApimodelUpdateConfigurationV2Request@csm'
+    name: 'ApimodelUpdateConfigurationV2Request'
+    fields:
+      'value':
+        type: 'String'
+        required: true
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateConfigurationV2Request.java'
+
+  'ApimodelUpdateConfigurationV2Response@csm':
+    id: 'ApimodelUpdateConfigurationV2Response@csm'
+    name: 'ApimodelUpdateConfigurationV2Response'
+    fields:
+      'configId':
+        type: 'String'
+        required: true
+      'configName':
+        type: 'String'
+        required: true
+      'value':
+        type: 'String'
+        required: true
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'source':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateConfigurationV2Response.java'
+
+  'ApimodelUpdateSecretConfigurationV2Request@csm':
+    id: 'ApimodelUpdateSecretConfigurationV2Request@csm'
+    name: 'ApimodelUpdateSecretConfigurationV2Request'
+    fields:
+      'value':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateSecretConfigurationV2Request.java'
+
+  'GeneratedCreateAppV1Request@csm':
+    id: 'GeneratedCreateAppV1Request@csm'
+    name: 'GeneratedCreateAppV1Request'
+    fields:
+      'description':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedCreateAppV1Request.java'
+
+  'GeneratedCreateAppV1Response@csm':
+    id: 'GeneratedCreateAppV1Response@csm'
+    name: 'GeneratedCreateAppV1Response'
+    fields:
+      'statusUrl':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedCreateAppV1Response.java'
+
+  'GeneratedCreateDeploymentV1Request@csm':
+    id: 'GeneratedCreateDeploymentV1Request@csm'
+    name: 'GeneratedCreateDeploymentV1Request'
+    fields:
+      'imageTag':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedCreateDeploymentV1Request.java'
+
+  'GeneratedCreateDeploymentV1Response@csm':
+    id: 'GeneratedCreateDeploymentV1Response@csm'
+    name: 'GeneratedCreateDeploymentV1Response'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedCreateDeploymentV1Response.java'
+
+  'GeneratedDeleteAppImagesV1Request@csm':
+    id: 'GeneratedDeleteAppImagesV1Request@csm'
+    name: 'GeneratedDeleteAppImagesV1Request'
+    fields:
+      'imageTags':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedDeleteAppImagesV1Request.java'
+
+  'GeneratedGetAppImageListV1DataItem@csm':
+    id: 'GeneratedGetAppImageListV1DataItem@csm'
+    name: 'GeneratedGetAppImageListV1DataItem'
+    fields:
+      'imageDigest':
+        type: 'String'
+        required: true
+      'imageTag':
+        type: 'String'
+        required: true
+      'imageScanStatus':
+        type: 'GeneratedGetAppImageListV1DataItemImageScanStatus'
+        required: false
+      'size':
+        type: 'Long'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppImageListV1DataItem.java'
+
+  'GeneratedGetAppImageListV1DataItemImageScanStatus@csm':
+    id: 'GeneratedGetAppImageListV1DataItemImageScanStatus@csm'
+    name: 'GeneratedGetAppImageListV1DataItemImageScanStatus'
+    fields:
+      'description':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppImageListV1DataItemImageScanStatus.java'
+
+  'GeneratedGetAppImageListV1Response@csm':
+    id: 'GeneratedGetAppImageListV1Response@csm'
+    name: 'GeneratedGetAppImageListV1Response'
+    fields:
+      'data':
+        type: 'List<GeneratedGetAppImageListV1DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppImageListV1Response.java'
+
+  'GeneratedGetAppListV1DataItem@csm':
+    id: 'GeneratedGetAppListV1DataItem@csm'
+    name: 'GeneratedGetAppListV1DataItem'
+    fields:
+      'deploymentCreatedAt':
+        type: 'String'
+        required: true
+      'deploymentId':
+        type: 'String'
+        required: true
+      'deploymentImageTag':
+        type: 'String'
+        required: true
+      'appId':
+        type: 'String'
+        required: false
+      'appName':
+        type: 'String'
+        required: false
+      'appReleaseStatus':
+        type: 'String'
+        required: false
+      'appRepoArn':
+        type: 'String'
+        required: false
+      'appRepoUrl':
+        type: 'String'
+        required: false
+      'appStatus':
+        type: 'String'
+        required: false
+      'basePath':
+        type: 'String'
+        required: false
+      'deletedAt':
+        type: 'String'
+        required: false
+      'deploymentStatus':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+      'servicePublicURL':
+        type: 'String'
+        required: false
+      'serviceURL':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppListV1DataItem.java'
+
+  'GeneratedGetAppListV1Request@csm':
+    id: 'GeneratedGetAppListV1Request@csm'
+    name: 'GeneratedGetAppListV1Request'
+    fields:
+      'appNames':
+        type: 'List<String>'
+        required: true
+      'statuses':
+        type: 'List<String>'
+        required: true
+      'fuzzyAppName':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppListV1Request.java'
+
+  'GeneratedGetAppListV1Response@csm':
+    id: 'GeneratedGetAppListV1Response@csm'
+    name: 'GeneratedGetAppListV1Response'
+    fields:
+      'data':
+        type: 'List<GeneratedGetAppListV1DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppListV1Response.java'
+
+  'GeneratedGetAppReleaseV1Response@csm':
+    id: 'GeneratedGetAppReleaseV1Response@csm'
+    name: 'GeneratedGetAppReleaseV1Response'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: false
+      'imageTag':
+        type: 'String'
+        required: false
+      'releaseDate':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppReleaseV1Response.java'
+
+  'GeneratedGetAppV1Response@csm':
+    id: 'GeneratedGetAppV1Response@csm'
+    name: 'GeneratedGetAppV1Response'
+    fields:
+      'deploymentCreatedAt':
+        type: 'String'
+        required: true
+      'deploymentId':
+        type: 'String'
+        required: true
+      'deploymentImageTag':
+        type: 'String'
+        required: true
+      'appId':
+        type: 'String'
+        required: false
+      'appName':
+        type: 'String'
+        required: false
+      'appReleaseStatus':
+        type: 'String'
+        required: false
+      'appRepoArn':
+        type: 'String'
+        required: false
+      'appRepoUrl':
+        type: 'String'
+        required: false
+      'appStatus':
+        type: 'String'
+        required: false
+      'basePath':
+        type: 'String'
+        required: false
+      'createdAt':
+        type: 'String'
+        required: false
+      'deletedAt':
+        type: 'String'
+        required: false
+      'deploymentStatus':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+      'servicePublicURL':
+        type: 'String'
+        required: false
+      'serviceURL':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetAppV1Response.java'
+
+  'GeneratedGetDeploymentListV1DataItem@csm':
+    id: 'GeneratedGetDeploymentListV1DataItem@csm'
+    name: 'GeneratedGetDeploymentListV1DataItem'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: true
+      'deletedAt':
+        type: 'String'
+        required: false
+      'imageTag':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetDeploymentListV1DataItem.java'
+
+  'GeneratedGetDeploymentListV1Request@csm':
+    id: 'GeneratedGetDeploymentListV1Request@csm'
+    name: 'GeneratedGetDeploymentListV1Request'
+    fields:
+      'appIds':
+        type: 'List<String>'
+        required: true
+      'deploymentIds':
+        type: 'List<String>'
+        required: true
+      'statuses':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetDeploymentListV1Request.java'
+
+  'GeneratedGetDeploymentListV1Response@csm':
+    id: 'GeneratedGetDeploymentListV1Response@csm'
+    name: 'GeneratedGetDeploymentListV1Response'
+    fields:
+      'data':
+        type: 'List<GeneratedGetDeploymentListV1DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetDeploymentListV1Response.java'
+
+  'GeneratedGetDeploymentV1Response@csm':
+    id: 'GeneratedGetDeploymentV1Response@csm'
+    name: 'GeneratedGetDeploymentV1Response'
+    fields:
+      'deploymentId':
+        type: 'String'
+        required: true
+      'deletedAt':
+        type: 'String'
+        required: false
+      'imageTag':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetDeploymentV1Response.java'
+
+  'GeneratedGetListOfConfigurationsV1DataItem@csm':
+    id: 'GeneratedGetListOfConfigurationsV1DataItem@csm'
+    name: 'GeneratedGetListOfConfigurationsV1DataItem'
+    fields:
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'configId':
+        type: 'String'
+        required: false
+      'configName':
+        type: 'String'
+        required: false
+      'configType':
+        type: 'String'
+        required: false
+      'deploymentStatus':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'editable':
+        type: 'Boolean'
+        required: false
+      'isHidden':
+        type: 'Boolean'
+        required: false
+      'source':
+        type: 'String'
+        required: false
+      'value':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetListOfConfigurationsV1DataItem.java'
+
+  'GeneratedGetListOfConfigurationsV1Response@csm':
+    id: 'GeneratedGetListOfConfigurationsV1Response@csm'
+    name: 'GeneratedGetListOfConfigurationsV1Response'
+    fields:
+      'data':
+        type: 'List<GeneratedGetListOfConfigurationsV1DataItem>'
+        required: true
+      'paging':
+        type: 'GeneratedPagination'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedGetListOfConfigurationsV1Response.java'
+
+  'GeneratedPagination@csm':
+    id: 'GeneratedPagination@csm'
+    name: 'GeneratedPagination'
+    fields:
+      'first':
+        type: 'String'
+        required: false
+      'last':
+        type: 'String'
+        required: false
+      'next':
+        type: 'String'
+        required: false
+      'previous':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedPagination.java'
+
+  'GeneratedSaveConfigurationV1Request@csm':
+    id: 'GeneratedSaveConfigurationV1Request@csm'
+    name: 'GeneratedSaveConfigurationV1Request'
+    fields:
+      'configName':
+        type: 'String'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'value':
+        type: 'String'
+        required: true
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedSaveConfigurationV1Request.java'
+
+  'GeneratedSaveConfigurationV1Response@csm':
+    id: 'GeneratedSaveConfigurationV1Response@csm'
+    name: 'GeneratedSaveConfigurationV1Response'
+    fields:
+      'configId':
+        type: 'String'
+        required: true
+      'configName':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedSaveConfigurationV1Response.java'
+
+  'GeneratedStartAppV1Request@csm':
+    id: 'GeneratedStartAppV1Request@csm'
+    name: 'GeneratedStartAppV1Request'
+    fields:
+      'reason':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedStartAppV1Request.java'
+
+  'GeneratedStartAppV1Response@csm':
+    id: 'GeneratedStartAppV1Response@csm'
+    name: 'GeneratedStartAppV1Response'
+    fields:
+      'statusUrl':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedStartAppV1Response.java'
+
+  'GeneratedStopAppV1Request@csm':
+    id: 'GeneratedStopAppV1Request@csm'
+    name: 'GeneratedStopAppV1Request'
+    fields:
+      'reason':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedStopAppV1Request.java'
+
+  'GeneratedStopAppV1Response@csm':
+    id: 'GeneratedStopAppV1Response@csm'
+    name: 'GeneratedStopAppV1Response'
+    fields:
+      'statusUrl':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedStopAppV1Response.java'
+
+  'GeneratedUpdateAppV1Request@csm':
+    id: 'GeneratedUpdateAppV1Request@csm'
+    name: 'GeneratedUpdateAppV1Request'
+    fields:
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateAppV1Request.java'
+
+  'GeneratedUpdateAppV1Response@csm':
+    id: 'GeneratedUpdateAppV1Response@csm'
+    name: 'GeneratedUpdateAppV1Response'
+    fields:
+      'appId':
+        type: 'String'
+        required: false
+      'appName':
+        type: 'String'
+        required: false
+      'appRepoArn':
+        type: 'String'
+        required: false
+      'appRepoUrl':
+        type: 'String'
+        required: false
+      'deletedAt':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'message':
+        type: 'String'
+        required: false
+      'scenario':
+        type: 'String'
+        required: false
+      'serviceURL':
+        type: 'String'
+        required: false
+      'status':
+        type: 'String'
+        required: false
+      'updatedAt':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateAppV1Response.java'
+
+  'GeneratedUpdateConfigurationV1Request@csm':
+    id: 'GeneratedUpdateConfigurationV1Request@csm'
+    name: 'GeneratedUpdateConfigurationV1Request'
+    fields:
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'value':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateConfigurationV1Request.java'
+
+  'GeneratedUpdateConfigurationV1Response@csm':
+    id: 'GeneratedUpdateConfigurationV1Response@csm'
+    name: 'GeneratedUpdateConfigurationV1Response'
+    fields:
+      'applyMask':
+        type: 'Boolean'
+        required: false
+      'configId':
+        type: 'String'
+        required: false
+      'configName':
+        type: 'String'
+        required: false
+      'description':
+        type: 'String'
+        required: false
+      'source':
+        type: 'String'
+        required: false
+      'value':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateConfigurationV1Response.java'
+
+  'LogAppMessageDeclaration@csm':
+    id: 'LogAppMessageDeclaration@csm'
+    name: 'LogAppMessageDeclaration'
+    fields:
+      'attributes':
+        type: 'List<String>'
+        required: true
+      'code':
+        type: 'String'
+        required: true
+      'codeName':
+        type: 'String'
+        required: true
+      'section':
+        type: 'String'
+        required: true
+      'service':
+        type: 'String'
+        required: true
+      'text':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/LogAppMessageDeclaration.java'
+
+  'ModelCSMAutoscalingDefaults@csm':
+    id: 'ModelCSMAutoscalingDefaults@csm'
+    name: 'ModelCSMAutoscalingDefaults'
+    fields:
+      'cpuUtilizationDefaultPercent':
+        type: 'Integer'
+        required: true
+      'cpuUtilizationMaxPercent':
+        type: 'Integer'
+        required: true
+      'cpuUtilizationMinPercent':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ModelCSMAutoscalingDefaults.java'
+
+  'ModelImageScanFinding@csm':
+    id: 'ModelImageScanFinding@csm'
+    name: 'ModelImageScanFinding'
+    fields:
+      'name':
+        type: 'String'
+        required: true
+      'severity':
+        type: 'String'
+        required: true
+      'uri':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ModelImageScanFinding.java'
+
+  'ResponseErrorResponse@csm':
+    id: 'ResponseErrorResponse@csm'
+    name: 'ResponseErrorResponse'
+    fields:
+      'error':
+        type: 'String'
+        required: true
+      'errorCode':
+        type: 'Integer'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: true
+      'errors':
+        type: 'String'
+        required: true
+      'messageVariables':
+        type: 'Map<String, String>'
+        required: true
+      'name':
+        type: 'String'
+        required: true
+      'reason':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ResponseErrorResponse.java'
+
+  # endregion models
+
+functions:
+
+  'BulkSaveSubscriptionAppNotificationV2@csm':
+    id: 'BulkSaveSubscriptionAppNotificationV2@csm'
+    name: 'BulkSaveSubscriptionAppNotificationV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
+
+      Bulk update of users subscribed to an app's notifications.
+
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+      - subscribers : user(s) notification subscription to be updated - Required.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelBulkSubscribeRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelGetNotificationSubscriberListResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/BulkSaveSubscriptionAppNotificationV2.java'
+    example: |-
+      try {
+          final BulkSaveSubscriptionAppNotificationV2 operation = BulkSaveSubscriptionAppNotificationV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          final ApimodelGetNotificationSubscriberListResponse response = wrapper.bulkSaveSubscriptionAppNotificationV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'bulk'
+      - 'notification'
+      - 'save'
+      - 'subscription'
+      - 'v2'
+
+  'CreateAppV1@csm':
+    id: 'CreateAppV1@csm'
+    name: 'CreateAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Creates new App for AB-Extend Customers
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+
+      Default: `function-override`
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'GeneratedCreateAppV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedCreateAppV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/CreateAppV1.java'
+    example: |-
+      try {
+          final CreateAppV1 operation = CreateAppV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedCreateAppV1Response response = wrapper.createAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v1'
+
+  'CreateAppV2@csm':
+    id: 'CreateAppV2@csm'
+    name: 'CreateAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Create new extend app with name provided by {app} path parameter and specified scenario type
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelCreateAppV2Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelAppItem'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/CreateAppV2.java'
+    example: |-
+      try {
+          final CreateAppV2 operation = CreateAppV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          final ApimodelAppItem response = wrapper.createAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v2'
+
+  'CreateDeploymentV1@csm':
+    id: 'CreateDeploymentV1@csm'
+    name: 'CreateDeploymentV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
+
+      Creates Deployment for extend service
+
+      This endpoint intended to apply the helm release or deploying the custom service image.
+      Logic in this endpoint:
+      - Getting the repo from AppHistory table and image tag from request
+      - Getting the Helm Manifest template from S3
+      - Filling the Helm Manifest values
+      - Installing the Helm Manifest to deploy the custom service image into K8s based on given namespace
+      - Storing the filled Helm Manifest to S3
+      - Storing the Deployment information to Database
+
+      Required: Valid Access Token
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedCreateDeploymentV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedCreateDeploymentV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Deployment.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment/CreateDeploymentV1.java'
+    example: |-
+      try {
+          final CreateDeploymentV1 operation = CreateDeploymentV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final Deployment wrapper = new Deployment(sdk);
+          final GeneratedCreateDeploymentV1Response response = wrapper.createDeploymentV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'deployment'
+      - 'v1'
+
+  'CreateDeploymentV2@csm':
+    id: 'CreateDeploymentV2@csm'
+    name: 'CreateDeploymentV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
+
+      Creates Deployment for extend service
+
+      This Endpoint will create new deployment and apply all of the secrets and variable as environment variable
+
+      Required:
+      - Valid Access Token
+      - Valid Image Version Created on Uploading image with docker or other method
+      - Valid App name
+      - Valid Namespace name
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateDeploymentV2Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelCreateDeploymentV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/DeploymentV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment_v2/CreateDeploymentV2.java'
+    example: |-
+      try {
+          final CreateDeploymentV2 operation = CreateDeploymentV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final DeploymentV2 wrapper = new DeploymentV2(sdk);
+          final ApimodelCreateDeploymentV2Response response = wrapper.createDeploymentV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'deployment'
+      - 'v2'
+
+  'DeleteAppImagesV1@csm':
+    id: 'DeleteAppImagesV1@csm'
+    name: 'DeleteAppImagesV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
+
+      Deletes the images uploaded to the repository
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedDeleteAppImagesV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.image.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Image.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/image/DeleteAppImagesV1.java'
+    example: |-
+      try {
+          final DeleteAppImagesV1 operation = DeleteAppImagesV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final Image wrapper = new Image(sdk);
+          wrapper.deleteAppImagesV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'image'
+      - 'images'
+      - 'v1'
+
+  'DeleteAppImagesV2@csm':
+    id: 'DeleteAppImagesV2@csm'
+    name: 'DeleteAppImagesV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
+
+      Deletes list of provided image tags from the app image repository
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedDeleteAppImagesV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.image_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ImageV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/image_v2/DeleteAppImagesV2.java'
+    example: |-
+      try {
+          final DeleteAppImagesV2 operation = DeleteAppImagesV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final ImageV2 wrapper = new ImageV2(sdk);
+          wrapper.deleteAppImagesV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'image'
+      - 'images'
+      - 'v2'
+
+  'DeleteAppV1@csm':
+    id: 'DeleteAppV1@csm'
+    name: 'DeleteAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
+
+      Delete App by given DeploymentID
+
+      This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
+      and update the deleted_at in DB by given App Name.
+
+      Required: Valid Access Token
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'forced':
+        type: 'String'
+        required: false
+        description: |-
+          Force App Deletion
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/DeleteAppV1.java'
+    example: |-
+      try {
+          final DeleteAppV1 operation = DeleteAppV1.builder()
+              .forced(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          wrapper.deleteAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'v1'
+
+  'DeleteAppV2@csm':
+    id: 'DeleteAppV2@csm'
+    name: 'DeleteAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
+
+      Delete extend app by given {app} name
+
+      This endpoint will delete app information, configuration, deployments and all related manifest from
+      db, storage and cluster
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'forced':
+        type: 'String'
+        required: false
+        description: |-
+          Force app deletion, if 'true' will proceed delete regardless of current app status (default: false)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/DeleteAppV2.java'
+    example: |-
+      try {
+          final DeleteAppV2 operation = DeleteAppV2.builder()
+              .forced(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          wrapper.deleteAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'v2'
+
+  'DeleteDeploymentV1@csm':
+    id: 'DeleteDeploymentV1@csm'
+    name: 'DeleteDeploymentV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
+
+      Delete Deployment information by given DeploymentID
+
+      This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
+
+      Required: Valid Access Token
+    parameters:
+      'deploymentId':
+        type: 'String'
+        required: true
+        description: |-
+          Deployment ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Deployment.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment/DeleteDeploymentV1.java'
+    example: |-
+      try {
+          final DeleteDeploymentV1 operation = DeleteDeploymentV1.builder()
+              .build(
+                  deploymentId,
+                  namespace,
+              );
+
+          final Deployment wrapper = new Deployment(sdk);
+          wrapper.deleteDeploymentV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'deployment'
+      - 'v1'
+
+  'DeleteDeploymentV2@csm':
+    id: 'DeleteDeploymentV2@csm'
+    name: 'DeleteDeploymentV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
+
+      Delete Deployment information by given DeploymentID
+
+      This endpoint will delete release object for the service deployment in the cluster
+
+      Required: Valid Access Token
+    parameters:
+      'deploymentId':
+        type: 'String'
+        required: true
+        description: |-
+          Deployment ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/DeploymentV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment_v2/DeleteDeploymentV2.java'
+    example: |-
+      try {
+          final DeleteDeploymentV2 operation = DeleteDeploymentV2.builder()
+              .build(
+                  deploymentId,
+                  namespace,
+              );
+
+          final DeploymentV2 wrapper = new DeploymentV2(sdk);
+          wrapper.deleteDeploymentV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'deployment'
+      - 'v2'
+
+  'DeleteSecretV1@csm':
+    id: 'DeleteSecretV1@csm'
+    name: 'DeleteSecretV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
+
+      Delete an environment secret.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/DeleteSecretV1.java'
+    example: |-
+      try {
+          final DeleteSecretV1 operation = DeleteSecretV1.builder()
+              .build(
+                  app,
+                  configId,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.deleteSecretV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'secret'
+      - 'v1'
+
+  'DeleteSecretV2@csm':
+    id: 'DeleteSecretV2@csm'
+    name: 'DeleteSecretV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
+
+      Delete an environment secret by its config id
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/DeleteSecretV2.java'
+    example: |-
+      try {
+          final DeleteSecretV2 operation = DeleteSecretV2.builder()
+              .build(
+                  app,
+                  configId,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          wrapper.deleteSecretV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'secret'
+      - 'v2'
+
+  'DeleteSubscriptionAppNotificationByUserIDV2@csm':
+    id: 'DeleteSubscriptionAppNotificationByUserIDV2@csm'
+    name: 'DeleteSubscriptionAppNotificationByUserIDV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription by user ID.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          User ID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/DeleteSubscriptionAppNotificationByUserIDV2.java'
+    example: |-
+      try {
+          final DeleteSubscriptionAppNotificationByUserIDV2 operation = DeleteSubscriptionAppNotificationByUserIDV2.builder()
+              .build(
+                  app,
+                  namespace,
+                  userId,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          wrapper.deleteSubscriptionAppNotificationByUserIDV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'by'
+      - 'delete'
+      - 'idv2'
+      - 'notification'
+      - 'subscription'
+      - 'user'
+
+  'DeleteSubscriptionAppNotificationV2@csm':
+    id: 'DeleteSubscriptionAppNotificationV2@csm'
+    name: 'DeleteSubscriptionAppNotificationV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'subscriptionId':
+        type: 'String'
+        required: true
+        description: |-
+          Subscription ID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/DeleteSubscriptionAppNotificationV2.java'
+    example: |-
+      try {
+          final DeleteSubscriptionAppNotificationV2 operation = DeleteSubscriptionAppNotificationV2.builder()
+              .build(
+                  app,
+                  namespace,
+                  subscriptionId,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          wrapper.deleteSubscriptionAppNotificationV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'notification'
+      - 'subscription'
+      - 'v2'
+
+  'DeleteSubscriptionAppNotificationV3@csm':
+    id: 'DeleteSubscriptionAppNotificationV3@csm'
+    name: 'DeleteSubscriptionAppNotificationV3'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
+
+      Remove a user from the notification subscription using either user ID or email address.
+      Only one of them should be provided.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'emailAddress':
+        type: 'String'
+        required: false
+        description: |-
+          emailAddress
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'userId':
+        type: 'String'
+        required: false
+        description: |-
+          userID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription_v3.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscriptionV3.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription_v3/DeleteSubscriptionAppNotificationV3.java'
+    example: |-
+      try {
+          final DeleteSubscriptionAppNotificationV3 operation = DeleteSubscriptionAppNotificationV3.builder()
+              .emailAddress(...)
+              .userId(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final NotificationSubscriptionV3 wrapper = new NotificationSubscriptionV3(sdk);
+          wrapper.deleteSubscriptionAppNotificationV3(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'notification'
+      - 'subscription'
+      - 'v3'
+
+  'DeleteVariableV1@csm':
+    id: 'DeleteVariableV1@csm'
+    name: 'DeleteVariableV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
+
+      Delete an environment variable.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/DeleteVariableV1.java'
+    example: |-
+      try {
+          final DeleteVariableV1 operation = DeleteVariableV1.builder()
+              .build(
+                  app,
+                  configId,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.deleteVariableV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'v1'
+      - 'variable'
+
+  'DeleteVariableV2@csm':
+    id: 'DeleteVariableV2@csm'
+    name: 'DeleteVariableV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
+
+      Delete an environment variable by its config id
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/DeleteVariableV2.java'
+    example: |-
+      try {
+          final DeleteVariableV2 operation = DeleteVariableV2.builder()
+              .build(
+                  app,
+                  configId,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          wrapper.deleteVariableV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'delete'
+      - 'v2'
+      - 'variable'
+
+  'GetAppImageListV1@csm':
+    id: 'GetAppImageListV1@csm'
+    name: 'GetAppImageListV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
+
+      Get a list of container images
+
+      Default 'cached' parameter is 'true'
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'cached':
+        type: 'String'
+        required: false
+        description: |-
+          Get Cached Images
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'GeneratedGetAppImageListV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.image.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Image.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/image/GetAppImageListV1.java'
+    example: |-
+      try {
+          final GetAppImageListV1 operation = GetAppImageListV1.builder()
+              .cached(...)
+              .limit(...)
+              .offset(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final Image wrapper = new Image(sdk);
+          final GeneratedGetAppImageListV1Response response = wrapper.getAppImageListV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'image'
+      - 'list'
+      - 'v1'
+
+  'GetAppImageListV2@csm':
+    id: 'GetAppImageListV2@csm'
+    name: 'GetAppImageListV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
+
+      Get a list of container images
+
+      Default 'cached' parameter is 'true'
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'cached':
+        type: 'String'
+        required: false
+        description: |-
+          Get Cached Images
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelGetAppImageListV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.image_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ImageV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/image_v2/GetAppImageListV2.java'
+    example: |-
+      try {
+          final GetAppImageListV2 operation = GetAppImageListV2.builder()
+              .cached(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final ImageV2 wrapper = new ImageV2(sdk);
+          final ApimodelGetAppImageListV2Response response = wrapper.getAppImageListV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'image'
+      - 'list'
+      - 'v2'
+
+  'GetAppListV1@csm':
+    id: 'GetAppListV1@csm'
+    name: 'GetAppListV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the List of Apps for AB-Extend Customer
+
+      Available scenario:
+      - scenario 1: `function-override`
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+    parameters:
+      'body':
+        type: 'GeneratedGetAppListV1Request'
+        required: true
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'GeneratedGetAppListV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/GetAppListV1.java'
+    example: |-
+      try {
+          final GetAppListV1 operation = GetAppListV1.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedGetAppListV1Response response = wrapper.getAppListV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'v1'
+
+  'GetAppListV2@csm':
+    id: 'GetAppListV2@csm'
+    name: 'GetAppListV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Get list of extend apps on a given game namespace
+    parameters:
+      'body':
+        type: 'ApimodelGetAppListV2Request'
+        required: true
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Maximum number of apps items returned
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Starting point offset items
+    return_type: 'ApimodelGetAppListV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/GetAppListV2.java'
+    example: |-
+      try {
+          final GetAppListV2 operation = GetAppListV2.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          final ApimodelGetAppListV2Response response = wrapper.getAppListV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'v2'
+
+  'GetAppReleaseV1@csm':
+    id: 'GetAppReleaseV1@csm'
+    name: 'GetAppReleaseV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the Latest Release Version info of this App
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedGetAppReleaseV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/GetAppReleaseV1.java'
+    example: |-
+      try {
+          final GetAppReleaseV1 operation = GetAppReleaseV1.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedGetAppReleaseV1Response response = wrapper.getAppReleaseV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'release'
+      - 'v1'
+
+  'GetAppV1@csm':
+    id: 'GetAppV1@csm'
+    name: 'GetAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Gets the App By Name
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedGetAppV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/GetAppV1.java'
+    example: |-
+      try {
+          final GetAppV1 operation = GetAppV1.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedGetAppV1Response response = wrapper.getAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'v1'
+
+  'GetAppV2@csm':
+    id: 'GetAppV2@csm'
+    name: 'GetAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Get extend app by name
+
+      Available scenario:
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+      - scenario 1: `function-override`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelAppItem'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/GetAppV2.java'
+    example: |-
+      try {
+          final GetAppV2 operation = GetAppV2.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          final ApimodelAppItem response = wrapper.getAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'v2'
+
+  'GetDeploymentV1@csm':
+    id: 'GetDeploymentV1@csm'
+    name: 'GetDeploymentV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Get Deployment information by given DeploymentID
+
+      This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
+
+      Required: Valid Access Token
+    parameters:
+      'deploymentId':
+        type: 'String'
+        required: true
+        description: |-
+          Deployment ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedGetDeploymentV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Deployment.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment/GetDeploymentV1.java'
+    example: |-
+      try {
+          final GetDeploymentV1 operation = GetDeploymentV1.builder()
+              .build(
+                  deploymentId,
+                  namespace,
+              );
+
+          final Deployment wrapper = new Deployment(sdk);
+          final GeneratedGetDeploymentV1Response response = wrapper.getDeploymentV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'v1'
+
+  'GetDeploymentV2@csm':
+    id: 'GetDeploymentV2@csm'
+    name: 'GetDeploymentV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Get Deployment information by given DeploymentID
+
+      This endpoint intended to get Deployment information.
+
+      Required: Valid Access Token
+    parameters:
+      'deploymentId':
+        type: 'String'
+        required: true
+        description: |-
+          Deployment ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelGetDeploymentListV2DataItem'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/DeploymentV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment_v2/GetDeploymentV2.java'
+    example: |-
+      try {
+          final GetDeploymentV2 operation = GetDeploymentV2.builder()
+              .build(
+                  deploymentId,
+                  namespace,
+              );
+
+          final DeploymentV2 wrapper = new DeploymentV2(sdk);
+          final ApimodelGetDeploymentListV2DataItem response = wrapper.getDeploymentV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'v2'
+
+  'GetListOfDeploymentV1@csm':
+    id: 'GetListOfDeploymentV1@csm'
+    name: 'GetListOfDeploymentV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Filters the List of Deployments
+
+      This endpoint intended to get list of Deployment done for the given publisher and game.
+
+      Required: Valid Access Token
+    parameters:
+      'body':
+        type: 'GeneratedGetDeploymentListV1Request'
+        required: true
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'GeneratedGetDeploymentListV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Deployment.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment/GetListOfDeploymentV1.java'
+    example: |-
+      try {
+          final GetListOfDeploymentV1 operation = GetListOfDeploymentV1.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Deployment wrapper = new Deployment(sdk);
+          final GeneratedGetDeploymentListV1Response response = wrapper.getListOfDeploymentV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v1'
+
+  'GetListOfDeploymentV2@csm':
+    id: 'GetListOfDeploymentV2@csm'
+    name: 'GetListOfDeploymentV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
+
+      Filters the List of Deployments
+
+      This endpoint intended to get list of Deployment done for the given publisher and game.
+      Request :
+      - appIds : list of app ids
+      - deploymentIds: list of deployment ids
+      - statuses:
+      deployment-in-progress
+      deployment-failed
+      deployment-timeout
+      deployment-running
+      deployment-down
+      Required: Valid Access Token
+    parameters:
+      'body':
+        type: 'ApimodelGetDeploymentListV2Request'
+        required: true
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'ApimodelGetDeploymentListV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.deployment_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/DeploymentV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/deployment_v2/GetListOfDeploymentV2.java'
+    example: |-
+      try {
+          final GetListOfDeploymentV2 operation = GetListOfDeploymentV2.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final DeploymentV2 wrapper = new DeploymentV2(sdk);
+          final ApimodelGetDeploymentListV2Response response = wrapper.getListOfDeploymentV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'deployment'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v2'
+
+  'GetListOfSecretsV1@csm':
+    id: 'GetListOfSecretsV1@csm'
+    name: 'GetListOfSecretsV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
+
+      Get list of environment secrets per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'GeneratedGetListOfConfigurationsV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/GetListOfSecretsV1.java'
+    example: |-
+      try {
+          final GetListOfSecretsV1 operation = GetListOfSecretsV1.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedGetListOfConfigurationsV1Response response = wrapper.getListOfSecretsV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'secrets'
+      - 'v1'
+
+  'GetListOfSecretsV2@csm':
+    id: 'GetListOfSecretsV2@csm'
+    name: 'GetListOfSecretsV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
+
+      Get list of environment secrets per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'ApimodelGetListOfConfigurationsV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/GetListOfSecretsV2.java'
+    example: |-
+      try {
+          final GetListOfSecretsV2 operation = GetListOfSecretsV2.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelGetListOfConfigurationsV2Response response = wrapper.getListOfSecretsV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'secrets'
+      - 'v2'
+
+  'GetListOfVariablesV1@csm':
+    id: 'GetListOfVariablesV1@csm'
+    name: 'GetListOfVariablesV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
+
+      Get list of environment variables per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'GeneratedGetListOfConfigurationsV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/GetListOfVariablesV1.java'
+    example: |-
+      try {
+          final GetListOfVariablesV1 operation = GetListOfVariablesV1.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedGetListOfConfigurationsV1Response response = wrapper.getListOfVariablesV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v1'
+      - 'variables'
+
+  'GetListOfVariablesV2@csm':
+    id: 'GetListOfVariablesV2@csm'
+    name: 'GetListOfVariablesV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
+
+      Get list of environment variables per app
+      Available Deployment Status:
+      `deployed` = app config is already deployed
+      `undeployed` = app config is not deployed yet and need restart and deploy of the app to be deployed
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'ApimodelGetListOfConfigurationsV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/GetListOfVariablesV2.java'
+    example: |-
+      try {
+          final GetListOfVariablesV2 operation = GetListOfVariablesV2.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelGetListOfConfigurationsV2Response response = wrapper.getListOfVariablesV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'get'
+      - 'list'
+      - 'of'
+      - 'v2'
+      - 'variables'
+
+  'GetNotificationSubscriberListV2@csm':
+    id: 'GetNotificationSubscriberListV2@csm'
+    name: 'GetNotificationSubscriberListV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
+
+      Request param:
+      - notificationType : type of the subscribed app notification
+      - values:
+      - all
+      - app-down
+      - critical-vulnerability
+
+      Get a list of the app notification subscriber
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'notificationType':
+        type: 'String'
+        required: true
+        description: |-
+          Notification Type
+    return_type: 'ApimodelGetNotificationSubscriberListResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/GetNotificationSubscriberListV2.java'
+    example: |-
+      try {
+          final GetNotificationSubscriberListV2 operation = GetNotificationSubscriberListV2.builder()
+              .build(
+                  app,
+                  namespace,
+                  notificationType,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          final ApimodelGetNotificationSubscriberListResponse response = wrapper.getNotificationSubscriberListV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'list'
+      - 'notification'
+      - 'subscriber'
+      - 'subscription'
+      - 'v2'
+
+  'GetNotificationSubscriberListV3@csm':
+    id: 'GetNotificationSubscriberListV3@csm'
+    name: 'GetNotificationSubscriberListV3'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
+
+      Request param:
+      - notificationType : type of the subscribed app notification
+      - values:
+      - all
+      - app-down
+      - critical-vulnerability
+
+      Get a list of the app notification subscriber
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+      'notificationType':
+        type: 'String'
+        required: true
+        description: |-
+          Notification Type
+    return_type: 'ApimodelGetNotificationSubscriberListResponseV2'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription_v3.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscriptionV3.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription_v3/GetNotificationSubscriberListV3.java'
+    example: |-
+      try {
+          final GetNotificationSubscriberListV3 operation = GetNotificationSubscriberListV3.builder()
+              .build(
+                  app,
+                  namespace,
+                  notificationType,
+              );
+
+          final NotificationSubscriptionV3 wrapper = new NotificationSubscriptionV3(sdk);
+          final ApimodelGetNotificationSubscriberListResponseV2 response = wrapper.getNotificationSubscriberListV3(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'list'
+      - 'notification'
+      - 'subscriber'
+      - 'subscription'
+      - 'v3'
+
+  'GetResourcesLimits@csm':
+    id: 'GetResourcesLimits@csm'
+    name: 'GetResourcesLimits'
+    description: |-
+      This endpoint return the Extend Apps Configurable Limits for front end to use for initial validation before app creation
+      e.g.
+      Replica Limit will be used to check max replica that can be created for the said environment by default
+      CPU Limit will be used to validate max allowed CPU for the extend app that hasn't been created
+      Memory Limit will be used to validate max allowed Memory for the extend app that hasn't been created
+      MaxAppNotificationSubscription will be used to validate the maximum number of subscriber for an app status notification
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelCSMAppLimitsResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.resources_limits.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ResourcesLimits.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/resources_limits/GetResourcesLimits.java'
+    example: |-
+      try {
+          final GetResourcesLimits operation = GetResourcesLimits.builder()
+              .build(
+                  namespace,
+              );
+
+          final ResourcesLimits wrapper = new ResourcesLimits(sdk);
+          final ApimodelCSMAppLimitsResponse response = wrapper.getResourcesLimits(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'limits'
+      - 'resources'
+
+  'GetSubscriptionV2Handler@csm':
+    id: 'GetSubscriptionV2Handler@csm'
+    name: 'GetSubscriptionV2Handler'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
+
+      Get Subscription status of a user
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelGetNotificationSubscriberStatusResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/GetSubscriptionV2Handler.java'
+    example: |-
+      try {
+          final GetSubscriptionV2Handler operation = GetSubscriptionV2Handler.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          final ApimodelGetNotificationSubscriberStatusResponse response = wrapper.getSubscriptionV2Handler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'handler'
+      - 'notification'
+      - 'subscription'
+      - 'v2'
+
+  'PublicGetMessages@csm':
+    id: 'PublicGetMessages@csm'
+    name: 'PublicGetMessages'
+    description: |-
+      get the list of messages.
+    parameters:
+    return_type: 'List<LogAppMessageDeclaration>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.messages.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Messages.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/messages/PublicGetMessages.java'
+    example: |-
+      try {
+          final PublicGetMessages operation = PublicGetMessages.builder()
+              .build();
+
+          final Messages wrapper = new Messages(sdk);
+          final List<LogAppMessageDeclaration> response = wrapper.publicGetMessages(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'messages'
+      - 'public'
+
+  'SaveSecretV1@csm':
+    id: 'SaveSecretV1@csm'
+    name: 'SaveSecretV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
+
+      Save an environment secret.
+      Request body:
+      - configName : environment secret name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedSaveConfigurationV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedSaveConfigurationV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/SaveSecretV1.java'
+    example: |-
+      try {
+          final SaveSecretV1 operation = SaveSecretV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedSaveConfigurationV1Response response = wrapper.saveSecretV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'secret'
+      - 'v1'
+
+  'SaveSecretV2@csm':
+    id: 'SaveSecretV2@csm'
+    name: 'SaveSecretV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
+
+      Save an environment secret.
+      Secret will always be masked.
+      Request body:
+      - configName : environment secret name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelSaveSecretConfigurationV2Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelSaveConfigurationV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/SaveSecretV2.java'
+    example: |-
+      try {
+          final SaveSecretV2 operation = SaveSecretV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelSaveConfigurationV2Response response = wrapper.saveSecretV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'secret'
+      - 'v2'
+
+  'SaveVariableV1@csm':
+    id: 'SaveVariableV1@csm'
+    name: 'SaveVariableV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
+
+      Save an environment variable.
+      Request body:
+      - configName : environment variable name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedSaveConfigurationV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedSaveConfigurationV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/SaveVariableV1.java'
+    example: |-
+      try {
+          final SaveVariableV1 operation = SaveVariableV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedSaveConfigurationV1Response response = wrapper.saveVariableV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'v1'
+      - 'variable'
+
+  'SaveVariableV2@csm':
+    id: 'SaveVariableV2@csm'
+    name: 'SaveVariableV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
+
+      Save an environment variable.
+      Request body:
+      - configName : environment variable name - Required.
+      - source : source of the configuration value (plaintext or ssm) - Required.
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelSaveConfigurationV2Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelSaveConfigurationV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/SaveVariableV2.java'
+    example: |-
+      try {
+          final SaveVariableV2 operation = SaveVariableV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelSaveConfigurationV2Response response = wrapper.saveVariableV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'save'
+      - 'v2'
+      - 'variable'
+
+  'StartAppV1@csm':
+    id: 'StartAppV1@csm'
+    name: 'StartAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Starts the Application
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'GeneratedStartAppV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedStartAppV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/StartAppV1.java'
+    example: |-
+      try {
+          final StartAppV1 operation = StartAppV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedStartAppV1Response response = wrapper.startAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'start'
+      - 'v1'
+
+  'StartAppV2@csm':
+    id: 'StartAppV2@csm'
+    name: 'StartAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Starts the Application
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/StartAppV2.java'
+    example: |-
+      try {
+          final StartAppV2 operation = StartAppV2.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          wrapper.startAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'start'
+      - 'v2'
+
+  'StopAppV1@csm':
+    id: 'StopAppV1@csm'
+    name: 'StopAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Stops the Application
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'GeneratedStopAppV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedStopAppV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/StopAppV1.java'
+    example: |-
+      try {
+          final StopAppV1 operation = StopAppV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedStopAppV1Response response = wrapper.stopAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'stop'
+      - 'v1'
+
+  'StopAppV2@csm':
+    id: 'StopAppV2@csm'
+    name: 'StopAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Stops the Application
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/StopAppV2.java'
+    example: |-
+      try {
+          final StopAppV2 operation = StopAppV2.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          wrapper.stopAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'stop'
+      - 'v2'
+
+  'SubscribeAppNotificationV2@csm':
+    id: 'SubscribeAppNotificationV2@csm'
+    name: 'SubscribeAppNotificationV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
+
+      Subscribe the user(s) an app notification.
+
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+      - subscribers : user(s) to subscribe the app notification - Required.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelSubscribeNotificationRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelSubscribeNotificationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/SubscribeAppNotificationV2.java'
+    example: |-
+      try {
+          final SubscribeAppNotificationV2 operation = SubscribeAppNotificationV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          final ApimodelSubscribeNotificationResponse response = wrapper.subscribeAppNotificationV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'notification'
+      - 'subscribe'
+      - 'subscription'
+      - 'v2'
+
+  'SubscribeV2Handler@csm':
+    id: 'SubscribeV2Handler@csm'
+    name: 'SubscribeV2Handler'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
+
+      Subscribe to app notification
+      Request body:
+      - notificationType : type of the app notification to be subscribed - Required.
+      - values:
+      - "all"
+      - "app-down"
+      - "critical-vulnerability"
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelSelfSubscribeNotificationRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/SubscribeV2Handler.java'
+    example: |-
+      try {
+          final SubscribeV2Handler operation = SubscribeV2Handler.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          wrapper.subscribeV2Handler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'handler'
+      - 'notification'
+      - 'subscribe'
+      - 'subscription'
+      - 'v2'
+
+  'UnsubscribeV2Handler@csm':
+    id: 'UnsubscribeV2Handler@csm'
+    name: 'UnsubscribeV2Handler'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
+
+      Unsubscribe to app notification
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.notification_subscription.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/NotificationSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/notification_subscription/UnsubscribeV2Handler.java'
+    example: |-
+      try {
+          final UnsubscribeV2Handler operation = UnsubscribeV2Handler.builder()
+              .build(
+                  app,
+                  namespace,
+              );
+
+          final NotificationSubscription wrapper = new NotificationSubscription(sdk);
+          wrapper.unsubscribeV2Handler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'handler'
+      - 'notification'
+      - 'subscription'
+      - 'unsubscribe'
+      - 'v2'
+
+  'UpdateAppResourcesResourceLimitFormV2@csm':
+    id: 'UpdateAppResourcesResourceLimitFormV2@csm'
+    name: 'UpdateAppResourcesResourceLimitFormV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app resources provided on request body
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelIncreaseLimitFormRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/UpdateAppResourcesResourceLimitFormV2.java'
+    example: |-
+      try {
+          final UpdateAppResourcesResourceLimitFormV2 operation = UpdateAppResourcesResourceLimitFormV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          wrapper.updateAppResourcesResourceLimitFormV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'form'
+      - 'limit'
+      - 'resource'
+      - 'resources'
+      - 'update'
+      - 'v2'
+
+  'UpdateAppResourcesV2@csm':
+    id: 'UpdateAppResourcesV2@csm'
+    name: 'UpdateAppResourcesV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app resources provided on request body
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelUpdateAppResourceRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelAppItem'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/UpdateAppResourcesV2.java'
+    example: |-
+      try {
+          final UpdateAppResourcesV2 operation = UpdateAppResourcesV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          final ApimodelAppItem response = wrapper.updateAppResourcesV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'resources'
+      - 'update'
+      - 'v2'
+
+  'UpdateAppV1@csm':
+    id: 'UpdateAppV1@csm'
+    name: 'UpdateAppV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update App Partially
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'GeneratedUpdateAppV1Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedUpdateAppV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/App.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app/UpdateAppV1.java'
+    example: |-
+      try {
+          final UpdateAppV1 operation = UpdateAppV1.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final App wrapper = new App(sdk);
+          final GeneratedUpdateAppV1Response response = wrapper.updateAppV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'update'
+      - 'v1'
+
+  'UpdateAppV2@csm':
+    id: 'UpdateAppV2@csm'
+    name: 'UpdateAppV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Update app info provided on request body
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelUpdateAppV2Request'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelAppItem'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.app_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AppV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/UpdateAppV2.java'
+    example: |-
+      try {
+          final UpdateAppV2 operation = UpdateAppV2.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final AppV2 wrapper = new AppV2(sdk);
+          final ApimodelAppItem response = wrapper.updateAppV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'update'
+      - 'v2'
+
+  'UpdateSecretV1@csm':
+    id: 'UpdateSecretV1@csm'
+    name: 'UpdateSecretV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
+
+      Update an environment secret.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedUpdateConfigurationV1Request'
+        required: true
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedUpdateConfigurationV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/UpdateSecretV1.java'
+    example: |-
+      try {
+          final UpdateSecretV1 operation = UpdateSecretV1.builder()
+              .build(
+                  app,
+                  body,
+                  configId,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedUpdateConfigurationV1Response response = wrapper.updateSecretV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'secret'
+      - 'update'
+      - 'v1'
+
+  'UpdateSecretV2@csm':
+    id: 'UpdateSecretV2@csm'
+    name: 'UpdateSecretV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
+
+      Update an environment secret.
+      Secret will always be masked.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelUpdateSecretConfigurationV2Request'
+        required: true
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelUpdateConfigurationV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/UpdateSecretV2.java'
+    example: |-
+      try {
+          final UpdateSecretV2 operation = UpdateSecretV2.builder()
+              .build(
+                  app,
+                  body,
+                  configId,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelUpdateConfigurationV2Response response = wrapper.updateSecretV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'secret'
+      - 'update'
+      - 'v2'
+
+  'UpdateVariableV1@csm':
+    id: 'UpdateVariableV1@csm'
+    name: 'UpdateVariableV1'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
+
+      Update an environment variable.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'GeneratedUpdateConfigurationV1Request'
+        required: true
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'GeneratedUpdateConfigurationV1Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration/UpdateVariableV1.java'
+    example: |-
+      try {
+          final UpdateVariableV1 operation = UpdateVariableV1.builder()
+              .build(
+                  app,
+                  body,
+                  configId,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final GeneratedUpdateConfigurationV1Response response = wrapper.updateVariableV1(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'update'
+      - 'v1'
+      - 'variable'
+
+  'UpdateVariableV2@csm':
+    id: 'UpdateVariableV2@csm'
+    name: 'UpdateVariableV2'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
+
+      Update an environment variable.
+      Request body:
+      - value : configuration value - Required.
+      - description : description of the configuration - Optional.
+      - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
+    parameters:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelUpdateConfigurationV2Request'
+        required: true
+      'configId':
+        type: 'String'
+        required: true
+        description: |-
+          Config ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelUpdateConfigurationV2Response'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.configuration_v2.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/configuration_v2/UpdateVariableV2.java'
+    example: |-
+      try {
+          final UpdateVariableV2 operation = UpdateVariableV2.builder()
+              .build(
+                  app,
+                  body,
+                  configId,
+                  namespace,
+              );
+
+          final ConfigurationV2 wrapper = new ConfigurationV2(sdk);
+          final ApimodelUpdateConfigurationV2Response response = wrapper.updateVariableV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'update'
+      - 'v2'
+      - 'variable'

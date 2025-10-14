@@ -1,0 +1,2919 @@
+structs:
+  # region models
+
+  'DtoExtendConfigDTO@gdpr':
+    id: 'DtoExtendConfigDTO@gdpr'
+    name: 'DtoExtendConfigDTO'
+    fields:
+      'appName':
+        type: 'String'
+        required: true
+        description: |-
+          extend app name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          extend app namespace
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoExtendConfigDTO.java'
+
+  'DtoFinishedDataDeletion@gdpr':
+    id: 'DtoFinishedDataDeletion@gdpr'
+    name: 'DtoFinishedDataDeletion'
+    fields:
+      'finishedDate':
+        type: 'String'
+        required: true
+        description: |-
+          Finished deletion date
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request deletion date
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          Status of request
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          User Id. This userId will be anonymized automatically after 7 days from the **Success** deletion
+      'failedMessage':
+        type: 'String'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoFinishedDataDeletion.java'
+
+  'DtoFinishedDataRequest@gdpr':
+    id: 'DtoFinishedDataRequest@gdpr'
+    name: 'DtoFinishedDataRequest'
+    fields:
+      'finishedDate':
+        type: 'String'
+        required: true
+        description: |-
+          Finished date
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date
+      'requestId':
+        type: 'String'
+        required: true
+        description: |-
+          Request id
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          Status of request
+      'userId':
+        type: 'String'
+        required: true
+      'dataExpirationDate':
+        type: 'String'
+        required: false
+        description: |-
+          The expiration date of generated data, it was 28 days after finishedDate. Available only if the status is Completed
+      'failedMessage':
+        type: 'String'
+        required: false
+        description: |-
+          Failed message if status is Failed
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoFinishedDataRequest.java'
+
+  'DtoListFinishedDataDeletion@gdpr':
+    id: 'DtoListFinishedDataDeletion@gdpr'
+    name: 'DtoListFinishedDataDeletion'
+    fields:
+      'data':
+        type: 'List<DtoFinishedDataDeletion>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoListFinishedDataDeletion.java'
+
+  'DtoListFinishedDataRequests@gdpr':
+    id: 'DtoListFinishedDataRequests@gdpr'
+    name: 'DtoListFinishedDataRequests'
+    fields:
+      'data':
+        type: 'List<DtoFinishedDataRequest>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoListFinishedDataRequests.java'
+
+  'DtoPlatformAccountClosureClientRequest@gdpr':
+    id: 'DtoPlatformAccountClosureClientRequest@gdpr'
+    name: 'DtoPlatformAccountClosureClientRequest'
+    fields:
+      'bpCert':
+        type: 'String'
+        required: false
+        description: |-
+          required for xbox
+      'bpCertFileName':
+        type: 'String'
+        required: false
+        description: |-
+          required for xbox
+      'clientId':
+        type: 'String'
+        required: false
+        description: |-
+          required for psn
+      'password':
+        type: 'String'
+        required: false
+        description: |-
+          required for xbox
+      'publisherKey':
+        type: 'String'
+        required: false
+        description: |-
+          required for steam
+      'sandboxId':
+        type: 'String'
+        required: false
+        description: |-
+          required for xbox
+      'secret':
+        type: 'String'
+        required: false
+        description: |-
+          required for psn
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureClientRequest.java'
+
+  'DtoPlatformAccountClosureClientResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientResponse'
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+      'platform':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'Long'
+        required: true
+      'bpCertExpireAt':
+        type: 'Long'
+        required: false
+      'bpCertFileName':
+        type: 'String'
+        required: false
+      'clientId':
+        type: 'String'
+        required: false
+      'publisherKey':
+        type: 'String'
+        required: false
+      'sandboxId':
+        type: 'String'
+        required: false
+      'secret':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureClientResponse.java'
+
+  'DtoPlatformAccountClosureClientsResponse@gdpr':
+    id: 'DtoPlatformAccountClosureClientsResponse@gdpr'
+    name: 'DtoPlatformAccountClosureClientsResponse'
+    fields:
+      'data':
+        type: 'List<DtoPlatformAccountClosureClientResponse>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureClientsResponse.java'
+
+  'DtoPlatformAccountClosureMockRequest@gdpr':
+    id: 'DtoPlatformAccountClosureMockRequest@gdpr'
+    name: 'DtoPlatformAccountClosureMockRequest'
+    fields:
+      'platformUserId':
+        type: 'String'
+        required: true
+      'sandbox':
+        type: 'String'
+        required: true
+      'startImmediately':
+        type: 'Boolean'
+        required: true
+        description: |-
+          start the account closure process immediately
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureMockRequest.java'
+
+  'DtoS2SDataRequestSummary@gdpr':
+    id: 'DtoS2SDataRequestSummary@gdpr'
+    name: 'DtoS2SDataRequestSummary'
+    fields:
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          Status of the request
+      'failedMessage':
+        type: 'String'
+        required: false
+        description: |-
+          Failed message if status is Failed
+      'url':
+        type: 'String'
+        required: false
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoS2SDataRequestSummary.java'
+
+  'DtoServiceConfigDTO@gdpr':
+    id: 'DtoServiceConfigDTO@gdpr'
+    name: 'DtoServiceConfigDTO'
+    fields:
+      'protocol':
+        type: 'String'
+        required: true
+        description: |-
+          protocol type
+      'skipAck':
+        type: 'Boolean'
+        required: false
+        description: |-
+          skip waiting for ack event from this service, used in "EVENT" protocol only.
+      'url':
+        type: 'String'
+        required: false
+        description: |-
+          url of the service with port number, required in "GRPC" protocol
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigDTO.java'
+
+  'DtoServiceConfigurationDTO@gdpr':
+    id: 'DtoServiceConfigurationDTO@gdpr'
+    name: 'DtoServiceConfigurationDTO'
+    fields:
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          service id
+      'type':
+        type: 'String'
+        required: true
+        description: |-
+          service type
+      'extendConfig':
+        type: 'DtoExtendConfigDTO'
+        required: false
+        description: |-
+          extend configuration detail, required when "type" is "EXTEND"
+      'serviceConfig':
+        type: 'DtoServiceConfigDTO'
+        required: false
+        description: |-
+          service configuration detail, required when "type" is "SERVICE"
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigurationDTO.java'
+
+  'DtoServiceConfigurationUpdateRequest@gdpr':
+    id: 'DtoServiceConfigurationUpdateRequest@gdpr'
+    name: 'DtoServiceConfigurationUpdateRequest'
+    fields:
+      'services':
+        type: 'List<DtoServiceConfigurationDTO>'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigurationUpdateRequest.java'
+
+  'DtoServicesConfigurationResponse@gdpr':
+    id: 'DtoServicesConfigurationResponse@gdpr'
+    name: 'DtoServicesConfigurationResponse'
+    fields:
+      'services':
+        type: 'List<DtoServiceConfigurationDTO>'
+        required: true
+        description: |-
+          list of services
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServicesConfigurationResponse.java'
+
+  'DtoUserPlatformAccountClosureHistoriesResponse@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistoriesResponse@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistoriesResponse'
+    fields:
+      'data':
+        type: 'List<DtoUserPlatformAccountClosureHistory>'
+        required: true
+      'pagination':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoUserPlatformAccountClosureHistoriesResponse.java'
+
+  'DtoUserPlatformAccountClosureHistory@gdpr':
+    id: 'DtoUserPlatformAccountClosureHistory@gdpr'
+    name: 'DtoUserPlatformAccountClosureHistory'
+    fields:
+      'closedDate':
+        type: 'Long'
+        required: true
+      'environment':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'platform':
+        type: 'String'
+        required: true
+      'platformUserId':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoUserPlatformAccountClosureHistory.java'
+
+  'DtoXboxBPCertValidationRequest@gdpr':
+    id: 'DtoXboxBPCertValidationRequest@gdpr'
+    name: 'DtoXboxBPCertValidationRequest'
+    fields:
+      'bpCert':
+        type: 'String'
+        required: true
+      'password':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoXboxBPCertValidationRequest.java'
+
+  'DtoXboxBPCertValidationResponse@gdpr':
+    id: 'DtoXboxBPCertValidationResponse@gdpr'
+    name: 'DtoXboxBPCertValidationResponse'
+    fields:
+      'expirationDate':
+        type: 'Long'
+        required: true
+      'expired':
+        type: 'Boolean'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoXboxBPCertValidationResponse.java'
+
+  'ModelsDataRetrievalResponse@gdpr':
+    id: 'ModelsDataRetrievalResponse@gdpr'
+    name: 'ModelsDataRetrievalResponse'
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+      'requestDate':
+        type: 'String'
+        required: true
+      'userID':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsDataRetrievalResponse.java'
+
+  'ModelsDeletionData@gdpr':
+    id: 'ModelsDeletionData@gdpr'
+    name: 'ModelsDeletionData'
+    fields:
+      'displayName':
+        type: 'String'
+        required: true
+      'requestDate':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'uniqueDisplayName':
+        type: 'String'
+        required: true
+      'userID':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsDeletionData.java'
+
+  'ModelsDeletionStatus@gdpr':
+    id: 'ModelsDeletionStatus@gdpr'
+    name: 'ModelsDeletionStatus'
+    fields:
+      'deletionDate':
+        type: 'String'
+        required: true
+      'deletionStatus':
+        type: 'Boolean'
+        required: true
+      'displayName':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'userID':
+        type: 'String'
+        required: true
+      'executionDate':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsDeletionStatus.java'
+
+  'ModelsListDeletionDataResponse@gdpr':
+    id: 'ModelsListDeletionDataResponse@gdpr'
+    name: 'ModelsListDeletionDataResponse'
+    fields:
+      'data':
+        type: 'List<ModelsDeletionData>'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsListDeletionDataResponse.java'
+
+  'ModelsListPersonalDataResponse@gdpr':
+    id: 'ModelsListPersonalDataResponse@gdpr'
+    name: 'ModelsListPersonalDataResponse'
+    fields:
+      'data':
+        type: 'List<ModelsPersonalData>'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsListPersonalDataResponse.java'
+
+  'ModelsPagination@gdpr':
+    id: 'ModelsPagination@gdpr'
+    name: 'ModelsPagination'
+    fields:
+      'first':
+        type: 'String'
+        required: true
+      'last':
+        type: 'String'
+        required: true
+      'next':
+        type: 'String'
+        required: true
+      'previous':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsPagination.java'
+
+  'ModelsPersonalData@gdpr':
+    id: 'ModelsPersonalData@gdpr'
+    name: 'ModelsPersonalData'
+    fields:
+      'dataExpirationDate':
+        type: 'String'
+        required: true
+      'displayName':
+        type: 'String'
+        required: true
+      'requestDate':
+        type: 'String'
+        required: true
+      'serviceErrors':
+        type: 'Map<String, String>'
+        required: true
+      'serviceStatuses':
+        type: 'Map<String, String>'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'userID':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsPersonalData.java'
+
+  'ModelsRequestDeleteResponse@gdpr':
+    id: 'ModelsRequestDeleteResponse@gdpr'
+    name: 'ModelsRequestDeleteResponse'
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+      'userID':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsRequestDeleteResponse.java'
+
+  'ModelsS2SDataRetrievalResponse@gdpr':
+    id: 'ModelsS2SDataRetrievalResponse@gdpr'
+    name: 'ModelsS2SDataRetrievalResponse'
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+      'requestDate':
+        type: 'String'
+        required: true
+      'requestId':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsS2SDataRetrievalResponse.java'
+
+  'ModelsS2SRequestDeleteResponse@gdpr':
+    id: 'ModelsS2SRequestDeleteResponse@gdpr'
+    name: 'ModelsS2SRequestDeleteResponse'
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsS2SRequestDeleteResponse.java'
+
+  'ModelsS2SUserDataURL@gdpr':
+    id: 'ModelsS2SUserDataURL@gdpr'
+    name: 'ModelsS2SUserDataURL'
+    fields:
+      'url':
+        type: 'String'
+        required: true
+        description: |-
+          Download url if status is Completed
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsS2SUserDataURL.java'
+
+  'ModelsUserDataURL@gdpr':
+    id: 'ModelsUserDataURL@gdpr'
+    name: 'ModelsUserDataURL'
+    fields:
+      'url':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsUserDataURL.java'
+
+  'ModelsUserPersonalData@gdpr':
+    id: 'ModelsUserPersonalData@gdpr'
+    name: 'ModelsUserPersonalData'
+    fields:
+      'dataExpirationDate':
+        type: 'String'
+        required: true
+      'requestDate':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsUserPersonalData.java'
+
+  'ModelsUserPersonalDataResponse@gdpr':
+    id: 'ModelsUserPersonalDataResponse@gdpr'
+    name: 'ModelsUserPersonalDataResponse'
+    fields:
+      'data':
+        type: 'List<ModelsUserPersonalData>'
+        required: true
+      'paging':
+        type: 'ModelsPagination'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ModelsUserPersonalDataResponse.java'
+
+  'ResponseError@gdpr':
+    id: 'ResponseError@gdpr'
+    name: 'ResponseError'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: true
+      'messageVariables':
+        type: 'Map<String, String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/models/ResponseError.java'
+
+  # endregion models
+
+functions:
+
+  'AdminCancelUserAccountDeletionRequest@gdpr':
+    id: 'AdminCancelUserAccountDeletionRequest@gdpr'
+    name: 'AdminCancelUserAccountDeletionRequest'
+    description: |-
+      Cancel user's account deletion request
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/AdminCancelUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final AdminCancelUserAccountDeletionRequest operation = AdminCancelUserAccountDeletionRequest.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          wrapper.adminCancelUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'user'
+
+  'AdminCancelUserPersonalDataRequest@gdpr':
+    id: 'AdminCancelUserPersonalDataRequest@gdpr'
+    name: 'AdminCancelUserPersonalDataRequest'
+    description: |-
+      Cancel user's personal data requests
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/AdminCancelUserPersonalDataRequest.java'
+    example: |-
+      try {
+          final AdminCancelUserPersonalDataRequest operation = AdminCancelUserPersonalDataRequest.builder()
+              .build(
+                  namespace,
+                  requestDate,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          wrapper.adminCancelUserPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'AdminDeletePlatformAccountClosureClient@gdpr':
+    id: 'AdminDeletePlatformAccountClosureClient@gdpr'
+    name: 'AdminDeletePlatformAccountClosureClient'
+    description: |-
+      Delete platform account closure client.
+      The namespace should be **publisher or studio namespace**
+      -------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'String'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminDeletePlatformAccountClosureClient.java'
+    example: |-
+      try {
+          final AdminDeletePlatformAccountClosureClient operation = AdminDeletePlatformAccountClosureClient.builder()
+              .build(
+                  namespace,
+                  platform,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          wrapper.adminDeletePlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'delete'
+      - 'platform'
+
+  'AdminGeneratePersonalDataURL@gdpr':
+    id: 'AdminGeneratePersonalDataURL@gdpr'
+    name: 'AdminGeneratePersonalDataURL'
+    description: |-
+      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
+
+
+
+
+      If admin request data for themselves, password is need to be set
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'password':
+        type: 'String'
+        required: false
+        description: |-
+          If admin request data for themselves, then password is required
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/AdminGeneratePersonalDataURL.java'
+    example: |-
+      try {
+          final AdminGeneratePersonalDataURL operation = AdminGeneratePersonalDataURL.builder()
+              .password(...)
+              .build(
+                  namespace,
+                  requestDate,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsUserDataURL response = wrapper.adminGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 'url'
+
+  'AdminGetListDeletionDataRequest@gdpr':
+    id: 'AdminGetListDeletionDataRequest@gdpr'
+    name: 'AdminGetListDeletionDataRequest'
+    description: |-
+      Retrieve all user's account deletion requests in specified date
+      Scope: account
+    parameters:
+      'after':
+        type: 'String'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list after that. format : YYYY-MM-DD
+      'before':
+        type: 'String'
+        required: false
+        description: |-
+          The day in UTC format to get deletion request list before that. format : YYYY-MM-DD
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          The start position that points to query data
+      'requestDate':
+        type: 'String'
+        required: false
+        description: |-
+          The day in UTC of the deletion request. format : YYYY-MM-DD. Default : today time in UTC.
+    return_type: 'ModelsListDeletionDataResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/AdminGetListDeletionDataRequest.java'
+    example: |-
+      try {
+          final AdminGetListDeletionDataRequest operation = AdminGetListDeletionDataRequest.builder()
+              .after(...)
+              .before(...)
+              .limit(...)
+              .offset(...)
+              .requestDate(...)
+              .build(
+                  namespace,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsListDeletionDataResponse response = wrapper.adminGetListDeletionDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'list'
+      - 'request'
+
+  'AdminGetListPersonalDataRequest@gdpr':
+    id: 'AdminGetListPersonalDataRequest@gdpr'
+    name: 'AdminGetListPersonalDataRequest'
+    description: |-
+      Get list personal data requests
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          The start position that points to query data
+      'requestDate':
+        type: 'String'
+        required: false
+        description: |-
+          request date with format YYYY-MM-DD. Default value today UTC
+    return_type: 'ModelsListPersonalDataResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/AdminGetListPersonalDataRequest.java'
+    example: |-
+      try {
+          final AdminGetListPersonalDataRequest operation = AdminGetListPersonalDataRequest.builder()
+              .limit(...)
+              .offset(...)
+              .requestDate(...)
+              .build(
+                  namespace,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsListPersonalDataResponse response = wrapper.adminGetListPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+
+  'AdminGetPlatformAccountClosureClient@gdpr':
+    id: 'AdminGetPlatformAccountClosureClient@gdpr'
+    name: 'AdminGetPlatformAccountClosureClient'
+    description: |-
+      Get platform account closure config.
+      The namespace should be **publisher or studio namespace**
+      ----------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'String'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'DtoPlatformAccountClosureClientResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminGetPlatformAccountClosureClient.java'
+    example: |-
+      try {
+          final AdminGetPlatformAccountClosureClient operation = AdminGetPlatformAccountClosureClient.builder()
+              .build(
+                  namespace,
+                  platform,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          final DtoPlatformAccountClosureClientResponse response = wrapper.adminGetPlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureClients@gdpr':
+    id: 'AdminGetPlatformAccountClosureClients@gdpr'
+    name: 'AdminGetPlatformAccountClosureClients'
+    description: |-
+      Get platform account closure configs.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoPlatformAccountClosureClientsResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminGetPlatformAccountClosureClients.java'
+    example: |-
+      try {
+          final AdminGetPlatformAccountClosureClients operation = AdminGetPlatformAccountClosureClients.builder()
+              .build(
+                  namespace,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          final DtoPlatformAccountClosureClientsResponse response = wrapper.adminGetPlatformAccountClosureClients(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'clients'
+      - 'closure'
+      - 'get'
+      - 'platform'
+
+  'AdminGetPlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminGetPlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminGetPlatformAccountClosureServicesConfiguration'
+    description: |-
+      Get registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServicesConfigurationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminGetPlatformAccountClosureServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminGetPlatformAccountClosureServicesConfiguration operation = AdminGetPlatformAccountClosureServicesConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final DtoServicesConfigurationResponse response = wrapper.adminGetPlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'get'
+      - 'platform'
+      - 'services'
+
+  'AdminGetServicesConfiguration@gdpr':
+    id: 'AdminGetServicesConfiguration@gdpr'
+    name: 'AdminGetServicesConfiguration'
+    description: |-
+      Get Registered Services Configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServicesConfigurationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminGetServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminGetServicesConfiguration operation = AdminGetServicesConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final DtoServicesConfigurationResponse response = wrapper.adminGetServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'services'
+
+  'AdminGetUserAccountDeletionRequest@gdpr':
+    id: 'AdminGetUserAccountDeletionRequest@gdpr'
+    name: 'AdminGetUserAccountDeletionRequest'
+    description: |-
+      Retrieve specific user's account deletion request
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsDeletionData'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/AdminGetUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final AdminGetUserAccountDeletionRequest operation = AdminGetUserAccountDeletionRequest.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsDeletionData response = wrapper.adminGetUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'request'
+      - 'user'
+
+  'AdminGetUserPersonalDataRequests@gdpr':
+    id: 'AdminGetUserPersonalDataRequests@gdpr'
+    name: 'AdminGetUserPersonalDataRequests'
+    description: |-
+      Get user's personal data requests
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          The start position that points to query data
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/AdminGetUserPersonalDataRequests.java'
+    example: |-
+      try {
+          final AdminGetUserPersonalDataRequests operation = AdminGetUserPersonalDataRequests.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsUserPersonalDataResponse response = wrapper.adminGetUserPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'AdminGetUserPlatformAccountClosureHistories@gdpr':
+    id: 'AdminGetUserPlatformAccountClosureHistories@gdpr'
+    name: 'AdminGetUserPlatformAccountClosureHistories'
+    description: |-
+      Get user's platform account closure histories.
+      Scope: account
+
+      ------
+      Supported platforms:
+      - psn
+      - steamnetwork
+      - xbox
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'platform':
+        type: 'String'
+        required: false
+        description: |-
+          3rd party platform
+      'userId':
+        type: 'String'
+        required: false
+        description: |-
+          IAM ID of the user
+    return_type: 'DtoUserPlatformAccountClosureHistoriesResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_history.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureHistory.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_history/AdminGetUserPlatformAccountClosureHistories.java'
+    example: |-
+      try {
+          final AdminGetUserPlatformAccountClosureHistories operation = AdminGetUserPlatformAccountClosureHistories.builder()
+              .limit(...)
+              .offset(...)
+              .platform(...)
+              .userId(...)
+              .build(
+                  namespace,
+              );
+
+          final PlatformAccountClosureHistory wrapper = new PlatformAccountClosureHistory(sdk);
+          final DtoUserPlatformAccountClosureHistoriesResponse response = wrapper.adminGetUserPlatformAccountClosureHistories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'get'
+      - 'histories'
+      - 'history'
+      - 'platform'
+      - 'user'
+
+  'AdminMockPlatformAccountClosureData@gdpr':
+    id: 'AdminMockPlatformAccountClosureData@gdpr'
+    name: 'AdminMockPlatformAccountClosureData'
+    description: |-
+      Mock platform account closure data.
+      -----
+      **This is only for testing**
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoPlatformAccountClosureMockRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'String'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminMockPlatformAccountClosureData.java'
+    example: |-
+      try {
+          final AdminMockPlatformAccountClosureData operation = AdminMockPlatformAccountClosureData.builder()
+              .build(
+                  body,
+                  namespace,
+                  platform,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          wrapper.adminMockPlatformAccountClosureData(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'data'
+      - 'mock'
+      - 'platform'
+
+  'AdminRequestDataRetrieval@gdpr':
+    id: 'AdminRequestDataRetrieval@gdpr'
+    name: 'AdminRequestDataRetrieval'
+    description: |-
+      Submit user personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'password':
+        type: 'String'
+        required: false
+        description: |-
+          IAM password of the user, required if admin requests their own data
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM user ID
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/AdminRequestDataRetrieval.java'
+    example: |-
+      try {
+          final AdminRequestDataRetrieval operation = AdminRequestDataRetrieval.builder()
+              .password(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsDataRetrievalResponse response = wrapper.adminRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'data'
+      - 'request'
+      - 'retrieval'
+
+  'AdminResetPlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminResetPlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminResetPlatformAccountClosureServicesConfiguration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset registered platform account closure services configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminResetPlatformAccountClosureServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminResetPlatformAccountClosureServicesConfiguration operation = AdminResetPlatformAccountClosureServicesConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.adminResetPlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'reset'
+      - 'services'
+
+  'AdminResetServicesConfiguration@gdpr':
+    id: 'AdminResetServicesConfiguration@gdpr'
+    name: 'AdminResetServicesConfiguration'
+    description: |-
+      **[TEST FACILITY ONLY]**
+      Reset Registered Services Configuration to use the default configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminResetServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminResetServicesConfiguration operation = AdminResetServicesConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.adminResetServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'reset'
+      - 'services'
+
+  'AdminSubmitUserAccountDeletionRequest@gdpr':
+    id: 'AdminSubmitUserAccountDeletionRequest@gdpr'
+    name: 'AdminSubmitUserAccountDeletionRequest'
+    description: |-
+      Submit user's account deletion request.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/AdminSubmitUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final AdminSubmitUserAccountDeletionRequest operation = AdminSubmitUserAccountDeletionRequest.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsRequestDeleteResponse response = wrapper.adminSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'AdminUpdatePlatformAccountClosureClient@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureClient@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureClient'
+    description: |-
+      Update platform account closure client.
+      The namespace should be the **publisher or studio namespace**.
+      ------
+      Platform:
+      - steamnetwork
+      - xbox
+      - psn
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoPlatformAccountClosureClientRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'platform':
+        type: 'String'
+        required: true
+        description: |-
+          3rd party platform
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminUpdatePlatformAccountClosureClient.java'
+    example: |-
+      try {
+          final AdminUpdatePlatformAccountClosureClient operation = AdminUpdatePlatformAccountClosureClient.builder()
+              .build(
+                  body,
+                  namespace,
+                  platform,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          wrapper.adminUpdatePlatformAccountClosureClient(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'client'
+      - 'closure'
+      - 'platform'
+      - 'update'
+
+  'AdminUpdatePlatformAccountClosureServicesConfiguration@gdpr':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfiguration@gdpr'
+    name: 'AdminUpdatePlatformAccountClosureServicesConfiguration'
+    description: |-
+      Update registered platform account closure services configuration.
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServiceConfigurationUpdateRequest'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminUpdatePlatformAccountClosureServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdatePlatformAccountClosureServicesConfiguration operation = AdminUpdatePlatformAccountClosureServicesConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final DtoServiceConfigurationUpdateRequest response = wrapper.adminUpdatePlatformAccountClosureServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'closure'
+      - 'configuration'
+      - 'platform'
+      - 'services'
+      - 'update'
+
+  'AdminUpdateServicesConfiguration@gdpr':
+    id: 'AdminUpdateServicesConfiguration@gdpr'
+    name: 'AdminUpdateServicesConfiguration'
+    description: |-
+      Update Registered Services Configuration.
+      Scope: account
+    parameters:
+      'body':
+        type: 'DtoServiceConfigurationUpdateRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoServiceConfigurationUpdateRequest'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/AdminUpdateServicesConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdateServicesConfiguration operation = AdminUpdateServicesConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final DtoServiceConfigurationUpdateRequest response = wrapper.adminUpdateServicesConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'services'
+      - 'update'
+
+  'AdminValidateXboxBPCertFile@gdpr':
+    id: 'AdminValidateXboxBPCertFile@gdpr'
+    name: 'AdminValidateXboxBPCertFile'
+    description: |-
+      Check xbox BP cert file whether it's expired and return expiration date
+    parameters:
+      'body':
+        type: 'DtoXboxBPCertValidationRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'DtoXboxBPCertValidationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.platform_account_closure_client.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/PlatformAccountClosureClient.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/platform_account_closure_client/AdminValidateXboxBPCertFile.java'
+    example: |-
+      try {
+          final AdminValidateXboxBPCertFile operation = AdminValidateXboxBPCertFile.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final PlatformAccountClosureClient wrapper = new PlatformAccountClosureClient(sdk);
+          final DtoXboxBPCertValidationResponse response = wrapper.adminValidateXboxBPCertFile(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'admin'
+      - 'bp'
+      - 'cert'
+      - 'client'
+      - 'closure'
+      - 'file'
+      - 'platform'
+      - 'validate'
+      - 'xbox'
+
+  'DeleteAdminEmailConfiguration@gdpr':
+    id: 'DeleteAdminEmailConfiguration@gdpr'
+    name: 'DeleteAdminEmailConfiguration'
+    description: |-
+      Delete a list of admin email addresses to stop receiving personal data request notification.
+      Scope: account
+    parameters:
+      'emails':
+        type: 'List<String>'
+        required: true
+        description: |-
+          list of admin email to delete
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/DeleteAdminEmailConfiguration.java'
+    example: |-
+      try {
+          final DeleteAdminEmailConfiguration operation = DeleteAdminEmailConfiguration.builder()
+              .build(
+                  emails,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.deleteAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'delete'
+      - 'email'
+
+  'GetAdminEmailConfiguration@gdpr':
+    id: 'GetAdminEmailConfiguration@gdpr'
+    name: 'GetAdminEmailConfiguration'
+    description: |-
+      Get list of admin email address configuration.
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'List<String>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/GetAdminEmailConfiguration.java'
+    example: |-
+      try {
+          final GetAdminEmailConfiguration operation = GetAdminEmailConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          final List<String> response = wrapper.getAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'get'
+
+  'PublicCancelMyAccountDeletionRequest@gdpr':
+    id: 'PublicCancelMyAccountDeletionRequest@gdpr'
+    name: 'PublicCancelMyAccountDeletionRequest'
+    description: |-
+      Cancel my account deletion request
+      Requires valid user access token
+    parameters:
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicCancelMyAccountDeletionRequest.java'
+    example: |-
+      try {
+          final PublicCancelMyAccountDeletionRequest operation = PublicCancelMyAccountDeletionRequest.builder()
+              .build();
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          wrapper.publicCancelMyAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+
+  'PublicCancelUserAccountDeletionRequest@gdpr':
+    id: 'PublicCancelUserAccountDeletionRequest@gdpr'
+    name: 'PublicCancelUserAccountDeletionRequest'
+    description: |-
+      Cancel user's account deletion request
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicCancelUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final PublicCancelUserAccountDeletionRequest operation = PublicCancelUserAccountDeletionRequest.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          wrapper.publicCancelUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'cancel'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'user'
+
+  'PublicCancelUserPersonalDataRequest@gdpr':
+    id: 'PublicCancelUserPersonalDataRequest@gdpr'
+    name: 'PublicCancelUserPersonalDataRequest'
+    description: |-
+      Cancel user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/PublicCancelUserPersonalDataRequest.java'
+    example: |-
+      try {
+          final PublicCancelUserPersonalDataRequest operation = PublicCancelUserPersonalDataRequest.builder()
+              .build(
+                  namespace,
+                  requestDate,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          wrapper.publicCancelUserPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'user'
+
+  'PublicGeneratePersonalDataURL@gdpr':
+    id: 'PublicGeneratePersonalDataURL@gdpr'
+    name: 'PublicGeneratePersonalDataURL'
+    description: |-
+      Generate personal data download url
+      Requires valid user access token
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'String'
+        required: true
+        description: |-
+          IAM password of the user
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/PublicGeneratePersonalDataURL.java'
+    example: |-
+      try {
+          final PublicGeneratePersonalDataURL operation = PublicGeneratePersonalDataURL.builder()
+              .build(
+                  namespace,
+                  password,
+                  requestDate,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsUserDataURL response = wrapper.publicGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
+  'PublicGetMyAccountDeletionStatus@gdpr':
+    id: 'PublicGetMyAccountDeletionStatus@gdpr'
+    name: 'PublicGetMyAccountDeletionStatus'
+    description: |-
+      Retrieve my account deletion status
+      Requires valid user access token
+    parameters:
+    return_type: 'ModelsDeletionStatus'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicGetMyAccountDeletionStatus.java'
+    example: |-
+      try {
+          final PublicGetMyAccountDeletionStatus operation = PublicGetMyAccountDeletionStatus.builder()
+              .build();
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsDeletionStatus response = wrapper.publicGetMyAccountDeletionStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'my'
+      - 'public'
+      - 'status'
+
+  'PublicGetUserAccountDeletionStatus@gdpr':
+    id: 'PublicGetUserAccountDeletionStatus@gdpr'
+    name: 'PublicGetUserAccountDeletionStatus'
+    description: |-
+      Retrieve specific user's account deletion status
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsDeletionStatus'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicGetUserAccountDeletionStatus.java'
+    example: |-
+      try {
+          final PublicGetUserAccountDeletionStatus operation = PublicGetUserAccountDeletionStatus.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsDeletionStatus response = wrapper.publicGetUserAccountDeletionStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'get'
+      - 'public'
+      - 'status'
+      - 'user'
+
+  'PublicGetUserPersonalDataRequests@gdpr':
+    id: 'PublicGetUserPersonalDataRequests@gdpr'
+    name: 'PublicGetUserPersonalDataRequests'
+    description: |-
+      Get user's personal data requests
+      Requires valid user access token
+      Scope: account
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          the maximum number of data that may be returned (1...100)
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          The start position that points to query data
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/PublicGetUserPersonalDataRequests.java'
+    example: |-
+      try {
+          final PublicGetUserPersonalDataRequests operation = PublicGetUserPersonalDataRequests.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsUserPersonalDataResponse response = wrapper.publicGetUserPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'get'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
+      - 'user'
+
+  'PublicRequestDataRetrieval@gdpr':
+    id: 'PublicRequestDataRetrieval@gdpr'
+    name: 'PublicRequestDataRetrieval'
+    description: |-
+      Submit personal data retrieval request.
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'languageTag':
+        type: 'String'
+        required: false
+        description: |-
+          Language tag
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'String'
+        required: true
+        description: |-
+          IAM password of the user
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM id of the user
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrieval.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/PublicRequestDataRetrieval.java'
+    example: |-
+      try {
+          final PublicRequestDataRetrieval operation = PublicRequestDataRetrieval.builder()
+              .languageTag(...)
+              .build(
+                  namespace,
+                  password,
+                  userId,
+              );
+
+          final DataRetrieval wrapper = new DataRetrieval(sdk);
+          final ModelsDataRetrievalResponse response = wrapper.publicRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+
+  'PublicSubmitMyAccountDeletionRequest@gdpr':
+    id: 'PublicSubmitMyAccountDeletionRequest@gdpr'
+    name: 'PublicSubmitMyAccountDeletionRequest'
+    description: |-
+      Submit my account deletion requests.
+      Requires valid user access token
+      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID which used to generate current token
+      'platformToken':
+        type: 'String'
+        required: true
+        description: |-
+          Platform token of current logged platform
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicSubmitMyAccountDeletionRequest.java'
+    example: |-
+      try {
+          final PublicSubmitMyAccountDeletionRequest operation = PublicSubmitMyAccountDeletionRequest.builder()
+              .build(
+                  platformId,
+                  platformToken,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsRequestDeleteResponse response = wrapper.publicSubmitMyAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitUserAccountDeletionRequest@gdpr':
+    id: 'PublicSubmitUserAccountDeletionRequest@gdpr'
+    name: 'PublicSubmitUserAccountDeletionRequest'
+    description: |-
+      Submit user's account deletion request.
+      Requires valid user access token and password
+      Scope: account
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    parameters:
+      'languageTag':
+        type: 'String'
+        required: false
+        description: |-
+          Language tag
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the user
+      'password':
+        type: 'String'
+        required: true
+        description: |-
+          IAM password of the user
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          IAM ID of the user
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicSubmitUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final PublicSubmitUserAccountDeletionRequest operation = PublicSubmitUserAccountDeletionRequest.builder()
+              .languageTag(...)
+              .build(
+                  namespace,
+                  password,
+                  userId,
+              );
+
+          final DataDeletion wrapper = new DataDeletion(sdk);
+          final ModelsRequestDeleteResponse response = wrapper.publicSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'public'
+      - 'request'
+      - 'submit'
+      - 'user'
+
+  'S2SGeneratePersonalDataURL@gdpr':
+    id: 'S2SGeneratePersonalDataURL@gdpr'
+    name: 'S2SGeneratePersonalDataURL'
+    description: |-
+      Scope: account
+
+      Generate personal data download url.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SUserDataURL'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGeneratePersonalDataURL.java'
+    example: |-
+      try {
+          final S2SGeneratePersonalDataURL operation = S2SGeneratePersonalDataURL.builder()
+              .build(
+                  namespace,
+                  requestDate,
+                  userId,
+              );
+
+          final DataRetrievalS2S wrapper = new DataRetrievalS2S(sdk);
+          final ModelsS2SUserDataURL response = wrapper.s2sGeneratePersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'personal'
+      - 'retrieval'
+      - 's2s'
+      - 'url'
+
+  'S2SGetDataRequestByRequestID@gdpr':
+    id: 'S2SGetDataRequestByRequestID@gdpr'
+    name: 'S2SGetDataRequestByRequestID'
+    description: |-
+      Scope: account
+
+      Get Personal Data Request by Request Id.
+      If the request has been completed, it will return a download url for the data package.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'requestId':
+        type: 'String'
+        required: true
+        description: |-
+          Request Id
+    return_type: 'DtoS2SDataRequestSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGetDataRequestByRequestID.java'
+    example: |-
+      try {
+          final S2SGetDataRequestByRequestID operation = S2SGetDataRequestByRequestID.builder()
+              .build(
+                  namespace,
+                  requestId,
+              );
+
+          final DataRetrievalS2S wrapper = new DataRetrievalS2S(sdk);
+          final DtoS2SDataRequestSummary response = wrapper.s2sGetDataRequestByRequestID(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'by'
+      - 'data'
+      - 'get'
+      - 'id'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SGetListFinishedAccountDeletionRequest@gdpr':
+    id: 'S2SGetListFinishedAccountDeletionRequest@gdpr'
+    name: 'S2SGetListFinishedAccountDeletionRequest'
+    description: |-
+      Scope: account
+
+      Get list of finished account deletion requests based on the finished time period.
+      Unfinished deletion requests will not appear here, i.e. have Status **Request**, **Pending** or **In-Progress**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'DtoListFinishedDataDeletion'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_s2s/S2SGetListFinishedAccountDeletionRequest.java'
+    example: |-
+      try {
+          final S2SGetListFinishedAccountDeletionRequest operation = S2SGetListFinishedAccountDeletionRequest.builder()
+              .build(
+                  end,
+                  namespace,
+                  start,
+              );
+
+          final DataDeletionS2S wrapper = new DataDeletionS2S(sdk);
+          final DtoListFinishedDataDeletion response = wrapper.s2sGetListFinishedAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'request'
+      - 's2s'
+
+  'S2SGetListFinishedPersonalDataRequest@gdpr':
+    id: 'S2SGetListFinishedPersonalDataRequest@gdpr'
+    name: 'S2SGetListFinishedPersonalDataRequest'
+    description: |-
+      Scope: account
+
+      Get list of finished personal data requests based on the finished time period.
+      Unfinished personal data requests will not appear here, i.e. have Status **Pending**, **In-Progress** or **Canceled**.
+
+      **Anonymize userId for deleted account:**
+      For user accounts that have been deleted, the **userId** field in this API will be anonymized automatically after **7 days** from the success deletion.
+      This measure is implemented to ensure compliance with GDPR regulations. Please make sure to synchronize the data from this API before it undergoes anonymization.
+
+      ---
+      ## This API for S2S integration purpose only
+    parameters:
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          Finished end time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Cannot exceed current time. End time is exclusive
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          Finished start time (RFC3339 format, example: 2024-01-01T01:30:59.12Z). Start time is inclusive
+    return_type: 'DtoListFinishedDataRequests'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGetListFinishedPersonalDataRequest.java'
+    example: |-
+      try {
+          final S2SGetListFinishedPersonalDataRequest operation = S2SGetListFinishedPersonalDataRequest.builder()
+              .build(
+                  end,
+                  namespace,
+                  start,
+              );
+
+          final DataRetrievalS2S wrapper = new DataRetrievalS2S(sdk);
+          final DtoListFinishedDataRequests response = wrapper.s2sGetListFinishedPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'finished'
+      - 'get'
+      - 'list'
+      - 'personal'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SRequestDataRetrieval@gdpr':
+    id: 'S2SRequestDataRetrieval@gdpr'
+    name: 'S2SRequestDataRetrieval'
+    description: |-
+      Scope: account
+
+      Submit user personal data retrieval request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SDataRetrievalResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SRequestDataRetrieval.java'
+    example: |-
+      try {
+          final S2SRequestDataRetrieval operation = S2SRequestDataRetrieval.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataRetrievalS2S wrapper = new DataRetrievalS2S(sdk);
+          final ModelsS2SDataRetrievalResponse response = wrapper.s2sRequestDataRetrieval(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'request'
+      - 'retrieval'
+      - 's2s'
+
+  'S2SSubmitUserAccountDeletionRequest@gdpr':
+    id: 'S2SSubmitUserAccountDeletionRequest@gdpr'
+    name: 'S2SSubmitUserAccountDeletionRequest'
+    description: |-
+      Scope: account
+
+      Submit user's account deletion request.
+
+      **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
+
+      ---
+      ## This API for S2S integration purpose only
+
+      **Notes:**
+
+      1. This API will **not send GDPR email notification** both for player and admin notification.
+      2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          Publisher User Id
+    return_type: 'ModelsS2SRequestDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_s2s.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionS2S.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_s2s/S2SSubmitUserAccountDeletionRequest.java'
+    example: |-
+      try {
+          final S2SSubmitUserAccountDeletionRequest operation = S2SSubmitUserAccountDeletionRequest.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final DataDeletionS2S wrapper = new DataDeletionS2S(sdk);
+          final ModelsS2SRequestDeleteResponse response = wrapper.s2sSubmitUserAccountDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'account'
+      - 'data'
+      - 'deletion'
+      - 'request'
+      - 's2s'
+      - 'submit'
+      - 'user'
+
+  'SaveAdminEmailConfiguration@gdpr':
+    id: 'SaveAdminEmailConfiguration@gdpr'
+    name: 'SaveAdminEmailConfiguration'
+    description: |-
+      Add admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'body':
+        type: 'List<String>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/SaveAdminEmailConfiguration.java'
+    example: |-
+      try {
+          final SaveAdminEmailConfiguration operation = SaveAdminEmailConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.saveAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'save'
+
+  'UpdateAdminEmailConfiguration@gdpr':
+    id: 'UpdateAdminEmailConfiguration@gdpr'
+    name: 'UpdateAdminEmailConfiguration'
+    description: |-
+      Update admin email address for receiving personal data request notification.
+      Scope: account
+    parameters:
+      'body':
+        type: 'List<String>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.configuration.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/Configuration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/configuration/UpdateAdminEmailConfiguration.java'
+    example: |-
+      try {
+          final UpdateAdminEmailConfiguration operation = UpdateAdminEmailConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Configuration wrapper = new Configuration(sdk);
+          wrapper.updateAdminEmailConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'email'
+      - 'update'

@@ -1,0 +1,4017 @@
+structs:
+  # region models
+
+  'BulkUserProgressionRequest@seasonpass':
+    id: 'BulkUserProgressionRequest@seasonpass'
+    name: 'BulkUserProgressionRequest'
+    fields:
+      'userIds':
+        type: 'List<String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/BulkUserProgressionRequest.java'
+
+  'ClaimableRewards@seasonpass':
+    id: 'ClaimableRewards@seasonpass'
+    name: 'ClaimableRewards'
+    description: |-
+      A DTO object for claimable rewards.
+    fields:
+      'claimingRewards':
+        type: 'Map<String, ?>'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'toClaimRewards':
+        type: 'Map<String, ?>'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ClaimableRewards.java'
+
+  'ClaimableUserSeasonInfo@seasonpass':
+    id: 'ClaimableUserSeasonInfo@seasonpass'
+    name: 'ClaimableUserSeasonInfo'
+    description: |-
+      A DTO object for claimable user season data.
+    fields:
+      'claimingRewards':
+        type: 'Map<String, ?>'
+        required: true
+        description: |-
+          Claiming rewards, zero based tier index as key, rewards per pass as value
+      'cleared':
+        type: 'Boolean'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'currentExp':
+        type: 'Integer'
+        required: true
+        description: |-
+          gained exp for current tier
+      'currentTierIndex':
+        type: 'Integer'
+        required: true
+        description: |-
+          current tier index, zero based
+      'enrolledAt':
+        type: 'String'
+        required: true
+        description: |-
+          enroll date time
+      'enrolledPasses':
+        type: 'List<String>'
+        required: true
+        description: |-
+          enrolled passes
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'lastTierIndex':
+        type: 'Integer'
+        required: true
+        description: |-
+          last tier index, zero based
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'requiredExp':
+        type: 'Integer'
+        required: true
+        description: |-
+          required exp for current tier
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          season id
+      'toClaimRewards':
+        type: 'Map<String, ?>'
+        required: true
+        description: |-
+          To claim rewards, zero based tier index as key, rewards per pass as value
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          user id
+      'season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+      'totalExp':
+        type: 'Long'
+        required: false
+        description: |-
+          total exp
+      'totalPaidForExp':
+        type: 'Long'
+        required: false
+        description: |-
+          total paid-for exp
+      'totalSweatExp':
+        type: 'Long'
+        required: false
+        description: |-
+          total sweat exp
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ClaimableUserSeasonInfo.java'
+
+  'ErrorEntity@seasonpass':
+    id: 'ErrorEntity@seasonpass'
+    name: 'ErrorEntity'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+        description: |-
+          numeric error code
+      'errorMessage':
+        type: 'String'
+        required: true
+        description: |-
+          error message
+      'devStackTrace':
+        type: 'String'
+        required: false
+        description: |-
+          internal server error stack trace in configured environment
+      'messageVariables':
+        type: 'Map<String, String>'
+        required: false
+        description: |-
+          message variables
+      'requiredPermission':
+        type: 'Permission'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ErrorEntity.java'
+
+  'ExcessStrategy@seasonpass':
+    id: 'ExcessStrategy@seasonpass'
+    name: 'ExcessStrategy'
+    fields:
+      'method':
+        type: 'String'
+        required: true
+        description: |-
+          method while excess the final tier exp
+      'currency':
+        type: 'String'
+        required: false
+        description: |-
+          virtual currency for grant, required while method is CURRENCY
+      'percentPerExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          percent per exp, required while method is CURRENCY
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ExcessStrategy.java'
+
+  'ExpGrantHistoryInfo@seasonpass':
+    id: 'ExpGrantHistoryInfo@seasonpass'
+    name: 'ExpGrantHistoryInfo'
+    description: |-
+      A DTO object for exp grant history details.
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          acquired at
+      'grantExp':
+        type: 'Long'
+        required: true
+        description: |-
+          grant exp
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          season id
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          user id
+      'source':
+        type: 'String'
+        required: false
+        description: |-
+          id
+      'tags':
+        type: 'List<String>'
+        required: false
+        description: |-
+          id
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ExpGrantHistoryInfo.java'
+
+  'ExpGrantHistoryPagingSlicedResult@seasonpass':
+    id: 'ExpGrantHistoryPagingSlicedResult@seasonpass'
+    name: 'ExpGrantHistoryPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List<ExpGrantHistoryInfo>'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'Long'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ExpGrantHistoryPagingSlicedResult.java'
+
+  'FieldValidationError@seasonpass':
+    id: 'FieldValidationError@seasonpass'
+    name: 'FieldValidationError'
+    fields:
+      'errorCode':
+        type: 'String'
+        required: false
+      'errorField':
+        type: 'String'
+        required: false
+      'errorMessage':
+        type: 'String'
+        required: false
+      'errorValue':
+        type: 'String'
+        required: false
+      'messageVariables':
+        type: 'Map<String, String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/FieldValidationError.java'
+
+  'FullSeasonInfo@seasonpass':
+    id: 'FullSeasonInfo@seasonpass'
+    name: 'FullSeasonInfo'
+    description: |-
+      A DTO object for season full content.
+    fields:
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'passes':
+        type: 'List<PassInfo>'
+        required: true
+        description: |-
+          passes info
+      'rewards':
+        type: 'Map<String, RewardInfo>'
+        required: true
+        description: |-
+          rewards info
+      'tiers':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          tiers info
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/FullSeasonInfo.java'
+
+  'Image@seasonpass':
+    id: 'Image@seasonpass'
+    name: 'Image'
+    fields:
+      'height':
+        type: 'Integer'
+        required: true
+        description: |-
+          height
+      'imageUrl':
+        type: 'String'
+        required: true
+        description: |-
+          imageUrl
+      'width':
+        type: 'Integer'
+        required: true
+        description: |-
+          width
+      'as':
+        type: 'String'
+        required: false
+        description: |-
+          image for
+      'caption':
+        type: 'String'
+        required: false
+        description: |-
+          image caption
+      'smallImageUrl':
+        type: 'String'
+        required: false
+        description: |-
+          smallImageUrl
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Image.java'
+
+  'ItemReference@seasonpass':
+    id: 'ItemReference@seasonpass'
+    name: 'ItemReference'
+    description: |-
+      A DTO object for item references.
+    fields:
+      'module':
+        type: 'String'
+        required: false
+        description: |-
+          module
+      'references':
+        type: 'List<Map<String, ?>>'
+        required: false
+        description: |-
+          references
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ItemReference.java'
+
+  'ItemReferenceInfo@seasonpass':
+    id: 'ItemReferenceInfo@seasonpass'
+    name: 'ItemReferenceInfo'
+    description: |-
+      A DTO object for item references info.
+    fields:
+      'references':
+        type: 'List<ItemReference>'
+        required: false
+        description: |-
+          item references
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ItemReferenceInfo.java'
+
+  'ListSeasonInfo@seasonpass':
+    id: 'ListSeasonInfo@seasonpass'
+    name: 'ListSeasonInfo'
+    description: |-
+      A DTO object for listing season info.
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'defaultLanguage':
+        type: 'String'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          status
+      'tierItemId':
+        type: 'String'
+        required: true
+        description: |-
+          tier item id
+      'tierItemName':
+        type: 'String'
+        required: true
+        description: |-
+          tier item name
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'passCodes':
+        type: 'List<String>'
+        required: false
+        description: |-
+          pass codes
+      'publishedAt':
+        type: 'String'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListSeasonInfo.java'
+
+  'ListSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListSeasonInfoPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List<ListSeasonInfo>'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListSeasonInfoPagingSlicedResult.java'
+
+  'ListUserSeasonInfo@seasonpass':
+    id: 'ListUserSeasonInfo@seasonpass'
+    name: 'ListUserSeasonInfo'
+    description: |-
+      A DTO object for listing user season data.
+    fields:
+      'cleared':
+        type: 'Boolean'
+        required: true
+        description: |-
+          whether cleared all tiers
+      'currentTierIndex':
+        type: 'Integer'
+        required: true
+        description: |-
+          current tier index, zero based
+      'enrolledAt':
+        type: 'String'
+        required: true
+        description: |-
+          enroll date time
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'lastTierIndex':
+        type: 'Integer'
+        required: true
+        description: |-
+          last tier index, zero based
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          season id
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          user id
+      'season':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          season summary
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListUserSeasonInfo.java'
+
+  'ListUserSeasonInfoPagingSlicedResult@seasonpass':
+    id: 'ListUserSeasonInfoPagingSlicedResult@seasonpass'
+    name: 'ListUserSeasonInfoPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List<ListUserSeasonInfo>'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'Long'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListUserSeasonInfoPagingSlicedResult.java'
+
+  'Localization@seasonpass':
+    id: 'Localization@seasonpass'
+    name: 'Localization'
+    fields:
+      'description':
+        type: 'String'
+        required: false
+        description: |-
+          description info
+      'title':
+        type: 'String'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Localization.java'
+
+  'LocalizedPassInfo@seasonpass':
+    id: 'LocalizedPassInfo@seasonpass'
+    name: 'LocalizedPassInfo'
+    description: |-
+      A DTO object for public user retrieving pass info.
+    fields:
+      'autoEnroll':
+        type: 'Boolean'
+        required: true
+        description: |-
+          autoEnroll
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          code
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'displayOrder':
+        type: 'String'
+        required: true
+        description: |-
+          displayOrder
+      'language':
+        type: 'String'
+        required: true
+        description: |-
+          current language
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'passItemId':
+        type: 'String'
+        required: true
+        description: |-
+          pass item id
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          season id
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'description':
+        type: 'String'
+        required: false
+        description: |-
+          description info
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'title':
+        type: 'String'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/LocalizedPassInfo.java'
+
+  'LocalizedSeasonInfo@seasonpass':
+    id: 'LocalizedSeasonInfo@seasonpass'
+    name: 'LocalizedSeasonInfo'
+    description: |-
+      A DTO object for public user retrieving season info.
+    fields:
+      'autoClaim':
+        type: 'Boolean'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'language':
+        type: 'String'
+        required: true
+        description: |-
+          current language
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'passes':
+        type: 'List<LocalizedPassInfo>'
+        required: true
+        description: |-
+          passes info
+      'rewards':
+        type: 'Map<String, RewardInfo>'
+        required: true
+        description: |-
+          rewards info
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          status
+      'tierItemId':
+        type: 'String'
+        required: true
+        description: |-
+          tier item id
+      'tiers':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          tiers info
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'description':
+        type: 'String'
+        required: false
+        description: |-
+          description info
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'passCodes':
+        type: 'List<String>'
+        required: false
+        description: |-
+          pass codes
+      'publishedAt':
+        type: 'String'
+        required: false
+        description: |-
+          publishedAt
+      'title':
+        type: 'String'
+        required: false
+        description: |-
+          title info
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/LocalizedSeasonInfo.java'
+
+  'Ownership@seasonpass':
+    id: 'Ownership@seasonpass'
+    name: 'Ownership'
+    fields:
+      'owned':
+        type: 'Boolean'
+        required: true
+        description: |-
+          ownership
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Ownership.java'
+
+  'Paging@seasonpass':
+    id: 'Paging@seasonpass'
+    name: 'Paging'
+    fields:
+      'next':
+        type: 'String'
+        required: false
+      'previous':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Paging.java'
+
+  'PassCreate@seasonpass':
+    id: 'PassCreate@seasonpass'
+    name: 'PassCreate'
+    description: |-
+      A DTO object for creating pass API call.
+    fields:
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'displayOrder':
+        type: 'Integer'
+        required: true
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'passItemId':
+        type: 'String'
+        required: true
+        description: |-
+          pass item id
+      'autoEnroll':
+        type: 'Boolean'
+        required: false
+        description: |-
+          autoEnroll for free pass, default false
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/PassCreate.java'
+
+  'PassInfo@seasonpass':
+    id: 'PassInfo@seasonpass'
+    name: 'PassInfo'
+    description: |-
+      A DTO object for pass info.
+    fields:
+      'autoEnroll':
+        type: 'Boolean'
+        required: true
+        description: |-
+          autoEnroll
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          code
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'displayOrder':
+        type: 'String'
+        required: true
+        description: |-
+          displayOrder
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'passItemId':
+        type: 'String'
+        required: true
+        description: |-
+          pass item id
+      'passItemName':
+        type: 'String'
+        required: true
+        description: |-
+          pass item name
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          season id
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/PassInfo.java'
+
+  'PassUpdate@seasonpass':
+    id: 'PassUpdate@seasonpass'
+    name: 'PassUpdate'
+    description: |-
+      A DTO object for updating pass API call.
+    fields:
+      'autoEnroll':
+        type: 'Boolean'
+        required: false
+        description: |-
+          autoEnroll for free pass
+      'displayOrder':
+        type: 'Integer'
+        required: false
+        description: |-
+          displayOrder for frontend to arrange the pass
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'passItemId':
+        type: 'String'
+        required: false
+        description: |-
+          pass item id
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/PassUpdate.java'
+
+  'Permission@seasonpass':
+    id: 'Permission@seasonpass'
+    name: 'Permission'
+    fields:
+      'action':
+        type: 'Integer'
+        required: false
+      'resource':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Permission.java'
+
+  'ReasonTagsResult@seasonpass':
+    id: 'ReasonTagsResult@seasonpass'
+    name: 'ReasonTagsResult'
+    description: |-
+      A DTO object for reason tags.
+    fields:
+      'tags':
+        type: 'List<String>'
+        required: true
+        description: |-
+          tags
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ReasonTagsResult.java'
+
+  'RewardCreate@seasonpass':
+    id: 'RewardCreate@seasonpass'
+    name: 'RewardCreate'
+    description: |-
+      A DTO object for creating reward API call.
+    fields:
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          code, allowed characters from a-z0-9_:- and start/end in alphanumeric, max length is 255
+      'type':
+        type: 'String'
+        required: true
+        description: |-
+          type, at current only support ITEM
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'itemId':
+        type: 'String'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'quantity':
+        type: 'Integer'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/RewardCreate.java'
+
+  'RewardCurrency@seasonpass':
+    id: 'RewardCurrency@seasonpass'
+    name: 'RewardCurrency'
+    description: |-
+      A DTO object for reward currency.
+    fields:
+      'currencyCode':
+        type: 'String'
+        required: true
+        description: |-
+          currency code, alphabet uppercase
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace, allowed values: game namespace or publisher namespace
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/RewardCurrency.java'
+
+  'RewardInfo@seasonpass':
+    id: 'RewardInfo@seasonpass'
+    name: 'RewardInfo'
+    description: |-
+      A DTO object for reward info.
+    fields:
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          code
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'seasonId':
+        type: 'String'
+        required: true
+        description: |-
+          seasonId
+      'type':
+        type: 'String'
+        required: true
+        description: |-
+          type
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'itemId':
+        type: 'String'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM
+      'itemName':
+        type: 'String'
+        required: false
+        description: |-
+          itemName, required when reward type is ITEM
+      'itemSku':
+        type: 'String'
+        required: false
+        description: |-
+          itemSku, required when reward type is ITEM
+      'itemType':
+        type: 'String'
+        required: false
+        description: |-
+          itemType, required when reward type is ITEM
+      'quantity':
+        type: 'Integer'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/RewardInfo.java'
+
+  'RewardUpdate@seasonpass':
+    id: 'RewardUpdate@seasonpass'
+    name: 'RewardUpdate'
+    description: |-
+      A DTO object for updating reward API call.
+    fields:
+      'currency':
+        type: 'RewardCurrency'
+        required: false
+        description: |-
+          currency, required when reward type is CURRENCY
+      'image':
+        type: 'Image'
+        required: false
+        description: |-
+          image, thumbnail for reward
+      'itemId':
+        type: 'String'
+        required: false
+        description: |-
+          itemId, required when reward type is ITEM, the item type should be one of: INGAMEITEM,COINS,BUNDLE
+      'nullFields':
+        type: 'List<String>'
+        required: false
+        description: |-
+          nullFields
+      'quantity':
+        type: 'Integer'
+        required: false
+        description: |-
+          Item quantity or Currency amount, default 1
+      'type':
+        type: 'String'
+        required: false
+        description: |-
+          type, at current only support ITEM
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/RewardUpdate.java'
+
+  'SeasonCloneRequest@seasonpass':
+    id: 'SeasonCloneRequest@seasonpass'
+    name: 'SeasonCloneRequest'
+    description: |-
+      A DTO object for clone season API call.
+    fields:
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/SeasonCloneRequest.java'
+
+  'SeasonCreate@seasonpass':
+    id: 'SeasonCreate@seasonpass'
+    name: 'SeasonCreate'
+    description: |-
+      A DTO object for creating season API call.
+    fields:
+      'defaultRequiredExp':
+        type: 'Integer'
+        required: true
+        description: |-
+          default exp required for a tier
+      'draftStoreId':
+        type: 'String'
+        required: true
+        description: |-
+          draft store id
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+      'tierItemId':
+        type: 'String'
+        required: true
+        description: |-
+          tier item id
+      'autoClaim':
+        type: 'Boolean'
+        required: false
+        description: |-
+          whether auto claim rewards, default true
+      'defaultLanguage':
+        type: 'String'
+        required: false
+        description: |-
+          default language, BCP 47 language tag, default is en
+      'excessStrategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp, default NONE
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/SeasonCreate.java'
+
+  'SeasonInfo@seasonpass':
+    id: 'SeasonInfo@seasonpass'
+    name: 'SeasonInfo'
+    description: |-
+      A DTO object for season info.
+    fields:
+      'autoClaim':
+        type: 'Boolean'
+        required: true
+        description: |-
+          whether auto claim rewards
+      'createdAt':
+        type: 'String'
+        required: true
+        description: |-
+          created at
+      'defaultLanguage':
+        type: 'String'
+        required: true
+        description: |-
+          default language, BCP 47 language tag
+      'defaultRequiredExp':
+        type: 'Integer'
+        required: true
+        description: |-
+          default required exp for a tier
+      'draftStoreId':
+        type: 'String'
+        required: true
+        description: |-
+          draft store id
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'excessStrategy':
+        type: 'ExcessStrategy'
+        required: true
+        description: |-
+          strategy while exceed final tier exp
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: true
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          status
+      'tierItemId':
+        type: 'String'
+        required: true
+        description: |-
+          tier item id
+      'tierItemName':
+        type: 'String'
+        required: true
+        description: |-
+          tier item name
+      'updatedAt':
+        type: 'String'
+        required: true
+        description: |-
+          updated at
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'passCodes':
+        type: 'List<String>'
+        required: false
+        description: |-
+          pass codes
+      'publishedAt':
+        type: 'String'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/SeasonInfo.java'
+
+  'SeasonSummary@seasonpass':
+    id: 'SeasonSummary@seasonpass'
+    name: 'SeasonSummary'
+    description: |-
+      A DTO object for season summary.
+    fields:
+      'end':
+        type: 'String'
+        required: true
+        description: |-
+          end date time
+      'id':
+        type: 'String'
+        required: true
+        description: |-
+          id
+      'name':
+        type: 'String'
+        required: true
+        description: |-
+          name, max length is 127
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'start':
+        type: 'String'
+        required: true
+        description: |-
+          start date time
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          status
+      'passCodes':
+        type: 'List<String>'
+        required: false
+        description: |-
+          season pass codes
+      'previous':
+        type: 'SeasonSummary'
+        required: false
+        description: |-
+          previous season, only present in some situation
+      'publishedAt':
+        type: 'String'
+        required: false
+        description: |-
+          publishedAt
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/SeasonSummary.java'
+
+  'SeasonUpdate@seasonpass':
+    id: 'SeasonUpdate@seasonpass'
+    name: 'SeasonUpdate'
+    description: |-
+      A DTO object for updating season API call.
+    fields:
+      'autoClaim':
+        type: 'Boolean'
+        required: false
+        description: |-
+          whether auto claim rewards
+      'defaultLanguage':
+        type: 'String'
+        required: false
+        description: |-
+          default language, BCP 47 language tag
+      'defaultRequiredExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          default exp required for a tier
+      'draftStoreId':
+        type: 'String'
+        required: false
+        description: |-
+          draft store id
+      'end':
+        type: 'String'
+        required: false
+        description: |-
+          end date time
+      'excessStrategy':
+        type: 'ExcessStrategy'
+        required: false
+        description: |-
+          strategy while exceed final tier exp
+      'images':
+        type: 'List<Image>'
+        required: false
+        description: |-
+          images
+      'localizations':
+        type: 'Map<String, Localization>'
+        required: false
+        description: |-
+          localization, {language: localization} map
+      'name':
+        type: 'String'
+        required: false
+        description: |-
+          name, max length is 127
+      'start':
+        type: 'String'
+        required: false
+        description: |-
+          start date time
+      'tierItemId':
+        type: 'String'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/SeasonUpdate.java'
+
+  'Tier@seasonpass':
+    id: 'Tier@seasonpass'
+    name: 'Tier'
+    fields:
+      'id':
+        type: 'String'
+        required: false
+        description: |-
+          tier id, auto generated.
+      'requiredExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'rewards':
+        type: 'Map<String, List<String>>'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Tier.java'
+
+  'TierCreate@seasonpass':
+    id: 'TierCreate@seasonpass'
+    name: 'TierCreate'
+    description: |-
+      A DTO object for creating tier API call.
+    fields:
+      'index':
+        type: 'Integer'
+        required: false
+        description: |-
+          zero based tier index to be inserted at, -1 means appending to the end, default -1
+      'quantity':
+        type: 'Integer'
+        required: false
+        description: |-
+          create tier quantity, default 1
+      'tier':
+        type: 'TierInput'
+        required: false
+        description: |-
+          tier content, default null tier
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/TierCreate.java'
+
+  'TierInput@seasonpass':
+    id: 'TierInput@seasonpass'
+    name: 'TierInput'
+    description: |-
+      A DTO object for tier input.
+    fields:
+      'requiredExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          required exp for tier, it will automatically use season defaultRequiredExp if not set
+      'rewards':
+        type: 'Map<String, List<String>>'
+        required: false
+        description: |-
+          rewards map, passCode as key, rewardCode list as value
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/TierInput.java'
+
+  'TierPagingSlicedResult@seasonpass':
+    id: 'TierPagingSlicedResult@seasonpass'
+    name: 'TierPagingSlicedResult'
+    fields:
+      'data':
+        type: 'List<Tier>'
+        required: true
+        description: |-
+          data
+      'paging':
+        type: 'Paging'
+        required: false
+      'total':
+        type: 'Long'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/TierPagingSlicedResult.java'
+
+  'TierReorder@seasonpass':
+    id: 'TierReorder@seasonpass'
+    name: 'TierReorder'
+    fields:
+      'newIndex':
+        type: 'Integer'
+        required: false
+        description: |-
+          new index tier should be moved to, zero based, -1 means appending to the end
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/TierReorder.java'
+
+  'UserExpGrant@seasonpass':
+    id: 'UserExpGrant@seasonpass'
+    name: 'UserExpGrant'
+    description: |-
+      A DTO object for granting user exp.
+    fields:
+      'exp':
+        type: 'Integer'
+        required: false
+        description: |-
+          exp to grant
+      'source':
+        type: 'String'
+        required: false
+        description: |-
+          source
+      'tags':
+        type: 'List<String>'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserExpGrant.java'
+
+  'UserPassGrant@seasonpass':
+    id: 'UserPassGrant@seasonpass'
+    name: 'UserPassGrant'
+    description: |-
+      A DTO object for granting user pass.
+    fields:
+      'passCode':
+        type: 'String'
+        required: false
+        description: |-
+          pass code, required if passItemId null
+      'passItemId':
+        type: 'String'
+        required: false
+        description: |-
+          pass item id, required if passCode null and ignored if passCode present
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserPassGrant.java'
+
+  'UserPurchasable@seasonpass':
+    id: 'UserPurchasable@seasonpass'
+    name: 'UserPurchasable'
+    description: |-
+      A DTO object for user purchasable.
+    fields:
+      'passItemId':
+        type: 'String'
+        required: false
+        description: |-
+          pass item id
+      'tierItemCount':
+        type: 'Integer'
+        required: false
+        description: |-
+          tier item count, default 1
+      'tierItemId':
+        type: 'String'
+        required: false
+        description: |-
+          tier item id
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserPurchasable.java'
+
+  'UserRewardClaim@seasonpass':
+    id: 'UserRewardClaim@seasonpass'
+    name: 'UserRewardClaim'
+    description: |-
+      A DTO object for claiming user reward.
+    fields:
+      'passCode':
+        type: 'String'
+        required: true
+        description: |-
+          pass code
+      'rewardCode':
+        type: 'String'
+        required: true
+        description: |-
+          reward code
+      'tierIndex':
+        type: 'Integer'
+        required: true
+        description: |-
+          tier index
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserRewardClaim.java'
+
+  'UserSeasonSummary@seasonpass':
+    id: 'UserSeasonSummary@seasonpass'
+    name: 'UserSeasonSummary'
+    description: |-
+      A DTO object for user season summary.
+    fields:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          user id
+      'cleared':
+        type: 'Boolean'
+        required: false
+        description: |-
+          whether cleared all tiers
+      'createdAt':
+        type: 'String'
+        required: false
+        description: |-
+          created at
+      'currentExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          gained exp for current tier
+      'currentTierIndex':
+        type: 'Integer'
+        required: false
+        description: |-
+          current tier index, zero based
+      'enrolledAt':
+        type: 'String'
+        required: false
+        description: |-
+          enroll date time
+      'enrolledPasses':
+        type: 'List<String>'
+        required: false
+        description: |-
+          enrolled passes
+      'id':
+        type: 'String'
+        required: false
+        description: |-
+          id
+      'lastTierIndex':
+        type: 'Integer'
+        required: false
+        description: |-
+          last tier index, zero based
+      'requiredExp':
+        type: 'Integer'
+        required: false
+        description: |-
+          required exp for current tier
+      'seasonId':
+        type: 'String'
+        required: false
+        description: |-
+          season id
+      'updatedAt':
+        type: 'String'
+        required: false
+        description: |-
+          updated at
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserSeasonSummary.java'
+
+  'UserTierGrant@seasonpass':
+    id: 'UserTierGrant@seasonpass'
+    name: 'UserTierGrant'
+    description: |-
+      A DTO object for granting user tier.
+    fields:
+      'count':
+        type: 'Integer'
+        required: false
+        description: |-
+          count to grant
+      'source':
+        type: 'String'
+        required: false
+        description: |-
+          source
+      'tags':
+        type: 'List<String>'
+        required: false
+        description: |-
+          tags
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/UserTierGrant.java'
+
+  'ValidationErrorEntity@seasonpass':
+    id: 'ValidationErrorEntity@seasonpass'
+    name: 'ValidationErrorEntity'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+        description: |-
+          numeric error code
+      'errorMessage':
+        type: 'String'
+        required: true
+        description: |-
+          error message
+      'errors':
+        type: 'List<FieldValidationError>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ValidationErrorEntity.java'
+
+  # endregion models
+
+functions:
+
+  'BulkGetUserSeasonProgression@seasonpass':
+    id: 'BulkGetUserSeasonProgression@seasonpass'
+    name: 'BulkGetUserSeasonProgression'
+    description: |-
+      This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'body':
+        type: 'BulkUserProgressionRequest'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<UserSeasonSummary>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/BulkGetUserSeasonProgression.java'
+    example: |-
+      try {
+          final BulkGetUserSeasonProgression operation = BulkGetUserSeasonProgression.builder()
+              .body(...)
+              .build(
+                  namespace,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final List<UserSeasonSummary> response = wrapper.bulkGetUserSeasonProgression(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'CheckSeasonPurchasable@seasonpass':
+    id: 'CheckSeasonPurchasable@seasonpass'
+    name: 'CheckSeasonPurchasable'
+    description: |-
+      This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+    parameters:
+      'body':
+        type: 'UserPurchasable'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/CheckSeasonPurchasable.java'
+    example: |-
+      try {
+          final CheckSeasonPurchasable operation = CheckSeasonPurchasable.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          wrapper.checkSeasonPurchasable(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'check'
+      - 'purchasable'
+      - 'season'
+
+  'CloneSeason@seasonpass':
+    id: 'CloneSeason@seasonpass'
+    name: 'CloneSeason'
+    description: |-
+      This API is used to clone a season.
+
+      Other detail info:
+
+        * Returns : cloned season info
+    parameters:
+      'body':
+        type: 'SeasonCloneRequest'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/CloneSeason.java'
+    example: |-
+      try {
+          final CloneSeason operation = CloneSeason.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.cloneSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'clone'
+      - 'season'
+
+  'CreatePass@seasonpass':
+    id: 'CreatePass@seasonpass'
+    name: 'CreatePass'
+    description: |-
+      This API is used to create a pass for a draft season.
+
+      Other detail info:
+
+        * Returns : created pass
+    parameters:
+      'body':
+        type: 'PassCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/CreatePass.java'
+    example: |-
+      try {
+          final CreatePass operation = CreatePass.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          final PassInfo response = wrapper.createPass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'pass'
+
+  'CreateReward@seasonpass':
+    id: 'CreateReward@seasonpass'
+    name: 'CreateReward'
+    description: |-
+      This API is used to create a reward for a draft season.
+
+      Other detail info:
+
+        * Returns : created reward
+    parameters:
+      'body':
+        type: 'RewardCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/CreateReward.java'
+    example: |-
+      try {
+          final CreateReward operation = CreateReward.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final RewardInfo response = wrapper.createReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'reward'
+
+  'CreateSeason@seasonpass':
+    id: 'CreateSeason@seasonpass'
+    name: 'CreateSeason'
+    description: |-
+      This API is used to create a season, season only allowed in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : created season
+    parameters:
+      'body':
+        type: 'SeasonCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/CreateSeason.java'
+    example: |-
+      try {
+          final CreateSeason operation = CreateSeason.builder()
+              .body(...)
+              .build(
+                  namespace,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.createSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'season'
+
+  'CreateTier@seasonpass':
+    id: 'CreateTier@seasonpass'
+    name: 'CreateTier'
+    description: |-
+      This API is used to create tier for a draft season, can create multiple tiers at same time.
+    parameters:
+      'body':
+        type: 'TierCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'List<Tier>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/CreateTier.java'
+    example: |-
+      try {
+          final CreateTier operation = CreateTier.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final List<Tier> response = wrapper.createTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'tier'
+
+  'DeletePass@seasonpass':
+    id: 'DeletePass@seasonpass'
+    name: 'DeletePass'
+    description: |-
+      This API is used to delete a pass permanently, only draft season pass can be deleted.
+    parameters:
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/DeletePass.java'
+    example: |-
+      try {
+          final DeletePass operation = DeletePass.builder()
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          wrapper.deletePass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'pass'
+
+  'DeleteReward@seasonpass':
+    id: 'DeleteReward@seasonpass'
+    name: 'DeleteReward'
+    description: |-
+      This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+      Other detail info:
+    parameters:
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/DeleteReward.java'
+    example: |-
+      try {
+          final DeleteReward operation = DeleteReward.builder()
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          wrapper.deleteReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'reward'
+
+  'DeleteSeason@seasonpass':
+    id: 'DeleteSeason@seasonpass'
+    name: 'DeleteSeason'
+    description: |-
+      This API is used to delete a season permanently, only draft season can be deleted.
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/DeleteSeason.java'
+    example: |-
+      try {
+          final DeleteSeason operation = DeleteSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          wrapper.deleteSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'season'
+
+  'DeleteTier@seasonpass':
+    id: 'DeleteTier@seasonpass'
+    name: 'DeleteTier'
+    description: |-
+      This API is used to delete a tier permanently, only draft season pass can be deleted.
+    parameters:
+      'id':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/DeleteTier.java'
+    example: |-
+      try {
+          final DeleteTier operation = DeleteTier.builder()
+              .build(
+                  id,
+                  namespace,
+                  seasonId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          wrapper.deleteTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'tier'
+
+  'ExistsAnyPassByPassCodes@seasonpass':
+    id: 'ExistsAnyPassByPassCodes@seasonpass'
+    name: 'ExistsAnyPassByPassCodes'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : ownership
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'passCodes':
+        type: 'List<String>'
+        required: false
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'Ownership'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/ExistsAnyPassByPassCodes.java'
+    example: |-
+      try {
+          final ExistsAnyPassByPassCodes operation = ExistsAnyPassByPassCodes.builder()
+              .passCodes(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final Ownership response = wrapper.existsAnyPassByPassCodes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'any'
+      - 'by'
+      - 'codes'
+      - 'exists'
+      - 'pass'
+      - 'season'
+
+  'ExportSeason@seasonpass':
+    id: 'ExportSeason@seasonpass'
+    name: 'ExportSeason'
+    description: |-
+      This API is used to export all of season service data files with csv format.
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'File'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.export.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Export.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/export/ExportSeason.java'
+    example: |-
+      try {
+          final ExportSeason operation = ExportSeason.builder()
+              .build(
+                  namespace,
+              );
+
+          final Export wrapper = new Export(sdk);
+          final File response = wrapper.exportSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'export'
+      - 'season'
+
+  'GetCurrentSeason@seasonpass':
+    id: 'GetCurrentSeason@seasonpass'
+    name: 'GetCurrentSeason'
+    description: |-
+      [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season summary data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'SeasonSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetCurrentSeason.java'
+    example: |-
+      try {
+          final GetCurrentSeason operation = GetCurrentSeason.builder()
+              .build(
+                  namespace,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonSummary response = wrapper.getCurrentSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'season'
+
+  'GetCurrentUserSeasonProgression@seasonpass':
+    id: 'GetCurrentUserSeasonProgression@seasonpass'
+    name: 'GetCurrentUserSeasonProgression'
+    description: |-
+      This API is used to get current user season progression, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season progression
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetCurrentUserSeasonProgression.java'
+    example: |-
+      try {
+          final GetCurrentUserSeasonProgression operation = GetCurrentUserSeasonProgression.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final UserSeasonSummary response = wrapper.getCurrentUserSeasonProgression(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'progression'
+      - 'season'
+      - 'user'
+
+  'GetFullSeason@seasonpass':
+    id: 'GetFullSeason@seasonpass'
+    name: 'GetFullSeason'
+    description: |-
+      This API is used to get a season full content, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'FullSeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetFullSeason.java'
+    example: |-
+      try {
+          final GetFullSeason operation = GetFullSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final FullSeasonInfo response = wrapper.getFullSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'full'
+      - 'get'
+      - 'season'
+
+  'GetItemReferences@seasonpass':
+    id: 'GetItemReferences@seasonpass'
+    name: 'GetItemReferences'
+    description: |-
+      This API is used to get season pass ecommerce item references.
+
+      Other detail info:
+
+        * Returns : item references data
+    parameters:
+      'itemId':
+        type: 'String'
+        required: true
+        description: |-
+          the id of the ecommerce item
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'ItemReferenceInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.utilities.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Utilities.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/utilities/GetItemReferences.java'
+    example: |-
+      try {
+          final GetItemReferences operation = GetItemReferences.builder()
+              .build(
+                  itemId,
+                  namespace,
+              );
+
+          final Utilities wrapper = new Utilities(sdk);
+          final ItemReferenceInfo response = wrapper.getItemReferences(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'item'
+      - 'references'
+      - 'utilities'
+
+  'GetPass@seasonpass':
+    id: 'GetPass@seasonpass'
+    name: 'GetPass'
+    description: |-
+      This API is used to get a pass for a season.
+
+      Other detail info:
+
+        * Returns : pass data
+    parameters:
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/GetPass.java'
+    example: |-
+      try {
+          final GetPass operation = GetPass.builder()
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          final PassInfo response = wrapper.getPass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'pass'
+
+  'GetReward@seasonpass':
+    id: 'GetReward@seasonpass'
+    name: 'GetReward'
+    description: |-
+      This API is used to get a reward for a season.
+
+      Other detail info:
+
+        * Returns : reward data
+    parameters:
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/GetReward.java'
+    example: |-
+      try {
+          final GetReward operation = GetReward.builder()
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final RewardInfo response = wrapper.getReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'reward'
+
+  'GetSeason@seasonpass':
+    id: 'GetSeason@seasonpass'
+    name: 'GetSeason'
+    description: |-
+      This API is used to get a season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetSeason.java'
+    example: |-
+      try {
+          final GetSeason operation = GetSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.getSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'season'
+
+  'GetUserParticipatedSeasons@seasonpass':
+    id: 'GetUserParticipatedSeasons@seasonpass'
+    name: 'GetUserParticipatedSeasons'
+    description: |-
+      This API is used to get user participated season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user participated season data
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ListUserSeasonInfoPagingSlicedResult'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetUserParticipatedSeasons.java'
+    example: |-
+      try {
+          final GetUserParticipatedSeasons operation = GetUserParticipatedSeasons.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ListUserSeasonInfoPagingSlicedResult response = wrapper.getUserParticipatedSeasons(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'participated'
+      - 'season'
+      - 'seasons'
+      - 'user'
+
+  'GetUserSeason@seasonpass':
+    id: 'GetUserSeason@seasonpass'
+    name: 'GetUserSeason'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/GetUserSeason.java'
+    example: |-
+      try {
+          final GetUserSeason operation = GetUserSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ClaimableUserSeasonInfo response = wrapper.getUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'season'
+      - 'user'
+
+  'GrantUserExp@seasonpass':
+    id: 'GrantUserExp@seasonpass'
+    name: 'GrantUserExp'
+    description: |-
+      This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'UserExpGrant'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/GrantUserExp.java'
+    example: |-
+      try {
+          final GrantUserExp operation = GrantUserExp.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final UserSeasonSummary response = wrapper.grantUserExp(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'GrantUserPass@seasonpass':
+    id: 'GrantUserPass@seasonpass'
+    name: 'GrantUserPass'
+    description: |-
+      This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'UserPassGrant'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/GrantUserPass.java'
+    example: |-
+      try {
+          final GrantUserPass operation = GrantUserPass.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          final UserSeasonSummary response = wrapper.grantUserPass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'grant'
+      - 'pass'
+      - 'user'
+
+  'GrantUserTier@seasonpass':
+    id: 'GrantUserTier@seasonpass'
+    name: 'GrantUserTier'
+    description: |-
+      This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'UserTierGrant'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'UserSeasonSummary'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/GrantUserTier.java'
+    example: |-
+      try {
+          final GrantUserTier operation = GrantUserTier.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final UserSeasonSummary response = wrapper.grantUserTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'grant'
+      - 'tier'
+      - 'user'
+
+  'PublicBulkClaimUserRewards@seasonpass':
+    id: 'PublicBulkClaimUserRewards@seasonpass'
+    name: 'PublicBulkClaimUserRewards'
+    description: |-
+      This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ClaimableRewards'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/PublicBulkClaimUserRewards.java'
+    example: |-
+      try {
+          final PublicBulkClaimUserRewards operation = PublicBulkClaimUserRewards.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final ClaimableRewards response = wrapper.publicBulkClaimUserRewards(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'rewards'
+      - 'user'
+
+  'PublicClaimUserReward@seasonpass':
+    id: 'PublicClaimUserReward@seasonpass'
+    name: 'PublicClaimUserReward'
+    description: |-
+      This API is used to claim reward, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'body':
+        type: 'UserRewardClaim'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ClaimableRewards'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/PublicClaimUserReward.java'
+    example: |-
+      try {
+          final PublicClaimUserReward operation = PublicClaimUserReward.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final ClaimableRewards response = wrapper.publicClaimUserReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'claim'
+      - 'public'
+      - 'reward'
+      - 'user'
+
+  'PublicGetCurrentSeason@seasonpass':
+    id: 'PublicGetCurrentSeason@seasonpass'
+    name: 'PublicGetCurrentSeason'
+    description: |-
+      This API is used to get current published season, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : localized season data
+    parameters:
+      'language':
+        type: 'String'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'LocalizedSeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublicGetCurrentSeason.java'
+    example: |-
+      try {
+          final PublicGetCurrentSeason operation = PublicGetCurrentSeason.builder()
+              .language(...)
+              .build(
+                  namespace,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final LocalizedSeasonInfo response = wrapper.publicGetCurrentSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+
+  'PublicGetCurrentUserSeason@seasonpass':
+    id: 'PublicGetCurrentUserSeason@seasonpass'
+    name: 'PublicGetCurrentUserSeason'
+    description: |-
+      This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublicGetCurrentUserSeason.java'
+    example: |-
+      try {
+          final PublicGetCurrentUserSeason operation = PublicGetCurrentUserSeason.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ClaimableUserSeasonInfo response = wrapper.publicGetCurrentUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'current'
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublicGetUserSeason@seasonpass':
+    id: 'PublicGetUserSeason@seasonpass'
+    name: 'PublicGetUserSeason'
+    description: |-
+      This API is used to get user season data, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : user season data
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ClaimableUserSeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublicGetUserSeason.java'
+    example: |-
+      try {
+          final PublicGetUserSeason operation = PublicGetUserSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ClaimableUserSeasonInfo response = wrapper.publicGetUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'public'
+      - 'season'
+      - 'user'
+
+  'PublishSeason@seasonpass':
+    id: 'PublishSeason@seasonpass'
+    name: 'PublishSeason'
+    description: |-
+      This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+      Other detail info:
+
+        * Returns : published season
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublishSeason.java'
+    example: |-
+      try {
+          final PublishSeason operation = PublishSeason.builder()
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.publishSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'publish'
+      - 'season'
+
+  'QueryPasses@seasonpass':
+    id: 'QueryPasses@seasonpass'
+    name: 'QueryPasses'
+    description: |-
+      This API is used to query all passes for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'List<PassInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/QueryPasses.java'
+    example: |-
+      try {
+          final QueryPasses operation = QueryPasses.builder()
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          final List<PassInfo> response = wrapper.queryPasses(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'pass'
+      - 'passes'
+      - 'query'
+
+  'QueryRewards@seasonpass':
+    id: 'QueryRewards@seasonpass'
+    name: 'QueryRewards'
+    description: |-
+      This API is used to query rewards for a season.
+
+      Other detail info:
+
+        * Returns : the list of rewards
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'q':
+        type: 'String'
+        required: false
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'List<RewardInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/QueryRewards.java'
+    example: |-
+      try {
+          final QueryRewards operation = QueryRewards.builder()
+              .q(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final List<RewardInfo> response = wrapper.queryRewards(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'reward'
+      - 'rewards'
+
+  'QuerySeasons@seasonpass':
+    id: 'QuerySeasons@seasonpass'
+    name: 'QuerySeasons'
+    description: |-
+      This API is used to query seasons, seasons only located in non-publisher namespace.
+
+      Other detail info:
+
+        * Returns : the list of season basic info
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'String'
+        required: true
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'status':
+        type: 'List<String>'
+        required: false
+    return_type: 'ListSeasonInfoPagingSlicedResult'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/QuerySeasons.java'
+    example: |-
+      try {
+          final QuerySeasons operation = QuerySeasons.builder()
+              .limit(...)
+              .offset(...)
+              .status(...)
+              .build(
+                  namespace,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ListSeasonInfoPagingSlicedResult response = wrapper.querySeasons(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'season'
+      - 'seasons'
+
+  'QueryTiers@seasonpass':
+    id: 'QueryTiers@seasonpass'
+    name: 'QueryTiers'
+    description: |-
+      This API is used to query paginated tiers for a season.
+
+      Other detail info:
+
+        * Returns : the list of passes
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'String'
+        required: true
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'TierPagingSlicedResult'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/QueryTiers.java'
+    example: |-
+      try {
+          final QueryTiers operation = QueryTiers.builder()
+              .limit(...)
+              .offset(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final TierPagingSlicedResult response = wrapper.queryTiers(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'query'
+      - 'tier'
+      - 'tiers'
+
+  'QueryUserExpGrantHistory@seasonpass':
+    id: 'QueryUserExpGrantHistory@seasonpass'
+    name: 'QueryUserExpGrantHistory'
+    description: |-
+      This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : paginated grant history
+    parameters:
+      'from':
+        type: 'String'
+        required: false
+        description: |-
+          section active range time start , using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'seasonId':
+        type: 'String'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'source':
+        type: 'String'
+        required: false
+        description: |-
+          exp grant source
+      'tags':
+        type: 'List<String>'
+        required: false
+        description: |-
+          exp grant tags
+      'to':
+        type: 'String'
+        required: false
+        description: |-
+          section active range time end, using ISO 8601 format e.g. yyyy-MM-dd'T'HH:mm:ssZZ
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ExpGrantHistoryPagingSlicedResult'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/QueryUserExpGrantHistory.java'
+    example: |-
+      try {
+          final QueryUserExpGrantHistory operation = QueryUserExpGrantHistory.builder()
+              .from(...)
+              .limit(...)
+              .offset(...)
+              .seasonId(...)
+              .source(...)
+              .tags(...)
+              .to(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ExpGrantHistoryPagingSlicedResult response = wrapper.queryUserExpGrantHistory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'user'
+
+  'QueryUserExpGrantHistoryTag@seasonpass':
+    id: 'QueryUserExpGrantHistoryTag@seasonpass'
+    name: 'QueryUserExpGrantHistoryTag'
+    description: |-
+      This API is used to get user exp acquisition history's tag list.
+
+      Other detail info:
+
+        * default will query from current active season
+        *  Returns : exp grant history tags list
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'seasonId':
+        type: 'String'
+        required: false
+        description: |-
+          if not provide, will query current season
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'ReasonTagsResult'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/QueryUserExpGrantHistoryTag.java'
+    example: |-
+      try {
+          final QueryUserExpGrantHistoryTag operation = QueryUserExpGrantHistoryTag.builder()
+              .seasonId(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final ReasonTagsResult response = wrapper.queryUserExpGrantHistoryTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'exp'
+      - 'grant'
+      - 'history'
+      - 'query'
+      - 'season'
+      - 'tag'
+      - 'user'
+
+  'ReorderTier@seasonpass':
+    id: 'ReorderTier@seasonpass'
+    name: 'ReorderTier'
+    description: |-
+      This API is used to reorder a tier. Only draft season pass can be updated.
+    parameters:
+      'body':
+        type: 'TierReorder'
+        required: false
+      'id':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'Tier'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/ReorderTier.java'
+    example: |-
+      try {
+          final ReorderTier operation = ReorderTier.builder()
+              .body(...)
+              .build(
+                  id,
+                  namespace,
+                  seasonId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final Tier response = wrapper.reorderTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reorder'
+      - 'tier'
+
+  'ResetUserSeason@seasonpass':
+    id: 'ResetUserSeason@seasonpass'
+    name: 'ResetUserSeason'
+    description: |-
+      [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/ResetUserSeason.java'
+    example: |-
+      try {
+          final ResetUserSeason operation = ResetUserSeason.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          wrapper.resetUserSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reset'
+      - 'season'
+      - 'user'
+
+  'RetireSeason@seasonpass':
+    id: 'RetireSeason@seasonpass'
+    name: 'RetireSeason'
+    description: |-
+      This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'force':
+        type: 'Boolean'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/RetireSeason.java'
+    example: |-
+      try {
+          final RetireSeason operation = RetireSeason.builder()
+              .force(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.retireSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'retire'
+      - 'season'
+
+  'UnpublishSeason@seasonpass':
+    id: 'UnpublishSeason@seasonpass'
+    name: 'UnpublishSeason'
+    description: |-
+      This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+      Other detail info:
+
+        * Returns : season info
+    parameters:
+      'force':
+        type: 'Boolean'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/UnpublishSeason.java'
+    example: |-
+      try {
+          final UnpublishSeason operation = UnpublishSeason.builder()
+              .force(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.unpublishSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'season'
+      - 'unpublish'
+
+  'UpdatePass@seasonpass':
+    id: 'UpdatePass@seasonpass'
+    name: 'UpdatePass'
+    description: |-
+      This API is used to update a pass. Only draft season pass can be updated.
+
+      Other detail info:
+
+        * Returns : updated pass
+    parameters:
+      'body':
+        type: 'PassUpdate'
+        required: false
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'PassInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.pass.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/pass/UpdatePass.java'
+    example: |-
+      try {
+          final UpdatePass operation = UpdatePass.builder()
+              .body(...)
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Pass wrapper = new Pass(sdk);
+          final PassInfo response = wrapper.updatePass(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'pass'
+      - 'update'
+
+  'UpdateReward@seasonpass':
+    id: 'UpdateReward@seasonpass'
+    name: 'UpdateReward'
+    description: |-
+      This API is used to update a reward. Only draft season reward can be updated.
+
+      Other detail info:
+
+        * Returns : updated reward
+    parameters:
+      'body':
+        type: 'RewardUpdate'
+        required: false
+      'code':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'RewardInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.reward.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Reward.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/reward/UpdateReward.java'
+    example: |-
+      try {
+          final UpdateReward operation = UpdateReward.builder()
+              .body(...)
+              .build(
+                  code,
+                  namespace,
+                  seasonId,
+              );
+
+          final Reward wrapper = new Reward(sdk);
+          final RewardInfo response = wrapper.updateReward(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'reward'
+      - 'update'
+
+  'UpdateSeason@seasonpass':
+    id: 'UpdateSeason@seasonpass'
+    name: 'UpdateSeason'
+    description: |-
+      This API is used to update a season. Only draft season can be updated.
+
+      Other detail info:
+
+        * Returns : updated season
+    parameters:
+      'body':
+        type: 'SeasonUpdate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'SeasonInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.season.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Season.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/UpdateSeason.java'
+    example: |-
+      try {
+          final UpdateSeason operation = UpdateSeason.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  seasonId,
+              );
+
+          final Season wrapper = new Season(sdk);
+          final SeasonInfo response = wrapper.updateSeason(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'season'
+      - 'update'
+
+  'UpdateTier@seasonpass':
+    id: 'UpdateTier@seasonpass'
+    name: 'UpdateTier'
+    description: |-
+      This API is used to update a tier. Only draft season pass can be updated.
+    parameters:
+      'body':
+        type: 'TierInput'
+        required: false
+      'id':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'seasonId':
+        type: 'String'
+        required: true
+    return_type: 'Tier'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.models.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.operations.tier.*;'
+      - 'import net.accelbyte.sdk.api.seasonpass.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Tier.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/UpdateTier.java'
+    example: |-
+      try {
+          final UpdateTier operation = UpdateTier.builder()
+              .body(...)
+              .build(
+                  id,
+                  namespace,
+                  seasonId,
+              );
+
+          final Tier wrapper = new Tier(sdk);
+          final Tier response = wrapper.updateTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'tier'
+      - 'update'

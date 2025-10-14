@@ -1,0 +1,3500 @@
+structs:
+  # region models
+
+  'ApimodelsAdminUpdateItemReq@inventory':
+    id: 'ApimodelsAdminUpdateItemReq@inventory'
+    name: 'ApimodelsAdminUpdateItemReq'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'type':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsAdminUpdateItemReq.java'
+
+  'ApimodelsBulkSaveItemError@inventory':
+    id: 'ApimodelsBulkSaveItemError@inventory'
+    name: 'ApimodelsBulkSaveItemError'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsBulkSaveItemError.java'
+
+  'ApimodelsBulkSaveItemResp@inventory':
+    id: 'ApimodelsBulkSaveItemResp@inventory'
+    name: 'ApimodelsBulkSaveItemResp'
+    fields:
+      'success':
+        type: 'Boolean'
+        required: true
+      'errorDetails':
+        type: 'ApimodelsBulkSaveItemError'
+        required: false
+      'item':
+        type: 'ApimodelsItemResp'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsBulkSaveItemResp.java'
+
+  'ApimodelsChainingOperationReq@inventory':
+    id: 'ApimodelsChainingOperationReq@inventory'
+    name: 'ApimodelsChainingOperationReq'
+    fields:
+      'message':
+        type: 'String'
+        required: true
+      'operations':
+        type: 'List<ApimodelsOperation>'
+        required: true
+      'requestId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsChainingOperationReq.java'
+
+  'ApimodelsChainingOperationResp@inventory':
+    id: 'ApimodelsChainingOperationResp@inventory'
+    name: 'ApimodelsChainingOperationResp'
+    fields:
+      'message':
+        type: 'String'
+        required: true
+      'errorDetails':
+        type: 'ApimodelsErrorResponse'
+        required: false
+      'replayed':
+        type: 'Boolean'
+        required: false
+      'requestId':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsChainingOperationResp.java'
+
+  'ApimodelsConsumeItem@inventory':
+    id: 'ApimodelsConsumeItem@inventory'
+    name: 'ApimodelsConsumeItem'
+    fields:
+      'inventoryId':
+        type: 'String'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'dateRangeValidation':
+        type: 'Boolean'
+        required: false
+      'options':
+        type: 'List<String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsConsumeItem.java'
+
+  'ApimodelsConsumeItemReq@inventory':
+    id: 'ApimodelsConsumeItemReq@inventory'
+    name: 'ApimodelsConsumeItemReq'
+    fields:
+      'qty':
+        type: 'Integer'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'options':
+        type: 'List<String>'
+        required: false
+        description: |-
+          options, it is only available when item type is OPTIONBOX and value should be item id.
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsConsumeItemReq.java'
+
+  'ApimodelsCreateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsCreateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsCreateIntegrationConfigurationReq'
+    fields:
+      'serviceName':
+        type: 'String'
+        required: true
+      'targetInventoryCode':
+        type: 'String'
+        required: true
+      'mapItemType':
+        type: 'List<String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateIntegrationConfigurationReq.java'
+
+  'ApimodelsCreateInventoryConfigurationReq@inventory':
+    id: 'ApimodelsCreateInventoryConfigurationReq@inventory'
+    name: 'ApimodelsCreateInventoryConfigurationReq'
+    fields:
+      'code':
+        type: 'String'
+        required: true
+      'initialMaxSlots':
+        type: 'Integer'
+        required: true
+      'maxInstancesPerUser':
+        type: 'Integer'
+        required: true
+      'maxUpgradeSlots':
+        type: 'Integer'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+      'name':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateInventoryConfigurationReq.java'
+
+  'ApimodelsCreateInventoryReq@inventory':
+    id: 'ApimodelsCreateInventoryReq@inventory'
+    name: 'ApimodelsCreateInventoryReq'
+    fields:
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateInventoryReq.java'
+
+  'ApimodelsCreateItem@inventory':
+    id: 'ApimodelsCreateItem@inventory'
+    name: 'ApimodelsCreateItem'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'slotUsed':
+        type: 'Integer'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'toSpecificInventory':
+        type: 'Boolean'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: false
+      'inventoryId':
+        type: 'String'
+        required: false
+      'source':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateItem.java'
+
+  'ApimodelsCreateItemTypeReq@inventory':
+    id: 'ApimodelsCreateItemTypeReq@inventory'
+    name: 'ApimodelsCreateItemTypeReq'
+    fields:
+      'name':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateItemTypeReq.java'
+
+  'ApimodelsCreateItemTypeResp@inventory':
+    id: 'ApimodelsCreateItemTypeResp@inventory'
+    name: 'ApimodelsCreateItemTypeResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'name':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateItemTypeResp.java'
+
+  'ApimodelsCreateTagReq@inventory':
+    id: 'ApimodelsCreateTagReq@inventory'
+    name: 'ApimodelsCreateTagReq'
+    fields:
+      'name':
+        type: 'String'
+        required: true
+      'owner':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateTagReq.java'
+
+  'ApimodelsCreateTagResp@inventory':
+    id: 'ApimodelsCreateTagResp@inventory'
+    name: 'ApimodelsCreateTagResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'name':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'owner':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsCreateTagResp.java'
+
+  'ApimodelsDeleteInventoryReq@inventory':
+    id: 'ApimodelsDeleteInventoryReq@inventory'
+    name: 'ApimodelsDeleteInventoryReq'
+    fields:
+      'message':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsDeleteInventoryReq.java'
+
+  'ApimodelsErrorResponse@inventory':
+    id: 'ApimodelsErrorResponse@inventory'
+    name: 'ApimodelsErrorResponse'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsErrorResponse.java'
+
+  'ApimodelsIntegrationConfigurationResp@inventory':
+    id: 'ApimodelsIntegrationConfigurationResp@inventory'
+    name: 'ApimodelsIntegrationConfigurationResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'itemTypes':
+        type: 'List<String>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'serviceName':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'targetInventoryCode':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsIntegrationConfigurationResp.java'
+
+  'ApimodelsInventoryConfig@inventory':
+    id: 'ApimodelsInventoryConfig@inventory'
+    name: 'ApimodelsInventoryConfig'
+    fields:
+      'slotUsed':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsInventoryConfig.java'
+
+  'ApimodelsInventoryConfigurationReq@inventory':
+    id: 'ApimodelsInventoryConfigurationReq@inventory'
+    name: 'ApimodelsInventoryConfigurationReq'
+    fields:
+      'code':
+        type: 'String'
+        required: true
+      'initialMaxSlots':
+        type: 'Integer'
+        required: true
+      'maxInstancesPerUser':
+        type: 'Integer'
+        required: true
+      'maxUpgradeSlots':
+        type: 'Integer'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+      'name':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsInventoryConfigurationReq.java'
+
+  'ApimodelsInventoryConfigurationResp@inventory':
+    id: 'ApimodelsInventoryConfigurationResp@inventory'
+    name: 'ApimodelsInventoryConfigurationResp'
+    fields:
+      'code':
+        type: 'String'
+        required: true
+      'createdAt':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'initialMaxSlots':
+        type: 'Integer'
+        required: true
+      'maxInstancesPerUser':
+        type: 'Integer'
+        required: true
+      'maxUpgradeSlots':
+        type: 'Integer'
+        required: true
+      'name':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsInventoryConfigurationResp.java'
+
+  'ApimodelsInventoryResp@inventory':
+    id: 'ApimodelsInventoryResp@inventory'
+    name: 'ApimodelsInventoryResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: true
+      'inventoryConfigurationId':
+        type: 'String'
+        required: true
+      'maxSlots':
+        type: 'Integer'
+        required: true
+      'maxUpgradeSlots':
+        type: 'Integer'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'String'
+        required: true
+      'usedCountSlots':
+        type: 'Integer'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsInventoryResp.java'
+
+  'ApimodelsItemResp@inventory':
+    id: 'ApimodelsItemResp@inventory'
+    name: 'ApimodelsItemResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+      'itemInfo':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'slotUsed':
+        type: 'Integer'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+      'updatedAt':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+      'platformAvailable':
+        type: 'Boolean'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsItemResp.java'
+
+  'ApimodelsListIntegrationConfigurationsResp@inventory':
+    id: 'ApimodelsListIntegrationConfigurationsResp@inventory'
+    name: 'ApimodelsListIntegrationConfigurationsResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsIntegrationConfigurationResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListIntegrationConfigurationsResp.java'
+
+  'ApimodelsListInventoryConfigurationsResp@inventory':
+    id: 'ApimodelsListInventoryConfigurationsResp@inventory'
+    name: 'ApimodelsListInventoryConfigurationsResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsInventoryConfigurationResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListInventoryConfigurationsResp.java'
+
+  'ApimodelsListInventoryResp@inventory':
+    id: 'ApimodelsListInventoryResp@inventory'
+    name: 'ApimodelsListInventoryResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsInventoryResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListInventoryResp.java'
+
+  'ApimodelsListItemResp@inventory':
+    id: 'ApimodelsListItemResp@inventory'
+    name: 'ApimodelsListItemResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsItemResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListItemResp.java'
+
+  'ApimodelsListItemTypesResp@inventory':
+    id: 'ApimodelsListItemTypesResp@inventory'
+    name: 'ApimodelsListItemTypesResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsCreateItemTypeResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListItemTypesResp.java'
+
+  'ApimodelsListTagsResp@inventory':
+    id: 'ApimodelsListTagsResp@inventory'
+    name: 'ApimodelsListTagsResp'
+    fields:
+      'data':
+        type: 'List<ApimodelsCreateTagResp>'
+        required: true
+      'paging':
+        type: 'ApimodelsPaging'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsListTagsResp.java'
+
+  'ApimodelsMoveItemsReq@inventory':
+    id: 'ApimodelsMoveItemsReq@inventory'
+    name: 'ApimodelsMoveItemsReq'
+    fields:
+      'items':
+        type: 'List<ApimodelsTradeItem>'
+        required: true
+      'srcInventoryId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsMoveItemsReq.java'
+
+  'ApimodelsMoveItemsResp@inventory':
+    id: 'ApimodelsMoveItemsResp@inventory'
+    name: 'ApimodelsMoveItemsResp'
+    fields:
+      'createdAt':
+        type: 'String'
+        required: true
+      'dstInventoryId':
+        type: 'String'
+        required: true
+      'items':
+        type: 'List<ApimodelsTradeItemResp>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'srcInventoryId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsMoveItemsResp.java'
+
+  'ApimodelsOperation@inventory':
+    id: 'ApimodelsOperation@inventory'
+    name: 'ApimodelsOperation'
+    fields:
+      'consumeItems':
+        type: 'List<ApimodelsConsumeItem>'
+        required: true
+      'createItems':
+        type: 'List<ApimodelsCreateItem>'
+        required: true
+      'removeItems':
+        type: 'List<ApimodelsRemoveItem>'
+        required: true
+      'targetUserId':
+        type: 'String'
+        required: true
+      'updateItems':
+        type: 'List<ApimodelsUpdateItem>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsOperation.java'
+
+  'ApimodelsPaging@inventory':
+    id: 'ApimodelsPaging@inventory'
+    name: 'ApimodelsPaging'
+    fields:
+      'first':
+        type: 'String'
+        required: true
+      'last':
+        type: 'String'
+        required: true
+      'next':
+        type: 'String'
+        required: true
+      'previous':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsPaging.java'
+
+  'ApimodelsPurchaseValidationItemReq@inventory':
+    id: 'ApimodelsPurchaseValidationItemReq@inventory'
+    name: 'ApimodelsPurchaseValidationItemReq'
+    fields:
+      'bundledQty':
+        type: 'Integer'
+        required: true
+      'entitlementType':
+        type: 'String'
+        required: true
+      'inventoryConfig':
+        type: 'ApimodelsInventoryConfig'
+        required: true
+      'itemId':
+        type: 'String'
+        required: true
+      'itemType':
+        type: 'String'
+        required: true
+      'sku':
+        type: 'String'
+        required: true
+      'stackable':
+        type: 'Boolean'
+        required: true
+      'useCount':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsPurchaseValidationItemReq.java'
+
+  'ApimodelsPurchaseValidationReq@inventory':
+    id: 'ApimodelsPurchaseValidationReq@inventory'
+    name: 'ApimodelsPurchaseValidationReq'
+    fields:
+      'itemId':
+        type: 'String'
+        required: true
+      'itemType':
+        type: 'String'
+        required: true
+      'quantity':
+        type: 'Integer'
+        required: true
+      'sku':
+        type: 'String'
+        required: true
+      'entitlementType':
+        type: 'String'
+        required: false
+      'inventoryConfig':
+        type: 'ApimodelsInventoryConfig'
+        required: false
+      'items':
+        type: 'List<ApimodelsPurchaseValidationItemReq>'
+        required: false
+      'stackable':
+        type: 'Boolean'
+        required: false
+      'useCount':
+        type: 'Integer'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsPurchaseValidationReq.java'
+
+  'ApimodelsRemoveInventoryItemReq@inventory':
+    id: 'ApimodelsRemoveInventoryItemReq@inventory'
+    name: 'ApimodelsRemoveInventoryItemReq'
+    fields:
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsRemoveInventoryItemReq.java'
+
+  'ApimodelsRemoveItem@inventory':
+    id: 'ApimodelsRemoveItem@inventory'
+    name: 'ApimodelsRemoveItem'
+    fields:
+      'inventoryId':
+        type: 'String'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsRemoveItem.java'
+
+  'ApimodelsSaveItemReq@inventory':
+    id: 'ApimodelsSaveItemReq@inventory'
+    name: 'ApimodelsSaveItemReq'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'slotUsed':
+        type: 'Integer'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsSaveItemReq.java'
+
+  'ApimodelsSaveItemToInventoryReq@inventory':
+    id: 'ApimodelsSaveItemToInventoryReq@inventory'
+    name: 'ApimodelsSaveItemToInventoryReq'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'slotUsed':
+        type: 'Integer'
+        required: true
+      'source':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsSaveItemToInventoryReq.java'
+
+  'ApimodelsTradeItem@inventory':
+    id: 'ApimodelsTradeItem@inventory'
+    name: 'ApimodelsTradeItem'
+    fields:
+      'qty':
+        type: 'Integer'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsTradeItem.java'
+
+  'ApimodelsTradeItemResp@inventory':
+    id: 'ApimodelsTradeItemResp@inventory'
+    name: 'ApimodelsTradeItemResp'
+    fields:
+      'id':
+        type: 'String'
+        required: true
+      'qty':
+        type: 'Integer'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsTradeItemResp.java'
+
+  'ApimodelsUpdateIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateIntegrationConfigurationReq'
+    fields:
+      'serviceName':
+        type: 'String'
+        required: true
+      'targetInventoryCode':
+        type: 'String'
+        required: true
+      'mapItemType':
+        type: 'List<String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateIntegrationConfigurationReq.java'
+
+  'ApimodelsUpdateInventoryReq@inventory':
+    id: 'ApimodelsUpdateInventoryReq@inventory'
+    name: 'ApimodelsUpdateInventoryReq'
+    fields:
+      'incMaxSlots':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateInventoryReq.java'
+
+  'ApimodelsUpdateItem@inventory':
+    id: 'ApimodelsUpdateItem@inventory'
+    name: 'ApimodelsUpdateItem'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+      'serverCustomAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+      'type':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateItem.java'
+
+  'ApimodelsUpdateItemReq@inventory':
+    id: 'ApimodelsUpdateItemReq@inventory'
+    name: 'ApimodelsUpdateItemReq'
+    fields:
+      'customAttributes':
+        type: 'Map<String, ?>'
+        required: true
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'tags':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateItemReq.java'
+
+  'ApimodelsUpdateItemResp@inventory':
+    id: 'ApimodelsUpdateItemResp@inventory'
+    name: 'ApimodelsUpdateItemResp'
+    fields:
+      'slotId':
+        type: 'String'
+        required: true
+      'sourceItemId':
+        type: 'String'
+        required: true
+      'success':
+        type: 'Boolean'
+        required: true
+      'errorDetails':
+        type: 'ApimodelsErrorResponse'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateItemResp.java'
+
+  'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory':
+    id: 'ApimodelsUpdateStatusIntegrationConfigurationReq@inventory'
+    name: 'ApimodelsUpdateStatusIntegrationConfigurationReq'
+    fields:
+      'status':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/models/ApimodelsUpdateStatusIntegrationConfigurationReq.java'
+
+  # endregion models
+
+functions:
+
+  'AdminBulkRemoveItems@inventory':
+    id: 'AdminBulkRemoveItems@inventory'
+    name: 'AdminBulkRemoveItems'
+    description: |-
+      Bulk remove user's own items'.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
+    parameters:
+      'body':
+        type: 'List<ApimodelsRemoveInventoryItemReq>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminBulkRemoveItems.java'
+    example: |-
+      try {
+          final AdminBulkRemoveItems operation = AdminBulkRemoveItems.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final List<ApimodelsUpdateItemResp> response = wrapper.adminBulkRemoveItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'remove'
+
+  'AdminBulkSaveItem@inventory':
+    id: 'AdminBulkSaveItem@inventory'
+    name: 'AdminBulkSaveItem'
+    description: |-
+      **This endpoint is used used for bulk saving purchased items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created for the player.
+      - If the player already has one, it will be added to the existing inventory.
+      >- If the same item exists within the inventory, the quantity (qty) will be increased.
+      >- If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      >- If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+
+      - For E-commerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'body':
+        type: 'List<ApimodelsSaveItemReq>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsBulkSaveItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminBulkSaveItem.java'
+    example: |-
+      try {
+          final AdminBulkSaveItem operation = AdminBulkSaveItem.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final List<ApimodelsBulkSaveItemResp> response = wrapper.adminBulkSaveItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminBulkSaveItemToInventory@inventory':
+    id: 'AdminBulkSaveItemToInventory@inventory'
+    name: 'AdminBulkSaveItemToInventory'
+    description: |-
+      **This endpoint is used for bulk saving purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      - A maximum of 10 items can be saved in a single bulk call.
+
+      You must have this permission to access this endpoint:
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM[CREATE]**
+    parameters:
+      'body':
+        type: 'List<ApimodelsSaveItemToInventoryReq>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          inventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsBulkSaveItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminBulkSaveItemToInventory.java'
+    example: |-
+      try {
+          final AdminBulkSaveItemToInventory operation = AdminBulkSaveItemToInventory.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final List<ApimodelsBulkSaveItemResp> response = wrapper.adminBulkSaveItemToInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminBulkUpdateMyItems@inventory':
+    id: 'AdminBulkUpdateMyItems@inventory'
+    name: 'AdminBulkUpdateMyItems'
+    description: |-
+      Bulk Updating user's own items.
+      Tags will be auto-created.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'body':
+        type: 'List<ApimodelsAdminUpdateItemReq>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminBulkUpdateMyItems.java'
+    example: |-
+      try {
+          final AdminBulkUpdateMyItems operation = AdminBulkUpdateMyItems.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final List<ApimodelsUpdateItemResp> response = wrapper.adminBulkUpdateMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'update'
+
+  'AdminConsumeUserItem@inventory':
+    id: 'AdminConsumeUserItem@inventory'
+    name: 'AdminConsumeUserItem'
+    description: |-
+      Consume user's own item
+      Client should pass item ID in options if item type is OPTIONBOX
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsConsumeItemReq'
+        required: true
+      'dateRangeValidation':
+        type: 'String'
+        required: false
+        description: |-
+          default is false
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminConsumeUserItem.java'
+    example: |-
+      try {
+          final AdminConsumeUserItem operation = AdminConsumeUserItem.builder()
+              .dateRangeValidation(...)
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final ApimodelsItemResp response = wrapper.adminConsumeUserItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'user'
+
+  'AdminCreateChainingOperations@inventory':
+    id: 'AdminCreateChainingOperations@inventory'
+    name: 'AdminCreateChainingOperations'
+    description: |-
+      Create chaining Operations.
+      This process will run sequentially
+      1. remove item process
+      2. consume item process
+      3. update item process
+      4. create item process
+      if toSpecificInventory set as true, then inventoryId field will be mandatory, vice versa
+
+      The behavior of each process is same with current admin level endpoint
+
+      requestId: Request id(Optional), client should provide a unique request id to perform at most once execution, When a request id is resubmitted,
+      it will return original successful response
+      replayed : replayed, if true,the response is original successful response. This will not be included in response if client have not pass request id.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsChainingOperationReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsChainingOperationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_chaining_operations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminChainingOperations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_chaining_operations/AdminCreateChainingOperations.java'
+    example: |-
+      try {
+          final AdminCreateChainingOperations operation = AdminCreateChainingOperations.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminChainingOperations wrapper = new AdminChainingOperations(sdk);
+          final ApimodelsChainingOperationResp response = wrapper.adminCreateChainingOperations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'chaining'
+      - 'create'
+      - 'operations'
+
+  'AdminCreateIntegrationConfiguration@inventory':
+    id: 'AdminCreateIntegrationConfiguration@inventory'
+    name: 'AdminCreateIntegrationConfiguration'
+    description: |-
+      Creating integration configuration.
+      There cannot be one duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsCreateIntegrationConfigurationReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_integration_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminIntegrationConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_integration_configurations/AdminCreateIntegrationConfiguration.java'
+    example: |-
+      try {
+          final AdminCreateIntegrationConfiguration operation = AdminCreateIntegrationConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminIntegrationConfigurations wrapper = new AdminIntegrationConfigurations(sdk);
+          final ApimodelsIntegrationConfigurationResp response = wrapper.adminCreateIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'integration'
+
+  'AdminCreateInventory@inventory':
+    id: 'AdminCreateInventory@inventory'
+    name: 'AdminCreateInventory'
+    description: |-
+      Creating an inventory.
+      The inventory configuration must exists otherwise it will fail.
+      The max slots and max upgrade slots of an inventory will be initialized according to the inventory configuration it used,
+      but it can be changed later when using AdminUpdateInventory endpoint.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsCreateInventoryReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminCreateInventory.java'
+    example: |-
+      try {
+          final AdminCreateInventory operation = AdminCreateInventory.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          final ApimodelsInventoryResp response = wrapper.adminCreateInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminCreateInventoryConfiguration@inventory':
+    id: 'AdminCreateInventoryConfiguration@inventory'
+    name: 'AdminCreateInventoryConfiguration'
+    description: |-
+      Creating inventory configuration.
+      There cannot be one inventory configuration duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsCreateInventoryConfigurationReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventory_configurations/AdminCreateInventoryConfiguration.java'
+    example: |-
+      try {
+          final AdminCreateInventoryConfiguration operation = AdminCreateInventoryConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminInventoryConfigurations wrapper = new AdminInventoryConfigurations(sdk);
+          final ApimodelsInventoryConfigurationResp response = wrapper.adminCreateInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'create'
+      - 'inventory'
+
+  'AdminCreateItemType@inventory':
+    id: 'AdminCreateItemType@inventory'
+    name: 'AdminCreateItemType'
+    description: |-
+      This endpoint will create a new itemtype.
+      The itemtype name must be unique per namespace.
+      It is safe to call this endpoint even if the itemtype already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsCreateItemTypeReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsCreateItemTypeResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_item_types.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItemTypes.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_item_types/AdminCreateItemType.java'
+    example: |-
+      try {
+          final AdminCreateItemType operation = AdminCreateItemType.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminItemTypes wrapper = new AdminItemTypes(sdk);
+          final ApimodelsCreateItemTypeResp response = wrapper.adminCreateItemType(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminCreateTag@inventory':
+    id: 'AdminCreateTag@inventory'
+    name: 'AdminCreateTag'
+    description: |-
+      This endpoint will create a new tag.
+      The tag name must be unique per namespace.
+      It is safe to call this endpoint even if the tag already exists.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
+    parameters:
+      'body':
+        type: 'ApimodelsCreateTagReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsCreateTagResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_tags.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminTags.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_tags/AdminCreateTag.java'
+    example: |-
+      try {
+          final AdminCreateTag operation = AdminCreateTag.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminTags wrapper = new AdminTags(sdk);
+          final ApimodelsCreateTagResp response = wrapper.adminCreateTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'create'
+      - 'tag'
+      - 'tags'
+
+  'AdminDeleteInventoryConfiguration@inventory':
+    id: 'AdminDeleteInventoryConfiguration@inventory'
+    name: 'AdminDeleteInventoryConfiguration'
+    description: |-
+      Deleting an inventory configuration.
+      If an inventory already reference this type (i.e. STATUS is "TIED"), then the type cannot be deleted anymore.
+
+      ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
+    parameters:
+      'inventoryConfigurationId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventory_configurations/AdminDeleteInventoryConfiguration.java'
+    example: |-
+      try {
+          final AdminDeleteInventoryConfiguration operation = AdminDeleteInventoryConfiguration.builder()
+              .build(
+                  inventoryConfigurationId,
+                  namespace,
+              );
+
+          final AdminInventoryConfigurations wrapper = new AdminInventoryConfigurations(sdk);
+          wrapper.adminDeleteInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'delete'
+      - 'inventory'
+
+  'AdminDeleteItemType@inventory':
+    id: 'AdminDeleteItemType@inventory'
+    name: 'AdminDeleteItemType'
+    description: |-
+      This endpoint will delete a item type by itemtypeName in a specified namespace.
+      If the itemtypeName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [DELETE]
+    parameters:
+      'itemTypeName':
+        type: 'String'
+        required: true
+        description: |-
+          ItemTypeName
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_item_types.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItemTypes.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_item_types/AdminDeleteItemType.java'
+    example: |-
+      try {
+          final AdminDeleteItemType operation = AdminDeleteItemType.builder()
+              .build(
+                  itemTypeName,
+                  namespace,
+              );
+
+          final AdminItemTypes wrapper = new AdminItemTypes(sdk);
+          wrapper.adminDeleteItemType(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'item'
+      - 'type'
+      - 'types'
+
+  'AdminDeleteTag@inventory':
+    id: 'AdminDeleteTag@inventory'
+    name: 'AdminDeleteTag'
+    description: |-
+      This endpoint will delete a tag by tagName in a specified namespace.
+      If the tagName doesn't exist in a namespace, it'll return not found.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'tagName':
+        type: 'String'
+        required: true
+        description: |-
+          TagName
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_tags.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminTags.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_tags/AdminDeleteTag.java'
+    example: |-
+      try {
+          final AdminDeleteTag operation = AdminDeleteTag.builder()
+              .build(
+                  namespace,
+                  tagName,
+              );
+
+          final AdminTags wrapper = new AdminTags(sdk);
+          wrapper.adminDeleteTag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'tag'
+      - 'tags'
+
+  'AdminGetInventory@inventory':
+    id: 'AdminGetInventory@inventory'
+    name: 'AdminGetInventory'
+    description: |-
+      Getting an inventory info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    parameters:
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminGetInventory.java'
+    example: |-
+      try {
+          final AdminGetInventory operation = AdminGetInventory.builder()
+              .build(
+                  inventoryId,
+                  namespace,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          final ApimodelsInventoryResp response = wrapper.adminGetInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventories'
+      - 'inventory'
+
+  'AdminGetInventoryConfiguration@inventory':
+    id: 'AdminGetInventoryConfiguration@inventory'
+    name: 'AdminGetInventoryConfiguration'
+    description: |-
+      Getting an inventory configuration info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    parameters:
+      'inventoryConfigurationId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventory_configurations/AdminGetInventoryConfiguration.java'
+    example: |-
+      try {
+          final AdminGetInventoryConfiguration operation = AdminGetInventoryConfiguration.builder()
+              .build(
+                  inventoryConfigurationId,
+                  namespace,
+              );
+
+          final AdminInventoryConfigurations wrapper = new AdminInventoryConfigurations(sdk);
+          final ApimodelsInventoryConfigurationResp response = wrapper.adminGetInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'get'
+      - 'inventory'
+
+  'AdminGetInventoryItem@inventory':
+    id: 'AdminGetInventoryItem@inventory'
+    name: 'AdminGetInventoryItem'
+    description: |-
+      Getting an item info.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    parameters:
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'slotId':
+        type: 'String'
+        required: true
+        description: |-
+          slotID
+      'sourceItemId':
+        type: 'String'
+        required: true
+        description: |-
+          sourceItemID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminGetInventoryItem.java'
+    example: |-
+      try {
+          final AdminGetInventoryItem operation = AdminGetInventoryItem.builder()
+              .build(
+                  inventoryId,
+                  namespace,
+                  slotId,
+                  sourceItemId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final ApimodelsItemResp response = wrapper.adminGetInventoryItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'inventory'
+      - 'item'
+      - 'items'
+
+  'AdminListIntegrationConfigurations@inventory':
+    id: 'AdminListIntegrationConfigurations@inventory'
+    name: 'AdminListIntegrationConfigurations'
+    description: |-
+      Listing all integration configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListIntegrationConfigurationsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_integration_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminIntegrationConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_integration_configurations/AdminListIntegrationConfigurations.java'
+    example: |-
+      try {
+          final AdminListIntegrationConfigurations operation = AdminListIntegrationConfigurations.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final AdminIntegrationConfigurations wrapper = new AdminIntegrationConfigurations(sdk);
+          final ApimodelsListIntegrationConfigurationsResp response = wrapper.adminListIntegrationConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'integration'
+      - 'list'
+
+  'AdminListInventories@inventory':
+    id: 'AdminListInventories@inventory'
+    name: 'AdminListInventories'
+    description: |-
+      Listing all inventories in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
+    parameters:
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'userId':
+        type: 'String'
+        required: false
+        description: |-
+          UserID
+    return_type: 'ApimodelsListInventoryResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminListInventories.java'
+    example: |-
+      try {
+          final AdminListInventories operation = AdminListInventories.builder()
+              .inventoryConfigurationCode(...)
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .userId(...)
+              .build(
+                  namespace,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          final ApimodelsListInventoryResp response = wrapper.adminListInventories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'list'
+
+  'AdminListInventoryConfigurations@inventory':
+    id: 'AdminListInventoryConfigurations@inventory'
+    name: 'AdminListInventoryConfigurations'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+    parameters:
+      'code':
+        type: 'String'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryConfigurationsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventory_configurations/AdminListInventoryConfigurations.java'
+    example: |-
+      try {
+          final AdminListInventoryConfigurations operation = AdminListInventoryConfigurations.builder()
+              .code(...)
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final AdminInventoryConfigurations wrapper = new AdminInventoryConfigurations(sdk);
+          final ApimodelsListInventoryConfigurationsResp response = wrapper.adminListInventoryConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+
+  'AdminListItems@inventory':
+    id: 'AdminListItems@inventory'
+    name: 'AdminListItems'
+    description: |-
+      Listing all items in an inventory.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
+    parameters:
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'sourceItemId':
+        type: 'String'
+        required: false
+        description: |-
+          SourceItemID
+      'tags':
+        type: 'String'
+        required: false
+        description: |-
+          Tags
+    return_type: 'ApimodelsListItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminListItems.java'
+    example: |-
+      try {
+          final AdminListItems operation = AdminListItems.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .sourceItemId(...)
+              .tags(...)
+              .build(
+                  inventoryId,
+                  namespace,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final ApimodelsListItemResp response = wrapper.adminListItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'items'
+      - 'list'
+
+  'AdminListItemTypes@inventory':
+    id: 'AdminListItemTypes@inventory'
+    name: 'AdminListItemTypes'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [READ]
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListItemTypesResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_item_types.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItemTypes.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_item_types/AdminListItemTypes.java'
+    example: |-
+      try {
+          final AdminListItemTypes operation = AdminListItemTypes.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final AdminItemTypes wrapper = new AdminItemTypes(sdk);
+          final ApimodelsListItemTypesResp response = wrapper.adminListItemTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'list'
+      - 'types'
+
+  'AdminListTags@inventory':
+    id: 'AdminListTags@inventory'
+    name: 'AdminListTags'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'owner':
+        type: 'String'
+        required: false
+        description: |-
+          supported parameter SERVER or CLIENT
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListTagsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_tags.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminTags.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_tags/AdminListTags.java'
+    example: |-
+      try {
+          final AdminListTags operation = AdminListTags.builder()
+              .limit(...)
+              .offset(...)
+              .owner(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final AdminTags wrapper = new AdminTags(sdk);
+          final ApimodelsListTagsResp response = wrapper.adminListTags(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'list'
+      - 'tags'
+
+  'AdminPurchasable@inventory':
+    id: 'AdminPurchasable@inventory'
+    name: 'AdminPurchasable'
+    description: |-
+      Validate purchase ecommerce item.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsPurchaseValidationReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminPurchasable.java'
+    example: |-
+      try {
+          final AdminPurchasable operation = AdminPurchasable.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          wrapper.adminPurchasable(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'purchasable'
+
+  'AdminSaveItem@inventory':
+    id: 'AdminSaveItem@inventory'
+    name: 'AdminSaveItem'
+    description: |-
+      **This endpoint is used to save items to the playerâs inventory based on the inventoryConfigurationCode with the following conditions:**
+      - If the player doesn't have the inventory for the specified inventoryConfigurationCode, a new inventory will be created.
+      - If the user already has one, it will be added to the existing inventory.
+      - If the same item exists within the inventory, the quantity (qty) will be increased.
+      - If the inventory is full, the item cannot be added and the request will return the âFailedâ response.
+      - If a player has more than one inventory and the initial inventory is full, the service will check the available slot in the other inventory following the order of their creation date and time (createdAt).
+      - For Ecommerce items:
+      >- Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      >- Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      >- The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      You must have this permission to access this endpoint:
+      **Permission:ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'body':
+        type: 'ApimodelsSaveItemReq'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminSaveItem.java'
+    example: |-
+      try {
+          final AdminSaveItem operation = AdminSaveItem.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final ApimodelsItemResp response = wrapper.adminSaveItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'item'
+      - 'items'
+      - 'save'
+
+  'AdminSaveItemToInventory@inventory':
+    id: 'AdminSaveItemToInventory@inventory'
+    name: 'AdminSaveItemToInventory'
+    description: |-
+      **This endpoint is used to save purchased items to a specific inventory of the player, with the following conditions for E-commerce items:**
+      - Attributes such as slotUsed, serverCustomAttributes, customAttributes, and type will be overridden by the attributes configured in the AccelByte Gaming Services (AGS) Store.
+      - Storing E-commerce items in a particular slot will follow its entitlement and item configuration, such as durable, consumable, stackable and non-stackable.
+      - The quantity is dynamically set based on an itemâs useCount configured in Store. When saving an item, the specified quantity will be multiplied by configured useCount for that particular item. For example, if an Item is configured with a useCount of 5 in the AGS Store and it is saved with a qty of 2, the itemâs quantity will be stored as 10 in the playerâs inventory.
+
+      **When configuring your request, note the following:**
+      - The source field is mandatory for determining the source of the item. The supported values are OTHER (for items coming from other sources) and E-commerce for items coming from the E-commerce integration.
+      - For other-sourced items, the type can be manually defined when saving the item.
+      You must have this permission to access this endpoint:
+
+      **Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]**
+    parameters:
+      'body':
+        type: 'ApimodelsSaveItemToInventoryReq'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          inventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminSaveItemToInventory.java'
+    example: |-
+      try {
+          final AdminSaveItemToInventory operation = AdminSaveItemToInventory.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          final ApimodelsItemResp response = wrapper.adminSaveItemToInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventory'
+      - 'item'
+      - 'items'
+      - 'save'
+      - 'to'
+
+  'AdminSyncUserEntitlements@inventory':
+    id: 'AdminSyncUserEntitlements@inventory'
+    name: 'AdminSyncUserEntitlements'
+    description: |-
+      Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+      will skip the item if already exist at user inventory.
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_items/AdminSyncUserEntitlements.java'
+    example: |-
+      try {
+          final AdminSyncUserEntitlements operation = AdminSyncUserEntitlements.builder()
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final AdminItems wrapper = new AdminItems(sdk);
+          wrapper.adminSyncUserEntitlements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'entitlements'
+      - 'items'
+      - 'sync'
+      - 'user'
+
+  'AdminUpdateIntegrationConfiguration@inventory':
+    id: 'AdminUpdateIntegrationConfiguration@inventory'
+    name: 'AdminUpdateIntegrationConfiguration'
+    description: |-
+      to update integration configuration
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsUpdateIntegrationConfigurationReq'
+        required: true
+      'integrationConfigurationId':
+        type: 'String'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_integration_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminIntegrationConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_integration_configurations/AdminUpdateIntegrationConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdateIntegrationConfiguration operation = AdminUpdateIntegrationConfiguration.builder()
+              .build(
+                  body,
+                  integrationConfigurationId,
+                  namespace,
+              );
+
+          final AdminIntegrationConfigurations wrapper = new AdminIntegrationConfigurations(sdk);
+          final ApimodelsIntegrationConfigurationResp response = wrapper.adminUpdateIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'update'
+
+  'AdminUpdateInventory@inventory':
+    id: 'AdminUpdateInventory@inventory'
+    name: 'AdminUpdateInventory'
+    description: |-
+      Updating an inventory.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsUpdateInventoryReq'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminUpdateInventory.java'
+    example: |-
+      try {
+          final AdminUpdateInventory operation = AdminUpdateInventory.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          final ApimodelsInventoryResp response = wrapper.adminUpdateInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateInventoryConfiguration@inventory':
+    id: 'AdminUpdateInventoryConfiguration@inventory'
+    name: 'AdminUpdateInventoryConfiguration'
+    description: |-
+      Updating inventory configuration.
+      There cannot be duplicate code per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsInventoryConfigurationReq'
+        required: true
+      'inventoryConfigurationId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryConfigurationID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsInventoryConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventory_configurations/AdminUpdateInventoryConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdateInventoryConfiguration operation = AdminUpdateInventoryConfiguration.builder()
+              .build(
+                  body,
+                  inventoryConfigurationId,
+                  namespace,
+              );
+
+          final AdminInventoryConfigurations wrapper = new AdminInventoryConfigurations(sdk);
+          final ApimodelsInventoryConfigurationResp response = wrapper.adminUpdateInventoryConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'inventory'
+      - 'update'
+
+  'AdminUpdateStatusIntegrationConfiguration@inventory':
+    id: 'AdminUpdateStatusIntegrationConfiguration@inventory'
+    name: 'AdminUpdateStatusIntegrationConfiguration'
+    description: |-
+      to update status integration configuration to be Active / Not Active.
+      There cannot be duplicate serviceName per namespace.
+
+      Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsUpdateStatusIntegrationConfigurationReq'
+        required: true
+      'integrationConfigurationId':
+        type: 'String'
+        required: true
+        description: |-
+          integrationConfigurationID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsIntegrationConfigurationResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_integration_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminIntegrationConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_integration_configurations/AdminUpdateStatusIntegrationConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdateStatusIntegrationConfiguration operation = AdminUpdateStatusIntegrationConfiguration.builder()
+              .build(
+                  body,
+                  integrationConfigurationId,
+                  namespace,
+              );
+
+          final AdminIntegrationConfigurations wrapper = new AdminIntegrationConfigurations(sdk);
+          final ApimodelsIntegrationConfigurationResp response = wrapper.adminUpdateStatusIntegrationConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'configurations'
+      - 'integration'
+      - 'status'
+      - 'update'
+
+  'AdminUpdateUserInventoriesByInventoryCode@inventory':
+    id: 'AdminUpdateUserInventoriesByInventoryCode@inventory'
+    name: 'AdminUpdateUserInventoriesByInventoryCode'
+    description: |-
+      Updating user inventories.
+      Positive value will increase MaxSlots from existing value
+      Negative value will decrease MaxSlots from existing value
+      Limited slots can not be changed to unlimited, vice versa
+
+      Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+    parameters:
+      'body':
+        type: 'ApimodelsUpdateInventoryReq'
+        required: true
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryConfigurationCode
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          UserID
+    return_type: 'List<ApimodelsInventoryResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/AdminUpdateUserInventoriesByInventoryCode.java'
+    example: |-
+      try {
+          final AdminUpdateUserInventoriesByInventoryCode operation = AdminUpdateUserInventoriesByInventoryCode.builder()
+              .build(
+                  body,
+                  inventoryConfigurationCode,
+                  namespace,
+                  userId,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          final List<ApimodelsInventoryResp> response = wrapper.adminUpdateUserInventoriesByInventoryCode(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'by'
+      - 'code'
+      - 'inventories'
+      - 'inventory'
+      - 'update'
+      - 'user'
+
+  'DeleteInventory@inventory':
+    id: 'DeleteInventory@inventory'
+    name: 'DeleteInventory'
+    description: |-
+      Deleting an inventory.
+      If an inventory still has items, it cannot be deleted.
+
+      ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [DELETE]
+    parameters:
+      'body':
+        type: 'ApimodelsDeleteInventoryReq'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/AdminInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/admin_inventories/DeleteInventory.java'
+    example: |-
+      try {
+          final DeleteInventory operation = DeleteInventory.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final AdminInventories wrapper = new AdminInventories(sdk);
+          wrapper.deleteInventory(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'delete'
+      - 'inventories'
+      - 'inventory'
+
+  'PublicBulkRemoveMyItems@inventory':
+    id: 'PublicBulkRemoveMyItems@inventory'
+    name: 'PublicBulkRemoveMyItems'
+    description: |-
+      Bulk remove user's own items.
+    parameters:
+      'body':
+        type: 'List<ApimodelsRemoveInventoryItemReq>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicBulkRemoveMyItems.java'
+    example: |-
+      try {
+          final PublicBulkRemoveMyItems operation = PublicBulkRemoveMyItems.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final List<ApimodelsUpdateItemResp> response = wrapper.publicBulkRemoveMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'remove'
+
+  'PublicBulkUpdateMyItems@inventory':
+    id: 'PublicBulkUpdateMyItems@inventory'
+    name: 'PublicBulkUpdateMyItems'
+    description: |-
+      Bulk Updating user's own items.
+    parameters:
+      'body':
+        type: 'List<ApimodelsUpdateItemReq>'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'List<ApimodelsUpdateItemResp>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicBulkUpdateMyItems.java'
+    example: |-
+      try {
+          final PublicBulkUpdateMyItems operation = PublicBulkUpdateMyItems.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final List<ApimodelsUpdateItemResp> response = wrapper.publicBulkUpdateMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'items'
+      - 'my'
+      - 'public'
+      - 'update'
+
+  'PublicConsumeMyItem@inventory':
+    id: 'PublicConsumeMyItem@inventory'
+    name: 'PublicConsumeMyItem'
+    description: |-
+      Consume user's own item.
+      Client should pass item ID in options if item type is OPTIONBOX
+    parameters:
+      'body':
+        type: 'ApimodelsConsumeItemReq'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicConsumeMyItem.java'
+    example: |-
+      try {
+          final PublicConsumeMyItem operation = PublicConsumeMyItem.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final ApimodelsItemResp response = wrapper.publicConsumeMyItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'consume'
+      - 'item'
+      - 'items'
+      - 'my'
+      - 'public'
+
+  'PublicGetItem@inventory':
+    id: 'PublicGetItem@inventory'
+    name: 'PublicGetItem'
+    description: |-
+      Getting an user's owned item info.
+    parameters:
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'slotId':
+        type: 'String'
+        required: true
+        description: |-
+          slotID
+      'sourceItemId':
+        type: 'String'
+        required: true
+        description: |-
+          sourceItemID
+    return_type: 'ApimodelsItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicGetItem.java'
+    example: |-
+      try {
+          final PublicGetItem operation = PublicGetItem.builder()
+              .build(
+                  inventoryId,
+                  namespace,
+                  slotId,
+                  sourceItemId,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final ApimodelsItemResp response = wrapper.publicGetItem(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'item'
+      - 'items'
+      - 'public'
+
+  'PublicListInventories@inventory':
+    id: 'PublicListInventories@inventory'
+    name: 'PublicListInventories'
+    description: |-
+      Listing all my inventories in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'inventoryConfigurationCode':
+        type: 'String'
+        required: false
+        description: |-
+          InventoryConfigurationCode
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_inventories.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicInventories.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_inventories/PublicListInventories.java'
+    example: |-
+      try {
+          final PublicListInventories operation = PublicListInventories.builder()
+              .inventoryConfigurationCode(...)
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final PublicInventories wrapper = new PublicInventories(sdk);
+          final ApimodelsListInventoryResp response = wrapper.publicListInventories(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'inventories'
+      - 'list'
+      - 'public'
+
+  'PublicListInventoryConfigurations@inventory':
+    id: 'PublicListInventoryConfigurations@inventory'
+    name: 'PublicListInventoryConfigurations'
+    description: |-
+      Listing all inventory configurations in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'code':
+        type: 'String'
+        required: false
+        description: |-
+          will partially match inventoryConfigurationCode
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListInventoryConfigurationsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_inventory_configurations.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicInventoryConfigurations.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_inventory_configurations/PublicListInventoryConfigurations.java'
+    example: |-
+      try {
+          final PublicListInventoryConfigurations operation = PublicListInventoryConfigurations.builder()
+              .code(...)
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final PublicInventoryConfigurations wrapper = new PublicInventoryConfigurations(sdk);
+          final ApimodelsListInventoryConfigurationsResp response = wrapper.publicListInventoryConfigurations(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configurations'
+      - 'inventory'
+      - 'list'
+      - 'public'
+
+  'PublicListItems@inventory':
+    id: 'PublicListItems@inventory'
+    name: 'PublicListItems'
+    description: |-
+      Listing all user's owned items in an inventory.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+      'sourceItemId':
+        type: 'String'
+        required: false
+        description: |-
+          SourceItemID
+      'tags':
+        type: 'String'
+        required: false
+        description: |-
+          Tags
+    return_type: 'ApimodelsListItemResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicListItems.java'
+    example: |-
+      try {
+          final PublicListItems operation = PublicListItems.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .sourceItemId(...)
+              .tags(...)
+              .build(
+                  inventoryId,
+                  namespace,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final ApimodelsListItemResp response = wrapper.publicListItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'items'
+      - 'list'
+      - 'public'
+
+  'PublicListItemTypes@inventory':
+    id: 'PublicListItemTypes@inventory'
+    name: 'PublicListItemTypes'
+    description: |-
+      This endpoint will list all item types in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListItemTypesResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_item_types.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItemTypes.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_item_types/PublicListItemTypes.java'
+    example: |-
+      try {
+          final PublicListItemTypes operation = PublicListItemTypes.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final PublicItemTypes wrapper = new PublicItemTypes(sdk);
+          final ApimodelsListItemTypesResp response = wrapper.publicListItemTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'item'
+      - 'list'
+      - 'public'
+      - 'types'
+
+  'PublicListTags@inventory':
+    id: 'PublicListTags@inventory'
+    name: 'PublicListTags'
+    description: |-
+      This endpoint will list all tags in a namespace.
+      The response body will be in the form of standard pagination.
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          default 25
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          Only support one level of sortBy; default createdAt
+    return_type: 'ApimodelsListTagsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_tags.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicTags.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_tags/PublicListTags.java'
+    example: |-
+      try {
+          final PublicListTags operation = PublicListTags.builder()
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .build(
+                  namespace,
+              );
+
+          final PublicTags wrapper = new PublicTags(sdk);
+          final ApimodelsListTagsResp response = wrapper.publicListTags(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'list'
+      - 'public'
+      - 'tags'
+
+  'PublicMoveMyItems@inventory':
+    id: 'PublicMoveMyItems@inventory'
+    name: 'PublicMoveMyItems'
+    description: |-
+      Move items between inventories that is owned by the same user.
+
+      For Ecommerce items, the *qty* is *useCount*. For example, moving 2 of an item's *qty* will move 2 of the entitlement's *useCount*.
+    parameters:
+      'body':
+        type: 'ApimodelsMoveItemsReq'
+        required: true
+      'inventoryId':
+        type: 'String'
+        required: true
+        description: |-
+          InventoryID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'ApimodelsMoveItemsResp'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.inventory.models.*;'
+      - 'import net.accelbyte.sdk.api.inventory.operations.public_items.*;'
+      - 'import net.accelbyte.sdk.api.inventory.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/wrappers/PublicItems.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/inventory/operations/public_items/PublicMoveMyItems.java'
+    example: |-
+      try {
+          final PublicMoveMyItems operation = PublicMoveMyItems.builder()
+              .build(
+                  body,
+                  inventoryId,
+                  namespace,
+              );
+
+          final PublicItems wrapper = new PublicItems(sdk);
+          final ApimodelsMoveItemsResp response = wrapper.publicMoveMyItems(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'items'
+      - 'move'
+      - 'my'
+      - 'public'

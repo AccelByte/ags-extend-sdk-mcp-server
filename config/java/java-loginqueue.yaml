@@ -1,0 +1,383 @@
+structs:
+  # region models
+
+  'ApimodelsConfigurationRequest@loginqueue':
+    id: 'ApimodelsConfigurationRequest@loginqueue'
+    name: 'ApimodelsConfigurationRequest'
+    fields:
+      'enabled':
+        type: 'Boolean'
+        required: true
+      'maxConcurrency':
+        type: 'Integer'
+        required: true
+      'maxLoginRate':
+        type: 'Integer'
+        required: true
+      'minActivationPeriodInSecond':
+        type: 'Integer'
+        required: true
+      'playerPollingTimeInSecond':
+        type: 'Integer'
+        required: true
+      'playerReconnectGracePeriodInSecond':
+        type: 'Integer'
+        required: true
+      'queueReconnectGracePeriodInSecond':
+        type: 'Integer'
+        required: true
+      'safetyMarginPercentage':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsConfigurationRequest.java'
+
+  'ApimodelsConfigurationResponse@loginqueue':
+    id: 'ApimodelsConfigurationResponse@loginqueue'
+    name: 'ApimodelsConfigurationResponse'
+    fields:
+      'enabled':
+        type: 'Boolean'
+        required: true
+      'maxConcurrency':
+        type: 'Integer'
+        required: true
+      'maxLoginRate':
+        type: 'Integer'
+        required: true
+      'minActivationPeriodInSecond':
+        type: 'Integer'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'playerPollingTimeInSecond':
+        type: 'Integer'
+        required: true
+      'playerReconnectGracePeriodInSecond':
+        type: 'Integer'
+        required: true
+      'queueReconnectGracePeriodInSecond':
+        type: 'Integer'
+        required: true
+      'safetyMarginPercentage':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsConfigurationResponse.java'
+
+  'ApimodelsLink@loginqueue':
+    id: 'ApimodelsLink@loginqueue'
+    name: 'ApimodelsLink'
+    fields:
+      'action':
+        type: 'String'
+        required: true
+      'href':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsLink.java'
+
+  'ApimodelsQueueStatusResponse@loginqueue':
+    id: 'ApimodelsQueueStatusResponse@loginqueue'
+    name: 'ApimodelsQueueStatusResponse'
+    fields:
+      'isActive':
+        type: 'Boolean'
+        required: true
+      'loggedUserCount':
+        type: 'Integer'
+        required: true
+      'loginRPS':
+        type: 'Integer'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'queueCount':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsQueueStatusResponse.java'
+
+  'ApimodelsRefreshTicketResponse@loginqueue':
+    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+    name: 'ApimodelsRefreshTicketResponse'
+    fields:
+      'cancel':
+        type: 'ApimodelsLink'
+        required: true
+      'estimatedWaitingTimeInSeconds':
+        type: 'Integer'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'playerPollingTimeInSeconds':
+        type: 'Integer'
+        required: true
+      'position':
+        type: 'Integer'
+        required: true
+      'reconnectExpiredAt':
+        type: 'Long'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsRefreshTicketResponse.java'
+
+  'ResponseError@loginqueue':
+    id: 'ResponseError@loginqueue'
+    name: 'ResponseError'
+    fields:
+      'errorCode':
+        type: 'Integer'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: true
+      'message':
+        type: 'String'
+        required: true
+      'name':
+        type: 'String'
+        required: true
+      'attributes':
+        type: 'Map<String, String>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ResponseError.java'
+
+  # endregion models
+
+functions:
+
+  'AdminGetConfiguration@loginqueue':
+    id: 'AdminGetConfiguration@loginqueue'
+    name: 'AdminGetConfiguration'
+    description: |-
+      This API is used to get log queue configuration of a namespace.
+      Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsConfigurationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.operations.admin_v1.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/wrappers/AdminV1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/operations/admin_v1/AdminGetConfiguration.java'
+    example: |-
+      try {
+          final AdminGetConfiguration operation = AdminGetConfiguration.builder()
+              .build(
+                  namespace,
+              );
+
+          final AdminV1 wrapper = new AdminV1(sdk);
+          final ApimodelsConfigurationResponse response = wrapper.adminGetConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'get'
+      - 'v1'
+
+  'AdminGetStatus@loginqueue':
+    id: 'AdminGetStatus@loginqueue'
+    name: 'AdminGetStatus'
+    description: |-
+      Get login queue status
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsQueueStatusResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.operations.admin_v1.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/wrappers/AdminV1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/operations/admin_v1/AdminGetStatus.java'
+    example: |-
+      try {
+          final AdminGetStatus operation = AdminGetStatus.builder()
+              .build(
+                  namespace,
+              );
+
+          final AdminV1 wrapper = new AdminV1(sdk);
+          final ApimodelsQueueStatusResponse response = wrapper.adminGetStatus(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'get'
+      - 'status'
+      - 'v1'
+
+  'AdminUpdateConfiguration@loginqueue':
+    id: 'AdminUpdateConfiguration@loginqueue'
+    name: 'AdminUpdateConfiguration'
+    description: |-
+      This API is used to set/update log queue configuration of a namespace.
+      This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
+      When creating new configuration, empty field will have default value:
+      * enabled = false
+      * maxConcurrency = 1000000
+      * maxLoginRate = 500
+      * safetyMarginPercentage = 5
+      * minActivationPeriodInSecond = 600
+      * playerReconnectGracePeriodInSecond = 300
+      * queueReconnectGracePeriodInSecond = 60
+      * playerPollingTimeInSecond = 20
+
+      Calling this endpoint with namespace that has configuration will replace the old configuration.
+
+      Input validation:
+      * maxConcurrency must be > 0 and <= 10000000 (0 < x <= 10000000)
+      * maxLoginRate must be > 0 and <= 100000 (0 < x <= 100000)
+      * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
+      * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
+      * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
+    parameters:
+      'body':
+        type: 'ApimodelsConfigurationRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsConfigurationResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.operations.admin_v1.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/wrappers/AdminV1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/operations/admin_v1/AdminUpdateConfiguration.java'
+    example: |-
+      try {
+          final AdminUpdateConfiguration operation = AdminUpdateConfiguration.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AdminV1 wrapper = new AdminV1(sdk);
+          final ApimodelsConfigurationResponse response = wrapper.adminUpdateConfiguration(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'update'
+      - 'v1'
+
+  'CancelTicket@loginqueue':
+    id: 'CancelTicket@loginqueue'
+    name: 'CancelTicket'
+    description: |-
+      Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.operations.ticket_v1.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/wrappers/TicketV1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/operations/ticket_v1/CancelTicket.java'
+    example: |-
+      try {
+          final CancelTicket operation = CancelTicket.builder()
+              .build(
+                  namespace,
+              );
+
+          final TicketV1 wrapper = new TicketV1(sdk);
+          wrapper.cancelTicket(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'ticket'
+      - 'v1'
+
+  'RefreshTicket@loginqueue':
+    id: 'RefreshTicket@loginqueue'
+    name: 'RefreshTicket'
+    description: |-
+      Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace, only accept alphabet and numeric
+    return_type: 'ApimodelsRefreshTicketResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.models.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.operations.ticket_v1.*;'
+      - 'import net.accelbyte.sdk.api.loginqueue.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/wrappers/TicketV1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/operations/ticket_v1/RefreshTicket.java'
+    example: |-
+      try {
+          final RefreshTicket operation = RefreshTicket.builder()
+              .build(
+                  namespace,
+              );
+
+          final TicketV1 wrapper = new TicketV1(sdk);
+          final ApimodelsRefreshTicketResponse response = wrapper.refreshTicket(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'refresh'
+      - 'ticket'
+      - 'v1'
