@@ -103,7 +103,7 @@ In Cursor, press `CTRL+L` and try the following prompts. You should see that the
 - `CONFIG_DIR`: Directory of YAML config files (recursive, default: `config/go`)
   - For Extend SDK C#: `config/csharp`
   - For Extend SDK Go: `config/go`
-  - For Extend SDK Java (coming soon): `config/java`
+  - For Extend SDK Java: `config/java`
   - For Extend SDK Python: `config/python`
 - `NODE_ENV`: Environment (valid values: `development`, `production`)
 - `LOG_LEVEL`: Logging level (valid values: `debug`, `info`, `warn`, `error`)
