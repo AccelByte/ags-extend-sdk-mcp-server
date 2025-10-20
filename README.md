@@ -158,6 +158,38 @@ pnpm start
 ```bash
 TRANSPORT=streamableHttp pnpm start
 ```
+
+### Build the MCP server container image
+
+```bash
+docker build -t extend-sdk-mcp-server:latest .
+```
+
+## Release
+
+### Push the MCP server  container image to Docker Hub
+
+```bash
+# Setup variables
+
+DOCKER_HUB_USERNAME=<your-dockerhub-username>
+DOCKER_HUB_PASSWORD=<your-dockerhub-password>
+IMAGE_TAG=2025.10.0    # Matches AGS release, bump patch version for hotfix
+
+# Prepare builder
+
+docker buildx inspect extend-sdk-mcp-server-builder || docker buildx create --name extend-sdk-mcp-server-builder --use
+
+# Login, build, and push multiarch image
+
+docker login --username ${DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD}
+docker buildx build -t accelbyte/extend-sdk-mcp-server:${IMAGE_TAG} --platform linux/amd64,linux/arm64 --push .
+
+# Clean up builder
+
+docker buildx rm --keep-state extend-sdk-mcp-server-builder
+```
+
 ## Testing
 
 1. Start the MCP server with streamable HTTP transport.
@@ -201,3 +233,4 @@ TRANSPORT=streamableHttp pnpm start
         -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_model","arguments":{"id":"User@iam"}}}' \
         http://localhost:3000/
     ```
+  
