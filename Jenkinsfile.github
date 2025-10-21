@@ -68,7 +68,7 @@ pipeline {
                             passwordVariable: 'GHCR_PASSWORD'
                         )
                     ]) {
-                        sh 'docker login --username $GHCR_USERNAME --password $GHCR_PASSWORD'
+                        sh 'docker login ghcr.io --username $GHCR_USERNAME --password $GHCR_PASSWORD'
                     }
                     sh "docker buildx build -t ghcr.io/AccelByte/${imageName}:\$(echo ${params.RELEASE_TAG} | sed s/v//) --platform linux/amd64,linux/arm64 --push ."
                 }
@@ -76,7 +76,7 @@ pipeline {
             post {
                 always {
                     sh "docker buildx rm --keep-state ${imageName}-builder"
-                    sh 'docker logout'
+                    sh 'docker logout ghcr.io'
                 }
             }
         }
