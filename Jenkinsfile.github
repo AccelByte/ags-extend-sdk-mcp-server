@@ -70,7 +70,7 @@ pipeline {
                     ]) {
                         sh 'docker login ghcr.io --username $GHCR_USERNAME --password $GHCR_PASSWORD'
                     }
-                    sh "docker buildx build -t ghcr.io/AccelByte/${imageName}:\$(echo ${params.RELEASE_TAG} | sed s/v//) --platform linux/amd64,linux/arm64 --push ."
+                    sh "docker buildx build -t ghcr.io/accelbyte/${imageName}:\$(echo ${params.RELEASE_TAG} | sed s/v//) --platform linux/amd64,linux/arm64 --push ."
                 }
             }
             post {
