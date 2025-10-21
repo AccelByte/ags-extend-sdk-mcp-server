@@ -1,4 +1,4 @@
-# Extend SDK MCP Server
+# AGS Extend SDK MCP Server
 
 This **Model Context Protocol (MCP) server** exposes Extend SDK functions and models as additional context to language models. It helps AI coding assistants and other MCP clients to answer questions and generate Extend SDK code by providing the following tools.
 
@@ -15,14 +15,16 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 - [Cursor](https://cursor.com/home)
 - Docker
-- Git
+
+> [!NOTE]
+> The instructions below can be adapted for other MCP clients as well e.g. Claude Desktop, Gemini CLI, and Visual Studio Code.
 
 ### Alternative 1: Using STDIO transport (default)
 
-1. Clone this repository and build MCP server container image.
+1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2025.7.0.
 
     ```bash
-    docker build -t extend-sdk-mcp-server:latest .
+    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2025.7.0
     ```
 
 2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
@@ -38,7 +40,7 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
             "--rm",
             "-e",
             "CONFIG_DIR",
-            "extend-sdk-mcp-server"
+            "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2025.7.0"
           ],
           "env": {
             "CONFIG_DIR": "config/go"
@@ -54,10 +56,10 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 ### Alternative 2: Using Streamable HTTP transport
 
-1. Clone this repository and build MCP server container image.
+1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2025.7.0.
 
     ```bash
-    docker build -t extend-sdk-mcp-server:latest .
+    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2025.7.0
     ```
 
 2. Start the MCP server with streamable HTTP transport.
@@ -69,7 +71,7 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
       -e CONFIG_DIR=config/go \
       -e NODE_ENV=production \
       -e LOG_LEVEL=info \
-      extend-sdk-mcp-server:latest
+      ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2025.7.0
     ```
 
     The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
@@ -88,6 +90,9 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 4. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
 
+> [!IMPORTANT]
+> Use the `ghcr.io/accelbyte/ags-extend-sdk-mcp-server` image tag that matches your AGS version. See the available image tags [here](https://github.com/accelbyte/ags-extend-sdk-mcp-server/pkgs/container/ags-extend-sdk-mcp-server/versions).
+
 ### Sample prompts
 
 In Cursor, press `CTRL+L` and try the following prompts. You should see that the tools provided by this MCP server are used. Give permission to execute the tools when requested.
@@ -95,6 +100,8 @@ In Cursor, press `CTRL+L` and try the following prompts. You should see that the
 - Search functions: `Search for functions related to 'user'`
 - Get function details: `Describe the 'AdminCreateUser@iam' function`
 - Get model details: `Describe the 'User@iam' models`
+
+[!TIP] When coding using this MCP server, we recommend to start from an Extend SDK getting started sample project or an Extend app template project instead of a blank project. Add the necessary context, such as specific source code files, to help getting better results. 
 
 ## Environment Variables
 
@@ -167,14 +174,14 @@ docker build -t extend-sdk-mcp-server:latest .
 
 ## Release
 
-### Push the MCP server  container image to Docker Hub
+### Push the MCP server container image to container registry
 
 ```bash
 # Setup variables
 
-DOCKER_HUB_USERNAME=<your-dockerhub-username>
-DOCKER_HUB_PASSWORD=<your-dockerhub-password>
-IMAGE_TAG=2025.10.0    # Matches AGS release, bump patch version for hotfix
+GHCR_USERNAME=<your-username>
+GHCR_PASSWORD=<your-password>
+IMAGE_TAG=2025.7.0    # Matches AGS release, bump patch version for hotfix
 
 # Prepare builder
 
@@ -182,8 +189,8 @@ docker buildx inspect extend-sdk-mcp-server-builder || docker buildx create --na
 
 # Login, build, and push multiarch image
 
-docker login --username ${DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD}
-docker buildx build -t accelbyte/extend-sdk-mcp-server:${IMAGE_TAG} --platform linux/amd64,linux/arm64 --push .
+docker login --username ${GHCR_USERNAME --password $GHCR_PASSWORD}
+docker buildx build -t ghcr.io/accelbyte/ags-extend-sdk-mcp-server:${IMAGE_TAG} --platform linux/amd64,linux/arm64 --push .
 
 # Clean up builder
 
