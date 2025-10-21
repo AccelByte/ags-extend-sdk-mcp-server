@@ -63,7 +63,7 @@ pipeline {
                     sh "docker buildx inspect ${imageName}-builder || docker buildx create --name ${imageName}-builder --use"
                     withCredentials([
                         usernamePassword(
-                            credentialsId: 'githubPat', 
+                            credentialsId: githubPat, 
                             usernameVariable: 'GHCR_USERNAME', 
                             passwordVariable: 'GHCR_PASSWORD'
                         )
