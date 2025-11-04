@@ -10,7 +10,7 @@ import {
 
 export function createServer(configData: ConfigType): McpServer {
   const server = new McpServer(
-    { name: "extend-sdk-mcp-server", version: "0.1.0" },
+    { name: "extend-sdk-mcp-server", version: "2025.8.0" },
     { capabilities: { tools: {} } }
   );
   const SEARCH_FUNCTIONS_DESCRIPTION = `Search for functions by name, tags, or description with fuzzy matching support.
