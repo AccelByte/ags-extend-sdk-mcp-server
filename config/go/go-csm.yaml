@@ -205,6 +205,30 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
+  'ManagedResourcesService@csm':
+    id: 'ManagedResourcesService@csm'
+    name: 'ManagedResourcesService'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      managedResourcesService := ManagedResourcesService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'MessagesService@csm':
     id: 'MessagesService@csm'
     name: 'MessagesService'
@@ -415,6 +439,67 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/create_deployment_v2_parameters.go'
 
+  'CreateNoSQLClusterV2Params@csm':
+    id: 'CreateNoSQLClusterV2Params@csm'
+    name: 'CreateNoSQLClusterV2Params'
+    fields:
+      'Body':
+        type: '*NosqlresourceNoSQLResourceConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_no_sql_cluster_v2_parameters.go'
+
+  'CreateNoSQLDatabaseCredentialV2Params@csm':
+    id: 'CreateNoSQLDatabaseCredentialV2Params@csm'
+    name: 'CreateNoSQLDatabaseCredentialV2Params'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateNoSQLDatabaseCredentialRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_no_sql_database_credential_v2_parameters.go'
+
+  'CreateNoSQLDatabaseV2Params@csm':
+    id: 'CreateNoSQLDatabaseV2Params@csm'
+    name: 'CreateNoSQLDatabaseV2Params'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateNoSQLAppDatabaseRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_no_sql_database_v2_parameters.go'
+
   'DeleteAppImagesV1Params@csm':
     id: 'DeleteAppImagesV1Params@csm'
     name: 'DeleteAppImagesV1Params'
@@ -544,6 +629,39 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/deployment_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/delete_deployment_v2_parameters.go'
+
+  'DeleteNoSQLClusterV2Params@csm':
+    id: 'DeleteNoSQLClusterV2Params@csm'
+    name: 'DeleteNoSQLClusterV2Params'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/delete_no_sql_cluster_v2_parameters.go'
+
+  'DeleteNoSQLDatabaseV2Params@csm':
+    id: 'DeleteNoSQLDatabaseV2Params@csm'
+    name: 'DeleteNoSQLDatabaseV2Params'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/delete_no_sql_database_v2_parameters.go'
 
   'DeleteSecretV1Params@csm':
     id: 'DeleteSecretV1Params@csm'
@@ -1095,6 +1213,53 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/get_list_of_variables_v2_parameters.go'
 
+  'GetNoSQLAccessTunnelV2Params@csm':
+    id: 'GetNoSQLAccessTunnelV2Params@csm'
+    name: 'GetNoSQLAccessTunnelV2Params'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/get_no_sql_access_tunnel_v2_parameters.go'
+
+  'GetNoSQLClusterV2Params@csm':
+    id: 'GetNoSQLClusterV2Params@csm'
+    name: 'GetNoSQLClusterV2Params'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/get_no_sql_cluster_v2_parameters.go'
+
+  'GetNoSQLDatabaseV2Params@csm':
+    id: 'GetNoSQLDatabaseV2Params@csm'
+    name: 'GetNoSQLDatabaseV2Params'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/get_no_sql_database_v2_parameters.go'
+
   'GetNotificationSubscriberListV2Params@csm':
     id: 'GetNotificationSubscriberListV2Params@csm'
     name: 'GetNotificationSubscriberListV2Params'
@@ -1506,6 +1671,23 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/update_app_v2_parameters.go'
 
+  'UpdateNoSQLClusterV2Params@csm':
+    id: 'UpdateNoSQLClusterV2Params@csm'
+    name: 'UpdateNoSQLClusterV2Params'
+    fields:
+      'Body':
+        type: '*NosqlresourceNoSQLResourceConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/update_no_sql_cluster_v2_parameters.go'
+
   'UpdateSecretV1Params@csm':
     id: 'UpdateSecretV1Params@csm'
     name: 'UpdateSecretV1Params'
@@ -1834,6 +2016,39 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_deployment_v2_response.go'
 
+  'ApimodelCreateNoSQLAppDatabaseRequest@csm':
+    id: 'ApimodelCreateNoSQLAppDatabaseRequest@csm'
+    name: 'ApimodelCreateNoSQLAppDatabaseRequest'
+    fields:
+      'DbName':
+        type: 'string'
+        required: true
+      'Password':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_no_sql_app_database_request.go'
+
+  'ApimodelCreateNoSQLDatabaseCredentialRequest@csm':
+    id: 'ApimodelCreateNoSQLDatabaseCredentialRequest@csm'
+    name: 'ApimodelCreateNoSQLDatabaseCredentialRequest'
+    fields:
+      'Password':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_no_sql_database_credential_request.go'
+
   'ApimodelCSMAppLimitsResponse@csm':
     id: 'ApimodelCSMAppLimitsResponse@csm'
     name: 'ApimodelCSMAppLimitsResponse'
@@ -1863,6 +2078,30 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_c_s_m_app_limits_response.go'
+
+  'ApimodelDeleteNoSQLResourceResponse@csm':
+    id: 'ApimodelDeleteNoSQLResourceResponse@csm'
+    name: 'ApimodelDeleteNoSQLResourceResponse'
+    fields:
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceName':
+        type: 'string'
+        required: true
+      'ResourceType':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_delete_no_sql_resource_response.go'
 
   'ApimodelGetAppImageListV2DataItem@csm':
     id: 'ApimodelGetAppImageListV2DataItem@csm'
@@ -2062,7 +2301,7 @@ structs:
         required: false
       'Editable':
         type: 'bool'
-        required: false
+        required: true
       'IsHidden':
         type: 'bool'
         required: true
@@ -2241,6 +2480,114 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_memory_response.go'
+
+  'ApimodelNoSQLDatabaseCredentialResponse@csm':
+    id: 'ApimodelNoSQLDatabaseCredentialResponse@csm'
+    name: 'ApimodelNoSQLDatabaseCredentialResponse'
+    fields:
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_database_credential_response.go'
+
+  'ApimodelNoSQLDatabaseDeleteResponse@csm':
+    id: 'ApimodelNoSQLDatabaseDeleteResponse@csm'
+    name: 'ApimodelNoSQLDatabaseDeleteResponse'
+    fields:
+      'DbID':
+        type: 'string'
+        required: true
+      'DbName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_database_delete_response.go'
+
+  'ApimodelNoSQLDatabaseResponse@csm':
+    id: 'ApimodelNoSQLDatabaseResponse@csm'
+    name: 'ApimodelNoSQLDatabaseResponse'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'Credentials':
+        type: '*ApimodelNoSQLDatabaseCredentialResponse'
+        required: true
+      'DbID':
+        type: 'string'
+        required: true
+      'DbName':
+        type: 'string'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'Hostnames':
+        type: 'string'
+        required: true
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceStatus':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_database_response.go'
+
+  'ApimodelNoSQLResourceResponse@csm':
+    id: 'ApimodelNoSQLResourceResponse@csm'
+    name: 'ApimodelNoSQLResourceResponse'
+    fields:
+      'Configuration':
+        type: '*NosqlresourceNoSQLResourceConfiguration'
+        required: false
+      'Hostnames':
+        type: 'string'
+        required: false
+      'LastRotatedAt':
+        type: 'string'
+        required: false
+      'PlatformName':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: false
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceName':
+        type: 'string'
+        required: true
+      'ResourceType':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_resource_response.go'
 
   'ApimodelNotificationType@csm':
     id: 'ApimodelNotificationType@csm'
@@ -2433,6 +2780,18 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscriber_item_response.go'
+
+  'ApimodelTunnelInfoResponse@csm':
+    id: 'ApimodelTunnelInfoResponse@csm'
+    name: 'ApimodelTunnelInfoResponse'
+    fields:
+      'Tunnel':
+        type: '*ResourceaccesstunnelTunnelInfo'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_tunnel_info_response.go'
 
   'ApimodelUpdateAppResourceRequest@csm':
     id: 'ApimodelUpdateAppResourceRequest@csm'
@@ -3253,6 +3612,42 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_image_scan_finding.go'
 
+  'NosqlresourceNoSQLResourceConfiguration@csm':
+    id: 'NosqlresourceNoSQLResourceConfiguration@csm'
+    name: 'NosqlresourceNoSQLResourceConfiguration'
+    fields:
+      'MaxDCU':
+        type: 'float64'
+        required: true
+      'MinDCU':
+        type: 'float64'
+        required: true
+      'ProfileName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/nosqlresource_no_sql_resource_configuration.go'
+
+  'ResourceaccesstunnelTunnelInfo@csm':
+    id: 'ResourceaccesstunnelTunnelInfo@csm'
+    name: 'ResourceaccesstunnelTunnelInfo'
+    fields:
+      'Endpoint':
+        type: 'string'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Token':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/resourceaccesstunnel_tunnel_info.go'
+
   'ResponseErrorResponse@csm':
     id: 'ResponseErrorResponse@csm'
     name: 'ResponseErrorResponse'
@@ -3338,9 +3733,9 @@ functions:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 1: `function-override`
       - scenario 2: `service-extension`
       - scenario 3: `event-handler`
+      - scenario 1: `function-override`
 
       Default: `function-override`
     struct: 'AppService'
@@ -3501,6 +3896,115 @@ functions:
     tags:
       - 'create'
       - 'deployment'
+      - 'v2'
+
+  'CreateNoSQLClusterV2Short@csm':
+    id: 'CreateNoSQLClusterV2Short@csm'
+    name: 'CreateNoSQLClusterV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]`
+
+      Provision NoSQL database cluster and instances that can be used by extend apps in game namespace within the studio.
+      Only one NoSQL resource can be created for one studio/publisher namespace.
+
+      Provisioning process is done asynchronously, you can check from the `status` field of the resource response.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.CreateNoSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources.CreateNoSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.CreateNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.CreateNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'create'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'CreateNoSQLDatabaseCredentialV2Short@csm':
+    id: 'CreateNoSQLDatabaseCredentialV2Short@csm'
+    name: 'CreateNoSQLDatabaseCredentialV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
+
+      Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.CreateNoSQLDatabaseCredentialV2Params'
+        required: true
+    return_type: '(*managed_resources.CreateNoSQLDatabaseCredentialV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.CreateNoSQLDatabaseCredentialV2Params{ ... }
+      res, err := managedResourcesService.CreateNoSQLDatabaseCredentialV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'credential'
+      - 'database'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'CreateNoSQLDatabaseV2Short@csm':
+    id: 'CreateNoSQLDatabaseV2Short@csm'
+    name: 'CreateNoSQLDatabaseV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
+
+      Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.CreateNoSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources.CreateNoSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.CreateNoSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesService.CreateNoSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'database'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'v2'
 
   'DeleteAppImagesV1Short@csm':
@@ -3707,6 +4211,81 @@ functions:
     tags:
       - 'delete'
       - 'deployment'
+      - 'v2'
+
+  'DeleteNoSQLClusterV2Short@csm':
+    id: 'DeleteNoSQLClusterV2Short@csm'
+    name: 'DeleteNoSQLClusterV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]`
+
+      You can only delete the cluster when its status is "available".
+
+      Deleting the cluster will:
+      - Remove NoSQL integration.
+      - Remove all the data from the NoSQL
+      - Remove all the credentials, including the Extend Appâs credentials.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.DeleteNoSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources.DeleteNoSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.DeleteNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.DeleteNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'delete'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'DeleteNoSQLDatabaseV2Short@csm':
+    id: 'DeleteNoSQLDatabaseV2Short@csm'
+    name: 'DeleteNoSQLDatabaseV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]`
+
+      Deletes a NoSQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned NoSQL cluster.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.DeleteNoSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources.DeleteNoSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.DeleteNoSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesService.DeleteNoSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'database'
+      - 'delete'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'v2'
 
   'DeleteSecretV1Short@csm':
@@ -4150,9 +4729,9 @@ functions:
       Get extend app by name
 
       Available scenario:
+      - scenario 1: `function-override`
       - scenario 2: `service-extension`
       - scenario 3: `event-handler`
-      - scenario 1: `function-override`
 
 
       Available app status:
@@ -4495,6 +5074,135 @@ functions:
       - 'of'
       - 'v2'
       - 'variables'
+
+  'GetNoSQLAccessTunnelV2Short@csm':
+    id: 'GetNoSQLAccessTunnelV2Short@csm'
+    name: 'GetNoSQLAccessTunnelV2Short'
+    description: |-
+      Returns the NoSQL access tunnel information for a specified game namespace
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.GetNoSQLAccessTunnelV2Params'
+        required: true
+    return_type: '(*managed_resources.GetNoSQLAccessTunnelV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.GetNoSQLAccessTunnelV2Params{ ... }
+      res, err := managedResourcesService.GetNoSQLAccessTunnelV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'access'
+      - 'get'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'tunnel'
+      - 'v2'
+
+  'GetNoSQLClusterV2Short@csm':
+    id: 'GetNoSQLClusterV2Short@csm'
+    name: 'GetNoSQLClusterV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+      Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
+
+      `status` field - indicates the NoSQL cluster status:
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.GetNoSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources.GetNoSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.GetNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.GetNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'get'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'GetNoSQLDatabaseV2Short@csm':
+    id: 'GetNoSQLDatabaseV2Short@csm'
+    name: 'GetNoSQLDatabaseV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]`
+
+      Get a NoSQL database information returns the NoSQL database related information by given game namespace
+      and app name.
+
+      `resourceStatus` field - indicates the NoSQL cluster status:
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.GetNoSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources.GetNoSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.GetNoSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesService.GetNoSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'database'
+      - 'get'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
 
   'GetNotificationSubscriberListV2Short@csm':
     id: 'GetNotificationSubscriberListV2Short@csm'
@@ -5189,6 +5897,44 @@ functions:
       }
     tags:
       - 'app'
+      - 'update'
+      - 'v2'
+
+  'UpdateNoSQLClusterV2Short@csm':
+    id: 'UpdateNoSQLClusterV2Short@csm'
+    name: 'UpdateNoSQLClusterV2Short'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Update NoSQL cluster configurations such as min/max DCU (Database Capacity Units) for the NoSQL cluster in the given studio/publisher namespace.
+      The cluster must be in an available state to allow configuration updates.
+
+      Configuration update process may take some time to complete, you can check the updated status from the `status` field of the resource response.
+    struct: 'ManagedResourcesService'
+    parameters:
+      params:
+        type: '*managed_resources.UpdateNoSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources.UpdateNoSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.UpdateNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.UpdateNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'update'
       - 'v2'
 

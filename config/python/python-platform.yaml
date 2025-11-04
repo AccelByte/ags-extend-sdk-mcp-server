@@ -8559,6 +8559,11 @@ structs:
         required: false
         description: |-
           inventory config
+      'item_id':
+        type: 'str'
+        required: false
+        description: |-
+          Item ID (optional). UUID V4 without hyphen format
       'item_ids':
         type: 'List[str]'
         required: false
@@ -10364,6 +10369,11 @@ structs:
         required: false
         description: |-
           oculus api app secret
+      'webhook_verify_token':
+        type: 'str'
+        required: false
+        description: |-
+          oculus webhook verify token
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.platform.models as platform_models'
@@ -10386,6 +10396,11 @@ structs:
         required: false
         description: |-
           oculus api app secret, don't allow white space and *
+      'webhook_verify_token':
+        type: 'str'
+        required: false
+        description: |-
+          oculus webhook verify token, please refer this link: https://developers.meta.com/horizon/documentation/unity/ps-webhooks-getting-started
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.platform.models as platform_models'
@@ -10430,6 +10445,23 @@ structs:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/oculus_reconcile_result.py'
     example: |-
       oculus_reconcile_result = platform_models.OculusReconcileResult.create(...)
+
+  'OculusSubscriptionSyncRequest@platform':
+    id: 'OculusSubscriptionSyncRequest@platform'
+    name: 'OculusSubscriptionSyncRequest'
+    fields:
+      'skus':
+        type: 'List[str]'
+        required: false
+        description: |-
+          Meta Quest Subscription, if pass an empty list or null, will fetch all of subscription sku which config in AGS subscription config.
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/oculus_subscription_sync_request.py'
+    example: |-
+      oculus_subscription_sync_request = platform_models.OculusSubscriptionSyncRequest.create(...)
 
   'Operation@platform':
     id: 'Operation@platform'
@@ -17539,6 +17571,40 @@ structs:
     example: |-
       test_result = platform_models.TestResult.create(...)
 
+  'ThirdPartySubscriptionGroupCreate@platform':
+    id: 'ThirdPartySubscriptionGroupCreate@platform'
+    name: 'ThirdPartySubscriptionGroupCreate'
+    fields:
+      'sku':
+        type: 'str'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/third_party_subscription_group_create.py'
+    example: |-
+      third_party_subscription_group_create = platform_models.ThirdPartySubscriptionGroupCreate.create(...)
+
+  'ThirdPartySubscriptionGroupInfo@platform':
+    id: 'ThirdPartySubscriptionGroupInfo@platform'
+    name: 'ThirdPartySubscriptionGroupInfo'
+    fields:
+      'sku':
+        type: 'str'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/third_party_subscription_group_info.py'
+    example: |-
+      third_party_subscription_group_info = platform_models.ThirdPartySubscriptionGroupInfo.create(...)
+
   'ThirdPartySubscriptionOwnership@platform':
     id: 'ThirdPartySubscriptionOwnership@platform'
     name: 'ThirdPartySubscriptionOwnership'
@@ -17555,6 +17621,50 @@ structs:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/third_party_subscription_ownership.py'
     example: |-
       third_party_subscription_ownership = platform_models.ThirdPartySubscriptionOwnership.create(...)
+
+  'ThirdPartySubscriptionTierCreate@platform':
+    id: 'ThirdPartySubscriptionTierCreate@platform'
+    name: 'ThirdPartySubscriptionTierCreate'
+    fields:
+      'group_sku':
+        type: 'str'
+        required: false
+        description: |-
+          Group sku
+      'sku':
+        type: 'str'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/third_party_subscription_tier_create.py'
+    example: |-
+      third_party_subscription_tier_create = platform_models.ThirdPartySubscriptionTierCreate.create(...)
+
+  'ThirdPartySubscriptionTierInfo@platform':
+    id: 'ThirdPartySubscriptionTierInfo@platform'
+    name: 'ThirdPartySubscriptionTierInfo'
+    fields:
+      'group_sku':
+        type: 'str'
+        required: false
+        description: |-
+          Group sku
+      'sku':
+        type: 'str'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/third_party_subscription_tier_info.py'
+    example: |-
+      third_party_subscription_tier_info = platform_models.ThirdPartySubscriptionTierInfo.create(...)
 
   'ThirdPartySubscriptionTransactionHistoryInfo@platform':
     id: 'ThirdPartySubscriptionTransactionHistoryInfo@platform'
@@ -19757,6 +19867,40 @@ functions:
       - 'ticket'
       - 'user'
 
+  'add_tier_into_meta_quest_subscription_group@platform':
+    id: 'add_tier_into_meta_quest_subscription_group@platform'
+    name: 'add_tier_into_meta_quest_subscription_group'
+    description: |-
+      Create Meta Quest(Oculus) subscriptions tier
+    parameters:
+      'body':
+        type: 'Optional[ThirdPartySubscriptionTierCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ThirdPartySubscriptionTierInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/add_tier_into_meta_ques_3b9946.py'
+    example: |-
+      result, error = platform.add_tier_into_meta_quest_subscription_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'add'
+      - 'group'
+      - 'iap'
+      - 'into'
+      - 'meta'
+      - 'quest'
+      - 'subscription'
+      - 'tier'
+
   'admin_create_user_order@platform':
     id: 'admin_create_user_order@platform'
     name: 'admin_create_user_order'
@@ -19940,6 +20084,40 @@ functions:
       - 'reset'
       - 'steam'
       - 'time'
+
+  'admin_sync_oculus_subscriptions@platform':
+    id: 'admin_sync_oculus_subscriptions@platform'
+    name: 'admin_sync_oculus_subscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'body':
+        type: 'Optional[OculusSubscriptionSyncRequest]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[ThirdPartySubscriptionTransactionInfo]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap/admin_sync_oculus_subsc_25b739.py'
+    example: |-
+      result, error = platform.admin_sync_oculus_subscriptions(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
+      - 'sync'
 
   'admin_sync_steam_abnormal_transaction@platform':
     id: 'admin_sync_steam_abnormal_transaction@platform'
@@ -21127,6 +21305,8 @@ functions:
 
           {
 
+             "itemId": "b478be9ad42f4d0f8ba49ef3ef605a83" (optional, UUID V4 without hyphen format)
+
              "categoryPath": "/games",
 
              "localizations": {
@@ -21444,6 +21624,37 @@ functions:
       - 'create'
       - 'group'
       - 'key'
+
+  'create_oculus_subscription_group@platform':
+    id: 'create_oculus_subscription_group@platform'
+    name: 'create_oculus_subscription_group'
+    description: |-
+      Create subscriptions group
+    parameters:
+      'body':
+        type: 'Optional[ThirdPartySubscriptionGroupCreate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, ThirdPartySubscriptionGroupInfo], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/create_oculus_subscript_a9cccf.py'
+    example: |-
+      result, error = platform.create_oculus_subscription_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
 
   'create_payment_order_by_dedicated@platform':
     id: 'create_payment_order_by_dedicated@platform'
@@ -22620,6 +22831,66 @@ functions:
       - 'delete'
       - 'iap'
       - 'oculus'
+
+  'delete_oculus_subscription_group@platform':
+    id: 'delete_oculus_subscription_group@platform'
+    name: 'delete_oculus_subscription_group'
+    description: |-
+      can't delete it if this subscription group is used.
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'sku':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/delete_oculus_subscript_671183.py'
+    example: |-
+      result, error = platform.delete_oculus_subscription_group(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+
+  'delete_oculus_subscription_tier@platform':
+    id: 'delete_oculus_subscription_tier@platform'
+    name: 'delete_oculus_subscription_tier'
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'sku':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/delete_oculus_subscript_b30083.py'
+    example: |-
+      result, error = platform.delete_oculus_subscription_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'delete'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'delete_payment_provider_config@platform':
     id: 'delete_payment_provider_config@platform'
@@ -28651,6 +28922,66 @@ functions:
       - 'key'
       - 'keys'
       - 'list'
+
+  'list_oculus_subscription_groups@platform':
+    id: 'list_oculus_subscription_groups@platform'
+    name: 'list_oculus_subscription_groups'
+    description: |-
+      List Meta Quest(Oculus) subscriptions group
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[ThirdPartySubscriptionGroupInfo]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/list_oculus_subscriptio_9d9ab8.py'
+    example: |-
+      result, error = platform.list_oculus_subscription_groups(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'groups'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+
+  'list_oculus_subscription_group_tier@platform':
+    id: 'list_oculus_subscription_group_tier@platform'
+    name: 'list_oculus_subscription_group_tier'
+    description: |-
+      List All Tier of AGS Meta Quest(Oculus) subscriptions group
+    parameters:
+      'namespace':
+        type: 'str'
+        required: true
+      'sku':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[ThirdPartySubscriptionTierInfo]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap_subscription/list_oculus_subscriptio_bb42e9.py'
+    example: |-
+      result, error = platform.list_oculus_subscription_group_tier(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'group'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'list_stores@platform':
     id: 'list_stores@platform'
@@ -36137,6 +36468,39 @@ functions:
     tags:
       - 'dlc'
       - 'oculus'
+      - 'sync'
+
+  'sync_oculus_subscriptions@platform':
+    id: 'sync_oculus_subscriptions@platform'
+    name: 'sync_oculus_subscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'body':
+        type: 'Optional[OculusSubscriptionSyncRequest]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[ThirdPartySubscriptionTransactionInfo]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap/sync_oculus_subscriptions.py'
+    example: |-
+      result, error = platform.sync_oculus_subscriptions(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
       - 'sync'
 
   'sync_orders@platform':

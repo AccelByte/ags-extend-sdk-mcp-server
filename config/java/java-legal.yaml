@@ -2057,42 +2057,6 @@ functions:
       - 'consent'
       - 'preference'
 
-  'ChangePreferenceConsent1@legal':
-    id: 'ChangePreferenceConsent1@legal'
-    name: 'ChangePreferenceConsent1'
-    description: |-
-      Change marketing preference consent.
-    parameters:
-      'body':
-        type: 'List<AcceptAgreementRequest>'
-        required: false
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/ChangePreferenceConsent1.java'
-    example: |-
-      try {
-          final ChangePreferenceConsent1 operation = ChangePreferenceConsent1.builder()
-              .body(...)
-              .build();
-
-          final Agreement wrapper = new Agreement(sdk);
-          wrapper.changePreferenceConsent1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '1'
-      - 'agreement'
-      - 'change'
-      - 'consent'
-      - 'preference'
-
   'CheckReadiness@legal':
     id: 'CheckReadiness@legal'
     name: 'CheckReadiness'
@@ -2132,49 +2096,6 @@ functions:
       'body':
         type: 'CreateLocalizedPolicyVersionRequest'
         required: false
-      'policyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'CreateLocalizedPolicyVersionResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/CreateLocalizedPolicyVersion.java'
-    example: |-
-      try {
-          final CreateLocalizedPolicyVersion operation = CreateLocalizedPolicyVersion.builder()
-              .body(...)
-              .build(
-                  policyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          final CreateLocalizedPolicyVersionResponse response = wrapper.createLocalizedPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'create'
-      - 'localized'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'CreateLocalizedPolicyVersion1@legal':
-    id: 'CreateLocalizedPolicyVersion1@legal'
-    name: 'CreateLocalizedPolicyVersion1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'CreateLocalizedPolicyVersionRequest'
-        required: false
       'namespace':
         type: 'String'
         required: true
@@ -2193,10 +2114,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/CreateLocalizedPolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/CreateLocalizedPolicyVersion.java'
     example: |-
       try {
-          final CreateLocalizedPolicyVersion1 operation = CreateLocalizedPolicyVersion1.builder()
+          final CreateLocalizedPolicyVersion operation = CreateLocalizedPolicyVersion.builder()
               .body(...)
               .build(
                   namespace,
@@ -2204,12 +2125,11 @@ functions:
               );
 
           final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final CreateLocalizedPolicyVersionResponse response = wrapper.createLocalizedPolicyVersion1(operation);
+          final CreateLocalizedPolicyVersionResponse response = wrapper.createLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'create'
       - 'localized'
       - 'namespace'
@@ -2221,50 +2141,6 @@ functions:
   'CreatePolicy@legal':
     id: 'CreatePolicy@legal'
     name: 'CreatePolicy'
-    description: |-
-      Create a legal policy.
-      Note:
-
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
-    parameters:
-      'body':
-        type: 'CreateBasePolicyRequest'
-        required: false
-    return_type: 'CreateBasePolicyResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/CreatePolicy.java'
-    example: |-
-      try {
-          final CreatePolicy operation = CreatePolicy.builder()
-              .body(...)
-              .build();
-
-          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
-          final CreateBasePolicyResponse response = wrapper.createPolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'create'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-
-  'CreatePolicy1@legal':
-    id: 'CreatePolicy1@legal'
-    name: 'CreatePolicy1'
     description: |-
       Create a legal policy.
       Note:
@@ -2292,22 +2168,21 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/CreatePolicy1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/CreatePolicy.java'
     example: |-
       try {
-          final CreatePolicy1 operation = CreatePolicy1.builder()
+          final CreatePolicy operation = CreatePolicy.builder()
               .body(...)
               .build(
                   namespace,
               );
 
           final BaseLegalPoliciesWithNamespace wrapper = new BaseLegalPoliciesWithNamespace(sdk);
-          final CreateBasePolicyResponse response = wrapper.createPolicy1(operation);
+          final CreateBasePolicyResponse response = wrapper.createPolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'create'
       - 'legal'
@@ -2385,48 +2260,6 @@ functions:
       'body':
         type: 'CreatePolicyVersionRequest'
         required: false
-      'policyId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'CreatePolicyVersionResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/CreatePolicyVersion.java'
-    example: |-
-      try {
-          final CreatePolicyVersion operation = CreatePolicyVersion.builder()
-              .body(...)
-              .build(
-                  policyId,
-              );
-
-          final PolicyVersions wrapper = new PolicyVersions(sdk);
-          final CreatePolicyVersionResponse response = wrapper.createPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'create'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'CreatePolicyVersion1@legal':
-    id: 'CreatePolicyVersion1@legal'
-    name: 'CreatePolicyVersion1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'CreatePolicyVersionRequest'
-        required: false
       'namespace':
         type: 'String'
         required: true
@@ -2445,10 +2278,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/CreatePolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/CreatePolicyVersion.java'
     example: |-
       try {
-          final CreatePolicyVersion1 operation = CreatePolicyVersion1.builder()
+          final CreatePolicyVersion operation = CreatePolicyVersion.builder()
               .body(...)
               .build(
                   namespace,
@@ -2456,12 +2289,11 @@ functions:
               );
 
           final PolicyVersionsWithNamespace wrapper = new PolicyVersionsWithNamespace(sdk);
-          final CreatePolicyVersionResponse response = wrapper.createPolicyVersion1(operation);
+          final CreatePolicyVersionResponse response = wrapper.createPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'create'
       - 'namespace'
       - 'policy'
@@ -2826,51 +2658,6 @@ functions:
       - 'user'
       - 'versioned'
 
-  'IndirectBulkAcceptVersionedPolicy1@legal':
-    id: 'IndirectBulkAcceptVersionedPolicy1@legal'
-    name: 'IndirectBulkAcceptVersionedPolicy1'
-    description: |-
-      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    parameters:
-      'body':
-        type: 'List<AcceptAgreementRequest>'
-        required: false
-      'userId':
-        type: 'String'
-        required: true
-        description: |-
-          User Id
-    return_type: 'AcceptAgreementResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/IndirectBulkAcceptVersionedPolicy1.java'
-    example: |-
-      try {
-          final IndirectBulkAcceptVersionedPolicy1 operation = IndirectBulkAcceptVersionedPolicy1.builder()
-              .body(...)
-              .build(
-                  userId,
-              );
-
-          final Agreement wrapper = new Agreement(sdk);
-          final AcceptAgreementResponse response = wrapper.indirectBulkAcceptVersionedPolicy1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '1'
-      - 'accept'
-      - 'agreement'
-      - 'bulk'
-      - 'indirect'
-      - 'policy'
-      - 'versioned'
-
   'IndirectBulkAcceptVersionedPolicyV2@legal':
     id: 'IndirectBulkAcceptVersionedPolicyV2@legal'
     name: 'IndirectBulkAcceptVersionedPolicyV2'
@@ -3034,9 +2821,141 @@ functions:
       - 'invalidate'
       - 'user'
 
-  'PartialUpdatePolicy@legal':
-    id: 'PartialUpdatePolicy@legal'
-    name: 'PartialUpdatePolicy'
+  'OldCreateLocalizedPolicyVersion@legal':
+    id: 'OldCreateLocalizedPolicyVersion@legal'
+    name: 'OldCreateLocalizedPolicyVersion'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'CreateLocalizedPolicyVersionRequest'
+        required: false
+      'policyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'CreateLocalizedPolicyVersionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldCreateLocalizedPolicyVersion.java'
+    example: |-
+      try {
+          final OldCreateLocalizedPolicyVersion operation = OldCreateLocalizedPolicyVersion.builder()
+              .body(...)
+              .build(
+                  policyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final CreateLocalizedPolicyVersionResponse response = wrapper.oldCreateLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'OldCreatePolicy@legal':
+    id: 'OldCreatePolicy@legal'
+    name: 'OldCreatePolicy'
+    description: |-
+      Create a legal policy.
+      Note:
+
+
+        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+    parameters:
+      'body':
+        type: 'CreateBasePolicyRequest'
+        required: false
+    return_type: 'CreateBasePolicyResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/OldCreatePolicy.java'
+    example: |-
+      try {
+          final OldCreatePolicy operation = OldCreatePolicy.builder()
+              .body(...)
+              .build();
+
+          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
+          final CreateBasePolicyResponse response = wrapper.oldCreatePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'create'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+
+  'OldCreatePolicyVersion@legal':
+    id: 'OldCreatePolicyVersion@legal'
+    name: 'OldCreatePolicyVersion'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'CreatePolicyVersionRequest'
+        required: false
+      'policyId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'CreatePolicyVersionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/OldCreatePolicyVersion.java'
+    example: |-
+      try {
+          final OldCreatePolicyVersion operation = OldCreatePolicyVersion.builder()
+              .body(...)
+              .build(
+                  policyId,
+              );
+
+          final PolicyVersions wrapper = new PolicyVersions(sdk);
+          final CreatePolicyVersionResponse response = wrapper.oldCreatePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'OldPartialUpdatePolicy@legal':
+    id: 'OldPartialUpdatePolicy@legal'
+    name: 'OldPartialUpdatePolicy'
     description: |-
       Update an existing base policy.
       Note:
@@ -3064,41 +2983,828 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/PartialUpdatePolicy.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/OldPartialUpdatePolicy.java'
     example: |-
       try {
-          final PartialUpdatePolicy operation = PartialUpdatePolicy.builder()
+          final OldPartialUpdatePolicy operation = OldPartialUpdatePolicy.builder()
               .body(...)
               .build(
                   basePolicyId,
               );
 
           final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
-          final UpdateBasePolicyResponse response = wrapper.partialUpdatePolicy(operation);
+          final UpdateBasePolicyResponse response = wrapper.oldPartialUpdatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
       - 'base'
       - 'legal'
+      - 'old'
       - 'partial'
       - 'policies'
       - 'policy'
       - 'update'
 
-  'PartialUpdatePolicy1@legal':
-    id: 'PartialUpdatePolicy1@legal'
-    name: 'PartialUpdatePolicy1'
+  'OldPublicRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'OldPublicRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'OldPublicRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldPublicRetrieveSingleLocalizedPolicyVersion.java'
+    example: |-
+      try {
+          final OldPublicRetrieveSingleLocalizedPolicyVersion operation = OldPublicRetrieveSingleLocalizedPolicyVersion.builder()
+              .build(
+                  localizedPolicyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final RetrieveLocalizedPolicyVersionPublicResponse response = wrapper.oldPublicRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldPublishPolicyVersion@legal':
+    id: 'OldPublishPolicyVersion@legal'
+    name: 'OldPublishPolicyVersion'
+    description: |-
+      Manually publish a version of a particular country-specific policy.
+    parameters:
+      'policyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Version Id
+      'shouldNotify':
+        type: 'Boolean'
+        required: false
+        description: |-
+          Should Notify
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/OldPublishPolicyVersion.java'
+    example: |-
+      try {
+          final OldPublishPolicyVersion operation = OldPublishPolicyVersion.builder()
+              .shouldNotify(...)
+              .build(
+                  policyVersionId,
+              );
+
+          final PolicyVersions wrapper = new PolicyVersions(sdk);
+          wrapper.oldPublishPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'publish'
+      - 'version'
+      - 'versions'
+
+  'OldRequestPresignedURL@legal':
+    id: 'OldRequestPresignedURL@legal'
+    name: 'OldRequestPresignedURL'
+    description: |-
+      Request presigned URL for upload attachment for a particular localized version of base policy.
+    parameters:
+      'body':
+        type: 'UploadPolicyVersionAttachmentRequest'
+        required: false
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'UploadLocalizedPolicyVersionAttachmentResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldRequestPresignedURL.java'
+    example: |-
+      try {
+          final OldRequestPresignedURL operation = OldRequestPresignedURL.builder()
+              .body(...)
+              .build(
+                  localizedPolicyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final UploadLocalizedPolicyVersionAttachmentResponse response = wrapper.oldRequestPresignedURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'presigned'
+      - 'request'
+      - 'url'
+      - 'versions'
+
+  'OldRetrieveAcceptedAgreements@legal':
+    id: 'OldRetrieveAcceptedAgreements@legal'
+    name: 'OldRetrieveAcceptedAgreements'
+    description: |-
+      This API will return all accepted Legal Agreements for specified user
+    parameters:
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          User Id
+    return_type: 'List<RetrieveAcceptedAgreementResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/OldRetrieveAcceptedAgreements.java'
+    example: |-
+      try {
+          final OldRetrieveAcceptedAgreements operation = OldRetrieveAcceptedAgreements.builder()
+              .build(
+                  userId,
+              );
+
+          final Agreement wrapper = new Agreement(sdk);
+          final List<RetrieveAcceptedAgreementResponse> response = wrapper.oldRetrieveAcceptedAgreements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'accepted'
+      - 'agreement'
+      - 'agreements'
+      - 'old'
+      - 'retrieve'
+
+  'OldRetrieveAllPolicyTypes@legal':
+    id: 'OldRetrieveAllPolicyTypes@legal'
+    name: 'OldRetrieveAllPolicyTypes'
+    description: |-
+      Retrieve all supported policy types.
+    parameters:
+      'limit':
+        type: 'Integer'
+        required: true
+        description: |-
+          Limit
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
+    return_type: 'List<RetrievePolicyTypeResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/OldRetrieveAllPolicyTypes.java'
+    example: |-
+      try {
+          final OldRetrieveAllPolicyTypes operation = OldRetrieveAllPolicyTypes.builder()
+              .offset(...)
+              .build(
+                  limit,
+              );
+
+          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
+          final List<RetrievePolicyTypeResponse> response = wrapper.oldRetrieveAllPolicyTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'all'
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'types'
+
+  'OldRetrieveAllUsersByPolicyVersion@legal':
+    id: 'OldRetrieveAllUsersByPolicyVersion@legal'
+    name: 'OldRetrieveAllUsersByPolicyVersion'
+    description: |-
+      This API will return users who has accepted a specific policy version.
+    parameters:
+      'keyword':
+        type: 'String'
+        required: false
+        description: |-
+          display name or email or username
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'policyVersionId':
+        type: 'String'
+        required: true
+    return_type: 'PagedRetrieveUserAcceptedAgreementResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/OldRetrieveAllUsersByPolicyVersion.java'
+    example: |-
+      try {
+          final OldRetrieveAllUsersByPolicyVersion operation = OldRetrieveAllUsersByPolicyVersion.builder()
+              .keyword(...)
+              .limit(...)
+              .offset(...)
+              .build(
+                  policyVersionId,
+              );
+
+          final Agreement wrapper = new Agreement(sdk);
+          final PagedRetrieveUserAcceptedAgreementResponse response = wrapper.oldRetrieveAllUsersByPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'agreement'
+      - 'all'
+      - 'by'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'users'
+      - 'version'
+
+  'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic@legal':
+    id: 'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic@legal'
+    name: 'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic'
+    description: |-
+      Retrieve all active latest policies based on a namespace and country.
+      Other detail info:
+
+        * Leave the policyType empty if you want to be responded with all policy type
+        *  Fill the tags if you want to filter the responded policy by tags
+        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+          * Document 1 (default): Region US (default), UA
+          * Document 2 (default): Region US (default)
+          * Document 3 (default): Region US (default)
+          * User: Region UA
+          * Query: alwaysIncludeDefault: true
+          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
+    parameters:
+      'alwaysIncludeDefault':
+        type: 'Boolean'
+        required: false
+        description: |-
+          Always include default
+      'countryCode':
+        type: 'String'
+        required: true
+        description: |-
+          Country Code
+      'defaultOnEmpty':
+        type: 'Boolean'
+        required: false
+        description: |-
+          Default On Empty
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'policyType':
+        type: 'String'
+        required: false
+        description: |-
+          Policy Type
+      'tags':
+        type: 'String'
+        required: false
+        description: |-
+          tags, separate multiple value by commas parameter
+      'visibleOnly':
+        type: 'Boolean'
+        required: false
+    return_type: 'List<RetrievePolicyPublicResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/OldRetrieveLatestPoliciesByNamespaceAndCountryPublic.java'
+    example: |-
+      try {
+          final OldRetrieveLatestPoliciesByNamespaceAndCountryPublic operation = OldRetrieveLatestPoliciesByNamespaceAndCountryPublic.builder()
+              .alwaysIncludeDefault(...)
+              .defaultOnEmpty(...)
+              .policyType(...)
+              .tags(...)
+              .visibleOnly(...)
+              .build(
+                  countryCode,
+                  namespace,
+              );
+
+          final Policies wrapper = new Policies(sdk);
+          final List<RetrievePolicyPublicResponse> response = wrapper.oldRetrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'and'
+      - 'by'
+      - 'country'
+      - 'latest'
+      - 'namespace'
+      - 'old'
+      - 'policies'
+      - 'public'
+      - 'retrieve'
+
+  'OldRetrieveLocalizedPolicyVersions@legal':
+    id: 'OldRetrieveLocalizedPolicyVersions@legal'
+    name: 'OldRetrieveLocalizedPolicyVersions'
+    description: |-
+      Retrieve versions of a particular country-specific policy.
+    parameters:
+      'policyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'List<RetrieveLocalizedPolicyVersionResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldRetrieveLocalizedPolicyVersions.java'
+    example: |-
+      try {
+          final OldRetrieveLocalizedPolicyVersions operation = OldRetrieveLocalizedPolicyVersions.builder()
+              .build(
+                  policyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final List<RetrieveLocalizedPolicyVersionResponse> response = wrapper.oldRetrieveLocalizedPolicyVersions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'versions'
+
+  'OldRetrievePolicyCountry@legal':
+    id: 'OldRetrievePolicyCountry@legal'
+    name: 'OldRetrievePolicyCountry'
+    description: |-
+      Retrieve a Base Legal Policy based on a Particular Country.
+    parameters:
+      'basePolicyId':
+        type: 'String'
+        required: true
+        description: |-
+          BasePolicy Id
+      'countryCode':
+        type: 'String'
+        required: true
+        description: |-
+          Country Code
+    return_type: 'RetrievePolicyResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/OldRetrievePolicyCountry.java'
+    example: |-
+      try {
+          final OldRetrievePolicyCountry operation = OldRetrievePolicyCountry.builder()
+              .build(
+                  basePolicyId,
+                  countryCode,
+              );
+
+          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
+          final RetrievePolicyResponse response = wrapper.oldRetrievePolicyCountry(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'country'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+
+  'OldRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'OldRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'OldRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve a version of a particular country-specific policy.
+    parameters:
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'RetrieveLocalizedPolicyVersionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldRetrieveSingleLocalizedPolicyVersion.java'
+    example: |-
+      try {
+          final OldRetrieveSingleLocalizedPolicyVersion operation = OldRetrieveSingleLocalizedPolicyVersion.builder()
+              .build(
+                  localizedPolicyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final RetrieveLocalizedPolicyVersionResponse response = wrapper.oldRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldRetrieveSinglePolicy@legal':
+    id: 'OldRetrieveSinglePolicy@legal'
+    name: 'OldRetrieveSinglePolicy'
+    description: |-
+      Retrieve a base policy.
+    parameters:
+      'basePolicyId':
+        type: 'String'
+        required: true
+        description: |-
+          BasePolicy Id
+    return_type: 'RetrieveBasePolicyResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/OldRetrieveSinglePolicy.java'
+    example: |-
+      try {
+          final OldRetrieveSinglePolicy operation = OldRetrieveSinglePolicy.builder()
+              .build(
+                  basePolicyId,
+              );
+
+          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
+          final RetrieveBasePolicyResponse response = wrapper.oldRetrieveSinglePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+
+  'OldRetrieveSinglePolicyVersion@legal':
+    id: 'OldRetrieveSinglePolicyVersion@legal'
+    name: 'OldRetrieveSinglePolicyVersion'
+    description: |-
+      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    parameters:
+      'policyId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Id
+      'versionId':
+        type: 'String'
+        required: false
+        description: |-
+          Version Id
+    return_type: 'List<RetrievePolicyVersionResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/OldRetrieveSinglePolicyVersion.java'
+    example: |-
+      try {
+          final OldRetrieveSinglePolicyVersion operation = OldRetrieveSinglePolicyVersion.builder()
+              .versionId(...)
+              .build(
+                  policyId,
+              );
+
+          final PolicyVersions wrapper = new PolicyVersions(sdk);
+          final List<RetrievePolicyVersionResponse> response = wrapper.oldRetrieveSinglePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldSetDefaultLocalizedPolicy@legal':
+    id: 'OldSetDefaultLocalizedPolicy@legal'
+    name: 'OldSetDefaultLocalizedPolicy'
+    description: |-
+      Update a localized version policy to be the default.
+    parameters:
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldSetDefaultLocalizedPolicy.java'
+    example: |-
+      try {
+          final OldSetDefaultLocalizedPolicy operation = OldSetDefaultLocalizedPolicy.builder()
+              .build(
+                  localizedPolicyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          wrapper.oldSetDefaultLocalizedPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'default'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'set'
+      - 'versions'
+
+  'OldSetDefaultPolicy@legal':
+    id: 'OldSetDefaultPolicy@legal'
+    name: 'OldSetDefaultPolicy'
+    description: |-
+      Update a policy to be the default.
+    parameters:
+      'policyId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/OldSetDefaultPolicy.java'
+    example: |-
+      try {
+          final OldSetDefaultPolicy operation = OldSetDefaultPolicy.builder()
+              .build(
+                  policyId,
+              );
+
+          final Policies wrapper = new Policies(sdk);
+          wrapper.oldSetDefaultPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'default'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'set'
+
+  'OldUpdateLocalizedPolicyVersion@legal':
+    id: 'OldUpdateLocalizedPolicyVersion@legal'
+    name: 'OldUpdateLocalizedPolicyVersion'
+    description: |-
+      Update a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'UpdateLocalizedPolicyVersionRequest'
+        required: false
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'UpdateLocalizedPolicyVersionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/OldUpdateLocalizedPolicyVersion.java'
+    example: |-
+      try {
+          final OldUpdateLocalizedPolicyVersion operation = OldUpdateLocalizedPolicyVersion.builder()
+              .body(...)
+              .build(
+                  localizedPolicyVersionId,
+              );
+
+          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final UpdateLocalizedPolicyVersionResponse response = wrapper.oldUpdateLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'OldUpdatePolicy@legal':
+    id: 'OldUpdatePolicy@legal'
+    name: 'OldUpdatePolicy'
+    description: |-
+      Update country-specific and country-group policy.
+    parameters:
+      'body':
+        type: 'UpdatePolicyRequest'
+        required: false
+      'policyId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/OldUpdatePolicy.java'
+    example: |-
+      try {
+          final OldUpdatePolicy operation = OldUpdatePolicy.builder()
+              .body(...)
+              .build(
+                  policyId,
+              );
+
+          final Policies wrapper = new Policies(sdk);
+          wrapper.oldUpdatePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'update'
+
+  'OldUpdatePolicyVersion@legal':
+    id: 'OldUpdatePolicyVersion@legal'
+    name: 'OldUpdatePolicyVersion'
+    description: |-
+      Update a particular policy version.
+    parameters:
+      'body':
+        type: 'UpdatePolicyVersionRequest'
+        required: false
+      'policyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'UpdatePolicyVersionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/OldUpdatePolicyVersion.java'
+    example: |-
+      try {
+          final OldUpdatePolicyVersion operation = OldUpdatePolicyVersion.builder()
+              .body(...)
+              .build(
+                  policyVersionId,
+              );
+
+          final PolicyVersions wrapper = new PolicyVersions(sdk);
+          final UpdatePolicyVersionResponse response = wrapper.oldUpdatePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'PartialUpdatePolicy@legal':
+    id: 'PartialUpdatePolicy@legal'
+    name: 'PartialUpdatePolicy'
     description: |-
       Update an existing base policy.
       Note:
 
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+          *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+          * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+        * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
     parameters:
       'basePolicyId':
         type: 'String'
@@ -3121,10 +3827,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/PartialUpdatePolicy1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/PartialUpdatePolicy.java'
     example: |-
       try {
-          final PartialUpdatePolicy1 operation = PartialUpdatePolicy1.builder()
+          final PartialUpdatePolicy operation = PartialUpdatePolicy.builder()
               .body(...)
               .build(
                   basePolicyId,
@@ -3132,12 +3838,11 @@ functions:
               );
 
           final BaseLegalPoliciesWithNamespace wrapper = new BaseLegalPoliciesWithNamespace(sdk);
-          final UpdateBasePolicyResponse response = wrapper.partialUpdatePolicy1(operation);
+          final UpdateBasePolicyResponse response = wrapper.partialUpdatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -3147,53 +3852,140 @@ functions:
       - 'update'
       - 'with'
 
-  'PublishPolicyVersion@legal':
-    id: 'PublishPolicyVersion@legal'
-    name: 'PublishPolicyVersion'
+  'PublicChangePreferenceConsent@legal':
+    id: 'PublicChangePreferenceConsent@legal'
+    name: 'PublicChangePreferenceConsent'
     description: |-
-      Manually publish a version of a particular country-specific policy.
+      Change marketing preference consent.
     parameters:
-      'policyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Version Id
-      'shouldNotify':
-        type: 'Boolean'
+      'body':
+        type: 'List<AcceptAgreementRequest>'
         required: false
-        description: |-
-          Should Notify
     return_type: 'void'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/PublishPolicyVersion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/PublicChangePreferenceConsent.java'
     example: |-
       try {
-          final PublishPolicyVersion operation = PublishPolicyVersion.builder()
-              .shouldNotify(...)
-              .build(
-                  policyVersionId,
-              );
+          final PublicChangePreferenceConsent operation = PublicChangePreferenceConsent.builder()
+              .body(...)
+              .build();
 
-          final PolicyVersions wrapper = new PolicyVersions(sdk);
-          wrapper.publishPolicyVersion(operation);
+          final Agreement wrapper = new Agreement(sdk);
+          wrapper.publicChangePreferenceConsent(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
+      - 'agreement'
+      - 'change'
+      - 'consent'
+      - 'preference'
+      - 'public'
+
+  'PublicIndirectBulkAcceptVersionedPolicy@legal':
+    id: 'PublicIndirectBulkAcceptVersionedPolicy@legal'
+    name: 'PublicIndirectBulkAcceptVersionedPolicy'
+    description: |-
+      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+    parameters:
+      'body':
+        type: 'List<AcceptAgreementRequest>'
+        required: false
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          User Id
+    return_type: 'AcceptAgreementResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/PublicIndirectBulkAcceptVersionedPolicy.java'
+    example: |-
+      try {
+          final PublicIndirectBulkAcceptVersionedPolicy operation = PublicIndirectBulkAcceptVersionedPolicy.builder()
+              .body(...)
+              .build(
+                  userId,
+              );
+
+          final Agreement wrapper = new Agreement(sdk);
+          final AcceptAgreementResponse response = wrapper.publicIndirectBulkAcceptVersionedPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'accept'
+      - 'agreement'
+      - 'bulk'
+      - 'indirect'
       - 'policy'
-      - 'publish'
+      - 'public'
+      - 'versioned'
+
+  'PublicRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'PublicRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'PublicRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'localizedPolicyVersionId':
+        type: 'String'
+        required: true
+        description: |-
+          Localized Policy Version Id
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.legal.models.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.*;'
+      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/PublicRetrieveSingleLocalizedPolicyVersion.java'
+    example: |-
+      try {
+          final PublicRetrieveSingleLocalizedPolicyVersion operation = PublicRetrieveSingleLocalizedPolicyVersion.builder()
+              .build(
+                  localizedPolicyVersionId,
+                  namespace,
+              );
+
+          final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
+          final RetrieveLocalizedPolicyVersionPublicResponse response = wrapper.publicRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'namespace'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
       - 'version'
       - 'versions'
+      - 'with'
 
-  'PublishPolicyVersion1@legal':
-    id: 'PublishPolicyVersion1@legal'
-    name: 'PublishPolicyVersion1'
+  'PublishPolicyVersion@legal':
+    id: 'PublishPolicyVersion@legal'
+    name: 'PublishPolicyVersion'
     description: |-
       Manually publish a version of a particular country-specific policy.
     parameters:
@@ -3220,10 +4012,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/PublishPolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/PublishPolicyVersion.java'
     example: |-
       try {
-          final PublishPolicyVersion1 operation = PublishPolicyVersion1.builder()
+          final PublishPolicyVersion operation = PublishPolicyVersion.builder()
               .shouldNotify(...)
               .build(
                   namespace,
@@ -3231,12 +4023,11 @@ functions:
               );
 
           final PolicyVersionsWithNamespace wrapper = new PolicyVersionsWithNamespace(sdk);
-          wrapper.publishPolicyVersion1(operation);
+          wrapper.publishPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'publish'
@@ -3247,50 +4038,6 @@ functions:
   'RequestPresignedURL@legal':
     id: 'RequestPresignedURL@legal'
     name: 'RequestPresignedURL'
-    description: |-
-      Request presigned URL for upload attachment for a particular localized version of base policy.
-    parameters:
-      'body':
-        type: 'UploadPolicyVersionAttachmentRequest'
-        required: false
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'UploadLocalizedPolicyVersionAttachmentResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/RequestPresignedURL.java'
-    example: |-
-      try {
-          final RequestPresignedURL operation = RequestPresignedURL.builder()
-              .body(...)
-              .build(
-                  localizedPolicyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          final UploadLocalizedPolicyVersionAttachmentResponse response = wrapper.requestPresignedURL(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'presigned'
-      - 'request'
-      - 'url'
-      - 'versions'
-
-  'RequestPresignedURL1@legal':
-    id: 'RequestPresignedURL1@legal'
-    name: 'RequestPresignedURL1'
     description: |-
       Request presigned URL for upload attachment for a particular localized version of base policy.
     parameters:
@@ -3315,10 +4062,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RequestPresignedURL1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RequestPresignedURL.java'
     example: |-
       try {
-          final RequestPresignedURL1 operation = RequestPresignedURL1.builder()
+          final RequestPresignedURL operation = RequestPresignedURL.builder()
               .body(...)
               .build(
                   localizedPolicyVersionId,
@@ -3326,12 +4073,11 @@ functions:
               );
 
           final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final UploadLocalizedPolicyVersionAttachmentResponse response = wrapper.requestPresignedURL1(operation);
+          final UploadLocalizedPolicyVersionAttachmentResponse response = wrapper.requestPresignedURL(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -3344,44 +4090,6 @@ functions:
   'RetrieveAcceptedAgreements@legal':
     id: 'RetrieveAcceptedAgreements@legal'
     name: 'RetrieveAcceptedAgreements'
-    description: |-
-      This API will return all accepted Legal Agreements for specified user
-    parameters:
-      'userId':
-        type: 'String'
-        required: true
-        description: |-
-          User Id
-    return_type: 'List<RetrieveAcceptedAgreementResponse>'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/RetrieveAcceptedAgreements.java'
-    example: |-
-      try {
-          final RetrieveAcceptedAgreements operation = RetrieveAcceptedAgreements.builder()
-              .build(
-                  userId,
-              );
-
-          final Agreement wrapper = new Agreement(sdk);
-          final List<RetrieveAcceptedAgreementResponse> response = wrapper.retrieveAcceptedAgreements(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'accepted'
-      - 'agreement'
-      - 'agreements'
-      - 'retrieve'
-
-  'RetrieveAcceptedAgreements1@legal':
-    id: 'RetrieveAcceptedAgreements1@legal'
-    name: 'RetrieveAcceptedAgreements1'
     description: |-
       This API will return all accepted Legal Agreements for specified user.
     parameters:
@@ -3408,10 +4116,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/AgreementWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAcceptedAgreements1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAcceptedAgreements.java'
     example: |-
       try {
-          final RetrieveAcceptedAgreements1 operation = RetrieveAcceptedAgreements1.builder()
+          final RetrieveAcceptedAgreements operation = RetrieveAcceptedAgreements.builder()
               .excludeOtherNamespacesPolicies(...)
               .build(
                   namespace,
@@ -3419,12 +4127,11 @@ functions:
               );
 
           final AgreementWithNamespace wrapper = new AgreementWithNamespace(sdk);
-          final List<RetrieveAcceptedAgreementResponse> response = wrapper.retrieveAcceptedAgreements1(operation);
+          final List<RetrieveAcceptedAgreementResponse> response = wrapper.retrieveAcceptedAgreements(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'accepted'
       - 'agreement'
       - 'agreements'
@@ -3652,53 +4359,6 @@ functions:
         required: true
         description: |-
           Limit
-      'offset':
-        type: 'Integer'
-        required: false
-        description: |-
-          Offset
-    return_type: 'List<RetrievePolicyTypeResponse>'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/RetrieveAllPolicyTypes.java'
-    example: |-
-      try {
-          final RetrieveAllPolicyTypes operation = RetrieveAllPolicyTypes.builder()
-              .offset(...)
-              .build(
-                  limit,
-              );
-
-          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
-          final List<RetrievePolicyTypeResponse> response = wrapper.retrieveAllPolicyTypes(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'all'
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'types'
-
-  'RetrieveAllPolicyTypes1@legal':
-    id: 'RetrieveAllPolicyTypes1@legal'
-    name: 'RetrieveAllPolicyTypes1'
-    description: |-
-      Retrieve all supported policy types.
-    parameters:
-      'limit':
-        type: 'Integer'
-        required: true
-        description: |-
-          Limit
       'namespace':
         type: 'String'
         required: true
@@ -3717,10 +4377,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrieveAllPolicyTypes1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrieveAllPolicyTypes.java'
     example: |-
       try {
-          final RetrieveAllPolicyTypes1 operation = RetrieveAllPolicyTypes1.builder()
+          final RetrieveAllPolicyTypes operation = RetrieveAllPolicyTypes.builder()
               .offset(...)
               .build(
                   limit,
@@ -3728,12 +4388,11 @@ functions:
               );
 
           final BaseLegalPoliciesWithNamespace wrapper = new BaseLegalPoliciesWithNamespace(sdk);
-          final List<RetrievePolicyTypeResponse> response = wrapper.retrieveAllPolicyTypes1(operation);
+          final List<RetrievePolicyTypeResponse> response = wrapper.retrieveAllPolicyTypes(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'all'
       - 'base'
       - 'legal'
@@ -3747,63 +4406,6 @@ functions:
   'RetrieveAllUsersByPolicyVersion@legal':
     id: 'RetrieveAllUsersByPolicyVersion@legal'
     name: 'RetrieveAllUsersByPolicyVersion'
-    description: |-
-      This API will return users who has accepted a specific policy version.
-    parameters:
-      'keyword':
-        type: 'String'
-        required: false
-        description: |-
-          display name or email or username
-      'limit':
-        type: 'Integer'
-        required: false
-        description: |-
-          limit
-      'offset':
-        type: 'Integer'
-        required: false
-        description: |-
-          offset
-      'policyVersionId':
-        type: 'String'
-        required: true
-    return_type: 'PagedRetrieveUserAcceptedAgreementResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.agreement.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Agreement.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement/RetrieveAllUsersByPolicyVersion.java'
-    example: |-
-      try {
-          final RetrieveAllUsersByPolicyVersion operation = RetrieveAllUsersByPolicyVersion.builder()
-              .keyword(...)
-              .limit(...)
-              .offset(...)
-              .build(
-                  policyVersionId,
-              );
-
-          final Agreement wrapper = new Agreement(sdk);
-          final PagedRetrieveUserAcceptedAgreementResponse response = wrapper.retrieveAllUsersByPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'agreement'
-      - 'all'
-      - 'by'
-      - 'policy'
-      - 'retrieve'
-      - 'users'
-      - 'version'
-
-  'RetrieveAllUsersByPolicyVersion1@legal':
-    id: 'RetrieveAllUsersByPolicyVersion1@legal'
-    name: 'RetrieveAllUsersByPolicyVersion1'
     description: |-
       This API will return all users who has accepted a specific policy version.
     parameters:
@@ -3843,10 +4445,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/AgreementWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAllUsersByPolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAllUsersByPolicyVersion.java'
     example: |-
       try {
-          final RetrieveAllUsersByPolicyVersion1 operation = RetrieveAllUsersByPolicyVersion1.builder()
+          final RetrieveAllUsersByPolicyVersion operation = RetrieveAllUsersByPolicyVersion.builder()
               .convertGameUserId(...)
               .keyword(...)
               .limit(...)
@@ -3857,12 +4459,11 @@ functions:
               );
 
           final AgreementWithNamespace wrapper = new AgreementWithNamespace(sdk);
-          final PagedRetrieveUserAcceptedAgreementResponse response = wrapper.retrieveAllUsersByPolicyVersion1(operation);
+          final PagedRetrieveUserAcceptedAgreementResponse response = wrapper.retrieveAllUsersByPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'agreement'
       - 'all'
       - 'by'
@@ -4006,10 +4607,9 @@ functions:
     description: |-
       Retrieve all active latest policies based on a country.
       Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+          * Leave the policyType empty if you want to be responded with all policy type
+          *  Fill the tags if you want to filter the responded policy by tags
+          *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
     parameters:
       'countryCode':
         type: 'String'
@@ -4068,94 +4668,6 @@ functions:
     id: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic@legal'
     name: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic'
     description: |-
-      Retrieve all active latest policies based on a namespace and country.
-      Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
-        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
-          * Document 1 (default): Region US (default), UA
-          * Document 2 (default): Region US (default)
-          * Document 3 (default): Region US (default)
-          * User: Region UA
-          * Query: alwaysIncludeDefault: true
-          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-    parameters:
-      'alwaysIncludeDefault':
-        type: 'Boolean'
-        required: false
-        description: |-
-          Always include default
-      'countryCode':
-        type: 'String'
-        required: true
-        description: |-
-          Country Code
-      'defaultOnEmpty':
-        type: 'Boolean'
-        required: false
-        description: |-
-          Default On Empty
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          Namespace
-      'policyType':
-        type: 'String'
-        required: false
-        description: |-
-          Policy Type
-      'tags':
-        type: 'String'
-        required: false
-        description: |-
-          tags, separate multiple value by commas parameter
-      'visibleOnly':
-        type: 'Boolean'
-        required: false
-    return_type: 'List<RetrievePolicyPublicResponse>'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/RetrieveLatestPoliciesByNamespaceAndCountryPublic.java'
-    example: |-
-      try {
-          final RetrieveLatestPoliciesByNamespaceAndCountryPublic operation = RetrieveLatestPoliciesByNamespaceAndCountryPublic.builder()
-              .alwaysIncludeDefault(...)
-              .defaultOnEmpty(...)
-              .policyType(...)
-              .tags(...)
-              .visibleOnly(...)
-              .build(
-                  countryCode,
-                  namespace,
-              );
-
-          final Policies wrapper = new Policies(sdk);
-          final List<RetrievePolicyPublicResponse> response = wrapper.retrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'and'
-      - 'by'
-      - 'country'
-      - 'latest'
-      - 'namespace'
-      - 'policies'
-      - 'public'
-      - 'retrieve'
-
-  'RetrieveLatestPoliciesByNamespaceAndCountryPublic1@legal':
-    id: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic1@legal'
-    name: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic1'
-    description: |-
       This API is used to list all the related doc in register page, include optional & mandatory (when env config APP_LEGAL_AGREEMENT_ALWAYS_INCLUDE_DEFAULT=true).
       Other detail info: Here are the result of different cases
             * Document 1, Region US (default, mandatory), UA (optional); clientID: [client_A]
@@ -4201,10 +4713,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PoliciesWithNamespaceV2.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace_v2/RetrieveLatestPoliciesByNamespaceAndCountryPublic1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace_v2/RetrieveLatestPoliciesByNamespaceAndCountryPublic.java'
     example: |-
       try {
-          final RetrieveLatestPoliciesByNamespaceAndCountryPublic1 operation = RetrieveLatestPoliciesByNamespaceAndCountryPublic1.builder()
+          final RetrieveLatestPoliciesByNamespaceAndCountryPublic operation = RetrieveLatestPoliciesByNamespaceAndCountryPublic.builder()
               .build(
                   clientId,
                   countryCode,
@@ -4212,12 +4724,11 @@ functions:
               );
 
           final PoliciesWithNamespaceV2 wrapper = new PoliciesWithNamespaceV2(sdk);
-          final List<RetrieveSimplePolicyPublicResponseV2> response = wrapper.retrieveLatestPoliciesByNamespaceAndCountryPublic1(operation);
+          final List<RetrieveSimplePolicyPublicResponseV2> response = wrapper.retrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'and'
       - 'by'
       - 'country'
@@ -4312,44 +4823,6 @@ functions:
     description: |-
       Retrieve versions of a particular country-specific policy.
     parameters:
-      'policyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'List<RetrieveLocalizedPolicyVersionResponse>'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/RetrieveLocalizedPolicyVersions.java'
-    example: |-
-      try {
-          final RetrieveLocalizedPolicyVersions operation = RetrieveLocalizedPolicyVersions.builder()
-              .build(
-                  policyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          final List<RetrieveLocalizedPolicyVersionResponse> response = wrapper.retrieveLocalizedPolicyVersions(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'versions'
-
-  'RetrieveLocalizedPolicyVersions1@legal':
-    id: 'RetrieveLocalizedPolicyVersions1@legal'
-    name: 'RetrieveLocalizedPolicyVersions1'
-    description: |-
-      Retrieve versions of a particular country-specific policy.
-    parameters:
       'namespace':
         type: 'String'
         required: true
@@ -4368,22 +4841,21 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RetrieveLocalizedPolicyVersions1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RetrieveLocalizedPolicyVersions.java'
     example: |-
       try {
-          final RetrieveLocalizedPolicyVersions1 operation = RetrieveLocalizedPolicyVersions1.builder()
+          final RetrieveLocalizedPolicyVersions operation = RetrieveLocalizedPolicyVersions.builder()
               .build(
                   namespace,
                   policyVersionId,
               );
 
           final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final List<RetrieveLocalizedPolicyVersionResponse> response = wrapper.retrieveLocalizedPolicyVersions1(operation);
+          final List<RetrieveLocalizedPolicyVersionResponse> response = wrapper.retrieveLocalizedPolicyVersions(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4443,52 +4915,6 @@ functions:
         required: true
         description: |-
           Country Code
-    return_type: 'RetrievePolicyResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/RetrievePolicyCountry.java'
-    example: |-
-      try {
-          final RetrievePolicyCountry operation = RetrievePolicyCountry.builder()
-              .build(
-                  basePolicyId,
-                  countryCode,
-              );
-
-          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
-          final RetrievePolicyResponse response = wrapper.retrievePolicyCountry(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'country'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-
-  'RetrievePolicyCountry1@legal':
-    id: 'RetrievePolicyCountry1@legal'
-    name: 'RetrievePolicyCountry1'
-    description: |-
-      Retrieve a Base Legal Policy based on a Particular Country.
-    parameters:
-      'basePolicyId':
-        type: 'String'
-        required: true
-        description: |-
-          BasePolicy Id
-      'countryCode':
-        type: 'String'
-        required: true
-        description: |-
-          Country Code
       'namespace':
         type: 'String'
         required: true
@@ -4502,10 +4928,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrievePolicyCountry1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrievePolicyCountry.java'
     example: |-
       try {
-          final RetrievePolicyCountry1 operation = RetrievePolicyCountry1.builder()
+          final RetrievePolicyCountry operation = RetrievePolicyCountry.builder()
               .build(
                   basePolicyId,
                   countryCode,
@@ -4513,12 +4939,11 @@ functions:
               );
 
           final BaseLegalPoliciesWithNamespace wrapper = new BaseLegalPoliciesWithNamespace(sdk);
-          final RetrievePolicyResponse response = wrapper.retrievePolicyCountry1(operation);
+          final RetrievePolicyResponse response = wrapper.retrievePolicyCountry(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'country'
       - 'legal'
@@ -4539,167 +4964,34 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
     return_type: 'RetrieveLocalizedPolicyVersionResponse'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
+      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.*;'
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/RetrieveSingleLocalizedPolicyVersion.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RetrieveSingleLocalizedPolicyVersion.java'
     example: |-
       try {
           final RetrieveSingleLocalizedPolicyVersion operation = RetrieveSingleLocalizedPolicyVersion.builder()
               .build(
                   localizedPolicyVersionId,
+                  namespace,
               );
 
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
+          final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
           final RetrieveLocalizedPolicyVersionResponse response = wrapper.retrieveSingleLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSingleLocalizedPolicyVersion1@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion1@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion1'
-    description: |-
-      Retrieve a version of a particular country-specific policy.
-    parameters:
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          Namespace
-    return_type: 'RetrieveLocalizedPolicyVersionResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RetrieveSingleLocalizedPolicyVersion1.java'
-    example: |-
-      try {
-          final RetrieveSingleLocalizedPolicyVersion1 operation = RetrieveSingleLocalizedPolicyVersion1.builder()
-              .build(
-                  localizedPolicyVersionId,
-                  namespace,
-              );
-
-          final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final RetrieveLocalizedPolicyVersionResponse response = wrapper.retrieveSingleLocalizedPolicyVersion1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '1'
-      - 'localized'
-      - 'namespace'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-      - 'with'
-
-  'RetrieveSingleLocalizedPolicyVersion2@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion2@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion2'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/RetrieveSingleLocalizedPolicyVersion2.java'
-    example: |-
-      try {
-          final RetrieveSingleLocalizedPolicyVersion2 operation = RetrieveSingleLocalizedPolicyVersion2.builder()
-              .build(
-                  localizedPolicyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          final RetrieveLocalizedPolicyVersionPublicResponse response = wrapper.retrieveSingleLocalizedPolicyVersion2(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '2'
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSingleLocalizedPolicyVersion3@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion3@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion3'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          Namespace
-    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/RetrieveSingleLocalizedPolicyVersion3.java'
-    example: |-
-      try {
-          final RetrieveSingleLocalizedPolicyVersion3 operation = RetrieveSingleLocalizedPolicyVersion3.builder()
-              .build(
-                  localizedPolicyVersionId,
-                  namespace,
-              );
-
-          final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final RetrieveLocalizedPolicyVersionPublicResponse response = wrapper.retrieveSingleLocalizedPolicyVersion3(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '3'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4712,46 +5004,6 @@ functions:
   'RetrieveSinglePolicy@legal':
     id: 'RetrieveSinglePolicy@legal'
     name: 'RetrieveSinglePolicy'
-    description: |-
-      Retrieve a base policy.
-    parameters:
-      'basePolicyId':
-        type: 'String'
-        required: true
-        description: |-
-          BasePolicy Id
-    return_type: 'RetrieveBasePolicyResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.base_legal_policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPolicies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies/RetrieveSinglePolicy.java'
-    example: |-
-      try {
-          final RetrieveSinglePolicy operation = RetrieveSinglePolicy.builder()
-              .build(
-                  basePolicyId,
-              );
-
-          final BaseLegalPolicies wrapper = new BaseLegalPolicies(sdk);
-          final RetrieveBasePolicyResponse response = wrapper.retrieveSinglePolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-
-  'RetrieveSinglePolicy1@legal':
-    id: 'RetrieveSinglePolicy1@legal'
-    name: 'RetrieveSinglePolicy1'
     description: |-
       Retrieve a base policy.
     parameters:
@@ -4773,22 +5025,21 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrieveSinglePolicy1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/base_legal_policies_with_namespace/RetrieveSinglePolicy.java'
     example: |-
       try {
-          final RetrieveSinglePolicy1 operation = RetrieveSinglePolicy1.builder()
+          final RetrieveSinglePolicy operation = RetrieveSinglePolicy.builder()
               .build(
                   basePolicyId,
                   namespace,
               );
 
           final BaseLegalPoliciesWithNamespace wrapper = new BaseLegalPoliciesWithNamespace(sdk);
-          final RetrieveBasePolicyResponse response = wrapper.retrieveSinglePolicy1(operation);
+          final RetrieveBasePolicyResponse response = wrapper.retrieveSinglePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -4801,51 +5052,6 @@ functions:
   'RetrieveSinglePolicyVersion@legal':
     id: 'RetrieveSinglePolicyVersion@legal'
     name: 'RetrieveSinglePolicyVersion'
-    description: |-
-      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
-    parameters:
-      'policyId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Id
-      'versionId':
-        type: 'String'
-        required: false
-        description: |-
-          Version Id
-    return_type: 'List<RetrievePolicyVersionResponse>'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/RetrieveSinglePolicyVersion.java'
-    example: |-
-      try {
-          final RetrieveSinglePolicyVersion operation = RetrieveSinglePolicyVersion.builder()
-              .versionId(...)
-              .build(
-                  policyId,
-              );
-
-          final PolicyVersions wrapper = new PolicyVersions(sdk);
-          final List<RetrievePolicyVersionResponse> response = wrapper.retrieveSinglePolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSinglePolicyVersion1@legal':
-    id: 'RetrieveSinglePolicyVersion1@legal'
-    name: 'RetrieveSinglePolicyVersion1'
     description: |-
       Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
     parameters:
@@ -4872,10 +5078,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/RetrieveSinglePolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/RetrieveSinglePolicyVersion.java'
     example: |-
       try {
-          final RetrieveSinglePolicyVersion1 operation = RetrieveSinglePolicyVersion1.builder()
+          final RetrieveSinglePolicyVersion operation = RetrieveSinglePolicyVersion.builder()
               .versionId(...)
               .build(
                   namespace,
@@ -4883,12 +5089,11 @@ functions:
               );
 
           final PolicyVersionsWithNamespace wrapper = new PolicyVersionsWithNamespace(sdk);
-          final List<RetrievePolicyVersionResponse> response = wrapper.retrieveSinglePolicyVersion1(operation);
+          final List<RetrievePolicyVersionResponse> response = wrapper.retrieveSinglePolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'retrieve'
@@ -4897,48 +5102,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'SetDefaultPolicy@legal':
-    id: 'SetDefaultPolicy@legal'
-    name: 'SetDefaultPolicy'
-    description: |-
-      Update a localized version policy to be the default.
-    parameters:
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/SetDefaultPolicy.java'
-    example: |-
-      try {
-          final SetDefaultPolicy operation = SetDefaultPolicy.builder()
-              .build(
-                  localizedPolicyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          wrapper.setDefaultPolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'default'
-      - 'localized'
-      - 'policy'
-      - 'set'
-      - 'versions'
-
-  'SetDefaultPolicy1@legal':
-    id: 'SetDefaultPolicy1@legal'
-    name: 'SetDefaultPolicy1'
+  'SetDefaultLocalizedPolicy@legal':
+    id: 'SetDefaultLocalizedPolicy@legal'
+    name: 'SetDefaultLocalizedPolicy'
     description: |-
       Update a localized version policy to be the default.
     parameters:
@@ -4960,22 +5126,21 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/SetDefaultPolicy1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/SetDefaultLocalizedPolicy.java'
     example: |-
       try {
-          final SetDefaultPolicy1 operation = SetDefaultPolicy1.builder()
+          final SetDefaultLocalizedPolicy operation = SetDefaultLocalizedPolicy.builder()
               .build(
                   localizedPolicyVersionId,
                   namespace,
               );
 
           final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          wrapper.setDefaultPolicy1(operation);
+          wrapper.setDefaultLocalizedPolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'default'
       - 'localized'
       - 'namespace'
@@ -4984,48 +5149,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'SetDefaultPolicy2@legal':
-    id: 'SetDefaultPolicy2@legal'
-    name: 'SetDefaultPolicy2'
-    description: |-
-      Update a policy to be the default.
-    parameters:
-      'policyId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/SetDefaultPolicy2.java'
-    example: |-
-      try {
-          final SetDefaultPolicy2 operation = SetDefaultPolicy2.builder()
-              .build(
-                  policyId,
-              );
-
-          final Policies wrapper = new Policies(sdk);
-          wrapper.setDefaultPolicy2(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '2'
-      - 'default'
-      - 'policies'
-      - 'policy'
-      - 'set'
-
-  'SetDefaultPolicy3@legal':
-    id: 'SetDefaultPolicy3@legal'
-    name: 'SetDefaultPolicy3'
+  'SetDefaultPolicy@legal':
+    id: 'SetDefaultPolicy@legal'
+    name: 'SetDefaultPolicy'
     description: |-
       Update a policy to be the default.
     parameters:
@@ -5047,22 +5173,21 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace/SetDefaultPolicy3.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace/SetDefaultPolicy.java'
     example: |-
       try {
-          final SetDefaultPolicy3 operation = SetDefaultPolicy3.builder()
+          final SetDefaultPolicy operation = SetDefaultPolicy.builder()
               .build(
                   namespace,
                   policyId,
               );
 
           final PoliciesWithNamespace wrapper = new PoliciesWithNamespace(sdk);
-          wrapper.setDefaultPolicy3(operation);
+          wrapper.setDefaultPolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '3'
       - 'default'
       - 'namespace'
       - 'policies'
@@ -5167,49 +5292,6 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
-    return_type: 'UpdateLocalizedPolicyVersionResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions/UpdateLocalizedPolicyVersion.java'
-    example: |-
-      try {
-          final UpdateLocalizedPolicyVersion operation = UpdateLocalizedPolicyVersion.builder()
-              .body(...)
-              .build(
-                  localizedPolicyVersionId,
-              );
-
-          final LocalizedPolicyVersions wrapper = new LocalizedPolicyVersions(sdk);
-          final UpdateLocalizedPolicyVersionResponse response = wrapper.updateLocalizedPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'UpdateLocalizedPolicyVersion1@legal':
-    id: 'UpdateLocalizedPolicyVersion1@legal'
-    name: 'UpdateLocalizedPolicyVersion1'
-    description: |-
-      Update a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'UpdateLocalizedPolicyVersionRequest'
-        required: false
-      'localizedPolicyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Localized Policy Version Id
       'namespace':
         type: 'String'
         required: true
@@ -5223,10 +5305,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/LocalizedPolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/UpdateLocalizedPolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/localized_policy_versions_with_namespace/UpdateLocalizedPolicyVersion.java'
     example: |-
       try {
-          final UpdateLocalizedPolicyVersion1 operation = UpdateLocalizedPolicyVersion1.builder()
+          final UpdateLocalizedPolicyVersion operation = UpdateLocalizedPolicyVersion.builder()
               .body(...)
               .build(
                   localizedPolicyVersionId,
@@ -5234,12 +5316,11 @@ functions:
               );
 
           final LocalizedPolicyVersionsWithNamespace wrapper = new LocalizedPolicyVersionsWithNamespace(sdk);
-          final UpdateLocalizedPolicyVersionResponse response = wrapper.updateLocalizedPolicyVersion1(operation);
+          final UpdateLocalizedPolicyVersionResponse response = wrapper.updateLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -5251,47 +5332,6 @@ functions:
   'UpdatePolicy@legal':
     id: 'UpdatePolicy@legal'
     name: 'UpdatePolicy'
-    description: |-
-      Update country-specific and country-group policy.
-    parameters:
-      'body':
-        type: 'UpdatePolicyRequest'
-        required: false
-      'policyId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policies.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/Policies.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies/UpdatePolicy.java'
-    example: |-
-      try {
-          final UpdatePolicy operation = UpdatePolicy.builder()
-              .body(...)
-              .build(
-                  policyId,
-              );
-
-          final Policies wrapper = new Policies(sdk);
-          wrapper.updatePolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policies'
-      - 'policy'
-      - 'update'
-
-  'UpdatePolicy1@legal':
-    id: 'UpdatePolicy1@legal'
-    name: 'UpdatePolicy1'
     description: |-
       Update country-specific and country-group policy.
     parameters:
@@ -5316,10 +5356,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PoliciesWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace/UpdatePolicy1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace/UpdatePolicy.java'
     example: |-
       try {
-          final UpdatePolicy1 operation = UpdatePolicy1.builder()
+          final UpdatePolicy operation = UpdatePolicy.builder()
               .body(...)
               .build(
                   namespace,
@@ -5327,12 +5367,11 @@ functions:
               );
 
           final PoliciesWithNamespace wrapper = new PoliciesWithNamespace(sdk);
-          wrapper.updatePolicy1(operation);
+          wrapper.updatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policies'
       - 'policy'
@@ -5342,48 +5381,6 @@ functions:
   'UpdatePolicyVersion@legal':
     id: 'UpdatePolicyVersion@legal'
     name: 'UpdatePolicyVersion'
-    description: |-
-      Update a particular policy version.
-    parameters:
-      'body':
-        type: 'UpdatePolicyVersionRequest'
-        required: false
-      'policyVersionId':
-        type: 'String'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'UpdatePolicyVersionResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.legal.models.*;'
-      - 'import net.accelbyte.sdk.api.legal.operations.policy_versions.*;'
-      - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersions.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions/UpdatePolicyVersion.java'
-    example: |-
-      try {
-          final UpdatePolicyVersion operation = UpdatePolicyVersion.builder()
-              .body(...)
-              .build(
-                  policyVersionId,
-              );
-
-          final PolicyVersions wrapper = new PolicyVersions(sdk);
-          final UpdatePolicyVersionResponse response = wrapper.updatePolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'UpdatePolicyVersion1@legal':
-    id: 'UpdatePolicyVersion1@legal'
-    name: 'UpdatePolicyVersion1'
     description: |-
       Update a particular policy version.
     parameters:
@@ -5408,10 +5405,10 @@ functions:
       - 'import net.accelbyte.sdk.api.legal.wrappers.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PolicyVersionsWithNamespace.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/UpdatePolicyVersion1.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/legal/operations/policy_versions_with_namespace/UpdatePolicyVersion.java'
     example: |-
       try {
-          final UpdatePolicyVersion1 operation = UpdatePolicyVersion1.builder()
+          final UpdatePolicyVersion operation = UpdatePolicyVersion.builder()
               .body(...)
               .build(
                   namespace,
@@ -5419,12 +5416,11 @@ functions:
               );
 
           final PolicyVersionsWithNamespace wrapper = new PolicyVersionsWithNamespace(sdk);
-          final UpdatePolicyVersionResponse response = wrapper.updatePolicyVersion1(operation);
+          final UpdatePolicyVersionResponse response = wrapper.updatePolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'update'

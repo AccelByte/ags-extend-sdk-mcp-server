@@ -2106,43 +2106,6 @@ functions:
       - 'consent'
       - 'preference'
 
-  'ChangePreferenceConsent1@legal':
-    id: 'ChangePreferenceConsent1@legal'
-    name: 'ChangePreferenceConsent1'
-    description: |-
-      Change marketing preference consent.
-    parameters:
-      'Body':
-        type: 'List<AcceptAgreementRequest>'
-        required: false
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/ChangePreferenceConsent1.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Agreement.ChangePreferenceConsent1Op
-              .SetBody(...)
-              .Build(
-              );
-
-          sdk.Legal.Agreement.ChangePreferenceConsent1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '1'
-      - 'agreement'
-      - 'change'
-      - 'consent'
-      - 'preference'
-
   'CheckReadiness@legal':
     id: 'CheckReadiness@legal'
     name: 'CheckReadiness'
@@ -2182,49 +2145,6 @@ functions:
       'Body':
         type: 'CreateLocalizedPolicyVersionRequest'
         required: false
-      'PolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'CreateLocalizedPolicyVersionResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/CreateLocalizedPolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.CreateLocalizedPolicyVersionOp
-              .SetBody(...)
-              .Build(
-                  policyVersionId,
-              );
-
-          var response = sdk.Legal.LocalizedPolicyVersions.CreateLocalizedPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'create'
-      - 'localized'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'CreateLocalizedPolicyVersion1@legal':
-    id: 'CreateLocalizedPolicyVersion1@legal'
-    name: 'CreateLocalizedPolicyVersion1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'Body':
-        type: 'CreateLocalizedPolicyVersionRequest'
-        required: false
       'Namespace':
         type: 'string'
         required: true
@@ -2243,23 +2163,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/CreateLocalizedPolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/CreateLocalizedPolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.CreateLocalizedPolicyVersion1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.CreateLocalizedPolicyVersionOp
               .SetBody(...)
               .Build(
                   namespace_,
                   policyVersionId,
               );
 
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.CreateLocalizedPolicyVersion1(operation);
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.CreateLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'create'
       - 'localized'
       - 'namespace'
@@ -2271,51 +2190,6 @@ functions:
   'CreatePolicy@legal':
     id: 'CreatePolicy@legal'
     name: 'CreatePolicy'
-    description: |-
-      Create a legal policy.
-      Note:
-
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
-    parameters:
-      'Body':
-        type: 'CreateBasePolicyRequest'
-        required: false
-    return_type: 'CreateBasePolicyResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/CreatePolicy.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.BaseLegalPolicies.CreatePolicyOp
-              .SetBody(...)
-              .Build(
-              );
-
-          var response = sdk.Legal.BaseLegalPolicies.CreatePolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'create'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-
-  'CreatePolicy1@legal':
-    id: 'CreatePolicy1@legal'
-    name: 'CreatePolicy1'
     description: |-
       Create a legal policy.
       Note:
@@ -2343,22 +2217,21 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/CreatePolicy1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/CreatePolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.CreatePolicy1Op
+          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.CreatePolicyOp
               .SetBody(...)
               .Build(
                   namespace_,
               );
 
-          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.CreatePolicy1(operation);
+          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.CreatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'create'
       - 'legal'
@@ -2436,48 +2309,6 @@ functions:
       'Body':
         type: 'CreatePolicyVersionRequest'
         required: false
-      'PolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'CreatePolicyVersionResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/CreatePolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.PolicyVersions.CreatePolicyVersionOp
-              .SetBody(...)
-              .Build(
-                  policyId,
-              );
-
-          var response = sdk.Legal.PolicyVersions.CreatePolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'create'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'CreatePolicyVersion1@legal':
-    id: 'CreatePolicyVersion1@legal'
-    name: 'CreatePolicyVersion1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'Body':
-        type: 'CreatePolicyVersionRequest'
-        required: false
       'Namespace':
         type: 'string'
         required: true
@@ -2496,23 +2327,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/CreatePolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/CreatePolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PolicyVersionsWithNamespace.CreatePolicyVersion1Op
+          var operation = sdk.Legal.PolicyVersionsWithNamespace.CreatePolicyVersionOp
               .SetBody(...)
               .Build(
                   namespace_,
                   policyId,
               );
 
-          var response = sdk.Legal.PolicyVersionsWithNamespace.CreatePolicyVersion1(operation);
+          var response = sdk.Legal.PolicyVersionsWithNamespace.CreatePolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'create'
       - 'namespace'
       - 'policy'
@@ -2863,51 +2693,6 @@ functions:
       - 'user'
       - 'versioned'
 
-  'IndirectBulkAcceptVersionedPolicy1@legal':
-    id: 'IndirectBulkAcceptVersionedPolicy1@legal'
-    name: 'IndirectBulkAcceptVersionedPolicy1'
-    description: |-
-      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    parameters:
-      'Body':
-        type: 'List<AcceptAgreementRequest>'
-        required: false
-      'UserId':
-        type: 'string'
-        required: true
-        description: |-
-          User Id
-    return_type: 'AcceptAgreementResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/IndirectBulkAcceptVersionedPolicy1.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Agreement.IndirectBulkAcceptVersionedPolicy1Op
-              .SetBody(...)
-              .Build(
-                  userId,
-              );
-
-          var response = sdk.Legal.Agreement.IndirectBulkAcceptVersionedPolicy1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '1'
-      - 'accept'
-      - 'agreement'
-      - 'bulk'
-      - 'indirect'
-      - 'policy'
-      - 'versioned'
-
   'IndirectBulkAcceptVersionedPolicyV2@legal':
     id: 'IndirectBulkAcceptVersionedPolicyV2@legal'
     name: 'IndirectBulkAcceptVersionedPolicyV2'
@@ -3072,9 +2857,142 @@ functions:
       - 'invalidate'
       - 'user'
 
-  'PartialUpdatePolicy@legal':
-    id: 'PartialUpdatePolicy@legal'
-    name: 'PartialUpdatePolicy'
+  'OldCreateLocalizedPolicyVersion@legal':
+    id: 'OldCreateLocalizedPolicyVersion@legal'
+    name: 'OldCreateLocalizedPolicyVersion'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'Body':
+        type: 'CreateLocalizedPolicyVersionRequest'
+        required: false
+      'PolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'CreateLocalizedPolicyVersionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldCreateLocalizedPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldCreateLocalizedPolicyVersionOp
+              .SetBody(...)
+              .Build(
+                  policyVersionId,
+              );
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldCreateLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'OldCreatePolicy@legal':
+    id: 'OldCreatePolicy@legal'
+    name: 'OldCreatePolicy'
+    description: |-
+      Create a legal policy.
+      Note:
+
+
+        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+    parameters:
+      'Body':
+        type: 'CreateBasePolicyRequest'
+        required: false
+    return_type: 'CreateBasePolicyResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/OldCreatePolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.BaseLegalPolicies.OldCreatePolicyOp
+              .SetBody(...)
+              .Build(
+              );
+
+          var response = sdk.Legal.BaseLegalPolicies.OldCreatePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'create'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+
+  'OldCreatePolicyVersion@legal':
+    id: 'OldCreatePolicyVersion@legal'
+    name: 'OldCreatePolicyVersion'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'Body':
+        type: 'CreatePolicyVersionRequest'
+        required: false
+      'PolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'CreatePolicyVersionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/OldCreatePolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.PolicyVersions.OldCreatePolicyVersionOp
+              .SetBody(...)
+              .Build(
+                  policyId,
+              );
+
+          var response = sdk.Legal.PolicyVersions.OldCreatePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'OldPartialUpdatePolicy@legal':
+    id: 'OldPartialUpdatePolicy@legal'
+    name: 'OldPartialUpdatePolicy'
     description: |-
       Update an existing base policy.
       Note:
@@ -3102,41 +3020,811 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/PartialUpdatePolicy.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/OldPartialUpdatePolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPolicies.PartialUpdatePolicyOp
+          var operation = sdk.Legal.BaseLegalPolicies.OldPartialUpdatePolicyOp
               .SetBody(...)
               .Build(
                   basePolicyId,
               );
 
-          var response = sdk.Legal.BaseLegalPolicies.PartialUpdatePolicy(operation);
+          var response = sdk.Legal.BaseLegalPolicies.OldPartialUpdatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
       - 'base'
       - 'legal'
+      - 'old'
       - 'partial'
       - 'policies'
       - 'policy'
       - 'update'
 
-  'PartialUpdatePolicy1@legal':
-    id: 'PartialUpdatePolicy1@legal'
-    name: 'PartialUpdatePolicy1'
+  'OldPublicRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'OldPublicRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'OldPublicRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldPublicRetrieveSingleLocalizedPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldPublicRetrieveSingleLocalizedPolicyVersionOp
+              .Build();
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldPublicRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldPublishPolicyVersion@legal':
+    id: 'OldPublishPolicyVersion@legal'
+    name: 'OldPublishPolicyVersion'
+    description: |-
+      Manually publish a version of a particular country-specific policy.
+    parameters:
+      'PolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Version Id
+      'ShouldNotify':
+        type: 'bool'
+        required: false
+        description: |-
+          Should Notify
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/OldPublishPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.PolicyVersions.OldPublishPolicyVersionOp
+              .SetShouldNotify(...)
+              .Build(
+                  policyVersionId,
+              );
+
+          sdk.Legal.PolicyVersions.OldPublishPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'publish'
+      - 'version'
+      - 'versions'
+
+  'OldRequestPresignedURL@legal':
+    id: 'OldRequestPresignedURL@legal'
+    name: 'OldRequestPresignedURL'
+    description: |-
+      Request presigned URL for upload attachment for a particular localized version of base policy.
+    parameters:
+      'Body':
+        type: 'UploadPolicyVersionAttachmentRequest'
+        required: false
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'UploadLocalizedPolicyVersionAttachmentResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldRequestPresignedURL.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldRequestPresignedURLOp
+              .SetBody(...)
+              .Build(
+                  localizedPolicyVersionId,
+              );
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldRequestPresignedURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'presigned'
+      - 'request'
+      - 'url'
+      - 'versions'
+
+  'OldRetrieveAcceptedAgreements@legal':
+    id: 'OldRetrieveAcceptedAgreements@legal'
+    name: 'OldRetrieveAcceptedAgreements'
+    description: |-
+      This API will return all accepted Legal Agreements for specified user
+    parameters:
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          User Id
+    return_type: 'List<RetrieveAcceptedAgreementResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/OldRetrieveAcceptedAgreements.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Agreement.OldRetrieveAcceptedAgreementsOp
+              .Build();
+
+          var response = sdk.Legal.Agreement.OldRetrieveAcceptedAgreements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'accepted'
+      - 'agreement'
+      - 'agreements'
+      - 'old'
+      - 'retrieve'
+
+  'OldRetrieveAllPolicyTypes@legal':
+    id: 'OldRetrieveAllPolicyTypes@legal'
+    name: 'OldRetrieveAllPolicyTypes'
+    description: |-
+      Retrieve all supported policy types.
+    parameters:
+      'Limit':
+        type: 'int'
+        required: true
+        description: |-
+          Limit
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          Offset
+    return_type: 'List<RetrievePolicyTypeResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/OldRetrieveAllPolicyTypes.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.BaseLegalPolicies.OldRetrieveAllPolicyTypesOp
+              .SetOffset(...)
+              .Build(
+                  limit,
+              );
+
+          var response = sdk.Legal.BaseLegalPolicies.OldRetrieveAllPolicyTypes(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'all'
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'types'
+
+  'OldRetrieveAllUsersByPolicyVersion@legal':
+    id: 'OldRetrieveAllUsersByPolicyVersion@legal'
+    name: 'OldRetrieveAllUsersByPolicyVersion'
+    description: |-
+      This API will return users who has accepted a specific policy version.
+    parameters:
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          display name or email or username
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          limit
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          offset
+      'PolicyVersionId':
+        type: 'string'
+        required: true
+    return_type: 'PagedRetrieveUserAcceptedAgreementResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/OldRetrieveAllUsersByPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Agreement.OldRetrieveAllUsersByPolicyVersionOp
+              .SetKeyword(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  policyVersionId,
+              );
+
+          var response = sdk.Legal.Agreement.OldRetrieveAllUsersByPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'agreement'
+      - 'all'
+      - 'by'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'users'
+      - 'version'
+
+  'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic@legal':
+    id: 'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic@legal'
+    name: 'OldRetrieveLatestPoliciesByNamespaceAndCountryPublic'
+    description: |-
+      Retrieve all active latest policies based on a namespace and country.
+      Other detail info:
+
+        * Leave the policyType empty if you want to be responded with all policy type
+        *  Fill the tags if you want to filter the responded policy by tags
+        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+          * Document 1 (default): Region US (default), UA
+          * Document 2 (default): Region US (default)
+          * Document 3 (default): Region US (default)
+          * User: Region UA
+          * Query: alwaysIncludeDefault: true
+          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
+    parameters:
+      'AlwaysIncludeDefault':
+        type: 'bool'
+        required: false
+        description: |-
+          Always include default
+      'CountryCode':
+        type: 'string'
+        required: true
+        description: |-
+          Country Code
+      'DefaultOnEmpty':
+        type: 'bool'
+        required: false
+        description: |-
+          Default On Empty
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PolicyType':
+        type: 'string'
+        required: false
+        description: |-
+          Policy Type
+      'Tags':
+        type: 'string'
+        required: false
+        description: |-
+          tags, separate multiple value by commas parameter
+      'VisibleOnly':
+        type: 'bool'
+        required: false
+    return_type: 'List<RetrievePolicyPublicResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/OldRetrieveLatestPoliciesByNamespaceAndCountryPublic.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Policies.OldRetrieveLatestPoliciesByNamespaceAndCountryPublicOp
+              .SetAlwaysIncludeDefault(...)
+              .SetDefaultOnEmpty(...)
+              .SetPolicyType(...)
+              .SetTags(...)
+              .SetVisibleOnly(...)
+              .Build(
+                  countryCode,
+                  namespace_,
+              );
+
+          var response = sdk.Legal.Policies.OldRetrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'and'
+      - 'by'
+      - 'country'
+      - 'latest'
+      - 'namespace'
+      - 'old'
+      - 'policies'
+      - 'public'
+      - 'retrieve'
+
+  'OldRetrieveLocalizedPolicyVersions@legal':
+    id: 'OldRetrieveLocalizedPolicyVersions@legal'
+    name: 'OldRetrieveLocalizedPolicyVersions'
+    description: |-
+      Retrieve versions of a particular country-specific policy.
+    parameters:
+      'PolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'List<RetrieveLocalizedPolicyVersionResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldRetrieveLocalizedPolicyVersions.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldRetrieveLocalizedPolicyVersionsOp
+              .Build();
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldRetrieveLocalizedPolicyVersions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'versions'
+
+  'OldRetrievePolicyCountry@legal':
+    id: 'OldRetrievePolicyCountry@legal'
+    name: 'OldRetrievePolicyCountry'
+    description: |-
+      Retrieve a Base Legal Policy based on a Particular Country.
+    parameters:
+      'BasePolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          BasePolicy Id
+      'CountryCode':
+        type: 'string'
+        required: true
+        description: |-
+          Country Code
+    return_type: 'RetrievePolicyResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/OldRetrievePolicyCountry.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.BaseLegalPolicies.OldRetrievePolicyCountryOp
+              .Build();
+
+          var response = sdk.Legal.BaseLegalPolicies.OldRetrievePolicyCountry(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'country'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+
+  'OldRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'OldRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'OldRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve a version of a particular country-specific policy.
+    parameters:
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'RetrieveLocalizedPolicyVersionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldRetrieveSingleLocalizedPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldRetrieveSingleLocalizedPolicyVersionOp
+              .Build();
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldRetrieveSinglePolicy@legal':
+    id: 'OldRetrieveSinglePolicy@legal'
+    name: 'OldRetrieveSinglePolicy'
+    description: |-
+      Retrieve a base policy.
+    parameters:
+      'BasePolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          BasePolicy Id
+    return_type: 'RetrieveBasePolicyResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/OldRetrieveSinglePolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.BaseLegalPolicies.OldRetrieveSinglePolicyOp
+              .Build();
+
+          var response = sdk.Legal.BaseLegalPolicies.OldRetrieveSinglePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+
+  'OldRetrieveSinglePolicyVersion@legal':
+    id: 'OldRetrieveSinglePolicyVersion@legal'
+    name: 'OldRetrieveSinglePolicyVersion'
+    description: |-
+      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    parameters:
+      'PolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Id
+      'VersionId':
+        type: 'string'
+        required: false
+        description: |-
+          Version Id
+    return_type: 'List<RetrievePolicyVersionResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/OldRetrieveSinglePolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.PolicyVersions.OldRetrieveSinglePolicyVersionOp
+              .SetVersionId(...)
+              .Build(
+                  policyId,
+              );
+
+          var response = sdk.Legal.PolicyVersions.OldRetrieveSinglePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'OldSetDefaultLocalizedPolicy@legal':
+    id: 'OldSetDefaultLocalizedPolicy@legal'
+    name: 'OldSetDefaultLocalizedPolicy'
+    description: |-
+      Update a localized version policy to be the default.
+    parameters:
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldSetDefaultLocalizedPolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldSetDefaultLocalizedPolicyOp
+              .Build();
+
+          sdk.Legal.LocalizedPolicyVersions.OldSetDefaultLocalizedPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'default'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'set'
+      - 'versions'
+
+  'OldSetDefaultPolicy@legal':
+    id: 'OldSetDefaultPolicy@legal'
+    name: 'OldSetDefaultPolicy'
+    description: |-
+      Update a policy to be the default.
+    parameters:
+      'PolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/OldSetDefaultPolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Policies.OldSetDefaultPolicyOp
+              .Build();
+
+          sdk.Legal.Policies.OldSetDefaultPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'default'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'set'
+
+  'OldUpdateLocalizedPolicyVersion@legal':
+    id: 'OldUpdateLocalizedPolicyVersion@legal'
+    name: 'OldUpdateLocalizedPolicyVersion'
+    description: |-
+      Update a version of a particular country-specific policy.
+    parameters:
+      'Body':
+        type: 'UpdateLocalizedPolicyVersionRequest'
+        required: false
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'UpdateLocalizedPolicyVersionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/OldUpdateLocalizedPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersions.OldUpdateLocalizedPolicyVersionOp
+              .SetBody(...)
+              .Build(
+                  localizedPolicyVersionId,
+              );
+
+          var response = sdk.Legal.LocalizedPolicyVersions.OldUpdateLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'OldUpdatePolicy@legal':
+    id: 'OldUpdatePolicy@legal'
+    name: 'OldUpdatePolicy'
+    description: |-
+      Update country-specific and country-group policy.
+    parameters:
+      'Body':
+        type: 'UpdatePolicyRequest'
+        required: false
+      'PolicyId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/OldUpdatePolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Policies.OldUpdatePolicyOp
+              .SetBody(...)
+              .Build(
+                  policyId,
+              );
+
+          sdk.Legal.Policies.OldUpdatePolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'update'
+
+  'OldUpdatePolicyVersion@legal':
+    id: 'OldUpdatePolicyVersion@legal'
+    name: 'OldUpdatePolicyVersion'
+    description: |-
+      Update a particular policy version.
+    parameters:
+      'Body':
+        type: 'UpdatePolicyVersionRequest'
+        required: false
+      'PolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'UpdatePolicyVersionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/OldUpdatePolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.PolicyVersions.OldUpdatePolicyVersionOp
+              .SetBody(...)
+              .Build(
+                  policyVersionId,
+              );
+
+          var response = sdk.Legal.PolicyVersions.OldUpdatePolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'PartialUpdatePolicy@legal':
+    id: 'PartialUpdatePolicy@legal'
+    name: 'PartialUpdatePolicy'
     description: |-
       Update an existing base policy.
       Note:
 
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+          *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+          * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+        * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
     parameters:
       'BasePolicyId':
         type: 'string'
@@ -3159,23 +3847,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/PartialUpdatePolicy1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/PartialUpdatePolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.PartialUpdatePolicy1Op
+          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.PartialUpdatePolicyOp
               .SetBody(...)
               .Build(
                   basePolicyId,
                   namespace_,
               );
 
-          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.PartialUpdatePolicy1(operation);
+          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.PartialUpdatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -3185,22 +3872,15 @@ functions:
       - 'update'
       - 'with'
 
-  'PublishPolicyVersion@legal':
-    id: 'PublishPolicyVersion@legal'
-    name: 'PublishPolicyVersion'
+  'PublicChangePreferenceConsent@legal':
+    id: 'PublicChangePreferenceConsent@legal'
+    name: 'PublicChangePreferenceConsent'
     description: |-
-      Manually publish a version of a particular country-specific policy.
+      Change marketing preference consent.
     parameters:
-      'PolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Version Id
-      'ShouldNotify':
-        type: 'bool'
+      'Body':
+        type: 'List<AcceptAgreementRequest>'
         required: false
-        description: |-
-          Should Notify
     return_type: 'void'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -3208,30 +3888,122 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Operation;'
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/PublishPolicyVersion.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/PublicChangePreferenceConsent.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PolicyVersions.PublishPolicyVersionOp
-              .SetShouldNotify(...)
+          var operation = sdk.Legal.Agreement.PublicChangePreferenceConsentOp
+              .SetBody(...)
               .Build(
-                  policyVersionId,
               );
 
-          sdk.Legal.PolicyVersions.PublishPolicyVersion(operation);
+          sdk.Legal.Agreement.PublicChangePreferenceConsent(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
+      - 'agreement'
+      - 'change'
+      - 'consent'
+      - 'preference'
+      - 'public'
+
+  'PublicIndirectBulkAcceptVersionedPolicy@legal':
+    id: 'PublicIndirectBulkAcceptVersionedPolicy@legal'
+    name: 'PublicIndirectBulkAcceptVersionedPolicy'
+    description: |-
+      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+    parameters:
+      'Body':
+        type: 'List<AcceptAgreementRequest>'
+        required: false
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          User Id
+    return_type: 'AcceptAgreementResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/PublicIndirectBulkAcceptVersionedPolicy.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.Agreement.PublicIndirectBulkAcceptVersionedPolicyOp
+              .SetBody(...)
+              .Build(
+                  userId,
+              );
+
+          var response = sdk.Legal.Agreement.PublicIndirectBulkAcceptVersionedPolicy(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'accept'
+      - 'agreement'
+      - 'bulk'
+      - 'indirect'
       - 'policy'
-      - 'publish'
+      - 'public'
+      - 'versioned'
+
+  'PublicRetrieveSingleLocalizedPolicyVersion@legal':
+    id: 'PublicRetrieveSingleLocalizedPolicyVersion@legal'
+    name: 'PublicRetrieveSingleLocalizedPolicyVersion'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'LocalizedPolicyVersionId':
+        type: 'string'
+        required: true
+        description: |-
+          Localized Policy Version Id
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Legal.Model;'
+      - 'using AccelByte.Sdk.Api.Legal.Operation;'
+      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/PublicRetrieveSingleLocalizedPolicyVersion.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.PublicRetrieveSingleLocalizedPolicyVersionOp
+              .Build();
+
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.PublicRetrieveSingleLocalizedPolicyVersion(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'localized'
+      - 'namespace'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
       - 'version'
       - 'versions'
+      - 'with'
 
-  'PublishPolicyVersion1@legal':
-    id: 'PublishPolicyVersion1@legal'
-    name: 'PublishPolicyVersion1'
+  'PublishPolicyVersion@legal':
+    id: 'PublishPolicyVersion@legal'
+    name: 'PublishPolicyVersion'
     description: |-
       Manually publish a version of a particular country-specific policy.
     parameters:
@@ -3258,23 +4030,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/PublishPolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/PublishPolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PolicyVersionsWithNamespace.PublishPolicyVersion1Op
+          var operation = sdk.Legal.PolicyVersionsWithNamespace.PublishPolicyVersionOp
               .SetShouldNotify(...)
               .Build(
                   namespace_,
                   policyVersionId,
               );
 
-          sdk.Legal.PolicyVersionsWithNamespace.PublishPolicyVersion1(operation);
+          sdk.Legal.PolicyVersionsWithNamespace.PublishPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'publish'
@@ -3285,50 +4056,6 @@ functions:
   'RequestPresignedURL@legal':
     id: 'RequestPresignedURL@legal'
     name: 'RequestPresignedURL'
-    description: |-
-      Request presigned URL for upload attachment for a particular localized version of base policy.
-    parameters:
-      'Body':
-        type: 'UploadPolicyVersionAttachmentRequest'
-        required: false
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'UploadLocalizedPolicyVersionAttachmentResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/RequestPresignedURL.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.RequestPresignedURLOp
-              .SetBody(...)
-              .Build(
-                  localizedPolicyVersionId,
-              );
-
-          var response = sdk.Legal.LocalizedPolicyVersions.RequestPresignedURL(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'presigned'
-      - 'request'
-      - 'url'
-      - 'versions'
-
-  'RequestPresignedURL1@legal':
-    id: 'RequestPresignedURL1@legal'
-    name: 'RequestPresignedURL1'
     description: |-
       Request presigned URL for upload attachment for a particular localized version of base policy.
     parameters:
@@ -3353,23 +4080,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RequestPresignedURL1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RequestPresignedURL.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RequestPresignedURL1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RequestPresignedURLOp
               .SetBody(...)
               .Build(
                   localizedPolicyVersionId,
                   namespace_,
               );
 
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RequestPresignedURL1(operation);
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RequestPresignedURL(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -3382,42 +4108,6 @@ functions:
   'RetrieveAcceptedAgreements@legal':
     id: 'RetrieveAcceptedAgreements@legal'
     name: 'RetrieveAcceptedAgreements'
-    description: |-
-      This API will return all accepted Legal Agreements for specified user
-    parameters:
-      'UserId':
-        type: 'string'
-        required: true
-        description: |-
-          User Id
-    return_type: 'List<RetrieveAcceptedAgreementResponse>'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/RetrieveAcceptedAgreements.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Agreement.RetrieveAcceptedAgreementsOp
-              .Build();
-
-          var response = sdk.Legal.Agreement.RetrieveAcceptedAgreements(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'accepted'
-      - 'agreement'
-      - 'agreements'
-      - 'retrieve'
-
-  'RetrieveAcceptedAgreements1@legal':
-    id: 'RetrieveAcceptedAgreements1@legal'
-    name: 'RetrieveAcceptedAgreements1'
     description: |-
       This API will return all accepted Legal Agreements for specified user.
     parameters:
@@ -3444,23 +4134,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/AgreementWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/AgreementWithNamespace/RetrieveAcceptedAgreements1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/AgreementWithNamespace/RetrieveAcceptedAgreements.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.AgreementWithNamespace.RetrieveAcceptedAgreements1Op
+          var operation = sdk.Legal.AgreementWithNamespace.RetrieveAcceptedAgreementsOp
               .SetExcludeOtherNamespacesPolicies(...)
               .Build(
                   namespace_,
                   userId,
               );
 
-          var response = sdk.Legal.AgreementWithNamespace.RetrieveAcceptedAgreements1(operation);
+          var response = sdk.Legal.AgreementWithNamespace.RetrieveAcceptedAgreements(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'accepted'
       - 'agreement'
       - 'agreements'
@@ -3686,53 +4375,6 @@ functions:
         required: true
         description: |-
           Limit
-      'Offset':
-        type: 'int'
-        required: false
-        description: |-
-          Offset
-    return_type: 'List<RetrievePolicyTypeResponse>'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/RetrieveAllPolicyTypes.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.BaseLegalPolicies.RetrieveAllPolicyTypesOp
-              .SetOffset(...)
-              .Build(
-                  limit,
-              );
-
-          var response = sdk.Legal.BaseLegalPolicies.RetrieveAllPolicyTypes(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'all'
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'types'
-
-  'RetrieveAllPolicyTypes1@legal':
-    id: 'RetrieveAllPolicyTypes1@legal'
-    name: 'RetrieveAllPolicyTypes1'
-    description: |-
-      Retrieve all supported policy types.
-    parameters:
-      'Limit':
-        type: 'int'
-        required: true
-        description: |-
-          Limit
       'Namespace':
         type: 'string'
         required: true
@@ -3751,23 +4393,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrieveAllPolicyTypes1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrieveAllPolicyTypes.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveAllPolicyTypes1Op
+          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveAllPolicyTypesOp
               .SetOffset(...)
               .Build(
                   limit,
                   namespace_,
               );
 
-          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveAllPolicyTypes1(operation);
+          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveAllPolicyTypes(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'all'
       - 'base'
       - 'legal'
@@ -3781,63 +4422,6 @@ functions:
   'RetrieveAllUsersByPolicyVersion@legal':
     id: 'RetrieveAllUsersByPolicyVersion@legal'
     name: 'RetrieveAllUsersByPolicyVersion'
-    description: |-
-      This API will return users who has accepted a specific policy version.
-    parameters:
-      'Keyword':
-        type: 'string'
-        required: false
-        description: |-
-          display name or email or username
-      'Limit':
-        type: 'int'
-        required: false
-        description: |-
-          limit
-      'Offset':
-        type: 'int'
-        required: false
-        description: |-
-          offset
-      'PolicyVersionId':
-        type: 'string'
-        required: true
-    return_type: 'PagedRetrieveUserAcceptedAgreementResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Agreement.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Agreement/RetrieveAllUsersByPolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Agreement.RetrieveAllUsersByPolicyVersionOp
-              .SetKeyword(...)
-              .SetLimit(...)
-              .SetOffset(...)
-              .Build(
-                  policyVersionId,
-              );
-
-          var response = sdk.Legal.Agreement.RetrieveAllUsersByPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'agreement'
-      - 'all'
-      - 'by'
-      - 'policy'
-      - 'retrieve'
-      - 'users'
-      - 'version'
-
-  'RetrieveAllUsersByPolicyVersion1@legal':
-    id: 'RetrieveAllUsersByPolicyVersion1@legal'
-    name: 'RetrieveAllUsersByPolicyVersion1'
     description: |-
       This API will return all users who has accepted a specific policy version.
     parameters:
@@ -3877,11 +4461,11 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/AgreementWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/AgreementWithNamespace/RetrieveAllUsersByPolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/AgreementWithNamespace/RetrieveAllUsersByPolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.AgreementWithNamespace.RetrieveAllUsersByPolicyVersion1Op
+          var operation = sdk.Legal.AgreementWithNamespace.RetrieveAllUsersByPolicyVersionOp
               .SetConvertGameUserId(...)
               .SetKeyword(...)
               .SetLimit(...)
@@ -3891,12 +4475,11 @@ functions:
                   policyVersionId,
               );
 
-          var response = sdk.Legal.AgreementWithNamespace.RetrieveAllUsersByPolicyVersion1(operation);
+          var response = sdk.Legal.AgreementWithNamespace.RetrieveAllUsersByPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'agreement'
       - 'all'
       - 'by'
@@ -4033,10 +4616,9 @@ functions:
     description: |-
       Retrieve all active latest policies based on a country.
       Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+          * Leave the policyType empty if you want to be responded with all policy type
+          *  Fill the tags if you want to filter the responded policy by tags
+          *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
     parameters:
       'CountryCode':
         type: 'string'
@@ -4095,94 +4677,6 @@ functions:
     id: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic@legal'
     name: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic'
     description: |-
-      Retrieve all active latest policies based on a namespace and country.
-      Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
-        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
-          * Document 1 (default): Region US (default), UA
-          * Document 2 (default): Region US (default)
-          * Document 3 (default): Region US (default)
-          * User: Region UA
-          * Query: alwaysIncludeDefault: true
-          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-    parameters:
-      'AlwaysIncludeDefault':
-        type: 'bool'
-        required: false
-        description: |-
-          Always include default
-      'CountryCode':
-        type: 'string'
-        required: true
-        description: |-
-          Country Code
-      'DefaultOnEmpty':
-        type: 'bool'
-        required: false
-        description: |-
-          Default On Empty
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          Namespace
-      'PolicyType':
-        type: 'string'
-        required: false
-        description: |-
-          Policy Type
-      'Tags':
-        type: 'string'
-        required: false
-        description: |-
-          tags, separate multiple value by commas parameter
-      'VisibleOnly':
-        type: 'bool'
-        required: false
-    return_type: 'List<RetrievePolicyPublicResponse>'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/RetrieveLatestPoliciesByNamespaceAndCountryPublic.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Policies.RetrieveLatestPoliciesByNamespaceAndCountryPublicOp
-              .SetAlwaysIncludeDefault(...)
-              .SetDefaultOnEmpty(...)
-              .SetPolicyType(...)
-              .SetTags(...)
-              .SetVisibleOnly(...)
-              .Build(
-                  countryCode,
-                  namespace_,
-              );
-
-          var response = sdk.Legal.Policies.RetrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'and'
-      - 'by'
-      - 'country'
-      - 'latest'
-      - 'namespace'
-      - 'policies'
-      - 'public'
-      - 'retrieve'
-
-  'RetrieveLatestPoliciesByNamespaceAndCountryPublic1@legal':
-    id: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic1@legal'
-    name: 'RetrieveLatestPoliciesByNamespaceAndCountryPublic1'
-    description: |-
       This API is used to list all the related doc in register page, include optional & mandatory (when env config APP_LEGAL_AGREEMENT_ALWAYS_INCLUDE_DEFAULT=true).
       Other detail info: Here are the result of different cases
             * Document 1, Region US (default, mandatory), UA (optional); clientID: [client_A]
@@ -4228,19 +4722,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PoliciesWithNamespaceV2.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespaceV2/RetrieveLatestPoliciesByNamespaceAndCountryPublic1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespaceV2/RetrieveLatestPoliciesByNamespaceAndCountryPublic.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PoliciesWithNamespaceV2.RetrieveLatestPoliciesByNamespaceAndCountryPublic1Op
+          var operation = sdk.Legal.PoliciesWithNamespaceV2.RetrieveLatestPoliciesByNamespaceAndCountryPublicOp
               .Build();
 
-          var response = sdk.Legal.PoliciesWithNamespaceV2.RetrieveLatestPoliciesByNamespaceAndCountryPublic1(operation);
+          var response = sdk.Legal.PoliciesWithNamespaceV2.RetrieveLatestPoliciesByNamespaceAndCountryPublic(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'and'
       - 'by'
       - 'country'
@@ -4335,42 +4828,6 @@ functions:
     description: |-
       Retrieve versions of a particular country-specific policy.
     parameters:
-      'PolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'List<RetrieveLocalizedPolicyVersionResponse>'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/RetrieveLocalizedPolicyVersions.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.RetrieveLocalizedPolicyVersionsOp
-              .Build();
-
-          var response = sdk.Legal.LocalizedPolicyVersions.RetrieveLocalizedPolicyVersions(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'versions'
-
-  'RetrieveLocalizedPolicyVersions1@legal':
-    id: 'RetrieveLocalizedPolicyVersions1@legal'
-    name: 'RetrieveLocalizedPolicyVersions1'
-    description: |-
-      Retrieve versions of a particular country-specific policy.
-    parameters:
       'Namespace':
         type: 'string'
         required: true
@@ -4389,19 +4846,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RetrieveLocalizedPolicyVersions1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RetrieveLocalizedPolicyVersions.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveLocalizedPolicyVersions1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveLocalizedPolicyVersionsOp
               .Build();
 
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveLocalizedPolicyVersions1(operation);
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveLocalizedPolicyVersions(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4459,49 +4915,6 @@ functions:
         required: true
         description: |-
           Country Code
-    return_type: 'RetrievePolicyResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/RetrievePolicyCountry.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.BaseLegalPolicies.RetrievePolicyCountryOp
-              .Build();
-
-          var response = sdk.Legal.BaseLegalPolicies.RetrievePolicyCountry(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'country'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-
-  'RetrievePolicyCountry1@legal':
-    id: 'RetrievePolicyCountry1@legal'
-    name: 'RetrievePolicyCountry1'
-    description: |-
-      Retrieve a Base Legal Policy based on a Particular Country.
-    parameters:
-      'BasePolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          BasePolicy Id
-      'CountryCode':
-        type: 'string'
-        required: true
-        description: |-
-          Country Code
       'Namespace':
         type: 'string'
         required: true
@@ -4515,19 +4928,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrievePolicyCountry1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrievePolicyCountry.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrievePolicyCountry1Op
+          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrievePolicyCountryOp
               .Build();
 
-          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrievePolicyCountry1(operation);
+          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrievePolicyCountry(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'country'
       - 'legal'
@@ -4548,44 +4960,6 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
-    return_type: 'RetrieveLocalizedPolicyVersionResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/RetrieveSingleLocalizedPolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.RetrieveSingleLocalizedPolicyVersionOp
-              .Build();
-
-          var response = sdk.Legal.LocalizedPolicyVersions.RetrieveSingleLocalizedPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSingleLocalizedPolicyVersion1@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion1@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion1'
-    description: |-
-      Retrieve a version of a particular country-specific policy.
-    parameters:
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
       'Namespace':
         type: 'string'
         required: true
@@ -4599,106 +4973,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RetrieveSingleLocalizedPolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RetrieveSingleLocalizedPolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersion1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersionOp
               .Build();
 
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersion1(operation);
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
-      - 'localized'
-      - 'namespace'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-      - 'with'
-
-  'RetrieveSingleLocalizedPolicyVersion2@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion2@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion2'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/RetrieveSingleLocalizedPolicyVersion2.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.RetrieveSingleLocalizedPolicyVersion2Op
-              .Build();
-
-          var response = sdk.Legal.LocalizedPolicyVersions.RetrieveSingleLocalizedPolicyVersion2(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '2'
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSingleLocalizedPolicyVersion3@legal':
-    id: 'RetrieveSingleLocalizedPolicyVersion3@legal'
-    name: 'RetrieveSingleLocalizedPolicyVersion3'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          Namespace
-    return_type: 'RetrieveLocalizedPolicyVersionPublicResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/RetrieveSingleLocalizedPolicyVersion3.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersion3Op
-              .Build();
-
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.RetrieveSingleLocalizedPolicyVersion3(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '3'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4711,44 +4997,6 @@ functions:
   'RetrieveSinglePolicy@legal':
     id: 'RetrieveSinglePolicy@legal'
     name: 'RetrieveSinglePolicy'
-    description: |-
-      Retrieve a base policy.
-    parameters:
-      'BasePolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          BasePolicy Id
-    return_type: 'RetrieveBasePolicyResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPolicies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPolicies/RetrieveSinglePolicy.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.BaseLegalPolicies.RetrieveSinglePolicyOp
-              .Build();
-
-          var response = sdk.Legal.BaseLegalPolicies.RetrieveSinglePolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-
-  'RetrieveSinglePolicy1@legal':
-    id: 'RetrieveSinglePolicy1@legal'
-    name: 'RetrieveSinglePolicy1'
     description: |-
       Retrieve a base policy.
     parameters:
@@ -4770,19 +5018,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/BaseLegalPoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrieveSinglePolicy1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/BaseLegalPoliciesWithNamespace/RetrieveSinglePolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveSinglePolicy1Op
+          var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveSinglePolicyOp
               .Build();
 
-          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveSinglePolicy1(operation);
+          var response = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveSinglePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -4795,51 +5042,6 @@ functions:
   'RetrieveSinglePolicyVersion@legal':
     id: 'RetrieveSinglePolicyVersion@legal'
     name: 'RetrieveSinglePolicyVersion'
-    description: |-
-      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
-    parameters:
-      'PolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Id
-      'VersionId':
-        type: 'string'
-        required: false
-        description: |-
-          Version Id
-    return_type: 'List<RetrievePolicyVersionResponse>'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/RetrieveSinglePolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.PolicyVersions.RetrieveSinglePolicyVersionOp
-              .SetVersionId(...)
-              .Build(
-                  policyId,
-              );
-
-          var response = sdk.Legal.PolicyVersions.RetrieveSinglePolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'RetrieveSinglePolicyVersion1@legal':
-    id: 'RetrieveSinglePolicyVersion1@legal'
-    name: 'RetrieveSinglePolicyVersion1'
     description: |-
       Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
     parameters:
@@ -4866,23 +5068,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/RetrieveSinglePolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/RetrieveSinglePolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PolicyVersionsWithNamespace.RetrieveSinglePolicyVersion1Op
+          var operation = sdk.Legal.PolicyVersionsWithNamespace.RetrieveSinglePolicyVersionOp
               .SetVersionId(...)
               .Build(
                   namespace_,
                   policyId,
               );
 
-          var response = sdk.Legal.PolicyVersionsWithNamespace.RetrieveSinglePolicyVersion1(operation);
+          var response = sdk.Legal.PolicyVersionsWithNamespace.RetrieveSinglePolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'retrieve'
@@ -4891,46 +5092,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'SetDefaultPolicy@legal':
-    id: 'SetDefaultPolicy@legal'
-    name: 'SetDefaultPolicy'
-    description: |-
-      Update a localized version policy to be the default.
-    parameters:
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/SetDefaultPolicy.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.SetDefaultPolicyOp
-              .Build();
-
-          sdk.Legal.LocalizedPolicyVersions.SetDefaultPolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'default'
-      - 'localized'
-      - 'policy'
-      - 'set'
-      - 'versions'
-
-  'SetDefaultPolicy1@legal':
-    id: 'SetDefaultPolicy1@legal'
-    name: 'SetDefaultPolicy1'
+  'SetDefaultLocalizedPolicy@legal':
+    id: 'SetDefaultLocalizedPolicy@legal'
+    name: 'SetDefaultLocalizedPolicy'
     description: |-
       Update a localized version policy to be the default.
     parameters:
@@ -4952,19 +5116,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/SetDefaultPolicy1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/SetDefaultLocalizedPolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.SetDefaultPolicy1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.SetDefaultLocalizedPolicyOp
               .Build();
 
-          sdk.Legal.LocalizedPolicyVersionsWithNamespace.SetDefaultPolicy1(operation);
+          sdk.Legal.LocalizedPolicyVersionsWithNamespace.SetDefaultLocalizedPolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'default'
       - 'localized'
       - 'namespace'
@@ -4973,46 +5136,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'SetDefaultPolicy2@legal':
-    id: 'SetDefaultPolicy2@legal'
-    name: 'SetDefaultPolicy2'
-    description: |-
-      Update a policy to be the default.
-    parameters:
-      'PolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/SetDefaultPolicy2.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Policies.SetDefaultPolicy2Op
-              .Build();
-
-          sdk.Legal.Policies.SetDefaultPolicy2(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - '2'
-      - 'default'
-      - 'policies'
-      - 'policy'
-      - 'set'
-
-  'SetDefaultPolicy3@legal':
-    id: 'SetDefaultPolicy3@legal'
-    name: 'SetDefaultPolicy3'
+  'SetDefaultPolicy@legal':
+    id: 'SetDefaultPolicy@legal'
+    name: 'SetDefaultPolicy'
     description: |-
       Update a policy to be the default.
     parameters:
@@ -5034,19 +5160,18 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespace/SetDefaultPolicy3.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespace/SetDefaultPolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PoliciesWithNamespace.SetDefaultPolicy3Op
+          var operation = sdk.Legal.PoliciesWithNamespace.SetDefaultPolicyOp
               .Build();
 
-          sdk.Legal.PoliciesWithNamespace.SetDefaultPolicy3(operation);
+          sdk.Legal.PoliciesWithNamespace.SetDefaultPolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '3'
       - 'default'
       - 'namespace'
       - 'policies'
@@ -5146,49 +5271,6 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
-    return_type: 'UpdateLocalizedPolicyVersionResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersions/UpdateLocalizedPolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.LocalizedPolicyVersions.UpdateLocalizedPolicyVersionOp
-              .SetBody(...)
-              .Build(
-                  localizedPolicyVersionId,
-              );
-
-          var response = sdk.Legal.LocalizedPolicyVersions.UpdateLocalizedPolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'UpdateLocalizedPolicyVersion1@legal':
-    id: 'UpdateLocalizedPolicyVersion1@legal'
-    name: 'UpdateLocalizedPolicyVersion1'
-    description: |-
-      Update a version of a particular country-specific policy.
-    parameters:
-      'Body':
-        type: 'UpdateLocalizedPolicyVersionRequest'
-        required: false
-      'LocalizedPolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Localized Policy Version Id
       'Namespace':
         type: 'string'
         required: true
@@ -5202,23 +5284,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/LocalizedPolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/UpdateLocalizedPolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/LocalizedPolicyVersionsWithNamespace/UpdateLocalizedPolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.UpdateLocalizedPolicyVersion1Op
+          var operation = sdk.Legal.LocalizedPolicyVersionsWithNamespace.UpdateLocalizedPolicyVersionOp
               .SetBody(...)
               .Build(
                   localizedPolicyVersionId,
                   namespace_,
               );
 
-          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.UpdateLocalizedPolicyVersion1(operation);
+          var response = sdk.Legal.LocalizedPolicyVersionsWithNamespace.UpdateLocalizedPolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -5230,47 +5311,6 @@ functions:
   'UpdatePolicy@legal':
     id: 'UpdatePolicy@legal'
     name: 'UpdatePolicy'
-    description: |-
-      Update country-specific and country-group policy.
-    parameters:
-      'Body':
-        type: 'UpdatePolicyRequest'
-        required: false
-      'PolicyId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/Policies.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/Policies/UpdatePolicy.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.Policies.UpdatePolicyOp
-              .SetBody(...)
-              .Build(
-                  policyId,
-              );
-
-          sdk.Legal.Policies.UpdatePolicy(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policies'
-      - 'policy'
-      - 'update'
-
-  'UpdatePolicy1@legal':
-    id: 'UpdatePolicy1@legal'
-    name: 'UpdatePolicy1'
     description: |-
       Update country-specific and country-group policy.
     parameters:
@@ -5295,23 +5335,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PoliciesWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespace/UpdatePolicy1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PoliciesWithNamespace/UpdatePolicy.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PoliciesWithNamespace.UpdatePolicy1Op
+          var operation = sdk.Legal.PoliciesWithNamespace.UpdatePolicyOp
               .SetBody(...)
               .Build(
                   namespace_,
                   policyId,
               );
 
-          sdk.Legal.PoliciesWithNamespace.UpdatePolicy1(operation);
+          sdk.Legal.PoliciesWithNamespace.UpdatePolicy(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policies'
       - 'policy'
@@ -5321,48 +5360,6 @@ functions:
   'UpdatePolicyVersion@legal':
     id: 'UpdatePolicyVersion@legal'
     name: 'UpdatePolicyVersion'
-    description: |-
-      Update a particular policy version.
-    parameters:
-      'Body':
-        type: 'UpdatePolicyVersionRequest'
-        required: false
-      'PolicyVersionId':
-        type: 'string'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'UpdatePolicyVersionResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Legal.Model;'
-      - 'using AccelByte.Sdk.Api.Legal.Operation;'
-      - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersions.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersions/UpdatePolicyVersion.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Legal.PolicyVersions.UpdatePolicyVersionOp
-              .SetBody(...)
-              .Build(
-                  policyVersionId,
-              );
-
-          var response = sdk.Legal.PolicyVersions.UpdatePolicyVersion(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'UpdatePolicyVersion1@legal':
-    id: 'UpdatePolicyVersion1@legal'
-    name: 'UpdatePolicyVersion1'
     description: |-
       Update a particular policy version.
     parameters:
@@ -5387,23 +5384,22 @@ functions:
       - 'using AccelByte.Sdk.Api.Legal.Wrapper;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Wrapper/PolicyVersionsWithNamespace.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/UpdatePolicyVersion1.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Legal/Operation/PolicyVersionsWithNamespace/UpdatePolicyVersion.cs'
     example: |-
       try
       {
-          var operation = sdk.Legal.PolicyVersionsWithNamespace.UpdatePolicyVersion1Op
+          var operation = sdk.Legal.PolicyVersionsWithNamespace.UpdatePolicyVersionOp
               .SetBody(...)
               .Build(
                   namespace_,
                   policyVersionId,
               );
 
-          var response = sdk.Legal.PolicyVersionsWithNamespace.UpdatePolicyVersion1(operation);
+          var response = sdk.Legal.PolicyVersionsWithNamespace.UpdatePolicyVersion(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'update'

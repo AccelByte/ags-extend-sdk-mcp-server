@@ -8129,6 +8129,11 @@ structs:
         required: false
         description: |-
           inventory config
+      'itemId':
+        type: 'String'
+        required: false
+        description: |-
+          Item ID (optional). UUID V4 without hyphen format
       'itemIds':
         type: 'List<String>'
         required: false
@@ -9864,6 +9869,11 @@ structs:
         required: false
         description: |-
           oculus api app secret
+      'webhookVerifyToken':
+        type: 'String'
+        required: false
+        description: |-
+          oculus webhook verify token
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.platform.models.*;'
@@ -9884,6 +9894,11 @@ structs:
         required: false
         description: |-
           oculus api app secret, don't allow white space and *
+      'webhookVerifyToken':
+        type: 'String'
+        required: false
+        description: |-
+          oculus webhook verify token, please refer this link: https://developers.meta.com/horizon/documentation/unity/ps-webhooks-getting-started
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.platform.models.*;'
@@ -9924,6 +9939,21 @@ structs:
       - 'import net.accelbyte.sdk.api.platform.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/OculusReconcileResult.java'
+
+  'OculusSubscriptionSyncRequest@platform':
+    id: 'OculusSubscriptionSyncRequest@platform'
+    name: 'OculusSubscriptionSyncRequest'
+    fields:
+      'skus':
+        type: 'List<String>'
+        required: false
+        description: |-
+          Meta Quest Subscription, if pass an empty list or null, will fetch all of subscription sku which config in AGS subscription config.
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/OculusSubscriptionSyncRequest.java'
 
   'Operation@platform':
     id: 'Operation@platform'
@@ -16685,6 +16715,36 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/TestResult.java'
 
+  'ThirdPartySubscriptionGroupCreate@platform':
+    id: 'ThirdPartySubscriptionGroupCreate@platform'
+    name: 'ThirdPartySubscriptionGroupCreate'
+    fields:
+      'sku':
+        type: 'String'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ThirdPartySubscriptionGroupCreate.java'
+
+  'ThirdPartySubscriptionGroupInfo@platform':
+    id: 'ThirdPartySubscriptionGroupInfo@platform'
+    name: 'ThirdPartySubscriptionGroupInfo'
+    fields:
+      'sku':
+        type: 'String'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ThirdPartySubscriptionGroupInfo.java'
+
   'ThirdPartySubscriptionOwnership@platform':
     id: 'ThirdPartySubscriptionOwnership@platform'
     name: 'ThirdPartySubscriptionOwnership'
@@ -16699,6 +16759,46 @@ structs:
       - 'import net.accelbyte.sdk.api.platform.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ThirdPartySubscriptionOwnership.java'
+
+  'ThirdPartySubscriptionTierCreate@platform':
+    id: 'ThirdPartySubscriptionTierCreate@platform'
+    name: 'ThirdPartySubscriptionTierCreate'
+    fields:
+      'groupSku':
+        type: 'String'
+        required: false
+        description: |-
+          Group sku
+      'sku':
+        type: 'String'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ThirdPartySubscriptionTierCreate.java'
+
+  'ThirdPartySubscriptionTierInfo@platform':
+    id: 'ThirdPartySubscriptionTierInfo@platform'
+    name: 'ThirdPartySubscriptionTierInfo'
+    fields:
+      'groupSku':
+        type: 'String'
+        required: false
+        description: |-
+          Group sku
+      'sku':
+        type: 'String'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ThirdPartySubscriptionTierInfo.java'
 
   'ThirdPartySubscriptionTransactionHistoryInfo@platform':
     id: 'ThirdPartySubscriptionTransactionHistoryInfo@platform'
@@ -18808,6 +18908,50 @@ functions:
       - 'ticket'
       - 'user'
 
+  'AddTierIntoMetaQuestSubscriptionGroup@platform':
+    id: 'AddTierIntoMetaQuestSubscriptionGroup@platform'
+    name: 'AddTierIntoMetaQuestSubscriptionGroup'
+    description: |-
+      Create Meta Quest(Oculus) subscriptions tier
+    parameters:
+      'body':
+        type: 'ThirdPartySubscriptionTierCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+    return_type: 'ThirdPartySubscriptionTierInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/AddTierIntoMetaQuestSubscriptionGroup.java'
+    example: |-
+      try {
+          final AddTierIntoMetaQuestSubscriptionGroup operation = AddTierIntoMetaQuestSubscriptionGroup.builder()
+              .body(...)
+              .build(
+                  namespace,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          final ThirdPartySubscriptionTierInfo response = wrapper.addTierIntoMetaQuestSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'add'
+      - 'group'
+      - 'iap'
+      - 'into'
+      - 'meta'
+      - 'quest'
+      - 'subscription'
+      - 'tier'
+
   'AdminCreateUserOrder@platform':
     id: 'AdminCreateUserOrder@platform'
     name: 'AdminCreateUserOrder'
@@ -19042,6 +19186,51 @@ functions:
       - 'reset'
       - 'steam'
       - 'time'
+
+  'AdminSyncOculusSubscriptions@platform':
+    id: 'AdminSyncOculusSubscriptions@platform'
+    name: 'AdminSyncOculusSubscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'body':
+        type: 'OculusSubscriptionSyncRequest'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTransactionInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAP.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap/AdminSyncOculusSubscriptions.java'
+    example: |-
+      try {
+          final AdminSyncOculusSubscriptions operation = AdminSyncOculusSubscriptions.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final IAP wrapper = new IAP(sdk);
+          final List<ThirdPartySubscriptionTransactionInfo> response = wrapper.adminSyncOculusSubscriptions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
+      - 'sync'
 
   'AdminSyncSteamAbnormalTransaction@platform':
     id: 'AdminSyncSteamAbnormalTransaction@platform'
@@ -20586,6 +20775,8 @@ functions:
 
           {
 
+             "itemId": "b478be9ad42f4d0f8ba49ef3ef605a83" (optional, UUID V4 without hyphen format)
+
              "categoryPath": "/games",
 
              "localizations": {
@@ -20933,6 +21124,47 @@ functions:
       - 'create'
       - 'group'
       - 'key'
+
+  'CreateOculusSubscriptionGroup@platform':
+    id: 'CreateOculusSubscriptionGroup@platform'
+    name: 'CreateOculusSubscriptionGroup'
+    description: |-
+      Create subscriptions group
+    parameters:
+      'body':
+        type: 'ThirdPartySubscriptionGroupCreate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+    return_type: 'ThirdPartySubscriptionGroupInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/CreateOculusSubscriptionGroup.java'
+    example: |-
+      try {
+          final CreateOculusSubscriptionGroup operation = CreateOculusSubscriptionGroup.builder()
+              .body(...)
+              .build(
+                  namespace,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          final ThirdPartySubscriptionGroupInfo response = wrapper.createOculusSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
 
   'CreatePaymentOrderByDedicated@platform':
     id: 'CreatePaymentOrderByDedicated@platform'
@@ -22385,6 +22617,86 @@ functions:
       - 'delete'
       - 'iap'
       - 'oculus'
+
+  'DeleteOculusSubscriptionGroup@platform':
+    id: 'DeleteOculusSubscriptionGroup@platform'
+    name: 'DeleteOculusSubscriptionGroup'
+    description: |-
+      can't delete it if this subscription group is used.
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'sku':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/DeleteOculusSubscriptionGroup.java'
+    example: |-
+      try {
+          final DeleteOculusSubscriptionGroup operation = DeleteOculusSubscriptionGroup.builder()
+              .build(
+                  namespace,
+                  sku,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          wrapper.deleteOculusSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+
+  'DeleteOculusSubscriptionTier@platform':
+    id: 'DeleteOculusSubscriptionTier@platform'
+    name: 'DeleteOculusSubscriptionTier'
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'sku':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/DeleteOculusSubscriptionTier.java'
+    example: |-
+      try {
+          final DeleteOculusSubscriptionTier operation = DeleteOculusSubscriptionTier.builder()
+              .build(
+                  namespace,
+                  sku,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          wrapper.deleteOculusSubscriptionTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'DeletePaymentProviderConfig@platform':
     id: 'DeletePaymentProviderConfig@platform'
@@ -30241,6 +30553,85 @@ functions:
       - 'key'
       - 'keys'
       - 'list'
+
+  'ListOculusSubscriptionGroups@platform':
+    id: 'ListOculusSubscriptionGroups@platform'
+    name: 'ListOculusSubscriptionGroups'
+    description: |-
+      List Meta Quest(Oculus) subscriptions group
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionGroupInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/ListOculusSubscriptionGroups.java'
+    example: |-
+      try {
+          final ListOculusSubscriptionGroups operation = ListOculusSubscriptionGroups.builder()
+              .build(
+                  namespace,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          final List<ThirdPartySubscriptionGroupInfo> response = wrapper.listOculusSubscriptionGroups(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'groups'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+
+  'ListOculusSubscriptionGroupTier@platform':
+    id: 'ListOculusSubscriptionGroupTier@platform'
+    name: 'ListOculusSubscriptionGroupTier'
+    description: |-
+      List All Tier of AGS Meta Quest(Oculus) subscriptions group
+    parameters:
+      'namespace':
+        type: 'String'
+        required: true
+      'sku':
+        type: 'String'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTierInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap_subscription.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAPSubscription.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap_subscription/ListOculusSubscriptionGroupTier.java'
+    example: |-
+      try {
+          final ListOculusSubscriptionGroupTier operation = ListOculusSubscriptionGroupTier.builder()
+              .build(
+                  namespace,
+                  sku,
+              );
+
+          final IAPSubscription wrapper = new IAPSubscription(sdk);
+          final List<ThirdPartySubscriptionTierInfo> response = wrapper.listOculusSubscriptionGroupTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'group'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'ListStores@platform':
     id: 'ListStores@platform'
@@ -39809,6 +40200,50 @@ functions:
     tags:
       - 'dlc'
       - 'oculus'
+      - 'sync'
+
+  'SyncOculusSubscriptions@platform':
+    id: 'SyncOculusSubscriptions@platform'
+    name: 'SyncOculusSubscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'body':
+        type: 'OculusSubscriptionSyncRequest'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTransactionInfo>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAP.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap/SyncOculusSubscriptions.java'
+    example: |-
+      try {
+          final SyncOculusSubscriptions operation = SyncOculusSubscriptions.builder()
+              .body(...)
+              .build(
+                  namespace,
+                  userId,
+              );
+
+          final IAP wrapper = new IAP(sdk);
+          final List<ThirdPartySubscriptionTransactionInfo> response = wrapper.syncOculusSubscriptions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
       - 'sync'
 
   'SyncOrders@platform':

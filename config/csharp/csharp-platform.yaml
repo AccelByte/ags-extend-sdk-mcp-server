@@ -8344,6 +8344,11 @@ structs:
         required: false
         description: |-
           inventory config
+      'ItemId':
+        type: 'string'
+        required: false
+        description: |-
+          Item ID (optional). UUID V4 without hyphen format
       'ItemIds':
         type: 'List<string>'
         required: false
@@ -10114,6 +10119,11 @@ structs:
         required: false
         description: |-
           oculus api app secret
+      'WebhookVerifyToken':
+        type: 'string'
+        required: false
+        description: |-
+          oculus webhook verify token
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -10135,6 +10145,11 @@ structs:
         required: false
         description: |-
           oculus api app secret, don't allow white space and *
+      'WebhookVerifyToken':
+        type: 'string'
+        required: false
+        description: |-
+          oculus webhook verify token, please refer this link: https://developers.meta.com/horizon/documentation/unity/ps-webhooks-getting-started
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -10177,6 +10192,22 @@ structs:
       - 'using AccelByte.Sdk.Api.Platform.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/OculusReconcileResult.cs'
+
+  'OculusSubscriptionSyncRequest@platform':
+    id: 'OculusSubscriptionSyncRequest@platform'
+    name: 'OculusSubscriptionSyncRequest'
+    fields:
+      'Skus':
+        type: 'List<string>'
+        required: false
+        description: |-
+          Meta Quest Subscription, if pass an empty list or null, will fetch all of subscription sku which config in AGS subscription config.
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/OculusSubscriptionSyncRequest.cs'
 
   'Operation@platform':
     id: 'Operation@platform'
@@ -17112,6 +17143,38 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/TestResult.cs'
 
+  'ThirdPartySubscriptionGroupCreate@platform':
+    id: 'ThirdPartySubscriptionGroupCreate@platform'
+    name: 'ThirdPartySubscriptionGroupCreate'
+    fields:
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ThirdPartySubscriptionGroupCreate.cs'
+
+  'ThirdPartySubscriptionGroupInfo@platform':
+    id: 'ThirdPartySubscriptionGroupInfo@platform'
+    name: 'ThirdPartySubscriptionGroupInfo'
+    fields:
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ThirdPartySubscriptionGroupInfo.cs'
+
   'ThirdPartySubscriptionOwnership@platform':
     id: 'ThirdPartySubscriptionOwnership@platform'
     name: 'ThirdPartySubscriptionOwnership'
@@ -17127,6 +17190,48 @@ structs:
       - 'using AccelByte.Sdk.Api.Platform.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ThirdPartySubscriptionOwnership.cs'
+
+  'ThirdPartySubscriptionTierCreate@platform':
+    id: 'ThirdPartySubscriptionTierCreate@platform'
+    name: 'ThirdPartySubscriptionTierCreate'
+    fields:
+      'GroupSku':
+        type: 'string'
+        required: false
+        description: |-
+          Group sku
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ThirdPartySubscriptionTierCreate.cs'
+
+  'ThirdPartySubscriptionTierInfo@platform':
+    id: 'ThirdPartySubscriptionTierInfo@platform'
+    name: 'ThirdPartySubscriptionTierInfo'
+    fields:
+      'GroupSku':
+        type: 'string'
+        required: false
+        description: |-
+          Group sku
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ThirdPartySubscriptionTierInfo.cs'
 
   'ThirdPartySubscriptionTransactionHistoryInfo@platform':
     id: 'ThirdPartySubscriptionTransactionHistoryInfo@platform'
@@ -19285,6 +19390,50 @@ functions:
       - 'ticket'
       - 'user'
 
+  'AddTierIntoMetaQuestSubscriptionGroup@platform':
+    id: 'AddTierIntoMetaQuestSubscriptionGroup@platform'
+    name: 'AddTierIntoMetaQuestSubscriptionGroup'
+    description: |-
+      Create Meta Quest(Oculus) subscriptions tier
+    parameters:
+      'Body':
+        type: 'ThirdPartySubscriptionTierCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    return_type: 'ThirdPartySubscriptionTierInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/AddTierIntoMetaQuestSubscriptionGroup.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.AddTierIntoMetaQuestSubscriptionGroupOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Platform.IAPSubscription.AddTierIntoMetaQuestSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'add'
+      - 'group'
+      - 'iap'
+      - 'into'
+      - 'meta'
+      - 'quest'
+      - 'subscription'
+      - 'tier'
+
   'AdminCreateUserOrder@platform':
     id: 'AdminCreateUserOrder@platform'
     name: 'AdminCreateUserOrder'
@@ -19503,6 +19652,51 @@ functions:
       - 'reset'
       - 'steam'
       - 'time'
+
+  'AdminSyncOculusSubscriptions@platform':
+    id: 'AdminSyncOculusSubscriptions@platform'
+    name: 'AdminSyncOculusSubscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'Body':
+        type: 'OculusSubscriptionSyncRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTransactionInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAP.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAP/AdminSyncOculusSubscriptions.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAP.AdminSyncOculusSubscriptionsOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Platform.IAP.AdminSyncOculusSubscriptions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
+      - 'sync'
 
   'AdminSyncSteamAbnormalTransaction@platform':
     id: 'AdminSyncSteamAbnormalTransaction@platform'
@@ -20959,6 +21153,8 @@ functions:
 
           {
 
+             "itemId": "b478be9ad42f4d0f8ba49ef3ef605a83" (optional, UUID V4 without hyphen format)
+
              "categoryPath": "/games",
 
              "localizations": {
@@ -21297,6 +21493,47 @@ functions:
       - 'create'
       - 'group'
       - 'key'
+
+  'CreateOculusSubscriptionGroup@platform':
+    id: 'CreateOculusSubscriptionGroup@platform'
+    name: 'CreateOculusSubscriptionGroup'
+    description: |-
+      Create subscriptions group
+    parameters:
+      'Body':
+        type: 'ThirdPartySubscriptionGroupCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    return_type: 'ThirdPartySubscriptionGroupInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/CreateOculusSubscriptionGroup.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.CreateOculusSubscriptionGroupOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Platform.IAPSubscription.CreateOculusSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'create'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
 
   'CreatePaymentOrderByDedicated@platform':
     id: 'CreatePaymentOrderByDedicated@platform'
@@ -22674,6 +22911,80 @@ functions:
       - 'delete'
       - 'iap'
       - 'oculus'
+
+  'DeleteOculusSubscriptionGroup@platform':
+    id: 'DeleteOculusSubscriptionGroup@platform'
+    name: 'DeleteOculusSubscriptionGroup'
+    description: |-
+      can't delete it if this subscription group is used.
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/DeleteOculusSubscriptionGroup.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.DeleteOculusSubscriptionGroupOp
+              .Build();
+
+          sdk.Platform.IAPSubscription.DeleteOculusSubscriptionGroup(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+
+  'DeleteOculusSubscriptionTier@platform':
+    id: 'DeleteOculusSubscriptionTier@platform'
+    name: 'DeleteOculusSubscriptionTier'
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/DeleteOculusSubscriptionTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.DeleteOculusSubscriptionTierOp
+              .Build();
+
+          sdk.Platform.IAPSubscription.DeleteOculusSubscriptionTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'delete'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'DeletePaymentProviderConfig@platform':
     id: 'DeletePaymentProviderConfig@platform'
@@ -30173,6 +30484,80 @@ functions:
       - 'key'
       - 'keys'
       - 'list'
+
+  'ListOculusSubscriptionGroups@platform':
+    id: 'ListOculusSubscriptionGroups@platform'
+    name: 'ListOculusSubscriptionGroups'
+    description: |-
+      List Meta Quest(Oculus) subscriptions group
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionGroupInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/ListOculusSubscriptionGroups.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.ListOculusSubscriptionGroupsOp
+              .Build();
+
+          var response = sdk.Platform.IAPSubscription.ListOculusSubscriptionGroups(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'groups'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+
+  'ListOculusSubscriptionGroupTier@platform':
+    id: 'ListOculusSubscriptionGroupTier@platform'
+    name: 'ListOculusSubscriptionGroupTier'
+    description: |-
+      List All Tier of AGS Meta Quest(Oculus) subscriptions group
+    parameters:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTierInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAPSubscription.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAPSubscription/ListOculusSubscriptionGroupTier.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAPSubscription.ListOculusSubscriptionGroupTierOp
+              .Build();
+
+          var response = sdk.Platform.IAPSubscription.ListOculusSubscriptionGroupTier(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'group'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'ListStores@platform':
     id: 'ListStores@platform'
@@ -39460,6 +39845,50 @@ functions:
     tags:
       - 'dlc'
       - 'oculus'
+      - 'sync'
+
+  'SyncOculusSubscriptions@platform':
+    id: 'SyncOculusSubscriptions@platform'
+    name: 'SyncOculusSubscriptions'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    parameters:
+      'Body':
+        type: 'OculusSubscriptionSyncRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'List<ThirdPartySubscriptionTransactionInfo>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAP.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAP/SyncOculusSubscriptions.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAP.SyncOculusSubscriptionsOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+                  userId,
+              );
+
+          var response = sdk.Platform.IAP.SyncOculusSubscriptions(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
       - 'sync'
 
   'SyncOrders@platform':

@@ -988,6 +988,9 @@ structs:
       'Tags':
         type: 'List<string>'
         required: true
+      'TargetArchitecture':
+        type: 'string'
+        required: true
       'UploadedAt':
         type: 'DateTime'
         required: true
@@ -1054,6 +1057,9 @@ structs:
         required: true
       'Tags':
         type: 'List<string>'
+        required: true
+      'TargetArchitecture':
+        type: 'string'
         required: true
       'UploadedAt':
         type: 'DateTime'
@@ -1140,6 +1146,9 @@ structs:
         type: 'string'
         required: true
       'OwnerAccountId':
+        type: 'string'
+        required: true
+      'ProcessorArchitecture':
         type: 'string'
         required: true
       'Provider':
@@ -2996,6 +3005,11 @@ functions:
         required: false
         description: |-
           the image tag
+      'TargetArchitecture':
+        type: 'string'
+        required: false
+        description: |-
+          the target architecture (currently only 'linux-x86_64' and 'linux-arm_64' are supported)
     return_type: 'ApiImageList'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -3018,6 +3032,7 @@ functions:
               .SetSortDirection(...)
               .SetStatus(...)
               .SetTag(...)
+              .SetTargetArchitecture(...)
               .Build(
                   namespace_,
               );

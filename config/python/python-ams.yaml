@@ -1029,6 +1029,9 @@ structs:
       'tags':
         type: 'List[str]'
         required: true
+      'target_architecture':
+        type: 'str'
+        required: true
       'uploaded_at':
         type: 'str'
         required: true
@@ -1097,6 +1100,9 @@ structs:
         required: true
       'tags':
         type: 'List[str]'
+        required: true
+      'target_architecture':
+        type: 'str'
         required: true
       'uploaded_at':
         type: 'str'
@@ -1186,6 +1192,9 @@ structs:
         type: 'str'
         required: true
       'owner_account_id':
+        type: 'str'
+        required: true
+      'processor_architecture':
         type: 'str'
         required: true
       'provider':
@@ -2772,6 +2781,11 @@ functions:
         required: false
         description: |-
           the image tag
+      'target_architecture':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          the target architecture (currently only 'linux-x86_64' and 'linux-arm_64' are supported)
     return_type: 'Tuple[Union[None, ApiImageList], Union[None, HttpResponse, ResponseErrorResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'

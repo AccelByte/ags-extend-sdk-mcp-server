@@ -535,6 +535,9 @@ structs:
       'psnEnv':
         type: 'String'
         required: false
+      'syncDeletedFriend':
+        type: 'Boolean'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.lobby.models.*;'
@@ -4988,31 +4991,11 @@ functions:
     description: |-
       Get list of user's offline notifications in a namespace.
     parameters:
-      'endTime':
-        type: 'Integer'
-        required: false
-        description: |-
-          filter data until a certain end time value in the notification (in unix millis)
-      'limit':
-        type: 'Integer'
-        required: false
-        description: |-
-          data size for pagination
       'namespace':
         type: 'String'
         required: true
         description: |-
           namespace
-      'offset':
-        type: 'Integer'
-        required: false
-        description: |-
-          data offset for pagination
-      'startTime':
-        type: 'Integer'
-        required: false
-        description: |-
-          filter data starting from a certain start time value in the notification (in unix millis)
     return_type: 'ModelNotificationsResponse'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
@@ -5025,10 +5008,6 @@ functions:
     example: |-
       try {
           final GetMyOfflineNotifications operation = GetMyOfflineNotifications.builder()
-              .endTime(...)
-              .limit(...)
-              .offset(...)
-              .startTime(...)
               .build(
                   namespace,
               );

@@ -2111,34 +2111,6 @@ functions:
       - 'consent'
       - 'preference'
 
-  'change_preference_consent_1@legal':
-    id: 'change_preference_consent_1@legal'
-    name: 'change_preference_consent_1'
-    description: |-
-      Change marketing preference consent.
-    parameters:
-      'body':
-        type: 'Optional[List[AcceptAgreementRequest]]'
-        required: false
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/change_preference_consent_1.py'
-    example: |-
-      result, error = legal.change_preference_consent_1(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '1'
-      - 'agreement'
-      - 'change'
-      - 'consent'
-      - 'preference'
-
   'check_readiness@legal':
     id: 'check_readiness@legal'
     name: 'check_readiness'
@@ -2171,39 +2143,6 @@ functions:
       'body':
         type: 'Optional[CreateLocalizedPolicyVersionRequest]'
         required: false
-      'policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'Tuple[Union[None, CreateLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/create_localized_policy_19e4a3.py'
-    example: |-
-      result, error = legal.create_localized_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'create'
-      - 'localized'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'create_localized_policy_version_1@legal':
-    id: 'create_localized_policy_version_1@legal'
-    name: 'create_localized_policy_version_1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'Optional[CreateLocalizedPolicyVersionRequest]'
-        required: false
       'namespace':
         type: 'str'
         required: true
@@ -2221,13 +2160,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/create_localized_policy_b58242.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/create_localized_policy_19e4a3.py'
     example: |-
-      result, error = legal.create_localized_policy_version_1(...)
+      result, error = legal.create_localized_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'create'
       - 'localized'
       - 'namespace'
@@ -2239,42 +2177,6 @@ functions:
   'create_policy@legal':
     id: 'create_policy@legal'
     name: 'create_policy'
-    description: |-
-      Create a legal policy.
-      Note:
-
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
-    parameters:
-      'body':
-        type: 'Optional[CreateBasePolicyRequest]'
-        required: false
-    return_type: 'Tuple[Union[None, CreateBasePolicyResponse], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/create_policy.py'
-    example: |-
-      result, error = legal.create_policy(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'base'
-      - 'create'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-
-  'create_policy_1@legal':
-    id: 'create_policy_1@legal'
-    name: 'create_policy_1'
     description: |-
       Create a legal policy.
       Note:
@@ -2301,13 +2203,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/create_policy_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/create_policy.py'
     example: |-
-      result, error = legal.create_policy_1(...)
+      result, error = legal.create_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'base'
       - 'create'
       - 'legal'
@@ -2374,38 +2275,6 @@ functions:
       'body':
         type: 'Optional[CreatePolicyVersionRequest]'
         required: false
-      'policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'Tuple[Union[None, CreatePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/create_policy_version.py'
-    example: |-
-      result, error = legal.create_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'create'
-      - 'policy'
-      - 'version'
-      - 'versions'
-
-  'create_policy_version_1@legal':
-    id: 'create_policy_version_1@legal'
-    name: 'create_policy_version_1'
-    description: |-
-      Create a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'Optional[CreatePolicyVersionRequest]'
-        required: false
       'namespace':
         type: 'str'
         required: true
@@ -2423,13 +2292,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/create_policy_version_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/create_policy_version.py'
     example: |-
-      result, error = legal.create_policy_version_1(...)
+      result, error = legal.create_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'create'
       - 'namespace'
       - 'policy'
@@ -2722,41 +2590,6 @@ functions:
       - 'user'
       - 'versioned'
 
-  'indirect_bulk_accept_versioned_policy_1@legal':
-    id: 'indirect_bulk_accept_versioned_policy_1@legal'
-    name: 'indirect_bulk_accept_versioned_policy_1'
-    description: |-
-      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    parameters:
-      'body':
-        type: 'Optional[List[AcceptAgreementRequest]]'
-        required: false
-      'user_id':
-        type: 'str'
-        required: true
-        description: |-
-          User Id
-    return_type: 'Tuple[Union[None, AcceptAgreementResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/indirect_bulk_accept_ve_f4345a.py'
-    example: |-
-      result, error = legal.indirect_bulk_accept_versioned_policy_1(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '1'
-      - 'accept'
-      - 'agreement'
-      - 'bulk'
-      - 'indirect'
-      - 'policy'
-      - 'versioned'
-
   'indirect_bulk_accept_versioned_policy_v2@legal':
     id: 'indirect_bulk_accept_versioned_policy_v2@legal'
     name: 'indirect_bulk_accept_versioned_policy_v2'
@@ -2887,9 +2720,113 @@ functions:
       - 'invalidate'
       - 'user'
 
-  'partial_update_policy@legal':
-    id: 'partial_update_policy@legal'
-    name: 'partial_update_policy'
+  'old_create_localized_policy_version@legal':
+    id: 'old_create_localized_policy_version@legal'
+    name: 'old_create_localized_policy_version'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'Optional[CreateLocalizedPolicyVersionRequest]'
+        required: false
+      'policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'Tuple[Union[None, CreateLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_create_localized_po_27ca82.py'
+    example: |-
+      result, error = legal.old_create_localized_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'old_create_policy@legal':
+    id: 'old_create_policy@legal'
+    name: 'old_create_policy'
+    description: |-
+      Create a legal policy.
+      Note:
+
+
+        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+    parameters:
+      'body':
+        type: 'Optional[CreateBasePolicyRequest]'
+        required: false
+    return_type: 'Tuple[Union[None, CreateBasePolicyResponse], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/old_create_policy.py'
+    example: |-
+      result, error = legal.old_create_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'base'
+      - 'create'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+
+  'old_create_policy_version@legal':
+    id: 'old_create_policy_version@legal'
+    name: 'old_create_policy_version'
+    description: |-
+      Create a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'Optional[CreatePolicyVersionRequest]'
+        required: false
+      'policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'Tuple[Union[None, CreatePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/old_create_policy_version.py'
+    example: |-
+      result, error = legal.old_create_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'old'
+      - 'policy'
+      - 'version'
+      - 'versions'
+
+  'old_partial_update_policy@legal':
+    id: 'old_partial_update_policy@legal'
+    name: 'old_partial_update_policy'
     description: |-
       Update an existing base policy.
       Note:
@@ -2916,32 +2853,649 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/partial_update_policy.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/old_partial_update_policy.py'
     example: |-
-      result, error = legal.partial_update_policy(...)
+      result, error = legal.old_partial_update_policy(...)
       if error:
           # handle_error(error)
     tags:
       - 'base'
       - 'legal'
+      - 'old'
       - 'partial'
       - 'policies'
       - 'policy'
       - 'update'
 
-  'partial_update_policy_1@legal':
-    id: 'partial_update_policy_1@legal'
-    name: 'partial_update_policy_1'
+  'old_public_retrieve_single_localized_policy_version@legal':
+    id: 'old_public_retrieve_single_localized_policy_version@legal'
+    name: 'old_public_retrieve_single_localized_policy_version'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionPublicResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_public_retrieve_sin_4e7606.py'
+    example: |-
+      result, error = legal.old_public_retrieve_single_localized_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'old_publish_policy_version@legal':
+    id: 'old_publish_policy_version@legal'
+    name: 'old_publish_policy_version'
+    description: |-
+      Manually publish a version of a particular country-specific policy.
+    parameters:
+      'policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Version Id
+      'should_notify':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Should Notify
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/old_publish_policy_version.py'
+    example: |-
+      result, error = legal.old_publish_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'old'
+      - 'policy'
+      - 'publish'
+      - 'version'
+      - 'versions'
+
+  'old_request_presigned_url@legal':
+    id: 'old_request_presigned_url@legal'
+    name: 'old_request_presigned_url'
+    description: |-
+      Request presigned URL for upload attachment for a particular localized version of base policy.
+    parameters:
+      'body':
+        type: 'Optional[UploadPolicyVersionAttachmentRequest]'
+        required: false
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'Tuple[Union[None, UploadLocalizedPolicyVersionAttachmentResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_request_presigned_url.py'
+    example: |-
+      result, error = legal.old_request_presigned_url(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'presigned'
+      - 'request'
+      - 'url'
+      - 'versions'
+
+  'old_retrieve_accepted_agreements@legal':
+    id: 'old_retrieve_accepted_agreements@legal'
+    name: 'old_retrieve_accepted_agreements'
+    description: |-
+      This API will return all accepted Legal Agreements for specified user
+    parameters:
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          User Id
+    return_type: 'Tuple[Union[None, List[RetrieveAcceptedAgreementResponse]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/old_retrieve_accepted_a_36c88d.py'
+    example: |-
+      result, error = legal.old_retrieve_accepted_agreements(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'accepted'
+      - 'agreement'
+      - 'agreements'
+      - 'old'
+      - 'retrieve'
+
+  'old_retrieve_all_policy_types@legal':
+    id: 'old_retrieve_all_policy_types@legal'
+    name: 'old_retrieve_all_policy_types'
+    description: |-
+      Retrieve all supported policy types.
+    parameters:
+      'limit':
+        type: 'int'
+        required: true
+        description: |-
+          Limit
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Offset
+    return_type: 'Tuple[Union[None, List[RetrievePolicyTypeResponse]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/old_retrieve_all_policy_types.py'
+    example: |-
+      result, error = legal.old_retrieve_all_policy_types(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'all'
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'types'
+
+  'old_retrieve_all_users_by_policy_version@legal':
+    id: 'old_retrieve_all_users_by_policy_version@legal'
+    name: 'old_retrieve_all_users_by_policy_version'
+    description: |-
+      This API will return users who has accepted a specific policy version.
+    parameters:
+      'keyword':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          display name or email or username
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'policy_version_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, PagedRetrieveUserAcceptedAgreementResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/old_retrieve_all_users__abe0f3.py'
+    example: |-
+      result, error = legal.old_retrieve_all_users_by_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'agreement'
+      - 'all'
+      - 'by'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'users'
+      - 'version'
+
+  'old_retrieve_latest_policies_by_namespace_and_country_public@legal':
+    id: 'old_retrieve_latest_policies_by_namespace_and_country_public@legal'
+    name: 'old_retrieve_latest_policies_by_namespace_and_country_public'
+    description: |-
+      Retrieve all active latest policies based on a namespace and country.
+      Other detail info:
+
+        * Leave the policyType empty if you want to be responded with all policy type
+        *  Fill the tags if you want to filter the responded policy by tags
+        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+          * Document 1 (default): Region US (default), UA
+          * Document 2 (default): Region US (default)
+          * Document 3 (default): Region US (default)
+          * User: Region UA
+          * Query: alwaysIncludeDefault: true
+          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
+    parameters:
+      'always_include_default':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Always include default
+      'country_code':
+        type: 'str'
+        required: true
+        description: |-
+          Country Code
+      'default_on_empty':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Default On Empty
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'policy_type':
+        type: 'Optional[Union[str, OldRetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]]'
+        required: false
+        description: |-
+          Policy Type
+      'tags':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          tags, separate multiple value by commas parameter
+      'visible_only':
+        type: 'Optional[bool]'
+        required: false
+    return_type: 'Tuple[Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/old_retrieve_latest_pol_6012f3.py'
+    example: |-
+      result, error = legal.old_retrieve_latest_policies_by_namespace_and_country_public(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'and'
+      - 'by'
+      - 'country'
+      - 'latest'
+      - 'namespace'
+      - 'old'
+      - 'policies'
+      - 'public'
+      - 'retrieve'
+
+  'old_retrieve_localized_policy_versions@legal':
+    id: 'old_retrieve_localized_policy_versions@legal'
+    name: 'old_retrieve_localized_policy_versions'
+    description: |-
+      Retrieve versions of a particular country-specific policy.
+    parameters:
+      'policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'Tuple[Union[None, List[RetrieveLocalizedPolicyVersionResponse]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_retrieve_localized__18cbb5.py'
+    example: |-
+      result, error = legal.old_retrieve_localized_policy_versions(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'versions'
+
+  'old_retrieve_policy_country@legal':
+    id: 'old_retrieve_policy_country@legal'
+    name: 'old_retrieve_policy_country'
+    description: |-
+      Retrieve a Base Legal Policy based on a Particular Country.
+    parameters:
+      'base_policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          BasePolicy Id
+      'country_code':
+        type: 'str'
+        required: true
+        description: |-
+          Country Code
+    return_type: 'Tuple[Union[None, RetrievePolicyResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/old_retrieve_policy_country.py'
+    example: |-
+      result, error = legal.old_retrieve_policy_country(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'base'
+      - 'country'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+
+  'old_retrieve_single_localized_policy_version@legal':
+    id: 'old_retrieve_single_localized_policy_version@legal'
+    name: 'old_retrieve_single_localized_policy_version'
+    description: |-
+      Retrieve a version of a particular country-specific policy.
+    parameters:
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_retrieve_single_loc_881bb2.py'
+    example: |-
+      result, error = legal.old_retrieve_single_localized_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'old_retrieve_single_policy@legal':
+    id: 'old_retrieve_single_policy@legal'
+    name: 'old_retrieve_single_policy'
+    description: |-
+      Retrieve a base policy.
+    parameters:
+      'base_policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          BasePolicy Id
+    return_type: 'Tuple[Union[None, RetrieveBasePolicyResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/old_retrieve_single_policy.py'
+    example: |-
+      result, error = legal.old_retrieve_single_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'base'
+      - 'legal'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+
+  'old_retrieve_single_policy_version@legal':
+    id: 'old_retrieve_single_policy_version@legal'
+    name: 'old_retrieve_single_policy_version'
+    description: |-
+      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    parameters:
+      'policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Id
+      'version_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Version Id
+    return_type: 'Tuple[Union[None, List[RetrievePolicyVersionResponse]], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/old_retrieve_single_pol_7be633.py'
+    example: |-
+      result, error = legal.old_retrieve_single_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'old'
+      - 'policy'
+      - 'retrieve'
+      - 'single'
+      - 'version'
+      - 'versions'
+
+  'old_set_default_localized_policy@legal':
+    id: 'old_set_default_localized_policy@legal'
+    name: 'old_set_default_localized_policy'
+    description: |-
+      Update a localized version policy to be the default.
+    parameters:
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_set_default_localiz_e3b777.py'
+    example: |-
+      result, error = legal.old_set_default_localized_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'default'
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'set'
+      - 'versions'
+
+  'old_set_default_policy@legal':
+    id: 'old_set_default_policy@legal'
+    name: 'old_set_default_policy'
+    description: |-
+      Update a policy to be the default.
+    parameters:
+      'policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/old_set_default_policy.py'
+    example: |-
+      result, error = legal.old_set_default_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'default'
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'set'
+
+  'old_update_localized_policy_version@legal':
+    id: 'old_update_localized_policy_version@legal'
+    name: 'old_update_localized_policy_version'
+    description: |-
+      Update a version of a particular country-specific policy.
+    parameters:
+      'body':
+        type: 'Optional[UpdateLocalizedPolicyVersionRequest]'
+        required: false
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+    return_type: 'Tuple[Union[None, UpdateLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/old_update_localized_po_4765cb.py'
+    example: |-
+      result, error = legal.old_update_localized_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'old_update_policy@legal':
+    id: 'old_update_policy@legal'
+    name: 'old_update_policy'
+    description: |-
+      Update country-specific and country-group policy.
+    parameters:
+      'body':
+        type: 'Optional[UpdatePolicyRequest]'
+        required: false
+      'policy_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Id
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/old_update_policy.py'
+    example: |-
+      result, error = legal.old_update_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'old'
+      - 'policies'
+      - 'policy'
+      - 'update'
+
+  'old_update_policy_version@legal':
+    id: 'old_update_policy_version@legal'
+    name: 'old_update_policy_version'
+    description: |-
+      Update a particular policy version.
+    parameters:
+      'body':
+        type: 'Optional[UpdatePolicyVersionRequest]'
+        required: false
+      'policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Policy Version Id
+    return_type: 'Tuple[Union[None, UpdatePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/old_update_policy_version.py'
+    example: |-
+      result, error = legal.old_update_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'old'
+      - 'policy'
+      - 'update'
+      - 'version'
+      - 'versions'
+
+  'partial_update_policy@legal':
+    id: 'partial_update_policy@legal'
+    name: 'partial_update_policy'
     description: |-
       Update an existing base policy.
       Note:
 
-
-        *  countryType field only accept COUNTRY or COUNTRY_GROUP.
-        * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
-
-
-      * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
+          *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+          * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+        * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
     parameters:
       'base_policy_id':
         type: 'str'
@@ -2963,13 +3517,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/partial_update_policy_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/partial_update_policy.py'
     example: |-
-      result, error = legal.partial_update_policy_1(...)
+      result, error = legal.partial_update_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -2979,22 +3532,15 @@ functions:
       - 'update'
       - 'with'
 
-  'publish_policy_version@legal':
-    id: 'publish_policy_version@legal'
-    name: 'publish_policy_version'
+  'public_change_preference_consent@legal':
+    id: 'public_change_preference_consent@legal'
+    name: 'public_change_preference_consent'
     description: |-
-      Manually publish a version of a particular country-specific policy.
+      Change marketing preference consent.
     parameters:
-      'policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Version Id
-      'should_notify':
-        type: 'Optional[bool]'
+      'body':
+        type: 'Optional[List[AcceptAgreementRequest]]'
         required: false
-        description: |-
-          Should Notify
     return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -3002,20 +3548,96 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/publish_policy_version.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/public_change_preferenc_69bf81.py'
     example: |-
-      result, error = legal.publish_policy_version(...)
+      result, error = legal.public_change_preference_consent(...)
       if error:
           # handle_error(error)
     tags:
+      - 'agreement'
+      - 'change'
+      - 'consent'
+      - 'preference'
+      - 'public'
+
+  'public_indirect_bulk_accept_versioned_policy@legal':
+    id: 'public_indirect_bulk_accept_versioned_policy@legal'
+    name: 'public_indirect_bulk_accept_versioned_policy'
+    description: |-
+      Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+    parameters:
+      'body':
+        type: 'Optional[List[AcceptAgreementRequest]]'
+        required: false
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          User Id
+    return_type: 'Tuple[Union[None, AcceptAgreementResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/public_indirect_bulk_ac_42b465.py'
+    example: |-
+      result, error = legal.public_indirect_bulk_accept_versioned_policy(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'accept'
+      - 'agreement'
+      - 'bulk'
+      - 'indirect'
       - 'policy'
-      - 'publish'
+      - 'public'
+      - 'versioned'
+
+  'public_retrieve_single_localized_policy_version@legal':
+    id: 'public_retrieve_single_localized_policy_version@legal'
+    name: 'public_retrieve_single_localized_policy_version'
+    description: |-
+      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+      Other detail info:
+    parameters:
+      'localized_policy_version_id':
+        type: 'str'
+        required: true
+        description: |-
+          Localized Policy Version Id
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionPublicResponse], Union[None, ErrorEntity, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.legal as legal'
+      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/public_retrieve_single__31c235.py'
+    example: |-
+      result, error = legal.public_retrieve_single_localized_policy_version(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'localized'
+      - 'namespace'
+      - 'policy'
+      - 'public'
+      - 'retrieve'
+      - 'single'
       - 'version'
       - 'versions'
+      - 'with'
 
-  'publish_policy_version_1@legal':
-    id: 'publish_policy_version_1@legal'
-    name: 'publish_policy_version_1'
+  'publish_policy_version@legal':
+    id: 'publish_policy_version@legal'
+    name: 'publish_policy_version'
     description: |-
       Manually publish a version of a particular country-specific policy.
     parameters:
@@ -3041,13 +3663,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/publish_policy_version_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/publish_policy_version.py'
     example: |-
-      result, error = legal.publish_policy_version_1(...)
+      result, error = legal.publish_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'publish'
@@ -3069,40 +3690,6 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
-    return_type: 'Tuple[Union[None, UploadLocalizedPolicyVersionAttachmentResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/request_presigned_url.py'
-    example: |-
-      result, error = legal.request_presigned_url(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'presigned'
-      - 'request'
-      - 'url'
-      - 'versions'
-
-  'request_presigned_url_1@legal':
-    id: 'request_presigned_url_1@legal'
-    name: 'request_presigned_url_1'
-    description: |-
-      Request presigned URL for upload attachment for a particular localized version of base policy.
-    parameters:
-      'body':
-        type: 'Optional[UploadPolicyVersionAttachmentRequest]'
-        required: false
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
       'namespace':
         type: 'str'
         required: true
@@ -3115,13 +3702,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/request_presigned_url_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/request_presigned_url.py'
     example: |-
-      result, error = legal.request_presigned_url_1(...)
+      result, error = legal.request_presigned_url(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -3134,35 +3720,6 @@ functions:
   'retrieve_accepted_agreements@legal':
     id: 'retrieve_accepted_agreements@legal'
     name: 'retrieve_accepted_agreements'
-    description: |-
-      This API will return all accepted Legal Agreements for specified user
-    parameters:
-      'user_id':
-        type: 'str'
-        required: true
-        description: |-
-          User Id
-    return_type: 'Tuple[Union[None, List[RetrieveAcceptedAgreementResponse]], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/retrieve_accepted_agreements.py'
-    example: |-
-      result, error = legal.retrieve_accepted_agreements(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'accepted'
-      - 'agreement'
-      - 'agreements'
-      - 'retrieve'
-
-  'retrieve_accepted_agreements_1@legal':
-    id: 'retrieve_accepted_agreements_1@legal'
-    name: 'retrieve_accepted_agreements_1'
     description: |-
       This API will return all accepted Legal Agreements for specified user.
     parameters:
@@ -3188,13 +3745,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agreements_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agreements.py'
     example: |-
-      result, error = legal.retrieve_accepted_agreements_1(...)
+      result, error = legal.retrieve_accepted_agreements(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'accepted'
       - 'agreement'
       - 'agreements'
@@ -3377,43 +3933,6 @@ functions:
         required: true
         description: |-
           Limit
-      'offset':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          Offset
-    return_type: 'Tuple[Union[None, List[RetrievePolicyTypeResponse]], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/retrieve_all_policy_types.py'
-    example: |-
-      result, error = legal.retrieve_all_policy_types(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'all'
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'types'
-
-  'retrieve_all_policy_types_1@legal':
-    id: 'retrieve_all_policy_types_1@legal'
-    name: 'retrieve_all_policy_types_1'
-    description: |-
-      Retrieve all supported policy types.
-    parameters:
-      'limit':
-        type: 'int'
-        required: true
-        description: |-
-          Limit
       'namespace':
         type: 'str'
         required: true
@@ -3431,13 +3950,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_all_policy_types_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_all_policy_types.py'
     example: |-
-      result, error = legal.retrieve_all_policy_types_1(...)
+      result, error = legal.retrieve_all_policy_types(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'all'
       - 'base'
       - 'legal'
@@ -3451,51 +3969,6 @@ functions:
   'retrieve_all_users_by_policy_version@legal':
     id: 'retrieve_all_users_by_policy_version@legal'
     name: 'retrieve_all_users_by_policy_version'
-    description: |-
-      This API will return users who has accepted a specific policy version.
-    parameters:
-      'keyword':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          display name or email or username
-      'limit':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          limit
-      'offset':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          offset
-      'policy_version_id':
-        type: 'str'
-        required: true
-    return_type: 'Tuple[Union[None, PagedRetrieveUserAcceptedAgreementResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement/retrieve_all_users_by_p_90a012.py'
-    example: |-
-      result, error = legal.retrieve_all_users_by_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'agreement'
-      - 'all'
-      - 'by'
-      - 'policy'
-      - 'retrieve'
-      - 'users'
-      - 'version'
-
-  'retrieve_all_users_by_policy_version_1@legal':
-    id: 'retrieve_all_users_by_policy_version_1@legal'
-    name: 'retrieve_all_users_by_policy_version_1'
     description: |-
       This API will return all users who has accepted a specific policy version.
     parameters:
@@ -3534,13 +4007,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_all_users_by_p_3f6faa.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_all_users_by_p_90a012.py'
     example: |-
-      result, error = legal.retrieve_all_users_by_policy_version_1(...)
+      result, error = legal.retrieve_all_users_by_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'agreement'
       - 'all'
       - 'by'
@@ -3656,10 +4128,9 @@ functions:
     description: |-
       Retrieve all active latest policies based on a country.
       Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+          * Leave the policyType empty if you want to be responded with all policy type
+          *  Fill the tags if you want to filter the responded policy by tags
+          *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
     parameters:
       'country_code':
         type: 'str'
@@ -3705,79 +4176,6 @@ functions:
     id: 'retrieve_latest_policies_by_namespace_and_country_public@legal'
     name: 'retrieve_latest_policies_by_namespace_and_country_public'
     description: |-
-      Retrieve all active latest policies based on a namespace and country.
-      Other detail info:
-
-        * Leave the policyType empty if you want to be responded with all policy type
-        *  Fill the tags if you want to filter the responded policy by tags
-        *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
-        *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
-          * Document 1 (default): Region US (default), UA
-          * Document 2 (default): Region US (default)
-          * Document 3 (default): Region US (default)
-          * User: Region UA
-          * Query: alwaysIncludeDefault: true
-          * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-    parameters:
-      'always_include_default':
-        type: 'Optional[bool]'
-        required: false
-        description: |-
-          Always include default
-      'country_code':
-        type: 'str'
-        required: true
-        description: |-
-          Country Code
-      'default_on_empty':
-        type: 'Optional[bool]'
-        required: false
-        description: |-
-          Default On Empty
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          Namespace
-      'policy_type':
-        type: 'Optional[Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]]'
-        required: false
-        description: |-
-          Policy Type
-      'tags':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          tags, separate multiple value by commas parameter
-      'visible_only':
-        type: 'Optional[bool]'
-        required: false
-    return_type: 'Tuple[Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/retrieve_latest_policie_95ffb6.py'
-    example: |-
-      result, error = legal.retrieve_latest_policies_by_namespace_and_country_public(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'and'
-      - 'by'
-      - 'country'
-      - 'latest'
-      - 'namespace'
-      - 'policies'
-      - 'public'
-      - 'retrieve'
-
-  'retrieve_latest_policies_by_namespace_and_country_public_1@legal':
-    id: 'retrieve_latest_policies_by_namespace_and_country_public_1@legal'
-    name: 'retrieve_latest_policies_by_namespace_and_country_public_1'
-    description: |-
       This API is used to list all the related doc in register page, include optional & mandatory (when env config APP_LEGAL_AGREEMENT_ALWAYS_INCLUDE_DEFAULT=true).
       Other detail info: Here are the result of different cases
             * Document 1, Region US (default, mandatory), UA (optional); clientID: [client_A]
@@ -3822,13 +4220,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace_v2/retrieve_latest_policie_0fb64b.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace_v2/retrieve_latest_policie_95ffb6.py'
     example: |-
-      result, error = legal.retrieve_latest_policies_by_namespace_and_country_public_1(...)
+      result, error = legal.retrieve_latest_policies_by_namespace_and_country_public(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'and'
       - 'by'
       - 'country'
@@ -3909,35 +4306,6 @@ functions:
     description: |-
       Retrieve versions of a particular country-specific policy.
     parameters:
-      'policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'Tuple[Union[None, List[RetrieveLocalizedPolicyVersionResponse]], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/retrieve_localized_poli_24a671.py'
-    example: |-
-      result, error = legal.retrieve_localized_policy_versions(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'versions'
-
-  'retrieve_localized_policy_versions_1@legal':
-    id: 'retrieve_localized_policy_versions_1@legal'
-    name: 'retrieve_localized_policy_versions_1'
-    description: |-
-      Retrieve versions of a particular country-specific policy.
-    parameters:
       'namespace':
         type: 'str'
         required: true
@@ -3955,13 +4323,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/retrieve_localized_poli_4a4859.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/retrieve_localized_poli_24a671.py'
     example: |-
-      result, error = legal.retrieve_localized_policy_versions_1(...)
+      result, error = legal.retrieve_localized_policy_versions(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4012,42 +4379,6 @@ functions:
         required: true
         description: |-
           Country Code
-    return_type: 'Tuple[Union[None, RetrievePolicyResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/retrieve_policy_country.py'
-    example: |-
-      result, error = legal.retrieve_policy_country(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'base'
-      - 'country'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-
-  'retrieve_policy_country_1@legal':
-    id: 'retrieve_policy_country_1@legal'
-    name: 'retrieve_policy_country_1'
-    description: |-
-      Retrieve a Base Legal Policy based on a Particular Country.
-    parameters:
-      'base_policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          BasePolicy Id
-      'country_code':
-        type: 'str'
-        required: true
-        description: |-
-          Country Code
       'namespace':
         type: 'str'
         required: true
@@ -4060,13 +4391,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_policy_country_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_policy_country.py'
     example: |-
-      result, error = legal.retrieve_policy_country_1(...)
+      result, error = legal.retrieve_policy_country(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'base'
       - 'country'
       - 'legal'
@@ -4087,6 +4417,11 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
     return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -4094,122 +4429,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/retrieve_single_localiz_2f6231.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/retrieve_single_localiz_2f6231.py'
     example: |-
       result, error = legal.retrieve_single_localized_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'retrieve_single_localized_policy_version_1@legal':
-    id: 'retrieve_single_localized_policy_version_1@legal'
-    name: 'retrieve_single_localized_policy_version_1'
-    description: |-
-      Retrieve a version of a particular country-specific policy.
-    parameters:
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          Namespace
-    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/retrieve_single_localiz_f21ac4.py'
-    example: |-
-      result, error = legal.retrieve_single_localized_policy_version_1(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '1'
-      - 'localized'
-      - 'namespace'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-      - 'with'
-
-  'retrieve_single_localized_policy_version_2@legal':
-    id: 'retrieve_single_localized_policy_version_2@legal'
-    name: 'retrieve_single_localized_policy_version_2'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionPublicResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/retrieve_single_localiz_6ecc81.py'
-    example: |-
-      result, error = legal.retrieve_single_localized_policy_version_2(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '2'
-      - 'localized'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'retrieve_single_localized_policy_version_3@legal':
-    id: 'retrieve_single_localized_policy_version_3@legal'
-    name: 'retrieve_single_localized_policy_version_3'
-    description: |-
-      Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
-      Other detail info:
-    parameters:
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          Namespace
-    return_type: 'Tuple[Union[None, RetrieveLocalizedPolicyVersionPublicResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/retrieve_single_localiz_480659.py'
-    example: |-
-      result, error = legal.retrieve_single_localized_policy_version_3(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '3'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4230,37 +4455,6 @@ functions:
         required: true
         description: |-
           BasePolicy Id
-    return_type: 'Tuple[Union[None, RetrieveBasePolicyResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies/retrieve_single_policy.py'
-    example: |-
-      result, error = legal.retrieve_single_policy(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'base'
-      - 'legal'
-      - 'policies'
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-
-  'retrieve_single_policy_1@legal':
-    id: 'retrieve_single_policy_1@legal'
-    name: 'retrieve_single_policy_1'
-    description: |-
-      Retrieve a base policy.
-    parameters:
-      'base_policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          BasePolicy Id
       'namespace':
         type: 'str'
         required: true
@@ -4273,13 +4467,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_single_policy_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/base_legal_policies_with_namespace/retrieve_single_policy.py'
     example: |-
-      result, error = legal.retrieve_single_policy_1(...)
+      result, error = legal.retrieve_single_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'base'
       - 'legal'
       - 'namespace'
@@ -4295,41 +4488,6 @@ functions:
     description: |-
       Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
     parameters:
-      'policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Id
-      'version_id':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Version Id
-    return_type: 'Tuple[Union[None, List[RetrievePolicyVersionResponse]], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/retrieve_single_policy_version.py'
-    example: |-
-      result, error = legal.retrieve_single_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'policy'
-      - 'retrieve'
-      - 'single'
-      - 'version'
-      - 'versions'
-
-  'retrieve_single_policy_version_1@legal':
-    id: 'retrieve_single_policy_version_1@legal'
-    name: 'retrieve_single_policy_version_1'
-    description: |-
-      Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
-    parameters:
       'namespace':
         type: 'str'
         required: true
@@ -4352,13 +4510,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/retrieve_single_policy__f63224.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/retrieve_single_policy_version.py'
     example: |-
-      result, error = legal.retrieve_single_policy_version_1(...)
+      result, error = legal.retrieve_single_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'retrieve'
@@ -4367,39 +4524,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'set_default_policy@legal':
-    id: 'set_default_policy@legal'
-    name: 'set_default_policy'
-    description: |-
-      Update a localized version policy to be the default.
-    parameters:
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/set_default_policy.py'
-    example: |-
-      result, error = legal.set_default_policy(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'default'
-      - 'localized'
-      - 'policy'
-      - 'set'
-      - 'versions'
-
-  'set_default_policy_1@legal':
-    id: 'set_default_policy_1@legal'
-    name: 'set_default_policy_1'
+  'set_default_localized_policy@legal':
+    id: 'set_default_localized_policy@legal'
+    name: 'set_default_localized_policy'
     description: |-
       Update a localized version policy to be the default.
     parameters:
@@ -4420,13 +4547,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/set_default_policy_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/set_default_localized_policy.py'
     example: |-
-      result, error = legal.set_default_policy_1(...)
+      result, error = legal.set_default_localized_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'default'
       - 'localized'
       - 'namespace'
@@ -4435,39 +4561,9 @@ functions:
       - 'versions'
       - 'with'
 
-  'set_default_policy_2@legal':
-    id: 'set_default_policy_2@legal'
-    name: 'set_default_policy_2'
-    description: |-
-      Update a policy to be the default.
-    parameters:
-      'policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/set_default_policy_2.py'
-    example: |-
-      result, error = legal.set_default_policy_2(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - '2'
-      - 'default'
-      - 'policies'
-      - 'policy'
-      - 'set'
-
-  'set_default_policy_3@legal':
-    id: 'set_default_policy_3@legal'
-    name: 'set_default_policy_3'
+  'set_default_policy@legal':
+    id: 'set_default_policy@legal'
+    name: 'set_default_policy'
     description: |-
       Update a policy to be the default.
     parameters:
@@ -4488,13 +4584,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace/set_default_policy_3.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace/set_default_policy.py'
     example: |-
-      result, error = legal.set_default_policy_3(...)
+      result, error = legal.set_default_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '3'
       - 'default'
       - 'namespace'
       - 'policies'
@@ -4580,39 +4675,6 @@ functions:
         required: true
         description: |-
           Localized Policy Version Id
-    return_type: 'Tuple[Union[None, UpdateLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions/update_localized_policy_a8a90f.py'
-    example: |-
-      result, error = legal.update_localized_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'localized'
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'update_localized_policy_version_1@legal':
-    id: 'update_localized_policy_version_1@legal'
-    name: 'update_localized_policy_version_1'
-    description: |-
-      Update a version of a particular country-specific policy.
-    parameters:
-      'body':
-        type: 'Optional[UpdateLocalizedPolicyVersionRequest]'
-        required: false
-      'localized_policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Localized Policy Version Id
       'namespace':
         type: 'str'
         required: true
@@ -4625,13 +4687,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/update_localized_policy_b28b13.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/localized_policy_versions_with_namespace/update_localized_policy_a8a90f.py'
     example: |-
-      result, error = legal.update_localized_policy_version_1(...)
+      result, error = legal.update_localized_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'localized'
       - 'namespace'
       - 'policy'
@@ -4649,37 +4710,6 @@ functions:
       'body':
         type: 'Optional[UpdatePolicyRequest]'
         required: false
-      'policy_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Id
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies/update_policy.py'
-    example: |-
-      result, error = legal.update_policy(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'policies'
-      - 'policy'
-      - 'update'
-
-  'update_policy_1@legal':
-    id: 'update_policy_1@legal'
-    name: 'update_policy_1'
-    description: |-
-      Update country-specific and country-group policy.
-    parameters:
-      'body':
-        type: 'Optional[UpdatePolicyRequest]'
-        required: false
       'namespace':
         type: 'str'
         required: true
@@ -4697,13 +4727,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace/update_policy_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policies_with_namespace/update_policy.py'
     example: |-
-      result, error = legal.update_policy_1(...)
+      result, error = legal.update_policy(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'namespace'
       - 'policies'
       - 'policy'
@@ -4719,38 +4748,6 @@ functions:
       'body':
         type: 'Optional[UpdatePolicyVersionRequest]'
         required: false
-      'policy_version_id':
-        type: 'str'
-        required: true
-        description: |-
-          Policy Version Id
-    return_type: 'Tuple[Union[None, UpdatePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.legal as legal'
-      - 'import accelbyte_py_sdk.api.legal.models as legal_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions/update_policy_version.py'
-    example: |-
-      result, error = legal.update_policy_version(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'policy'
-      - 'update'
-      - 'version'
-      - 'versions'
-
-  'update_policy_version_1@legal':
-    id: 'update_policy_version_1@legal'
-    name: 'update_policy_version_1'
-    description: |-
-      Update a particular policy version.
-    parameters:
-      'body':
-        type: 'Optional[UpdatePolicyVersionRequest]'
-        required: false
       'namespace':
         type: 'str'
         required: true
@@ -4768,13 +4765,12 @@ functions:
       - 'import accelbyte_py_sdk.api.legal as legal'
       - 'import accelbyte_py_sdk.api.legal.models as legal_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/update_policy_version_1.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/legal/operations/policy_versions_with_namespace/update_policy_version.py'
     example: |-
-      result, error = legal.update_policy_version_1(...)
+      result, error = legal.update_policy_version(...)
       if error:
           # handle_error(error)
     tags:
-      - '1'
       - 'namespace'
       - 'policy'
       - 'update'

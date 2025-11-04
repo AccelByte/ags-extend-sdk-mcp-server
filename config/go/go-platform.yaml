@@ -968,6 +968,21 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/ticket/acquire_user_ticket_parameters.go'
 
+  'AddTierIntoMetaQuestSubscriptionGroupParams@platform':
+    id: 'AddTierIntoMetaQuestSubscriptionGroupParams@platform'
+    name: 'AddTierIntoMetaQuestSubscriptionGroupParams'
+    fields:
+      'Body':
+        type: '*ThirdPartySubscriptionTierCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/add_tier_into_meta_quest_subscription_group_parameters.go'
+
   'AdminCreateUserOrderParams@platform':
     id: 'AdminCreateUserOrderParams@platform'
     name: 'AdminCreateUserOrderParams'
@@ -1045,6 +1060,24 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/admin_reset_steam_job_time_parameters.go'
+
+  'AdminSyncOculusSubscriptionsParams@platform':
+    id: 'AdminSyncOculusSubscriptionsParams@platform'
+    name: 'AdminSyncOculusSubscriptionsParams'
+    fields:
+      'Body':
+        type: '*OculusSubscriptionSyncRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/admin_sync_oculus_subscriptions_parameters.go'
 
   'AdminSyncSteamAbnormalTransactionParams@platform':
     id: 'AdminSyncSteamAbnormalTransactionParams@platform'
@@ -1695,6 +1728,21 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/key_group/create_key_group_parameters.go'
 
+  'CreateOculusSubscriptionGroupParams@platform':
+    id: 'CreateOculusSubscriptionGroupParams@platform'
+    name: 'CreateOculusSubscriptionGroupParams'
+    fields:
+      'Body':
+        type: '*ThirdPartySubscriptionGroupCreate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/create_oculus_subscription_group_parameters.go'
+
   'CreatePaymentOrderByDedicatedParams@platform':
     id: 'CreatePaymentOrderByDedicatedParams@platform'
     name: 'CreatePaymentOrderByDedicatedParams'
@@ -2169,6 +2217,36 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/delete_oculus_iap_config_parameters.go'
+
+  'DeleteOculusSubscriptionGroupParams@platform':
+    id: 'DeleteOculusSubscriptionGroupParams@platform'
+    name: 'DeleteOculusSubscriptionGroupParams'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/delete_oculus_subscription_group_parameters.go'
+
+  'DeleteOculusSubscriptionTierParams@platform':
+    id: 'DeleteOculusSubscriptionTierParams@platform'
+    name: 'DeleteOculusSubscriptionTierParams'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/delete_oculus_subscription_tier_parameters.go'
 
   'DeletePaymentProviderConfigParams@platform':
     id: 'DeletePaymentProviderConfigParams@platform'
@@ -5284,6 +5362,33 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/key_group'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/key_group/list_keys_parameters.go'
+
+  'ListOculusSubscriptionGroupsParams@platform':
+    id: 'ListOculusSubscriptionGroupsParams@platform'
+    name: 'ListOculusSubscriptionGroupsParams'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/list_oculus_subscription_groups_parameters.go'
+
+  'ListOculusSubscriptionGroupTierParams@platform':
+    id: 'ListOculusSubscriptionGroupTierParams@platform'
+    name: 'ListOculusSubscriptionGroupTierParams'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+      'Sku':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap_subscription/list_oculus_subscription_group_tier_parameters.go'
 
   'ListStoresParams@platform':
     id: 'ListStoresParams@platform'
@@ -9626,6 +9731,24 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/dlc'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/dlc/sync_oculus_dlc_parameters.go'
+
+  'SyncOculusSubscriptionsParams@platform':
+    id: 'SyncOculusSubscriptionsParams@platform'
+    name: 'SyncOculusSubscriptionsParams'
+    fields:
+      'Body':
+        type: '*OculusSubscriptionSyncRequest'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/sync_oculus_subscriptions_parameters.go'
 
   'SyncOrdersParams@platform':
     id: 'SyncOrdersParams@platform'
@@ -19070,6 +19193,11 @@ structs:
         required: false
         description: |-
           inventory config
+      'ItemID':
+        type: 'string'
+        required: false
+        description: |-
+          Item ID (optional). UUID V4 without hyphen format
       'ItemIds':
         type: '[]string'
         required: false
@@ -20795,6 +20923,11 @@ structs:
         required: true
         description: |-
           namespace
+      'WebhookVerifyToken':
+        type: 'string'
+        required: false
+        description: |-
+          oculus webhook verify token
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
@@ -20814,6 +20947,11 @@ structs:
         required: false
         description: |-
           oculus api app secret, don't allow white space and *
+      'WebhookVerifyToken':
+        type: 'string'
+        required: false
+        description: |-
+          oculus webhook verify token, please refer this link: https://developers.meta.com/horizon/documentation/unity/ps-webhooks-getting-started
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
@@ -20852,6 +20990,20 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/oculus_reconcile_result.go'
+
+  'OculusSubscriptionSyncRequest@platform':
+    id: 'OculusSubscriptionSyncRequest@platform'
+    name: 'OculusSubscriptionSyncRequest'
+    fields:
+      'Skus':
+        type: '[]string'
+        required: false
+        description: |-
+          Meta Quest Subscription, if pass an empty list or null, will fetch all of subscription sku which config in AGS subscription config.
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/oculus_subscription_sync_request.go'
 
   'Operation@platform':
     id: 'Operation@platform'
@@ -27439,6 +27591,34 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/test_result.go'
 
+  'ThirdPartySubscriptionGroupCreate@platform':
+    id: 'ThirdPartySubscriptionGroupCreate@platform'
+    name: 'ThirdPartySubscriptionGroupCreate'
+    fields:
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/third_party_subscription_group_create.go'
+
+  'ThirdPartySubscriptionGroupInfo@platform':
+    id: 'ThirdPartySubscriptionGroupInfo@platform'
+    name: 'ThirdPartySubscriptionGroupInfo'
+    fields:
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          subscription group sku, unique identification
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/third_party_subscription_group_info.go'
+
   'ThirdPartySubscriptionOwnership@platform':
     id: 'ThirdPartySubscriptionOwnership@platform'
     name: 'ThirdPartySubscriptionOwnership'
@@ -27452,6 +27632,44 @@ structs:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/third_party_subscription_ownership.go'
+
+  'ThirdPartySubscriptionTierCreate@platform':
+    id: 'ThirdPartySubscriptionTierCreate@platform'
+    name: 'ThirdPartySubscriptionTierCreate'
+    fields:
+      'GroupSku':
+        type: 'string'
+        required: false
+        description: |-
+          Group sku
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/third_party_subscription_tier_create.go'
+
+  'ThirdPartySubscriptionTierInfo@platform':
+    id: 'ThirdPartySubscriptionTierInfo@platform'
+    name: 'ThirdPartySubscriptionTierInfo'
+    fields:
+      'GroupSku':
+        type: 'string'
+        required: false
+        description: |-
+          Group sku
+      'Sku':
+        type: 'string'
+        required: false
+        description: |-
+          Tier sku
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/third_party_subscription_tier_info.go'
 
   'ThirdPartySubscriptionTransactionHistoryInfo@platform':
     id: 'ThirdPartySubscriptionTransactionHistoryInfo@platform'
@@ -29471,6 +29689,40 @@ functions:
       - 'ticket'
       - 'user'
 
+  'AddTierIntoMetaQuestSubscriptionGroupShort@platform':
+    id: 'AddTierIntoMetaQuestSubscriptionGroupShort@platform'
+    name: 'AddTierIntoMetaQuestSubscriptionGroupShort'
+    description: |-
+      Create Meta Quest(Oculus) subscriptions tier
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.AddTierIntoMetaQuestSubscriptionGroupParams'
+        required: true
+    return_type: '(*iap_subscription.AddTierIntoMetaQuestSubscriptionGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.AddTierIntoMetaQuestSubscriptionGroupParams{ ... }
+      res, err := iapSubscriptionService.AddTierIntoMetaQuestSubscriptionGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'add'
+      - 'group'
+      - 'iap'
+      - 'into'
+      - 'meta'
+      - 'quest'
+      - 'subscription'
+      - 'tier'
+
   'AdminCreateUserOrderShort@platform':
     id: 'AdminCreateUserOrderShort@platform'
     name: 'AdminCreateUserOrderShort'
@@ -29651,6 +29903,37 @@ functions:
       - 'reset'
       - 'steam'
       - 'time'
+
+  'AdminSyncOculusSubscriptionsShort@platform':
+    id: 'AdminSyncOculusSubscriptionsShort@platform'
+    name: 'AdminSyncOculusSubscriptionsShort'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    struct: 'IAPService'
+    parameters:
+      params:
+        type: '*iap.AdminSyncOculusSubscriptionsParams'
+        required: true
+    return_type: '(*iap.AdminSyncOculusSubscriptionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iap.go'
+    example: |-
+      iapService := platform.IAPService{ ... }
+      params := iap.AdminSyncOculusSubscriptionsParams{ ... }
+      res, err := iapService.AdminSyncOculusSubscriptionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
+      - 'sync'
 
   'AdminSyncSteamAbnormalTransactionShort@platform':
     id: 'AdminSyncSteamAbnormalTransactionShort@platform'
@@ -30731,6 +31014,8 @@ functions:
 
           {
 
+             "itemId": "b478be9ad42f4d0f8ba49ef3ef605a83" (optional, UUID V4 without hyphen format)
+
              "categoryPath": "/games",
 
              "localizations": {
@@ -31046,6 +31331,37 @@ functions:
       - 'create'
       - 'group'
       - 'key'
+
+  'CreateOculusSubscriptionGroupShort@platform':
+    id: 'CreateOculusSubscriptionGroupShort@platform'
+    name: 'CreateOculusSubscriptionGroupShort'
+    description: |-
+      Create subscriptions group
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.CreateOculusSubscriptionGroupParams'
+        required: true
+    return_type: '(*iap_subscription.CreateOculusSubscriptionGroupResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.CreateOculusSubscriptionGroupParams{ ... }
+      res, err := iapSubscriptionService.CreateOculusSubscriptionGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
 
   'CreatePaymentOrderByDedicatedShort@platform':
     id: 'CreatePaymentOrderByDedicatedShort@platform'
@@ -32152,6 +32468,66 @@ functions:
       - 'delete'
       - 'iap'
       - 'oculus'
+
+  'DeleteOculusSubscriptionGroupShort@platform':
+    id: 'DeleteOculusSubscriptionGroupShort@platform'
+    name: 'DeleteOculusSubscriptionGroupShort'
+    description: |-
+      can't delete it if this subscription group is used.
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.DeleteOculusSubscriptionGroupParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.DeleteOculusSubscriptionGroupParams{ ... }
+      res, err := iapSubscriptionService.DeleteOculusSubscriptionGroupShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'group'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+
+  'DeleteOculusSubscriptionTierShort@platform':
+    id: 'DeleteOculusSubscriptionTierShort@platform'
+    name: 'DeleteOculusSubscriptionTierShort'
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.DeleteOculusSubscriptionTierParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.DeleteOculusSubscriptionTierParams{ ... }
+      res, err := iapSubscriptionService.DeleteOculusSubscriptionTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'delete'
+      - 'iap'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'DeletePaymentProviderConfigShort@platform':
     id: 'DeletePaymentProviderConfigShort@platform'
@@ -37648,6 +38024,69 @@ functions:
       - 'key'
       - 'keys'
       - 'list'
+
+  'ListOculusSubscriptionGroupsShort@platform':
+    id: 'ListOculusSubscriptionGroupsShort@platform'
+    name: 'ListOculusSubscriptionGroupsShort'
+    description: |-
+      List Meta Quest(Oculus) subscriptions group
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.ListOculusSubscriptionGroupsParams'
+        required: true
+    return_type: '(*iap_subscription.ListOculusSubscriptionGroupsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.ListOculusSubscriptionGroupsParams{ ... }
+      res, err := iapSubscriptionService.ListOculusSubscriptionGroupsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'groups'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+
+  'ListOculusSubscriptionGroupTierShort@platform':
+    id: 'ListOculusSubscriptionGroupTierShort@platform'
+    name: 'ListOculusSubscriptionGroupTierShort'
+    description: |-
+      List All Tier of AGS Meta Quest(Oculus) subscriptions group
+    struct: 'IAPSubscriptionService'
+    parameters:
+      params:
+        type: '*iap_subscription.ListOculusSubscriptionGroupTierParams'
+        required: true
+    return_type: '(*iap_subscription.ListOculusSubscriptionGroupTierResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap_subscription'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iapSubscription.go'
+    example: |-
+      iapSubscriptionService := platform.IAPSubscriptionService{ ... }
+      params := iap_subscription.ListOculusSubscriptionGroupTierParams{ ... }
+      res, err := iapSubscriptionService.ListOculusSubscriptionGroupTierShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'group'
+      - 'iap'
+      - 'list'
+      - 'oculus'
+      - 'subscription'
+      - 'tier'
 
   'ListStoresShort@platform':
     id: 'ListStoresShort@platform'
@@ -43252,6 +43691,36 @@ functions:
     tags:
       - 'dlc'
       - 'oculus'
+      - 'sync'
+
+  'SyncOculusSubscriptionsShort@platform':
+    id: 'SyncOculusSubscriptionsShort@platform'
+    name: 'SyncOculusSubscriptionsShort'
+    description: |-
+      this endpoint only return existed subscription transaction info
+    struct: 'IAPService'
+    parameters:
+      params:
+        type: '*iap.SyncOculusSubscriptionsParams'
+        required: true
+    return_type: '(*iap.SyncOculusSubscriptionsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iap.go'
+    example: |-
+      iapService := platform.IAPService{ ... }
+      params := iap.SyncOculusSubscriptionsParams{ ... }
+      res, err := iapService.SyncOculusSubscriptionsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'iap'
+      - 'oculus'
+      - 'subscriptions'
       - 'sync'
 
   'SyncOrdersShort@platform':

@@ -589,6 +589,9 @@ structs:
       'psn_env':
         type: 'str'
         required: false
+      'sync_deleted_friend':
+        type: 'bool'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.lobby.models as lobby_models'
@@ -4548,31 +4551,11 @@ functions:
     description: |-
       Get list of user's offline notifications in a namespace.
     parameters:
-      'end_time':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          filter data until a certain end time value in the notification (in unix millis)
-      'limit':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          data size for pagination
       'namespace':
         type: 'str'
         required: true
         description: |-
           namespace
-      'offset':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          data offset for pagination
-      'start_time':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          filter data starting from a certain start time value in the notification (in unix millis)
     return_type: 'Tuple[Union[None, ModelNotificationsResponse], Union[None, HttpResponse, RestapiErrorResponseV1]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'

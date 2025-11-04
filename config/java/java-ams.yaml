@@ -947,6 +947,9 @@ structs:
       'tags':
         type: 'List<String>'
         required: true
+      'targetArchitecture':
+        type: 'String'
+        required: true
       'uploadedAt':
         type: 'String'
         required: true
@@ -1011,6 +1014,9 @@ structs:
         required: true
       'tags':
         type: 'List<String>'
+        required: true
+      'targetArchitecture':
+        type: 'String'
         required: true
       'uploadedAt':
         type: 'String'
@@ -1094,6 +1100,9 @@ structs:
         type: 'String'
         required: true
       'ownerAccountId':
+        type: 'String'
+        required: true
+      'processorArchitecture':
         type: 'String'
         required: true
       'provider':
@@ -3007,6 +3016,11 @@ functions:
         required: false
         description: |-
           the image tag
+      'targetArchitecture':
+        type: 'String'
+        required: false
+        description: |-
+          the target architecture (currently only 'linux-x86_64' and 'linux-arm_64' are supported)
     return_type: 'ApiImageList'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
@@ -3028,6 +3042,7 @@ functions:
               .sortDirection(...)
               .status(...)
               .tag(...)
+              .targetArchitecture(...)
               .build(
                   namespace,
               );

@@ -562,6 +562,9 @@ structs:
       'PsnEnv':
         type: 'string'
         required: false
+      'SyncDeletedFriend':
+        type: 'bool'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -4927,31 +4930,11 @@ functions:
     description: |-
       Get list of user's offline notifications in a namespace.
     parameters:
-      'EndTime':
-        type: 'long'
-        required: false
-        description: |-
-          filter data until a certain end time value in the notification (in unix millis)
-      'Limit':
-        type: 'long'
-        required: false
-        description: |-
-          data size for pagination
       'Namespace':
         type: 'string'
         required: true
         description: |-
           namespace
-      'Offset':
-        type: 'long'
-        required: false
-        description: |-
-          data offset for pagination
-      'StartTime':
-        type: 'long'
-        required: false
-        description: |-
-          filter data starting from a certain start time value in the notification (in unix millis)
     return_type: 'ModelNotificationsResponse'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -4965,13 +4948,7 @@ functions:
       try
       {
           var operation = sdk.Lobby.Notification.GetMyOfflineNotificationsOp
-              .SetEndTime(...)
-              .SetLimit(...)
-              .SetOffset(...)
-              .SetStartTime(...)
-              .Build(
-                  namespace_,
-              );
+              .Build();
 
           var response = sdk.Lobby.Notification.GetMyOfflineNotifications(operation);
       }
