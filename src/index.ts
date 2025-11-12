@@ -1,23 +1,47 @@
-import { config as loadEnv } from "dotenv";
-import { getLogger } from "./logger.js";
+// Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
 
-const logger = getLogger();
+import SessionManager from './session/manager.js';
+import { BaseServer } from './server/types.js';
+import StreamableHttpServer from './server/streamableHttp.js';
+import StdioServer from './server/stdio.js';
 
-loadEnv({quiet: true});
+import { CONFIG } from './config.js';
+import registerResources from './resources/register.js';
+import searchSymbolsTool from './tools/symbols/searchTool.js';
+import describeSymbolsTool from './tools/symbols/describeTool.js';
+import createExtendAppPrompt from './prompts/createExtendApp/prompt.js';
 
-async function main() {
-  const transport = process.env.TRANSPORT ?? "stdio";
-  if (transport === "stdio") {
-    await import('./stdio.js');
-  } else if (transport === "streamableHttp") {
-    await import('./streamableHttp.js');
-  } else {
-    logger.error({ transport: transport }, "Invalid transport (valid transports: stdio, streamableHttp)");
-    process.exit(1);
-  }
+const sessionManager = new SessionManager();
+
+let server: BaseServer;
+if (CONFIG.transport === 'http') {
+  server = new StreamableHttpServer(
+    CONFIG.name,
+    CONFIG.version,
+    CONFIG.port,
+    sessionManager
+  );
+} else if (CONFIG.transport === 'stdio') {
+  server = new StdioServer(CONFIG.name, CONFIG.version, sessionManager);
+} else {
+  throw new Error(`Invalid transport: ${CONFIG.transport}`);
 }
 
-main().catch((err) => {
-  logger.fatal({ err: err instanceof Error ? err.message : String(err) }, "Server failed to start");
-  process.exit(1);
+server.modify(registerResources);
+server.modify(searchSymbolsTool);
+server.modify(describeSymbolsTool);
+server.modify(createExtendAppPrompt);
+
+await server.start();
+
+process.on('SIGINT', async () => {
+  await server.stop();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  await server.stop();
+  process.exit(0);
 });

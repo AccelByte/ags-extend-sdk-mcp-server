@@ -2,12 +2,9 @@
 
 This **Model Context Protocol (MCP) server** exposes Extend SDK functions and models as additional context to language models. It helps AI coding assistants and other MCP clients to answer questions and generate Extend SDK code by providing the following tools.
 
-- **`search_functions`** – Search for functions by name, tags, description (fuzzy)
-- **`search_models`** – Search for models by name, tags, description (fuzzy)
-- **`describe_function`** – Get detailed information about a specific function by its ID
-- **`describe_model`** – Get detailed information about a specific model by its ID
-- **`get_bulk_functions`** – Retrieve multiple functions with pagination (experimental)
-- **`get_bulk_models`** – Retrieve multiple models with pagination (experimental)
+- **`search-symbols`** – Search for symbols (functions and models) by name, tags, description (fuzzy)
+- **`describe-symbols`** – Get detailed information about specific symbols by their IDs
+- **`create-extend-app`** – Prompt template for creating Extend app projects
 
 ## Quickstart
 
@@ -66,7 +63,7 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
     ```bash
     docker run -p 3000:3000 \
-      -e TRANSPORT=streamableHttp \
+      -e TRANSPORT=http \
       -e PORT=3000 \
       -e CONFIG_DIR=config/go \
       -e NODE_ENV=production \
@@ -97,23 +94,23 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 In Cursor, press `CTRL+L` and try the following prompts. You should see that the tools provided by this MCP server are used. Give permission to execute the tools when requested.
 
-- Search functions: `Search for functions related to 'user'`
-- Get function details: `Describe the 'AdminCreateUser@iam' function`
-- Get model details: `Describe the 'User@iam' models`
+- Search symbols: `Search for symbols related to 'user'`
+- Get symbol details: `Describe the 'AdminCreateUser@iam' and 'User@iam' symbols`
 
 [!TIP] When coding using this MCP server, we recommend to start from an Extend SDK getting started sample project or an Extend app template project instead of a blank project. Add the necessary context, such as specific source code files, to help getting better results. 
 
 ## Environment Variables
 
-- `TRANSPORT`: The MCP server transport (valid values: `stdio`, `streamableHttp`, default: `stdio`)
-- `PORT`: HTTP server port if `TRANSPORT` is `streamableHttp` (default: `3000`)
+- `TRANSPORT`: The MCP server transport (valid values: `stdio`, `http`, `streamableHttp`, default: `stdio`)
+- `PORT`: HTTP server port if `TRANSPORT` is `http` (default: `3000`)
 - `CONFIG_DIR`: Directory of YAML config files (recursive, default: `config/go`)
   - For Extend SDK C#: `config/csharp`
   - For Extend SDK Go: `config/go`
   - For Extend SDK Java: `config/java`
   - For Extend SDK Python: `config/python`
-- `NODE_ENV`: Environment (valid values: `development`, `production`)
-- `LOG_LEVEL`: Logging level (valid values: `debug`, `info`, `warn`, `error`)
+- `LOG_LEVEL`: Logging level (valid values: `debug`, `info`, `warn`, `error`, default: `info`)
+- `ALLOWED_ORIGINS`: Comma-separated list of allowed origins for HTTP transport (optional)
+- `NODE_ENV`: Environment (valid values: `development`, `production`) (optional, used by Express for HTTP transport)
 
 ## Development
 
@@ -143,7 +140,7 @@ pnpm dev
 #### With streamable HTTP transport
 
 ```bash
-TRANSPORT=streamableHttp pnpm dev 
+TRANSPORT=http pnpm dev 
 ```
 
 ### Build the MCP server
@@ -163,7 +160,7 @@ pnpm start
 #### With streamable HTTP transport 
 
 ```bash
-TRANSPORT=streamableHttp pnpm start
+TRANSPORT=http pnpm start
 ```
 
 ### Build the MCP server container image
@@ -199,7 +196,7 @@ docker buildx rm --keep-state extend-sdk-mcp-server-builder
 
 ## Testing
 
-1. Start the MCP server with streamable HTTP transport.
+1. Start the MCP server with HTTP transport.
 
 2. Initialize the MCP connection.
 
@@ -227,7 +224,7 @@ docker buildx rm --keep-state extend-sdk-mcp-server-builder
     curl -N -H "Accept: application/json, text/event-stream" \
         -H "Content-Type: application/json" \
         -X POST \
-        -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search_functions","arguments":{"query":"user"}}}' \
+        -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search-symbols","arguments":{"query":"user"}}}' \
         http://localhost:3000/
     ```
 
@@ -237,7 +234,7 @@ docker buildx rm --keep-state extend-sdk-mcp-server-builder
     curl -N -H "Accept: application/json, text/event-stream" \
         -H "Content-Type: application/json" \
         -X POST \
-        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe_model","arguments":{"id":"User@iam"}}}' \
+        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe-symbols","arguments":{"ids":["User@iam"]}}}' \
         http://localhost:3000/
     ```
   

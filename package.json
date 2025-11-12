@@ -1,25 +1,50 @@
 {
   "name": "extend-sdk-mcp-server",
-  "version": "2025.8.0",
-  "private": true,
+  "version": "2025.8.1",
   "type": "module",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "tsc -p .",
-    "start": "node dist/index.js"
+    "build": "tsc && cp -r assets dist/ 2>/dev/null || true",
+    "build+": "pnpm run format && pnpm run lint && pnpm run build",
+    "start": "pnpm run start:stdio",
+    "start:stdio": "MCP_TRANSPORT=stdio node dist/index.js",
+    "start:http": "MCP_TRANSPORT=http node dist/index.js",
+    "dev": "tsc --watch",
+    "inspect": "pnpm run inspect:stdio",
+    "inspect:stdio": "MCP_TRANSPORT=stdio pnpm dlx @modelcontextprotocol/inspector --transport stdio -e MCP_TRANSPORT=stdio node dist/index.js",
+    "inspect:http": "MCP_TRANSPORT=http node dist/index.js & sleep 2 && pnpm dlx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3000/mcp",
+    "inspect:clean": "pkill -f '@modelcontextprotocol/inspector' || true && pkill -f 'node dist/index.js' || true",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "format": "prettier --write 'src/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts'",
+    "type-check": "tsc --noEmit",
+    "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.4",
-    "dotenv": "^17.2.1",
-    "js-yaml": "^4.1.0",
-    "pino": "^9.9.0",
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "pino": "^10.1.0",
+    "pino-pretty": "^13.1.2",
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^24.3.0",
-    "pino-pretty": "^13.1.1",
-    "tsx": "^4.16.2",
-    "typescript": "^5.5.4"
+    "@types/node": "^24.7.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "js-yaml": "^4.1.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
   }
 }

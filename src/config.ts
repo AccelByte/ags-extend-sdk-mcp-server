@@ -1,69 +1,47 @@
-import { readFileSync, existsSync, readdirSync, statSync } from "fs";
-import { resolve, join } from "path";
-import yaml from "js-yaml";
-import { Config as ConfigType, Struct, FunctionDef } from "./types.js";
-import { getLogger } from "./logger.js";
+// Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
 
-const logger = getLogger();
+import { z } from 'zod/v3';
 
-export function loadConfigFromDir(dirPath: string): ConfigType {
-  const resolvedDir = resolve(dirPath);
-  logger.info({ dir: resolvedDir }, "Loading configurations from directory");
-  const combined: ConfigType = { structs: {}, functions: {} };
-  let filesProcessed = 0;
+const DEFAULT_NAME = 'extend-sdk-mcp-server';
+const DEFAULT_VERSION = '2025.8.1';
+const DEFAULT_TRANSPORT = 'stdio';
+const DEFAULT_PORT = 3000;
+const DEFAULT_CONFIG_DIR = 'config/go';
 
-  const walk = (dir: string) => {
-    for (const entry of readdirSync(dir)) {
-      const full = join(dir, entry);
-      const st = statSync(full);
-      if (st.isDirectory()) {
-        walk(full);
-      } else if (entry.endsWith(".yaml") || entry.endsWith(".yml")) {
-        const data = yaml.load(readFileSync(full, "utf-8")) as Partial<ConfigType> | null;
-        const config = normalizeConfig(data ?? {});
-        if (config.version) {
-          if ((combined as any).version) throw new Error(`duplicate 'version' in ${full}`);
-          (combined as any).version = config.version;
-        }
-        for (const [k, v] of Object.entries(config.structs)) {
-          if (combined.structs[k]) throw new Error(`duplicate struct id '${k}' in ${full}`);
-          combined.structs[k] = v;
-        }
-        for (const [k, v] of Object.entries(config.functions)) {
-          if (combined.functions[k]) throw new Error(`duplicate function id '${k}' in ${full}`);
-          combined.functions[k] = v;
-        }
-        filesProcessed++;
-      }
-    }
-  };
-  walk(resolvedDir);
+const TransportEnum = z.enum(['http', 'stdio', 'streamablehttp']);
 
-  logger.info({ filesProcessed, models: Object.keys(combined.structs).length, functions: Object.keys(combined.functions).length }, "Directory configurations loaded");
-  return combined;
+const ConfigSchema = z.object({
+  name: z.string().optional().default(DEFAULT_NAME),
+  version: z.string().optional().default(DEFAULT_VERSION),
+  transport: TransportEnum.optional()
+    .default(DEFAULT_TRANSPORT)
+    .transform((s) => s.toLowerCase() as z.infer<typeof TransportEnum>),
+  port: z.coerce
+    .number()
+    .int()
+    .min(0)
+    .max(65535)
+    .optional()
+    .default(DEFAULT_PORT),
+
+  // custom
+  configDir: z.string().optional().default(DEFAULT_CONFIG_DIR),
+});
+
+type Config = z.infer<typeof ConfigSchema>;
+
+function loadFromEnv(): Config {
+  return ConfigSchema.parse({
+    name: process.env.MCP_NAME,
+    version: process.env.MCP_VERSION,
+    port: process.env.MCP_PORT || process.env.PORT,
+    transport: process.env.MCP_TRANSPORT || process.env.TRANSPORT,
+    configDir: process.env.CONFIG_DIR,
+  });
 }
 
-function normalizeConfig(input: Partial<ConfigType>): ConfigType {
-  const structs: Record<string, Struct> = {};
-  const functions: Record<string, FunctionDef> = {};
-  const inStructs = input.structs ?? {};
-  const inFunctions = input.functions ?? {};
+const CONFIG = loadFromEnv();
 
-  for (const [id, s] of Object.entries(inStructs)) {
-    const tags = s.tags instanceof Set ? s.tags : Array.isArray(s.tags) ? new Set(s.tags) : undefined;
-    structs[id] = { ...s, id, tags } as Struct;
-  }
-  for (const [id, f] of Object.entries(inFunctions)) {
-    const tags = f.tags instanceof Set ? f.tags : Array.isArray(f.tags) ? new Set(f.tags) : undefined;
-    functions[id] = { ...f, id, tags } as FunctionDef;
-  }
-
-  const config: ConfigType = {
-    version: input.version,
-    structs,
-    functions,
-  };
-  return config;
-}
-
-
+export { TransportEnum, Config, ConfigSchema, loadFromEnv, CONFIG };
