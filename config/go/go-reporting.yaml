@@ -1,10 +1,16 @@
-structs:
-  'JusticeReportingService@reporting':
-    id: 'JusticeReportingService@reporting'
-    name: 'JusticeReportingService'
+symbols:
+  'NewReportingClient@go.reporting.fun':
+    id: 'NewReportingClient@go.reporting.fun'
+    name: 'NewReportingClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*reportingclient.JusticeReportingService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/reporting-sdk/pkg/reportingclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/justice_reporting_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/reportingclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AdminConfigurationsService@reporting':
-    id: 'AdminConfigurationsService@reporting'
+  'AdminConfigurationsService@go.reporting.mod':
+    id: 'AdminConfigurationsService@go.reporting.mod'
     name: 'AdminConfigurationsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AdminExtensionCategoriesAndAutoModerationActionsService@reporting':
-    id: 'AdminExtensionCategoriesAndAutoModerationActionsService@reporting'
+  'AdminExtensionCategoriesAndAutoModerationActionsService@go.reporting.mod':
+    id: 'AdminExtensionCategoriesAndAutoModerationActionsService@go.reporting.mod'
     name: 'AdminExtensionCategoriesAndAutoModerationActionsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AdminModerationRuleService@reporting':
-    id: 'AdminModerationRuleService@reporting'
+  'AdminModerationRuleService@go.reporting.mod':
+    id: 'AdminModerationRuleService@go.reporting.mod'
     name: 'AdminModerationRuleService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AdminReasonsService@reporting':
-    id: 'AdminReasonsService@reporting'
+  'AdminReasonsService@go.reporting.mod':
+    id: 'AdminReasonsService@go.reporting.mod'
     name: 'AdminReasonsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AdminReportsService@reporting':
-    id: 'AdminReportsService@reporting'
+  'AdminReportsService@go.reporting.mod':
+    id: 'AdminReportsService@go.reporting.mod'
     name: 'AdminReportsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AdminTicketsService@reporting':
-    id: 'AdminTicketsService@reporting'
+  'AdminTicketsService@go.reporting.mod':
+    id: 'AdminTicketsService@go.reporting.mod'
     name: 'AdminTicketsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PublicReasonsService@reporting':
-    id: 'PublicReasonsService@reporting'
+  'PublicReasonsService@go.reporting.mod':
+    id: 'PublicReasonsService@go.reporting.mod'
     name: 'PublicReasonsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -181,9 +194,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PublicReportsService@reporting':
-    id: 'PublicReportsService@reporting'
+  'PublicReportsService@go.reporting.mod':
+    id: 'PublicReportsService@go.reporting.mod'
     name: 'PublicReportsService'
+    type: 'model'
     fields:
       Client:
         type: '*reportingclient.JusticeReportingService'
@@ -209,9 +223,10 @@ structs:
 
   # region params
 
-  'AdminCreateExtensionCategoryParams@reporting':
-    id: 'AdminCreateExtensionCategoryParams@reporting'
+  'AdminCreateExtensionCategoryParams@go.reporting.mod':
+    id: 'AdminCreateExtensionCategoryParams@go.reporting.mod'
     name: 'AdminCreateExtensionCategoryParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiExtensionCategoryAPIRequest'
@@ -221,9 +236,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_create_extension_category_parameters.go'
 
-  'AdminCreateModActionParams@reporting':
-    id: 'AdminCreateModActionParams@reporting'
+  'AdminCreateModActionParams@go.reporting.mod':
+    id: 'AdminCreateModActionParams@go.reporting.mod'
     name: 'AdminCreateModActionParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiActionAPIRequest'
@@ -233,18 +249,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_create_mod_action_parameters.go'
 
-  'AdminFindActionListParams@reporting':
-    id: 'AdminFindActionListParams@reporting'
+  'AdminFindActionListParams@go.reporting.mod':
+    id: 'AdminFindActionListParams@go.reporting.mod'
     name: 'AdminFindActionListParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_find_action_list_parameters.go'
 
-  'AdminFindExtensionCategoryListParams@reporting':
-    id: 'AdminFindExtensionCategoryListParams@reporting'
+  'AdminFindExtensionCategoryListParams@go.reporting.mod':
+    id: 'AdminFindExtensionCategoryListParams@go.reporting.mod'
     name: 'AdminFindExtensionCategoryListParams'
+    type: 'model'
     fields:
       'Order':
         type: 'string'
@@ -261,9 +278,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_extension_categories_and_auto_moderation_actions/admin_find_extension_category_list_parameters.go'
 
-  'AdminGetAllReasonsParams@reporting':
-    id: 'AdminGetAllReasonsParams@reporting'
+  'AdminGetAllReasonsParams@go.reporting.mod':
+    id: 'AdminGetAllReasonsParams@go.reporting.mod'
     name: 'AdminGetAllReasonsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -273,9 +291,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_all_reasons_parameters.go'
 
-  'AdminGetReasonParams@reporting':
-    id: 'AdminGetReasonParams@reporting'
+  'AdminGetReasonParams@go.reporting.mod':
+    id: 'AdminGetReasonParams@go.reporting.mod'
     name: 'AdminGetReasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -288,9 +307,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_reason_parameters.go'
 
-  'AdminGetReasonsParams@reporting':
-    id: 'AdminGetReasonsParams@reporting'
+  'AdminGetReasonsParams@go.reporting.mod':
+    id: 'AdminGetReasonsParams@go.reporting.mod'
     name: 'AdminGetReasonsParams'
+    type: 'model'
     fields:
       'Group':
         type: 'string'
@@ -320,9 +340,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_reasons_parameters.go'
 
-  'AdminGetUnusedReasonsParams@reporting':
-    id: 'AdminGetUnusedReasonsParams@reporting'
+  'AdminGetUnusedReasonsParams@go.reporting.mod':
+    id: 'AdminGetUnusedReasonsParams@go.reporting.mod'
     name: 'AdminGetUnusedReasonsParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -338,9 +359,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_get_unused_reasons_parameters.go'
 
-  'AdminListReasonGroupsParams@reporting':
-    id: 'AdminListReasonGroupsParams@reporting'
+  'AdminListReasonGroupsParams@go.reporting.mod':
+    id: 'AdminListReasonGroupsParams@go.reporting.mod'
     name: 'AdminListReasonGroupsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -360,9 +382,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/admin_list_reason_groups_parameters.go'
 
-  'AdminSubmitReportParams@reporting':
-    id: 'AdminSubmitReportParams@reporting'
+  'AdminSubmitReportParams@go.reporting.mod':
+    id: 'AdminSubmitReportParams@go.reporting.mod'
     name: 'AdminSubmitReportParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiSubmitReportRequest'
@@ -375,9 +398,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reports/admin_submit_report_parameters.go'
 
-  'CreateModerationRuleParams@reporting':
-    id: 'CreateModerationRuleParams@reporting'
+  'CreateModerationRuleParams@go.reporting.mod':
+    id: 'CreateModerationRuleParams@go.reporting.mod'
     name: 'CreateModerationRuleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiModerationRuleRequest'
@@ -390,9 +414,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/create_moderation_rule_parameters.go'
 
-  'CreateReasonParams@reporting':
-    id: 'CreateReasonParams@reporting'
+  'CreateReasonParams@go.reporting.mod':
+    id: 'CreateReasonParams@go.reporting.mod'
     name: 'CreateReasonParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiCreateReasonRequest'
@@ -405,9 +430,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/create_reason_parameters.go'
 
-  'CreateReasonGroupParams@reporting':
-    id: 'CreateReasonGroupParams@reporting'
+  'CreateReasonGroupParams@go.reporting.mod':
+    id: 'CreateReasonGroupParams@go.reporting.mod'
     name: 'CreateReasonGroupParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiCreateReasonGroupRequest'
@@ -420,9 +446,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/create_reason_group_parameters.go'
 
-  'DeleteModerationRuleParams@reporting':
-    id: 'DeleteModerationRuleParams@reporting'
+  'DeleteModerationRuleParams@go.reporting.mod':
+    id: 'DeleteModerationRuleParams@go.reporting.mod'
     name: 'DeleteModerationRuleParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -435,9 +462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/delete_moderation_rule_parameters.go'
 
-  'DeleteReasonParams@reporting':
-    id: 'DeleteReasonParams@reporting'
+  'DeleteReasonParams@go.reporting.mod':
+    id: 'DeleteReasonParams@go.reporting.mod'
     name: 'DeleteReasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -450,9 +478,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/delete_reason_parameters.go'
 
-  'DeleteReasonGroupParams@reporting':
-    id: 'DeleteReasonGroupParams@reporting'
+  'DeleteReasonGroupParams@go.reporting.mod':
+    id: 'DeleteReasonGroupParams@go.reporting.mod'
     name: 'DeleteReasonGroupParams'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -467,9 +496,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/delete_reason_group_parameters.go'
 
-  'DeleteTicketParams@reporting':
-    id: 'DeleteTicketParams@reporting'
+  'DeleteTicketParams@go.reporting.mod':
+    id: 'DeleteTicketParams@go.reporting.mod'
     name: 'DeleteTicketParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -482,9 +512,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/delete_ticket_parameters.go'
 
-  'GetParams@reporting':
-    id: 'GetParams@reporting'
+  'GetParams@go.reporting.mod':
+    id: 'GetParams@go.reporting.mod'
     name: 'GetParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -502,9 +533,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_configurations/get_parameters.go'
 
-  'GetModerationRuleDetailsParams@reporting':
-    id: 'GetModerationRuleDetailsParams@reporting'
+  'GetModerationRuleDetailsParams@go.reporting.mod':
+    id: 'GetModerationRuleDetailsParams@go.reporting.mod'
     name: 'GetModerationRuleDetailsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -517,9 +549,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/get_moderation_rule_details_parameters.go'
 
-  'GetModerationRulesParams@reporting':
-    id: 'GetModerationRulesParams@reporting'
+  'GetModerationRulesParams@go.reporting.mod':
+    id: 'GetModerationRulesParams@go.reporting.mod'
     name: 'GetModerationRulesParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -549,9 +582,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/get_moderation_rules_parameters.go'
 
-  'GetReasonGroupParams@reporting':
-    id: 'GetReasonGroupParams@reporting'
+  'GetReasonGroupParams@go.reporting.mod':
+    id: 'GetReasonGroupParams@go.reporting.mod'
     name: 'GetReasonGroupParams'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -566,9 +600,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/get_reason_group_parameters.go'
 
-  'GetReportsByTicketParams@reporting':
-    id: 'GetReportsByTicketParams@reporting'
+  'GetReportsByTicketParams@go.reporting.mod':
+    id: 'GetReportsByTicketParams@go.reporting.mod'
     name: 'GetReportsByTicketParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -591,9 +626,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/get_reports_by_ticket_parameters.go'
 
-  'GetTicketDetailParams@reporting':
-    id: 'GetTicketDetailParams@reporting'
+  'GetTicketDetailParams@go.reporting.mod':
+    id: 'GetTicketDetailParams@go.reporting.mod'
     name: 'GetTicketDetailParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -606,9 +642,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/get_ticket_detail_parameters.go'
 
-  'ListReportsParams@reporting':
-    id: 'ListReportsParams@reporting'
+  'ListReportsParams@go.reporting.mod':
+    id: 'ListReportsParams@go.reporting.mod'
     name: 'ListReportsParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -643,9 +680,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reports/list_reports_parameters.go'
 
-  'ListTicketsParams@reporting':
-    id: 'ListTicketsParams@reporting'
+  'ListTicketsParams@go.reporting.mod':
+    id: 'ListTicketsParams@go.reporting.mod'
     name: 'ListTicketsParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -695,9 +733,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/list_tickets_parameters.go'
 
-  'PublicGetReasonsParams@reporting':
-    id: 'PublicGetReasonsParams@reporting'
+  'PublicGetReasonsParams@go.reporting.mod':
+    id: 'PublicGetReasonsParams@go.reporting.mod'
     name: 'PublicGetReasonsParams'
+    type: 'model'
     fields:
       'Group':
         type: 'string'
@@ -727,9 +766,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reasons/public_get_reasons_parameters.go'
 
-  'PublicListReasonGroupsParams@reporting':
-    id: 'PublicListReasonGroupsParams@reporting'
+  'PublicListReasonGroupsParams@go.reporting.mod':
+    id: 'PublicListReasonGroupsParams@go.reporting.mod'
     name: 'PublicListReasonGroupsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -749,9 +789,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reasons/public_list_reason_groups_parameters.go'
 
-  'SubmitReportParams@reporting':
-    id: 'SubmitReportParams@reporting'
+  'SubmitReportParams@go.reporting.mod':
+    id: 'SubmitReportParams@go.reporting.mod'
     name: 'SubmitReportParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiSubmitReportRequest'
@@ -764,9 +805,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/public_reports/submit_report_parameters.go'
 
-  'TicketStatisticParams@reporting':
-    id: 'TicketStatisticParams@reporting'
+  'TicketStatisticParams@go.reporting.mod':
+    id: 'TicketStatisticParams@go.reporting.mod'
     name: 'TicketStatisticParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -786,9 +828,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/ticket_statistic_parameters.go'
 
-  'UpdateModerationRuleParams@reporting':
-    id: 'UpdateModerationRuleParams@reporting'
+  'UpdateModerationRuleParams@go.reporting.mod':
+    id: 'UpdateModerationRuleParams@go.reporting.mod'
     name: 'UpdateModerationRuleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiModerationRuleRequest'
@@ -804,9 +847,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/update_moderation_rule_parameters.go'
 
-  'UpdateModerationRuleStatusParams@reporting':
-    id: 'UpdateModerationRuleStatusParams@reporting'
+  'UpdateModerationRuleStatusParams@go.reporting.mod':
+    id: 'UpdateModerationRuleStatusParams@go.reporting.mod'
     name: 'UpdateModerationRuleStatusParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiModerationRuleActiveRequest'
@@ -822,9 +866,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_moderation_rule/update_moderation_rule_status_parameters.go'
 
-  'UpdateReasonParams@reporting':
-    id: 'UpdateReasonParams@reporting'
+  'UpdateReasonParams@go.reporting.mod':
+    id: 'UpdateReasonParams@go.reporting.mod'
     name: 'UpdateReasonParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiCreateReasonRequest'
@@ -840,9 +885,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/update_reason_parameters.go'
 
-  'UpdateReasonGroupParams@reporting':
-    id: 'UpdateReasonGroupParams@reporting'
+  'UpdateReasonGroupParams@go.reporting.mod':
+    id: 'UpdateReasonGroupParams@go.reporting.mod'
     name: 'UpdateReasonGroupParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiUpdateReasonGroupRequest'
@@ -860,9 +906,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_reasons/update_reason_group_parameters.go'
 
-  'UpdateTicketResolutionsParams@reporting':
-    id: 'UpdateTicketResolutionsParams@reporting'
+  'UpdateTicketResolutionsParams@go.reporting.mod':
+    id: 'UpdateTicketResolutionsParams@go.reporting.mod'
     name: 'UpdateTicketResolutionsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiUpdateTicketResolutionsRequest'
@@ -878,9 +925,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclient/admin_tickets/update_ticket_resolutions_parameters.go'
 
-  'UpsertParams@reporting':
-    id: 'UpsertParams@reporting'
+  'UpsertParams@go.reporting.mod':
+    id: 'UpsertParams@go.reporting.mod'
     name: 'UpsertParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RestapiReportingLimit'
@@ -897,9 +945,10 @@ structs:
 
   # region models
 
-  'RestapiActionAPIRequest@reporting':
-    id: 'RestapiActionAPIRequest@reporting'
+  'RestapiActionAPIRequest@go.reporting.mod':
+    id: 'RestapiActionAPIRequest@go.reporting.mod'
     name: 'RestapiActionAPIRequest'
+    type: 'model'
     fields:
       'ActionID':
         type: 'string'
@@ -921,9 +970,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_api_request.go'
 
-  'RestapiActionAPIResponse@reporting':
-    id: 'RestapiActionAPIResponse@reporting'
+  'RestapiActionAPIResponse@go.reporting.mod':
+    id: 'RestapiActionAPIResponse@go.reporting.mod'
     name: 'RestapiActionAPIResponse'
+    type: 'model'
     fields:
       'ActionID':
         type: 'string'
@@ -939,9 +989,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_api_response.go'
 
-  'RestapiActionListAPIResponse@reporting':
-    id: 'RestapiActionListAPIResponse@reporting'
+  'RestapiActionListAPIResponse@go.reporting.mod':
+    id: 'RestapiActionListAPIResponse@go.reporting.mod'
     name: 'RestapiActionListAPIResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiActionAPIResponse'
@@ -951,9 +1002,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_action_list_api_response.go'
 
-  'RestapiAdminAllReasonsResponse@reporting':
-    id: 'RestapiAdminAllReasonsResponse@reporting'
+  'RestapiAdminAllReasonsResponse@go.reporting.mod':
+    id: 'RestapiAdminAllReasonsResponse@go.reporting.mod'
     name: 'RestapiAdminAllReasonsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiPublicReasonResponse'
@@ -963,9 +1015,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_all_reasons_response.go'
 
-  'RestapiAdminReasonListResponse@reporting':
-    id: 'RestapiAdminReasonListResponse@reporting'
+  'RestapiAdminReasonListResponse@go.reporting.mod':
+    id: 'RestapiAdminReasonListResponse@go.reporting.mod'
     name: 'RestapiAdminReasonListResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiAdminReasonResponse'
@@ -978,9 +1031,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_reason_list_response.go'
 
-  'RestapiAdminReasonResponse@reporting':
-    id: 'RestapiAdminReasonResponse@reporting'
+  'RestapiAdminReasonResponse@go.reporting.mod':
+    id: 'RestapiAdminReasonResponse@go.reporting.mod'
     name: 'RestapiAdminReasonResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'string'
@@ -1008,9 +1062,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_admin_reason_response.go'
 
-  'RestapiBanAccountActionRequest@reporting':
-    id: 'RestapiBanAccountActionRequest@reporting'
+  'RestapiBanAccountActionRequest@go.reporting.mod':
+    id: 'RestapiBanAccountActionRequest@go.reporting.mod'
     name: 'RestapiBanAccountActionRequest'
+    type: 'model'
     fields:
       'Comment':
         type: 'string'
@@ -1042,9 +1097,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ban_account_action_request.go'
 
-  'RestapiBanAccountActionResponse@reporting':
-    id: 'RestapiBanAccountActionResponse@reporting'
+  'RestapiBanAccountActionResponse@go.reporting.mod':
+    id: 'RestapiBanAccountActionResponse@go.reporting.mod'
     name: 'RestapiBanAccountActionResponse'
+    type: 'model'
     fields:
       'Comment':
         type: 'string'
@@ -1076,9 +1132,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ban_account_action_response.go'
 
-  'RestapiCategoryLimit@reporting':
-    id: 'RestapiCategoryLimit@reporting'
+  'RestapiCategoryLimit@go.reporting.mod':
+    id: 'RestapiCategoryLimit@go.reporting.mod'
     name: 'RestapiCategoryLimit'
+    type: 'model'
     fields:
       'ExtensionCategory':
         type: 'string'
@@ -1096,9 +1153,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_category_limit.go'
 
-  'RestapiConfigResponse@reporting':
-    id: 'RestapiConfigResponse@reporting'
+  'RestapiConfigResponse@go.reporting.mod':
+    id: 'RestapiConfigResponse@go.reporting.mod'
     name: 'RestapiConfigResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1114,9 +1172,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_config_response.go'
 
-  'RestapiCreateReasonGroupRequest@reporting':
-    id: 'RestapiCreateReasonGroupRequest@reporting'
+  'RestapiCreateReasonGroupRequest@go.reporting.mod':
+    id: 'RestapiCreateReasonGroupRequest@go.reporting.mod'
     name: 'RestapiCreateReasonGroupRequest'
+    type: 'model'
     fields:
       'ReasonIds':
         type: '[]string'
@@ -1131,9 +1190,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_create_reason_group_request.go'
 
-  'RestapiCreateReasonRequest@reporting':
-    id: 'RestapiCreateReasonRequest@reporting'
+  'RestapiCreateReasonRequest@go.reporting.mod':
+    id: 'RestapiCreateReasonRequest@go.reporting.mod'
     name: 'RestapiCreateReasonRequest'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -1153,9 +1213,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_create_reason_request.go'
 
-  'RestapiErrorResponse@reporting':
-    id: 'RestapiErrorResponse@reporting'
+  'RestapiErrorResponse@go.reporting.mod':
+    id: 'RestapiErrorResponse@go.reporting.mod'
     name: 'RestapiErrorResponse'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -1168,9 +1229,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_error_response.go'
 
-  'RestapiExtensionCategoryAPIRequest@reporting':
-    id: 'RestapiExtensionCategoryAPIRequest@reporting'
+  'RestapiExtensionCategoryAPIRequest@go.reporting.mod':
+    id: 'RestapiExtensionCategoryAPIRequest@go.reporting.mod'
     name: 'RestapiExtensionCategoryAPIRequest'
+    type: 'model'
     fields:
       'ExtensionCategory':
         type: 'string'
@@ -1192,9 +1254,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_api_request.go'
 
-  'RestapiExtensionCategoryAPIResponse@reporting':
-    id: 'RestapiExtensionCategoryAPIResponse@reporting'
+  'RestapiExtensionCategoryAPIResponse@go.reporting.mod':
+    id: 'RestapiExtensionCategoryAPIResponse@go.reporting.mod'
     name: 'RestapiExtensionCategoryAPIResponse'
+    type: 'model'
     fields:
       'ExtensionCategory':
         type: 'string'
@@ -1210,9 +1273,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_api_response.go'
 
-  'RestapiExtensionCategoryListAPIResponse@reporting':
-    id: 'RestapiExtensionCategoryListAPIResponse@reporting'
+  'RestapiExtensionCategoryListAPIResponse@go.reporting.mod':
+    id: 'RestapiExtensionCategoryListAPIResponse@go.reporting.mod'
     name: 'RestapiExtensionCategoryListAPIResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiExtensionCategoryAPIResponse'
@@ -1222,9 +1286,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_extension_category_list_api_response.go'
 
-  'RestapiModerationRuleActionsRequest@reporting':
-    id: 'RestapiModerationRuleActionsRequest@reporting'
+  'RestapiModerationRuleActionsRequest@go.reporting.mod':
+    id: 'RestapiModerationRuleActionsRequest@go.reporting.mod'
     name: 'RestapiModerationRuleActionsRequest'
+    type: 'model'
     fields:
       'BanAccount':
         type: '*RestapiBanAccountActionRequest'
@@ -1251,9 +1316,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_actions_request.go'
 
-  'RestapiModerationRuleActionsResponse@reporting':
-    id: 'RestapiModerationRuleActionsResponse@reporting'
+  'RestapiModerationRuleActionsResponse@go.reporting.mod':
+    id: 'RestapiModerationRuleActionsResponse@go.reporting.mod'
     name: 'RestapiModerationRuleActionsResponse'
+    type: 'model'
     fields:
       'BanAccount':
         type: '*RestapiBanAccountActionResponse'
@@ -1280,9 +1346,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_actions_response.go'
 
-  'RestapiModerationRuleActiveRequest@reporting':
-    id: 'RestapiModerationRuleActiveRequest@reporting'
+  'RestapiModerationRuleActiveRequest@go.reporting.mod':
+    id: 'RestapiModerationRuleActiveRequest@go.reporting.mod'
     name: 'RestapiModerationRuleActiveRequest'
+    type: 'model'
     fields:
       'Active':
         type: 'bool'
@@ -1292,9 +1359,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_active_request.go'
 
-  'RestapiModerationRuleRequest@reporting':
-    id: 'RestapiModerationRuleRequest@reporting'
+  'RestapiModerationRuleRequest@go.reporting.mod':
+    id: 'RestapiModerationRuleRequest@go.reporting.mod'
     name: 'RestapiModerationRuleRequest'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -1336,9 +1404,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_request.go'
 
-  'RestapiModerationRuleResponse@reporting':
-    id: 'RestapiModerationRuleResponse@reporting'
+  'RestapiModerationRuleResponse@go.reporting.mod':
+    id: 'RestapiModerationRuleResponse@go.reporting.mod'
     name: 'RestapiModerationRuleResponse'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -1382,9 +1451,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rule_response.go'
 
-  'RestapiModerationRulesList@reporting':
-    id: 'RestapiModerationRulesList@reporting'
+  'RestapiModerationRulesList@go.reporting.mod':
+    id: 'RestapiModerationRulesList@go.reporting.mod'
     name: 'RestapiModerationRulesList'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiModerationRuleResponse'
@@ -1397,9 +1467,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_moderation_rules_list.go'
 
-  'RestapiPagination@reporting':
-    id: 'RestapiPagination@reporting'
+  'RestapiPagination@go.reporting.mod':
+    id: 'RestapiPagination@go.reporting.mod'
     name: 'RestapiPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -1418,9 +1489,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_pagination.go'
 
-  'RestapiPublicReasonGroupResponse@reporting':
-    id: 'RestapiPublicReasonGroupResponse@reporting'
+  'RestapiPublicReasonGroupResponse@go.reporting.mod':
+    id: 'RestapiPublicReasonGroupResponse@go.reporting.mod'
     name: 'RestapiPublicReasonGroupResponse'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -1433,9 +1505,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_group_response.go'
 
-  'RestapiPublicReasonListResponse@reporting':
-    id: 'RestapiPublicReasonListResponse@reporting'
+  'RestapiPublicReasonListResponse@go.reporting.mod':
+    id: 'RestapiPublicReasonListResponse@go.reporting.mod'
     name: 'RestapiPublicReasonListResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiPublicReasonResponse'
@@ -1448,9 +1521,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_list_response.go'
 
-  'RestapiPublicReasonResponse@reporting':
-    id: 'RestapiPublicReasonResponse@reporting'
+  'RestapiPublicReasonResponse@go.reporting.mod':
+    id: 'RestapiPublicReasonResponse@go.reporting.mod'
     name: 'RestapiPublicReasonResponse'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -1463,9 +1537,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_public_reason_response.go'
 
-  'RestapiReasonGroupListResponse@reporting':
-    id: 'RestapiReasonGroupListResponse@reporting'
+  'RestapiReasonGroupListResponse@go.reporting.mod':
+    id: 'RestapiReasonGroupListResponse@go.reporting.mod'
     name: 'RestapiReasonGroupListResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiPublicReasonGroupResponse'
@@ -1478,9 +1553,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reason_group_list_response.go'
 
-  'RestapiReasonGroupResponse@reporting':
-    id: 'RestapiReasonGroupResponse@reporting'
+  'RestapiReasonGroupResponse@go.reporting.mod':
+    id: 'RestapiReasonGroupResponse@go.reporting.mod'
     name: 'RestapiReasonGroupResponse'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -1496,9 +1572,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reason_group_response.go'
 
-  'RestapiReportingLimit@reporting':
-    id: 'RestapiReportingLimit@reporting'
+  'RestapiReportingLimit@go.reporting.mod':
+    id: 'RestapiReportingLimit@go.reporting.mod'
     name: 'RestapiReportingLimit'
+    type: 'model'
     fields:
       'CategoryLimits':
         type: '[]*RestapiCategoryLimit'
@@ -1518,9 +1595,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_reporting_limit.go'
 
-  'RestapiReportListResponse@reporting':
-    id: 'RestapiReportListResponse@reporting'
+  'RestapiReportListResponse@go.reporting.mod':
+    id: 'RestapiReportListResponse@go.reporting.mod'
     name: 'RestapiReportListResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiReportResponse'
@@ -1533,9 +1611,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_report_list_response.go'
 
-  'RestapiReportResponse@reporting':
-    id: 'RestapiReportResponse@reporting'
+  'RestapiReportResponse@go.reporting.mod':
+    id: 'RestapiReportResponse@go.reporting.mod'
     name: 'RestapiReportResponse'
+    type: 'model'
     fields:
       'AdditionalInfo':
         type: 'interface{}'
@@ -1584,9 +1663,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_report_response.go'
 
-  'RestapiSubmitReportRequest@reporting':
-    id: 'RestapiSubmitReportRequest@reporting'
+  'RestapiSubmitReportRequest@go.reporting.mod':
+    id: 'RestapiSubmitReportRequest@go.reporting.mod'
     name: 'RestapiSubmitReportRequest'
+    type: 'model'
     fields:
       'AdditionalInfo':
         type: 'interface{}'
@@ -1633,9 +1713,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_submit_report_request.go'
 
-  'RestapiSubmitReportResponse@reporting':
-    id: 'RestapiSubmitReportResponse@reporting'
+  'RestapiSubmitReportResponse@go.reporting.mod':
+    id: 'RestapiSubmitReportResponse@go.reporting.mod'
     name: 'RestapiSubmitReportResponse'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -1672,9 +1753,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_submit_report_response.go'
 
-  'RestapiTicketListResponse@reporting':
-    id: 'RestapiTicketListResponse@reporting'
+  'RestapiTicketListResponse@go.reporting.mod':
+    id: 'RestapiTicketListResponse@go.reporting.mod'
     name: 'RestapiTicketListResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*RestapiTicketResponse'
@@ -1687,9 +1769,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_list_response.go'
 
-  'RestapiTicketResponse@reporting':
-    id: 'RestapiTicketResponse@reporting'
+  'RestapiTicketResponse@go.reporting.mod':
+    id: 'RestapiTicketResponse@go.reporting.mod'
     name: 'RestapiTicketResponse'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -1732,9 +1815,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_response.go'
 
-  'RestapiTicketStatisticResponse@reporting':
-    id: 'RestapiTicketStatisticResponse@reporting'
+  'RestapiTicketStatisticResponse@go.reporting.mod':
+    id: 'RestapiTicketStatisticResponse@go.reporting.mod'
     name: 'RestapiTicketStatisticResponse'
+    type: 'model'
     fields:
       'ModeratedCount':
         type: 'int64'
@@ -1750,9 +1834,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_ticket_statistic_response.go'
 
-  'RestapiUnusedReasonListResponse@reporting':
-    id: 'RestapiUnusedReasonListResponse@reporting'
+  'RestapiUnusedReasonListResponse@go.reporting.mod':
+    id: 'RestapiUnusedReasonListResponse@go.reporting.mod'
     name: 'RestapiUnusedReasonListResponse'
+    type: 'model'
     fields:
       'Reasons':
         type: '[]*RestapiPublicReasonResponse'
@@ -1762,9 +1847,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_unused_reason_list_response.go'
 
-  'RestapiUpdateReasonGroupRequest@reporting':
-    id: 'RestapiUpdateReasonGroupRequest@reporting'
+  'RestapiUpdateReasonGroupRequest@go.reporting.mod':
+    id: 'RestapiUpdateReasonGroupRequest@go.reporting.mod'
     name: 'RestapiUpdateReasonGroupRequest'
+    type: 'model'
     fields:
       'ReasonIds':
         type: '[]string'
@@ -1779,9 +1865,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/reporting-sdk/pkg/reportingclientmodels/restapi_update_reason_group_request.go'
 
-  'RestapiUpdateTicketResolutionsRequest@reporting':
-    id: 'RestapiUpdateTicketResolutionsRequest@reporting'
+  'RestapiUpdateTicketResolutionsRequest@go.reporting.mod':
+    id: 'RestapiUpdateTicketResolutionsRequest@go.reporting.mod'
     name: 'RestapiUpdateTicketResolutionsRequest'
+    type: 'model'
     fields:
       'Notes':
         type: 'string'
@@ -1800,15 +1887,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminCreateExtensionCategoryShort@reporting':
-    id: 'AdminCreateExtensionCategoryShort@reporting'
+  'AdminCreateExtensionCategoryShort@go.reporting.fun':
+    id: 'AdminCreateExtensionCategoryShort@go.reporting.fun'
     name: 'AdminCreateExtensionCategoryShort'
+    type: 'function'
     description: |-
       Create extension category data
     struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_extension_categories_and_auto_moderation_actions.AdminCreateExtensionCategoryParams'
         required: true
@@ -1837,13 +1925,14 @@ functions:
       - 'extension'
       - 'moderation'
 
-  'AdminCreateModActionShort@reporting':
-    id: 'AdminCreateModActionShort@reporting'
+  'AdminCreateModActionShort@go.reporting.fun':
+    id: 'AdminCreateModActionShort@go.reporting.fun'
     name: 'AdminCreateModActionShort'
+    type: 'function'
     description: |-
       Create auto moderation action
     struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_extension_categories_and_auto_moderation_actions.AdminCreateModActionParams'
         required: true
@@ -1873,13 +1962,14 @@ functions:
       - 'mod'
       - 'moderation'
 
-  'AdminFindActionListShort@reporting':
-    id: 'AdminFindActionListShort@reporting'
+  'AdminFindActionListShort@go.reporting.fun':
+    id: 'AdminFindActionListShort@go.reporting.fun'
     name: 'AdminFindActionListShort'
+    type: 'function'
     description: |-
       Get a list of auto moderation actions
     struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_extension_categories_and_auto_moderation_actions.AdminFindActionListParams'
         required: true
@@ -1909,13 +1999,14 @@ functions:
       - 'list'
       - 'moderation'
 
-  'AdminFindExtensionCategoryListShort@reporting':
-    id: 'AdminFindExtensionCategoryListShort@reporting'
+  'AdminFindExtensionCategoryListShort@go.reporting.fun':
+    id: 'AdminFindExtensionCategoryListShort@go.reporting.fun'
     name: 'AdminFindExtensionCategoryListShort'
+    type: 'function'
     description: |-
       Get a list of extension category data with the specified name
     struct: 'AdminExtensionCategoriesAndAutoModerationActionsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_extension_categories_and_auto_moderation_actions.AdminFindExtensionCategoryListParams'
         required: true
@@ -1945,13 +2036,14 @@ functions:
       - 'list'
       - 'moderation'
 
-  'AdminGetAllReasonsShort@reporting':
-    id: 'AdminGetAllReasonsShort@reporting'
+  'AdminGetAllReasonsShort@go.reporting.fun':
+    id: 'AdminGetAllReasonsShort@go.reporting.fun'
     name: 'AdminGetAllReasonsShort'
+    type: 'function'
     description: |-
       This endpoint get all reasons without pagination.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.AdminGetAllReasonsParams'
         required: true
@@ -1975,13 +2067,14 @@ functions:
       - 'get'
       - 'reasons'
 
-  'AdminGetReasonShort@reporting':
-    id: 'AdminGetReasonShort@reporting'
+  'AdminGetReasonShort@go.reporting.fun':
+    id: 'AdminGetReasonShort@go.reporting.fun'
     name: 'AdminGetReasonShort'
+    type: 'function'
     description: |-
       This endpoint get a single reason.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.AdminGetReasonParams'
         required: true
@@ -2005,13 +2098,14 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'AdminGetReasonsShort@reporting':
-    id: 'AdminGetReasonsShort@reporting'
+  'AdminGetReasonsShort@go.reporting.fun':
+    id: 'AdminGetReasonsShort@go.reporting.fun'
     name: 'AdminGetReasonsShort'
+    type: 'function'
     description: |-
       This endpoint get reasons with pagination
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.AdminGetReasonsParams'
         required: true
@@ -2034,13 +2128,14 @@ functions:
       - 'get'
       - 'reasons'
 
-  'AdminGetUnusedReasonsShort@reporting':
-    id: 'AdminGetUnusedReasonsShort@reporting'
+  'AdminGetUnusedReasonsShort@go.reporting.fun':
+    id: 'AdminGetUnusedReasonsShort@go.reporting.fun'
     name: 'AdminGetUnusedReasonsShort'
+    type: 'function'
     description: |-
       This endpoint get reasons not used by moderation rules.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.AdminGetUnusedReasonsParams'
         required: true
@@ -2064,14 +2159,15 @@ functions:
       - 'reasons'
       - 'unused'
 
-  'AdminListReasonGroupsShort@reporting':
-    id: 'AdminListReasonGroupsShort@reporting'
+  'AdminListReasonGroupsShort@go.reporting.fun':
+    id: 'AdminListReasonGroupsShort@go.reporting.fun'
     name: 'AdminListReasonGroupsShort'
+    type: 'function'
     description: |-
       Return list of reason groups ID and title under given namespace.
       To fetch the reasons inside a group, use get reason group endpoint.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.AdminListReasonGroupsParams'
         required: true
@@ -2096,9 +2192,10 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'AdminSubmitReportShort@reporting':
-    id: 'AdminSubmitReportShort@reporting'
+  'AdminSubmitReportShort@go.reporting.fun':
+    id: 'AdminSubmitReportShort@go.reporting.fun'
     name: 'AdminSubmitReportShort'
+    type: 'function'
     description: |-
       Submit a report and will return ticket for reported object.
       New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
@@ -2109,7 +2206,7 @@ functions:
       Fill the 'reason' field with a 'reason title'
       Supported category: - UGC - USER - CHAT - EXTENSION
     struct: 'AdminReportsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reports.AdminSubmitReportParams'
         required: true
@@ -2133,9 +2230,10 @@ functions:
       - 'reports'
       - 'submit'
 
-  'CreateModerationRuleShort@reporting':
-    id: 'CreateModerationRuleShort@reporting'
+  'CreateModerationRuleShort@go.reporting.fun':
+    id: 'CreateModerationRuleShort@go.reporting.fun'
     name: 'CreateModerationRuleShort'
+    type: 'function'
     description: |-
       This endpoint create moderation rule.
       Supported Category: - UGC - USER - CHAT - EXTENSION
@@ -2149,7 +2247,7 @@ functions:
       * **banAccount**: Ban the user account
       * **deleteChat**: Delete chat
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.CreateModerationRuleParams'
         required: true
@@ -2173,13 +2271,14 @@ functions:
       - 'moderation'
       - 'rule'
 
-  'CreateReasonShort@reporting':
-    id: 'CreateReasonShort@reporting'
+  'CreateReasonShort@go.reporting.fun':
+    id: 'CreateReasonShort@go.reporting.fun'
     name: 'CreateReasonShort'
+    type: 'function'
     description: |-
       This endpoint create a reason for a namespace.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.CreateReasonParams'
         required: true
@@ -2203,15 +2302,16 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'CreateReasonGroupShort@reporting':
-    id: 'CreateReasonGroupShort@reporting'
+  'CreateReasonGroupShort@go.reporting.fun':
+    id: 'CreateReasonGroupShort@go.reporting.fun'
     name: 'CreateReasonGroupShort'
+    type: 'function'
     description: |-
       Create a reason group for easier query. You can query reasons by specifying
       the group title in the list reasons query. Reason group title is case insensitive,
       meaning you can't have **reason** if you already create a reason titled **Reason**
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.CreateReasonGroupParams'
         required: true
@@ -2236,13 +2336,14 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'DeleteModerationRuleShort@reporting':
-    id: 'DeleteModerationRuleShort@reporting'
+  'DeleteModerationRuleShort@go.reporting.fun':
+    id: 'DeleteModerationRuleShort@go.reporting.fun'
     name: 'DeleteModerationRuleShort'
+    type: 'function'
     description: |-
       This endpoint delete moderation rule.
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.DeleteModerationRuleParams'
         required: true
@@ -2266,13 +2367,14 @@ functions:
       - 'moderation'
       - 'rule'
 
-  'DeleteReasonShort@reporting':
-    id: 'DeleteReasonShort@reporting'
+  'DeleteReasonShort@go.reporting.fun':
+    id: 'DeleteReasonShort@go.reporting.fun'
     name: 'DeleteReasonShort'
+    type: 'function'
     description: |-
       This endpoint delete a reason for a namespace with ID.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.DeleteReasonParams'
         required: true
@@ -2296,13 +2398,14 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'DeleteReasonGroupShort@reporting':
-    id: 'DeleteReasonGroupShort@reporting'
+  'DeleteReasonGroupShort@go.reporting.fun':
+    id: 'DeleteReasonGroupShort@go.reporting.fun'
     name: 'DeleteReasonGroupShort'
+    type: 'function'
     description: |-
       This endpoint delete a reason group for a namespace with ID.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.DeleteReasonGroupParams'
         required: true
@@ -2327,13 +2430,14 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'DeleteTicketShort@reporting':
-    id: 'DeleteTicketShort@reporting'
+  'DeleteTicketShort@go.reporting.fun':
+    id: 'DeleteTicketShort@go.reporting.fun'
     name: 'DeleteTicketShort'
+    type: 'function'
     description: |-
       This endpoint will delete ticket and all its reports.
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.DeleteTicketParams'
         required: true
@@ -2357,14 +2461,15 @@ functions:
       - 'ticket'
       - 'tickets'
 
-  'GetShort@reporting':
-    id: 'GetShort@reporting'
+  'GetShort@go.reporting.fun':
+    id: 'GetShort@go.reporting.fun'
     name: 'GetShort'
+    type: 'function'
     description: |-
       TimeInterval is in nanoseconds.
       When there's no configuration set, the response is the default value (configurable through envar).
     struct: 'AdminConfigurationsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_configurations.GetParams'
         required: true
@@ -2387,13 +2492,14 @@ functions:
       - 'configurations'
       - 'get'
 
-  'GetModerationRuleDetailsShort@reporting':
-    id: 'GetModerationRuleDetailsShort@reporting'
+  'GetModerationRuleDetailsShort@go.reporting.fun':
+    id: 'GetModerationRuleDetailsShort@go.reporting.fun'
     name: 'GetModerationRuleDetailsShort'
+    type: 'function'
     description: |-
       This endpoint get moderation rule.
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.GetModerationRuleDetailsParams'
         required: true
@@ -2418,13 +2524,14 @@ functions:
       - 'moderation'
       - 'rule'
 
-  'GetModerationRulesShort@reporting':
-    id: 'GetModerationRulesShort@reporting'
+  'GetModerationRulesShort@go.reporting.fun':
+    id: 'GetModerationRulesShort@go.reporting.fun'
     name: 'GetModerationRulesShort'
+    type: 'function'
     description: |-
       This endpoint get moderation rules.
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.GetModerationRulesParams'
         required: true
@@ -2449,11 +2556,12 @@ functions:
       - 'rule'
       - 'rules'
 
-  'GetReasonGroupShort@reporting':
-    id: 'GetReasonGroupShort@reporting'
+  'GetReasonGroupShort@go.reporting.fun':
+    id: 'GetReasonGroupShort@go.reporting.fun'
     name: 'GetReasonGroupShort'
+    type: 'function'
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.GetReasonGroupParams'
         required: true
@@ -2478,13 +2586,14 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'GetReportsByTicketShort@reporting':
-    id: 'GetReportsByTicketShort@reporting'
+  'GetReportsByTicketShort@go.reporting.fun':
+    id: 'GetReportsByTicketShort@go.reporting.fun'
     name: 'GetReportsByTicketShort'
+    type: 'function'
     description: |-
       List reports ordered by createdAt in descending order.
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.GetReportsByTicketParams'
         required: true
@@ -2510,13 +2619,14 @@ functions:
       - 'ticket'
       - 'tickets'
 
-  'GetTicketDetailShort@reporting':
-    id: 'GetTicketDetailShort@reporting'
+  'GetTicketDetailShort@go.reporting.fun':
+    id: 'GetTicketDetailShort@go.reporting.fun'
     name: 'GetTicketDetailShort'
+    type: 'function'
     description: |-
       This endpoint will return ticket detail with ticket id.
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.GetTicketDetailParams'
         required: true
@@ -2541,16 +2651,17 @@ functions:
       - 'ticket'
       - 'tickets'
 
-  'ListReportsShort@reporting':
-    id: 'ListReportsShort@reporting'
+  'ListReportsShort@go.reporting.fun':
+    id: 'ListReportsShort@go.reporting.fun'
     name: 'ListReportsShort'
+    type: 'function'
     description: |-
       Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
       Reports list can be ordered by:
       - createdAt
       - updatedAt
     struct: 'AdminReportsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reports.ListReportsParams'
         required: true
@@ -2573,16 +2684,17 @@ functions:
       - 'list'
       - 'reports'
 
-  'ListTicketsShort@reporting':
-    id: 'ListTicketsShort@reporting'
+  'ListTicketsShort@go.reporting.fun':
+    id: 'ListTicketsShort@go.reporting.fun'
     name: 'ListTicketsShort'
+    type: 'function'
     description: |-
       Tickets list can be ordered by:
       - createdAt
       - reportsCount
       - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.ListTicketsParams'
         required: true
@@ -2605,11 +2717,12 @@ functions:
       - 'list'
       - 'tickets'
 
-  'PublicGetReasonsShort@reporting':
-    id: 'PublicGetReasonsShort@reporting'
+  'PublicGetReasonsShort@go.reporting.fun':
+    id: 'PublicGetReasonsShort@go.reporting.fun'
     name: 'PublicGetReasonsShort'
+    type: 'function'
     struct: 'PublicReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*public_reasons.PublicGetReasonsParams'
         required: true
@@ -2632,13 +2745,14 @@ functions:
       - 'public'
       - 'reasons'
 
-  'PublicListReasonGroupsShort@reporting':
-    id: 'PublicListReasonGroupsShort@reporting'
+  'PublicListReasonGroupsShort@go.reporting.fun':
+    id: 'PublicListReasonGroupsShort@go.reporting.fun'
     name: 'PublicListReasonGroupsShort'
+    type: 'function'
     description: |-
       Return list of reason groups ID and title under given namespace.
     struct: 'PublicReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*public_reasons.PublicListReasonGroupsParams'
         required: true
@@ -2663,9 +2777,10 @@ functions:
       - 'reason'
       - 'reasons'
 
-  'SubmitReportShort@reporting':
-    id: 'SubmitReportShort@reporting'
+  'SubmitReportShort@go.reporting.fun':
+    id: 'SubmitReportShort@go.reporting.fun'
     name: 'SubmitReportShort'
+    type: 'function'
     description: |-
       User need to be authenticated to access this endpoint.
       Submit a report and will return ticket for reported object.
@@ -2677,7 +2792,7 @@ functions:
       Fill the 'reason' field with a 'reason title'
       Supported category: - UGC - USER - CHAT - EXTENSION
     struct: 'PublicReportsService'
-    parameters:
+    arguments:
       params:
         type: '*public_reports.SubmitReportParams'
         required: true
@@ -2701,15 +2816,16 @@ functions:
       - 'reports'
       - 'submit'
 
-  'TicketStatisticShort@reporting':
-    id: 'TicketStatisticShort@reporting'
+  'TicketStatisticShort@go.reporting.fun':
+    id: 'TicketStatisticShort@go.reporting.fun'
     name: 'TicketStatisticShort'
+    type: 'function'
     description: |-
       Ticket statistic can be filtered by:
       - category
       - extension category
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.TicketStatisticParams'
         required: true
@@ -2733,9 +2849,10 @@ functions:
       - 'ticket'
       - 'tickets'
 
-  'UpdateModerationRuleShort@reporting':
-    id: 'UpdateModerationRuleShort@reporting'
+  'UpdateModerationRuleShort@go.reporting.fun':
+    id: 'UpdateModerationRuleShort@go.reporting.fun'
     name: 'UpdateModerationRuleShort'
+    type: 'function'
     description: |-
       This endpoint update moderation rule.
       Supported Category:- UGC - USER - CHAT - EXTENSION
@@ -2747,7 +2864,7 @@ functions:
       * **banAccount**: Ban the user account
       * **deleteChat**: Delete chat
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.UpdateModerationRuleParams'
         required: true
@@ -2771,13 +2888,14 @@ functions:
       - 'rule'
       - 'update'
 
-  'UpdateModerationRuleStatusShort@reporting':
-    id: 'UpdateModerationRuleStatusShort@reporting'
+  'UpdateModerationRuleStatusShort@go.reporting.fun':
+    id: 'UpdateModerationRuleStatusShort@go.reporting.fun'
     name: 'UpdateModerationRuleStatusShort'
+    type: 'function'
     description: |-
       This endpoint enable/disable moderation rule status.
     struct: 'AdminModerationRuleService'
-    parameters:
+    arguments:
       params:
         type: '*admin_moderation_rule.UpdateModerationRuleStatusParams'
         required: true
@@ -2802,13 +2920,14 @@ functions:
       - 'status'
       - 'update'
 
-  'UpdateReasonShort@reporting':
-    id: 'UpdateReasonShort@reporting'
+  'UpdateReasonShort@go.reporting.fun':
+    id: 'UpdateReasonShort@go.reporting.fun'
     name: 'UpdateReasonShort'
+    type: 'function'
     description: |-
       This endpoint update a reason for a namespace with ID.
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.UpdateReasonParams'
         required: true
@@ -2832,14 +2951,15 @@ functions:
       - 'reasons'
       - 'update'
 
-  'UpdateReasonGroupShort@reporting':
-    id: 'UpdateReasonGroupShort@reporting'
+  'UpdateReasonGroupShort@go.reporting.fun':
+    id: 'UpdateReasonGroupShort@go.reporting.fun'
     name: 'UpdateReasonGroupShort'
+    type: 'function'
     description: |-
       Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
       If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
     struct: 'AdminReasonsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_reasons.UpdateReasonGroupParams'
         required: true
@@ -2864,13 +2984,14 @@ functions:
       - 'reasons'
       - 'update'
 
-  'UpdateTicketResolutionsShort@reporting':
-    id: 'UpdateTicketResolutionsShort@reporting'
+  'UpdateTicketResolutionsShort@go.reporting.fun':
+    id: 'UpdateTicketResolutionsShort@go.reporting.fun'
     name: 'UpdateTicketResolutionsShort'
+    type: 'function'
     description: |-
       Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
     struct: 'AdminTicketsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_tickets.UpdateTicketResolutionsParams'
         required: true
@@ -2895,15 +3016,16 @@ functions:
       - 'tickets'
       - 'update'
 
-  'UpsertShort@reporting':
-    id: 'UpsertShort@reporting'
+  'UpsertShort@go.reporting.fun':
+    id: 'UpsertShort@go.reporting.fun'
     name: 'UpsertShort'
+    type: 'function'
     description: |-
       The behaviour of this endpoint is upsert based on the namespace.
       So, you can use this for both creating & updating the configuration.
       TimeInterval is in nanoseconds.
     struct: 'AdminConfigurationsService'
-    parameters:
+    arguments:
       params:
         type: '*admin_configurations.UpsertParams'
         required: true
@@ -2925,3 +3047,5 @@ functions:
       - 'admin'
       - 'configurations'
       - 'upsert'
+
+  # endregion functions

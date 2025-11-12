@@ -1,10 +1,16 @@
-structs:
-  'JusticeLobbyService@lobby':
-    id: 'JusticeLobbyService@lobby'
-    name: 'JusticeLobbyService'
+symbols:
+  'NewLobbyClient@go.lobby.fun':
+    id: 'NewLobbyClient@go.lobby.fun'
+    name: 'NewLobbyClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*lobbyclient.JusticeLobbyService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/lobby-sdk/pkg/lobbyclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/justice_lobby_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/lobbyclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AdminService@lobby':
-    id: 'AdminService@lobby'
+  'AdminService@go.lobby.mod':
+    id: 'AdminService@go.lobby.mod'
     name: 'AdminService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'BlocksService@lobby':
-    id: 'BlocksService@lobby'
+  'BlocksService@go.lobby.mod':
+    id: 'BlocksService@go.lobby.mod'
     name: 'BlocksService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ConfigService@lobby':
-    id: 'ConfigService@lobby'
+  'ConfigService@go.lobby.mod':
+    id: 'ConfigService@go.lobby.mod'
     name: 'ConfigService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'FriendsService@lobby':
-    id: 'FriendsService@lobby'
+  'FriendsService@go.lobby.mod':
+    id: 'FriendsService@go.lobby.mod'
     name: 'FriendsService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'LobbyOperationsService@lobby':
-    id: 'LobbyOperationsService@lobby'
+  'LobbyOperationsService@go.lobby.mod':
+    id: 'LobbyOperationsService@go.lobby.mod'
     name: 'LobbyOperationsService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'NotificationService@lobby':
-    id: 'NotificationService@lobby'
+  'NotificationService@go.lobby.mod':
+    id: 'NotificationService@go.lobby.mod'
     name: 'NotificationService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PartyService@lobby':
-    id: 'PartyService@lobby'
+  'PartyService@go.lobby.mod':
+    id: 'PartyService@go.lobby.mod'
     name: 'PartyService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -181,9 +194,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PlayerService@lobby':
-    id: 'PlayerService@lobby'
+  'PlayerService@go.lobby.mod':
+    id: 'PlayerService@go.lobby.mod'
     name: 'PlayerService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -205,9 +219,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PresenceService@lobby':
-    id: 'PresenceService@lobby'
+  'PresenceService@go.lobby.mod':
+    id: 'PresenceService@go.lobby.mod'
     name: 'PresenceService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -229,9 +244,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ProfanityService@lobby':
-    id: 'ProfanityService@lobby'
+  'ProfanityService@go.lobby.mod':
+    id: 'ProfanityService@go.lobby.mod'
     name: 'ProfanityService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -253,9 +269,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ThirdPartyService@lobby':
-    id: 'ThirdPartyService@lobby'
+  'ThirdPartyService@go.lobby.mod':
+    id: 'ThirdPartyService@go.lobby.mod'
     name: 'ThirdPartyService'
+    type: 'model'
     fields:
       Client:
         type: '*lobbyclient.JusticeLobbyService'
@@ -281,9 +298,10 @@ structs:
 
   # region params
 
-  'AddFriendsWithoutConfirmationParams@lobby':
-    id: 'AddFriendsWithoutConfirmationParams@lobby'
+  'AddFriendsWithoutConfirmationParams@go.lobby.mod':
+    id: 'AddFriendsWithoutConfirmationParams@go.lobby.mod'
     name: 'AddFriendsWithoutConfirmationParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelBulkFriendsRequest'
@@ -303,9 +321,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/add_friends_without_confirmation_parameters.go'
 
-  'AdminAddProfanityFilterIntoListParams@lobby':
-    id: 'AdminAddProfanityFilterIntoListParams@lobby'
+  'AdminAddProfanityFilterIntoListParams@go.lobby.mod':
+    id: 'AdminAddProfanityFilterIntoListParams@go.lobby.mod'
     name: 'AdminAddProfanityFilterIntoListParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminAddProfanityFilterIntoListRequest'
@@ -325,9 +344,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_add_profanity_filter_into_list_parameters.go'
 
-  'AdminAddProfanityFiltersParams@lobby':
-    id: 'AdminAddProfanityFiltersParams@lobby'
+  'AdminAddProfanityFiltersParams@go.lobby.mod':
+    id: 'AdminAddProfanityFiltersParams@go.lobby.mod'
     name: 'AdminAddProfanityFiltersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminAddProfanityFiltersRequest'
@@ -347,9 +367,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_add_profanity_filters_parameters.go'
 
-  'AdminBulkBlockPlayersV1Params@lobby':
-    id: 'AdminBulkBlockPlayersV1Params@lobby'
+  'AdminBulkBlockPlayersV1Params@go.lobby.mod':
+    id: 'AdminBulkBlockPlayersV1Params@go.lobby.mod'
     name: 'AdminBulkBlockPlayersV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsListBlockedPlayerRequest'
@@ -369,9 +390,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_bulk_block_players_v1_parameters.go'
 
-  'AdminBulkUnblockPlayersV1Params@lobby':
-    id: 'AdminBulkUnblockPlayersV1Params@lobby'
+  'AdminBulkUnblockPlayersV1Params@go.lobby.mod':
+    id: 'AdminBulkUnblockPlayersV1Params@go.lobby.mod'
     name: 'AdminBulkUnblockPlayersV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsListUnblockPlayerRequest'
@@ -391,9 +413,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_bulk_unblock_players_v1_parameters.go'
 
-  'AdminCreateProfanityListParams@lobby':
-    id: 'AdminCreateProfanityListParams@lobby'
+  'AdminCreateProfanityListParams@go.lobby.mod':
+    id: 'AdminCreateProfanityListParams@go.lobby.mod'
     name: 'AdminCreateProfanityListParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminCreateProfanityListRequest'
@@ -408,9 +431,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_create_profanity_list_parameters.go'
 
-  'AdminCreateThirdPartyConfigParams@lobby':
-    id: 'AdminCreateThirdPartyConfigParams@lobby'
+  'AdminCreateThirdPartyConfigParams@go.lobby.mod':
+    id: 'AdminCreateThirdPartyConfigParams@go.lobby.mod'
     name: 'AdminCreateThirdPartyConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsCreateConfigRequest'
@@ -425,9 +449,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/third_party/admin_create_third_party_config_parameters.go'
 
-  'AdminDebugProfanityFiltersParams@lobby':
-    id: 'AdminDebugProfanityFiltersParams@lobby'
+  'AdminDebugProfanityFiltersParams@go.lobby.mod':
+    id: 'AdminDebugProfanityFiltersParams@go.lobby.mod'
     name: 'AdminDebugProfanityFiltersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDebugProfanityFilterRequest'
@@ -442,18 +467,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_debug_profanity_filters_parameters.go'
 
-  'AdminDeleteGlobalConfigParams@lobby':
-    id: 'AdminDeleteGlobalConfigParams@lobby'
+  'AdminDeleteGlobalConfigParams@go.lobby.mod':
+    id: 'AdminDeleteGlobalConfigParams@go.lobby.mod'
     name: 'AdminDeleteGlobalConfigParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/lobby-sdk/pkg/lobbyclient/admin'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/admin_delete_global_config_parameters.go'
 
-  'AdminDeleteProfanityFilterParams@lobby':
-    id: 'AdminDeleteProfanityFilterParams@lobby'
+  'AdminDeleteProfanityFilterParams@go.lobby.mod':
+    id: 'AdminDeleteProfanityFilterParams@go.lobby.mod'
     name: 'AdminDeleteProfanityFilterParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminDeleteProfanityFilterRequest'
@@ -473,9 +499,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_delete_profanity_filter_parameters.go'
 
-  'AdminDeleteProfanityListParams@lobby':
-    id: 'AdminDeleteProfanityListParams@lobby'
+  'AdminDeleteProfanityListParams@go.lobby.mod':
+    id: 'AdminDeleteProfanityListParams@go.lobby.mod'
     name: 'AdminDeleteProfanityListParams'
+    type: 'model'
     fields:
       'List':
         type: 'string'
@@ -492,9 +519,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_delete_profanity_list_parameters.go'
 
-  'AdminDeleteThirdPartyConfigParams@lobby':
-    id: 'AdminDeleteThirdPartyConfigParams@lobby'
+  'AdminDeleteThirdPartyConfigParams@go.lobby.mod':
+    id: 'AdminDeleteThirdPartyConfigParams@go.lobby.mod'
     name: 'AdminDeleteThirdPartyConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -506,9 +534,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/third_party/admin_delete_third_party_config_parameters.go'
 
-  'AdminExportConfigV1Params@lobby':
-    id: 'AdminExportConfigV1Params@lobby'
+  'AdminExportConfigV1Params@go.lobby.mod':
+    id: 'AdminExportConfigV1Params@go.lobby.mod'
     name: 'AdminExportConfigV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -520,18 +549,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_export_config_v1_parameters.go'
 
-  'AdminGetAllConfigV1Params@lobby':
-    id: 'AdminGetAllConfigV1Params@lobby'
+  'AdminGetAllConfigV1Params@go.lobby.mod':
+    id: 'AdminGetAllConfigV1Params@go.lobby.mod'
     name: 'AdminGetAllConfigV1Params'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/lobby-sdk/pkg/lobbyclient/config'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_get_all_config_v1_parameters.go'
 
-  'AdminGetAllPlayerSessionAttributeParams@lobby':
-    id: 'AdminGetAllPlayerSessionAttributeParams@lobby'
+  'AdminGetAllPlayerSessionAttributeParams@go.lobby.mod':
+    id: 'AdminGetAllPlayerSessionAttributeParams@go.lobby.mod'
     name: 'AdminGetAllPlayerSessionAttributeParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -548,9 +578,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_all_player_session_attribute_parameters.go'
 
-  'AdminGetBulkPlayerBlockedPlayersV1Params@lobby':
-    id: 'AdminGetBulkPlayerBlockedPlayersV1Params@lobby'
+  'AdminGetBulkPlayerBlockedPlayersV1Params@go.lobby.mod':
+    id: 'AdminGetBulkPlayerBlockedPlayersV1Params@go.lobby.mod'
     name: 'AdminGetBulkPlayerBlockedPlayersV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsGetBulkAllPlayerBlockedUsersRequest'
@@ -565,9 +596,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_bulk_player_blocked_players_v1_parameters.go'
 
-  'AdminGetConfigV1Params@lobby':
-    id: 'AdminGetConfigV1Params@lobby'
+  'AdminGetConfigV1Params@go.lobby.mod':
+    id: 'AdminGetConfigV1Params@go.lobby.mod'
     name: 'AdminGetConfigV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -579,18 +611,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_get_config_v1_parameters.go'
 
-  'AdminGetGlobalConfigParams@lobby':
-    id: 'AdminGetGlobalConfigParams@lobby'
+  'AdminGetGlobalConfigParams@go.lobby.mod':
+    id: 'AdminGetGlobalConfigParams@go.lobby.mod'
     name: 'AdminGetGlobalConfigParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/lobby-sdk/pkg/lobbyclient/admin'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/admin_get_global_config_parameters.go'
 
-  'AdminGetLobbyCCUParams@lobby':
-    id: 'AdminGetLobbyCCUParams@lobby'
+  'AdminGetLobbyCCUParams@go.lobby.mod':
+    id: 'AdminGetLobbyCCUParams@go.lobby.mod'
     name: 'AdminGetLobbyCCUParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -602,18 +635,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_lobby_c_c_u_parameters.go'
 
-  'AdminGetLogConfigParams@lobby':
-    id: 'AdminGetLogConfigParams@lobby'
+  'AdminGetLogConfigParams@go.lobby.mod':
+    id: 'AdminGetLogConfigParams@go.lobby.mod'
     name: 'AdminGetLogConfigParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/lobby-sdk/pkg/lobbyclient/config'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_get_log_config_parameters.go'
 
-  'AdminGetPartyDataV1Params@lobby':
-    id: 'AdminGetPartyDataV1Params@lobby'
+  'AdminGetPartyDataV1Params@go.lobby.mod':
+    id: 'AdminGetPartyDataV1Params@go.lobby.mod'
     name: 'AdminGetPartyDataV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -630,9 +664,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/party/admin_get_party_data_v1_parameters.go'
 
-  'AdminGetPlayerBlockedByPlayersV1Params@lobby':
-    id: 'AdminGetPlayerBlockedByPlayersV1Params@lobby'
+  'AdminGetPlayerBlockedByPlayersV1Params@go.lobby.mod':
+    id: 'AdminGetPlayerBlockedByPlayersV1Params@go.lobby.mod'
     name: 'AdminGetPlayerBlockedByPlayersV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -649,9 +684,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_player_blocked_by_players_v1_parameters.go'
 
-  'AdminGetPlayerBlockedPlayersV1Params@lobby':
-    id: 'AdminGetPlayerBlockedPlayersV1Params@lobby'
+  'AdminGetPlayerBlockedPlayersV1Params@go.lobby.mod':
+    id: 'AdminGetPlayerBlockedPlayersV1Params@go.lobby.mod'
     name: 'AdminGetPlayerBlockedPlayersV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -668,9 +704,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_player_blocked_players_v1_parameters.go'
 
-  'AdminGetPlayerSessionAttributeParams@lobby':
-    id: 'AdminGetPlayerSessionAttributeParams@lobby'
+  'AdminGetPlayerSessionAttributeParams@go.lobby.mod':
+    id: 'AdminGetPlayerSessionAttributeParams@go.lobby.mod'
     name: 'AdminGetPlayerSessionAttributeParams'
+    type: 'model'
     fields:
       'Attribute':
         type: 'string'
@@ -692,9 +729,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_get_player_session_attribute_parameters.go'
 
-  'AdminGetProfanityListFiltersV1Params@lobby':
-    id: 'AdminGetProfanityListFiltersV1Params@lobby'
+  'AdminGetProfanityListFiltersV1Params@go.lobby.mod':
+    id: 'AdminGetProfanityListFiltersV1Params@go.lobby.mod'
     name: 'AdminGetProfanityListFiltersV1Params'
+    type: 'model'
     fields:
       'List':
         type: 'string'
@@ -711,9 +749,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_get_profanity_list_filters_v1_parameters.go'
 
-  'AdminGetProfanityListsParams@lobby':
-    id: 'AdminGetProfanityListsParams@lobby'
+  'AdminGetProfanityListsParams@go.lobby.mod':
+    id: 'AdminGetProfanityListsParams@go.lobby.mod'
     name: 'AdminGetProfanityListsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -725,9 +764,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_get_profanity_lists_parameters.go'
 
-  'AdminGetProfanityRuleParams@lobby':
-    id: 'AdminGetProfanityRuleParams@lobby'
+  'AdminGetProfanityRuleParams@go.lobby.mod':
+    id: 'AdminGetProfanityRuleParams@go.lobby.mod'
     name: 'AdminGetProfanityRuleParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -739,9 +779,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_get_profanity_rule_parameters.go'
 
-  'AdminGetThirdPartyConfigParams@lobby':
-    id: 'AdminGetThirdPartyConfigParams@lobby'
+  'AdminGetThirdPartyConfigParams@go.lobby.mod':
+    id: 'AdminGetThirdPartyConfigParams@go.lobby.mod'
     name: 'AdminGetThirdPartyConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -753,9 +794,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/third_party/admin_get_third_party_config_parameters.go'
 
-  'AdminGetUserPartyV1Params@lobby':
-    id: 'AdminGetUserPartyV1Params@lobby'
+  'AdminGetUserPartyV1Params@go.lobby.mod':
+    id: 'AdminGetUserPartyV1Params@go.lobby.mod'
     name: 'AdminGetUserPartyV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -772,9 +814,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/party/admin_get_user_party_v1_parameters.go'
 
-  'AdminImportConfigV1Params@lobby':
-    id: 'AdminImportConfigV1Params@lobby'
+  'AdminImportConfigV1Params@go.lobby.mod':
+    id: 'AdminImportConfigV1Params@go.lobby.mod'
     name: 'AdminImportConfigV1Params'
+    type: 'model'
     fields:
       'File':
         type: '[]byte'
@@ -791,9 +834,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_import_config_v1_parameters.go'
 
-  'AdminImportProfanityFiltersFromFileParams@lobby':
-    id: 'AdminImportProfanityFiltersFromFileParams@lobby'
+  'AdminImportProfanityFiltersFromFileParams@go.lobby.mod':
+    id: 'AdminImportProfanityFiltersFromFileParams@go.lobby.mod'
     name: 'AdminImportProfanityFiltersFromFileParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]int64'
@@ -813,9 +857,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_import_profanity_filters_from_file_parameters.go'
 
-  'AdminJoinPartyV1Params@lobby':
-    id: 'AdminJoinPartyV1Params@lobby'
+  'AdminJoinPartyV1Params@go.lobby.mod':
+    id: 'AdminJoinPartyV1Params@go.lobby.mod'
     name: 'AdminJoinPartyV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -837,9 +882,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/lobby_operations/admin_join_party_v1_parameters.go'
 
-  'AdminListFriendsOfFriendsParams@lobby':
-    id: 'AdminListFriendsOfFriendsParams@lobby'
+  'AdminListFriendsOfFriendsParams@go.lobby.mod':
+    id: 'AdminListFriendsOfFriendsParams@go.lobby.mod'
     name: 'AdminListFriendsOfFriendsParams'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -876,9 +922,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/admin_list_friends_of_friends_parameters.go'
 
-  'AdminPatchUpdateLogConfigParams@lobby':
-    id: 'AdminPatchUpdateLogConfigParams@lobby'
+  'AdminPatchUpdateLogConfigParams@go.lobby.mod':
+    id: 'AdminPatchUpdateLogConfigParams@go.lobby.mod'
     name: 'AdminPatchUpdateLogConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*LogconfigConfiguration'
@@ -888,9 +935,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_patch_update_log_config_parameters.go'
 
-  'AdminSetPlayerSessionAttributeParams@lobby':
-    id: 'AdminSetPlayerSessionAttributeParams@lobby'
+  'AdminSetPlayerSessionAttributeParams@go.lobby.mod':
+    id: 'AdminSetPlayerSessionAttributeParams@go.lobby.mod'
     name: 'AdminSetPlayerSessionAttributeParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSetPlayerSessionAttributeRequest'
@@ -910,9 +958,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/admin_set_player_session_attribute_parameters.go'
 
-  'AdminSetProfanityRuleForNamespaceParams@lobby':
-    id: 'AdminSetProfanityRuleForNamespaceParams@lobby'
+  'AdminSetProfanityRuleForNamespaceParams@go.lobby.mod':
+    id: 'AdminSetProfanityRuleForNamespaceParams@go.lobby.mod'
     name: 'AdminSetProfanityRuleForNamespaceParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminSetProfanityRuleForNamespaceRequest'
@@ -927,9 +976,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_set_profanity_rule_for_namespace_parameters.go'
 
-  'AdminUpdateConfigV1Params@lobby':
-    id: 'AdminUpdateConfigV1Params@lobby'
+  'AdminUpdateConfigV1Params@go.lobby.mod':
+    id: 'AdminUpdateConfigV1Params@go.lobby.mod'
     name: 'AdminUpdateConfigV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsConfigReq'
@@ -944,9 +994,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/config/admin_update_config_v1_parameters.go'
 
-  'AdminUpdateGlobalConfigParams@lobby':
-    id: 'AdminUpdateGlobalConfigParams@lobby'
+  'AdminUpdateGlobalConfigParams@go.lobby.mod':
+    id: 'AdminUpdateGlobalConfigParams@go.lobby.mod'
     name: 'AdminUpdateGlobalConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelPutGlobalConfigurationRequest'
@@ -956,9 +1007,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/admin_update_global_config_parameters.go'
 
-  'AdminUpdatePartyAttributesV1Params@lobby':
-    id: 'AdminUpdatePartyAttributesV1Params@lobby'
+  'AdminUpdatePartyAttributesV1Params@go.lobby.mod':
+    id: 'AdminUpdatePartyAttributesV1Params@go.lobby.mod'
     name: 'AdminUpdatePartyAttributesV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPartyPUTCustomAttributesRequest'
@@ -978,9 +1030,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/lobby_operations/admin_update_party_attributes_v1_parameters.go'
 
-  'AdminUpdateProfanityListParams@lobby':
-    id: 'AdminUpdateProfanityListParams@lobby'
+  'AdminUpdateProfanityListParams@go.lobby.mod':
+    id: 'AdminUpdateProfanityListParams@go.lobby.mod'
     name: 'AdminUpdateProfanityListParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminUpdateProfanityList'
@@ -1000,9 +1053,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_update_profanity_list_parameters.go'
 
-  'AdminUpdateThirdPartyConfigParams@lobby':
-    id: 'AdminUpdateThirdPartyConfigParams@lobby'
+  'AdminUpdateThirdPartyConfigParams@go.lobby.mod':
+    id: 'AdminUpdateThirdPartyConfigParams@go.lobby.mod'
     name: 'AdminUpdateThirdPartyConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateConfigRequest'
@@ -1017,9 +1071,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/third_party/admin_update_third_party_config_parameters.go'
 
-  'AdminVerifyMessageProfanityResponseParams@lobby':
-    id: 'AdminVerifyMessageProfanityResponseParams@lobby'
+  'AdminVerifyMessageProfanityResponseParams@go.lobby.mod':
+    id: 'AdminVerifyMessageProfanityResponseParams@go.lobby.mod'
     name: 'AdminVerifyMessageProfanityResponseParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAdminVerifyMessageProfanityRequest'
@@ -1034,9 +1089,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/profanity/admin_verify_message_profanity_response_parameters.go'
 
-  'BulkDeleteFriendsParams@lobby':
-    id: 'BulkDeleteFriendsParams@lobby'
+  'BulkDeleteFriendsParams@go.lobby.mod':
+    id: 'BulkDeleteFriendsParams@go.lobby.mod'
     name: 'BulkDeleteFriendsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelBulkFriendsRequest'
@@ -1056,9 +1112,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/bulk_delete_friends_parameters.go'
 
-  'CreateNotificationTemplateV1AdminParams@lobby':
-    id: 'CreateNotificationTemplateV1AdminParams@lobby'
+  'CreateNotificationTemplateV1AdminParams@go.lobby.mod':
+    id: 'CreateNotificationTemplateV1AdminParams@go.lobby.mod'
     name: 'CreateNotificationTemplateV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateTemplateRequest'
@@ -1073,9 +1130,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/create_notification_template_v1_admin_parameters.go'
 
-  'CreateNotificationTopicV1AdminParams@lobby':
-    id: 'CreateNotificationTopicV1AdminParams@lobby'
+  'CreateNotificationTopicV1AdminParams@go.lobby.mod':
+    id: 'CreateNotificationTopicV1AdminParams@go.lobby.mod'
     name: 'CreateNotificationTopicV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateTopicRequestV1'
@@ -1090,9 +1148,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/create_notification_topic_v1_admin_parameters.go'
 
-  'CreateTemplateParams@lobby':
-    id: 'CreateTemplateParams@lobby'
+  'CreateTemplateParams@go.lobby.mod':
+    id: 'CreateTemplateParams@go.lobby.mod'
     name: 'CreateTemplateParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateTemplateRequest'
@@ -1107,9 +1166,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/create_template_parameters.go'
 
-  'CreateTopicParams@lobby':
-    id: 'CreateTopicParams@lobby'
+  'CreateTopicParams@go.lobby.mod':
+    id: 'CreateTopicParams@go.lobby.mod'
     name: 'CreateTopicParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateTopicRequest'
@@ -1124,9 +1184,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/create_topic_parameters.go'
 
-  'DeleteNotificationTemplateSlugV1AdminParams@lobby':
-    id: 'DeleteNotificationTemplateSlugV1AdminParams@lobby'
+  'DeleteNotificationTemplateSlugV1AdminParams@go.lobby.mod':
+    id: 'DeleteNotificationTemplateSlugV1AdminParams@go.lobby.mod'
     name: 'DeleteNotificationTemplateSlugV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1143,9 +1204,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/delete_notification_template_slug_v1_admin_parameters.go'
 
-  'DeleteNotificationTopicV1AdminParams@lobby':
-    id: 'DeleteNotificationTopicV1AdminParams@lobby'
+  'DeleteNotificationTopicV1AdminParams@go.lobby.mod':
+    id: 'DeleteNotificationTopicV1AdminParams@go.lobby.mod'
     name: 'DeleteNotificationTopicV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1162,9 +1224,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/delete_notification_topic_v1_admin_parameters.go'
 
-  'DeleteTemplateLocalizationParams@lobby':
-    id: 'DeleteTemplateLocalizationParams@lobby'
+  'DeleteTemplateLocalizationParams@go.lobby.mod':
+    id: 'DeleteTemplateLocalizationParams@go.lobby.mod'
     name: 'DeleteTemplateLocalizationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1186,9 +1249,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/delete_template_localization_parameters.go'
 
-  'DeleteTemplateLocalizationV1AdminParams@lobby':
-    id: 'DeleteTemplateLocalizationV1AdminParams@lobby'
+  'DeleteTemplateLocalizationV1AdminParams@go.lobby.mod':
+    id: 'DeleteTemplateLocalizationV1AdminParams@go.lobby.mod'
     name: 'DeleteTemplateLocalizationV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1210,9 +1274,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/delete_template_localization_v1_admin_parameters.go'
 
-  'DeleteTemplateSlugParams@lobby':
-    id: 'DeleteTemplateSlugParams@lobby'
+  'DeleteTemplateSlugParams@go.lobby.mod':
+    id: 'DeleteTemplateSlugParams@go.lobby.mod'
     name: 'DeleteTemplateSlugParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1229,9 +1294,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/delete_template_slug_parameters.go'
 
-  'DeleteTopicByTopicNameParams@lobby':
-    id: 'DeleteTopicByTopicNameParams@lobby'
+  'DeleteTopicByTopicNameParams@go.lobby.mod':
+    id: 'DeleteTopicByTopicNameParams@go.lobby.mod'
     name: 'DeleteTopicByTopicNameParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1248,9 +1314,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/delete_topic_by_topic_name_parameters.go'
 
-  'FreeFormNotificationParams@lobby':
-    id: 'FreeFormNotificationParams@lobby'
+  'FreeFormNotificationParams@go.lobby.mod':
+    id: 'FreeFormNotificationParams@go.lobby.mod'
     name: 'FreeFormNotificationParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelFreeFormNotificationRequest'
@@ -1265,9 +1332,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/free_form_notification_parameters.go'
 
-  'FreeFormNotificationByUserIDParams@lobby':
-    id: 'FreeFormNotificationByUserIDParams@lobby'
+  'FreeFormNotificationByUserIDParams@go.lobby.mod':
+    id: 'FreeFormNotificationByUserIDParams@go.lobby.mod'
     name: 'FreeFormNotificationByUserIDParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelFreeFormNotificationRequest'
@@ -1287,9 +1355,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/free_form_notification_by_user_id_parameters.go'
 
-  'GetIncomingFriendRequestsParams@lobby':
-    id: 'GetIncomingFriendRequestsParams@lobby'
+  'GetIncomingFriendRequestsParams@go.lobby.mod':
+    id: 'GetIncomingFriendRequestsParams@go.lobby.mod'
     name: 'GetIncomingFriendRequestsParams'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -1321,9 +1390,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_incoming_friend_requests_parameters.go'
 
-  'GetListOfFriendsParams@lobby':
-    id: 'GetListOfFriendsParams@lobby'
+  'GetListOfFriendsParams@go.lobby.mod':
+    id: 'GetListOfFriendsParams@go.lobby.mod'
     name: 'GetListOfFriendsParams'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -1360,9 +1430,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_list_of_friends_parameters.go'
 
-  'GetOutgoingFriendRequestsParams@lobby':
-    id: 'GetOutgoingFriendRequestsParams@lobby'
+  'GetOutgoingFriendRequestsParams@go.lobby.mod':
+    id: 'GetOutgoingFriendRequestsParams@go.lobby.mod'
     name: 'GetOutgoingFriendRequestsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1389,9 +1460,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_outgoing_friend_requests_parameters.go'
 
-  'GetAllNotificationTemplatesV1AdminParams@lobby':
-    id: 'GetAllNotificationTemplatesV1AdminParams@lobby'
+  'GetAllNotificationTemplatesV1AdminParams@go.lobby.mod':
+    id: 'GetAllNotificationTemplatesV1AdminParams@go.lobby.mod'
     name: 'GetAllNotificationTemplatesV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1403,9 +1475,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_all_notification_templates_v1_admin_parameters.go'
 
-  'GetAllNotificationTopicsV1AdminParams@lobby':
-    id: 'GetAllNotificationTopicsV1AdminParams@lobby'
+  'GetAllNotificationTopicsV1AdminParams@go.lobby.mod':
+    id: 'GetAllNotificationTopicsV1AdminParams@go.lobby.mod'
     name: 'GetAllNotificationTopicsV1AdminParams'
+    type: 'model'
     fields:
       'After':
         type: 'string'
@@ -1432,9 +1505,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_all_notification_topics_v1_admin_parameters.go'
 
-  'GetGameTemplateParams@lobby':
-    id: 'GetGameTemplateParams@lobby'
+  'GetGameTemplateParams@go.lobby.mod':
+    id: 'GetGameTemplateParams@go.lobby.mod'
     name: 'GetGameTemplateParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1446,9 +1520,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/get_game_template_parameters.go'
 
-  'GetLocalizationTemplateParams@lobby':
-    id: 'GetLocalizationTemplateParams@lobby'
+  'GetLocalizationTemplateParams@go.lobby.mod':
+    id: 'GetLocalizationTemplateParams@go.lobby.mod'
     name: 'GetLocalizationTemplateParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1470,9 +1545,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/get_localization_template_parameters.go'
 
-  'GetMyNotificationsParams@lobby':
-    id: 'GetMyNotificationsParams@lobby'
+  'GetMyNotificationsParams@go.lobby.mod':
+    id: 'GetMyNotificationsParams@go.lobby.mod'
     name: 'GetMyNotificationsParams'
+    type: 'model'
     fields:
       'EndTime':
         type: 'int64'
@@ -1504,9 +1580,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_my_notifications_parameters.go'
 
-  'GetMyOfflineNotificationsParams@lobby':
-    id: 'GetMyOfflineNotificationsParams@lobby'
+  'GetMyOfflineNotificationsParams@go.lobby.mod':
+    id: 'GetMyOfflineNotificationsParams@go.lobby.mod'
     name: 'GetMyOfflineNotificationsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1518,9 +1595,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_my_offline_notifications_parameters.go'
 
-  'GetNotificationTopicV1AdminParams@lobby':
-    id: 'GetNotificationTopicV1AdminParams@lobby'
+  'GetNotificationTopicV1AdminParams@go.lobby.mod':
+    id: 'GetNotificationTopicV1AdminParams@go.lobby.mod'
     name: 'GetNotificationTopicV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1537,9 +1615,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_notification_topic_v1_admin_parameters.go'
 
-  'GetSingleTemplateLocalizationV1AdminParams@lobby':
-    id: 'GetSingleTemplateLocalizationV1AdminParams@lobby'
+  'GetSingleTemplateLocalizationV1AdminParams@go.lobby.mod':
+    id: 'GetSingleTemplateLocalizationV1AdminParams@go.lobby.mod'
     name: 'GetSingleTemplateLocalizationV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1561,9 +1640,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_single_template_localization_v1_admin_parameters.go'
 
-  'GetSlugTemplateParams@lobby':
-    id: 'GetSlugTemplateParams@lobby'
+  'GetSlugTemplateParams@go.lobby.mod':
+    id: 'GetSlugTemplateParams@go.lobby.mod'
     name: 'GetSlugTemplateParams'
+    type: 'model'
     fields:
       'After':
         type: 'string'
@@ -1595,9 +1675,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/get_slug_template_parameters.go'
 
-  'GetTemplateSlugLocalizationsTemplateV1AdminParams@lobby':
-    id: 'GetTemplateSlugLocalizationsTemplateV1AdminParams@lobby'
+  'GetTemplateSlugLocalizationsTemplateV1AdminParams@go.lobby.mod':
+    id: 'GetTemplateSlugLocalizationsTemplateV1AdminParams@go.lobby.mod'
     name: 'GetTemplateSlugLocalizationsTemplateV1AdminParams'
+    type: 'model'
     fields:
       'After':
         type: 'string'
@@ -1629,9 +1710,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_template_slug_localizations_template_v1_admin_parameters.go'
 
-  'GetTopicByNamespaceParams@lobby':
-    id: 'GetTopicByNamespaceParams@lobby'
+  'GetTopicByNamespaceParams@go.lobby.mod':
+    id: 'GetTopicByNamespaceParams@go.lobby.mod'
     name: 'GetTopicByNamespaceParams'
+    type: 'model'
     fields:
       'After':
         type: 'string'
@@ -1658,9 +1740,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_topic_by_namespace_parameters.go'
 
-  'GetTopicByTopicNameParams@lobby':
-    id: 'GetTopicByTopicNameParams@lobby'
+  'GetTopicByTopicNameParams@go.lobby.mod':
+    id: 'GetTopicByTopicNameParams@go.lobby.mod'
     name: 'GetTopicByTopicNameParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1677,9 +1760,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/get_topic_by_topic_name_parameters.go'
 
-  'GetUserFriendsUpdatedParams@lobby':
-    id: 'GetUserFriendsUpdatedParams@lobby'
+  'GetUserFriendsUpdatedParams@go.lobby.mod':
+    id: 'GetUserFriendsUpdatedParams@go.lobby.mod'
     name: 'GetUserFriendsUpdatedParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1701,9 +1785,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_friends_updated_parameters.go'
 
-  'GetUserFriendsWithPlatformParams@lobby':
-    id: 'GetUserFriendsWithPlatformParams@lobby'
+  'GetUserFriendsWithPlatformParams@go.lobby.mod':
+    id: 'GetUserFriendsWithPlatformParams@go.lobby.mod'
     name: 'GetUserFriendsWithPlatformParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1725,9 +1810,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_friends_with_platform_parameters.go'
 
-  'GetUserIncomingFriendsParams@lobby':
-    id: 'GetUserIncomingFriendsParams@lobby'
+  'GetUserIncomingFriendsParams@go.lobby.mod':
+    id: 'GetUserIncomingFriendsParams@go.lobby.mod'
     name: 'GetUserIncomingFriendsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1749,9 +1835,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_incoming_friends_parameters.go'
 
-  'GetUserIncomingFriendsWithTimeParams@lobby':
-    id: 'GetUserIncomingFriendsWithTimeParams@lobby'
+  'GetUserIncomingFriendsWithTimeParams@go.lobby.mod':
+    id: 'GetUserIncomingFriendsWithTimeParams@go.lobby.mod'
     name: 'GetUserIncomingFriendsWithTimeParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1773,9 +1860,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_incoming_friends_with_time_parameters.go'
 
-  'GetUserOutgoingFriendsParams@lobby':
-    id: 'GetUserOutgoingFriendsParams@lobby'
+  'GetUserOutgoingFriendsParams@go.lobby.mod':
+    id: 'GetUserOutgoingFriendsParams@go.lobby.mod'
     name: 'GetUserOutgoingFriendsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1797,9 +1885,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_outgoing_friends_parameters.go'
 
-  'GetUserOutgoingFriendsWithTimeParams@lobby':
-    id: 'GetUserOutgoingFriendsWithTimeParams@lobby'
+  'GetUserOutgoingFriendsWithTimeParams@go.lobby.mod':
+    id: 'GetUserOutgoingFriendsWithTimeParams@go.lobby.mod'
     name: 'GetUserOutgoingFriendsWithTimeParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1821,9 +1910,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/get_user_outgoing_friends_with_time_parameters.go'
 
-  'NotificationWithTemplateParams@lobby':
-    id: 'NotificationWithTemplateParams@lobby'
+  'NotificationWithTemplateParams@go.lobby.mod':
+    id: 'NotificationWithTemplateParams@go.lobby.mod'
     name: 'NotificationWithTemplateParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelNotificationWithTemplateRequest'
@@ -1838,9 +1928,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/notification_with_template_parameters.go'
 
-  'NotificationWithTemplateByUserIDParams@lobby':
-    id: 'NotificationWithTemplateByUserIDParams@lobby'
+  'NotificationWithTemplateByUserIDParams@go.lobby.mod':
+    id: 'NotificationWithTemplateByUserIDParams@go.lobby.mod'
     name: 'NotificationWithTemplateByUserIDParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelNotificationWithTemplateRequest'
@@ -1860,18 +1951,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/notification_with_template_by_user_id_parameters.go'
 
-  'PublicGetMessagesParams@lobby':
-    id: 'PublicGetMessagesParams@lobby'
+  'PublicGetMessagesParams@go.lobby.mod':
+    id: 'PublicGetMessagesParams@go.lobby.mod'
     name: 'PublicGetMessagesParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/lobby-sdk/pkg/lobbyclient/lobby_operations'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/lobby_operations/public_get_messages_parameters.go'
 
-  'PublicGetPartyDataV1Params@lobby':
-    id: 'PublicGetPartyDataV1Params@lobby'
+  'PublicGetPartyDataV1Params@go.lobby.mod':
+    id: 'PublicGetPartyDataV1Params@go.lobby.mod'
     name: 'PublicGetPartyDataV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1888,9 +1980,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/party/public_get_party_data_v1_parameters.go'
 
-  'PublicGetPlayerBlockedByPlayersV1Params@lobby':
-    id: 'PublicGetPlayerBlockedByPlayersV1Params@lobby'
+  'PublicGetPlayerBlockedByPlayersV1Params@go.lobby.mod':
+    id: 'PublicGetPlayerBlockedByPlayersV1Params@go.lobby.mod'
     name: 'PublicGetPlayerBlockedByPlayersV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1902,9 +1995,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/public_get_player_blocked_by_players_v1_parameters.go'
 
-  'PublicGetPlayerBlockedPlayersV1Params@lobby':
-    id: 'PublicGetPlayerBlockedPlayersV1Params@lobby'
+  'PublicGetPlayerBlockedPlayersV1Params@go.lobby.mod':
+    id: 'PublicGetPlayerBlockedPlayersV1Params@go.lobby.mod'
     name: 'PublicGetPlayerBlockedPlayersV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1916,9 +2010,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/public_get_player_blocked_players_v1_parameters.go'
 
-  'PublicPlayerBlockPlayersV1Params@lobby':
-    id: 'PublicPlayerBlockPlayersV1Params@lobby'
+  'PublicPlayerBlockPlayersV1Params@go.lobby.mod':
+    id: 'PublicPlayerBlockPlayersV1Params@go.lobby.mod'
     name: 'PublicPlayerBlockPlayersV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBlockPlayerRequest'
@@ -1933,9 +2028,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/public_player_block_players_v1_parameters.go'
 
-  'PublicSetPartyLimitV1Params@lobby':
-    id: 'PublicSetPartyLimitV1Params@lobby'
+  'PublicSetPartyLimitV1Params@go.lobby.mod':
+    id: 'PublicSetPartyLimitV1Params@go.lobby.mod'
     name: 'PublicSetPartyLimitV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPartyPUTLimitSizeRequest'
@@ -1955,9 +2051,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/party/public_set_party_limit_v1_parameters.go'
 
-  'PublicUnblockPlayerV1Params@lobby':
-    id: 'PublicUnblockPlayerV1Params@lobby'
+  'PublicUnblockPlayerV1Params@go.lobby.mod':
+    id: 'PublicUnblockPlayerV1Params@go.lobby.mod'
     name: 'PublicUnblockPlayerV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUnblockPlayerRequest'
@@ -1972,9 +2069,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/player/public_unblock_player_v1_parameters.go'
 
-  'PublicUpdatePartyAttributesV1Params@lobby':
-    id: 'PublicUpdatePartyAttributesV1Params@lobby'
+  'PublicUpdatePartyAttributesV1Params@go.lobby.mod':
+    id: 'PublicUpdatePartyAttributesV1Params@go.lobby.mod'
     name: 'PublicUpdatePartyAttributesV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPartyPUTCustomAttributesRequest'
@@ -1994,9 +2092,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/party/public_update_party_attributes_v1_parameters.go'
 
-  'PublishTemplateParams@lobby':
-    id: 'PublishTemplateParams@lobby'
+  'PublishTemplateParams@go.lobby.mod':
+    id: 'PublishTemplateParams@go.lobby.mod'
     name: 'PublishTemplateParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -2018,9 +2117,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/publish_template_parameters.go'
 
-  'PublishTemplateLocalizationV1AdminParams@lobby':
-    id: 'PublishTemplateLocalizationV1AdminParams@lobby'
+  'PublishTemplateLocalizationV1AdminParams@go.lobby.mod':
+    id: 'PublishTemplateLocalizationV1AdminParams@go.lobby.mod'
     name: 'PublishTemplateLocalizationV1AdminParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -2042,9 +2142,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/publish_template_localization_v1_admin_parameters.go'
 
-  'SendMultipleUsersFreeformNotificationV1AdminParams@lobby':
-    id: 'SendMultipleUsersFreeformNotificationV1AdminParams@lobby'
+  'SendMultipleUsersFreeformNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendMultipleUsersFreeformNotificationV1AdminParams@go.lobby.mod'
     name: 'SendMultipleUsersFreeformNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelBulkUsersFreeFormNotificationRequestV1'
@@ -2059,9 +2160,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_multiple_users_freeform_notification_v1_admin_parameters.go'
 
-  'SendPartyFreeformNotificationV1AdminParams@lobby':
-    id: 'SendPartyFreeformNotificationV1AdminParams@lobby'
+  'SendPartyFreeformNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendPartyFreeformNotificationV1AdminParams@go.lobby.mod'
     name: 'SendPartyFreeformNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelFreeFormNotificationRequestV1'
@@ -2081,9 +2183,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_party_freeform_notification_v1_admin_parameters.go'
 
-  'SendPartyTemplatedNotificationV1AdminParams@lobby':
-    id: 'SendPartyTemplatedNotificationV1AdminParams@lobby'
+  'SendPartyTemplatedNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendPartyTemplatedNotificationV1AdminParams@go.lobby.mod'
     name: 'SendPartyTemplatedNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelNotificationWithTemplateRequestV1'
@@ -2103,9 +2206,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_party_templated_notification_v1_admin_parameters.go'
 
-  'SendSpecificUserFreeformNotificationV1AdminParams@lobby':
-    id: 'SendSpecificUserFreeformNotificationV1AdminParams@lobby'
+  'SendSpecificUserFreeformNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendSpecificUserFreeformNotificationV1AdminParams@go.lobby.mod'
     name: 'SendSpecificUserFreeformNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelFreeFormNotificationRequestV1'
@@ -2125,9 +2229,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_specific_user_freeform_notification_v1_admin_parameters.go'
 
-  'SendSpecificUserTemplatedNotificationV1AdminParams@lobby':
-    id: 'SendSpecificUserTemplatedNotificationV1AdminParams@lobby'
+  'SendSpecificUserTemplatedNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendSpecificUserTemplatedNotificationV1AdminParams@go.lobby.mod'
     name: 'SendSpecificUserTemplatedNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelNotificationWithTemplateRequestV1'
@@ -2147,9 +2252,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_specific_user_templated_notification_v1_admin_parameters.go'
 
-  'SendUsersFreeformNotificationV1AdminParams@lobby':
-    id: 'SendUsersFreeformNotificationV1AdminParams@lobby'
+  'SendUsersFreeformNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendUsersFreeformNotificationV1AdminParams@go.lobby.mod'
     name: 'SendUsersFreeformNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelFreeFormNotificationRequestV1'
@@ -2164,9 +2270,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_users_freeform_notification_v1_admin_parameters.go'
 
-  'SendUsersTemplatedNotificationV1AdminParams@lobby':
-    id: 'SendUsersTemplatedNotificationV1AdminParams@lobby'
+  'SendUsersTemplatedNotificationV1AdminParams@go.lobby.mod':
+    id: 'SendUsersTemplatedNotificationV1AdminParams@go.lobby.mod'
     name: 'SendUsersTemplatedNotificationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelNotificationWithTemplateRequestV1'
@@ -2181,9 +2288,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/send_users_templated_notification_v1_admin_parameters.go'
 
-  'SyncNativeBlockedUserParams@lobby':
-    id: 'SyncNativeBlockedUserParams@lobby'
+  'SyncNativeBlockedUserParams@go.lobby.mod':
+    id: 'SyncNativeBlockedUserParams@go.lobby.mod'
     name: 'SyncNativeBlockedUserParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*ModelNativeUserBlockRequest'
@@ -2198,9 +2306,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/blocks/sync_native_blocked_user_parameters.go'
 
-  'SyncNativeFriendsParams@lobby':
-    id: 'SyncNativeFriendsParams@lobby'
+  'SyncNativeFriendsParams@go.lobby.mod':
+    id: 'SyncNativeFriendsParams@go.lobby.mod'
     name: 'SyncNativeFriendsParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*ModelNativeFriendRequest'
@@ -2215,9 +2324,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/sync_native_friends_parameters.go'
 
-  'UpdateLocalizationTemplateParams@lobby':
-    id: 'UpdateLocalizationTemplateParams@lobby'
+  'UpdateLocalizationTemplateParams@go.lobby.mod':
+    id: 'UpdateLocalizationTemplateParams@go.lobby.mod'
     name: 'UpdateLocalizationTemplateParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateTemplateRequest'
@@ -2242,9 +2352,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/admin/update_localization_template_parameters.go'
 
-  'UpdateNotificationTopicV1AdminParams@lobby':
-    id: 'UpdateNotificationTopicV1AdminParams@lobby'
+  'UpdateNotificationTopicV1AdminParams@go.lobby.mod':
+    id: 'UpdateNotificationTopicV1AdminParams@go.lobby.mod'
     name: 'UpdateNotificationTopicV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateTopicRequest'
@@ -2264,9 +2375,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/update_notification_topic_v1_admin_parameters.go'
 
-  'UpdateTemplateLocalizationV1AdminParams@lobby':
-    id: 'UpdateTemplateLocalizationV1AdminParams@lobby'
+  'UpdateTemplateLocalizationV1AdminParams@go.lobby.mod':
+    id: 'UpdateTemplateLocalizationV1AdminParams@go.lobby.mod'
     name: 'UpdateTemplateLocalizationV1AdminParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateTemplateRequest'
@@ -2291,9 +2403,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/update_template_localization_v1_admin_parameters.go'
 
-  'UpdateTopicByTopicNameParams@lobby':
-    id: 'UpdateTopicByTopicNameParams@lobby'
+  'UpdateTopicByTopicNameParams@go.lobby.mod':
+    id: 'UpdateTopicByTopicNameParams@go.lobby.mod'
     name: 'UpdateTopicByTopicNameParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateTopicRequest'
@@ -2313,9 +2426,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/notification/update_topic_by_topic_name_parameters.go'
 
-  'UserAcceptFriendRequestParams@lobby':
-    id: 'UserAcceptFriendRequestParams@lobby'
+  'UserAcceptFriendRequestParams@go.lobby.mod':
+    id: 'UserAcceptFriendRequestParams@go.lobby.mod'
     name: 'UserAcceptFriendRequestParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUserAcceptFriendRequest'
@@ -2330,9 +2444,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/user_accept_friend_request_parameters.go'
 
-  'UserCancelFriendRequestParams@lobby':
-    id: 'UserCancelFriendRequestParams@lobby'
+  'UserCancelFriendRequestParams@go.lobby.mod':
+    id: 'UserCancelFriendRequestParams@go.lobby.mod'
     name: 'UserCancelFriendRequestParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUserCancelFriendRequest'
@@ -2347,9 +2462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/user_cancel_friend_request_parameters.go'
 
-  'UserGetFriendshipStatusParams@lobby':
-    id: 'UserGetFriendshipStatusParams@lobby'
+  'UserGetFriendshipStatusParams@go.lobby.mod':
+    id: 'UserGetFriendshipStatusParams@go.lobby.mod'
     name: 'UserGetFriendshipStatusParams'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -2366,9 +2482,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/user_get_friendship_status_parameters.go'
 
-  'UserRejectFriendRequestParams@lobby':
-    id: 'UserRejectFriendRequestParams@lobby'
+  'UserRejectFriendRequestParams@go.lobby.mod':
+    id: 'UserRejectFriendRequestParams@go.lobby.mod'
     name: 'UserRejectFriendRequestParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUserRejectFriendRequest'
@@ -2383,9 +2500,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/user_reject_friend_request_parameters.go'
 
-  'UserRequestFriendParams@lobby':
-    id: 'UserRequestFriendParams@lobby'
+  'UserRequestFriendParams@go.lobby.mod':
+    id: 'UserRequestFriendParams@go.lobby.mod'
     name: 'UserRequestFriendParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUserRequestFriendRequest'
@@ -2400,9 +2518,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/friends/user_request_friend_parameters.go'
 
-  'UsersPresenceHandlerV1Params@lobby':
-    id: 'UsersPresenceHandlerV1Params@lobby'
+  'UsersPresenceHandlerV1Params@go.lobby.mod':
+    id: 'UsersPresenceHandlerV1Params@go.lobby.mod'
     name: 'UsersPresenceHandlerV1Params'
+    type: 'model'
     fields:
       'CountOnly':
         type: 'bool'
@@ -2424,9 +2543,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/presence/users_presence_handler_v1_parameters.go'
 
-  'UsersPresenceHandlerV2Params@lobby':
-    id: 'UsersPresenceHandlerV2Params@lobby'
+  'UsersPresenceHandlerV2Params@go.lobby.mod':
+    id: 'UsersPresenceHandlerV2Params@go.lobby.mod'
     name: 'UsersPresenceHandlerV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelRequestUserPresence'
@@ -2446,9 +2566,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclient/presence/users_presence_handler_v2_parameters.go'
 
-  'UserUnfriendRequestParams@lobby':
-    id: 'UserUnfriendRequestParams@lobby'
+  'UserUnfriendRequestParams@go.lobby.mod':
+    id: 'UserUnfriendRequestParams@go.lobby.mod'
     name: 'UserUnfriendRequestParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUserUnfriendRequest'
@@ -2467,9 +2588,10 @@ structs:
 
   # region models
 
-  'HandlersGetUsersPresenceResponse@lobby':
-    id: 'HandlersGetUsersPresenceResponse@lobby'
+  'HandlersGetUsersPresenceResponse@go.lobby.mod':
+    id: 'HandlersGetUsersPresenceResponse@go.lobby.mod'
     name: 'HandlersGetUsersPresenceResponse'
+    type: 'model'
     fields:
       'Away':
         type: 'int32'
@@ -2494,9 +2616,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/handlers_get_users_presence_response.go'
 
-  'HandlersUserPresence@lobby':
-    id: 'HandlersUserPresence@lobby'
+  'HandlersUserPresence@go.lobby.mod':
+    id: 'HandlersUserPresence@go.lobby.mod'
     name: 'HandlersUserPresence'
+    type: 'model'
     fields:
       'Activity':
         type: 'string'
@@ -2521,9 +2644,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/handlers_user_presence.go'
 
-  'LogAppMessageDeclaration@lobby':
-    id: 'LogAppMessageDeclaration@lobby'
+  'LogAppMessageDeclaration@go.lobby.mod':
+    id: 'LogAppMessageDeclaration@go.lobby.mod'
     name: 'LogAppMessageDeclaration'
+    type: 'model'
     fields:
       'Attributes':
         type: '[]string'
@@ -2548,9 +2672,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/log_app_message_declaration.go'
 
-  'LogconfigConfiguration@lobby':
-    id: 'LogconfigConfiguration@lobby'
+  'LogconfigConfiguration@go.lobby.mod':
+    id: 'LogconfigConfiguration@go.lobby.mod'
     name: 'LogconfigConfiguration'
+    type: 'model'
     fields:
       'LogLevel':
         type: 'string'
@@ -2569,9 +2694,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/logconfig_configuration.go'
 
-  'ModelBulkFriendsRequest@lobby':
-    id: 'ModelBulkFriendsRequest@lobby'
+  'ModelBulkFriendsRequest@go.lobby.mod':
+    id: 'ModelBulkFriendsRequest@go.lobby.mod'
     name: 'ModelBulkFriendsRequest'
+    type: 'model'
     fields:
       'FriendIds':
         type: '[]string'
@@ -2581,9 +2707,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_bulk_friends_request.go'
 
-  'ModelBulkFriendsResponse@lobby':
-    id: 'ModelBulkFriendsResponse@lobby'
+  'ModelBulkFriendsResponse@go.lobby.mod':
+    id: 'ModelBulkFriendsResponse@go.lobby.mod'
     name: 'ModelBulkFriendsResponse'
+    type: 'model'
     fields:
       'RowsAffected':
         type: 'int32'
@@ -2593,9 +2720,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_bulk_friends_response.go'
 
-  'ModelBulkUsersFreeFormNotificationRequestV1@lobby':
-    id: 'ModelBulkUsersFreeFormNotificationRequestV1@lobby'
+  'ModelBulkUsersFreeFormNotificationRequestV1@go.lobby.mod':
+    id: 'ModelBulkUsersFreeFormNotificationRequestV1@go.lobby.mod'
     name: 'ModelBulkUsersFreeFormNotificationRequestV1'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -2613,9 +2741,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_bulk_users_free_form_notification_request_v1.go'
 
-  'ModelCreateTemplateRequest@lobby':
-    id: 'ModelCreateTemplateRequest@lobby'
+  'ModelCreateTemplateRequest@go.lobby.mod':
+    id: 'ModelCreateTemplateRequest@go.lobby.mod'
     name: 'ModelCreateTemplateRequest'
+    type: 'model'
     fields:
       'TemplateContent':
         type: 'string'
@@ -2637,9 +2766,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_create_template_request.go'
 
-  'ModelCreateTopicRequest@lobby':
-    id: 'ModelCreateTopicRequest@lobby'
+  'ModelCreateTopicRequest@go.lobby.mod':
+    id: 'ModelCreateTopicRequest@go.lobby.mod'
     name: 'ModelCreateTopicRequest'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -2656,9 +2786,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_create_topic_request.go'
 
-  'ModelCreateTopicRequestV1@lobby':
-    id: 'ModelCreateTopicRequestV1@lobby'
+  'ModelCreateTopicRequestV1@go.lobby.mod':
+    id: 'ModelCreateTopicRequestV1@go.lobby.mod'
     name: 'ModelCreateTopicRequestV1'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -2675,9 +2806,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_create_topic_request_v1.go'
 
-  'ModelFreeFormNotificationRequest@lobby':
-    id: 'ModelFreeFormNotificationRequest@lobby'
+  'ModelFreeFormNotificationRequest@go.lobby.mod':
+    id: 'ModelFreeFormNotificationRequest@go.lobby.mod'
     name: 'ModelFreeFormNotificationRequest'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -2692,9 +2824,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_free_form_notification_request.go'
 
-  'ModelFreeFormNotificationRequestV1@lobby':
-    id: 'ModelFreeFormNotificationRequestV1@lobby'
+  'ModelFreeFormNotificationRequestV1@go.lobby.mod':
+    id: 'ModelFreeFormNotificationRequestV1@go.lobby.mod'
     name: 'ModelFreeFormNotificationRequestV1'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -2709,9 +2842,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_free_form_notification_request_v1.go'
 
-  'ModelFriendshipConnection@lobby':
-    id: 'ModelFriendshipConnection@lobby'
+  'ModelFriendshipConnection@go.lobby.mod':
+    id: 'ModelFriendshipConnection@go.lobby.mod'
     name: 'ModelFriendshipConnection'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -2724,9 +2858,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_friendship_connection.go'
 
-  'ModelFriendshipConnectionResponse@lobby':
-    id: 'ModelFriendshipConnectionResponse@lobby'
+  'ModelFriendshipConnectionResponse@go.lobby.mod':
+    id: 'ModelFriendshipConnectionResponse@go.lobby.mod'
     name: 'ModelFriendshipConnectionResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelFriendshipConnection'
@@ -2739,9 +2874,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_friendship_connection_response.go'
 
-  'ModelFriendWithPlatform@lobby':
-    id: 'ModelFriendWithPlatform@lobby'
+  'ModelFriendWithPlatform@go.lobby.mod':
+    id: 'ModelFriendWithPlatform@go.lobby.mod'
     name: 'ModelFriendWithPlatform'
+    type: 'model'
     fields:
       'PlatformID':
         type: 'string'
@@ -2754,9 +2890,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_friend_with_platform.go'
 
-  'ModelGetAllNotificationTemplateSlugResp@lobby':
-    id: 'ModelGetAllNotificationTemplateSlugResp@lobby'
+  'ModelGetAllNotificationTemplateSlugResp@go.lobby.mod':
+    id: 'ModelGetAllNotificationTemplateSlugResp@go.lobby.mod'
     name: 'ModelGetAllNotificationTemplateSlugResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelLocalization'
@@ -2769,9 +2906,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_all_notification_template_slug_resp.go'
 
-  'ModelGetAllNotificationTopicsResponse@lobby':
-    id: 'ModelGetAllNotificationTopicsResponse@lobby'
+  'ModelGetAllNotificationTopicsResponse@go.lobby.mod':
+    id: 'ModelGetAllNotificationTopicsResponse@go.lobby.mod'
     name: 'ModelGetAllNotificationTopicsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelNotificationTopicResponseV1'
@@ -2784,9 +2922,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_all_notification_topics_response.go'
 
-  'ModelGetFriendsResponse@lobby':
-    id: 'ModelGetFriendsResponse@lobby'
+  'ModelGetFriendsResponse@go.lobby.mod':
+    id: 'ModelGetFriendsResponse@go.lobby.mod'
     name: 'ModelGetFriendsResponse'
+    type: 'model'
     fields:
       'FriendIDs':
         type: '[]string'
@@ -2805,9 +2944,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_friends_response.go'
 
-  'ModelGetUserFriendsResponse@lobby':
-    id: 'ModelGetUserFriendsResponse@lobby'
+  'ModelGetUserFriendsResponse@go.lobby.mod':
+    id: 'ModelGetUserFriendsResponse@go.lobby.mod'
     name: 'ModelGetUserFriendsResponse'
+    type: 'model'
     fields:
       'FriendIDs':
         type: '[]string'
@@ -2823,9 +2963,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_user_friends_response.go'
 
-  'ModelGetUserIncomingFriendsResponse@lobby':
-    id: 'ModelGetUserIncomingFriendsResponse@lobby'
+  'ModelGetUserIncomingFriendsResponse@go.lobby.mod':
+    id: 'ModelGetUserIncomingFriendsResponse@go.lobby.mod'
     name: 'ModelGetUserIncomingFriendsResponse'
+    type: 'model'
     fields:
       'FriendIDs':
         type: '[]string'
@@ -2838,9 +2979,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_user_incoming_friends_response.go'
 
-  'ModelGetUserOutgoingFriendsResponse@lobby':
-    id: 'ModelGetUserOutgoingFriendsResponse@lobby'
+  'ModelGetUserOutgoingFriendsResponse@go.lobby.mod':
+    id: 'ModelGetUserOutgoingFriendsResponse@go.lobby.mod'
     name: 'ModelGetUserOutgoingFriendsResponse'
+    type: 'model'
     fields:
       'FriendIDs':
         type: '[]string'
@@ -2853,9 +2995,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_get_user_outgoing_friends_response.go'
 
-  'ModelGlobalConfiguration@lobby':
-    id: 'ModelGlobalConfiguration@lobby'
+  'ModelGlobalConfiguration@go.lobby.mod':
+    id: 'ModelGlobalConfiguration@go.lobby.mod'
     name: 'ModelGlobalConfiguration'
+    type: 'model'
     fields:
       'RegionRetryMapping':
         type: 'map[string][]string'
@@ -2880,9 +3023,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_global_configuration.go'
 
-  'ModelIncomingFriendsWithTimeData@lobby':
-    id: 'ModelIncomingFriendsWithTimeData@lobby'
+  'ModelIncomingFriendsWithTimeData@go.lobby.mod':
+    id: 'ModelIncomingFriendsWithTimeData@go.lobby.mod'
     name: 'ModelIncomingFriendsWithTimeData'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -2895,9 +3039,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_incoming_friends_with_time_data.go'
 
-  'ModelListBulkUserPlatformsResponse@lobby':
-    id: 'ModelListBulkUserPlatformsResponse@lobby'
+  'ModelListBulkUserPlatformsResponse@go.lobby.mod':
+    id: 'ModelListBulkUserPlatformsResponse@go.lobby.mod'
     name: 'ModelListBulkUserPlatformsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelUserWithPlatformInfo'
@@ -2907,9 +3052,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_list_bulk_user_platforms_response.go'
 
-  'ModelLoadIncomingFriendsWithTimeResponse@lobby':
-    id: 'ModelLoadIncomingFriendsWithTimeResponse@lobby'
+  'ModelLoadIncomingFriendsWithTimeResponse@go.lobby.mod':
+    id: 'ModelLoadIncomingFriendsWithTimeResponse@go.lobby.mod'
     name: 'ModelLoadIncomingFriendsWithTimeResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelIncomingFriendsWithTimeData'
@@ -2922,9 +3068,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_load_incoming_friends_with_time_response.go'
 
-  'ModelLoadOutgoingFriendsWithTimeResponse@lobby':
-    id: 'ModelLoadOutgoingFriendsWithTimeResponse@lobby'
+  'ModelLoadOutgoingFriendsWithTimeResponse@go.lobby.mod':
+    id: 'ModelLoadOutgoingFriendsWithTimeResponse@go.lobby.mod'
     name: 'ModelLoadOutgoingFriendsWithTimeResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelOutgoingFriendsWithTimeData'
@@ -2937,9 +3084,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_load_outgoing_friends_with_time_response.go'
 
-  'ModelLocalization@lobby':
-    id: 'ModelLocalization@lobby'
+  'ModelLocalization@go.lobby.mod':
+    id: 'ModelLocalization@go.lobby.mod'
     name: 'ModelLocalization'
+    type: 'model'
     fields:
       'LastDraftAt':
         type: 'string'
@@ -2958,9 +3106,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_localization.go'
 
-  'ModelNativeFriendRequest@lobby':
-    id: 'ModelNativeFriendRequest@lobby'
+  'ModelNativeFriendRequest@go.lobby.mod':
+    id: 'ModelNativeFriendRequest@go.lobby.mod'
     name: 'ModelNativeFriendRequest'
+    type: 'model'
     fields:
       'IsLogin':
         type: 'bool'
@@ -2982,9 +3131,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_native_friend_request.go'
 
-  'ModelNativeFriendSyncResponse@lobby':
-    id: 'ModelNativeFriendSyncResponse@lobby'
+  'ModelNativeFriendSyncResponse@go.lobby.mod':
+    id: 'ModelNativeFriendSyncResponse@go.lobby.mod'
     name: 'ModelNativeFriendSyncResponse'
+    type: 'model'
     fields:
       'Detail':
         type: 'string'
@@ -3000,9 +3150,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_native_friend_sync_response.go'
 
-  'ModelNativeUserBlockRequest@lobby':
-    id: 'ModelNativeUserBlockRequest@lobby'
+  'ModelNativeUserBlockRequest@go.lobby.mod':
+    id: 'ModelNativeUserBlockRequest@go.lobby.mod'
     name: 'ModelNativeUserBlockRequest'
+    type: 'model'
     fields:
       'PlatformID':
         type: 'string'
@@ -3015,9 +3166,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_native_user_block_request.go'
 
-  'ModelNativeUserBlockResponse@lobby':
-    id: 'ModelNativeUserBlockResponse@lobby'
+  'ModelNativeUserBlockResponse@go.lobby.mod':
+    id: 'ModelNativeUserBlockResponse@go.lobby.mod'
     name: 'ModelNativeUserBlockResponse'
+    type: 'model'
     fields:
       'Detail':
         type: 'string'
@@ -3033,9 +3185,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_native_user_block_response.go'
 
-  'ModelNotification@lobby':
-    id: 'ModelNotification@lobby'
+  'ModelNotification@go.lobby.mod':
+    id: 'ModelNotification@go.lobby.mod'
     name: 'ModelNotification'
+    type: 'model'
     fields:
       'From':
         type: 'string'
@@ -3060,9 +3213,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification.go'
 
-  'ModelNotificationResponse@lobby':
-    id: 'ModelNotificationResponse@lobby'
+  'ModelNotificationResponse@go.lobby.mod':
+    id: 'ModelNotificationResponse@go.lobby.mod'
     name: 'ModelNotificationResponse'
+    type: 'model'
     fields:
       'From':
         type: 'string'
@@ -3105,9 +3259,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_response.go'
 
-  'ModelNotificationsResponse@lobby':
-    id: 'ModelNotificationsResponse@lobby'
+  'ModelNotificationsResponse@go.lobby.mod':
+    id: 'ModelNotificationsResponse@go.lobby.mod'
     name: 'ModelNotificationsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelNotification'
@@ -3117,9 +3272,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notifications_response.go'
 
-  'ModelNotificationTemplateResponse@lobby':
-    id: 'ModelNotificationTemplateResponse@lobby'
+  'ModelNotificationTemplateResponse@go.lobby.mod':
+    id: 'ModelNotificationTemplateResponse@go.lobby.mod'
     name: 'ModelNotificationTemplateResponse'
+    type: 'model'
     fields:
       'TemplateLocalizations':
         type: '[]*ModelLocalization'
@@ -3132,9 +3288,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_template_response.go'
 
-  'ModelNotificationTopicResponse@lobby':
-    id: 'ModelNotificationTopicResponse@lobby'
+  'ModelNotificationTopicResponse@go.lobby.mod':
+    id: 'ModelNotificationTopicResponse@go.lobby.mod'
     name: 'ModelNotificationTopicResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -3155,9 +3312,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_topic_response.go'
 
-  'ModelNotificationTopicResponseV1@lobby':
-    id: 'ModelNotificationTopicResponseV1@lobby'
+  'ModelNotificationTopicResponseV1@go.lobby.mod':
+    id: 'ModelNotificationTopicResponseV1@go.lobby.mod'
     name: 'ModelNotificationTopicResponseV1'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -3178,9 +3336,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_topic_response_v1.go'
 
-  'ModelNotificationWithTemplateRequest@lobby':
-    id: 'ModelNotificationWithTemplateRequest@lobby'
+  'ModelNotificationWithTemplateRequest@go.lobby.mod':
+    id: 'ModelNotificationWithTemplateRequest@go.lobby.mod'
     name: 'ModelNotificationWithTemplateRequest'
+    type: 'model'
     fields:
       'TemplateContext':
         type: 'map[string]string'
@@ -3199,9 +3358,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_with_template_request.go'
 
-  'ModelNotificationWithTemplateRequestV1@lobby':
-    id: 'ModelNotificationWithTemplateRequestV1@lobby'
+  'ModelNotificationWithTemplateRequestV1@go.lobby.mod':
+    id: 'ModelNotificationWithTemplateRequestV1@go.lobby.mod'
     name: 'ModelNotificationWithTemplateRequestV1'
+    type: 'model'
     fields:
       'TemplateContext':
         type: 'map[string]string'
@@ -3220,9 +3380,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_notification_with_template_request_v1.go'
 
-  'ModelOutgoingFriendsWithTimeData@lobby':
-    id: 'ModelOutgoingFriendsWithTimeData@lobby'
+  'ModelOutgoingFriendsWithTimeData@go.lobby.mod':
+    id: 'ModelOutgoingFriendsWithTimeData@go.lobby.mod'
     name: 'ModelOutgoingFriendsWithTimeData'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3235,9 +3396,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_outgoing_friends_with_time_data.go'
 
-  'ModelPagination@lobby':
-    id: 'ModelPagination@lobby'
+  'ModelPagination@go.lobby.mod':
+    id: 'ModelPagination@go.lobby.mod'
     name: 'ModelPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -3256,9 +3418,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_pagination.go'
 
-  'ModelPutGlobalConfigurationRequest@lobby':
-    id: 'ModelPutGlobalConfigurationRequest@lobby'
+  'ModelPutGlobalConfigurationRequest@go.lobby.mod':
+    id: 'ModelPutGlobalConfigurationRequest@go.lobby.mod'
     name: 'ModelPutGlobalConfigurationRequest'
+    type: 'model'
     fields:
       'RegionRetryMapping':
         type: 'map[string][]string'
@@ -3280,9 +3443,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_put_global_configuration_request.go'
 
-  'ModelRequestUserPresence@lobby':
-    id: 'ModelRequestUserPresence@lobby'
+  'ModelRequestUserPresence@go.lobby.mod':
+    id: 'ModelRequestUserPresence@go.lobby.mod'
     name: 'ModelRequestUserPresence'
+    type: 'model'
     fields:
       'UserIDs':
         type: '[]string'
@@ -3292,9 +3456,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_request_user_presence.go'
 
-  'ModelTemplateContent@lobby':
-    id: 'ModelTemplateContent@lobby'
+  'ModelTemplateContent@go.lobby.mod':
+    id: 'ModelTemplateContent@go.lobby.mod'
     name: 'ModelTemplateContent'
+    type: 'model'
     fields:
       'Draft':
         type: 'string'
@@ -3307,9 +3472,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_template_content.go'
 
-  'ModelTemplateLocalization@lobby':
-    id: 'ModelTemplateLocalization@lobby'
+  'ModelTemplateLocalization@go.lobby.mod':
+    id: 'ModelTemplateLocalization@go.lobby.mod'
     name: 'ModelTemplateLocalization'
+    type: 'model'
     fields:
       'LastDraftAt':
         type: 'string'
@@ -3331,9 +3497,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_template_localization.go'
 
-  'ModelTemplateLocalizationResponse@lobby':
-    id: 'ModelTemplateLocalizationResponse@lobby'
+  'ModelTemplateLocalizationResponse@go.lobby.mod':
+    id: 'ModelTemplateLocalizationResponse@go.lobby.mod'
     name: 'ModelTemplateLocalizationResponse'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -3363,9 +3530,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_template_localization_response.go'
 
-  'ModelTemplateResponse@lobby':
-    id: 'ModelTemplateResponse@lobby'
+  'ModelTemplateResponse@go.lobby.mod':
+    id: 'ModelTemplateResponse@go.lobby.mod'
     name: 'ModelTemplateResponse'
+    type: 'model'
     fields:
       'Localizations':
         type: '[]*ModelLocalization'
@@ -3378,9 +3546,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_template_response.go'
 
-  'ModelTopicByNamespacesResponse@lobby':
-    id: 'ModelTopicByNamespacesResponse@lobby'
+  'ModelTopicByNamespacesResponse@go.lobby.mod':
+    id: 'ModelTopicByNamespacesResponse@go.lobby.mod'
     name: 'ModelTopicByNamespacesResponse'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -3410,9 +3579,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_topic_by_namespaces_response.go'
 
-  'ModelUpdateTemplateRequest@lobby':
-    id: 'ModelUpdateTemplateRequest@lobby'
+  'ModelUpdateTemplateRequest@go.lobby.mod':
+    id: 'ModelUpdateTemplateRequest@go.lobby.mod'
     name: 'ModelUpdateTemplateRequest'
+    type: 'model'
     fields:
       'TemplateContent':
         type: 'string'
@@ -3422,9 +3592,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_update_template_request.go'
 
-  'ModelUpdateTopicRequest@lobby':
-    id: 'ModelUpdateTopicRequest@lobby'
+  'ModelUpdateTopicRequest@go.lobby.mod':
+    id: 'ModelUpdateTopicRequest@go.lobby.mod'
     name: 'ModelUpdateTopicRequest'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -3436,9 +3607,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_update_topic_request.go'
 
-  'ModelUserAcceptFriendRequest@lobby':
-    id: 'ModelUserAcceptFriendRequest@lobby'
+  'ModelUserAcceptFriendRequest@go.lobby.mod':
+    id: 'ModelUserAcceptFriendRequest@go.lobby.mod'
     name: 'ModelUserAcceptFriendRequest'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3448,9 +3620,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_accept_friend_request.go'
 
-  'ModelUserCancelFriendRequest@lobby':
-    id: 'ModelUserCancelFriendRequest@lobby'
+  'ModelUserCancelFriendRequest@go.lobby.mod':
+    id: 'ModelUserCancelFriendRequest@go.lobby.mod'
     name: 'ModelUserCancelFriendRequest'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3460,9 +3633,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_cancel_friend_request.go'
 
-  'ModelUserGetFriendshipStatusResponse@lobby':
-    id: 'ModelUserGetFriendshipStatusResponse@lobby'
+  'ModelUserGetFriendshipStatusResponse@go.lobby.mod':
+    id: 'ModelUserGetFriendshipStatusResponse@go.lobby.mod'
     name: 'ModelUserGetFriendshipStatusResponse'
+    type: 'model'
     fields:
       'Code':
         type: 'int32'
@@ -3475,9 +3649,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_get_friendship_status_response.go'
 
-  'ModelUserPlatformInfo@lobby':
-    id: 'ModelUserPlatformInfo@lobby'
+  'ModelUserPlatformInfo@go.lobby.mod':
+    id: 'ModelUserPlatformInfo@go.lobby.mod'
     name: 'ModelUserPlatformInfo'
+    type: 'model'
     fields:
       'PlatformDisplayName':
         type: 'string'
@@ -3493,9 +3668,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_platform_info.go'
 
-  'ModelUserRejectFriendRequest@lobby':
-    id: 'ModelUserRejectFriendRequest@lobby'
+  'ModelUserRejectFriendRequest@go.lobby.mod':
+    id: 'ModelUserRejectFriendRequest@go.lobby.mod'
     name: 'ModelUserRejectFriendRequest'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3505,9 +3681,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_reject_friend_request.go'
 
-  'ModelUserRequestFriendRequest@lobby':
-    id: 'ModelUserRequestFriendRequest@lobby'
+  'ModelUserRequestFriendRequest@go.lobby.mod':
+    id: 'ModelUserRequestFriendRequest@go.lobby.mod'
     name: 'ModelUserRequestFriendRequest'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3523,9 +3700,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_request_friend_request.go'
 
-  'ModelUserUnfriendRequest@lobby':
-    id: 'ModelUserUnfriendRequest@lobby'
+  'ModelUserUnfriendRequest@go.lobby.mod':
+    id: 'ModelUserUnfriendRequest@go.lobby.mod'
     name: 'ModelUserUnfriendRequest'
+    type: 'model'
     fields:
       'FriendID':
         type: 'string'
@@ -3535,9 +3713,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_unfriend_request.go'
 
-  'ModelUserWithPlatformInfo@lobby':
-    id: 'ModelUserWithPlatformInfo@lobby'
+  'ModelUserWithPlatformInfo@go.lobby.mod':
+    id: 'ModelUserWithPlatformInfo@go.lobby.mod'
     name: 'ModelUserWithPlatformInfo'
+    type: 'model'
     fields:
       'AvatarURL':
         type: 'string'
@@ -3559,9 +3738,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/model_user_with_platform_info.go'
 
-  'ModelsAdminAddProfanityFilterIntoListRequest@lobby':
-    id: 'ModelsAdminAddProfanityFilterIntoListRequest@lobby'
+  'ModelsAdminAddProfanityFilterIntoListRequest@go.lobby.mod':
+    id: 'ModelsAdminAddProfanityFilterIntoListRequest@go.lobby.mod'
     name: 'ModelsAdminAddProfanityFilterIntoListRequest'
+    type: 'model'
     fields:
       'Filter':
         type: 'string'
@@ -3574,9 +3754,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_add_profanity_filter_into_list_request.go'
 
-  'ModelsAdminAddProfanityFiltersFilterRequest@lobby':
-    id: 'ModelsAdminAddProfanityFiltersFilterRequest@lobby'
+  'ModelsAdminAddProfanityFiltersFilterRequest@go.lobby.mod':
+    id: 'ModelsAdminAddProfanityFiltersFilterRequest@go.lobby.mod'
     name: 'ModelsAdminAddProfanityFiltersFilterRequest'
+    type: 'model'
     fields:
       'Filter':
         type: 'string'
@@ -3589,9 +3770,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_add_profanity_filters_filter_request.go'
 
-  'ModelsAdminAddProfanityFiltersRequest@lobby':
-    id: 'ModelsAdminAddProfanityFiltersRequest@lobby'
+  'ModelsAdminAddProfanityFiltersRequest@go.lobby.mod':
+    id: 'ModelsAdminAddProfanityFiltersRequest@go.lobby.mod'
     name: 'ModelsAdminAddProfanityFiltersRequest'
+    type: 'model'
     fields:
       'Filters':
         type: '[]*ModelsAdminAddProfanityFiltersFilterRequest'
@@ -3601,9 +3783,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_add_profanity_filters_request.go'
 
-  'ModelsAdminCreateProfanityListRequest@lobby':
-    id: 'ModelsAdminCreateProfanityListRequest@lobby'
+  'ModelsAdminCreateProfanityListRequest@go.lobby.mod':
+    id: 'ModelsAdminCreateProfanityListRequest@go.lobby.mod'
     name: 'ModelsAdminCreateProfanityListRequest'
+    type: 'model'
     fields:
       'IsEnabled':
         type: 'bool'
@@ -3619,9 +3802,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_create_profanity_list_request.go'
 
-  'ModelsAdminDeleteProfanityFilterRequest@lobby':
-    id: 'ModelsAdminDeleteProfanityFilterRequest@lobby'
+  'ModelsAdminDeleteProfanityFilterRequest@go.lobby.mod':
+    id: 'ModelsAdminDeleteProfanityFilterRequest@go.lobby.mod'
     name: 'ModelsAdminDeleteProfanityFilterRequest'
+    type: 'model'
     fields:
       'Filter':
         type: 'string'
@@ -3631,9 +3815,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_delete_profanity_filter_request.go'
 
-  'ModelsAdminGetProfanityListFiltersV1Response@lobby':
-    id: 'ModelsAdminGetProfanityListFiltersV1Response@lobby'
+  'ModelsAdminGetProfanityListFiltersV1Response@go.lobby.mod':
+    id: 'ModelsAdminGetProfanityListFiltersV1Response@go.lobby.mod'
     name: 'ModelsAdminGetProfanityListFiltersV1Response'
+    type: 'model'
     fields:
       'Filters':
         type: '[]*ModelsProfanityFilter'
@@ -3643,9 +3828,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_get_profanity_list_filters_v1_response.go'
 
-  'ModelsAdminGetProfanityListsListResponse@lobby':
-    id: 'ModelsAdminGetProfanityListsListResponse@lobby'
+  'ModelsAdminGetProfanityListsListResponse@go.lobby.mod':
+    id: 'ModelsAdminGetProfanityListsListResponse@go.lobby.mod'
     name: 'ModelsAdminGetProfanityListsListResponse'
+    type: 'model'
     fields:
       'IsEnabled':
         type: 'bool'
@@ -3661,9 +3847,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_get_profanity_lists_list_response.go'
 
-  'ModelsAdminSetProfanityRuleForNamespaceRequest@lobby':
-    id: 'ModelsAdminSetProfanityRuleForNamespaceRequest@lobby'
+  'ModelsAdminSetProfanityRuleForNamespaceRequest@go.lobby.mod':
+    id: 'ModelsAdminSetProfanityRuleForNamespaceRequest@go.lobby.mod'
     name: 'ModelsAdminSetProfanityRuleForNamespaceRequest'
+    type: 'model'
     fields:
       'Rule':
         type: 'string'
@@ -3673,9 +3860,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_set_profanity_rule_for_namespace_request.go'
 
-  'ModelsAdminUpdateProfanityList@lobby':
-    id: 'ModelsAdminUpdateProfanityList@lobby'
+  'ModelsAdminUpdateProfanityList@go.lobby.mod':
+    id: 'ModelsAdminUpdateProfanityList@go.lobby.mod'
     name: 'ModelsAdminUpdateProfanityList'
+    type: 'model'
     fields:
       'IsEnabled':
         type: 'bool'
@@ -3691,9 +3879,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_update_profanity_list.go'
 
-  'ModelsAdminVerifyMessageProfanityRequest@lobby':
-    id: 'ModelsAdminVerifyMessageProfanityRequest@lobby'
+  'ModelsAdminVerifyMessageProfanityRequest@go.lobby.mod':
+    id: 'ModelsAdminVerifyMessageProfanityRequest@go.lobby.mod'
     name: 'ModelsAdminVerifyMessageProfanityRequest'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -3706,9 +3895,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_verify_message_profanity_request.go'
 
-  'ModelsAdminVerifyMessageProfanityResponse@lobby':
-    id: 'ModelsAdminVerifyMessageProfanityResponse@lobby'
+  'ModelsAdminVerifyMessageProfanityResponse@go.lobby.mod':
+    id: 'ModelsAdminVerifyMessageProfanityResponse@go.lobby.mod'
     name: 'ModelsAdminVerifyMessageProfanityResponse'
+    type: 'model'
     fields:
       'FilteredMessage':
         type: 'string'
@@ -3721,9 +3911,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_admin_verify_message_profanity_response.go'
 
-  'ModelsBlockedByPlayerData@lobby':
-    id: 'ModelsBlockedByPlayerData@lobby'
+  'ModelsBlockedByPlayerData@go.lobby.mod':
+    id: 'ModelsBlockedByPlayerData@go.lobby.mod'
     name: 'ModelsBlockedByPlayerData'
+    type: 'model'
     fields:
       'BlockedAt':
         type: 'strfmt.DateTime'
@@ -3736,9 +3927,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_blocked_by_player_data.go'
 
-  'ModelsBlockedPlayerData@lobby':
-    id: 'ModelsBlockedPlayerData@lobby'
+  'ModelsBlockedPlayerData@go.lobby.mod':
+    id: 'ModelsBlockedPlayerData@go.lobby.mod'
     name: 'ModelsBlockedPlayerData'
+    type: 'model'
     fields:
       'BlockedAt':
         type: 'strfmt.DateTime'
@@ -3751,9 +3943,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_blocked_player_data.go'
 
-  'ModelsBlockPlayerRequest@lobby':
-    id: 'ModelsBlockPlayerRequest@lobby'
+  'ModelsBlockPlayerRequest@go.lobby.mod':
+    id: 'ModelsBlockPlayerRequest@go.lobby.mod'
     name: 'ModelsBlockPlayerRequest'
+    type: 'model'
     fields:
       'BlockedUserID':
         type: 'string'
@@ -3763,9 +3956,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_block_player_request.go'
 
-  'ModelsConfig@lobby':
-    id: 'ModelsConfig@lobby'
+  'ModelsConfig@go.lobby.mod':
+    id: 'ModelsConfig@go.lobby.mod'
     name: 'ModelsConfig'
+    type: 'model'
     fields:
       'AllowInviteNonConnectedUser':
         type: 'bool'
@@ -3844,9 +4038,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_config.go'
 
-  'ModelsConfigList@lobby':
-    id: 'ModelsConfigList@lobby'
+  'ModelsConfigList@go.lobby.mod':
+    id: 'ModelsConfigList@go.lobby.mod'
     name: 'ModelsConfigList'
+    type: 'model'
     fields:
       'Configs':
         type: '[]*ModelsConfig'
@@ -3856,9 +4051,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_config_list.go'
 
-  'ModelsConfigReq@lobby':
-    id: 'ModelsConfigReq@lobby'
+  'ModelsConfigReq@go.lobby.mod':
+    id: 'ModelsConfigReq@go.lobby.mod'
     name: 'ModelsConfigReq'
+    type: 'model'
     fields:
       'AllowInviteNonConnectedUser':
         type: 'bool'
@@ -3931,9 +4127,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_config_req.go'
 
-  'ModelsCreateConfigRequest@lobby':
-    id: 'ModelsCreateConfigRequest@lobby'
+  'ModelsCreateConfigRequest@go.lobby.mod':
+    id: 'ModelsCreateConfigRequest@go.lobby.mod'
     name: 'ModelsCreateConfigRequest'
+    type: 'model'
     fields:
       'APIKey':
         type: 'string'
@@ -3943,9 +4140,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_create_config_request.go'
 
-  'ModelsCreateConfigResponse@lobby':
-    id: 'ModelsCreateConfigResponse@lobby'
+  'ModelsCreateConfigResponse@go.lobby.mod':
+    id: 'ModelsCreateConfigResponse@go.lobby.mod'
     name: 'ModelsCreateConfigResponse'
+    type: 'model'
     fields:
       'APIKey':
         type: 'string'
@@ -3958,9 +4156,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_create_config_response.go'
 
-  'ModelsDebugProfanityFilterRequest@lobby':
-    id: 'ModelsDebugProfanityFilterRequest@lobby'
+  'ModelsDebugProfanityFilterRequest@go.lobby.mod':
+    id: 'ModelsDebugProfanityFilterRequest@go.lobby.mod'
     name: 'ModelsDebugProfanityFilterRequest'
+    type: 'model'
     fields:
       'Text':
         type: 'string'
@@ -3970,9 +4169,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_debug_profanity_filter_request.go'
 
-  'ModelsGetAllPlayerBlockedByUsersResponse@lobby':
-    id: 'ModelsGetAllPlayerBlockedByUsersResponse@lobby'
+  'ModelsGetAllPlayerBlockedByUsersResponse@go.lobby.mod':
+    id: 'ModelsGetAllPlayerBlockedByUsersResponse@go.lobby.mod'
     name: 'ModelsGetAllPlayerBlockedByUsersResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsBlockedByPlayerData'
@@ -3982,9 +4182,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_all_player_blocked_by_users_response.go'
 
-  'ModelsGetAllPlayerBlockedUsersResponse@lobby':
-    id: 'ModelsGetAllPlayerBlockedUsersResponse@lobby'
+  'ModelsGetAllPlayerBlockedUsersResponse@go.lobby.mod':
+    id: 'ModelsGetAllPlayerBlockedUsersResponse@go.lobby.mod'
     name: 'ModelsGetAllPlayerBlockedUsersResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsBlockedPlayerData'
@@ -3994,9 +4195,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_all_player_blocked_users_response.go'
 
-  'ModelsGetAllPlayerSessionAttributeResponse@lobby':
-    id: 'ModelsGetAllPlayerSessionAttributeResponse@lobby'
+  'ModelsGetAllPlayerSessionAttributeResponse@go.lobby.mod':
+    id: 'ModelsGetAllPlayerSessionAttributeResponse@go.lobby.mod'
     name: 'ModelsGetAllPlayerSessionAttributeResponse'
+    type: 'model'
     fields:
       'Attributes':
         type: 'map[string]string'
@@ -4006,9 +4208,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_all_player_session_attribute_response.go'
 
-  'ModelsGetBulkAllPlayerBlockedUsersRequest@lobby':
-    id: 'ModelsGetBulkAllPlayerBlockedUsersRequest@lobby'
+  'ModelsGetBulkAllPlayerBlockedUsersRequest@go.lobby.mod':
+    id: 'ModelsGetBulkAllPlayerBlockedUsersRequest@go.lobby.mod'
     name: 'ModelsGetBulkAllPlayerBlockedUsersRequest'
+    type: 'model'
     fields:
       'ListBlockedUserID':
         type: '[]string'
@@ -4018,9 +4221,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_bulk_all_player_blocked_users_request.go'
 
-  'ModelsGetBulkAllPlayerBlockedUsersResponse@lobby':
-    id: 'ModelsGetBulkAllPlayerBlockedUsersResponse@lobby'
+  'ModelsGetBulkAllPlayerBlockedUsersResponse@go.lobby.mod':
+    id: 'ModelsGetBulkAllPlayerBlockedUsersResponse@go.lobby.mod'
     name: 'ModelsGetBulkAllPlayerBlockedUsersResponse'
+    type: 'model'
     fields:
       'Data':
         type: 'map[string][]ModelsBlockedPlayerData'
@@ -4030,9 +4234,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_bulk_all_player_blocked_users_response.go'
 
-  'ModelsGetConfigResponse@lobby':
-    id: 'ModelsGetConfigResponse@lobby'
+  'ModelsGetConfigResponse@go.lobby.mod':
+    id: 'ModelsGetConfigResponse@go.lobby.mod'
     name: 'ModelsGetConfigResponse'
+    type: 'model'
     fields:
       'APIKey':
         type: 'string'
@@ -4045,9 +4250,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_config_response.go'
 
-  'ModelsGetLobbyCcuResponse@lobby':
-    id: 'ModelsGetLobbyCcuResponse@lobby'
+  'ModelsGetLobbyCcuResponse@go.lobby.mod':
+    id: 'ModelsGetLobbyCcuResponse@go.lobby.mod'
     name: 'ModelsGetLobbyCcuResponse'
+    type: 'model'
     fields:
       'CountCurrentUsers':
         type: 'int32'
@@ -4057,9 +4263,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_lobby_ccu_response.go'
 
-  'ModelsGetPlayerSessionAttributeResponse@lobby':
-    id: 'ModelsGetPlayerSessionAttributeResponse@lobby'
+  'ModelsGetPlayerSessionAttributeResponse@go.lobby.mod':
+    id: 'ModelsGetPlayerSessionAttributeResponse@go.lobby.mod'
     name: 'ModelsGetPlayerSessionAttributeResponse'
+    type: 'model'
     fields:
       'Key':
         type: 'string'
@@ -4072,9 +4279,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_get_player_session_attribute_response.go'
 
-  'ModelsImportConfigResponse@lobby':
-    id: 'ModelsImportConfigResponse@lobby'
+  'ModelsImportConfigResponse@go.lobby.mod':
+    id: 'ModelsImportConfigResponse@go.lobby.mod'
     name: 'ModelsImportConfigResponse'
+    type: 'model'
     fields:
       'FailedConfigs':
         type: '[]string'
@@ -4093,9 +4301,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_import_config_response.go'
 
-  'ModelsListBlockedPlayerRequest@lobby':
-    id: 'ModelsListBlockedPlayerRequest@lobby'
+  'ModelsListBlockedPlayerRequest@go.lobby.mod':
+    id: 'ModelsListBlockedPlayerRequest@go.lobby.mod'
     name: 'ModelsListBlockedPlayerRequest'
+    type: 'model'
     fields:
       'ListBlockedUserID':
         type: '[]string'
@@ -4105,9 +4314,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_list_blocked_player_request.go'
 
-  'ModelsListUnblockPlayerRequest@lobby':
-    id: 'ModelsListUnblockPlayerRequest@lobby'
+  'ModelsListUnblockPlayerRequest@go.lobby.mod':
+    id: 'ModelsListUnblockPlayerRequest@go.lobby.mod'
     name: 'ModelsListUnblockPlayerRequest'
+    type: 'model'
     fields:
       'ListUnblockUserID':
         type: '[]string'
@@ -4117,9 +4327,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_list_unblock_player_request.go'
 
-  'ModelsPartyData@lobby':
-    id: 'ModelsPartyData@lobby'
+  'ModelsPartyData@go.lobby.mod':
+    id: 'ModelsPartyData@go.lobby.mod'
     name: 'ModelsPartyData'
+    type: 'model'
     fields:
       'CustomAttribute':
         type: 'interface{}'
@@ -4147,9 +4358,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_party_data.go'
 
-  'ModelsPartyPUTCustomAttributesRequest@lobby':
-    id: 'ModelsPartyPUTCustomAttributesRequest@lobby'
+  'ModelsPartyPUTCustomAttributesRequest@go.lobby.mod':
+    id: 'ModelsPartyPUTCustomAttributesRequest@go.lobby.mod'
     name: 'ModelsPartyPUTCustomAttributesRequest'
+    type: 'model'
     fields:
       'CustomAttribute':
         type: 'interface{}'
@@ -4162,9 +4374,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_party_p_u_t_custom_attributes_request.go'
 
-  'ModelsPartyPUTLimitSizeRequest@lobby':
-    id: 'ModelsPartyPUTLimitSizeRequest@lobby'
+  'ModelsPartyPUTLimitSizeRequest@go.lobby.mod':
+    id: 'ModelsPartyPUTLimitSizeRequest@go.lobby.mod'
     name: 'ModelsPartyPUTLimitSizeRequest'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -4174,9 +4387,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_party_p_u_t_limit_size_request.go'
 
-  'ModelsProfanityFilter@lobby':
-    id: 'ModelsProfanityFilter@lobby'
+  'ModelsProfanityFilter@go.lobby.mod':
+    id: 'ModelsProfanityFilter@go.lobby.mod'
     name: 'ModelsProfanityFilter'
+    type: 'model'
     fields:
       'Filter':
         type: 'string'
@@ -4195,9 +4409,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_profanity_filter.go'
 
-  'ModelsProfanityRule@lobby':
-    id: 'ModelsProfanityRule@lobby'
+  'ModelsProfanityRule@go.lobby.mod':
+    id: 'ModelsProfanityRule@go.lobby.mod'
     name: 'ModelsProfanityRule'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -4210,9 +4425,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_profanity_rule.go'
 
-  'ModelsSetPlayerSessionAttributeRequest@lobby':
-    id: 'ModelsSetPlayerSessionAttributeRequest@lobby'
+  'ModelsSetPlayerSessionAttributeRequest@go.lobby.mod':
+    id: 'ModelsSetPlayerSessionAttributeRequest@go.lobby.mod'
     name: 'ModelsSetPlayerSessionAttributeRequest'
+    type: 'model'
     fields:
       'Attributes':
         type: 'map[string]string'
@@ -4222,9 +4438,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_set_player_session_attribute_request.go'
 
-  'ModelsUnblockPlayerRequest@lobby':
-    id: 'ModelsUnblockPlayerRequest@lobby'
+  'ModelsUnblockPlayerRequest@go.lobby.mod':
+    id: 'ModelsUnblockPlayerRequest@go.lobby.mod'
     name: 'ModelsUnblockPlayerRequest'
+    type: 'model'
     fields:
       'UserID':
         type: 'string'
@@ -4234,9 +4451,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_unblock_player_request.go'
 
-  'ModelsUpdateConfigRequest@lobby':
-    id: 'ModelsUpdateConfigRequest@lobby'
+  'ModelsUpdateConfigRequest@go.lobby.mod':
+    id: 'ModelsUpdateConfigRequest@go.lobby.mod'
     name: 'ModelsUpdateConfigRequest'
+    type: 'model'
     fields:
       'APIKey':
         type: 'string'
@@ -4246,9 +4464,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_update_config_request.go'
 
-  'ModelsUpdateConfigResponse@lobby':
-    id: 'ModelsUpdateConfigResponse@lobby'
+  'ModelsUpdateConfigResponse@go.lobby.mod':
+    id: 'ModelsUpdateConfigResponse@go.lobby.mod'
     name: 'ModelsUpdateConfigResponse'
+    type: 'model'
     fields:
       'APIKey':
         type: 'string'
@@ -4261,9 +4480,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/models_update_config_response.go'
 
-  'ResponseError@lobby':
-    id: 'ResponseError@lobby'
+  'ResponseError@go.lobby.mod':
+    id: 'ResponseError@go.lobby.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -4276,9 +4496,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/response_error.go'
 
-  'RestapiErrorResponseBody@lobby':
-    id: 'RestapiErrorResponseBody@lobby'
+  'RestapiErrorResponseBody@go.lobby.mod':
+    id: 'RestapiErrorResponseBody@go.lobby.mod'
     name: 'RestapiErrorResponseBody'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -4291,9 +4512,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/lobby-sdk/pkg/lobbyclientmodels/restapi_error_response_body.go'
 
-  'RestapiErrorResponseV1@lobby':
-    id: 'RestapiErrorResponseV1@lobby'
+  'RestapiErrorResponseV1@go.lobby.mod':
+    id: 'RestapiErrorResponseV1@go.lobby.mod'
     name: 'RestapiErrorResponseV1'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -4308,15 +4530,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AddFriendsWithoutConfirmationShort@lobby':
-    id: 'AddFriendsWithoutConfirmationShort@lobby'
+  'AddFriendsWithoutConfirmationShort@go.lobby.fun':
+    id: 'AddFriendsWithoutConfirmationShort@go.lobby.fun'
     name: 'AddFriendsWithoutConfirmationShort'
+    type: 'function'
     description: |-
       Friends request in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.AddFriendsWithoutConfirmationParams'
         required: true
@@ -4341,13 +4564,14 @@ functions:
       - 'public'
       - 'without'
 
-  'AdminAddProfanityFilterIntoListShort@lobby':
-    id: 'AdminAddProfanityFilterIntoListShort@lobby'
+  'AdminAddProfanityFilterIntoListShort@go.lobby.fun':
+    id: 'AdminAddProfanityFilterIntoListShort@go.lobby.fun'
     name: 'AdminAddProfanityFilterIntoListShort'
+    type: 'function'
     description: |-
       Add a single filter into the list
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminAddProfanityFilterIntoListParams'
         required: true
@@ -4373,13 +4597,14 @@ functions:
       - 'list'
       - 'profanity'
 
-  'AdminAddProfanityFiltersShort@lobby':
-    id: 'AdminAddProfanityFiltersShort@lobby'
+  'AdminAddProfanityFiltersShort@go.lobby.fun':
+    id: 'AdminAddProfanityFiltersShort@go.lobby.fun'
     name: 'AdminAddProfanityFiltersShort'
+    type: 'function'
     description: |-
       Add multiple filters into the list
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminAddProfanityFiltersParams'
         required: true
@@ -4403,13 +4628,14 @@ functions:
       - 'filters'
       - 'profanity'
 
-  'AdminBulkBlockPlayersV1Short@lobby':
-    id: 'AdminBulkBlockPlayersV1Short@lobby'
+  'AdminBulkBlockPlayersV1Short@go.lobby.fun':
+    id: 'AdminBulkBlockPlayersV1Short@go.lobby.fun'
     name: 'AdminBulkBlockPlayersV1Short'
+    type: 'function'
     description: |-
       Bulk block player in a namespace by list of user id
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminBulkBlockPlayersV1Params'
         required: true
@@ -4435,13 +4661,14 @@ functions:
       - 'players'
       - 'v1'
 
-  'AdminBulkUnblockPlayersV1Short@lobby':
-    id: 'AdminBulkUnblockPlayersV1Short@lobby'
+  'AdminBulkUnblockPlayersV1Short@go.lobby.fun':
+    id: 'AdminBulkUnblockPlayersV1Short@go.lobby.fun'
     name: 'AdminBulkUnblockPlayersV1Short'
+    type: 'function'
     description: |-
       Bulk unblock player in a namespace by list of user id
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminBulkUnblockPlayersV1Params'
         required: true
@@ -4467,13 +4694,14 @@ functions:
       - 'unblock'
       - 'v1'
 
-  'AdminCreateProfanityListShort@lobby':
-    id: 'AdminCreateProfanityListShort@lobby'
+  'AdminCreateProfanityListShort@go.lobby.fun':
+    id: 'AdminCreateProfanityListShort@go.lobby.fun'
     name: 'AdminCreateProfanityListShort'
+    type: 'function'
     description: |-
       Create a new list
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminCreateProfanityListParams'
         required: true
@@ -4497,13 +4725,14 @@ functions:
       - 'list'
       - 'profanity'
 
-  'AdminCreateThirdPartyConfigShort@lobby':
-    id: 'AdminCreateThirdPartyConfigShort@lobby'
+  'AdminCreateThirdPartyConfigShort@go.lobby.fun':
+    id: 'AdminCreateThirdPartyConfigShort@go.lobby.fun'
     name: 'AdminCreateThirdPartyConfigShort'
+    type: 'function'
     description: |-
       Create third party config in a namespace.
     struct: 'ThirdPartyService'
-    parameters:
+    arguments:
       params:
         type: '*third_party.AdminCreateThirdPartyConfigParams'
         required: true
@@ -4528,13 +4757,14 @@ functions:
       - 'party'
       - 'third'
 
-  'AdminDebugProfanityFiltersShort@lobby':
-    id: 'AdminDebugProfanityFiltersShort@lobby'
+  'AdminDebugProfanityFiltersShort@go.lobby.fun':
+    id: 'AdminDebugProfanityFiltersShort@go.lobby.fun'
     name: 'AdminDebugProfanityFiltersShort'
+    type: 'function'
     description: |-
       Get the list of filters that would modify the phrase
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminDebugProfanityFiltersParams'
         required: true
@@ -4558,13 +4788,14 @@ functions:
       - 'filters'
       - 'profanity'
 
-  'AdminDeleteGlobalConfigShort@lobby':
-    id: 'AdminDeleteGlobalConfigShort@lobby'
+  'AdminDeleteGlobalConfigShort@go.lobby.fun':
+    id: 'AdminDeleteGlobalConfigShort@go.lobby.fun'
     name: 'AdminDeleteGlobalConfigShort'
+    type: 'function'
     description: |-
       Delete of global configuration data.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.AdminDeleteGlobalConfigParams'
         required: true
@@ -4589,13 +4820,14 @@ functions:
       - 'delete'
       - 'global'
 
-  'AdminDeleteProfanityFilterShort@lobby':
-    id: 'AdminDeleteProfanityFilterShort@lobby'
+  'AdminDeleteProfanityFilterShort@go.lobby.fun':
+    id: 'AdminDeleteProfanityFilterShort@go.lobby.fun'
     name: 'AdminDeleteProfanityFilterShort'
+    type: 'function'
     description: |-
       Delete the filter from the list
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminDeleteProfanityFilterParams'
         required: true
@@ -4619,13 +4851,14 @@ functions:
       - 'filter'
       - 'profanity'
 
-  'AdminDeleteProfanityListShort@lobby':
-    id: 'AdminDeleteProfanityListShort@lobby'
+  'AdminDeleteProfanityListShort@go.lobby.fun':
+    id: 'AdminDeleteProfanityListShort@go.lobby.fun'
     name: 'AdminDeleteProfanityListShort'
+    type: 'function'
     description: |-
       Delete a list include all filters inside of it
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminDeleteProfanityListParams'
         required: true
@@ -4649,15 +4882,16 @@ functions:
       - 'list'
       - 'profanity'
 
-  'AdminDeleteThirdPartyConfigShort@lobby':
-    id: 'AdminDeleteThirdPartyConfigShort@lobby'
+  'AdminDeleteThirdPartyConfigShort@go.lobby.fun':
+    id: 'AdminDeleteThirdPartyConfigShort@go.lobby.fun'
     name: 'AdminDeleteThirdPartyConfigShort'
+    type: 'function'
     description: |-
       Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]` with scope `social`
 
       delete third party config in a namespace.
     struct: 'ThirdPartyService'
-    parameters:
+    arguments:
       params:
         type: '*third_party.AdminDeleteThirdPartyConfigParams'
         required: true
@@ -4682,9 +4916,10 @@ functions:
       - 'party'
       - 'third'
 
-  'AdminExportConfigV1Short@lobby':
-    id: 'AdminExportConfigV1Short@lobby'
+  'AdminExportConfigV1Short@go.lobby.fun':
+    id: 'AdminExportConfigV1Short@go.lobby.fun'
     name: 'AdminExportConfigV1Short'
+    type: 'function'
     description: |-
       Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
@@ -4800,7 +5035,7 @@ functions:
       }
       }
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminExportConfigV1Params'
         required: true
@@ -4824,14 +5059,15 @@ functions:
       - 'export'
       - 'v1'
 
-  'AdminGetAllConfigV1Short@lobby':
-    id: 'AdminGetAllConfigV1Short@lobby'
+  'AdminGetAllConfigV1Short@go.lobby.fun':
+    id: 'AdminGetAllConfigV1Short@go.lobby.fun'
     name: 'AdminGetAllConfigV1Short'
+    type: 'function'
     description: |-
       Get lobby config of all namespaces.
       default MaxDSWaitTime is 120 (second)
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetAllConfigV1Params'
         required: true
@@ -4856,13 +5092,14 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetAllPlayerSessionAttributeShort@lobby':
-    id: 'AdminGetAllPlayerSessionAttributeShort@lobby'
+  'AdminGetAllPlayerSessionAttributeShort@go.lobby.fun':
+    id: 'AdminGetAllPlayerSessionAttributeShort@go.lobby.fun'
     name: 'AdminGetAllPlayerSessionAttributeShort'
+    type: 'function'
     description: |-
       Get all player's session attribute by user id in a namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetAllPlayerSessionAttributeParams'
         required: true
@@ -4888,13 +5125,14 @@ functions:
       - 'player'
       - 'session'
 
-  'AdminGetBulkPlayerBlockedPlayersV1Short@lobby':
-    id: 'AdminGetBulkPlayerBlockedPlayersV1Short@lobby'
+  'AdminGetBulkPlayerBlockedPlayersV1Short@go.lobby.fun':
+    id: 'AdminGetBulkPlayerBlockedPlayersV1Short@go.lobby.fun'
     name: 'AdminGetBulkPlayerBlockedPlayersV1Short'
+    type: 'function'
     description: |-
       Get blocked players data by bulk user ids in a namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetBulkPlayerBlockedPlayersV1Params'
         required: true
@@ -4921,14 +5159,15 @@ functions:
       - 'players'
       - 'v1'
 
-  'AdminGetConfigV1Short@lobby':
-    id: 'AdminGetConfigV1Short@lobby'
+  'AdminGetConfigV1Short@go.lobby.fun':
+    id: 'AdminGetConfigV1Short@go.lobby.fun'
     name: 'AdminGetConfigV1Short'
+    type: 'function'
     description: |-
       Get lobby config of a namespace.
       default MaxDSWaitTime is 120 (second)
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetConfigV1Params'
         required: true
@@ -4952,13 +5191,14 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetGlobalConfigShort@lobby':
-    id: 'AdminGetGlobalConfigShort@lobby'
+  'AdminGetGlobalConfigShort@go.lobby.fun':
+    id: 'AdminGetGlobalConfigShort@go.lobby.fun'
     name: 'AdminGetGlobalConfigShort'
+    type: 'function'
     description: |-
       Get dsmc global configuration.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.AdminGetGlobalConfigParams'
         required: true
@@ -4983,13 +5223,14 @@ functions:
       - 'get'
       - 'global'
 
-  'AdminGetLobbyCCUShort@lobby':
-    id: 'AdminGetLobbyCCUShort@lobby'
+  'AdminGetLobbyCCUShort@go.lobby.fun':
+    id: 'AdminGetLobbyCCUShort@go.lobby.fun'
     name: 'AdminGetLobbyCCUShort'
+    type: 'function'
     description: |-
       Get the number of players connected to the Lobby in the given namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetLobbyCCUParams'
         required: true
@@ -5014,9 +5255,10 @@ functions:
       - 'lobby'
       - 'player'
 
-  'AdminGetLogConfigShort@lobby':
-    id: 'AdminGetLogConfigShort@lobby'
+  'AdminGetLogConfigShort@go.lobby.fun':
+    id: 'AdminGetLogConfigShort@go.lobby.fun'
     name: 'AdminGetLogConfigShort'
+    type: 'function'
     description: |-
       Get Log Configuration
       logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
@@ -5024,7 +5266,7 @@ functions:
       logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
       slowQueryThreshold use for logging slow threshold in time measure is nano second
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetLogConfigParams'
         required: true
@@ -5048,13 +5290,14 @@ functions:
       - 'get'
       - 'log'
 
-  'AdminGetPartyDataV1Short@lobby':
-    id: 'AdminGetPartyDataV1Short@lobby'
+  'AdminGetPartyDataV1Short@go.lobby.fun':
+    id: 'AdminGetPartyDataV1Short@go.lobby.fun'
     name: 'AdminGetPartyDataV1Short'
+    type: 'function'
     description: |-
       Get party data in a namespace.
     struct: 'PartyService'
-    parameters:
+    arguments:
       params:
         type: '*party.AdminGetPartyDataV1Params'
         required: true
@@ -5079,13 +5322,14 @@ functions:
       - 'party'
       - 'v1'
 
-  'AdminGetPlayerBlockedByPlayersV1Short@lobby':
-    id: 'AdminGetPlayerBlockedByPlayersV1Short@lobby'
+  'AdminGetPlayerBlockedByPlayersV1Short@go.lobby.fun':
+    id: 'AdminGetPlayerBlockedByPlayersV1Short@go.lobby.fun'
     name: 'AdminGetPlayerBlockedByPlayersV1Short'
+    type: 'function'
     description: |-
       Load get players who blocked this player in a namespace based on user id
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetPlayerBlockedByPlayersV1Params'
         required: true
@@ -5112,13 +5356,14 @@ functions:
       - 'players'
       - 'v1'
 
-  'AdminGetPlayerBlockedPlayersV1Short@lobby':
-    id: 'AdminGetPlayerBlockedPlayersV1Short@lobby'
+  'AdminGetPlayerBlockedPlayersV1Short@go.lobby.fun':
+    id: 'AdminGetPlayerBlockedPlayersV1Short@go.lobby.fun'
     name: 'AdminGetPlayerBlockedPlayersV1Short'
+    type: 'function'
     description: |-
       Get blocked players data by user id in a namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetPlayerBlockedPlayersV1Params'
         required: true
@@ -5144,13 +5389,14 @@ functions:
       - 'players'
       - 'v1'
 
-  'AdminGetPlayerSessionAttributeShort@lobby':
-    id: 'AdminGetPlayerSessionAttributeShort@lobby'
+  'AdminGetPlayerSessionAttributeShort@go.lobby.fun':
+    id: 'AdminGetPlayerSessionAttributeShort@go.lobby.fun'
     name: 'AdminGetPlayerSessionAttributeShort'
+    type: 'function'
     description: |-
       Get player's specific session attribute by user id in a namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminGetPlayerSessionAttributeParams'
         required: true
@@ -5175,13 +5421,14 @@ functions:
       - 'player'
       - 'session'
 
-  'AdminGetProfanityListFiltersV1Short@lobby':
-    id: 'AdminGetProfanityListFiltersV1Short@lobby'
+  'AdminGetProfanityListFiltersV1Short@go.lobby.fun':
+    id: 'AdminGetProfanityListFiltersV1Short@go.lobby.fun'
     name: 'AdminGetProfanityListFiltersV1Short'
+    type: 'function'
     description: |-
       Get the list of filters inside the list.
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminGetProfanityListFiltersV1Params'
         required: true
@@ -5207,13 +5454,14 @@ functions:
       - 'profanity'
       - 'v1'
 
-  'AdminGetProfanityListsShort@lobby':
-    id: 'AdminGetProfanityListsShort@lobby'
+  'AdminGetProfanityListsShort@go.lobby.fun':
+    id: 'AdminGetProfanityListsShort@go.lobby.fun'
     name: 'AdminGetProfanityListsShort'
+    type: 'function'
     description: |-
       Get lists
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminGetProfanityListsParams'
         required: true
@@ -5237,13 +5485,14 @@ functions:
       - 'lists'
       - 'profanity'
 
-  'AdminGetProfanityRuleShort@lobby':
-    id: 'AdminGetProfanityRuleShort@lobby'
+  'AdminGetProfanityRuleShort@go.lobby.fun':
+    id: 'AdminGetProfanityRuleShort@go.lobby.fun'
     name: 'AdminGetProfanityRuleShort'
+    type: 'function'
     description: |-
       Get current profanity rule
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminGetProfanityRuleParams'
         required: true
@@ -5267,13 +5516,14 @@ functions:
       - 'profanity'
       - 'rule'
 
-  'AdminGetThirdPartyConfigShort@lobby':
-    id: 'AdminGetThirdPartyConfigShort@lobby'
+  'AdminGetThirdPartyConfigShort@go.lobby.fun':
+    id: 'AdminGetThirdPartyConfigShort@go.lobby.fun'
     name: 'AdminGetThirdPartyConfigShort'
+    type: 'function'
     description: |-
       Get third party config for specified namespace.
     struct: 'ThirdPartyService'
-    parameters:
+    arguments:
       params:
         type: '*third_party.AdminGetThirdPartyConfigParams'
         required: true
@@ -5298,13 +5548,14 @@ functions:
       - 'party'
       - 'third'
 
-  'AdminGetUserPartyV1Short@lobby':
-    id: 'AdminGetUserPartyV1Short@lobby'
+  'AdminGetUserPartyV1Short@go.lobby.fun':
+    id: 'AdminGetUserPartyV1Short@go.lobby.fun'
     name: 'AdminGetUserPartyV1Short'
+    type: 'function'
     description: |-
       Get party data in a namespace.
     struct: 'PartyService'
-    parameters:
+    arguments:
       params:
         type: '*party.AdminGetUserPartyV1Params'
         required: true
@@ -5329,16 +5580,17 @@ functions:
       - 'user'
       - 'v1'
 
-  'AdminImportConfigV1Short@lobby':
-    id: 'AdminImportConfigV1Short@lobby'
+  'AdminImportConfigV1Short@go.lobby.fun':
+    id: 'AdminImportConfigV1Short@go.lobby.fun'
     name: 'AdminImportConfigV1Short'
+    type: 'function'
     description: |-
       Import config configuration from file. The existing configuration will be replaced.
       The json file to import can be obtained from the /export endpoint.
 
       MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminImportConfigV1Params'
         required: true
@@ -5362,13 +5614,14 @@ functions:
       - 'import'
       - 'v1'
 
-  'AdminImportProfanityFiltersFromFileShort@lobby':
-    id: 'AdminImportProfanityFiltersFromFileShort@lobby'
+  'AdminImportProfanityFiltersFromFileShort@go.lobby.fun':
+    id: 'AdminImportProfanityFiltersFromFileShort@go.lobby.fun'
     name: 'AdminImportProfanityFiltersFromFileShort'
+    type: 'function'
     description: |-
       Import a file with filters
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminImportProfanityFiltersFromFileParams'
         required: true
@@ -5394,13 +5647,14 @@ functions:
       - 'import'
       - 'profanity'
 
-  'AdminJoinPartyV1Short@lobby':
-    id: 'AdminJoinPartyV1Short@lobby'
+  'AdminJoinPartyV1Short@go.lobby.fun':
+    id: 'AdminJoinPartyV1Short@go.lobby.fun'
     name: 'AdminJoinPartyV1Short'
+    type: 'function'
     description: |-
       Admin join a player into a party.
     struct: 'LobbyOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*lobby_operations.AdminJoinPartyV1Params'
         required: true
@@ -5426,13 +5680,14 @@ functions:
       - 'party'
       - 'v1'
 
-  'AdminListFriendsOfFriendsShort@lobby':
-    id: 'AdminListFriendsOfFriendsShort@lobby'
+  'AdminListFriendsOfFriendsShort@go.lobby.fun':
+    id: 'AdminListFriendsOfFriendsShort@go.lobby.fun'
     name: 'AdminListFriendsOfFriendsShort'
+    type: 'function'
     description: |-
       Load list friends and friends of friends in a namespace. Response subjectId will be different with requested userId if the user is not directly friend
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.AdminListFriendsOfFriendsParams'
         required: true
@@ -5456,9 +5711,10 @@ functions:
       - 'list'
       - 'of'
 
-  'AdminPatchUpdateLogConfigShort@lobby':
-    id: 'AdminPatchUpdateLogConfigShort@lobby'
+  'AdminPatchUpdateLogConfigShort@go.lobby.fun':
+    id: 'AdminPatchUpdateLogConfigShort@go.lobby.fun'
     name: 'AdminPatchUpdateLogConfigShort'
+    type: 'function'
     description: |-
       Update Log Configuration
       logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
@@ -5466,7 +5722,7 @@ functions:
       logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
       slowQueryThreshold use for logging slow threshold in time measure is nano second
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminPatchUpdateLogConfigParams'
         required: true
@@ -5491,13 +5747,14 @@ functions:
       - 'patch'
       - 'update'
 
-  'AdminSetPlayerSessionAttributeShort@lobby':
-    id: 'AdminSetPlayerSessionAttributeShort@lobby'
+  'AdminSetPlayerSessionAttributeShort@go.lobby.fun':
+    id: 'AdminSetPlayerSessionAttributeShort@go.lobby.fun'
     name: 'AdminSetPlayerSessionAttributeShort'
+    type: 'function'
     description: |-
       Set player's session attribute by user id in a namespace.
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.AdminSetPlayerSessionAttributeParams'
         required: true
@@ -5522,13 +5779,14 @@ functions:
       - 'session'
       - 'set'
 
-  'AdminSetProfanityRuleForNamespaceShort@lobby':
-    id: 'AdminSetProfanityRuleForNamespaceShort@lobby'
+  'AdminSetProfanityRuleForNamespaceShort@go.lobby.fun':
+    id: 'AdminSetProfanityRuleForNamespaceShort@go.lobby.fun'
     name: 'AdminSetProfanityRuleForNamespaceShort'
+    type: 'function'
     description: |-
       Set current profanity rule
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminSetProfanityRuleForNamespaceParams'
         required: true
@@ -5554,14 +5812,15 @@ functions:
       - 'rule'
       - 'set'
 
-  'AdminUpdateConfigV1Short@lobby':
-    id: 'AdminUpdateConfigV1Short@lobby'
+  'AdminUpdateConfigV1Short@go.lobby.fun':
+    id: 'AdminUpdateConfigV1Short@go.lobby.fun'
     name: 'AdminUpdateConfigV1Short'
+    type: 'function'
     description: |-
       Update lobby config of a namespace.
       MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminUpdateConfigV1Params'
         required: true
@@ -5585,13 +5844,14 @@ functions:
       - 'update'
       - 'v1'
 
-  'AdminUpdateGlobalConfigShort@lobby':
-    id: 'AdminUpdateGlobalConfigShort@lobby'
+  'AdminUpdateGlobalConfigShort@go.lobby.fun':
+    id: 'AdminUpdateGlobalConfigShort@go.lobby.fun'
     name: 'AdminUpdateGlobalConfigShort'
+    type: 'function'
     description: |-
       Upsert global configuration data.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.AdminUpdateGlobalConfigParams'
         required: true
@@ -5616,13 +5876,14 @@ functions:
       - 'global'
       - 'update'
 
-  'AdminUpdatePartyAttributesV1Short@lobby':
-    id: 'AdminUpdatePartyAttributesV1Short@lobby'
+  'AdminUpdatePartyAttributesV1Short@go.lobby.fun':
+    id: 'AdminUpdatePartyAttributesV1Short@go.lobby.fun'
     name: 'AdminUpdatePartyAttributesV1Short'
+    type: 'function'
     description: |-
       Update party attributes in a namespace.
     struct: 'LobbyOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*lobby_operations.AdminUpdatePartyAttributesV1Params'
         required: true
@@ -5649,13 +5910,14 @@ functions:
       - 'update'
       - 'v1'
 
-  'AdminUpdateProfanityListShort@lobby':
-    id: 'AdminUpdateProfanityListShort@lobby'
+  'AdminUpdateProfanityListShort@go.lobby.fun':
+    id: 'AdminUpdateProfanityListShort@go.lobby.fun'
     name: 'AdminUpdateProfanityListShort'
+    type: 'function'
     description: |-
       Update the list
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminUpdateProfanityListParams'
         required: true
@@ -5679,13 +5941,14 @@ functions:
       - 'profanity'
       - 'update'
 
-  'AdminUpdateThirdPartyConfigShort@lobby':
-    id: 'AdminUpdateThirdPartyConfigShort@lobby'
+  'AdminUpdateThirdPartyConfigShort@go.lobby.fun':
+    id: 'AdminUpdateThirdPartyConfigShort@go.lobby.fun'
     name: 'AdminUpdateThirdPartyConfigShort'
+    type: 'function'
     description: |-
       Update third party config in a namespace.
     struct: 'ThirdPartyService'
-    parameters:
+    arguments:
       params:
         type: '*third_party.AdminUpdateThirdPartyConfigParams'
         required: true
@@ -5710,13 +5973,14 @@ functions:
       - 'third'
       - 'update'
 
-  'AdminVerifyMessageProfanityResponseShort@lobby':
-    id: 'AdminVerifyMessageProfanityResponseShort@lobby'
+  'AdminVerifyMessageProfanityResponseShort@go.lobby.fun':
+    id: 'AdminVerifyMessageProfanityResponseShort@go.lobby.fun'
     name: 'AdminVerifyMessageProfanityResponseShort'
+    type: 'function'
     description: |-
       Verify a message directly from the UI or other services
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminVerifyMessageProfanityResponseParams'
         required: true
@@ -5741,13 +6005,14 @@ functions:
       - 'response'
       - 'verify'
 
-  'BulkDeleteFriendsShort@lobby':
-    id: 'BulkDeleteFriendsShort@lobby'
+  'BulkDeleteFriendsShort@go.lobby.fun':
+    id: 'BulkDeleteFriendsShort@go.lobby.fun'
     name: 'BulkDeleteFriendsShort'
+    type: 'function'
     description: |-
       Friends request in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.BulkDeleteFriendsParams'
         required: true
@@ -5771,9 +6036,10 @@ functions:
       - 'friends'
       - 'public'
 
-  'CreateNotificationTemplateV1AdminShort@lobby':
-    id: 'CreateNotificationTemplateV1AdminShort@lobby'
+  'CreateNotificationTemplateV1AdminShort@go.lobby.fun':
+    id: 'CreateNotificationTemplateV1AdminShort@go.lobby.fun'
     name: 'CreateNotificationTemplateV1AdminShort'
+    type: 'function'
     description: |-
       Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
       handlebars will be the key to be replaced when sending notification. Already existing template with the same
@@ -5783,7 +6049,7 @@ functions:
 
       Action Code: 50204
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.CreateNotificationTemplateV1AdminParams'
         required: true
@@ -5808,9 +6074,10 @@ functions:
       - 'template'
       - 'v1'
 
-  'CreateNotificationTopicV1AdminShort@lobby':
-    id: 'CreateNotificationTopicV1AdminShort@lobby'
+  'CreateNotificationTopicV1AdminShort@go.lobby.fun':
+    id: 'CreateNotificationTopicV1AdminShort@go.lobby.fun'
     name: 'CreateNotificationTopicV1AdminShort'
+    type: 'function'
     description: |-
       Create new notification topic.
 
@@ -5819,7 +6086,7 @@ functions:
 
       Action Code: 50214
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.CreateNotificationTopicV1AdminParams'
         required: true
@@ -5844,9 +6111,10 @@ functions:
       - 'topic'
       - 'v1'
 
-  'CreateTemplateShort@lobby':
-    id: 'CreateTemplateShort@lobby'
+  'CreateTemplateShort@go.lobby.fun':
+    id: 'CreateTemplateShort@go.lobby.fun'
     name: 'CreateTemplateShort'
+    type: 'function'
     description: |-
       Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside
       handlebars will be the key to be replaced when sending notification. Already existing template with the same
@@ -5854,7 +6122,7 @@ functions:
 
       Check model description for detailed input restrictions.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.CreateTemplateParams'
         required: true
@@ -5878,16 +6146,17 @@ functions:
       - 'notification'
       - 'template'
 
-  'CreateTopicShort@lobby':
-    id: 'CreateTopicShort@lobby'
+  'CreateTopicShort@go.lobby.fun':
+    id: 'CreateTopicShort@go.lobby.fun'
     name: 'CreateTopicShort'
+    type: 'function'
     description: |-
       Create new notification topic.
 
       topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
       Already existing topic can not be created
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.CreateTopicParams'
         required: true
@@ -5911,15 +6180,16 @@ functions:
       - 'public'
       - 'topic'
 
-  'DeleteNotificationTemplateSlugV1AdminShort@lobby':
-    id: 'DeleteNotificationTemplateSlugV1AdminShort@lobby'
+  'DeleteNotificationTemplateSlugV1AdminShort@go.lobby.fun':
+    id: 'DeleteNotificationTemplateSlugV1AdminShort@go.lobby.fun'
     name: 'DeleteNotificationTemplateSlugV1AdminShort'
+    type: 'function'
     description: |-
       Delete template slug in notification template
 
       Action Code: 50206
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.DeleteNotificationTemplateSlugV1AdminParams'
         required: true
@@ -5945,9 +6215,10 @@ functions:
       - 'template'
       - 'v1'
 
-  'DeleteNotificationTopicV1AdminShort@lobby':
-    id: 'DeleteNotificationTopicV1AdminShort@lobby'
+  'DeleteNotificationTopicV1AdminShort@go.lobby.fun':
+    id: 'DeleteNotificationTopicV1AdminShort@go.lobby.fun'
     name: 'DeleteNotificationTopicV1AdminShort'
+    type: 'function'
     description: |-
       Delete topic information by topic name.
 
@@ -5956,7 +6227,7 @@ functions:
 
       Action Code: 50217
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.DeleteNotificationTopicV1AdminParams'
         required: true
@@ -5981,13 +6252,14 @@ functions:
       - 'topic'
       - 'v1'
 
-  'DeleteTemplateLocalizationShort@lobby':
-    id: 'DeleteTemplateLocalizationShort@lobby'
+  'DeleteTemplateLocalizationShort@go.lobby.fun':
+    id: 'DeleteTemplateLocalizationShort@go.lobby.fun'
     name: 'DeleteTemplateLocalizationShort'
+    type: 'function'
     description: |-
       Delete all template in a slug
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.DeleteTemplateLocalizationParams'
         required: true
@@ -6012,15 +6284,16 @@ functions:
       - 'notification'
       - 'template'
 
-  'DeleteTemplateLocalizationV1AdminShort@lobby':
-    id: 'DeleteTemplateLocalizationV1AdminShort@lobby'
+  'DeleteTemplateLocalizationV1AdminShort@go.lobby.fun':
+    id: 'DeleteTemplateLocalizationV1AdminShort@go.lobby.fun'
     name: 'DeleteTemplateLocalizationV1AdminShort'
+    type: 'function'
     description: |-
       Delete template localization
 
       Action Code: 50209
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.DeleteTemplateLocalizationV1AdminParams'
         required: true
@@ -6046,13 +6319,14 @@ functions:
       - 'template'
       - 'v1'
 
-  'DeleteTemplateSlugShort@lobby':
-    id: 'DeleteTemplateSlugShort@lobby'
+  'DeleteTemplateSlugShort@go.lobby.fun':
+    id: 'DeleteTemplateSlugShort@go.lobby.fun'
     name: 'DeleteTemplateSlugShort'
+    type: 'function'
     description: |-
       Delete localization template
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.DeleteTemplateSlugParams'
         required: true
@@ -6077,16 +6351,17 @@ functions:
       - 'slug'
       - 'template'
 
-  'DeleteTopicByTopicNameShort@lobby':
-    id: 'DeleteTopicByTopicNameShort@lobby'
+  'DeleteTopicByTopicNameShort@go.lobby.fun':
+    id: 'DeleteTopicByTopicNameShort@go.lobby.fun'
     name: 'DeleteTopicByTopicNameShort'
+    type: 'function'
     description: |-
       delete topic information by topic name.
 
       topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
       Already existing topic can not be created
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.DeleteTopicByTopicNameParams'
         required: true
@@ -6112,13 +6387,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'FreeFormNotificationShort@lobby':
-    id: 'FreeFormNotificationShort@lobby'
+  'FreeFormNotificationShort@go.lobby.fun':
+    id: 'FreeFormNotificationShort@go.lobby.fun'
     name: 'FreeFormNotificationShort'
+    type: 'function'
     description: |-
       Sends notification to all connected users in a namespace.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.FreeFormNotificationParams'
         required: true
@@ -6142,13 +6418,14 @@ functions:
       - 'free'
       - 'notification'
 
-  'FreeFormNotificationByUserIDShort@lobby':
-    id: 'FreeFormNotificationByUserIDShort@lobby'
+  'FreeFormNotificationByUserIDShort@go.lobby.fun':
+    id: 'FreeFormNotificationByUserIDShort@go.lobby.fun'
     name: 'FreeFormNotificationByUserIDShort'
+    type: 'function'
     description: |-
       Sends notification to a user.
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.FreeFormNotificationByUserIDParams'
         required: true
@@ -6175,13 +6452,14 @@ functions:
       - 'public'
       - 'user'
 
-  'GetIncomingFriendRequestsShort@lobby':
-    id: 'GetIncomingFriendRequestsShort@lobby'
+  'GetIncomingFriendRequestsShort@go.lobby.fun':
+    id: 'GetIncomingFriendRequestsShort@go.lobby.fun'
     name: 'GetIncomingFriendRequestsShort'
+    type: 'function'
     description: |-
       Get list of incoming friend requests.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetIncomingFriendRequestsParams'
         required: true
@@ -6206,13 +6484,14 @@ functions:
       - 'incoming'
       - 'requests'
 
-  'GetListOfFriendsShort@lobby':
-    id: 'GetListOfFriendsShort@lobby'
+  'GetListOfFriendsShort@go.lobby.fun':
+    id: 'GetListOfFriendsShort@go.lobby.fun'
     name: 'GetListOfFriendsShort'
+    type: 'function'
     description: |-
       Get list of friends in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetListOfFriendsParams'
         required: true
@@ -6236,13 +6515,14 @@ functions:
       - 'list'
       - 'of'
 
-  'GetOutgoingFriendRequestsShort@lobby':
-    id: 'GetOutgoingFriendRequestsShort@lobby'
+  'GetOutgoingFriendRequestsShort@go.lobby.fun':
+    id: 'GetOutgoingFriendRequestsShort@go.lobby.fun'
     name: 'GetOutgoingFriendRequestsShort'
+    type: 'function'
     description: |-
       Get list of outgoing friend requests in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetOutgoingFriendRequestsParams'
         required: true
@@ -6267,15 +6547,16 @@ functions:
       - 'outgoing'
       - 'requests'
 
-  'GetAllNotificationTemplatesV1AdminShort@lobby':
-    id: 'GetAllNotificationTemplatesV1AdminShort@lobby'
+  'GetAllNotificationTemplatesV1AdminShort@go.lobby.fun':
+    id: 'GetAllNotificationTemplatesV1AdminShort@go.lobby.fun'
     name: 'GetAllNotificationTemplatesV1AdminShort'
+    type: 'function'
     description: |-
       Get all templates in a namespace
 
       Action Code: 50203
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetAllNotificationTemplatesV1AdminParams'
         required: true
@@ -6301,15 +6582,16 @@ functions:
       - 'templates'
       - 'v1'
 
-  'GetAllNotificationTopicsV1AdminShort@lobby':
-    id: 'GetAllNotificationTopicsV1AdminShort@lobby'
+  'GetAllNotificationTopicsV1AdminShort@go.lobby.fun':
+    id: 'GetAllNotificationTopicsV1AdminShort@go.lobby.fun'
     name: 'GetAllNotificationTopicsV1AdminShort'
+    type: 'function'
     description: |-
       Get topic by namespace.
 
       Action Code: 50213
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetAllNotificationTopicsV1AdminParams'
         required: true
@@ -6335,13 +6617,14 @@ functions:
       - 'topics'
       - 'v1'
 
-  'GetGameTemplateShort@lobby':
-    id: 'GetGameTemplateShort@lobby'
+  'GetGameTemplateShort@go.lobby.fun':
+    id: 'GetGameTemplateShort@go.lobby.fun'
     name: 'GetGameTemplateShort'
+    type: 'function'
     description: |-
       Get all templates in a namespace
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.GetGameTemplateParams'
         required: true
@@ -6366,13 +6649,14 @@ functions:
       - 'notification'
       - 'template'
 
-  'GetLocalizationTemplateShort@lobby':
-    id: 'GetLocalizationTemplateShort@lobby'
+  'GetLocalizationTemplateShort@go.lobby.fun':
+    id: 'GetLocalizationTemplateShort@go.lobby.fun'
     name: 'GetLocalizationTemplateShort'
+    type: 'function'
     description: |-
       Get a template localization
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.GetLocalizationTemplateParams'
         required: true
@@ -6397,15 +6681,16 @@ functions:
       - 'notification'
       - 'template'
 
-  'GetMyNotificationsShort@lobby':
-    id: 'GetMyNotificationsShort@lobby'
+  'GetMyNotificationsShort@go.lobby.fun':
+    id: 'GetMyNotificationsShort@go.lobby.fun'
     name: 'GetMyNotificationsShort'
+    type: 'function'
     description: |-
       Get list of notifications in a namespace.
       The query parameters **startTime** and **endTime** can be filled with the **sequenceID** value in the notification, where the value is an epoch timestamp.
       Example **sequenceID** or epoch timestamp value: **1706595813**
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetMyNotificationsParams'
         required: true
@@ -6430,13 +6715,14 @@ functions:
       - 'notifications'
       - 'public'
 
-  'GetMyOfflineNotificationsShort@lobby':
-    id: 'GetMyOfflineNotificationsShort@lobby'
+  'GetMyOfflineNotificationsShort@go.lobby.fun':
+    id: 'GetMyOfflineNotificationsShort@go.lobby.fun'
     name: 'GetMyOfflineNotificationsShort'
+    type: 'function'
     description: |-
       Get list of user's offline notifications in a namespace.
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetMyOfflineNotificationsParams'
         required: true
@@ -6462,15 +6748,16 @@ functions:
       - 'offline'
       - 'public'
 
-  'GetNotificationTopicV1AdminShort@lobby':
-    id: 'GetNotificationTopicV1AdminShort@lobby'
+  'GetNotificationTopicV1AdminShort@go.lobby.fun':
+    id: 'GetNotificationTopicV1AdminShort@go.lobby.fun'
     name: 'GetNotificationTopicV1AdminShort'
+    type: 'function'
     description: |-
       Get topic information by topic name.
 
       Action Code: 50215
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetNotificationTopicV1AdminParams'
         required: true
@@ -6495,15 +6782,16 @@ functions:
       - 'topic'
       - 'v1'
 
-  'GetSingleTemplateLocalizationV1AdminShort@lobby':
-    id: 'GetSingleTemplateLocalizationV1AdminShort@lobby'
+  'GetSingleTemplateLocalizationV1AdminShort@go.lobby.fun':
+    id: 'GetSingleTemplateLocalizationV1AdminShort@go.lobby.fun'
     name: 'GetSingleTemplateLocalizationV1AdminShort'
+    type: 'function'
     description: |-
       Get a template localization
 
       Action Code: 50207
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetSingleTemplateLocalizationV1AdminParams'
         required: true
@@ -6530,13 +6818,14 @@ functions:
       - 'template'
       - 'v1'
 
-  'GetSlugTemplateShort@lobby':
-    id: 'GetSlugTemplateShort@lobby'
+  'GetSlugTemplateShort@go.lobby.fun':
+    id: 'GetSlugTemplateShort@go.lobby.fun'
     name: 'GetSlugTemplateShort'
+    type: 'function'
     description: |-
       Get all templates in a namespace
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.GetSlugTemplateParams'
         required: true
@@ -6561,15 +6850,16 @@ functions:
       - 'slug'
       - 'template'
 
-  'GetTemplateSlugLocalizationsTemplateV1AdminShort@lobby':
-    id: 'GetTemplateSlugLocalizationsTemplateV1AdminShort@lobby'
+  'GetTemplateSlugLocalizationsTemplateV1AdminShort@go.lobby.fun':
+    id: 'GetTemplateSlugLocalizationsTemplateV1AdminShort@go.lobby.fun'
     name: 'GetTemplateSlugLocalizationsTemplateV1AdminShort'
+    type: 'function'
     description: |-
       Get all templates in a namespace
 
       Action Code: 50205
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetTemplateSlugLocalizationsTemplateV1AdminParams'
         required: true
@@ -6596,13 +6886,14 @@ functions:
       - 'template'
       - 'v1'
 
-  'GetTopicByNamespaceShort@lobby':
-    id: 'GetTopicByNamespaceShort@lobby'
+  'GetTopicByNamespaceShort@go.lobby.fun':
+    id: 'GetTopicByNamespaceShort@go.lobby.fun'
     name: 'GetTopicByNamespaceShort'
+    type: 'function'
     description: |-
       get topic by namespace.
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetTopicByNamespaceParams'
         required: true
@@ -6628,13 +6919,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'GetTopicByTopicNameShort@lobby':
-    id: 'GetTopicByTopicNameShort@lobby'
+  'GetTopicByTopicNameShort@go.lobby.fun':
+    id: 'GetTopicByTopicNameShort@go.lobby.fun'
     name: 'GetTopicByTopicNameShort'
+    type: 'function'
     description: |-
       get topic information by topic name.
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.GetTopicByTopicNameParams'
         required: true
@@ -6660,13 +6952,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'GetUserFriendsUpdatedShort@lobby':
-    id: 'GetUserFriendsUpdatedShort@lobby'
+  'GetUserFriendsUpdatedShort@go.lobby.fun':
+    id: 'GetUserFriendsUpdatedShort@go.lobby.fun'
     name: 'GetUserFriendsUpdatedShort'
+    type: 'function'
     description: |-
       Get list of friends in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserFriendsUpdatedParams'
         required: true
@@ -6691,13 +6984,14 @@ functions:
       - 'updated'
       - 'user'
 
-  'GetUserFriendsWithPlatformShort@lobby':
-    id: 'GetUserFriendsWithPlatformShort@lobby'
+  'GetUserFriendsWithPlatformShort@go.lobby.fun':
+    id: 'GetUserFriendsWithPlatformShort@go.lobby.fun'
     name: 'GetUserFriendsWithPlatformShort'
+    type: 'function'
     description: |-
       Get list of friends with platform data in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserFriendsWithPlatformParams'
         required: true
@@ -6723,13 +7017,14 @@ functions:
       - 'user'
       - 'with'
 
-  'GetUserIncomingFriendsShort@lobby':
-    id: 'GetUserIncomingFriendsShort@lobby'
+  'GetUserIncomingFriendsShort@go.lobby.fun':
+    id: 'GetUserIncomingFriendsShort@go.lobby.fun'
     name: 'GetUserIncomingFriendsShort'
+    type: 'function'
     description: |-
       Get list of incoming friends in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserIncomingFriendsParams'
         required: true
@@ -6754,13 +7049,14 @@ functions:
       - 'public'
       - 'user'
 
-  'GetUserIncomingFriendsWithTimeShort@lobby':
-    id: 'GetUserIncomingFriendsWithTimeShort@lobby'
+  'GetUserIncomingFriendsWithTimeShort@go.lobby.fun':
+    id: 'GetUserIncomingFriendsWithTimeShort@go.lobby.fun'
     name: 'GetUserIncomingFriendsWithTimeShort'
+    type: 'function'
     description: |-
       Get list of incoming friends with requested time info in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserIncomingFriendsWithTimeParams'
         required: true
@@ -6787,13 +7083,14 @@ functions:
       - 'user'
       - 'with'
 
-  'GetUserOutgoingFriendsShort@lobby':
-    id: 'GetUserOutgoingFriendsShort@lobby'
+  'GetUserOutgoingFriendsShort@go.lobby.fun':
+    id: 'GetUserOutgoingFriendsShort@go.lobby.fun'
     name: 'GetUserOutgoingFriendsShort'
+    type: 'function'
     description: |-
       Get list of outgoing friends in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserOutgoingFriendsParams'
         required: true
@@ -6818,13 +7115,14 @@ functions:
       - 'public'
       - 'user'
 
-  'GetUserOutgoingFriendsWithTimeShort@lobby':
-    id: 'GetUserOutgoingFriendsWithTimeShort@lobby'
+  'GetUserOutgoingFriendsWithTimeShort@go.lobby.fun':
+    id: 'GetUserOutgoingFriendsWithTimeShort@go.lobby.fun'
     name: 'GetUserOutgoingFriendsWithTimeShort'
+    type: 'function'
     description: |-
       Get list of outgoing friends with requested time info in a namespace.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.GetUserOutgoingFriendsWithTimeParams'
         required: true
@@ -6851,9 +7149,10 @@ functions:
       - 'user'
       - 'with'
 
-  'NotificationWithTemplateShort@lobby':
-    id: 'NotificationWithTemplateShort@lobby'
+  'NotificationWithTemplateShort@go.lobby.fun':
+    id: 'NotificationWithTemplateShort@go.lobby.fun'
     name: 'NotificationWithTemplateShort'
+    type: 'function'
     description: |-
       Sends notification to all connected users in a namespace with predefined template.
 
@@ -6862,7 +7161,7 @@ functions:
       NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
       Template need to be published before it can be use to send notifications
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.NotificationWithTemplateParams'
         required: true
@@ -6886,9 +7185,10 @@ functions:
       - 'template'
       - 'with'
 
-  'NotificationWithTemplateByUserIDShort@lobby':
-    id: 'NotificationWithTemplateByUserIDShort@lobby'
+  'NotificationWithTemplateByUserIDShort@go.lobby.fun':
+    id: 'NotificationWithTemplateByUserIDShort@go.lobby.fun'
     name: 'NotificationWithTemplateByUserIDShort'
+    type: 'function'
     description: |-
       Sends notification to a user with predefined template.
 
@@ -6897,7 +7197,7 @@ functions:
       NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
       Template need to be published before it can be use to send notifications
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.NotificationWithTemplateByUserIDParams'
         required: true
@@ -6924,13 +7224,14 @@ functions:
       - 'user'
       - 'with'
 
-  'PublicGetMessagesShort@lobby':
-    id: 'PublicGetMessagesShort@lobby'
+  'PublicGetMessagesShort@go.lobby.fun':
+    id: 'PublicGetMessagesShort@go.lobby.fun'
     name: 'PublicGetMessagesShort'
+    type: 'function'
     description: |-
       get the list of messages.
     struct: 'LobbyOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*lobby_operations.PublicGetMessagesParams'
         required: true
@@ -6955,9 +7256,10 @@ functions:
       - 'operations'
       - 'public'
 
-  'PublicGetPartyDataV1Short@lobby':
-    id: 'PublicGetPartyDataV1Short@lobby'
+  'PublicGetPartyDataV1Short@go.lobby.fun':
+    id: 'PublicGetPartyDataV1Short@go.lobby.fun'
     name: 'PublicGetPartyDataV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
@@ -6966,7 +7268,7 @@ functions:
 
       Action Code: 50101
     struct: 'PartyService'
-    parameters:
+    arguments:
       params:
         type: '*party.PublicGetPartyDataV1Params'
         required: true
@@ -6991,9 +7293,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'PublicGetPlayerBlockedByPlayersV1Short@lobby':
-    id: 'PublicGetPlayerBlockedByPlayersV1Short@lobby'
+  'PublicGetPlayerBlockedByPlayersV1Short@go.lobby.fun':
+    id: 'PublicGetPlayerBlockedByPlayersV1Short@go.lobby.fun'
     name: 'PublicGetPlayerBlockedByPlayersV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
@@ -7002,7 +7305,7 @@ functions:
 
       Action Code: 50101
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.PublicGetPlayerBlockedByPlayersV1Params'
         required: true
@@ -7029,9 +7332,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'PublicGetPlayerBlockedPlayersV1Short@lobby':
-    id: 'PublicGetPlayerBlockedPlayersV1Short@lobby'
+  'PublicGetPlayerBlockedPlayersV1Short@go.lobby.fun':
+    id: 'PublicGetPlayerBlockedPlayersV1Short@go.lobby.fun'
     name: 'PublicGetPlayerBlockedPlayersV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
@@ -7040,7 +7344,7 @@ functions:
 
       Action Code: 50101
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.PublicGetPlayerBlockedPlayersV1Params'
         required: true
@@ -7066,16 +7370,17 @@ functions:
       - 'public'
       - 'v1'
 
-  'PublicPlayerBlockPlayersV1Short@lobby':
-    id: 'PublicPlayerBlockPlayersV1Short@lobby'
+  'PublicPlayerBlockPlayersV1Short@go.lobby.fun':
+    id: 'PublicPlayerBlockPlayersV1Short@go.lobby.fun'
     name: 'PublicPlayerBlockPlayersV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
 
       add blocked players in a namespace based on user id
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.PublicPlayerBlockPlayersV1Params'
         required: true
@@ -7100,16 +7405,17 @@ functions:
       - 'public'
       - 'v1'
 
-  'PublicSetPartyLimitV1Short@lobby':
-    id: 'PublicSetPartyLimitV1Short@lobby'
+  'PublicSetPartyLimitV1Short@go.lobby.fun':
+    id: 'PublicSetPartyLimitV1Short@go.lobby.fun'
     name: 'PublicSetPartyLimitV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
 
       Set party limit, only party leader can call this endpoint.
     struct: 'PartyService'
-    parameters:
+    arguments:
       params:
         type: '*party.PublicSetPartyLimitV1Params'
         required: true
@@ -7134,15 +7440,16 @@ functions:
       - 'set'
       - 'v1'
 
-  'PublicUnblockPlayerV1Short@lobby':
-    id: 'PublicUnblockPlayerV1Short@lobby'
+  'PublicUnblockPlayerV1Short@go.lobby.fun':
+    id: 'PublicUnblockPlayerV1Short@go.lobby.fun'
     name: 'PublicUnblockPlayerV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
       unblock player in a namespace based on user id
     struct: 'PlayerService'
-    parameters:
+    arguments:
       params:
         type: '*player.PublicUnblockPlayerV1Params'
         required: true
@@ -7166,16 +7473,17 @@ functions:
       - 'unblock'
       - 'v1'
 
-  'PublicUpdatePartyAttributesV1Short@lobby':
-    id: 'PublicUpdatePartyAttributesV1Short@lobby'
+  'PublicUpdatePartyAttributesV1Short@go.lobby.fun':
+    id: 'PublicUpdatePartyAttributesV1Short@go.lobby.fun'
     name: 'PublicUpdatePartyAttributesV1Short'
+    type: 'function'
     description: |-
       Required valid user authorization
 
 
       update party attributes in a namespace.
     struct: 'PartyService'
-    parameters:
+    arguments:
       params:
         type: '*party.PublicUpdatePartyAttributesV1Params'
         required: true
@@ -7200,13 +7508,14 @@ functions:
       - 'update'
       - 'v1'
 
-  'PublishTemplateShort@lobby':
-    id: 'PublishTemplateShort@lobby'
+  'PublishTemplateShort@go.lobby.fun':
+    id: 'PublishTemplateShort@go.lobby.fun'
     name: 'PublishTemplateShort'
+    type: 'function'
     description: |-
       Publish notification template draft. Empty draft can not be published.
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.PublishTemplateParams'
         required: true
@@ -7230,15 +7539,16 @@ functions:
       - 'publish'
       - 'template'
 
-  'PublishTemplateLocalizationV1AdminShort@lobby':
-    id: 'PublishTemplateLocalizationV1AdminShort@lobby'
+  'PublishTemplateLocalizationV1AdminShort@go.lobby.fun':
+    id: 'PublishTemplateLocalizationV1AdminShort@go.lobby.fun'
     name: 'PublishTemplateLocalizationV1AdminShort'
+    type: 'function'
     description: |-
       Publish notification template draft. Empty draft can not be published.
 
       Action Code: 50210
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.PublishTemplateLocalizationV1AdminParams'
         required: true
@@ -7264,14 +7574,15 @@ functions:
       - 'template'
       - 'v1'
 
-  'SendMultipleUsersFreeformNotificationV1AdminShort@lobby':
-    id: 'SendMultipleUsersFreeformNotificationV1AdminShort@lobby'
+  'SendMultipleUsersFreeformNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendMultipleUsersFreeformNotificationV1AdminShort@go.lobby.fun'
     name: 'SendMultipleUsersFreeformNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends notification to multiple user.
       Action Code: 50211
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendMultipleUsersFreeformNotificationV1AdminParams'
         required: true
@@ -7298,13 +7609,14 @@ functions:
       - 'users'
       - 'v1'
 
-  'SendPartyFreeformNotificationV1AdminShort@lobby':
-    id: 'SendPartyFreeformNotificationV1AdminShort@lobby'
+  'SendPartyFreeformNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendPartyFreeformNotificationV1AdminShort@go.lobby.fun'
     name: 'SendPartyFreeformNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends notification to a party.
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendPartyFreeformNotificationV1AdminParams'
         required: true
@@ -7330,9 +7642,10 @@ functions:
       - 'send'
       - 'v1'
 
-  'SendPartyTemplatedNotificationV1AdminShort@lobby':
-    id: 'SendPartyTemplatedNotificationV1AdminShort@lobby'
+  'SendPartyTemplatedNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendPartyTemplatedNotificationV1AdminShort@go.lobby.fun'
     name: 'SendPartyTemplatedNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends templated notification to a party.
 
@@ -7341,7 +7654,7 @@ functions:
       NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
       Template need to be published before it can be use to send notifications
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendPartyTemplatedNotificationV1AdminParams'
         required: true
@@ -7367,14 +7680,15 @@ functions:
       - 'templated'
       - 'v1'
 
-  'SendSpecificUserFreeformNotificationV1AdminShort@lobby':
-    id: 'SendSpecificUserFreeformNotificationV1AdminShort@lobby'
+  'SendSpecificUserFreeformNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendSpecificUserFreeformNotificationV1AdminShort@go.lobby.fun'
     name: 'SendSpecificUserFreeformNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends notification to a user.
       Action Code: 50211
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendSpecificUserFreeformNotificationV1AdminParams'
         required: true
@@ -7401,9 +7715,10 @@ functions:
       - 'user'
       - 'v1'
 
-  'SendSpecificUserTemplatedNotificationV1AdminShort@lobby':
-    id: 'SendSpecificUserTemplatedNotificationV1AdminShort@lobby'
+  'SendSpecificUserTemplatedNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendSpecificUserTemplatedNotificationV1AdminShort@go.lobby.fun'
     name: 'SendSpecificUserTemplatedNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends templated notification to a user.
 
@@ -7414,7 +7729,7 @@ functions:
 
       Action Code: 50212
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendSpecificUserTemplatedNotificationV1AdminParams'
         required: true
@@ -7441,15 +7756,16 @@ functions:
       - 'user'
       - 'v1'
 
-  'SendUsersFreeformNotificationV1AdminShort@lobby':
-    id: 'SendUsersFreeformNotificationV1AdminShort@lobby'
+  'SendUsersFreeformNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendUsersFreeformNotificationV1AdminShort@go.lobby.fun'
     name: 'SendUsersFreeformNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends notification to all connected users in a namespace.
 
       Action Code: 50201
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendUsersFreeformNotificationV1AdminParams'
         required: true
@@ -7475,9 +7791,10 @@ functions:
       - 'users'
       - 'v1'
 
-  'SendUsersTemplatedNotificationV1AdminShort@lobby':
-    id: 'SendUsersTemplatedNotificationV1AdminShort@lobby'
+  'SendUsersTemplatedNotificationV1AdminShort@go.lobby.fun':
+    id: 'SendUsersTemplatedNotificationV1AdminShort@go.lobby.fun'
     name: 'SendUsersTemplatedNotificationV1AdminShort'
+    type: 'function'
     description: |-
       Sends notification to all connected users in a namespace with predefined template.
 
@@ -7488,7 +7805,7 @@ functions:
 
       Action Code: 50202
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.SendUsersTemplatedNotificationV1AdminParams'
         required: true
@@ -7514,16 +7831,17 @@ functions:
       - 'users'
       - 'v1'
 
-  'SyncNativeBlockedUserShort@lobby':
-    id: 'SyncNativeBlockedUserShort@lobby'
+  'SyncNativeBlockedUserShort@go.lobby.fun':
+    id: 'SyncNativeBlockedUserShort@go.lobby.fun'
     name: 'SyncNativeBlockedUserShort'
+    type: 'function'
     description: |-
       Sync blocked user using server to server call to native first party server.
       Supported platforms:
       ps5, ps4 and pspc : the default environment would be sp-int, can be override using psnEnv.
       psnEnv consist of sp-int (default), prod-qa, np
     struct: 'BlocksService'
-    parameters:
+    arguments:
       params:
         type: '*blocks.SyncNativeBlockedUserParams'
         required: true
@@ -7548,9 +7866,10 @@ functions:
       - 'sync'
       - 'user'
 
-  'SyncNativeFriendsShort@lobby':
-    id: 'SyncNativeFriendsShort@lobby'
+  'SyncNativeFriendsShort@go.lobby.fun':
+    id: 'SyncNativeFriendsShort@go.lobby.fun'
     name: 'SyncNativeFriendsShort'
+    type: 'function'
     description: |-
       Sync friends using server to server call to native first party server.
       Supported platforms:
@@ -7561,7 +7880,7 @@ functions:
       ps5: The platform_tokenâs value is the authorization code returned by Sony OAuth.
       pspc: The platform_tokenâs value is the authorization code returned by Sony OAuth.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.SyncNativeFriendsParams'
         required: true
@@ -7585,13 +7904,14 @@ functions:
       - 'public'
       - 'sync'
 
-  'UpdateLocalizationTemplateShort@lobby':
-    id: 'UpdateLocalizationTemplateShort@lobby'
+  'UpdateLocalizationTemplateShort@go.lobby.fun':
+    id: 'UpdateLocalizationTemplateShort@go.lobby.fun'
     name: 'UpdateLocalizationTemplateShort'
+    type: 'function'
     description: |-
       Modify draft template
     struct: 'AdminService'
-    parameters:
+    arguments:
       params:
         type: '*admin.UpdateLocalizationTemplateParams'
         required: true
@@ -7616,9 +7936,10 @@ functions:
       - 'template'
       - 'update'
 
-  'UpdateNotificationTopicV1AdminShort@lobby':
-    id: 'UpdateNotificationTopicV1AdminShort@lobby'
+  'UpdateNotificationTopicV1AdminShort@go.lobby.fun':
+    id: 'UpdateNotificationTopicV1AdminShort@go.lobby.fun'
     name: 'UpdateNotificationTopicV1AdminShort'
+    type: 'function'
     description: |-
       Update topic information by topic name.
 
@@ -7627,7 +7948,7 @@ functions:
 
       Action Code: 50216
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.UpdateNotificationTopicV1AdminParams'
         required: true
@@ -7652,15 +7973,16 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateTemplateLocalizationV1AdminShort@lobby':
-    id: 'UpdateTemplateLocalizationV1AdminShort@lobby'
+  'UpdateTemplateLocalizationV1AdminShort@go.lobby.fun':
+    id: 'UpdateTemplateLocalizationV1AdminShort@go.lobby.fun'
     name: 'UpdateTemplateLocalizationV1AdminShort'
+    type: 'function'
     description: |-
       Update template localization
 
       Action Code: 50208
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.UpdateTemplateLocalizationV1AdminParams'
         required: true
@@ -7686,16 +8008,17 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateTopicByTopicNameShort@lobby':
-    id: 'UpdateTopicByTopicNameShort@lobby'
+  'UpdateTopicByTopicNameShort@go.lobby.fun':
+    id: 'UpdateTopicByTopicNameShort@go.lobby.fun'
     name: 'UpdateTopicByTopicNameShort'
+    type: 'function'
     description: |-
       update topic information by topic name.
 
       topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
       Already existing topic can not be created
     struct: 'NotificationService'
-    parameters:
+    arguments:
       params:
         type: '*notification.UpdateTopicByTopicNameParams'
         required: true
@@ -7721,13 +8044,14 @@ functions:
       - 'topic'
       - 'update'
 
-  'UserAcceptFriendRequestShort@lobby':
-    id: 'UserAcceptFriendRequestShort@lobby'
+  'UserAcceptFriendRequestShort@go.lobby.fun':
+    id: 'UserAcceptFriendRequestShort@go.lobby.fun'
     name: 'UserAcceptFriendRequestShort'
+    type: 'function'
     description: |-
       User accept friend.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserAcceptFriendRequestParams'
         required: true
@@ -7753,13 +8077,14 @@ functions:
       - 'request'
       - 'user'
 
-  'UserCancelFriendRequestShort@lobby':
-    id: 'UserCancelFriendRequestShort@lobby'
+  'UserCancelFriendRequestShort@go.lobby.fun':
+    id: 'UserCancelFriendRequestShort@go.lobby.fun'
     name: 'UserCancelFriendRequestShort'
+    type: 'function'
     description: |-
       User cancel a friend request.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserCancelFriendRequestParams'
         required: true
@@ -7785,9 +8110,10 @@ functions:
       - 'request'
       - 'user'
 
-  'UserGetFriendshipStatusShort@lobby':
-    id: 'UserGetFriendshipStatusShort@lobby'
+  'UserGetFriendshipStatusShort@go.lobby.fun':
+    id: 'UserGetFriendshipStatusShort@go.lobby.fun'
     name: 'UserGetFriendshipStatusShort'
+    type: 'function'
     description: |-
       User get friendship status.
       Code: 0 - Message: "not friend"
@@ -7795,7 +8121,7 @@ functions:
       Code: 2 - Message: "incoming"
       Code: 3 - Message: "friend"
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserGetFriendshipStatusParams'
         required: true
@@ -7821,13 +8147,14 @@ functions:
       - 'status'
       - 'user'
 
-  'UserRejectFriendRequestShort@lobby':
-    id: 'UserRejectFriendRequestShort@lobby'
+  'UserRejectFriendRequestShort@go.lobby.fun':
+    id: 'UserRejectFriendRequestShort@go.lobby.fun'
     name: 'UserRejectFriendRequestShort'
+    type: 'function'
     description: |-
       User reject a friend request.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserRejectFriendRequestParams'
         required: true
@@ -7853,15 +8180,16 @@ functions:
       - 'request'
       - 'user'
 
-  'UserRequestFriendShort@lobby':
-    id: 'UserRequestFriendShort@lobby'
+  'UserRequestFriendShort@go.lobby.fun':
+    id: 'UserRequestFriendShort@go.lobby.fun'
     name: 'UserRequestFriendShort'
+    type: 'function'
     description: |-
       Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
       This endpoint will only send a pending invite that can be either rejected/accepted.
       Metadata is optional parameter which will be sent over via friend request notification.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserRequestFriendParams'
         required: true
@@ -7886,13 +8214,14 @@ functions:
       - 'request'
       - 'user'
 
-  'UsersPresenceHandlerV1Short@lobby':
-    id: 'UsersPresenceHandlerV1Short@lobby'
+  'UsersPresenceHandlerV1Short@go.lobby.fun':
+    id: 'UsersPresenceHandlerV1Short@go.lobby.fun'
     name: 'UsersPresenceHandlerV1Short'
+    type: 'function'
     description: |-
       Query users presence with given namespace and userIds.
     struct: 'PresenceService'
-    parameters:
+    arguments:
       params:
         type: '*presence.UsersPresenceHandlerV1Params'
         required: true
@@ -7916,13 +8245,14 @@ functions:
       - 'users'
       - 'v1'
 
-  'UsersPresenceHandlerV2Short@lobby':
-    id: 'UsersPresenceHandlerV2Short@lobby'
+  'UsersPresenceHandlerV2Short@go.lobby.fun':
+    id: 'UsersPresenceHandlerV2Short@go.lobby.fun'
     name: 'UsersPresenceHandlerV2Short'
+    type: 'function'
     description: |-
       Query users presence with given namespace and userIds.
     struct: 'PresenceService'
-    parameters:
+    arguments:
       params:
         type: '*presence.UsersPresenceHandlerV2Params'
         required: true
@@ -7946,13 +8276,14 @@ functions:
       - 'users'
       - 'v2'
 
-  'UserUnfriendRequestShort@lobby':
-    id: 'UserUnfriendRequestShort@lobby'
+  'UserUnfriendRequestShort@go.lobby.fun':
+    id: 'UserUnfriendRequestShort@go.lobby.fun'
     name: 'UserUnfriendRequestShort'
+    type: 'function'
     description: |-
       User unfriend a friend.
     struct: 'FriendsService'
-    parameters:
+    arguments:
       params:
         type: '*friends.UserUnfriendRequestParams'
         required: true
@@ -7976,3 +8307,5 @@ functions:
       - 'request'
       - 'unfriend'
       - 'user'
+
+  # endregion functions

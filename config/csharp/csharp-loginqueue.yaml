@@ -1,9 +1,10 @@
-structs:
+symbols:
   # region models
 
-  'ApimodelsConfigurationRequest@loginqueue':
-    id: 'ApimodelsConfigurationRequest@loginqueue'
+  'ApimodelsConfigurationRequest@cs.loginqueue.mod':
+    id: 'ApimodelsConfigurationRequest@cs.loginqueue.mod'
     name: 'ApimodelsConfigurationRequest'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -36,9 +37,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsConfigurationRequest.cs'
 
-  'ApimodelsConfigurationResponse@loginqueue':
-    id: 'ApimodelsConfigurationResponse@loginqueue'
+  'ApimodelsConfigurationResponse@cs.loginqueue.mod':
+    id: 'ApimodelsConfigurationResponse@cs.loginqueue.mod'
     name: 'ApimodelsConfigurationResponse'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -74,9 +76,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsConfigurationResponse.cs'
 
-  'ApimodelsLink@loginqueue':
-    id: 'ApimodelsLink@loginqueue'
+  'ApimodelsLink@cs.loginqueue.mod':
+    id: 'ApimodelsLink@cs.loginqueue.mod'
     name: 'ApimodelsLink'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -91,9 +94,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsLink.cs'
 
-  'ApimodelsQueueStatusResponse@loginqueue':
-    id: 'ApimodelsQueueStatusResponse@loginqueue'
+  'ApimodelsQueueStatusResponse@cs.loginqueue.mod':
+    id: 'ApimodelsQueueStatusResponse@cs.loginqueue.mod'
     name: 'ApimodelsQueueStatusResponse'
+    type: 'model'
     fields:
       'IsActive':
         type: 'bool'
@@ -117,9 +121,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsQueueStatusResponse.cs'
 
-  'ApimodelsRefreshTicketResponse@loginqueue':
-    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+  'ApimodelsRefreshTicketResponse@cs.loginqueue.mod':
+    id: 'ApimodelsRefreshTicketResponse@cs.loginqueue.mod'
     name: 'ApimodelsRefreshTicketResponse'
+    type: 'model'
     fields:
       'Cancel':
         type: 'ApimodelsLink'
@@ -146,9 +151,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Loginqueue/Model/ApimodelsRefreshTicketResponse.cs'
 
-  'ResponseError@loginqueue':
-    id: 'ResponseError@loginqueue'
+  'ResponseError@cs.loginqueue.mod':
+    id: 'ResponseError@cs.loginqueue.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int'
@@ -174,15 +180,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminGetConfiguration@loginqueue':
-    id: 'AdminGetConfiguration@loginqueue'
+  'AdminGetConfiguration@cs.loginqueue.fun':
+    id: 'AdminGetConfiguration@cs.loginqueue.fun'
     name: 'AdminGetConfiguration'
+    type: 'function'
     description: |-
       This API is used to get log queue configuration of a namespace.
       Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
-    parameters:
+    arguments:
       'Namespace':
         type: 'string'
         required: true
@@ -213,12 +220,13 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetStatus@loginqueue':
-    id: 'AdminGetStatus@loginqueue'
+  'AdminGetStatus@cs.loginqueue.fun':
+    id: 'AdminGetStatus@cs.loginqueue.fun'
     name: 'AdminGetStatus'
+    type: 'function'
     description: |-
       Get login queue status
-    parameters:
+    arguments:
       'Namespace':
         type: 'string'
         required: true
@@ -249,9 +257,10 @@ functions:
       - 'status'
       - 'v1'
 
-  'AdminUpdateConfiguration@loginqueue':
-    id: 'AdminUpdateConfiguration@loginqueue'
+  'AdminUpdateConfiguration@cs.loginqueue.fun':
+    id: 'AdminUpdateConfiguration@cs.loginqueue.fun'
     name: 'AdminUpdateConfiguration'
+    type: 'function'
     description: |-
       This API is used to set/update log queue configuration of a namespace.
       This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
@@ -273,7 +282,7 @@ functions:
       * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
       * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
       * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
-    parameters:
+    arguments:
       'Body':
         type: 'ApimodelsConfigurationRequest'
         required: true
@@ -307,12 +316,13 @@ functions:
       - 'update'
       - 'v1'
 
-  'CancelTicket@loginqueue':
-    id: 'CancelTicket@loginqueue'
+  'CancelTicket@cs.loginqueue.fun':
+    id: 'CancelTicket@cs.loginqueue.fun'
     name: 'CancelTicket'
+    type: 'function'
     description: |-
       Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
-    parameters:
+    arguments:
       'Namespace':
         type: 'string'
         required: true
@@ -342,12 +352,13 @@ functions:
       - 'ticket'
       - 'v1'
 
-  'RefreshTicket@loginqueue':
-    id: 'RefreshTicket@loginqueue'
+  'RefreshTicket@cs.loginqueue.fun':
+    id: 'RefreshTicket@cs.loginqueue.fun'
     name: 'RefreshTicket'
+    type: 'function'
     description: |-
       Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
-    parameters:
+    arguments:
       'Namespace':
         type: 'string'
         required: true
@@ -376,3 +387,4 @@ functions:
       - 'refresh'
       - 'ticket'
       - 'v1'
+  # endregion functions

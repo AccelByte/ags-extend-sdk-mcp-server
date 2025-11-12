@@ -1,10 +1,16 @@
-structs:
-  'JusticeSeasonpassService@seasonpass':
-    id: 'JusticeSeasonpassService@seasonpass'
-    name: 'JusticeSeasonpassService'
+symbols:
+  'NewSeasonpassClient@go.seasonpass.fun':
+    id: 'NewSeasonpassClient@go.seasonpass.fun'
+    name: 'NewSeasonpassClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*seasonpassclient.JusticeSeasonpassService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/seasonpass-sdk/pkg/seasonpassclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/justice_seasonpass_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/seasonpassclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'ExportService@seasonpass':
-    id: 'ExportService@seasonpass'
+  'ExportService@go.seasonpass.mod':
+    id: 'ExportService@go.seasonpass.mod'
     name: 'ExportService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PassService@seasonpass':
-    id: 'PassService@seasonpass'
+  'PassService@go.seasonpass.mod':
+    id: 'PassService@go.seasonpass.mod'
     name: 'PassService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'RewardService@seasonpass':
-    id: 'RewardService@seasonpass'
+  'RewardService@go.seasonpass.mod':
+    id: 'RewardService@go.seasonpass.mod'
     name: 'RewardService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'SeasonService@seasonpass':
-    id: 'SeasonService@seasonpass'
+  'SeasonService@go.seasonpass.mod':
+    id: 'SeasonService@go.seasonpass.mod'
     name: 'SeasonService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'TierService@seasonpass':
-    id: 'TierService@seasonpass'
+  'TierService@go.seasonpass.mod':
+    id: 'TierService@go.seasonpass.mod'
     name: 'TierService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UtilitiesService@seasonpass':
-    id: 'UtilitiesService@seasonpass'
+  'UtilitiesService@go.seasonpass.mod':
+    id: 'UtilitiesService@go.seasonpass.mod'
     name: 'UtilitiesService'
+    type: 'model'
     fields:
       Client:
         type: '*seasonpassclient.JusticeSeasonpassService'
@@ -161,9 +173,10 @@ structs:
 
   # region params
 
-  'BulkGetUserSeasonProgressionParams@seasonpass':
-    id: 'BulkGetUserSeasonProgressionParams@seasonpass'
+  'BulkGetUserSeasonProgressionParams@go.seasonpass.mod':
+    id: 'BulkGetUserSeasonProgressionParams@go.seasonpass.mod'
     name: 'BulkGetUserSeasonProgressionParams'
+    type: 'model'
     fields:
       'Body':
         type: '*BulkUserProgressionRequest'
@@ -178,9 +191,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/bulk_get_user_season_progression_parameters.go'
 
-  'CheckSeasonPurchasableParams@seasonpass':
-    id: 'CheckSeasonPurchasableParams@seasonpass'
+  'CheckSeasonPurchasableParams@go.seasonpass.mod':
+    id: 'CheckSeasonPurchasableParams@go.seasonpass.mod'
     name: 'CheckSeasonPurchasableParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserPurchasable'
@@ -198,9 +212,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/check_season_purchasable_parameters.go'
 
-  'CloneSeasonParams@seasonpass':
-    id: 'CloneSeasonParams@seasonpass'
+  'CloneSeasonParams@go.seasonpass.mod':
+    id: 'CloneSeasonParams@go.seasonpass.mod'
     name: 'CloneSeasonParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SeasonCloneRequest'
@@ -216,9 +231,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/clone_season_parameters.go'
 
-  'CreatePassParams@seasonpass':
-    id: 'CreatePassParams@seasonpass'
+  'CreatePassParams@go.seasonpass.mod':
+    id: 'CreatePassParams@go.seasonpass.mod'
     name: 'CreatePassParams'
+    type: 'model'
     fields:
       'Body':
         type: '*PassCreate'
@@ -236,9 +252,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/create_pass_parameters.go'
 
-  'CreateRewardParams@seasonpass':
-    id: 'CreateRewardParams@seasonpass'
+  'CreateRewardParams@go.seasonpass.mod':
+    id: 'CreateRewardParams@go.seasonpass.mod'
     name: 'CreateRewardParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RewardCreate'
@@ -256,9 +273,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/create_reward_parameters.go'
 
-  'CreateSeasonParams@seasonpass':
-    id: 'CreateSeasonParams@seasonpass'
+  'CreateSeasonParams@go.seasonpass.mod':
+    id: 'CreateSeasonParams@go.seasonpass.mod'
     name: 'CreateSeasonParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SeasonCreate'
@@ -273,9 +291,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/create_season_parameters.go'
 
-  'CreateTierParams@seasonpass':
-    id: 'CreateTierParams@seasonpass'
+  'CreateTierParams@go.seasonpass.mod':
+    id: 'CreateTierParams@go.seasonpass.mod'
     name: 'CreateTierParams'
+    type: 'model'
     fields:
       'Body':
         type: '*TierCreate'
@@ -293,9 +312,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/create_tier_parameters.go'
 
-  'DeletePassParams@seasonpass':
-    id: 'DeletePassParams@seasonpass'
+  'DeletePassParams@go.seasonpass.mod':
+    id: 'DeletePassParams@go.seasonpass.mod'
     name: 'DeletePassParams'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -313,9 +333,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/delete_pass_parameters.go'
 
-  'DeleteRewardParams@seasonpass':
-    id: 'DeleteRewardParams@seasonpass'
+  'DeleteRewardParams@go.seasonpass.mod':
+    id: 'DeleteRewardParams@go.seasonpass.mod'
     name: 'DeleteRewardParams'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -333,9 +354,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/delete_reward_parameters.go'
 
-  'DeleteSeasonParams@seasonpass':
-    id: 'DeleteSeasonParams@seasonpass'
+  'DeleteSeasonParams@go.seasonpass.mod':
+    id: 'DeleteSeasonParams@go.seasonpass.mod'
     name: 'DeleteSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -350,9 +372,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/delete_season_parameters.go'
 
-  'DeleteTierParams@seasonpass':
-    id: 'DeleteTierParams@seasonpass'
+  'DeleteTierParams@go.seasonpass.mod':
+    id: 'DeleteTierParams@go.seasonpass.mod'
     name: 'DeleteTierParams'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -370,9 +393,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/delete_tier_parameters.go'
 
-  'ExistsAnyPassByPassCodesParams@seasonpass':
-    id: 'ExistsAnyPassByPassCodesParams@seasonpass'
+  'ExistsAnyPassByPassCodesParams@go.seasonpass.mod':
+    id: 'ExistsAnyPassByPassCodesParams@go.seasonpass.mod'
     name: 'ExistsAnyPassByPassCodesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -390,9 +414,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/exists_any_pass_by_pass_codes_parameters.go'
 
-  'ExportSeasonParams@seasonpass':
-    id: 'ExportSeasonParams@seasonpass'
+  'ExportSeasonParams@go.seasonpass.mod':
+    id: 'ExportSeasonParams@go.seasonpass.mod'
     name: 'ExportSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -404,9 +429,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/export/export_season_parameters.go'
 
-  'GetCurrentSeasonParams@seasonpass':
-    id: 'GetCurrentSeasonParams@seasonpass'
+  'GetCurrentSeasonParams@go.seasonpass.mod':
+    id: 'GetCurrentSeasonParams@go.seasonpass.mod'
     name: 'GetCurrentSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -418,9 +444,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_current_season_parameters.go'
 
-  'GetCurrentUserSeasonProgressionParams@seasonpass':
-    id: 'GetCurrentUserSeasonProgressionParams@seasonpass'
+  'GetCurrentUserSeasonProgressionParams@go.seasonpass.mod':
+    id: 'GetCurrentUserSeasonProgressionParams@go.seasonpass.mod'
     name: 'GetCurrentUserSeasonProgressionParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -435,9 +462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_current_user_season_progression_parameters.go'
 
-  'GetFullSeasonParams@seasonpass':
-    id: 'GetFullSeasonParams@seasonpass'
+  'GetFullSeasonParams@go.seasonpass.mod':
+    id: 'GetFullSeasonParams@go.seasonpass.mod'
     name: 'GetFullSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -452,9 +480,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_full_season_parameters.go'
 
-  'GetItemReferencesParams@seasonpass':
-    id: 'GetItemReferencesParams@seasonpass'
+  'GetItemReferencesParams@go.seasonpass.mod':
+    id: 'GetItemReferencesParams@go.seasonpass.mod'
     name: 'GetItemReferencesParams'
+    type: 'model'
     fields:
       'ItemID':
         type: 'string'
@@ -471,9 +500,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/utilities/get_item_references_parameters.go'
 
-  'GetPassParams@seasonpass':
-    id: 'GetPassParams@seasonpass'
+  'GetPassParams@go.seasonpass.mod':
+    id: 'GetPassParams@go.seasonpass.mod'
     name: 'GetPassParams'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -491,9 +521,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/get_pass_parameters.go'
 
-  'GetRewardParams@seasonpass':
-    id: 'GetRewardParams@seasonpass'
+  'GetRewardParams@go.seasonpass.mod':
+    id: 'GetRewardParams@go.seasonpass.mod'
     name: 'GetRewardParams'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -511,9 +542,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/get_reward_parameters.go'
 
-  'GetSeasonParams@seasonpass':
-    id: 'GetSeasonParams@seasonpass'
+  'GetSeasonParams@go.seasonpass.mod':
+    id: 'GetSeasonParams@go.seasonpass.mod'
     name: 'GetSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -528,9 +560,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_season_parameters.go'
 
-  'GetUserParticipatedSeasonsParams@seasonpass':
-    id: 'GetUserParticipatedSeasonsParams@seasonpass'
+  'GetUserParticipatedSeasonsParams@go.seasonpass.mod':
+    id: 'GetUserParticipatedSeasonsParams@go.seasonpass.mod'
     name: 'GetUserParticipatedSeasonsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -555,9 +588,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_user_participated_seasons_parameters.go'
 
-  'GetUserSeasonParams@seasonpass':
-    id: 'GetUserSeasonParams@seasonpass'
+  'GetUserSeasonParams@go.seasonpass.mod':
+    id: 'GetUserSeasonParams@go.seasonpass.mod'
     name: 'GetUserSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -575,9 +609,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/get_user_season_parameters.go'
 
-  'GrantUserExpParams@seasonpass':
-    id: 'GrantUserExpParams@seasonpass'
+  'GrantUserExpParams@go.seasonpass.mod':
+    id: 'GrantUserExpParams@go.seasonpass.mod'
     name: 'GrantUserExpParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserExpGrant'
@@ -595,9 +630,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/grant_user_exp_parameters.go'
 
-  'GrantUserPassParams@seasonpass':
-    id: 'GrantUserPassParams@seasonpass'
+  'GrantUserPassParams@go.seasonpass.mod':
+    id: 'GrantUserPassParams@go.seasonpass.mod'
     name: 'GrantUserPassParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserPassGrant'
@@ -615,9 +651,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/grant_user_pass_parameters.go'
 
-  'GrantUserTierParams@seasonpass':
-    id: 'GrantUserTierParams@seasonpass'
+  'GrantUserTierParams@go.seasonpass.mod':
+    id: 'GrantUserTierParams@go.seasonpass.mod'
     name: 'GrantUserTierParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserTierGrant'
@@ -635,9 +672,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/grant_user_tier_parameters.go'
 
-  'PublicBulkClaimUserRewardsParams@seasonpass':
-    id: 'PublicBulkClaimUserRewardsParams@seasonpass'
+  'PublicBulkClaimUserRewardsParams@go.seasonpass.mod':
+    id: 'PublicBulkClaimUserRewardsParams@go.seasonpass.mod'
     name: 'PublicBulkClaimUserRewardsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -652,9 +690,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/public_bulk_claim_user_rewards_parameters.go'
 
-  'PublicClaimUserRewardParams@seasonpass':
-    id: 'PublicClaimUserRewardParams@seasonpass'
+  'PublicClaimUserRewardParams@go.seasonpass.mod':
+    id: 'PublicClaimUserRewardParams@go.seasonpass.mod'
     name: 'PublicClaimUserRewardParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserRewardClaim'
@@ -672,9 +711,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/public_claim_user_reward_parameters.go'
 
-  'PublicGetCurrentSeasonParams@seasonpass':
-    id: 'PublicGetCurrentSeasonParams@seasonpass'
+  'PublicGetCurrentSeasonParams@go.seasonpass.mod':
+    id: 'PublicGetCurrentSeasonParams@go.seasonpass.mod'
     name: 'PublicGetCurrentSeasonParams'
+    type: 'model'
     fields:
       'Language':
         type: 'string'
@@ -689,9 +729,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_current_season_parameters.go'
 
-  'PublicGetCurrentUserSeasonParams@seasonpass':
-    id: 'PublicGetCurrentUserSeasonParams@seasonpass'
+  'PublicGetCurrentUserSeasonParams@go.seasonpass.mod':
+    id: 'PublicGetCurrentUserSeasonParams@go.seasonpass.mod'
     name: 'PublicGetCurrentUserSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -706,9 +747,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_current_user_season_parameters.go'
 
-  'PublicGetUserSeasonParams@seasonpass':
-    id: 'PublicGetUserSeasonParams@seasonpass'
+  'PublicGetUserSeasonParams@go.seasonpass.mod':
+    id: 'PublicGetUserSeasonParams@go.seasonpass.mod'
     name: 'PublicGetUserSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -726,9 +768,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/public_get_user_season_parameters.go'
 
-  'PublishSeasonParams@seasonpass':
-    id: 'PublishSeasonParams@seasonpass'
+  'PublishSeasonParams@go.seasonpass.mod':
+    id: 'PublishSeasonParams@go.seasonpass.mod'
     name: 'PublishSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -741,9 +784,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/publish_season_parameters.go'
 
-  'QueryPassesParams@seasonpass':
-    id: 'QueryPassesParams@seasonpass'
+  'QueryPassesParams@go.seasonpass.mod':
+    id: 'QueryPassesParams@go.seasonpass.mod'
     name: 'QueryPassesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -756,9 +800,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/query_passes_parameters.go'
 
-  'QueryRewardsParams@seasonpass':
-    id: 'QueryRewardsParams@seasonpass'
+  'QueryRewardsParams@go.seasonpass.mod':
+    id: 'QueryRewardsParams@go.seasonpass.mod'
     name: 'QueryRewardsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -774,9 +819,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/query_rewards_parameters.go'
 
-  'QuerySeasonsParams@seasonpass':
-    id: 'QuerySeasonsParams@seasonpass'
+  'QuerySeasonsParams@go.seasonpass.mod':
+    id: 'QuerySeasonsParams@go.seasonpass.mod'
     name: 'QuerySeasonsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -799,9 +845,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_seasons_parameters.go'
 
-  'QueryTiersParams@seasonpass':
-    id: 'QueryTiersParams@seasonpass'
+  'QueryTiersParams@go.seasonpass.mod':
+    id: 'QueryTiersParams@go.seasonpass.mod'
     name: 'QueryTiersParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -824,9 +871,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/query_tiers_parameters.go'
 
-  'QueryUserExpGrantHistoryParams@seasonpass':
-    id: 'QueryUserExpGrantHistoryParams@seasonpass'
+  'QueryUserExpGrantHistoryParams@go.seasonpass.mod':
+    id: 'QueryUserExpGrantHistoryParams@go.seasonpass.mod'
     name: 'QueryUserExpGrantHistoryParams'
+    type: 'model'
     fields:
       'From':
         type: 'string'
@@ -876,9 +924,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_user_exp_grant_history_parameters.go'
 
-  'QueryUserExpGrantHistoryTagParams@seasonpass':
-    id: 'QueryUserExpGrantHistoryTagParams@seasonpass'
+  'QueryUserExpGrantHistoryTagParams@go.seasonpass.mod':
+    id: 'QueryUserExpGrantHistoryTagParams@go.seasonpass.mod'
     name: 'QueryUserExpGrantHistoryTagParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -898,9 +947,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/query_user_exp_grant_history_tag_parameters.go'
 
-  'ReorderTierParams@seasonpass':
-    id: 'ReorderTierParams@seasonpass'
+  'ReorderTierParams@go.seasonpass.mod':
+    id: 'ReorderTierParams@go.seasonpass.mod'
     name: 'ReorderTierParams'
+    type: 'model'
     fields:
       'Body':
         type: '*TierReorder'
@@ -919,9 +969,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/tier/reorder_tier_parameters.go'
 
-  'ResetUserSeasonParams@seasonpass':
-    id: 'ResetUserSeasonParams@seasonpass'
+  'ResetUserSeasonParams@go.seasonpass.mod':
+    id: 'ResetUserSeasonParams@go.seasonpass.mod'
     name: 'ResetUserSeasonParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -936,9 +987,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/reset_user_season_parameters.go'
 
-  'RetireSeasonParams@seasonpass':
-    id: 'RetireSeasonParams@seasonpass'
+  'RetireSeasonParams@go.seasonpass.mod':
+    id: 'RetireSeasonParams@go.seasonpass.mod'
     name: 'RetireSeasonParams'
+    type: 'model'
     fields:
       'Force':
         type: 'bool'
@@ -954,9 +1006,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/retire_season_parameters.go'
 
-  'UnpublishSeasonParams@seasonpass':
-    id: 'UnpublishSeasonParams@seasonpass'
+  'UnpublishSeasonParams@go.seasonpass.mod':
+    id: 'UnpublishSeasonParams@go.seasonpass.mod'
     name: 'UnpublishSeasonParams'
+    type: 'model'
     fields:
       'Force':
         type: 'bool'
@@ -972,9 +1025,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/unpublish_season_parameters.go'
 
-  'UpdatePassParams@seasonpass':
-    id: 'UpdatePassParams@seasonpass'
+  'UpdatePassParams@go.seasonpass.mod':
+    id: 'UpdatePassParams@go.seasonpass.mod'
     name: 'UpdatePassParams'
+    type: 'model'
     fields:
       'Body':
         type: '*PassUpdate'
@@ -993,9 +1047,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/pass/update_pass_parameters.go'
 
-  'UpdateRewardParams@seasonpass':
-    id: 'UpdateRewardParams@seasonpass'
+  'UpdateRewardParams@go.seasonpass.mod':
+    id: 'UpdateRewardParams@go.seasonpass.mod'
     name: 'UpdateRewardParams'
+    type: 'model'
     fields:
       'Body':
         type: '*RewardUpdate'
@@ -1014,9 +1069,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/reward/update_reward_parameters.go'
 
-  'UpdateSeasonParams@seasonpass':
-    id: 'UpdateSeasonParams@seasonpass'
+  'UpdateSeasonParams@go.seasonpass.mod':
+    id: 'UpdateSeasonParams@go.seasonpass.mod'
     name: 'UpdateSeasonParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SeasonUpdate'
@@ -1032,9 +1088,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclient/season/update_season_parameters.go'
 
-  'UpdateTierParams@seasonpass':
-    id: 'UpdateTierParams@seasonpass'
+  'UpdateTierParams@go.seasonpass.mod':
+    id: 'UpdateTierParams@go.seasonpass.mod'
     name: 'UpdateTierParams'
+    type: 'model'
     fields:
       'Body':
         type: '*TierInput'
@@ -1057,9 +1114,10 @@ structs:
 
   # region models
 
-  'BulkUserProgressionRequest@seasonpass':
-    id: 'BulkUserProgressionRequest@seasonpass'
+  'BulkUserProgressionRequest@go.seasonpass.mod':
+    id: 'BulkUserProgressionRequest@go.seasonpass.mod'
     name: 'BulkUserProgressionRequest'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -1069,9 +1127,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/bulk_user_progression_request.go'
 
-  'ClaimableRewards@seasonpass':
-    id: 'ClaimableRewards@seasonpass'
+  'ClaimableRewards@go.seasonpass.mod':
+    id: 'ClaimableRewards@go.seasonpass.mod'
     name: 'ClaimableRewards'
+    type: 'model'
     description: |-
       A DTO object for claimable rewards.
     fields:
@@ -1090,9 +1149,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/claimable_rewards.go'
 
-  'ClaimableUserSeasonInfo@seasonpass':
-    id: 'ClaimableUserSeasonInfo@seasonpass'
+  'ClaimableUserSeasonInfo@go.seasonpass.mod':
+    id: 'ClaimableUserSeasonInfo@go.seasonpass.mod'
     name: 'ClaimableUserSeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for claimable user season data.
     fields:
@@ -1196,9 +1256,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/claimable_user_season_info.go'
 
-  'ErrorEntity@seasonpass':
-    id: 'ErrorEntity@seasonpass'
+  'ErrorEntity@go.seasonpass.mod':
+    id: 'ErrorEntity@go.seasonpass.mod'
     name: 'ErrorEntity'
+    type: 'model'
     fields:
       'DevStackTrace':
         type: 'string'
@@ -1228,9 +1289,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/error_entity.go'
 
-  'ExcessStrategy@seasonpass':
-    id: 'ExcessStrategy@seasonpass'
+  'ExcessStrategy@go.seasonpass.mod':
+    id: 'ExcessStrategy@go.seasonpass.mod'
     name: 'ExcessStrategy'
+    type: 'model'
     fields:
       'Currency':
         type: 'string'
@@ -1252,9 +1314,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/excess_strategy.go'
 
-  'ExpGrantHistoryInfo@seasonpass':
-    id: 'ExpGrantHistoryInfo@seasonpass'
+  'ExpGrantHistoryInfo@go.seasonpass.mod':
+    id: 'ExpGrantHistoryInfo@go.seasonpass.mod'
     name: 'ExpGrantHistoryInfo'
+    type: 'model'
     description: |-
       A DTO object for exp grant history details.
     fields:
@@ -1303,9 +1366,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/exp_grant_history_info.go'
 
-  'ExpGrantHistoryPagingSlicedResult@seasonpass':
-    id: 'ExpGrantHistoryPagingSlicedResult@seasonpass'
+  'ExpGrantHistoryPagingSlicedResult@go.seasonpass.mod':
+    id: 'ExpGrantHistoryPagingSlicedResult@go.seasonpass.mod'
     name: 'ExpGrantHistoryPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ExpGrantHistoryInfo'
@@ -1323,9 +1387,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/exp_grant_history_paging_sliced_result.go'
 
-  'FieldValidationError@seasonpass':
-    id: 'FieldValidationError@seasonpass'
+  'FieldValidationError@go.seasonpass.mod':
+    id: 'FieldValidationError@go.seasonpass.mod'
     name: 'FieldValidationError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'string'
@@ -1347,9 +1412,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/field_validation_error.go'
 
-  'FullSeasonInfo@seasonpass':
-    id: 'FullSeasonInfo@seasonpass'
+  'FullSeasonInfo@go.seasonpass.mod':
+    id: 'FullSeasonInfo@go.seasonpass.mod'
     name: 'FullSeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for season full content.
     fields:
@@ -1398,9 +1464,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/full_season_info.go'
 
-  'Image@seasonpass':
-    id: 'Image@seasonpass'
+  'Image@go.seasonpass.mod':
+    id: 'Image@go.seasonpass.mod'
     name: 'Image'
+    type: 'model'
     fields:
       'As':
         type: 'string'
@@ -1437,9 +1504,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/image.go'
 
-  'ItemReference@seasonpass':
-    id: 'ItemReference@seasonpass'
+  'ItemReference@go.seasonpass.mod':
+    id: 'ItemReference@go.seasonpass.mod'
     name: 'ItemReference'
+    type: 'model'
     description: |-
       A DTO object for item references.
     fields:
@@ -1458,9 +1526,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/item_reference.go'
 
-  'ItemReferenceInfo@seasonpass':
-    id: 'ItemReferenceInfo@seasonpass'
+  'ItemReferenceInfo@go.seasonpass.mod':
+    id: 'ItemReferenceInfo@go.seasonpass.mod'
     name: 'ItemReferenceInfo'
+    type: 'model'
     description: |-
       A DTO object for item references info.
     fields:
@@ -1474,9 +1543,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/item_reference_info.go'
 
-  'ListSeasonInfo@seasonpass':
-    id: 'ListSeasonInfo@seasonpass'
+  'ListSeasonInfo@go.seasonpass.mod':
+    id: 'ListSeasonInfo@go.seasonpass.mod'
     name: 'ListSeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for listing season info.
     fields:
@@ -1550,9 +1620,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_season_info.go'
 
-  'ListSeasonInfoPagingSlicedResult@seasonpass':
-    id: 'ListSeasonInfoPagingSlicedResult@seasonpass'
+  'ListSeasonInfoPagingSlicedResult@go.seasonpass.mod':
+    id: 'ListSeasonInfoPagingSlicedResult@go.seasonpass.mod'
     name: 'ListSeasonInfoPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ListSeasonInfo'
@@ -1567,9 +1638,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_season_info_paging_sliced_result.go'
 
-  'ListUserSeasonInfo@seasonpass':
-    id: 'ListUserSeasonInfo@seasonpass'
+  'ListUserSeasonInfo@go.seasonpass.mod':
+    id: 'ListUserSeasonInfo@go.seasonpass.mod'
     name: 'ListUserSeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for listing user season data.
     fields:
@@ -1623,9 +1695,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_user_season_info.go'
 
-  'ListUserSeasonInfoPagingSlicedResult@seasonpass':
-    id: 'ListUserSeasonInfoPagingSlicedResult@seasonpass'
+  'ListUserSeasonInfoPagingSlicedResult@go.seasonpass.mod':
+    id: 'ListUserSeasonInfoPagingSlicedResult@go.seasonpass.mod'
     name: 'ListUserSeasonInfoPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ListUserSeasonInfo'
@@ -1643,9 +1716,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/list_user_season_info_paging_sliced_result.go'
 
-  'Localization@seasonpass':
-    id: 'Localization@seasonpass'
+  'Localization@go.seasonpass.mod':
+    id: 'Localization@go.seasonpass.mod'
     name: 'Localization'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -1662,9 +1736,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localization.go'
 
-  'LocalizedPassInfo@seasonpass':
-    id: 'LocalizedPassInfo@seasonpass'
+  'LocalizedPassInfo@go.seasonpass.mod':
+    id: 'LocalizedPassInfo@go.seasonpass.mod'
     name: 'LocalizedPassInfo'
+    type: 'model'
     description: |-
       A DTO object for public user retrieving pass info.
     fields:
@@ -1733,9 +1808,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localized_pass_info.go'
 
-  'LocalizedSeasonInfo@seasonpass':
-    id: 'LocalizedSeasonInfo@seasonpass'
+  'LocalizedSeasonInfo@go.seasonpass.mod':
+    id: 'LocalizedSeasonInfo@go.seasonpass.mod'
     name: 'LocalizedSeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for public user retrieving season info.
     fields:
@@ -1839,9 +1915,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/localized_season_info.go'
 
-  'Ownership@seasonpass':
-    id: 'Ownership@seasonpass'
+  'Ownership@go.seasonpass.mod':
+    id: 'Ownership@go.seasonpass.mod'
     name: 'Ownership'
+    type: 'model'
     fields:
       'Owned':
         type: 'bool'
@@ -1853,9 +1930,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/ownership.go'
 
-  'Paging@seasonpass':
-    id: 'Paging@seasonpass'
+  'Paging@go.seasonpass.mod':
+    id: 'Paging@go.seasonpass.mod'
     name: 'Paging'
+    type: 'model'
     fields:
       'Next':
         type: 'string'
@@ -1868,9 +1946,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/paging.go'
 
-  'PassCreate@seasonpass':
-    id: 'PassCreate@seasonpass'
+  'PassCreate@go.seasonpass.mod':
+    id: 'PassCreate@go.seasonpass.mod'
     name: 'PassCreate'
+    type: 'model'
     description: |-
       A DTO object for creating pass API call.
     fields:
@@ -1909,9 +1988,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_create.go'
 
-  'PassInfo@seasonpass':
-    id: 'PassInfo@seasonpass'
+  'PassInfo@go.seasonpass.mod':
+    id: 'PassInfo@go.seasonpass.mod'
     name: 'PassInfo'
+    type: 'model'
     description: |-
       A DTO object for pass info.
     fields:
@@ -1975,9 +2055,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_info.go'
 
-  'PassUpdate@seasonpass':
-    id: 'PassUpdate@seasonpass'
+  'PassUpdate@go.seasonpass.mod':
+    id: 'PassUpdate@go.seasonpass.mod'
     name: 'PassUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating pass API call.
     fields:
@@ -2011,9 +2092,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/pass_update.go'
 
-  'Permission@seasonpass':
-    id: 'Permission@seasonpass'
+  'Permission@go.seasonpass.mod':
+    id: 'Permission@go.seasonpass.mod'
     name: 'Permission'
+    type: 'model'
     fields:
       'Action':
         type: 'int32'
@@ -2026,9 +2108,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/permission.go'
 
-  'ReasonTagsResult@seasonpass':
-    id: 'ReasonTagsResult@seasonpass'
+  'ReasonTagsResult@go.seasonpass.mod':
+    id: 'ReasonTagsResult@go.seasonpass.mod'
     name: 'ReasonTagsResult'
+    type: 'model'
     description: |-
       A DTO object for reason tags.
     fields:
@@ -2042,9 +2125,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reason_tags_result.go'
 
-  'RewardCreate@seasonpass':
-    id: 'RewardCreate@seasonpass'
+  'RewardCreate@go.seasonpass.mod':
+    id: 'RewardCreate@go.seasonpass.mod'
     name: 'RewardCreate'
+    type: 'model'
     description: |-
       A DTO object for creating reward API call.
     fields:
@@ -2083,9 +2167,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_create.go'
 
-  'RewardCurrency@seasonpass':
-    id: 'RewardCurrency@seasonpass'
+  'RewardCurrency@go.seasonpass.mod':
+    id: 'RewardCurrency@go.seasonpass.mod'
     name: 'RewardCurrency'
+    type: 'model'
     description: |-
       A DTO object for reward currency.
     fields:
@@ -2104,9 +2189,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_currency.go'
 
-  'RewardInfo@seasonpass':
-    id: 'RewardInfo@seasonpass'
+  'RewardInfo@go.seasonpass.mod':
+    id: 'RewardInfo@go.seasonpass.mod'
     name: 'RewardInfo'
+    type: 'model'
     description: |-
       A DTO object for reward info.
     fields:
@@ -2170,9 +2256,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_info.go'
 
-  'RewardUpdate@seasonpass':
-    id: 'RewardUpdate@seasonpass'
+  'RewardUpdate@go.seasonpass.mod':
+    id: 'RewardUpdate@go.seasonpass.mod'
     name: 'RewardUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating reward API call.
     fields:
@@ -2211,9 +2298,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/reward_update.go'
 
-  'SeasonCloneRequest@seasonpass':
-    id: 'SeasonCloneRequest@seasonpass'
+  'SeasonCloneRequest@go.seasonpass.mod':
+    id: 'SeasonCloneRequest@go.seasonpass.mod'
     name: 'SeasonCloneRequest'
+    type: 'model'
     description: |-
       A DTO object for clone season API call.
     fields:
@@ -2237,9 +2325,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_clone_request.go'
 
-  'SeasonCreate@seasonpass':
-    id: 'SeasonCreate@seasonpass'
+  'SeasonCreate@go.seasonpass.mod':
+    id: 'SeasonCreate@go.seasonpass.mod'
     name: 'SeasonCreate'
+    type: 'model'
     description: |-
       A DTO object for creating season API call.
     fields:
@@ -2303,9 +2392,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_create.go'
 
-  'SeasonInfo@seasonpass':
-    id: 'SeasonInfo@seasonpass'
+  'SeasonInfo@go.seasonpass.mod':
+    id: 'SeasonInfo@go.seasonpass.mod'
     name: 'SeasonInfo'
+    type: 'model'
     description: |-
       A DTO object for season info.
     fields:
@@ -2409,9 +2499,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_info.go'
 
-  'SeasonSummary@seasonpass':
-    id: 'SeasonSummary@seasonpass'
+  'SeasonSummary@go.seasonpass.mod':
+    id: 'SeasonSummary@go.seasonpass.mod'
     name: 'SeasonSummary'
+    type: 'model'
     description: |-
       A DTO object for season summary.
     fields:
@@ -2465,9 +2556,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_summary.go'
 
-  'SeasonUpdate@seasonpass':
-    id: 'SeasonUpdate@seasonpass'
+  'SeasonUpdate@go.seasonpass.mod':
+    id: 'SeasonUpdate@go.seasonpass.mod'
     name: 'SeasonUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating season API call.
     fields:
@@ -2531,9 +2623,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/season_update.go'
 
-  'Tier@seasonpass':
-    id: 'Tier@seasonpass'
+  'Tier@go.seasonpass.mod':
+    id: 'Tier@go.seasonpass.mod'
     name: 'Tier'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -2555,9 +2648,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier.go'
 
-  'TierCreate@seasonpass':
-    id: 'TierCreate@seasonpass'
+  'TierCreate@go.seasonpass.mod':
+    id: 'TierCreate@go.seasonpass.mod'
     name: 'TierCreate'
+    type: 'model'
     description: |-
       A DTO object for creating tier API call.
     fields:
@@ -2581,9 +2675,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_create.go'
 
-  'TierInput@seasonpass':
-    id: 'TierInput@seasonpass'
+  'TierInput@go.seasonpass.mod':
+    id: 'TierInput@go.seasonpass.mod'
     name: 'TierInput'
+    type: 'model'
     description: |-
       A DTO object for tier input.
     fields:
@@ -2602,9 +2697,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_input.go'
 
-  'TierPagingSlicedResult@seasonpass':
-    id: 'TierPagingSlicedResult@seasonpass'
+  'TierPagingSlicedResult@go.seasonpass.mod':
+    id: 'TierPagingSlicedResult@go.seasonpass.mod'
     name: 'TierPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*Tier'
@@ -2622,9 +2718,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_paging_sliced_result.go'
 
-  'TierReorder@seasonpass':
-    id: 'TierReorder@seasonpass'
+  'TierReorder@go.seasonpass.mod':
+    id: 'TierReorder@go.seasonpass.mod'
     name: 'TierReorder'
+    type: 'model'
     fields:
       'NewIndex':
         type: 'int32'
@@ -2636,9 +2733,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/tier_reorder.go'
 
-  'UserExpGrant@seasonpass':
-    id: 'UserExpGrant@seasonpass'
+  'UserExpGrant@go.seasonpass.mod':
+    id: 'UserExpGrant@go.seasonpass.mod'
     name: 'UserExpGrant'
+    type: 'model'
     description: |-
       A DTO object for granting user exp.
     fields:
@@ -2662,9 +2760,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_exp_grant.go'
 
-  'UserPassGrant@seasonpass':
-    id: 'UserPassGrant@seasonpass'
+  'UserPassGrant@go.seasonpass.mod':
+    id: 'UserPassGrant@go.seasonpass.mod'
     name: 'UserPassGrant'
+    type: 'model'
     description: |-
       A DTO object for granting user pass.
     fields:
@@ -2683,9 +2782,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_pass_grant.go'
 
-  'UserPurchasable@seasonpass':
-    id: 'UserPurchasable@seasonpass'
+  'UserPurchasable@go.seasonpass.mod':
+    id: 'UserPurchasable@go.seasonpass.mod'
     name: 'UserPurchasable'
+    type: 'model'
     description: |-
       A DTO object for user purchasable.
     fields:
@@ -2709,9 +2809,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_purchasable.go'
 
-  'UserRewardClaim@seasonpass':
-    id: 'UserRewardClaim@seasonpass'
+  'UserRewardClaim@go.seasonpass.mod':
+    id: 'UserRewardClaim@go.seasonpass.mod'
     name: 'UserRewardClaim'
+    type: 'model'
     description: |-
       A DTO object for claiming user reward.
     fields:
@@ -2735,9 +2836,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_reward_claim.go'
 
-  'UserSeasonSummary@seasonpass':
-    id: 'UserSeasonSummary@seasonpass'
+  'UserSeasonSummary@go.seasonpass.mod':
+    id: 'UserSeasonSummary@go.seasonpass.mod'
     name: 'UserSeasonSummary'
+    type: 'model'
     description: |-
       A DTO object for user season summary.
     fields:
@@ -2811,9 +2913,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_season_summary.go'
 
-  'UserTierGrant@seasonpass':
-    id: 'UserTierGrant@seasonpass'
+  'UserTierGrant@go.seasonpass.mod':
+    id: 'UserTierGrant@go.seasonpass.mod'
     name: 'UserTierGrant'
+    type: 'model'
     description: |-
       A DTO object for granting user tier.
     fields:
@@ -2837,9 +2940,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/seasonpass-sdk/pkg/seasonpassclientmodels/user_tier_grant.go'
 
-  'ValidationErrorEntity@seasonpass':
-    id: 'ValidationErrorEntity@seasonpass'
+  'ValidationErrorEntity@go.seasonpass.mod':
+    id: 'ValidationErrorEntity@go.seasonpass.mod'
     name: 'ValidationErrorEntity'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -2861,11 +2965,12 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'BulkGetUserSeasonProgressionShort@seasonpass':
-    id: 'BulkGetUserSeasonProgressionShort@seasonpass'
+  'BulkGetUserSeasonProgressionShort@go.seasonpass.fun':
+    id: 'BulkGetUserSeasonProgressionShort@go.seasonpass.fun'
     name: 'BulkGetUserSeasonProgressionShort'
+    type: 'function'
     description: |-
       This API is used to bulk get user current season progression, season only located in non-publisher namespace.
 
@@ -2873,7 +2978,7 @@ functions:
 
         * Returns : user season progression
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.BulkGetUserSeasonProgressionParams'
         required: true
@@ -2898,13 +3003,14 @@ functions:
       - 'season'
       - 'user'
 
-  'CheckSeasonPurchasableShort@seasonpass':
-    id: 'CheckSeasonPurchasableShort@seasonpass'
+  'CheckSeasonPurchasableShort@go.seasonpass.fun':
+    id: 'CheckSeasonPurchasableShort@go.seasonpass.fun'
     name: 'CheckSeasonPurchasableShort'
+    type: 'function'
     description: |-
       This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.CheckSeasonPurchasableParams'
         required: true
@@ -2927,9 +3033,10 @@ functions:
       - 'purchasable'
       - 'season'
 
-  'CloneSeasonShort@seasonpass':
-    id: 'CloneSeasonShort@seasonpass'
+  'CloneSeasonShort@go.seasonpass.fun':
+    id: 'CloneSeasonShort@go.seasonpass.fun'
     name: 'CloneSeasonShort'
+    type: 'function'
     description: |-
       This API is used to clone a season.
 
@@ -2937,7 +3044,7 @@ functions:
 
         * Returns : cloned season info
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.CloneSeasonParams'
         required: true
@@ -2959,9 +3066,10 @@ functions:
       - 'clone'
       - 'season'
 
-  'CreatePassShort@seasonpass':
-    id: 'CreatePassShort@seasonpass'
+  'CreatePassShort@go.seasonpass.fun':
+    id: 'CreatePassShort@go.seasonpass.fun'
     name: 'CreatePassShort'
+    type: 'function'
     description: |-
       This API is used to create a pass for a draft season.
 
@@ -2969,7 +3077,7 @@ functions:
 
         * Returns : created pass
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.CreatePassParams'
         required: true
@@ -2991,9 +3099,10 @@ functions:
       - 'create'
       - 'pass'
 
-  'CreateRewardShort@seasonpass':
-    id: 'CreateRewardShort@seasonpass'
+  'CreateRewardShort@go.seasonpass.fun':
+    id: 'CreateRewardShort@go.seasonpass.fun'
     name: 'CreateRewardShort'
+    type: 'function'
     description: |-
       This API is used to create a reward for a draft season.
 
@@ -3001,7 +3110,7 @@ functions:
 
         * Returns : created reward
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.CreateRewardParams'
         required: true
@@ -3023,9 +3132,10 @@ functions:
       - 'create'
       - 'reward'
 
-  'CreateSeasonShort@seasonpass':
-    id: 'CreateSeasonShort@seasonpass'
+  'CreateSeasonShort@go.seasonpass.fun':
+    id: 'CreateSeasonShort@go.seasonpass.fun'
     name: 'CreateSeasonShort'
+    type: 'function'
     description: |-
       This API is used to create a season, season only allowed in non-publisher namespace.
 
@@ -3033,7 +3143,7 @@ functions:
 
         * Returns : created season
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.CreateSeasonParams'
         required: true
@@ -3055,13 +3165,14 @@ functions:
       - 'create'
       - 'season'
 
-  'CreateTierShort@seasonpass':
-    id: 'CreateTierShort@seasonpass'
+  'CreateTierShort@go.seasonpass.fun':
+    id: 'CreateTierShort@go.seasonpass.fun'
     name: 'CreateTierShort'
+    type: 'function'
     description: |-
       This API is used to create tier for a draft season, can create multiple tiers at same time.
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.CreateTierParams'
         required: true
@@ -3083,13 +3194,14 @@ functions:
       - 'create'
       - 'tier'
 
-  'DeletePassShort@seasonpass':
-    id: 'DeletePassShort@seasonpass'
+  'DeletePassShort@go.seasonpass.fun':
+    id: 'DeletePassShort@go.seasonpass.fun'
     name: 'DeletePassShort'
+    type: 'function'
     description: |-
       This API is used to delete a pass permanently, only draft season pass can be deleted.
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.DeletePassParams'
         required: true
@@ -3111,15 +3223,16 @@ functions:
       - 'delete'
       - 'pass'
 
-  'DeleteRewardShort@seasonpass':
-    id: 'DeleteRewardShort@seasonpass'
+  'DeleteRewardShort@go.seasonpass.fun':
+    id: 'DeleteRewardShort@go.seasonpass.fun'
     name: 'DeleteRewardShort'
+    type: 'function'
     description: |-
       This API is used to delete a reward permanently, only draft season reward can be deleted.
 
       Other detail info:
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.DeleteRewardParams'
         required: true
@@ -3141,13 +3254,14 @@ functions:
       - 'delete'
       - 'reward'
 
-  'DeleteSeasonShort@seasonpass':
-    id: 'DeleteSeasonShort@seasonpass'
+  'DeleteSeasonShort@go.seasonpass.fun':
+    id: 'DeleteSeasonShort@go.seasonpass.fun'
     name: 'DeleteSeasonShort'
+    type: 'function'
     description: |-
       This API is used to delete a season permanently, only draft season can be deleted.
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.DeleteSeasonParams'
         required: true
@@ -3169,13 +3283,14 @@ functions:
       - 'delete'
       - 'season'
 
-  'DeleteTierShort@seasonpass':
-    id: 'DeleteTierShort@seasonpass'
+  'DeleteTierShort@go.seasonpass.fun':
+    id: 'DeleteTierShort@go.seasonpass.fun'
     name: 'DeleteTierShort'
+    type: 'function'
     description: |-
       This API is used to delete a tier permanently, only draft season pass can be deleted.
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.DeleteTierParams'
         required: true
@@ -3197,9 +3312,10 @@ functions:
       - 'delete'
       - 'tier'
 
-  'ExistsAnyPassByPassCodesShort@seasonpass':
-    id: 'ExistsAnyPassByPassCodesShort@seasonpass'
+  'ExistsAnyPassByPassCodesShort@go.seasonpass.fun':
+    id: 'ExistsAnyPassByPassCodesShort@go.seasonpass.fun'
     name: 'ExistsAnyPassByPassCodesShort'
+    type: 'function'
     description: |-
       [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
 
@@ -3207,7 +3323,7 @@ functions:
 
         * Returns : ownership
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.ExistsAnyPassByPassCodesParams'
         required: true
@@ -3233,13 +3349,14 @@ functions:
       - 'pass'
       - 'season'
 
-  'ExportSeasonShort@seasonpass':
-    id: 'ExportSeasonShort@seasonpass'
+  'ExportSeasonShort@go.seasonpass.fun':
+    id: 'ExportSeasonShort@go.seasonpass.fun'
     name: 'ExportSeasonShort'
+    type: 'function'
     description: |-
       This API is used to export all of season service data files with csv format.
     struct: 'ExportService'
-    parameters:
+    arguments:
       params:
         type: '*export.ExportSeasonParams'
         required: true
@@ -3261,9 +3378,10 @@ functions:
       - 'export'
       - 'season'
 
-  'GetCurrentSeasonShort@seasonpass':
-    id: 'GetCurrentSeasonShort@seasonpass'
+  'GetCurrentSeasonShort@go.seasonpass.fun':
+    id: 'GetCurrentSeasonShort@go.seasonpass.fun'
     name: 'GetCurrentSeasonShort'
+    type: 'function'
     description: |-
       [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
 
@@ -3271,7 +3389,7 @@ functions:
 
         * Returns : season summary data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetCurrentSeasonParams'
         required: true
@@ -3294,9 +3412,10 @@ functions:
       - 'get'
       - 'season'
 
-  'GetCurrentUserSeasonProgressionShort@seasonpass':
-    id: 'GetCurrentUserSeasonProgressionShort@seasonpass'
+  'GetCurrentUserSeasonProgressionShort@go.seasonpass.fun':
+    id: 'GetCurrentUserSeasonProgressionShort@go.seasonpass.fun'
     name: 'GetCurrentUserSeasonProgressionShort'
+    type: 'function'
     description: |-
       This API is used to get current user season progression, season only located in non-publisher namespace.
 
@@ -3304,7 +3423,7 @@ functions:
 
         * Returns : user season progression
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetCurrentUserSeasonProgressionParams'
         required: true
@@ -3329,9 +3448,10 @@ functions:
       - 'season'
       - 'user'
 
-  'GetFullSeasonShort@seasonpass':
-    id: 'GetFullSeasonShort@seasonpass'
+  'GetFullSeasonShort@go.seasonpass.fun':
+    id: 'GetFullSeasonShort@go.seasonpass.fun'
     name: 'GetFullSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get a season full content, season only located in non-publisher namespace.
 
@@ -3339,7 +3459,7 @@ functions:
 
         * Returns : season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetFullSeasonParams'
         required: true
@@ -3362,9 +3482,10 @@ functions:
       - 'get'
       - 'season'
 
-  'GetItemReferencesShort@seasonpass':
-    id: 'GetItemReferencesShort@seasonpass'
+  'GetItemReferencesShort@go.seasonpass.fun':
+    id: 'GetItemReferencesShort@go.seasonpass.fun'
     name: 'GetItemReferencesShort'
+    type: 'function'
     description: |-
       This API is used to get season pass ecommerce item references.
 
@@ -3372,7 +3493,7 @@ functions:
 
         * Returns : item references data
     struct: 'UtilitiesService'
-    parameters:
+    arguments:
       params:
         type: '*utilities.GetItemReferencesParams'
         required: true
@@ -3396,9 +3517,10 @@ functions:
       - 'references'
       - 'utilities'
 
-  'GetPassShort@seasonpass':
-    id: 'GetPassShort@seasonpass'
+  'GetPassShort@go.seasonpass.fun':
+    id: 'GetPassShort@go.seasonpass.fun'
     name: 'GetPassShort'
+    type: 'function'
     description: |-
       This API is used to get a pass for a season.
 
@@ -3406,7 +3528,7 @@ functions:
 
         * Returns : pass data
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.GetPassParams'
         required: true
@@ -3428,9 +3550,10 @@ functions:
       - 'get'
       - 'pass'
 
-  'GetRewardShort@seasonpass':
-    id: 'GetRewardShort@seasonpass'
+  'GetRewardShort@go.seasonpass.fun':
+    id: 'GetRewardShort@go.seasonpass.fun'
     name: 'GetRewardShort'
+    type: 'function'
     description: |-
       This API is used to get a reward for a season.
 
@@ -3438,7 +3561,7 @@ functions:
 
         * Returns : reward data
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.GetRewardParams'
         required: true
@@ -3460,9 +3583,10 @@ functions:
       - 'get'
       - 'reward'
 
-  'GetSeasonShort@seasonpass':
-    id: 'GetSeasonShort@seasonpass'
+  'GetSeasonShort@go.seasonpass.fun':
+    id: 'GetSeasonShort@go.seasonpass.fun'
     name: 'GetSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get a season, season only located in non-publisher namespace.
 
@@ -3470,7 +3594,7 @@ functions:
 
         * Returns : season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetSeasonParams'
         required: true
@@ -3492,9 +3616,10 @@ functions:
       - 'get'
       - 'season'
 
-  'GetUserParticipatedSeasonsShort@seasonpass':
-    id: 'GetUserParticipatedSeasonsShort@seasonpass'
+  'GetUserParticipatedSeasonsShort@go.seasonpass.fun':
+    id: 'GetUserParticipatedSeasonsShort@go.seasonpass.fun'
     name: 'GetUserParticipatedSeasonsShort'
+    type: 'function'
     description: |-
       This API is used to get user participated season data, season only located in non-publisher namespace.
 
@@ -3502,7 +3627,7 @@ functions:
 
         * Returns : user participated season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetUserParticipatedSeasonsParams'
         required: true
@@ -3527,9 +3652,10 @@ functions:
       - 'seasons'
       - 'user'
 
-  'GetUserSeasonShort@seasonpass':
-    id: 'GetUserSeasonShort@seasonpass'
+  'GetUserSeasonShort@go.seasonpass.fun':
+    id: 'GetUserSeasonShort@go.seasonpass.fun'
     name: 'GetUserSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get user season data, season only located in non-publisher namespace.
 
@@ -3537,7 +3663,7 @@ functions:
 
         * Returns : user season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.GetUserSeasonParams'
         required: true
@@ -3560,9 +3686,10 @@ functions:
       - 'season'
       - 'user'
 
-  'GrantUserExpShort@seasonpass':
-    id: 'GrantUserExpShort@seasonpass'
+  'GrantUserExpShort@go.seasonpass.fun':
+    id: 'GrantUserExpShort@go.seasonpass.fun'
     name: 'GrantUserExpShort'
+    type: 'function'
     description: |-
       This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
 
@@ -3570,7 +3697,7 @@ functions:
 
         * Returns : user season data
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.GrantUserExpParams'
         required: true
@@ -3594,9 +3721,10 @@ functions:
       - 'tier'
       - 'user'
 
-  'GrantUserPassShort@seasonpass':
-    id: 'GrantUserPassShort@seasonpass'
+  'GrantUserPassShort@go.seasonpass.fun':
+    id: 'GrantUserPassShort@go.seasonpass.fun'
     name: 'GrantUserPassShort'
+    type: 'function'
     description: |-
       This API is used to grant pass to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
 
@@ -3604,7 +3732,7 @@ functions:
 
         * Returns : user season data
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.GrantUserPassParams'
         required: true
@@ -3627,9 +3755,10 @@ functions:
       - 'pass'
       - 'user'
 
-  'GrantUserTierShort@seasonpass':
-    id: 'GrantUserTierShort@seasonpass'
+  'GrantUserTierShort@go.seasonpass.fun':
+    id: 'GrantUserTierShort@go.seasonpass.fun'
     name: 'GrantUserTierShort'
+    type: 'function'
     description: |-
       This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
 
@@ -3637,7 +3766,7 @@ functions:
 
         * Returns : user season data
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.GrantUserTierParams'
         required: true
@@ -3660,9 +3789,10 @@ functions:
       - 'tier'
       - 'user'
 
-  'PublicBulkClaimUserRewardsShort@seasonpass':
-    id: 'PublicBulkClaimUserRewardsShort@seasonpass'
+  'PublicBulkClaimUserRewardsShort@go.seasonpass.fun':
+    id: 'PublicBulkClaimUserRewardsShort@go.seasonpass.fun'
     name: 'PublicBulkClaimUserRewardsShort'
+    type: 'function'
     description: |-
       This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
 
@@ -3670,7 +3800,7 @@ functions:
 
         * Returns : user season data
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.PublicBulkClaimUserRewardsParams'
         required: true
@@ -3696,9 +3826,10 @@ functions:
       - 'rewards'
       - 'user'
 
-  'PublicClaimUserRewardShort@seasonpass':
-    id: 'PublicClaimUserRewardShort@seasonpass'
+  'PublicClaimUserRewardShort@go.seasonpass.fun':
+    id: 'PublicClaimUserRewardShort@go.seasonpass.fun'
     name: 'PublicClaimUserRewardShort'
+    type: 'function'
     description: |-
       This API is used to claim reward, season only located in non-publisher namespace.
 
@@ -3706,7 +3837,7 @@ functions:
 
         * Returns : user season data
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.PublicClaimUserRewardParams'
         required: true
@@ -3730,9 +3861,10 @@ functions:
       - 'reward'
       - 'user'
 
-  'PublicGetCurrentSeasonShort@seasonpass':
-    id: 'PublicGetCurrentSeasonShort@seasonpass'
+  'PublicGetCurrentSeasonShort@go.seasonpass.fun':
+    id: 'PublicGetCurrentSeasonShort@go.seasonpass.fun'
     name: 'PublicGetCurrentSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get current published season, season only located in non-publisher namespace.
 
@@ -3740,7 +3872,7 @@ functions:
 
         * Returns : localized season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.PublicGetCurrentSeasonParams'
         required: true
@@ -3764,9 +3896,10 @@ functions:
       - 'public'
       - 'season'
 
-  'PublicGetCurrentUserSeasonShort@seasonpass':
-    id: 'PublicGetCurrentUserSeasonShort@seasonpass'
+  'PublicGetCurrentUserSeasonShort@go.seasonpass.fun':
+    id: 'PublicGetCurrentUserSeasonShort@go.seasonpass.fun'
     name: 'PublicGetCurrentUserSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
 
@@ -3774,7 +3907,7 @@ functions:
 
         * Returns : user season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.PublicGetCurrentUserSeasonParams'
         required: true
@@ -3799,9 +3932,10 @@ functions:
       - 'season'
       - 'user'
 
-  'PublicGetUserSeasonShort@seasonpass':
-    id: 'PublicGetUserSeasonShort@seasonpass'
+  'PublicGetUserSeasonShort@go.seasonpass.fun':
+    id: 'PublicGetUserSeasonShort@go.seasonpass.fun'
     name: 'PublicGetUserSeasonShort'
+    type: 'function'
     description: |-
       This API is used to get user season data, season only located in non-publisher namespace.
 
@@ -3809,7 +3943,7 @@ functions:
 
         * Returns : user season data
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.PublicGetUserSeasonParams'
         required: true
@@ -3833,9 +3967,10 @@ functions:
       - 'season'
       - 'user'
 
-  'PublishSeasonShort@seasonpass':
-    id: 'PublishSeasonShort@seasonpass'
+  'PublishSeasonShort@go.seasonpass.fun':
+    id: 'PublishSeasonShort@go.seasonpass.fun'
     name: 'PublishSeasonShort'
+    type: 'function'
     description: |-
       This API is used to publish a draft season, only one published season allowed at same time in a namespace.
 
@@ -3843,7 +3978,7 @@ functions:
 
         * Returns : published season
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.PublishSeasonParams'
         required: true
@@ -3865,9 +4000,10 @@ functions:
       - 'publish'
       - 'season'
 
-  'QueryPassesShort@seasonpass':
-    id: 'QueryPassesShort@seasonpass'
+  'QueryPassesShort@go.seasonpass.fun':
+    id: 'QueryPassesShort@go.seasonpass.fun'
     name: 'QueryPassesShort'
+    type: 'function'
     description: |-
       This API is used to query all passes for a season.
 
@@ -3875,7 +4011,7 @@ functions:
 
         * Returns : the list of passes
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.QueryPassesParams'
         required: true
@@ -3898,9 +4034,10 @@ functions:
       - 'passes'
       - 'query'
 
-  'QueryRewardsShort@seasonpass':
-    id: 'QueryRewardsShort@seasonpass'
+  'QueryRewardsShort@go.seasonpass.fun':
+    id: 'QueryRewardsShort@go.seasonpass.fun'
     name: 'QueryRewardsShort'
+    type: 'function'
     description: |-
       This API is used to query rewards for a season.
 
@@ -3908,7 +4045,7 @@ functions:
 
         * Returns : the list of rewards
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.QueryRewardsParams'
         required: true
@@ -3931,9 +4068,10 @@ functions:
       - 'reward'
       - 'rewards'
 
-  'QuerySeasonsShort@seasonpass':
-    id: 'QuerySeasonsShort@seasonpass'
+  'QuerySeasonsShort@go.seasonpass.fun':
+    id: 'QuerySeasonsShort@go.seasonpass.fun'
     name: 'QuerySeasonsShort'
+    type: 'function'
     description: |-
       This API is used to query seasons, seasons only located in non-publisher namespace.
 
@@ -3941,7 +4079,7 @@ functions:
 
         * Returns : the list of season basic info
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.QuerySeasonsParams'
         required: true
@@ -3964,9 +4102,10 @@ functions:
       - 'season'
       - 'seasons'
 
-  'QueryTiersShort@seasonpass':
-    id: 'QueryTiersShort@seasonpass'
+  'QueryTiersShort@go.seasonpass.fun':
+    id: 'QueryTiersShort@go.seasonpass.fun'
     name: 'QueryTiersShort'
+    type: 'function'
     description: |-
       This API is used to query paginated tiers for a season.
 
@@ -3974,7 +4113,7 @@ functions:
 
         * Returns : the list of passes
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.QueryTiersParams'
         required: true
@@ -3997,9 +4136,10 @@ functions:
       - 'tier'
       - 'tiers'
 
-  'QueryUserExpGrantHistoryShort@seasonpass':
-    id: 'QueryUserExpGrantHistoryShort@seasonpass'
+  'QueryUserExpGrantHistoryShort@go.seasonpass.fun':
+    id: 'QueryUserExpGrantHistoryShort@go.seasonpass.fun'
     name: 'QueryUserExpGrantHistoryShort'
+    type: 'function'
     description: |-
       This API is used to get user exp acquisition history, season only located in non-publisher namespace.
 
@@ -4008,7 +4148,7 @@ functions:
         * default will query from current active season
         *  Returns : paginated grant history
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.QueryUserExpGrantHistoryParams'
         required: true
@@ -4034,9 +4174,10 @@ functions:
       - 'season'
       - 'user'
 
-  'QueryUserExpGrantHistoryTagShort@seasonpass':
-    id: 'QueryUserExpGrantHistoryTagShort@seasonpass'
+  'QueryUserExpGrantHistoryTagShort@go.seasonpass.fun':
+    id: 'QueryUserExpGrantHistoryTagShort@go.seasonpass.fun'
     name: 'QueryUserExpGrantHistoryTagShort'
+    type: 'function'
     description: |-
       This API is used to get user exp acquisition history's tag list.
 
@@ -4045,7 +4186,7 @@ functions:
         * default will query from current active season
         *  Returns : exp grant history tags list
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.QueryUserExpGrantHistoryTagParams'
         required: true
@@ -4072,13 +4213,14 @@ functions:
       - 'tag'
       - 'user'
 
-  'ReorderTierShort@seasonpass':
-    id: 'ReorderTierShort@seasonpass'
+  'ReorderTierShort@go.seasonpass.fun':
+    id: 'ReorderTierShort@go.seasonpass.fun'
     name: 'ReorderTierShort'
+    type: 'function'
     description: |-
       This API is used to reorder a tier. Only draft season pass can be updated.
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.ReorderTierParams'
         required: true
@@ -4100,13 +4242,14 @@ functions:
       - 'reorder'
       - 'tier'
 
-  'ResetUserSeasonShort@seasonpass':
-    id: 'ResetUserSeasonShort@seasonpass'
+  'ResetUserSeasonShort@go.seasonpass.fun':
+    id: 'ResetUserSeasonShort@go.seasonpass.fun'
     name: 'ResetUserSeasonShort'
+    type: 'function'
     description: |-
       [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.ResetUserSeasonParams'
         required: true
@@ -4129,9 +4272,10 @@ functions:
       - 'season'
       - 'user'
 
-  'RetireSeasonShort@seasonpass':
-    id: 'RetireSeasonShort@seasonpass'
+  'RetireSeasonShort@go.seasonpass.fun':
+    id: 'RetireSeasonShort@go.seasonpass.fun'
     name: 'RetireSeasonShort'
+    type: 'function'
     description: |-
       This API is used to retire a published season, if the season has not ended it will report error except with force.
 
@@ -4139,7 +4283,7 @@ functions:
 
         * Returns : season info
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.RetireSeasonParams'
         required: true
@@ -4161,9 +4305,10 @@ functions:
       - 'retire'
       - 'season'
 
-  'UnpublishSeasonShort@seasonpass':
-    id: 'UnpublishSeasonShort@seasonpass'
+  'UnpublishSeasonShort@go.seasonpass.fun':
+    id: 'UnpublishSeasonShort@go.seasonpass.fun'
     name: 'UnpublishSeasonShort'
+    type: 'function'
     description: |-
       This API is used to unpublish a published season, if the season already started it will report error except with force.
 
@@ -4171,7 +4316,7 @@ functions:
 
         * Returns : season info
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.UnpublishSeasonParams'
         required: true
@@ -4193,9 +4338,10 @@ functions:
       - 'season'
       - 'unpublish'
 
-  'UpdatePassShort@seasonpass':
-    id: 'UpdatePassShort@seasonpass'
+  'UpdatePassShort@go.seasonpass.fun':
+    id: 'UpdatePassShort@go.seasonpass.fun'
     name: 'UpdatePassShort'
+    type: 'function'
     description: |-
       This API is used to update a pass. Only draft season pass can be updated.
 
@@ -4203,7 +4349,7 @@ functions:
 
         * Returns : updated pass
     struct: 'PassService'
-    parameters:
+    arguments:
       params:
         type: '*pass.UpdatePassParams'
         required: true
@@ -4225,9 +4371,10 @@ functions:
       - 'pass'
       - 'update'
 
-  'UpdateRewardShort@seasonpass':
-    id: 'UpdateRewardShort@seasonpass'
+  'UpdateRewardShort@go.seasonpass.fun':
+    id: 'UpdateRewardShort@go.seasonpass.fun'
     name: 'UpdateRewardShort'
+    type: 'function'
     description: |-
       This API is used to update a reward. Only draft season reward can be updated.
 
@@ -4235,7 +4382,7 @@ functions:
 
         * Returns : updated reward
     struct: 'RewardService'
-    parameters:
+    arguments:
       params:
         type: '*reward.UpdateRewardParams'
         required: true
@@ -4257,9 +4404,10 @@ functions:
       - 'reward'
       - 'update'
 
-  'UpdateSeasonShort@seasonpass':
-    id: 'UpdateSeasonShort@seasonpass'
+  'UpdateSeasonShort@go.seasonpass.fun':
+    id: 'UpdateSeasonShort@go.seasonpass.fun'
     name: 'UpdateSeasonShort'
+    type: 'function'
     description: |-
       This API is used to update a season. Only draft season can be updated.
 
@@ -4267,7 +4415,7 @@ functions:
 
         * Returns : updated season
     struct: 'SeasonService'
-    parameters:
+    arguments:
       params:
         type: '*season.UpdateSeasonParams'
         required: true
@@ -4289,13 +4437,14 @@ functions:
       - 'season'
       - 'update'
 
-  'UpdateTierShort@seasonpass':
-    id: 'UpdateTierShort@seasonpass'
+  'UpdateTierShort@go.seasonpass.fun':
+    id: 'UpdateTierShort@go.seasonpass.fun'
     name: 'UpdateTierShort'
+    type: 'function'
     description: |-
       This API is used to update a tier. Only draft season pass can be updated.
     struct: 'TierService'
-    parameters:
+    arguments:
       params:
         type: '*tier.UpdateTierParams'
         required: true
@@ -4316,3 +4465,5 @@ functions:
     tags:
       - 'tier'
       - 'update'
+
+  # endregion functions

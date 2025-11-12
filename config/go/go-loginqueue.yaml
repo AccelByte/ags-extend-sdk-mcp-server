@@ -1,10 +1,16 @@
-structs:
-  'JusticeLoginqueueService@loginqueue':
-    id: 'JusticeLoginqueueService@loginqueue'
-    name: 'JusticeLoginqueueService'
+symbols:
+  'NewLoginqueueClient@go.loginqueue.fun':
+    id: 'NewLoginqueueClient@go.loginqueue.fun'
+    name: 'NewLoginqueueClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*loginqueueclient.JusticeLoginqueueService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/loginqueue-sdk/pkg/loginqueueclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/justice_loginqueue_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/loginqueueclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AdminV1Service@loginqueue':
-    id: 'AdminV1Service@loginqueue'
+  'AdminV1Service@go.loginqueue.mod':
+    id: 'AdminV1Service@go.loginqueue.mod'
     name: 'AdminV1Service'
+    type: 'model'
     fields:
       Client:
         type: '*loginqueueclient.JusticeLoginqueueService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'TicketV1Service@loginqueue':
-    id: 'TicketV1Service@loginqueue'
+  'TicketV1Service@go.loginqueue.mod':
+    id: 'TicketV1Service@go.loginqueue.mod'
     name: 'TicketV1Service'
+    type: 'model'
     fields:
       Client:
         type: '*loginqueueclient.JusticeLoginqueueService'
@@ -65,9 +73,10 @@ structs:
 
   # region params
 
-  'AdminGetConfigurationParams@loginqueue':
-    id: 'AdminGetConfigurationParams@loginqueue'
+  'AdminGetConfigurationParams@go.loginqueue.mod':
+    id: 'AdminGetConfigurationParams@go.loginqueue.mod'
     name: 'AdminGetConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -79,9 +88,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_get_configuration_parameters.go'
 
-  'AdminGetStatusParams@loginqueue':
-    id: 'AdminGetStatusParams@loginqueue'
+  'AdminGetStatusParams@go.loginqueue.mod':
+    id: 'AdminGetStatusParams@go.loginqueue.mod'
     name: 'AdminGetStatusParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -93,9 +103,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_get_status_parameters.go'
 
-  'AdminUpdateConfigurationParams@loginqueue':
-    id: 'AdminUpdateConfigurationParams@loginqueue'
+  'AdminUpdateConfigurationParams@go.loginqueue.mod':
+    id: 'AdminUpdateConfigurationParams@go.loginqueue.mod'
     name: 'AdminUpdateConfigurationParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ApimodelsConfigurationRequest'
@@ -110,9 +121,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/admin_v1/admin_update_configuration_parameters.go'
 
-  'CancelTicketParams@loginqueue':
-    id: 'CancelTicketParams@loginqueue'
+  'CancelTicketParams@go.loginqueue.mod':
+    id: 'CancelTicketParams@go.loginqueue.mod'
     name: 'CancelTicketParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -124,9 +136,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclient/ticket_v1/cancel_ticket_parameters.go'
 
-  'RefreshTicketParams@loginqueue':
-    id: 'RefreshTicketParams@loginqueue'
+  'RefreshTicketParams@go.loginqueue.mod':
+    id: 'RefreshTicketParams@go.loginqueue.mod'
     name: 'RefreshTicketParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -142,9 +155,10 @@ structs:
 
   # region models
 
-  'ApimodelsConfigurationRequest@loginqueue':
-    id: 'ApimodelsConfigurationRequest@loginqueue'
+  'ApimodelsConfigurationRequest@go.loginqueue.mod':
+    id: 'ApimodelsConfigurationRequest@go.loginqueue.mod'
     name: 'ApimodelsConfigurationRequest'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -175,9 +189,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_configuration_request.go'
 
-  'ApimodelsConfigurationResponse@loginqueue':
-    id: 'ApimodelsConfigurationResponse@loginqueue'
+  'ApimodelsConfigurationResponse@go.loginqueue.mod':
+    id: 'ApimodelsConfigurationResponse@go.loginqueue.mod'
     name: 'ApimodelsConfigurationResponse'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -211,9 +226,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_configuration_response.go'
 
-  'ApimodelsLink@loginqueue':
-    id: 'ApimodelsLink@loginqueue'
+  'ApimodelsLink@go.loginqueue.mod':
+    id: 'ApimodelsLink@go.loginqueue.mod'
     name: 'ApimodelsLink'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -226,9 +242,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_link.go'
 
-  'ApimodelsQueueStatusResponse@loginqueue':
-    id: 'ApimodelsQueueStatusResponse@loginqueue'
+  'ApimodelsQueueStatusResponse@go.loginqueue.mod':
+    id: 'ApimodelsQueueStatusResponse@go.loginqueue.mod'
     name: 'ApimodelsQueueStatusResponse'
+    type: 'model'
     fields:
       'IsActive':
         type: 'bool'
@@ -250,9 +267,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_queue_status_response.go'
 
-  'ApimodelsRefreshTicketResponse@loginqueue':
-    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+  'ApimodelsRefreshTicketResponse@go.loginqueue.mod':
+    id: 'ApimodelsRefreshTicketResponse@go.loginqueue.mod'
     name: 'ApimodelsRefreshTicketResponse'
+    type: 'model'
     fields:
       'Cancel':
         type: '*ApimodelsLink'
@@ -277,9 +295,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/loginqueue-sdk/pkg/loginqueueclientmodels/apimodels_refresh_ticket_response.go'
 
-  'ResponseError@loginqueue':
-    id: 'ResponseError@loginqueue'
+  'ResponseError@go.loginqueue.mod':
+    id: 'ResponseError@go.loginqueue.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'Attributes':
         type: 'map[string]string'
@@ -303,16 +322,17 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminGetConfigurationShort@loginqueue':
-    id: 'AdminGetConfigurationShort@loginqueue'
+  'AdminGetConfigurationShort@go.loginqueue.fun':
+    id: 'AdminGetConfigurationShort@go.loginqueue.fun'
     name: 'AdminGetConfigurationShort'
+    type: 'function'
     description: |-
       This API is used to get log queue configuration of a namespace.
       Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
     struct: 'AdminV1Service'
-    parameters:
+    arguments:
       params:
         type: '*admin_v1.AdminGetConfigurationParams'
         required: true
@@ -336,13 +356,14 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetStatusShort@loginqueue':
-    id: 'AdminGetStatusShort@loginqueue'
+  'AdminGetStatusShort@go.loginqueue.fun':
+    id: 'AdminGetStatusShort@go.loginqueue.fun'
     name: 'AdminGetStatusShort'
+    type: 'function'
     description: |-
       Get login queue status
     struct: 'AdminV1Service'
-    parameters:
+    arguments:
       params:
         type: '*admin_v1.AdminGetStatusParams'
         required: true
@@ -366,9 +387,10 @@ functions:
       - 'status'
       - 'v1'
 
-  'AdminUpdateConfigurationShort@loginqueue':
-    id: 'AdminUpdateConfigurationShort@loginqueue'
+  'AdminUpdateConfigurationShort@go.loginqueue.fun':
+    id: 'AdminUpdateConfigurationShort@go.loginqueue.fun'
     name: 'AdminUpdateConfigurationShort'
+    type: 'function'
     description: |-
       This API is used to set/update log queue configuration of a namespace.
       This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
@@ -391,7 +413,7 @@ functions:
       * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
       * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
     struct: 'AdminV1Service'
-    parameters:
+    arguments:
       params:
         type: '*admin_v1.AdminUpdateConfigurationParams'
         required: true
@@ -415,13 +437,14 @@ functions:
       - 'update'
       - 'v1'
 
-  'CancelTicketShort@loginqueue':
-    id: 'CancelTicketShort@loginqueue'
+  'CancelTicketShort@go.loginqueue.fun':
+    id: 'CancelTicketShort@go.loginqueue.fun'
     name: 'CancelTicketShort'
+    type: 'function'
     description: |-
       Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
     struct: 'TicketV1Service'
-    parameters:
+    arguments:
       params:
         type: '*ticket_v1.CancelTicketParams'
         required: true
@@ -444,13 +467,14 @@ functions:
       - 'ticket'
       - 'v1'
 
-  'RefreshTicketShort@loginqueue':
-    id: 'RefreshTicketShort@loginqueue'
+  'RefreshTicketShort@go.loginqueue.fun':
+    id: 'RefreshTicketShort@go.loginqueue.fun'
     name: 'RefreshTicketShort'
+    type: 'function'
     description: |-
       Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
     struct: 'TicketV1Service'
-    parameters:
+    arguments:
       params:
         type: '*ticket_v1.RefreshTicketParams'
         required: true
@@ -472,3 +496,5 @@ functions:
       - 'refresh'
       - 'ticket'
       - 'v1'
+
+  # endregion functions

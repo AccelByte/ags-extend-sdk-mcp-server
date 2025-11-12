@@ -1,10 +1,16 @@
-structs:
-  'JusticeGroupService@group':
-    id: 'JusticeGroupService@group'
-    name: 'JusticeGroupService'
+symbols:
+  'NewGroupClient@go.group.fun':
+    id: 'NewGroupClient@go.group.fun'
+    name: 'NewGroupClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*groupclient.JusticeGroupService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/group-sdk/pkg/groupclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/justice_group_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/groupclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'ConfigurationService@group':
-    id: 'ConfigurationService@group'
+  'ConfigurationService@go.group.mod':
+    id: 'ConfigurationService@go.group.mod'
     name: 'ConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*groupclient.JusticeGroupService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GroupService@group':
-    id: 'GroupService@group'
+  'GroupService@go.group.mod':
+    id: 'GroupService@go.group.mod'
     name: 'GroupService'
+    type: 'model'
     fields:
       Client:
         type: '*groupclient.JusticeGroupService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GroupMemberService@group':
-    id: 'GroupMemberService@group'
+  'GroupMemberService@go.group.mod':
+    id: 'GroupMemberService@go.group.mod'
     name: 'GroupMemberService'
+    type: 'model'
     fields:
       Client:
         type: '*groupclient.JusticeGroupService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GroupRolesService@group':
-    id: 'GroupRolesService@group'
+  'GroupRolesService@go.group.mod':
+    id: 'GroupRolesService@go.group.mod'
     name: 'GroupRolesService'
+    type: 'model'
     fields:
       Client:
         type: '*groupclient.JusticeGroupService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'MemberRequestService@group':
-    id: 'MemberRequestService@group'
+  'MemberRequestService@go.group.mod':
+    id: 'MemberRequestService@go.group.mod'
     name: 'MemberRequestService'
+    type: 'model'
     fields:
       Client:
         type: '*groupclient.JusticeGroupService'
@@ -137,9 +148,10 @@ structs:
 
   # region params
 
-  'AcceptGroupInvitationPublicV1Params@group':
-    id: 'AcceptGroupInvitationPublicV1Params@group'
+  'AcceptGroupInvitationPublicV1Params@go.group.mod':
+    id: 'AcceptGroupInvitationPublicV1Params@go.group.mod'
     name: 'AcceptGroupInvitationPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -156,9 +168,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_invitation_public_v1_parameters.go'
 
-  'AcceptGroupInvitationPublicV2Params@group':
-    id: 'AcceptGroupInvitationPublicV2Params@group'
+  'AcceptGroupInvitationPublicV2Params@go.group.mod':
+    id: 'AcceptGroupInvitationPublicV2Params@go.group.mod'
     name: 'AcceptGroupInvitationPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -175,9 +188,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_invitation_public_v2_parameters.go'
 
-  'AcceptGroupJoinRequestPublicV1Params@group':
-    id: 'AcceptGroupJoinRequestPublicV1Params@group'
+  'AcceptGroupJoinRequestPublicV1Params@go.group.mod':
+    id: 'AcceptGroupJoinRequestPublicV1Params@go.group.mod'
     name: 'AcceptGroupJoinRequestPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -194,9 +208,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_join_request_public_v1_parameters.go'
 
-  'AcceptGroupJoinRequestPublicV2Params@group':
-    id: 'AcceptGroupJoinRequestPublicV2Params@group'
+  'AcceptGroupJoinRequestPublicV2Params@go.group.mod':
+    id: 'AcceptGroupJoinRequestPublicV2Params@go.group.mod'
     name: 'AcceptGroupJoinRequestPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -218,9 +233,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/accept_group_join_request_public_v2_parameters.go'
 
-  'AdminGetUserGroupStatusInformationV2Params@group':
-    id: 'AdminGetUserGroupStatusInformationV2Params@group'
+  'AdminGetUserGroupStatusInformationV2Params@go.group.mod':
+    id: 'AdminGetUserGroupStatusInformationV2Params@go.group.mod'
     name: 'AdminGetUserGroupStatusInformationV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -242,9 +258,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/admin_get_user_group_status_information_v2_parameters.go'
 
-  'CancelGroupJoinRequestV1Params@group':
-    id: 'CancelGroupJoinRequestV1Params@group'
+  'CancelGroupJoinRequestV1Params@go.group.mod':
+    id: 'CancelGroupJoinRequestV1Params@go.group.mod'
     name: 'CancelGroupJoinRequestV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -261,9 +278,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/cancel_group_join_request_v1_parameters.go'
 
-  'CancelInvitationGroupMemberV2Params@group':
-    id: 'CancelInvitationGroupMemberV2Params@group'
+  'CancelInvitationGroupMemberV2Params@go.group.mod':
+    id: 'CancelInvitationGroupMemberV2Params@go.group.mod'
     name: 'CancelInvitationGroupMemberV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -285,9 +303,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/cancel_invitation_group_member_v2_parameters.go'
 
-  'CreateGroupConfigurationAdminV1Params@group':
-    id: 'CreateGroupConfigurationAdminV1Params@group'
+  'CreateGroupConfigurationAdminV1Params@go.group.mod':
+    id: 'CreateGroupConfigurationAdminV1Params@go.group.mod'
     name: 'CreateGroupConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsCreateGroupConfigurationRequestV1'
@@ -302,9 +321,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/create_group_configuration_admin_v1_parameters.go'
 
-  'CreateMemberRoleAdminV1Params@group':
-    id: 'CreateMemberRoleAdminV1Params@group'
+  'CreateMemberRoleAdminV1Params@go.group.mod':
+    id: 'CreateMemberRoleAdminV1Params@go.group.mod'
     name: 'CreateMemberRoleAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsCreateMemberRoleRequestV1'
@@ -319,9 +339,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/create_member_role_admin_v1_parameters.go'
 
-  'CreateNewGroupPublicV1Params@group':
-    id: 'CreateNewGroupPublicV1Params@group'
+  'CreateNewGroupPublicV1Params@go.group.mod':
+    id: 'CreateNewGroupPublicV1Params@go.group.mod'
     name: 'CreateNewGroupPublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPublicCreateNewGroupRequestV1'
@@ -336,9 +357,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/create_new_group_public_v1_parameters.go'
 
-  'CreateNewGroupPublicV2Params@group':
-    id: 'CreateNewGroupPublicV2Params@group'
+  'CreateNewGroupPublicV2Params@go.group.mod':
+    id: 'CreateNewGroupPublicV2Params@go.group.mod'
     name: 'CreateNewGroupPublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPublicCreateNewGroupRequestV1'
@@ -353,9 +375,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/create_new_group_public_v2_parameters.go'
 
-  'DeleteGroupAdminV1Params@group':
-    id: 'DeleteGroupAdminV1Params@group'
+  'DeleteGroupAdminV1Params@go.group.mod':
+    id: 'DeleteGroupAdminV1Params@go.group.mod'
     name: 'DeleteGroupAdminV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -372,9 +395,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_admin_v1_parameters.go'
 
-  'DeleteGroupConfigurationGlobalRuleAdminV1Params@group':
-    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Params@group'
+  'DeleteGroupConfigurationGlobalRuleAdminV1Params@go.group.mod':
+    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Params@go.group.mod'
     name: 'DeleteGroupConfigurationGlobalRuleAdminV1Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -396,9 +420,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/delete_group_configuration_global_rule_admin_v1_parameters.go'
 
-  'DeleteGroupConfigurationV1Params@group':
-    id: 'DeleteGroupConfigurationV1Params@group'
+  'DeleteGroupConfigurationV1Params@go.group.mod':
+    id: 'DeleteGroupConfigurationV1Params@go.group.mod'
     name: 'DeleteGroupConfigurationV1Params'
+    type: 'model'
     fields:
       'ConfigurationCode':
         type: 'string'
@@ -415,9 +440,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/delete_group_configuration_v1_parameters.go'
 
-  'DeleteGroupPredefinedRulePublicV1Params@group':
-    id: 'DeleteGroupPredefinedRulePublicV1Params@group'
+  'DeleteGroupPredefinedRulePublicV1Params@go.group.mod':
+    id: 'DeleteGroupPredefinedRulePublicV1Params@go.group.mod'
     name: 'DeleteGroupPredefinedRulePublicV1Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -439,9 +465,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_predefined_rule_public_v1_parameters.go'
 
-  'DeleteGroupPredefinedRulePublicV2Params@group':
-    id: 'DeleteGroupPredefinedRulePublicV2Params@group'
+  'DeleteGroupPredefinedRulePublicV2Params@go.group.mod':
+    id: 'DeleteGroupPredefinedRulePublicV2Params@go.group.mod'
     name: 'DeleteGroupPredefinedRulePublicV2Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -463,9 +490,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_predefined_rule_public_v2_parameters.go'
 
-  'DeleteGroupPublicV1Params@group':
-    id: 'DeleteGroupPublicV1Params@group'
+  'DeleteGroupPublicV1Params@go.group.mod':
+    id: 'DeleteGroupPublicV1Params@go.group.mod'
     name: 'DeleteGroupPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -482,9 +510,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_public_v1_parameters.go'
 
-  'DeleteGroupPublicV2Params@group':
-    id: 'DeleteGroupPublicV2Params@group'
+  'DeleteGroupPublicV2Params@go.group.mod':
+    id: 'DeleteGroupPublicV2Params@go.group.mod'
     name: 'DeleteGroupPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -501,9 +530,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/delete_group_public_v2_parameters.go'
 
-  'DeleteMemberRoleAdminV1Params@group':
-    id: 'DeleteMemberRoleAdminV1Params@group'
+  'DeleteMemberRoleAdminV1Params@go.group.mod':
+    id: 'DeleteMemberRoleAdminV1Params@go.group.mod'
     name: 'DeleteMemberRoleAdminV1Params'
+    type: 'model'
     fields:
       'MemberRoleID':
         type: 'string'
@@ -520,9 +550,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_admin_v1_parameters.go'
 
-  'DeleteMemberRolePublicV1Params@group':
-    id: 'DeleteMemberRolePublicV1Params@group'
+  'DeleteMemberRolePublicV1Params@go.group.mod':
+    id: 'DeleteMemberRolePublicV1Params@go.group.mod'
     name: 'DeleteMemberRolePublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsRemoveRoleFromMemberRequestV1'
@@ -542,9 +573,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_public_v1_parameters.go'
 
-  'DeleteMemberRolePublicV2Params@group':
-    id: 'DeleteMemberRolePublicV2Params@group'
+  'DeleteMemberRolePublicV2Params@go.group.mod':
+    id: 'DeleteMemberRolePublicV2Params@go.group.mod'
     name: 'DeleteMemberRolePublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsRemoveRoleFromMemberRequestV1'
@@ -569,9 +601,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/delete_member_role_public_v2_parameters.go'
 
-  'GetGroupConfigurationAdminV1Params@group':
-    id: 'GetGroupConfigurationAdminV1Params@group'
+  'GetGroupConfigurationAdminV1Params@go.group.mod':
+    id: 'GetGroupConfigurationAdminV1Params@go.group.mod'
     name: 'GetGroupConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'ConfigurationCode':
         type: 'string'
@@ -588,9 +621,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/get_group_configuration_admin_v1_parameters.go'
 
-  'GetGroupInvitationRequestPublicV1Params@group':
-    id: 'GetGroupInvitationRequestPublicV1Params@group'
+  'GetGroupInvitationRequestPublicV1Params@go.group.mod':
+    id: 'GetGroupInvitationRequestPublicV1Params@go.group.mod'
     name: 'GetGroupInvitationRequestPublicV1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -612,9 +646,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_invitation_request_public_v1_parameters.go'
 
-  'GetGroupInviteRequestPublicV2Params@group':
-    id: 'GetGroupInviteRequestPublicV2Params@group'
+  'GetGroupInviteRequestPublicV2Params@go.group.mod':
+    id: 'GetGroupInviteRequestPublicV2Params@go.group.mod'
     name: 'GetGroupInviteRequestPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -641,9 +676,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_invite_request_public_v2_parameters.go'
 
-  'GetGroupJoinRequestPublicV1Params@group':
-    id: 'GetGroupJoinRequestPublicV1Params@group'
+  'GetGroupJoinRequestPublicV1Params@go.group.mod':
+    id: 'GetGroupJoinRequestPublicV1Params@go.group.mod'
     name: 'GetGroupJoinRequestPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -670,9 +706,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_join_request_public_v1_parameters.go'
 
-  'GetGroupJoinRequestPublicV2Params@group':
-    id: 'GetGroupJoinRequestPublicV2Params@group'
+  'GetGroupJoinRequestPublicV2Params@go.group.mod':
+    id: 'GetGroupJoinRequestPublicV2Params@go.group.mod'
     name: 'GetGroupJoinRequestPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -699,9 +736,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_group_join_request_public_v2_parameters.go'
 
-  'GetGroupListAdminV1Params@group':
-    id: 'GetGroupListAdminV1Params@group'
+  'GetGroupListAdminV1Params@go.group.mod':
+    id: 'GetGroupListAdminV1Params@go.group.mod'
     name: 'GetGroupListAdminV1Params'
+    type: 'model'
     fields:
       'ConfigurationCode':
         type: 'string'
@@ -738,9 +776,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_group_list_admin_v1_parameters.go'
 
-  'GetGroupListPublicV1Params@group':
-    id: 'GetGroupListPublicV1Params@group'
+  'GetGroupListPublicV1Params@go.group.mod':
+    id: 'GetGroupListPublicV1Params@go.group.mod'
     name: 'GetGroupListPublicV1Params'
+    type: 'model'
     fields:
       'GroupName':
         type: 'string'
@@ -772,9 +811,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_group_list_public_v1_parameters.go'
 
-  'GetGroupMembersListAdminV1Params@group':
-    id: 'GetGroupMembersListAdminV1Params@group'
+  'GetGroupMembersListAdminV1Params@go.group.mod':
+    id: 'GetGroupMembersListAdminV1Params@go.group.mod'
     name: 'GetGroupMembersListAdminV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -806,9 +846,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_group_members_list_admin_v1_parameters.go'
 
-  'GetGroupMembersListPublicV1Params@group':
-    id: 'GetGroupMembersListPublicV1Params@group'
+  'GetGroupMembersListPublicV1Params@go.group.mod':
+    id: 'GetGroupMembersListPublicV1Params@go.group.mod'
     name: 'GetGroupMembersListPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -840,9 +881,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_group_members_list_public_v1_parameters.go'
 
-  'GetListGroupByIDsAdminV2Params@group':
-    id: 'GetListGroupByIDsAdminV2Params@group'
+  'GetListGroupByIDsAdminV2Params@go.group.mod':
+    id: 'GetListGroupByIDsAdminV2Params@go.group.mod'
     name: 'GetListGroupByIDsAdminV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsGetGroupListRequestV2'
@@ -857,9 +899,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_list_group_by_i_ds_admin_v2_parameters.go'
 
-  'GetListGroupByIDsV2Params@group':
-    id: 'GetListGroupByIDsV2Params@group'
+  'GetListGroupByIDsV2Params@go.group.mod':
+    id: 'GetListGroupByIDsV2Params@go.group.mod'
     name: 'GetListGroupByIDsV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsGetGroupListRequestV2'
@@ -874,9 +917,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_list_group_by_i_ds_v2_parameters.go'
 
-  'GetMemberRolesListAdminV1Params@group':
-    id: 'GetMemberRolesListAdminV1Params@group'
+  'GetMemberRolesListAdminV1Params@go.group.mod':
+    id: 'GetMemberRolesListAdminV1Params@go.group.mod'
     name: 'GetMemberRolesListAdminV1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -898,9 +942,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_admin_v1_parameters.go'
 
-  'GetMemberRolesListPublicV1Params@group':
-    id: 'GetMemberRolesListPublicV1Params@group'
+  'GetMemberRolesListPublicV1Params@go.group.mod':
+    id: 'GetMemberRolesListPublicV1Params@go.group.mod'
     name: 'GetMemberRolesListPublicV1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -922,9 +967,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_public_v1_parameters.go'
 
-  'GetMemberRolesListPublicV2Params@group':
-    id: 'GetMemberRolesListPublicV2Params@group'
+  'GetMemberRolesListPublicV2Params@go.group.mod':
+    id: 'GetMemberRolesListPublicV2Params@go.group.mod'
     name: 'GetMemberRolesListPublicV2Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -946,9 +992,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_member_roles_list_public_v2_parameters.go'
 
-  'GetMyGroupJoinRequestV2Params@group':
-    id: 'GetMyGroupJoinRequestV2Params@group'
+  'GetMyGroupJoinRequestV2Params@go.group.mod':
+    id: 'GetMyGroupJoinRequestV2Params@go.group.mod'
     name: 'GetMyGroupJoinRequestV2Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -970,9 +1017,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/member_request/get_my_group_join_request_v2_parameters.go'
 
-  'GetSingleGroupAdminV1Params@group':
-    id: 'GetSingleGroupAdminV1Params@group'
+  'GetSingleGroupAdminV1Params@go.group.mod':
+    id: 'GetSingleGroupAdminV1Params@go.group.mod'
     name: 'GetSingleGroupAdminV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -989,9 +1037,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_single_group_admin_v1_parameters.go'
 
-  'GetSingleGroupPublicV1Params@group':
-    id: 'GetSingleGroupPublicV1Params@group'
+  'GetSingleGroupPublicV1Params@go.group.mod':
+    id: 'GetSingleGroupPublicV1Params@go.group.mod'
     name: 'GetSingleGroupPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1008,9 +1057,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/get_single_group_public_v1_parameters.go'
 
-  'GetSingleMemberRoleAdminV1Params@group':
-    id: 'GetSingleMemberRoleAdminV1Params@group'
+  'GetSingleMemberRoleAdminV1Params@go.group.mod':
+    id: 'GetSingleMemberRoleAdminV1Params@go.group.mod'
     name: 'GetSingleMemberRoleAdminV1Params'
+    type: 'model'
     fields:
       'MemberRoleID':
         type: 'string'
@@ -1027,9 +1077,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/get_single_member_role_admin_v1_parameters.go'
 
-  'GetUserGroupInformationPublicV1Params@group':
-    id: 'GetUserGroupInformationPublicV1Params@group'
+  'GetUserGroupInformationPublicV1Params@go.group.mod':
+    id: 'GetUserGroupInformationPublicV1Params@go.group.mod'
     name: 'GetUserGroupInformationPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1046,9 +1097,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_information_public_v1_parameters.go'
 
-  'GetUserGroupInformationPublicV2Params@group':
-    id: 'GetUserGroupInformationPublicV2Params@group'
+  'GetUserGroupInformationPublicV2Params@go.group.mod':
+    id: 'GetUserGroupInformationPublicV2Params@go.group.mod'
     name: 'GetUserGroupInformationPublicV2Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1070,9 +1122,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_information_public_v2_parameters.go'
 
-  'GetUserGroupStatusInformationV2Params@group':
-    id: 'GetUserGroupStatusInformationV2Params@group'
+  'GetUserGroupStatusInformationV2Params@go.group.mod':
+    id: 'GetUserGroupStatusInformationV2Params@go.group.mod'
     name: 'GetUserGroupStatusInformationV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1094,9 +1147,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_group_status_information_v2_parameters.go'
 
-  'GetUserJoinedGroupInformationPublicV2Params@group':
-    id: 'GetUserJoinedGroupInformationPublicV2Params@group'
+  'GetUserJoinedGroupInformationPublicV2Params@go.group.mod':
+    id: 'GetUserJoinedGroupInformationPublicV2Params@go.group.mod'
     name: 'GetUserJoinedGroupInformationPublicV2Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1123,9 +1177,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/get_user_joined_group_information_public_v2_parameters.go'
 
-  'InitiateGroupConfigurationAdminV1Params@group':
-    id: 'InitiateGroupConfigurationAdminV1Params@group'
+  'InitiateGroupConfigurationAdminV1Params@go.group.mod':
+    id: 'InitiateGroupConfigurationAdminV1Params@go.group.mod'
     name: 'InitiateGroupConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1137,9 +1192,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/initiate_group_configuration_admin_v1_parameters.go'
 
-  'InviteGroupPublicV1Params@group':
-    id: 'InviteGroupPublicV1Params@group'
+  'InviteGroupPublicV1Params@go.group.mod':
+    id: 'InviteGroupPublicV1Params@go.group.mod'
     name: 'InviteGroupPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1156,9 +1212,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/invite_group_public_v1_parameters.go'
 
-  'InviteGroupPublicV2Params@group':
-    id: 'InviteGroupPublicV2Params@group'
+  'InviteGroupPublicV2Params@go.group.mod':
+    id: 'InviteGroupPublicV2Params@go.group.mod'
     name: 'InviteGroupPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1180,9 +1237,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/invite_group_public_v2_parameters.go'
 
-  'JoinGroupV1Params@group':
-    id: 'JoinGroupV1Params@group'
+  'JoinGroupV1Params@go.group.mod':
+    id: 'JoinGroupV1Params@go.group.mod'
     name: 'JoinGroupV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1199,9 +1257,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/join_group_v1_parameters.go'
 
-  'JoinGroupV2Params@group':
-    id: 'JoinGroupV2Params@group'
+  'JoinGroupV2Params@go.group.mod':
+    id: 'JoinGroupV2Params@go.group.mod'
     name: 'JoinGroupV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1218,9 +1277,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/join_group_v2_parameters.go'
 
-  'KickGroupMemberPublicV1Params@group':
-    id: 'KickGroupMemberPublicV1Params@group'
+  'KickGroupMemberPublicV1Params@go.group.mod':
+    id: 'KickGroupMemberPublicV1Params@go.group.mod'
     name: 'KickGroupMemberPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1237,9 +1297,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/kick_group_member_public_v1_parameters.go'
 
-  'KickGroupMemberPublicV2Params@group':
-    id: 'KickGroupMemberPublicV2Params@group'
+  'KickGroupMemberPublicV2Params@go.group.mod':
+    id: 'KickGroupMemberPublicV2Params@go.group.mod'
     name: 'KickGroupMemberPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1261,9 +1322,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/kick_group_member_public_v2_parameters.go'
 
-  'LeaveGroupPublicV1Params@group':
-    id: 'LeaveGroupPublicV1Params@group'
+  'LeaveGroupPublicV1Params@go.group.mod':
+    id: 'LeaveGroupPublicV1Params@go.group.mod'
     name: 'LeaveGroupPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1275,9 +1337,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/leave_group_public_v1_parameters.go'
 
-  'LeaveGroupPublicV2Params@group':
-    id: 'LeaveGroupPublicV2Params@group'
+  'LeaveGroupPublicV2Params@go.group.mod':
+    id: 'LeaveGroupPublicV2Params@go.group.mod'
     name: 'LeaveGroupPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1294,9 +1357,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/leave_group_public_v2_parameters.go'
 
-  'ListGroupConfigurationAdminV1Params@group':
-    id: 'ListGroupConfigurationAdminV1Params@group'
+  'ListGroupConfigurationAdminV1Params@go.group.mod':
+    id: 'ListGroupConfigurationAdminV1Params@go.group.mod'
     name: 'ListGroupConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1318,9 +1382,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/list_group_configuration_admin_v1_parameters.go'
 
-  'RejectGroupInvitationPublicV1Params@group':
-    id: 'RejectGroupInvitationPublicV1Params@group'
+  'RejectGroupInvitationPublicV1Params@go.group.mod':
+    id: 'RejectGroupInvitationPublicV1Params@go.group.mod'
     name: 'RejectGroupInvitationPublicV1Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1337,9 +1402,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_invitation_public_v1_parameters.go'
 
-  'RejectGroupInvitationPublicV2Params@group':
-    id: 'RejectGroupInvitationPublicV2Params@group'
+  'RejectGroupInvitationPublicV2Params@go.group.mod':
+    id: 'RejectGroupInvitationPublicV2Params@go.group.mod'
     name: 'RejectGroupInvitationPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1356,9 +1422,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_invitation_public_v2_parameters.go'
 
-  'RejectGroupJoinRequestPublicV1Params@group':
-    id: 'RejectGroupJoinRequestPublicV1Params@group'
+  'RejectGroupJoinRequestPublicV1Params@go.group.mod':
+    id: 'RejectGroupJoinRequestPublicV1Params@go.group.mod'
     name: 'RejectGroupJoinRequestPublicV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1375,9 +1442,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_join_request_public_v1_parameters.go'
 
-  'RejectGroupJoinRequestPublicV2Params@group':
-    id: 'RejectGroupJoinRequestPublicV2Params@group'
+  'RejectGroupJoinRequestPublicV2Params@go.group.mod':
+    id: 'RejectGroupJoinRequestPublicV2Params@go.group.mod'
     name: 'RejectGroupJoinRequestPublicV2Params'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1399,9 +1467,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_member/reject_group_join_request_public_v2_parameters.go'
 
-  'UpdateGroupConfigurationAdminV1Params@group':
-    id: 'UpdateGroupConfigurationAdminV1Params@group'
+  'UpdateGroupConfigurationAdminV1Params@go.group.mod':
+    id: 'UpdateGroupConfigurationAdminV1Params@go.group.mod'
     name: 'UpdateGroupConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupConfigurationRequestV1'
@@ -1421,9 +1490,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/update_group_configuration_admin_v1_parameters.go'
 
-  'UpdateGroupConfigurationGlobalRuleAdminV1Params@group':
-    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Params@group'
+  'UpdateGroupConfigurationGlobalRuleAdminV1Params@go.group.mod':
+    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Params@go.group.mod'
     name: 'UpdateGroupConfigurationGlobalRuleAdminV1Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -1448,9 +1518,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/configuration/update_group_configuration_global_rule_admin_v1_parameters.go'
 
-  'UpdateGroupCustomAttributesPublicV1Params@group':
-    id: 'UpdateGroupCustomAttributesPublicV1Params@group'
+  'UpdateGroupCustomAttributesPublicV1Params@go.group.mod':
+    id: 'UpdateGroupCustomAttributesPublicV1Params@go.group.mod'
     name: 'UpdateGroupCustomAttributesPublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupCustomAttributesRequestV1'
@@ -1470,9 +1541,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_attributes_public_v1_parameters.go'
 
-  'UpdateGroupCustomAttributesPublicV2Params@group':
-    id: 'UpdateGroupCustomAttributesPublicV2Params@group'
+  'UpdateGroupCustomAttributesPublicV2Params@go.group.mod':
+    id: 'UpdateGroupCustomAttributesPublicV2Params@go.group.mod'
     name: 'UpdateGroupCustomAttributesPublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupCustomAttributesRequestV1'
@@ -1492,9 +1564,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_attributes_public_v2_parameters.go'
 
-  'UpdateGroupCustomRulePublicV1Params@group':
-    id: 'UpdateGroupCustomRulePublicV1Params@group'
+  'UpdateGroupCustomRulePublicV1Params@go.group.mod':
+    id: 'UpdateGroupCustomRulePublicV1Params@go.group.mod'
     name: 'UpdateGroupCustomRulePublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupCustomRuleRequestV1'
@@ -1514,9 +1587,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_rule_public_v1_parameters.go'
 
-  'UpdateGroupCustomRulePublicV2Params@group':
-    id: 'UpdateGroupCustomRulePublicV2Params@group'
+  'UpdateGroupCustomRulePublicV2Params@go.group.mod':
+    id: 'UpdateGroupCustomRulePublicV2Params@go.group.mod'
     name: 'UpdateGroupCustomRulePublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupCustomRuleRequestV1'
@@ -1536,9 +1610,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_custom_rule_public_v2_parameters.go'
 
-  'UpdateGroupPredefinedRulePublicV1Params@group':
-    id: 'UpdateGroupPredefinedRulePublicV1Params@group'
+  'UpdateGroupPredefinedRulePublicV1Params@go.group.mod':
+    id: 'UpdateGroupPredefinedRulePublicV1Params@go.group.mod'
     name: 'UpdateGroupPredefinedRulePublicV1Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -1563,9 +1638,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_predefined_rule_public_v1_parameters.go'
 
-  'UpdateGroupPredefinedRulePublicV2Params@group':
-    id: 'UpdateGroupPredefinedRulePublicV2Params@group'
+  'UpdateGroupPredefinedRulePublicV2Params@go.group.mod':
+    id: 'UpdateGroupPredefinedRulePublicV2Params@go.group.mod'
     name: 'UpdateGroupPredefinedRulePublicV2Params'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -1590,9 +1666,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_group_predefined_rule_public_v2_parameters.go'
 
-  'UpdateMemberRoleAdminV1Params@group':
-    id: 'UpdateMemberRoleAdminV1Params@group'
+  'UpdateMemberRoleAdminV1Params@go.group.mod':
+    id: 'UpdateMemberRoleAdminV1Params@go.group.mod'
     name: 'UpdateMemberRoleAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateMemberRoleRequestV1'
@@ -1612,9 +1689,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_admin_v1_parameters.go'
 
-  'UpdateMemberRolePermissionAdminV1Params@group':
-    id: 'UpdateMemberRolePermissionAdminV1Params@group'
+  'UpdateMemberRolePermissionAdminV1Params@go.group.mod':
+    id: 'UpdateMemberRolePermissionAdminV1Params@go.group.mod'
     name: 'UpdateMemberRolePermissionAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateMemberRolePermissionsRequestV1'
@@ -1634,9 +1712,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_permission_admin_v1_parameters.go'
 
-  'UpdateMemberRolePublicV1Params@group':
-    id: 'UpdateMemberRolePublicV1Params@group'
+  'UpdateMemberRolePublicV1Params@go.group.mod':
+    id: 'UpdateMemberRolePublicV1Params@go.group.mod'
     name: 'UpdateMemberRolePublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAssignRoleToMemberRequestV1'
@@ -1656,9 +1735,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_public_v1_parameters.go'
 
-  'UpdateMemberRolePublicV2Params@group':
-    id: 'UpdateMemberRolePublicV2Params@group'
+  'UpdateMemberRolePublicV2Params@go.group.mod':
+    id: 'UpdateMemberRolePublicV2Params@go.group.mod'
     name: 'UpdateMemberRolePublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAssignRoleToMemberRequestV1'
@@ -1683,9 +1763,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group_roles/update_member_role_public_v2_parameters.go'
 
-  'UpdatePatchSingleGroupPublicV1Params@group':
-    id: 'UpdatePatchSingleGroupPublicV1Params@group'
+  'UpdatePatchSingleGroupPublicV1Params@go.group.mod':
+    id: 'UpdatePatchSingleGroupPublicV1Params@go.group.mod'
     name: 'UpdatePatchSingleGroupPublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupRequestV1'
@@ -1705,9 +1786,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_patch_single_group_public_v1_parameters.go'
 
-  'UpdatePatchSingleGroupPublicV2Params@group':
-    id: 'UpdatePatchSingleGroupPublicV2Params@group'
+  'UpdatePatchSingleGroupPublicV2Params@go.group.mod':
+    id: 'UpdatePatchSingleGroupPublicV2Params@go.group.mod'
     name: 'UpdatePatchSingleGroupPublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupRequestV1'
@@ -1727,9 +1809,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_patch_single_group_public_v2_parameters.go'
 
-  'UpdatePutSingleGroupPublicV2Params@group':
-    id: 'UpdatePutSingleGroupPublicV2Params@group'
+  'UpdatePutSingleGroupPublicV2Params@go.group.mod':
+    id: 'UpdatePutSingleGroupPublicV2Params@go.group.mod'
     name: 'UpdatePutSingleGroupPublicV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupRequestV1'
@@ -1749,9 +1832,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclient/group/update_put_single_group_public_v2_parameters.go'
 
-  'UpdateSingleGroupV1Params@group':
-    id: 'UpdateSingleGroupV1Params@group'
+  'UpdateSingleGroupV1Params@go.group.mod':
+    id: 'UpdateSingleGroupV1Params@go.group.mod'
     name: 'UpdateSingleGroupV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateGroupRequestV1'
@@ -1775,9 +1859,10 @@ structs:
 
   # region models
 
-  'ModelsAssignRoleToMemberRequestV1@group':
-    id: 'ModelsAssignRoleToMemberRequestV1@group'
+  'ModelsAssignRoleToMemberRequestV1@go.group.mod':
+    id: 'ModelsAssignRoleToMemberRequestV1@go.group.mod'
     name: 'ModelsAssignRoleToMemberRequestV1'
+    type: 'model'
     fields:
       'UserID':
         type: 'string'
@@ -1787,9 +1872,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_assign_role_to_member_request_v1.go'
 
-  'ModelsCancelInvitationGroupResponseV2@group':
-    id: 'ModelsCancelInvitationGroupResponseV2@group'
+  'ModelsCancelInvitationGroupResponseV2@go.group.mod':
+    id: 'ModelsCancelInvitationGroupResponseV2@go.group.mod'
     name: 'ModelsCancelInvitationGroupResponseV2'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -1802,9 +1888,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_cancel_invitation_group_response_v2.go'
 
-  'ModelsCreateGroupConfigurationRequestV1@group':
-    id: 'ModelsCreateGroupConfigurationRequestV1@group'
+  'ModelsCreateGroupConfigurationRequestV1@go.group.mod':
+    id: 'ModelsCreateGroupConfigurationRequestV1@go.group.mod'
     name: 'ModelsCreateGroupConfigurationRequestV1'
+    type: 'model'
     fields:
       'AllowMultiple':
         type: 'bool'
@@ -1835,9 +1922,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_group_configuration_request_v1.go'
 
-  'ModelsCreateGroupConfigurationResponseV1@group':
-    id: 'ModelsCreateGroupConfigurationResponseV1@group'
+  'ModelsCreateGroupConfigurationResponseV1@go.group.mod':
+    id: 'ModelsCreateGroupConfigurationResponseV1@go.group.mod'
     name: 'ModelsCreateGroupConfigurationResponseV1'
+    type: 'model'
     fields:
       'AllowMultiple':
         type: 'bool'
@@ -1868,9 +1956,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_group_configuration_response_v1.go'
 
-  'ModelsCreateMemberRoleRequestV1@group':
-    id: 'ModelsCreateMemberRoleRequestV1@group'
+  'ModelsCreateMemberRoleRequestV1@go.group.mod':
+    id: 'ModelsCreateMemberRoleRequestV1@go.group.mod'
     name: 'ModelsCreateMemberRoleRequestV1'
+    type: 'model'
     fields:
       'MemberRoleName':
         type: 'string'
@@ -1883,9 +1972,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_create_member_role_request_v1.go'
 
-  'ModelsGetGroupConfigurationResponseV1@group':
-    id: 'ModelsGetGroupConfigurationResponseV1@group'
+  'ModelsGetGroupConfigurationResponseV1@go.group.mod':
+    id: 'ModelsGetGroupConfigurationResponseV1@go.group.mod'
     name: 'ModelsGetGroupConfigurationResponseV1'
+    type: 'model'
     fields:
       'AllowMultiple':
         type: 'bool'
@@ -1919,9 +2009,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_configuration_response_v1.go'
 
-  'ModelsGetGroupListRequestV2@group':
-    id: 'ModelsGetGroupListRequestV2@group'
+  'ModelsGetGroupListRequestV2@go.group.mod':
+    id: 'ModelsGetGroupListRequestV2@go.group.mod'
     name: 'ModelsGetGroupListRequestV2'
+    type: 'model'
     fields:
       'GroupIDs':
         type: '[]string'
@@ -1931,9 +2022,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_list_request_v2.go'
 
-  'ModelsGetGroupMemberListResponseV1@group':
-    id: 'ModelsGetGroupMemberListResponseV1@group'
+  'ModelsGetGroupMemberListResponseV1@go.group.mod':
+    id: 'ModelsGetGroupMemberListResponseV1@go.group.mod'
     name: 'ModelsGetGroupMemberListResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetUserGroupInformationResponseV1'
@@ -1946,9 +2038,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_group_member_list_response_v1.go'
 
-  'ModelsGetGroupsListResponseV1@group':
-    id: 'ModelsGetGroupsListResponseV1@group'
+  'ModelsGetGroupsListResponseV1@go.group.mod':
+    id: 'ModelsGetGroupsListResponseV1@go.group.mod'
     name: 'ModelsGetGroupsListResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGroupResponseV1'
@@ -1961,9 +2054,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_groups_list_response_v1.go'
 
-  'ModelsGetGroupsResponseV1@group':
-    id: 'ModelsGetGroupsResponseV1@group'
+  'ModelsGetGroupsResponseV1@go.group.mod':
+    id: 'ModelsGetGroupsResponseV1@go.group.mod'
     name: 'ModelsGetGroupsResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGroupResponseV1'
@@ -1973,9 +2067,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_groups_response_v1.go'
 
-  'ModelsGetMemberRequestsListResponseV1@group':
-    id: 'ModelsGetMemberRequestsListResponseV1@group'
+  'ModelsGetMemberRequestsListResponseV1@go.group.mod':
+    id: 'ModelsGetMemberRequestsListResponseV1@go.group.mod'
     name: 'ModelsGetMemberRequestsListResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsMemberRequestResponseV1'
@@ -1988,9 +2083,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_member_requests_list_response_v1.go'
 
-  'ModelsGetMemberRolesListResponseV1@group':
-    id: 'ModelsGetMemberRolesListResponseV1@group'
+  'ModelsGetMemberRolesListResponseV1@go.group.mod':
+    id: 'ModelsGetMemberRolesListResponseV1@go.group.mod'
     name: 'ModelsGetMemberRolesListResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsMemberRoleResponseV1'
@@ -2003,9 +2099,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_member_roles_list_response_v1.go'
 
-  'ModelsGetUserGroupInformationResponseV1@group':
-    id: 'ModelsGetUserGroupInformationResponseV1@group'
+  'ModelsGetUserGroupInformationResponseV1@go.group.mod':
+    id: 'ModelsGetUserGroupInformationResponseV1@go.group.mod'
     name: 'ModelsGetUserGroupInformationResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2027,9 +2124,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_get_user_group_information_response_v1.go'
 
-  'ModelsGroupMember@group':
-    id: 'ModelsGroupMember@group'
+  'ModelsGroupMember@go.group.mod':
+    id: 'ModelsGroupMember@go.group.mod'
     name: 'ModelsGroupMember'
+    type: 'model'
     fields:
       'MemberRoleID':
         type: '[]string'
@@ -2042,9 +2140,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_member.go'
 
-  'ModelsGroupResponseV1@group':
-    id: 'ModelsGroupResponseV1@group'
+  'ModelsGroupResponseV1@go.group.mod':
+    id: 'ModelsGroupResponseV1@go.group.mod'
     name: 'ModelsGroupResponseV1'
+    type: 'model'
     fields:
       'ConfigurationCode':
         type: 'string'
@@ -2087,9 +2186,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_response_v1.go'
 
-  'ModelsGroupRule@group':
-    id: 'ModelsGroupRule@group'
+  'ModelsGroupRule@go.group.mod':
+    id: 'ModelsGroupRule@go.group.mod'
     name: 'ModelsGroupRule'
+    type: 'model'
     fields:
       'GroupCustomRule':
         type: 'ModelsGroupRuleGroupCustomRule'
@@ -2102,18 +2202,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule.go'
 
-  'ModelsGroupRuleGroupCustomRule@group':
-    id: 'ModelsGroupRuleGroupCustomRule@group'
+  'ModelsGroupRuleGroupCustomRule@go.group.mod':
+    id: 'ModelsGroupRuleGroupCustomRule@go.group.mod'
     name: 'ModelsGroupRuleGroupCustomRule'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_group_custom_rule.go'
 
-  'ModelsGroupRuleResponseV1@group':
-    id: 'ModelsGroupRuleResponseV1@group'
+  'ModelsGroupRuleResponseV1@go.group.mod':
+    id: 'ModelsGroupRuleResponseV1@go.group.mod'
     name: 'ModelsGroupRuleResponseV1'
+    type: 'model'
     fields:
       'GroupCustomRule':
         type: 'ModelsGroupRuleResponseV1GroupCustomRule'
@@ -2126,18 +2227,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_response_v1.go'
 
-  'ModelsGroupRuleResponseV1GroupCustomRule@group':
-    id: 'ModelsGroupRuleResponseV1GroupCustomRule@group'
+  'ModelsGroupRuleResponseV1GroupCustomRule@go.group.mod':
+    id: 'ModelsGroupRuleResponseV1GroupCustomRule@go.group.mod'
     name: 'ModelsGroupRuleResponseV1GroupCustomRule'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_group_rule_response_v1_group_custom_rule.go'
 
-  'ModelsJoinGroupResponseV1@group':
-    id: 'ModelsJoinGroupResponseV1@group'
+  'ModelsJoinGroupResponseV1@go.group.mod':
+    id: 'ModelsJoinGroupResponseV1@go.group.mod'
     name: 'ModelsJoinGroupResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2153,9 +2255,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_join_group_response_v1.go'
 
-  'ModelsKickGroupMemberResponseV1@group':
-    id: 'ModelsKickGroupMemberResponseV1@group'
+  'ModelsKickGroupMemberResponseV1@go.group.mod':
+    id: 'ModelsKickGroupMemberResponseV1@go.group.mod'
     name: 'ModelsKickGroupMemberResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2168,9 +2271,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_kick_group_member_response_v1.go'
 
-  'ModelsLeaveGroupResponseV1@group':
-    id: 'ModelsLeaveGroupResponseV1@group'
+  'ModelsLeaveGroupResponseV1@go.group.mod':
+    id: 'ModelsLeaveGroupResponseV1@go.group.mod'
     name: 'ModelsLeaveGroupResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2183,9 +2287,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_leave_group_response_v1.go'
 
-  'ModelsListConfigurationResponseV1@group':
-    id: 'ModelsListConfigurationResponseV1@group'
+  'ModelsListConfigurationResponseV1@go.group.mod':
+    id: 'ModelsListConfigurationResponseV1@go.group.mod'
     name: 'ModelsListConfigurationResponseV1'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetGroupConfigurationResponseV1'
@@ -2198,9 +2303,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_list_configuration_response_v1.go'
 
-  'ModelsMemberRequestGroupResponseV1@group':
-    id: 'ModelsMemberRequestGroupResponseV1@group'
+  'ModelsMemberRequestGroupResponseV1@go.group.mod':
+    id: 'ModelsMemberRequestGroupResponseV1@go.group.mod'
     name: 'ModelsMemberRequestGroupResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2213,9 +2319,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_request_group_response_v1.go'
 
-  'ModelsMemberRequestResponseV1@group':
-    id: 'ModelsMemberRequestResponseV1@group'
+  'ModelsMemberRequestResponseV1@go.group.mod':
+    id: 'ModelsMemberRequestResponseV1@go.group.mod'
     name: 'ModelsMemberRequestResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2231,9 +2338,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_request_response_v1.go'
 
-  'ModelsMemberRoleResponseV1@group':
-    id: 'ModelsMemberRoleResponseV1@group'
+  'ModelsMemberRoleResponseV1@go.group.mod':
+    id: 'ModelsMemberRoleResponseV1@go.group.mod'
     name: 'ModelsMemberRoleResponseV1'
+    type: 'model'
     fields:
       'MemberRoleID':
         type: 'string'
@@ -2249,9 +2357,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_member_role_response_v1.go'
 
-  'ModelsPagination@group':
-    id: 'ModelsPagination@group'
+  'ModelsPagination@go.group.mod':
+    id: 'ModelsPagination@go.group.mod'
     name: 'ModelsPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -2270,9 +2379,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_pagination.go'
 
-  'ModelsPublicCreateNewGroupRequestV1@group':
-    id: 'ModelsPublicCreateNewGroupRequestV1@group'
+  'ModelsPublicCreateNewGroupRequestV1@go.group.mod':
+    id: 'ModelsPublicCreateNewGroupRequestV1@go.group.mod'
     name: 'ModelsPublicCreateNewGroupRequestV1'
+    type: 'model'
     fields:
       'ConfigurationCode':
         type: 'string'
@@ -2306,9 +2416,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_public_create_new_group_request_v1.go'
 
-  'ModelsRemoveRoleFromMemberRequestV1@group':
-    id: 'ModelsRemoveRoleFromMemberRequestV1@group'
+  'ModelsRemoveRoleFromMemberRequestV1@go.group.mod':
+    id: 'ModelsRemoveRoleFromMemberRequestV1@go.group.mod'
     name: 'ModelsRemoveRoleFromMemberRequestV1'
+    type: 'model'
     fields:
       'UserID':
         type: 'string'
@@ -2318,9 +2429,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_remove_role_from_member_request_v1.go'
 
-  'ModelsRolePermission@group':
-    id: 'ModelsRolePermission@group'
+  'ModelsRolePermission@go.group.mod':
+    id: 'ModelsRolePermission@go.group.mod'
     name: 'ModelsRolePermission'
+    type: 'model'
     fields:
       'Action':
         type: 'int32'
@@ -2333,9 +2445,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_role_permission.go'
 
-  'ModelsRule@group':
-    id: 'ModelsRule@group'
+  'ModelsRule@go.group.mod':
+    id: 'ModelsRule@go.group.mod'
     name: 'ModelsRule'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -2348,9 +2461,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule.go'
 
-  'ModelsRuleInformation@group':
-    id: 'ModelsRuleInformation@group'
+  'ModelsRuleInformation@go.group.mod':
+    id: 'ModelsRuleInformation@go.group.mod'
     name: 'ModelsRuleInformation'
+    type: 'model'
     fields:
       'RuleAttribute':
         type: 'string'
@@ -2366,9 +2480,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule_information.go'
 
-  'ModelsRuleResponseV1@group':
-    id: 'ModelsRuleResponseV1@group'
+  'ModelsRuleResponseV1@go.group.mod':
+    id: 'ModelsRuleResponseV1@go.group.mod'
     name: 'ModelsRuleResponseV1'
+    type: 'model'
     fields:
       'AllowedAction':
         type: 'string'
@@ -2381,9 +2496,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_rule_response_v1.go'
 
-  'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@group':
-    id: 'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@group'
+  'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupConfigurationGlobalRulesRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupConfigurationGlobalRulesRequestV1'
+    type: 'model'
     fields:
       'RuleDetail':
         type: '[]*ModelsRuleInformation'
@@ -2393,9 +2509,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_global_rules_request_v1.go'
 
-  'ModelsUpdateGroupConfigurationRequestV1@group':
-    id: 'ModelsUpdateGroupConfigurationRequestV1@group'
+  'ModelsUpdateGroupConfigurationRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupConfigurationRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupConfigurationRequestV1'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -2411,9 +2528,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_request_v1.go'
 
-  'ModelsUpdateGroupConfigurationResponseV1@group':
-    id: 'ModelsUpdateGroupConfigurationResponseV1@group'
+  'ModelsUpdateGroupConfigurationResponseV1@go.group.mod':
+    id: 'ModelsUpdateGroupConfigurationResponseV1@go.group.mod'
     name: 'ModelsUpdateGroupConfigurationResponseV1'
+    type: 'model'
     fields:
       'AllowMultiple':
         type: 'bool'
@@ -2444,9 +2562,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_configuration_response_v1.go'
 
-  'ModelsUpdateGroupCustomAttributesRequestV1@group':
-    id: 'ModelsUpdateGroupCustomAttributesRequestV1@group'
+  'ModelsUpdateGroupCustomAttributesRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupCustomAttributesRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupCustomAttributesRequestV1'
+    type: 'model'
     fields:
       'CustomAttributes':
         type: 'interface{}'
@@ -2456,9 +2575,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_custom_attributes_request_v1.go'
 
-  'ModelsUpdateGroupCustomRuleRequestV1@group':
-    id: 'ModelsUpdateGroupCustomRuleRequestV1@group'
+  'ModelsUpdateGroupCustomRuleRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupCustomRuleRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupCustomRuleRequestV1'
+    type: 'model'
     fields:
       'GroupCustomRule':
         type: 'interface{}'
@@ -2468,9 +2588,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_custom_rule_request_v1.go'
 
-  'ModelsUpdateGroupPredefinedRuleRequestV1@group':
-    id: 'ModelsUpdateGroupPredefinedRuleRequestV1@group'
+  'ModelsUpdateGroupPredefinedRuleRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupPredefinedRuleRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupPredefinedRuleRequestV1'
+    type: 'model'
     fields:
       'RuleDetail':
         type: '[]*ModelsRuleInformation'
@@ -2480,9 +2601,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_predefined_rule_request_v1.go'
 
-  'ModelsUpdateGroupRequestV1@group':
-    id: 'ModelsUpdateGroupRequestV1@group'
+  'ModelsUpdateGroupRequestV1@go.group.mod':
+    id: 'ModelsUpdateGroupRequestV1@go.group.mod'
     name: 'ModelsUpdateGroupRequestV1'
+    type: 'model'
     fields:
       'CustomAttributes':
         type: 'ModelsUpdateGroupRequestV1CustomAttributes'
@@ -2507,18 +2629,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_request_v1.go'
 
-  'ModelsUpdateGroupRequestV1CustomAttributes@group':
-    id: 'ModelsUpdateGroupRequestV1CustomAttributes@group'
+  'ModelsUpdateGroupRequestV1CustomAttributes@go.group.mod':
+    id: 'ModelsUpdateGroupRequestV1CustomAttributes@go.group.mod'
     name: 'ModelsUpdateGroupRequestV1CustomAttributes'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/group-sdk/pkg/groupclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_group_request_v1_custom_attributes.go'
 
-  'ModelsUpdateMemberRolePermissionsRequestV1@group':
-    id: 'ModelsUpdateMemberRolePermissionsRequestV1@group'
+  'ModelsUpdateMemberRolePermissionsRequestV1@go.group.mod':
+    id: 'ModelsUpdateMemberRolePermissionsRequestV1@go.group.mod'
     name: 'ModelsUpdateMemberRolePermissionsRequestV1'
+    type: 'model'
     fields:
       'MemberRolePermissions':
         type: '[]*ModelsRolePermission'
@@ -2528,9 +2651,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_member_role_permissions_request_v1.go'
 
-  'ModelsUpdateMemberRoleRequestV1@group':
-    id: 'ModelsUpdateMemberRoleRequestV1@group'
+  'ModelsUpdateMemberRoleRequestV1@go.group.mod':
+    id: 'ModelsUpdateMemberRoleRequestV1@go.group.mod'
     name: 'ModelsUpdateMemberRoleRequestV1'
+    type: 'model'
     fields:
       'MemberRoleName':
         type: 'string'
@@ -2540,9 +2664,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_update_member_role_request_v1.go'
 
-  'ModelsUserInvitationResponseV1@group':
-    id: 'ModelsUserInvitationResponseV1@group'
+  'ModelsUserInvitationResponseV1@go.group.mod':
+    id: 'ModelsUserInvitationResponseV1@go.group.mod'
     name: 'ModelsUserInvitationResponseV1'
+    type: 'model'
     fields:
       'GroupID':
         type: 'string'
@@ -2555,9 +2680,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/group-sdk/pkg/groupclientmodels/models_user_invitation_response_v1.go'
 
-  'ResponseErrorResponse@group':
-    id: 'ResponseErrorResponse@group'
+  'ResponseErrorResponse@go.group.mod':
+    id: 'ResponseErrorResponse@go.group.mod'
     name: 'ResponseErrorResponse'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -2572,11 +2698,12 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AcceptGroupInvitationPublicV1Short@group':
-    id: 'AcceptGroupInvitationPublicV1Short@group'
+  'AcceptGroupInvitationPublicV1Short@go.group.fun':
+    id: 'AcceptGroupInvitationPublicV1Short@go.group.fun'
     name: 'AcceptGroupInvitationPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2592,7 +2719,7 @@ functions:
 
       Action Code: 73401
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.AcceptGroupInvitationPublicV1Params'
         required: true
@@ -2618,9 +2745,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'AcceptGroupInvitationPublicV2Short@group':
-    id: 'AcceptGroupInvitationPublicV2Short@group'
+  'AcceptGroupInvitationPublicV2Short@go.group.fun':
+    id: 'AcceptGroupInvitationPublicV2Short@go.group.fun'
     name: 'AcceptGroupInvitationPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2636,7 +2764,7 @@ functions:
 
       Action Code: 73401
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.AcceptGroupInvitationPublicV2Params'
         required: true
@@ -2662,9 +2790,10 @@ functions:
       - 'public'
       - 'v2'
 
-  'AcceptGroupJoinRequestPublicV1Short@group':
-    id: 'AcceptGroupJoinRequestPublicV1Short@group'
+  'AcceptGroupJoinRequestPublicV1Short@go.group.fun':
+    id: 'AcceptGroupJoinRequestPublicV1Short@go.group.fun'
     name: 'AcceptGroupJoinRequestPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2678,7 +2807,7 @@ functions:
 
       Action Code: 73407
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.AcceptGroupJoinRequestPublicV1Params'
         required: true
@@ -2705,9 +2834,10 @@ functions:
       - 'request'
       - 'v1'
 
-  'AcceptGroupJoinRequestPublicV2Short@group':
-    id: 'AcceptGroupJoinRequestPublicV2Short@group'
+  'AcceptGroupJoinRequestPublicV2Short@go.group.fun':
+    id: 'AcceptGroupJoinRequestPublicV2Short@go.group.fun'
     name: 'AcceptGroupJoinRequestPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2721,7 +2851,7 @@ functions:
 
       Action Code: 73407
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.AcceptGroupJoinRequestPublicV2Params'
         required: true
@@ -2748,13 +2878,14 @@ functions:
       - 'request'
       - 'v2'
 
-  'AdminGetUserGroupStatusInformationV2Short@group':
-    id: 'AdminGetUserGroupStatusInformationV2Short@group'
+  'AdminGetUserGroupStatusInformationV2Short@go.group.fun':
+    id: 'AdminGetUserGroupStatusInformationV2Short@go.group.fun'
     name: 'AdminGetUserGroupStatusInformationV2Short'
+    type: 'function'
     description: |-
       This endpoint is used to get user group status information.
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.AdminGetUserGroupStatusInformationV2Params'
         required: true
@@ -2782,9 +2913,10 @@ functions:
       - 'user'
       - 'v2'
 
-  'CancelGroupJoinRequestV1Short@group':
-    id: 'CancelGroupJoinRequestV1Short@group'
+  'CancelGroupJoinRequestV1Short@go.group.fun':
+    id: 'CancelGroupJoinRequestV1Short@go.group.fun'
     name: 'CancelGroupJoinRequestV1Short'
+    type: 'function'
     description: |-
       Requires valid user authentication
 
@@ -2792,7 +2924,7 @@ functions:
 
       Action Code: 73411
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.CancelGroupJoinRequestV1Params'
         required: true
@@ -2818,9 +2950,10 @@ functions:
       - 'request'
       - 'v1'
 
-  'CancelInvitationGroupMemberV2Short@group':
-    id: 'CancelInvitationGroupMemberV2Short@group'
+  'CancelInvitationGroupMemberV2Short@go.group.fun':
+    id: 'CancelInvitationGroupMemberV2Short@go.group.fun'
     name: 'CancelInvitationGroupMemberV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2832,7 +2965,7 @@ functions:
 
       Action Code: 73409
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.CancelInvitationGroupMemberV2Params'
         required: true
@@ -2857,9 +2990,10 @@ functions:
       - 'member'
       - 'v2'
 
-  'CreateGroupConfigurationAdminV1Short@group':
-    id: 'CreateGroupConfigurationAdminV1Short@group'
+  'CreateGroupConfigurationAdminV1Short@go.group.fun':
+    id: 'CreateGroupConfigurationAdminV1Short@go.group.fun'
     name: 'CreateGroupConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
 
@@ -2873,7 +3007,7 @@ functions:
 
       Action Code: 73103
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.CreateGroupConfigurationAdminV1Params'
         required: true
@@ -2898,9 +3032,10 @@ functions:
       - 'group'
       - 'v1'
 
-  'CreateMemberRoleAdminV1Short@group':
-    id: 'CreateMemberRoleAdminV1Short@group'
+  'CreateMemberRoleAdminV1Short@go.group.fun':
+    id: 'CreateMemberRoleAdminV1Short@go.group.fun'
     name: 'CreateMemberRoleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to create new member role
 
@@ -2916,7 +3051,7 @@ functions:
 
       The changes will give user with that role have a permission to create a role for new group member
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.CreateMemberRoleAdminV1Params'
         required: true
@@ -2943,9 +3078,10 @@ functions:
       - 'roles'
       - 'v1'
 
-  'CreateNewGroupPublicV1Short@group':
-    id: 'CreateNewGroupPublicV1Short@group'
+  'CreateNewGroupPublicV1Short@go.group.fun':
+    id: 'CreateNewGroupPublicV1Short@go.group.fun'
     name: 'CreateNewGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -2966,7 +3102,7 @@ functions:
 
       Action Code: 73304
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.CreateNewGroupPublicV1Params'
         required: true
@@ -2991,9 +3127,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'CreateNewGroupPublicV2Short@group':
-    id: 'CreateNewGroupPublicV2Short@group'
+  'CreateNewGroupPublicV2Short@go.group.fun':
+    id: 'CreateNewGroupPublicV2Short@go.group.fun'
     name: 'CreateNewGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3014,7 +3151,7 @@ functions:
 
       Action Code: 73304
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.CreateNewGroupPublicV2Params'
         required: true
@@ -3039,15 +3176,16 @@ functions:
       - 'public'
       - 'v2'
 
-  'DeleteGroupAdminV1Short@group':
-    id: 'DeleteGroupAdminV1Short@group'
+  'DeleteGroupAdminV1Short@go.group.fun':
+    id: 'DeleteGroupAdminV1Short@go.group.fun'
     name: 'DeleteGroupAdminV1Short'
+    type: 'function'
     description: |-
       Delete existing group. It will check whether the groupID is exist before doing the process to delete the group.
 
       Action Code: 73302
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.DeleteGroupAdminV1Params'
         required: true
@@ -3071,15 +3209,16 @@ functions:
       - 'group'
       - 'v1'
 
-  'DeleteGroupConfigurationGlobalRuleAdminV1Short@group':
-    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Short@group'
+  'DeleteGroupConfigurationGlobalRuleAdminV1Short@go.group.fun':
+    id: 'DeleteGroupConfigurationGlobalRuleAdminV1Short@go.group.fun'
     name: 'DeleteGroupConfigurationGlobalRuleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
 
       Action Code: 73105
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.DeleteGroupConfigurationGlobalRuleAdminV1Params'
         required: true
@@ -3106,15 +3245,16 @@ functions:
       - 'rule'
       - 'v1'
 
-  'DeleteGroupConfigurationV1Short@group':
-    id: 'DeleteGroupConfigurationV1Short@group'
+  'DeleteGroupConfigurationV1Short@go.group.fun':
+    id: 'DeleteGroupConfigurationV1Short@go.group.fun'
     name: 'DeleteGroupConfigurationV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
       Action Code: 73101
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.DeleteGroupConfigurationV1Params'
         required: true
@@ -3138,9 +3278,10 @@ functions:
       - 'group'
       - 'v1'
 
-  'DeleteGroupPredefinedRulePublicV1Short@group':
-    id: 'DeleteGroupPredefinedRulePublicV1Short@group'
+  'DeleteGroupPredefinedRulePublicV1Short@go.group.fun':
+    id: 'DeleteGroupPredefinedRulePublicV1Short@go.group.fun'
     name: 'DeleteGroupPredefinedRulePublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3150,7 +3291,7 @@ functions:
 
       Action Code: 73309
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.DeleteGroupPredefinedRulePublicV1Params'
         required: true
@@ -3176,9 +3317,10 @@ functions:
       - 'rule'
       - 'v1'
 
-  'DeleteGroupPredefinedRulePublicV2Short@group':
-    id: 'DeleteGroupPredefinedRulePublicV2Short@group'
+  'DeleteGroupPredefinedRulePublicV2Short@go.group.fun':
+    id: 'DeleteGroupPredefinedRulePublicV2Short@go.group.fun'
     name: 'DeleteGroupPredefinedRulePublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3188,7 +3330,7 @@ functions:
 
       Action Code: 73309
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.DeleteGroupPredefinedRulePublicV2Params'
         required: true
@@ -3214,9 +3356,10 @@ functions:
       - 'rule'
       - 'v2'
 
-  'DeleteGroupPublicV1Short@group':
-    id: 'DeleteGroupPublicV1Short@group'
+  'DeleteGroupPublicV1Short@go.group.fun':
+    id: 'DeleteGroupPublicV1Short@go.group.fun'
     name: 'DeleteGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3226,7 +3369,7 @@ functions:
 
       Action Code: 73305
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.DeleteGroupPublicV1Params'
         required: true
@@ -3250,9 +3393,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'DeleteGroupPublicV2Short@group':
-    id: 'DeleteGroupPublicV2Short@group'
+  'DeleteGroupPublicV2Short@go.group.fun':
+    id: 'DeleteGroupPublicV2Short@go.group.fun'
     name: 'DeleteGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3262,7 +3406,7 @@ functions:
 
       Action Code: 73305
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.DeleteGroupPublicV2Params'
         required: true
@@ -3286,15 +3430,16 @@ functions:
       - 'public'
       - 'v2'
 
-  'DeleteMemberRoleAdminV1Short@group':
-    id: 'DeleteMemberRoleAdminV1Short@group'
+  'DeleteMemberRoleAdminV1Short@go.group.fun':
+    id: 'DeleteMemberRoleAdminV1Short@go.group.fun'
     name: 'DeleteMemberRoleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
 
       Action Code: 73207
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.DeleteMemberRoleAdminV1Params'
         required: true
@@ -3321,9 +3466,10 @@ functions:
       - 'roles'
       - 'v1'
 
-  'DeleteMemberRolePublicV1Short@group':
-    id: 'DeleteMemberRolePublicV1Short@group'
+  'DeleteMemberRolePublicV1Short@go.group.fun':
+    id: 'DeleteMemberRolePublicV1Short@go.group.fun'
     name: 'DeleteMemberRolePublicV1Short'
+    type: 'function'
     description: |-
       Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
@@ -3331,7 +3477,7 @@ functions:
 
       Action Code: 73204
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.DeleteMemberRolePublicV1Params'
         required: true
@@ -3358,9 +3504,10 @@ functions:
       - 'roles'
       - 'v1'
 
-  'DeleteMemberRolePublicV2Short@group':
-    id: 'DeleteMemberRolePublicV2Short@group'
+  'DeleteMemberRolePublicV2Short@go.group.fun':
+    id: 'DeleteMemberRolePublicV2Short@go.group.fun'
     name: 'DeleteMemberRolePublicV2Short'
+    type: 'function'
     description: |-
       Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
@@ -3368,7 +3515,7 @@ functions:
 
       Action Code: 73204
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.DeleteMemberRolePublicV2Params'
         required: true
@@ -3395,15 +3542,16 @@ functions:
       - 'roles'
       - 'v2'
 
-  'GetGroupConfigurationAdminV1Short@group':
-    id: 'GetGroupConfigurationAdminV1Short@group'
+  'GetGroupConfigurationAdminV1Short@go.group.fun':
+    id: 'GetGroupConfigurationAdminV1Short@go.group.fun'
     name: 'GetGroupConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
       Action Code: 73101
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.GetGroupConfigurationAdminV1Params'
         required: true
@@ -3428,9 +3576,10 @@ functions:
       - 'group'
       - 'v1'
 
-  'GetGroupInvitationRequestPublicV1Short@group':
-    id: 'GetGroupInvitationRequestPublicV1Short@group'
+  'GetGroupInvitationRequestPublicV1Short@go.group.fun':
+    id: 'GetGroupInvitationRequestPublicV1Short@go.group.fun'
     name: 'GetGroupInvitationRequestPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3440,7 +3589,7 @@ functions:
 
       Action Code: 73502
     struct: 'MemberRequestService'
-    parameters:
+    arguments:
       params:
         type: '*member_request.GetGroupInvitationRequestPublicV1Params'
         required: true
@@ -3467,9 +3616,10 @@ functions:
       - 'request'
       - 'v1'
 
-  'GetGroupInviteRequestPublicV2Short@group':
-    id: 'GetGroupInviteRequestPublicV2Short@group'
+  'GetGroupInviteRequestPublicV2Short@go.group.fun':
+    id: 'GetGroupInviteRequestPublicV2Short@go.group.fun'
     name: 'GetGroupInviteRequestPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3481,7 +3631,7 @@ functions:
 
       Action Code: 73501
     struct: 'MemberRequestService'
-    parameters:
+    arguments:
       params:
         type: '*member_request.GetGroupInviteRequestPublicV2Params'
         required: true
@@ -3508,9 +3658,10 @@ functions:
       - 'request'
       - 'v2'
 
-  'GetGroupJoinRequestPublicV1Short@group':
-    id: 'GetGroupJoinRequestPublicV1Short@group'
+  'GetGroupJoinRequestPublicV1Short@go.group.fun':
+    id: 'GetGroupJoinRequestPublicV1Short@go.group.fun'
     name: 'GetGroupJoinRequestPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3522,7 +3673,7 @@ functions:
 
       Action Code: 73501
     struct: 'MemberRequestService'
-    parameters:
+    arguments:
       params:
         type: '*member_request.GetGroupJoinRequestPublicV1Params'
         required: true
@@ -3549,9 +3700,10 @@ functions:
       - 'request'
       - 'v1'
 
-  'GetGroupJoinRequestPublicV2Short@group':
-    id: 'GetGroupJoinRequestPublicV2Short@group'
+  'GetGroupJoinRequestPublicV2Short@go.group.fun':
+    id: 'GetGroupJoinRequestPublicV2Short@go.group.fun'
     name: 'GetGroupJoinRequestPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3563,7 +3715,7 @@ functions:
 
       Action Code: 73501
     struct: 'MemberRequestService'
-    parameters:
+    arguments:
       params:
         type: '*member_request.GetGroupJoinRequestPublicV2Params'
         required: true
@@ -3590,15 +3742,16 @@ functions:
       - 'request'
       - 'v2'
 
-  'GetGroupListAdminV1Short@group':
-    id: 'GetGroupListAdminV1Short@group'
+  'GetGroupListAdminV1Short@go.group.fun':
+    id: 'GetGroupListAdminV1Short@go.group.fun'
     name: 'GetGroupListAdminV1Short'
+    type: 'function'
     description: |-
       Get list of groups. This endpoint will show any types of group
 
       Action Code: 73301
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetGroupListAdminV1Params'
         required: true
@@ -3623,9 +3776,10 @@ functions:
       - 'list'
       - 'v1'
 
-  'GetGroupListPublicV1Short@group':
-    id: 'GetGroupListPublicV1Short@group'
+  'GetGroupListPublicV1Short@go.group.fun':
+    id: 'GetGroupListPublicV1Short@go.group.fun'
     name: 'GetGroupListPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3633,7 +3787,7 @@ functions:
 
       Action Code: 73303
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetGroupListPublicV1Params'
         required: true
@@ -3658,15 +3812,16 @@ functions:
       - 'public'
       - 'v1'
 
-  'GetGroupMembersListAdminV1Short@group':
-    id: 'GetGroupMembersListAdminV1Short@group'
+  'GetGroupMembersListAdminV1Short@go.group.fun':
+    id: 'GetGroupMembersListAdminV1Short@go.group.fun'
     name: 'GetGroupMembersListAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to get list of group members.
 
       Action Code: 73410
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetGroupMembersListAdminV1Params'
         required: true
@@ -3693,9 +3848,10 @@ functions:
       - 'members'
       - 'v1'
 
-  'GetGroupMembersListPublicV1Short@group':
-    id: 'GetGroupMembersListPublicV1Short@group'
+  'GetGroupMembersListPublicV1Short@go.group.fun':
+    id: 'GetGroupMembersListPublicV1Short@go.group.fun'
     name: 'GetGroupMembersListPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3703,7 +3859,7 @@ functions:
 
       Action Code: 73410
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetGroupMembersListPublicV1Params'
         required: true
@@ -3730,9 +3886,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'GetListGroupByIDsAdminV2Short@group':
-    id: 'GetListGroupByIDsAdminV2Short@group'
+  'GetListGroupByIDsAdminV2Short@go.group.fun':
+    id: 'GetListGroupByIDsAdminV2Short@go.group.fun'
     name: 'GetListGroupByIDsAdminV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3740,7 +3897,7 @@ functions:
 
       Action Code: 73303
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetListGroupByIDsAdminV2Params'
         required: true
@@ -3768,9 +3925,10 @@ functions:
       - 'list'
       - 'v2'
 
-  'GetListGroupByIDsV2Short@group':
-    id: 'GetListGroupByIDsV2Short@group'
+  'GetListGroupByIDsV2Short@go.group.fun':
+    id: 'GetListGroupByIDsV2Short@go.group.fun'
     name: 'GetListGroupByIDsV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3778,7 +3936,7 @@ functions:
 
       Action Code: 73303
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetListGroupByIDsV2Params'
         required: true
@@ -3805,15 +3963,16 @@ functions:
       - 'list'
       - 'v2'
 
-  'GetMemberRolesListAdminV1Short@group':
-    id: 'GetMemberRolesListAdminV1Short@group'
+  'GetMemberRolesListAdminV1Short@go.group.fun':
+    id: 'GetMemberRolesListAdminV1Short@go.group.fun'
     name: 'GetMemberRolesListAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to get list of member roles
 
       Action Code: 73201
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.GetMemberRolesListAdminV1Params'
         required: true
@@ -3840,9 +3999,10 @@ functions:
       - 'roles'
       - 'v1'
 
-  'GetMemberRolesListPublicV1Short@group':
-    id: 'GetMemberRolesListPublicV1Short@group'
+  'GetMemberRolesListPublicV1Short@go.group.fun':
+    id: 'GetMemberRolesListPublicV1Short@go.group.fun'
     name: 'GetMemberRolesListPublicV1Short'
+    type: 'function'
     description: |-
       Required Member Role Permission: "GROUP:ROLE [READ]"
 
@@ -3850,7 +4010,7 @@ functions:
 
       Action Code: 73201
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.GetMemberRolesListPublicV1Params'
         required: true
@@ -3877,15 +4037,16 @@ functions:
       - 'roles'
       - 'v1'
 
-  'GetMemberRolesListPublicV2Short@group':
-    id: 'GetMemberRolesListPublicV2Short@group'
+  'GetMemberRolesListPublicV2Short@go.group.fun':
+    id: 'GetMemberRolesListPublicV2Short@go.group.fun'
     name: 'GetMemberRolesListPublicV2Short'
+    type: 'function'
     description: |-
       This endpoint is used to get list of member roles
 
       Action Code: 73201
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.GetMemberRolesListPublicV2Params'
         required: true
@@ -3912,9 +4073,10 @@ functions:
       - 'roles'
       - 'v2'
 
-  'GetMyGroupJoinRequestV2Short@group':
-    id: 'GetMyGroupJoinRequestV2Short@group'
+  'GetMyGroupJoinRequestV2Short@go.group.fun':
+    id: 'GetMyGroupJoinRequestV2Short@go.group.fun'
     name: 'GetMyGroupJoinRequestV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3924,7 +4086,7 @@ functions:
 
       Action Code: 73502
     struct: 'MemberRequestService'
-    parameters:
+    arguments:
       params:
         type: '*member_request.GetMyGroupJoinRequestV2Params'
         required: true
@@ -3951,15 +4113,16 @@ functions:
       - 'request'
       - 'v2'
 
-  'GetSingleGroupAdminV1Short@group':
-    id: 'GetSingleGroupAdminV1Short@group'
+  'GetSingleGroupAdminV1Short@go.group.fun':
+    id: 'GetSingleGroupAdminV1Short@go.group.fun'
     name: 'GetSingleGroupAdminV1Short'
+    type: 'function'
     description: |-
       Get single group information. This endpoint will show the group information by the groupId
 
       Action Code: 73306
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetSingleGroupAdminV1Params'
         required: true
@@ -3984,9 +4147,10 @@ functions:
       - 'single'
       - 'v1'
 
-  'GetSingleGroupPublicV1Short@group':
-    id: 'GetSingleGroupPublicV1Short@group'
+  'GetSingleGroupPublicV1Short@go.group.fun':
+    id: 'GetSingleGroupPublicV1Short@go.group.fun'
     name: 'GetSingleGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -3994,7 +4158,7 @@ functions:
 
       Action Code: 73306
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.GetSingleGroupPublicV1Params'
         required: true
@@ -4019,15 +4183,16 @@ functions:
       - 'single'
       - 'v1'
 
-  'GetSingleMemberRoleAdminV1Short@group':
-    id: 'GetSingleMemberRoleAdminV1Short@group'
+  'GetSingleMemberRoleAdminV1Short@go.group.fun':
+    id: 'GetSingleMemberRoleAdminV1Short@go.group.fun'
     name: 'GetSingleMemberRoleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to get member role based on the role ID
 
       Action Code: 73203
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.GetSingleMemberRoleAdminV1Params'
         required: true
@@ -4055,9 +4220,10 @@ functions:
       - 'single'
       - 'v1'
 
-  'GetUserGroupInformationPublicV1Short@group':
-    id: 'GetUserGroupInformationPublicV1Short@group'
+  'GetUserGroupInformationPublicV1Short@go.group.fun':
+    id: 'GetUserGroupInformationPublicV1Short@go.group.fun'
     name: 'GetUserGroupInformationPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4073,7 +4239,7 @@ functions:
 
       Action Code: 73405
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetUserGroupInformationPublicV1Params'
         required: true
@@ -4100,9 +4266,10 @@ functions:
       - 'user'
       - 'v1'
 
-  'GetUserGroupInformationPublicV2Short@group':
-    id: 'GetUserGroupInformationPublicV2Short@group'
+  'GetUserGroupInformationPublicV2Short@go.group.fun':
+    id: 'GetUserGroupInformationPublicV2Short@go.group.fun'
     name: 'GetUserGroupInformationPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4116,7 +4283,7 @@ functions:
 
       Action Code: 73405
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetUserGroupInformationPublicV2Params'
         required: true
@@ -4143,9 +4310,10 @@ functions:
       - 'user'
       - 'v2'
 
-  'GetUserGroupStatusInformationV2Short@group':
-    id: 'GetUserGroupStatusInformationV2Short@group'
+  'GetUserGroupStatusInformationV2Short@go.group.fun':
+    id: 'GetUserGroupStatusInformationV2Short@go.group.fun'
     name: 'GetUserGroupStatusInformationV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4157,7 +4325,7 @@ functions:
 
       Action Code: 73409
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetUserGroupStatusInformationV2Params'
         required: true
@@ -4184,9 +4352,10 @@ functions:
       - 'user'
       - 'v2'
 
-  'GetUserJoinedGroupInformationPublicV2Short@group':
-    id: 'GetUserJoinedGroupInformationPublicV2Short@group'
+  'GetUserJoinedGroupInformationPublicV2Short@go.group.fun':
+    id: 'GetUserJoinedGroupInformationPublicV2Short@go.group.fun'
     name: 'GetUserJoinedGroupInformationPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4198,7 +4367,7 @@ functions:
 
       * JOINED: status of user already joined to a group
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.GetUserJoinedGroupInformationPublicV2Params'
         required: true
@@ -4226,9 +4395,10 @@ functions:
       - 'user'
       - 'v2'
 
-  'InitiateGroupConfigurationAdminV1Short@group':
-    id: 'InitiateGroupConfigurationAdminV1Short@group'
+  'InitiateGroupConfigurationAdminV1Short@go.group.fun':
+    id: 'InitiateGroupConfigurationAdminV1Short@go.group.fun'
     name: 'InitiateGroupConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to initiate configuration.
       This endpoint will automatically create default configuration and member roles with default permission
@@ -4240,7 +4410,7 @@ functions:
       Default max member value will be 50 and global rules will be empty
       Action Code: 73104
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.InitiateGroupConfigurationAdminV1Params'
         required: true
@@ -4265,9 +4435,10 @@ functions:
       - 'initiate'
       - 'v1'
 
-  'InviteGroupPublicV1Short@group':
-    id: 'InviteGroupPublicV1Short@group'
+  'InviteGroupPublicV1Short@go.group.fun':
+    id: 'InviteGroupPublicV1Short@go.group.fun'
     name: 'InviteGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4291,7 +4462,7 @@ functions:
 
       The invited user will have a permission to invite another user to the group
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.InviteGroupPublicV1Params'
         required: true
@@ -4316,9 +4487,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'InviteGroupPublicV2Short@group':
-    id: 'InviteGroupPublicV2Short@group'
+  'InviteGroupPublicV2Short@go.group.fun':
+    id: 'InviteGroupPublicV2Short@go.group.fun'
     name: 'InviteGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4342,7 +4514,7 @@ functions:
 
       The invited user will have a permission to invite another user to the group
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.InviteGroupPublicV2Params'
         required: true
@@ -4367,9 +4539,10 @@ functions:
       - 'public'
       - 'v2'
 
-  'JoinGroupV1Short@group':
-    id: 'JoinGroupV1Short@group'
+  'JoinGroupV1Short@go.group.fun':
+    id: 'JoinGroupV1Short@go.group.fun'
     name: 'JoinGroupV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4387,7 +4560,7 @@ functions:
 
       Action Code: 73403
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.JoinGroupV1Params'
         required: true
@@ -4411,9 +4584,10 @@ functions:
       - 'member'
       - 'v1'
 
-  'JoinGroupV2Short@group':
-    id: 'JoinGroupV2Short@group'
+  'JoinGroupV2Short@go.group.fun':
+    id: 'JoinGroupV2Short@go.group.fun'
     name: 'JoinGroupV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4431,7 +4605,7 @@ functions:
 
       Action Code: 73403
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.JoinGroupV2Params'
         required: true
@@ -4455,9 +4629,10 @@ functions:
       - 'member'
       - 'v2'
 
-  'KickGroupMemberPublicV1Short@group':
-    id: 'KickGroupMemberPublicV1Short@group'
+  'KickGroupMemberPublicV1Short@go.group.fun':
+    id: 'KickGroupMemberPublicV1Short@go.group.fun'
     name: 'KickGroupMemberPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4469,7 +4644,7 @@ functions:
 
       Action Code: 73409
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.KickGroupMemberPublicV1Params'
         required: true
@@ -4494,9 +4669,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'KickGroupMemberPublicV2Short@group':
-    id: 'KickGroupMemberPublicV2Short@group'
+  'KickGroupMemberPublicV2Short@go.group.fun':
+    id: 'KickGroupMemberPublicV2Short@go.group.fun'
     name: 'KickGroupMemberPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4508,7 +4684,7 @@ functions:
 
       Action Code: 73409
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.KickGroupMemberPublicV2Params'
         required: true
@@ -4533,9 +4709,10 @@ functions:
       - 'public'
       - 'v2'
 
-  'LeaveGroupPublicV1Short@group':
-    id: 'LeaveGroupPublicV1Short@group'
+  'LeaveGroupPublicV1Short@go.group.fun':
+    id: 'LeaveGroupPublicV1Short@go.group.fun'
     name: 'LeaveGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4545,7 +4722,7 @@ functions:
 
       Action Code: 73404
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.LeaveGroupPublicV1Params'
         required: true
@@ -4570,9 +4747,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'LeaveGroupPublicV2Short@group':
-    id: 'LeaveGroupPublicV2Short@group'
+  'LeaveGroupPublicV2Short@go.group.fun':
+    id: 'LeaveGroupPublicV2Short@go.group.fun'
     name: 'LeaveGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4582,7 +4760,7 @@ functions:
 
       Action Code: 73404
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.LeaveGroupPublicV2Params'
         required: true
@@ -4607,15 +4785,16 @@ functions:
       - 'public'
       - 'v2'
 
-  'ListGroupConfigurationAdminV1Short@group':
-    id: 'ListGroupConfigurationAdminV1Short@group'
+  'ListGroupConfigurationAdminV1Short@go.group.fun':
+    id: 'ListGroupConfigurationAdminV1Short@go.group.fun'
     name: 'ListGroupConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
       Action Code: 73101
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.ListGroupConfigurationAdminV1Params'
         required: true
@@ -4640,9 +4819,10 @@ functions:
       - 'list'
       - 'v1'
 
-  'RejectGroupInvitationPublicV1Short@group':
-    id: 'RejectGroupInvitationPublicV1Short@group'
+  'RejectGroupInvitationPublicV1Short@go.group.fun':
+    id: 'RejectGroupInvitationPublicV1Short@go.group.fun'
     name: 'RejectGroupInvitationPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4652,7 +4832,7 @@ functions:
 
       Action Code: 73402
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.RejectGroupInvitationPublicV1Params'
         required: true
@@ -4678,9 +4858,10 @@ functions:
       - 'reject'
       - 'v1'
 
-  'RejectGroupInvitationPublicV2Short@group':
-    id: 'RejectGroupInvitationPublicV2Short@group'
+  'RejectGroupInvitationPublicV2Short@go.group.fun':
+    id: 'RejectGroupInvitationPublicV2Short@go.group.fun'
     name: 'RejectGroupInvitationPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4690,7 +4871,7 @@ functions:
 
       Action Code: 73402
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.RejectGroupInvitationPublicV2Params'
         required: true
@@ -4716,9 +4897,10 @@ functions:
       - 'reject'
       - 'v2'
 
-  'RejectGroupJoinRequestPublicV1Short@group':
-    id: 'RejectGroupJoinRequestPublicV1Short@group'
+  'RejectGroupJoinRequestPublicV1Short@go.group.fun':
+    id: 'RejectGroupJoinRequestPublicV1Short@go.group.fun'
     name: 'RejectGroupJoinRequestPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4732,7 +4914,7 @@ functions:
 
       Action Code: 73408
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.RejectGroupJoinRequestPublicV1Params'
         required: true
@@ -4759,9 +4941,10 @@ functions:
       - 'request'
       - 'v1'
 
-  'RejectGroupJoinRequestPublicV2Short@group':
-    id: 'RejectGroupJoinRequestPublicV2Short@group'
+  'RejectGroupJoinRequestPublicV2Short@go.group.fun':
+    id: 'RejectGroupJoinRequestPublicV2Short@go.group.fun'
     name: 'RejectGroupJoinRequestPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4775,7 +4958,7 @@ functions:
 
       Action Code: 73408
     struct: 'GroupMemberService'
-    parameters:
+    arguments:
       params:
         type: '*group_member.RejectGroupJoinRequestPublicV2Params'
         required: true
@@ -4802,15 +4985,16 @@ functions:
       - 'request'
       - 'v2'
 
-  'UpdateGroupConfigurationAdminV1Short@group':
-    id: 'UpdateGroupConfigurationAdminV1Short@group'
+  'UpdateGroupConfigurationAdminV1Short@go.group.fun':
+    id: 'UpdateGroupConfigurationAdminV1Short@go.group.fun'
     name: 'UpdateGroupConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
 
       Action Code: 73102
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.UpdateGroupConfigurationAdminV1Params'
         required: true
@@ -4835,15 +5019,16 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateGroupConfigurationGlobalRuleAdminV1Short@group':
-    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Short@group'
+  'UpdateGroupConfigurationGlobalRuleAdminV1Short@go.group.fun':
+    id: 'UpdateGroupConfigurationGlobalRuleAdminV1Short@go.group.fun'
     name: 'UpdateGroupConfigurationGlobalRuleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
 
       Action Code: 73106
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.UpdateGroupConfigurationGlobalRuleAdminV1Params'
         required: true
@@ -4870,9 +5055,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateGroupCustomAttributesPublicV1Short@group':
-    id: 'UpdateGroupCustomAttributesPublicV1Short@group'
+  'UpdateGroupCustomAttributesPublicV1Short@go.group.fun':
+    id: 'UpdateGroupCustomAttributesPublicV1Short@go.group.fun'
     name: 'UpdateGroupCustomAttributesPublicV1Short'
+    type: 'function'
     description: |-
       Requires valid user authentication
 
@@ -4882,7 +5068,7 @@ functions:
 
       Action Code: 73311
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupCustomAttributesPublicV1Params'
         required: true
@@ -4908,9 +5094,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateGroupCustomAttributesPublicV2Short@group':
-    id: 'UpdateGroupCustomAttributesPublicV2Short@group'
+  'UpdateGroupCustomAttributesPublicV2Short@go.group.fun':
+    id: 'UpdateGroupCustomAttributesPublicV2Short@go.group.fun'
     name: 'UpdateGroupCustomAttributesPublicV2Short'
+    type: 'function'
     description: |-
       Requires valid user authentication
 
@@ -4920,7 +5107,7 @@ functions:
 
       Action Code: 73311
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupCustomAttributesPublicV2Params'
         required: true
@@ -4946,9 +5133,10 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdateGroupCustomRulePublicV1Short@group':
-    id: 'UpdateGroupCustomRulePublicV1Short@group'
+  'UpdateGroupCustomRulePublicV1Short@go.group.fun':
+    id: 'UpdateGroupCustomRulePublicV1Short@go.group.fun'
     name: 'UpdateGroupCustomRulePublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4956,7 +5144,7 @@ functions:
 
       Action Code: 73308
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupCustomRulePublicV1Params'
         required: true
@@ -4982,9 +5170,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateGroupCustomRulePublicV2Short@group':
-    id: 'UpdateGroupCustomRulePublicV2Short@group'
+  'UpdateGroupCustomRulePublicV2Short@go.group.fun':
+    id: 'UpdateGroupCustomRulePublicV2Short@go.group.fun'
     name: 'UpdateGroupCustomRulePublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -4992,7 +5181,7 @@ functions:
 
       Action Code: 73308
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupCustomRulePublicV2Params'
         required: true
@@ -5018,9 +5207,10 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdateGroupPredefinedRulePublicV1Short@group':
-    id: 'UpdateGroupPredefinedRulePublicV1Short@group'
+  'UpdateGroupPredefinedRulePublicV1Short@go.group.fun':
+    id: 'UpdateGroupPredefinedRulePublicV1Short@go.group.fun'
     name: 'UpdateGroupPredefinedRulePublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5032,7 +5222,7 @@ functions:
 
       Action Code: 73310
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupPredefinedRulePublicV1Params'
         required: true
@@ -5058,9 +5248,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateGroupPredefinedRulePublicV2Short@group':
-    id: 'UpdateGroupPredefinedRulePublicV2Short@group'
+  'UpdateGroupPredefinedRulePublicV2Short@go.group.fun':
+    id: 'UpdateGroupPredefinedRulePublicV2Short@go.group.fun'
     name: 'UpdateGroupPredefinedRulePublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5072,7 +5263,7 @@ functions:
 
       Action Code: 73310
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateGroupPredefinedRulePublicV2Params'
         required: true
@@ -5098,15 +5289,16 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdateMemberRoleAdminV1Short@group':
-    id: 'UpdateMemberRoleAdminV1Short@group'
+  'UpdateMemberRoleAdminV1Short@go.group.fun':
+    id: 'UpdateMemberRoleAdminV1Short@go.group.fun'
     name: 'UpdateMemberRoleAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to update member role
 
       Action Code: 73204
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.UpdateMemberRoleAdminV1Params'
         required: true
@@ -5133,9 +5325,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateMemberRolePermissionAdminV1Short@group':
-    id: 'UpdateMemberRolePermissionAdminV1Short@group'
+  'UpdateMemberRolePermissionAdminV1Short@go.group.fun':
+    id: 'UpdateMemberRolePermissionAdminV1Short@go.group.fun'
     name: 'UpdateMemberRolePermissionAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
 
@@ -5151,7 +5344,7 @@ functions:
 
       The changes will update user role to be able to read a role of other member
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.UpdateMemberRolePermissionAdminV1Params'
         required: true
@@ -5179,9 +5372,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateMemberRolePublicV1Short@group':
-    id: 'UpdateMemberRolePublicV1Short@group'
+  'UpdateMemberRolePublicV1Short@go.group.fun':
+    id: 'UpdateMemberRolePublicV1Short@go.group.fun'
     name: 'UpdateMemberRolePublicV1Short'
+    type: 'function'
     description: |-
       Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
@@ -5189,7 +5383,7 @@ functions:
 
       Action Code: 73204
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.UpdateMemberRolePublicV1Params'
         required: true
@@ -5216,9 +5410,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateMemberRolePublicV2Short@group':
-    id: 'UpdateMemberRolePublicV2Short@group'
+  'UpdateMemberRolePublicV2Short@go.group.fun':
+    id: 'UpdateMemberRolePublicV2Short@go.group.fun'
     name: 'UpdateMemberRolePublicV2Short'
+    type: 'function'
     description: |-
       Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
@@ -5226,7 +5421,7 @@ functions:
 
       Action Code: 73204
     struct: 'GroupRolesService'
-    parameters:
+    arguments:
       params:
         type: '*group_roles.UpdateMemberRolePublicV2Params'
         required: true
@@ -5253,9 +5448,10 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdatePatchSingleGroupPublicV1Short@group':
-    id: 'UpdatePatchSingleGroupPublicV1Short@group'
+  'UpdatePatchSingleGroupPublicV1Short@go.group.fun':
+    id: 'UpdatePatchSingleGroupPublicV1Short@go.group.fun'
     name: 'UpdatePatchSingleGroupPublicV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5265,7 +5461,7 @@ functions:
 
       Action Code: 73307
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdatePatchSingleGroupPublicV1Params'
         required: true
@@ -5291,9 +5487,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdatePatchSingleGroupPublicV2Short@group':
-    id: 'UpdatePatchSingleGroupPublicV2Short@group'
+  'UpdatePatchSingleGroupPublicV2Short@go.group.fun':
+    id: 'UpdatePatchSingleGroupPublicV2Short@go.group.fun'
     name: 'UpdatePatchSingleGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5303,7 +5500,7 @@ functions:
 
       Action Code: 73307
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdatePatchSingleGroupPublicV2Params'
         required: true
@@ -5329,9 +5526,10 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdatePutSingleGroupPublicV2Short@group':
-    id: 'UpdatePutSingleGroupPublicV2Short@group'
+  'UpdatePutSingleGroupPublicV2Short@go.group.fun':
+    id: 'UpdatePutSingleGroupPublicV2Short@go.group.fun'
     name: 'UpdatePutSingleGroupPublicV2Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5341,7 +5539,7 @@ functions:
 
       Action Code: 73307
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdatePutSingleGroupPublicV2Params'
         required: true
@@ -5367,9 +5565,10 @@ functions:
       - 'update'
       - 'v2'
 
-  'UpdateSingleGroupV1Short@group':
-    id: 'UpdateSingleGroupV1Short@group'
+  'UpdateSingleGroupV1Short@go.group.fun':
+    id: 'UpdateSingleGroupV1Short@go.group.fun'
     name: 'UpdateSingleGroupV1Short'
+    type: 'function'
     description: |-
       Required valid user authentication
 
@@ -5379,7 +5578,7 @@ functions:
 
       Action Code: 73307
     struct: 'GroupService'
-    parameters:
+    arguments:
       params:
         type: '*group.UpdateSingleGroupV1Params'
         required: true
@@ -5402,3 +5601,5 @@ functions:
       - 'single'
       - 'update'
       - 'v1'
+
+  # endregion functions

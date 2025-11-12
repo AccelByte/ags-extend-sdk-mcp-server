@@ -1,10 +1,16 @@
-structs:
-  'JusticeBasicService@basic':
-    id: 'JusticeBasicService@basic'
-    name: 'JusticeBasicService'
+symbols:
+  'NewBasicClient@go.basic.fun':
+    id: 'NewBasicClient@go.basic.fun'
+    name: 'NewBasicClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*basicclient.JusticeBasicService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/basic-sdk/pkg/basicclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/justice_basic_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/basicclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AnonymizationService@basic':
-    id: 'AnonymizationService@basic'
+  'AnonymizationService@go.basic.mod':
+    id: 'AnonymizationService@go.basic.mod'
     name: 'AnonymizationService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ConfigService@basic':
-    id: 'ConfigService@basic'
+  'ConfigService@go.basic.mod':
+    id: 'ConfigService@go.basic.mod'
     name: 'ConfigService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'FileUploadService@basic':
-    id: 'FileUploadService@basic'
+  'FileUploadService@go.basic.mod':
+    id: 'FileUploadService@go.basic.mod'
     name: 'FileUploadService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'MiscService@basic':
-    id: 'MiscService@basic'
+  'MiscService@go.basic.mod':
+    id: 'MiscService@go.basic.mod'
     name: 'MiscService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'NamespaceService@basic':
-    id: 'NamespaceService@basic'
+  'NamespaceService@go.basic.mod':
+    id: 'NamespaceService@go.basic.mod'
     name: 'NamespaceService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserProfileService@basic':
-    id: 'UserProfileService@basic'
+  'UserProfileService@go.basic.mod':
+    id: 'UserProfileService@go.basic.mod'
     name: 'UserProfileService'
+    type: 'model'
     fields:
       Client:
         type: '*basicclient.JusticeBasicService'
@@ -161,9 +173,10 @@ structs:
 
   # region params
 
-  'AddCountryGroupParams@basic':
-    id: 'AddCountryGroupParams@basic'
+  'AddCountryGroupParams@go.basic.mod':
+    id: 'AddCountryGroupParams@go.basic.mod'
     name: 'AddCountryGroupParams'
+    type: 'model'
     fields:
       'Body':
         type: '*AddCountryGroupRequest'
@@ -178,9 +191,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/add_country_group_parameters.go'
 
-  'AdminGetUserProfilePublicInfoByIdsParams@basic':
-    id: 'AdminGetUserProfilePublicInfoByIdsParams@basic'
+  'AdminGetUserProfilePublicInfoByIdsParams@go.basic.mod':
+    id: 'AdminGetUserProfilePublicInfoByIdsParams@go.basic.mod'
     name: 'AdminGetUserProfilePublicInfoByIdsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileBulkRequest'
@@ -195,9 +209,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/admin_get_user_profile_public_info_by_ids_parameters.go'
 
-  'AnonymizeUserProfileParams@basic':
-    id: 'AnonymizeUserProfileParams@basic'
+  'AnonymizeUserProfileParams@go.basic.mod':
+    id: 'AnonymizeUserProfileParams@go.basic.mod'
     name: 'AnonymizeUserProfileParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -214,9 +229,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/anonymization/anonymize_user_profile_parameters.go'
 
-  'ChangeNamespaceStatusParams@basic':
-    id: 'ChangeNamespaceStatusParams@basic'
+  'ChangeNamespaceStatusParams@go.basic.mod':
+    id: 'ChangeNamespaceStatusParams@go.basic.mod'
     name: 'ChangeNamespaceStatusParams'
+    type: 'model'
     fields:
       'Body':
         type: '*NamespaceStatusUpdate'
@@ -231,9 +247,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/change_namespace_status_parameters.go'
 
-  'CreateConfigParams@basic':
-    id: 'CreateConfigParams@basic'
+  'CreateConfigParams@go.basic.mod':
+    id: 'CreateConfigParams@go.basic.mod'
     name: 'CreateConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ConfigCreate'
@@ -246,9 +263,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/create_config_parameters.go'
 
-  'CreateMyProfileParams@basic':
-    id: 'CreateMyProfileParams@basic'
+  'CreateMyProfileParams@go.basic.mod':
+    id: 'CreateMyProfileParams@go.basic.mod'
     name: 'CreateMyProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfilePrivateCreate'
@@ -263,9 +281,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/create_my_profile_parameters.go'
 
-  'CreateNamespaceParams@basic':
-    id: 'CreateNamespaceParams@basic'
+  'CreateNamespaceParams@go.basic.mod':
+    id: 'CreateNamespaceParams@go.basic.mod'
     name: 'CreateNamespaceParams'
+    type: 'model'
     fields:
       'Body':
         type: '*NamespaceCreate'
@@ -275,9 +294,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/create_namespace_parameters.go'
 
-  'DeleteConfigParams@basic':
-    id: 'DeleteConfigParams@basic'
+  'DeleteConfigParams@go.basic.mod':
+    id: 'DeleteConfigParams@go.basic.mod'
     name: 'DeleteConfigParams'
+    type: 'model'
     fields:
       'ConfigKey':
         type: 'string'
@@ -290,9 +310,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/delete_config_parameters.go'
 
-  'DeleteCountryGroupParams@basic':
-    id: 'DeleteCountryGroupParams@basic'
+  'DeleteCountryGroupParams@go.basic.mod':
+    id: 'DeleteCountryGroupParams@go.basic.mod'
     name: 'DeleteCountryGroupParams'
+    type: 'model'
     fields:
       'CountryGroupCode':
         type: 'string'
@@ -309,9 +330,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/delete_country_group_parameters.go'
 
-  'DeleteNamespaceParams@basic':
-    id: 'DeleteNamespaceParams@basic'
+  'DeleteNamespaceParams@go.basic.mod':
+    id: 'DeleteNamespaceParams@go.basic.mod'
     name: 'DeleteNamespaceParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -323,9 +345,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/delete_namespace_parameters.go'
 
-  'DeleteUserProfileParams@basic':
-    id: 'DeleteUserProfileParams@basic'
+  'DeleteUserProfileParams@go.basic.mod':
+    id: 'DeleteUserProfileParams@go.basic.mod'
     name: 'DeleteUserProfileParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -342,9 +365,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/delete_user_profile_parameters.go'
 
-  'GeneratedUploadURLParams@basic':
-    id: 'GeneratedUploadURLParams@basic'
+  'GeneratedUploadURLParams@go.basic.mod':
+    id: 'GeneratedUploadURLParams@go.basic.mod'
     name: 'GeneratedUploadURLParams'
+    type: 'model'
     fields:
       'FileType':
         type: 'string'
@@ -366,9 +390,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/generated_upload_url_parameters.go'
 
-  'GeneratedUserUploadContentURLParams@basic':
-    id: 'GeneratedUserUploadContentURLParams@basic'
+  'GeneratedUserUploadContentURLParams@go.basic.mod':
+    id: 'GeneratedUserUploadContentURLParams@go.basic.mod'
     name: 'GeneratedUserUploadContentURLParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -395,9 +420,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/generated_user_upload_content_url_parameters.go'
 
-  'GetChildNamespacesParams@basic':
-    id: 'GetChildNamespacesParams@basic'
+  'GetChildNamespacesParams@go.basic.mod':
+    id: 'GetChildNamespacesParams@go.basic.mod'
     name: 'GetChildNamespacesParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -412,9 +438,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_child_namespaces_parameters.go'
 
-  'GetConfigParams@basic':
-    id: 'GetConfigParams@basic'
+  'GetConfigParams@go.basic.mod':
+    id: 'GetConfigParams@go.basic.mod'
     name: 'GetConfigParams'
+    type: 'model'
     fields:
       'ConfigKey':
         type: 'string'
@@ -429,9 +456,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/get_config_parameters.go'
 
-  'GetCountriesParams@basic':
-    id: 'GetCountriesParams@basic'
+  'GetCountriesParams@go.basic.mod':
+    id: 'GetCountriesParams@go.basic.mod'
     name: 'GetCountriesParams'
+    type: 'model'
     fields:
       'Lang':
         type: 'string'
@@ -448,9 +476,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_countries_parameters.go'
 
-  'GetCountryGroupsParams@basic':
-    id: 'GetCountryGroupsParams@basic'
+  'GetCountryGroupsParams@go.basic.mod':
+    id: 'GetCountryGroupsParams@go.basic.mod'
     name: 'GetCountryGroupsParams'
+    type: 'model'
     fields:
       'GroupCode':
         type: 'string'
@@ -467,9 +496,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_country_groups_parameters.go'
 
-  'GetCustomAttributesInfoParams@basic':
-    id: 'GetCustomAttributesInfoParams@basic'
+  'GetCustomAttributesInfoParams@go.basic.mod':
+    id: 'GetCustomAttributesInfoParams@go.basic.mod'
     name: 'GetCustomAttributesInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -486,9 +516,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_custom_attributes_info_parameters.go'
 
-  'GetGameNamespacesParams@basic':
-    id: 'GetGameNamespacesParams@basic'
+  'GetGameNamespacesParams@go.basic.mod':
+    id: 'GetGameNamespacesParams@go.basic.mod'
     name: 'GetGameNamespacesParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -503,9 +534,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_game_namespaces_parameters.go'
 
-  'GetLanguagesParams@basic':
-    id: 'GetLanguagesParams@basic'
+  'GetLanguagesParams@go.basic.mod':
+    id: 'GetLanguagesParams@go.basic.mod'
     name: 'GetLanguagesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -517,9 +549,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_languages_parameters.go'
 
-  'GetMyPrivateCustomAttributesInfoParams@basic':
-    id: 'GetMyPrivateCustomAttributesInfoParams@basic'
+  'GetMyPrivateCustomAttributesInfoParams@go.basic.mod':
+    id: 'GetMyPrivateCustomAttributesInfoParams@go.basic.mod'
     name: 'GetMyPrivateCustomAttributesInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -531,9 +564,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_private_custom_attributes_info_parameters.go'
 
-  'GetMyProfileInfoParams@basic':
-    id: 'GetMyProfileInfoParams@basic'
+  'GetMyProfileInfoParams@go.basic.mod':
+    id: 'GetMyProfileInfoParams@go.basic.mod'
     name: 'GetMyProfileInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -545,9 +579,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_profile_info_parameters.go'
 
-  'GetMyZipCodeParams@basic':
-    id: 'GetMyZipCodeParams@basic'
+  'GetMyZipCodeParams@go.basic.mod':
+    id: 'GetMyZipCodeParams@go.basic.mod'
     name: 'GetMyZipCodeParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -559,9 +594,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_my_zip_code_parameters.go'
 
-  'GetNamespaceParams@basic':
-    id: 'GetNamespaceParams@basic'
+  'GetNamespaceParams@go.basic.mod':
+    id: 'GetNamespaceParams@go.basic.mod'
     name: 'GetNamespaceParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -578,9 +614,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_parameters.go'
 
-  'GetNamespace1Params@basic':
-    id: 'GetNamespace1Params@basic'
+  'GetNamespace1Params@go.basic.mod':
+    id: 'GetNamespace1Params@go.basic.mod'
     name: 'GetNamespace1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -592,9 +629,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_1_parameters.go'
 
-  'GetNamespaceContextParams@basic':
-    id: 'GetNamespaceContextParams@basic'
+  'GetNamespaceContextParams@go.basic.mod':
+    id: 'GetNamespaceContextParams@go.basic.mod'
     name: 'GetNamespaceContextParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -607,9 +645,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_context_parameters.go'
 
-  'GetNamespacePublisherParams@basic':
-    id: 'GetNamespacePublisherParams@basic'
+  'GetNamespacePublisherParams@go.basic.mod':
+    id: 'GetNamespacePublisherParams@go.basic.mod'
     name: 'GetNamespacePublisherParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -621,9 +660,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespace_publisher_parameters.go'
 
-  'GetNamespacesParams@basic':
-    id: 'GetNamespacesParams@basic'
+  'GetNamespacesParams@go.basic.mod':
+    id: 'GetNamespacesParams@go.basic.mod'
     name: 'GetNamespacesParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -635,9 +675,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/get_namespaces_parameters.go'
 
-  'GetPrivateCustomAttributesInfoParams@basic':
-    id: 'GetPrivateCustomAttributesInfoParams@basic'
+  'GetPrivateCustomAttributesInfoParams@go.basic.mod':
+    id: 'GetPrivateCustomAttributesInfoParams@go.basic.mod'
     name: 'GetPrivateCustomAttributesInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -654,9 +695,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_private_custom_attributes_info_parameters.go'
 
-  'GetPublisherConfigParams@basic':
-    id: 'GetPublisherConfigParams@basic'
+  'GetPublisherConfigParams@go.basic.mod':
+    id: 'GetPublisherConfigParams@go.basic.mod'
     name: 'GetPublisherConfigParams'
+    type: 'model'
     fields:
       'ConfigKey':
         type: 'string'
@@ -671,9 +713,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/get_publisher_config_parameters.go'
 
-  'GetTimeZonesParams@basic':
-    id: 'GetTimeZonesParams@basic'
+  'GetTimeZonesParams@go.basic.mod':
+    id: 'GetTimeZonesParams@go.basic.mod'
     name: 'GetTimeZonesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -685,9 +728,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/get_time_zones_parameters.go'
 
-  'GetUserProfileInfoParams@basic':
-    id: 'GetUserProfileInfoParams@basic'
+  'GetUserProfileInfoParams@go.basic.mod':
+    id: 'GetUserProfileInfoParams@go.basic.mod'
     name: 'GetUserProfileInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -704,9 +748,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_user_profile_info_parameters.go'
 
-  'GetUserProfileInfoByPublicIDParams@basic':
-    id: 'GetUserProfileInfoByPublicIDParams@basic'
+  'GetUserProfileInfoByPublicIDParams@go.basic.mod':
+    id: 'GetUserProfileInfoByPublicIDParams@go.basic.mod'
     name: 'GetUserProfileInfoByPublicIDParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -723,9 +768,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/get_user_profile_info_by_public_id_parameters.go'
 
-  'PublicBulkGetUserProfilePublicInfoParams@basic':
-    id: 'PublicBulkGetUserProfilePublicInfoParams@basic'
+  'PublicBulkGetUserProfilePublicInfoParams@go.basic.mod':
+    id: 'PublicBulkGetUserProfilePublicInfoParams@go.basic.mod'
     name: 'PublicBulkGetUserProfilePublicInfoParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileBulkRequest'
@@ -740,9 +786,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_bulk_get_user_profile_public_info_parameters.go'
 
-  'PublicCreateUserProfileParams@basic':
-    id: 'PublicCreateUserProfileParams@basic'
+  'PublicCreateUserProfileParams@go.basic.mod':
+    id: 'PublicCreateUserProfileParams@go.basic.mod'
     name: 'PublicCreateUserProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileCreate'
@@ -762,9 +809,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_create_user_profile_parameters.go'
 
-  'PublicGeneratedUploadURLParams@basic':
-    id: 'PublicGeneratedUploadURLParams@basic'
+  'PublicGeneratedUploadURLParams@go.basic.mod':
+    id: 'PublicGeneratedUploadURLParams@go.basic.mod'
     name: 'PublicGeneratedUploadURLParams'
+    type: 'model'
     fields:
       'FileType':
         type: 'string'
@@ -786,9 +834,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/public_generated_upload_url_parameters.go'
 
-  'PublicGeneratedUserUploadContentURLParams@basic':
-    id: 'PublicGeneratedUserUploadContentURLParams@basic'
+  'PublicGeneratedUserUploadContentURLParams@go.basic.mod':
+    id: 'PublicGeneratedUserUploadContentURLParams@go.basic.mod'
     name: 'PublicGeneratedUserUploadContentURLParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -815,9 +864,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/file_upload/public_generated_user_upload_content_url_parameters.go'
 
-  'PublicGetCountriesParams@basic':
-    id: 'PublicGetCountriesParams@basic'
+  'PublicGetCountriesParams@go.basic.mod':
+    id: 'PublicGetCountriesParams@go.basic.mod'
     name: 'PublicGetCountriesParams'
+    type: 'model'
     fields:
       'Lang':
         type: 'string'
@@ -834,9 +884,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_countries_parameters.go'
 
-  'PublicGetCustomAttributesInfoParams@basic':
-    id: 'PublicGetCustomAttributesInfoParams@basic'
+  'PublicGetCustomAttributesInfoParams@go.basic.mod':
+    id: 'PublicGetCustomAttributesInfoParams@go.basic.mod'
     name: 'PublicGetCustomAttributesInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -853,9 +904,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_custom_attributes_info_parameters.go'
 
-  'PublicGetLanguagesParams@basic':
-    id: 'PublicGetLanguagesParams@basic'
+  'PublicGetLanguagesParams@go.basic.mod':
+    id: 'PublicGetLanguagesParams@go.basic.mod'
     name: 'PublicGetLanguagesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -867,9 +919,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_languages_parameters.go'
 
-  'PublicGetNamespacePublisherParams@basic':
-    id: 'PublicGetNamespacePublisherParams@basic'
+  'PublicGetNamespacePublisherParams@go.basic.mod':
+    id: 'PublicGetNamespacePublisherParams@go.basic.mod'
     name: 'PublicGetNamespacePublisherParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -881,9 +934,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/public_get_namespace_publisher_parameters.go'
 
-  'PublicGetNamespacesParams@basic':
-    id: 'PublicGetNamespacesParams@basic'
+  'PublicGetNamespacesParams@go.basic.mod':
+    id: 'PublicGetNamespacesParams@go.basic.mod'
     name: 'PublicGetNamespacesParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -895,18 +949,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/public_get_namespaces_parameters.go'
 
-  'PublicGetTimeParams@basic':
-    id: 'PublicGetTimeParams@basic'
+  'PublicGetTimeParams@go.basic.mod':
+    id: 'PublicGetTimeParams@go.basic.mod'
     name: 'PublicGetTimeParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/misc'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_time_parameters.go'
 
-  'PublicGetTimeZonesParams@basic':
-    id: 'PublicGetTimeZonesParams@basic'
+  'PublicGetTimeZonesParams@go.basic.mod':
+    id: 'PublicGetTimeZonesParams@go.basic.mod'
     name: 'PublicGetTimeZonesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -918,9 +973,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/public_get_time_zones_parameters.go'
 
-  'PublicGetUserProfileInfoParams@basic':
-    id: 'PublicGetUserProfileInfoParams@basic'
+  'PublicGetUserProfileInfoParams@go.basic.mod':
+    id: 'PublicGetUserProfileInfoParams@go.basic.mod'
     name: 'PublicGetUserProfileInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -937,9 +993,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_info_parameters.go'
 
-  'PublicGetUserProfileInfoByPublicIDParams@basic':
-    id: 'PublicGetUserProfileInfoByPublicIDParams@basic'
+  'PublicGetUserProfileInfoByPublicIDParams@go.basic.mod':
+    id: 'PublicGetUserProfileInfoByPublicIDParams@go.basic.mod'
     name: 'PublicGetUserProfileInfoByPublicIDParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -956,9 +1013,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_info_by_public_id_parameters.go'
 
-  'PublicGetUserProfilePublicInfoParams@basic':
-    id: 'PublicGetUserProfilePublicInfoParams@basic'
+  'PublicGetUserProfilePublicInfoParams@go.basic.mod':
+    id: 'PublicGetUserProfilePublicInfoParams@go.basic.mod'
     name: 'PublicGetUserProfilePublicInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -975,9 +1033,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_public_info_parameters.go'
 
-  'PublicGetUserProfilePublicInfoByIdsParams@basic':
-    id: 'PublicGetUserProfilePublicInfoByIdsParams@basic'
+  'PublicGetUserProfilePublicInfoByIdsParams@go.basic.mod':
+    id: 'PublicGetUserProfilePublicInfoByIdsParams@go.basic.mod'
     name: 'PublicGetUserProfilePublicInfoByIdsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -994,9 +1053,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_get_user_profile_public_info_by_ids_parameters.go'
 
-  'PublicUpdateCustomAttributesPartiallyParams@basic':
-    id: 'PublicUpdateCustomAttributesPartiallyParams@basic'
+  'PublicUpdateCustomAttributesPartiallyParams@go.basic.mod':
+    id: 'PublicUpdateCustomAttributesPartiallyParams@go.basic.mod'
     name: 'PublicUpdateCustomAttributesPartiallyParams'
+    type: 'model'
     fields:
       'Body':
         type: 'interface{}'
@@ -1016,9 +1076,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_custom_attributes_partially_parameters.go'
 
-  'PublicUpdateUserProfileParams@basic':
-    id: 'PublicUpdateUserProfileParams@basic'
+  'PublicUpdateUserProfileParams@go.basic.mod':
+    id: 'PublicUpdateUserProfileParams@go.basic.mod'
     name: 'PublicUpdateUserProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileUpdate'
@@ -1038,9 +1099,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_user_profile_parameters.go'
 
-  'PublicUpdateUserProfileStatusParams@basic':
-    id: 'PublicUpdateUserProfileStatusParams@basic'
+  'PublicUpdateUserProfileStatusParams@go.basic.mod':
+    id: 'PublicUpdateUserProfileStatusParams@go.basic.mod'
     name: 'PublicUpdateUserProfileStatusParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileStatusUpdate'
@@ -1060,9 +1122,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/public_update_user_profile_status_parameters.go'
 
-  'UpdateConfigParams@basic':
-    id: 'UpdateConfigParams@basic'
+  'UpdateConfigParams@go.basic.mod':
+    id: 'UpdateConfigParams@go.basic.mod'
     name: 'UpdateConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ConfigUpdate'
@@ -1078,9 +1141,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/config/update_config_parameters.go'
 
-  'UpdateCountryGroupParams@basic':
-    id: 'UpdateCountryGroupParams@basic'
+  'UpdateCountryGroupParams@go.basic.mod':
+    id: 'UpdateCountryGroupParams@go.basic.mod'
     name: 'UpdateCountryGroupParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UpdateCountryGroupRequest'
@@ -1100,9 +1164,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/misc/update_country_group_parameters.go'
 
-  'UpdateCustomAttributesPartiallyParams@basic':
-    id: 'UpdateCustomAttributesPartiallyParams@basic'
+  'UpdateCustomAttributesPartiallyParams@go.basic.mod':
+    id: 'UpdateCustomAttributesPartiallyParams@go.basic.mod'
     name: 'UpdateCustomAttributesPartiallyParams'
+    type: 'model'
     fields:
       'Body':
         type: 'interface{}'
@@ -1122,9 +1187,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_custom_attributes_partially_parameters.go'
 
-  'UpdateMyPrivateCustomAttributesPartiallyParams@basic':
-    id: 'UpdateMyPrivateCustomAttributesPartiallyParams@basic'
+  'UpdateMyPrivateCustomAttributesPartiallyParams@go.basic.mod':
+    id: 'UpdateMyPrivateCustomAttributesPartiallyParams@go.basic.mod'
     name: 'UpdateMyPrivateCustomAttributesPartiallyParams'
+    type: 'model'
     fields:
       'Body':
         type: 'interface{}'
@@ -1139,9 +1205,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_private_custom_attributes_partially_parameters.go'
 
-  'UpdateMyProfileParams@basic':
-    id: 'UpdateMyProfileParams@basic'
+  'UpdateMyProfileParams@go.basic.mod':
+    id: 'UpdateMyProfileParams@go.basic.mod'
     name: 'UpdateMyProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileUpdate'
@@ -1156,9 +1223,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_profile_parameters.go'
 
-  'UpdateMyZipCodeParams@basic':
-    id: 'UpdateMyZipCodeParams@basic'
+  'UpdateMyZipCodeParams@go.basic.mod':
+    id: 'UpdateMyZipCodeParams@go.basic.mod'
     name: 'UpdateMyZipCodeParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1173,9 +1241,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_my_zip_code_parameters.go'
 
-  'UpdateNamespaceParams@basic':
-    id: 'UpdateNamespaceParams@basic'
+  'UpdateNamespaceParams@go.basic.mod':
+    id: 'UpdateNamespaceParams@go.basic.mod'
     name: 'UpdateNamespaceParams'
+    type: 'model'
     fields:
       'Body':
         type: '*NamespaceUpdate'
@@ -1190,9 +1259,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/update_namespace_parameters.go'
 
-  'UpdatePrivateCustomAttributesPartiallyParams@basic':
-    id: 'UpdatePrivateCustomAttributesPartiallyParams@basic'
+  'UpdatePrivateCustomAttributesPartiallyParams@go.basic.mod':
+    id: 'UpdatePrivateCustomAttributesPartiallyParams@go.basic.mod'
     name: 'UpdatePrivateCustomAttributesPartiallyParams'
+    type: 'model'
     fields:
       'Body':
         type: 'interface{}'
@@ -1212,9 +1282,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_private_custom_attributes_partially_parameters.go'
 
-  'UpdateUserProfileParams@basic':
-    id: 'UpdateUserProfileParams@basic'
+  'UpdateUserProfileParams@go.basic.mod':
+    id: 'UpdateUserProfileParams@go.basic.mod'
     name: 'UpdateUserProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileAdmin'
@@ -1234,9 +1305,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_user_profile_parameters.go'
 
-  'UpdateUserProfileStatusParams@basic':
-    id: 'UpdateUserProfileStatusParams@basic'
+  'UpdateUserProfileStatusParams@go.basic.mod':
+    id: 'UpdateUserProfileStatusParams@go.basic.mod'
     name: 'UpdateUserProfileStatusParams'
+    type: 'model'
     fields:
       'Body':
         type: '*UserProfileStatusUpdate'
@@ -1260,9 +1332,10 @@ structs:
 
   # region models
 
-  'AddCountryGroupRequest@basic':
-    id: 'AddCountryGroupRequest@basic'
+  'AddCountryGroupRequest@go.basic.mod':
+    id: 'AddCountryGroupRequest@go.basic.mod'
     name: 'AddCountryGroupRequest'
+    type: 'model'
     fields:
       'Countries':
         type: '[]*CountryObject'
@@ -1278,9 +1351,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/add_country_group_request.go'
 
-  'AddCountryGroupResponse@basic':
-    id: 'AddCountryGroupResponse@basic'
+  'AddCountryGroupResponse@go.basic.mod':
+    id: 'AddCountryGroupResponse@go.basic.mod'
     name: 'AddCountryGroupResponse'
+    type: 'model'
     fields:
       'Countries':
         type: '[]*CountryObject'
@@ -1296,9 +1370,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/add_country_group_response.go'
 
-  'ConfigCreate@basic':
-    id: 'ConfigCreate@basic'
+  'ConfigCreate@go.basic.mod':
+    id: 'ConfigCreate@go.basic.mod'
     name: 'ConfigCreate'
+    type: 'model'
     fields:
       'Key':
         type: 'string'
@@ -1315,9 +1390,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_create.go'
 
-  'ConfigInfo@basic':
-    id: 'ConfigInfo@basic'
+  'ConfigInfo@go.basic.mod':
+    id: 'ConfigInfo@go.basic.mod'
     name: 'ConfigInfo'
+    type: 'model'
     fields:
       'CreatedAt':
         type: '*strfmt.DateTime'
@@ -1339,9 +1415,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_info.go'
 
-  'ConfigUpdate@basic':
-    id: 'ConfigUpdate@basic'
+  'ConfigUpdate@go.basic.mod':
+    id: 'ConfigUpdate@go.basic.mod'
     name: 'ConfigUpdate'
+    type: 'model'
     fields:
       'Value':
         type: 'string'
@@ -1353,9 +1430,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/config_update.go'
 
-  'CountryGroupObject@basic':
-    id: 'CountryGroupObject@basic'
+  'CountryGroupObject@go.basic.mod':
+    id: 'CountryGroupObject@go.basic.mod'
     name: 'CountryGroupObject'
+    type: 'model'
     fields:
       'Countries':
         type: '[]*CountryObject'
@@ -1371,9 +1449,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/country_group_object.go'
 
-  'CountryObject@basic':
-    id: 'CountryObject@basic'
+  'CountryObject@go.basic.mod':
+    id: 'CountryObject@go.basic.mod'
     name: 'CountryObject'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -1386,9 +1465,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/country_object.go'
 
-  'ErrorEntity@basic':
-    id: 'ErrorEntity@basic'
+  'ErrorEntity@go.basic.mod':
+    id: 'ErrorEntity@go.basic.mod'
     name: 'ErrorEntity'
+    type: 'model'
     fields:
       'DevStackTrace':
         type: 'string'
@@ -1418,9 +1498,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/error_entity.go'
 
-  'FieldValidationError@basic':
-    id: 'FieldValidationError@basic'
+  'FieldValidationError@go.basic.mod':
+    id: 'FieldValidationError@go.basic.mod'
     name: 'FieldValidationError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'string'
@@ -1442,9 +1523,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/field_validation_error.go'
 
-  'FileUploadURLInfo@basic':
-    id: 'FileUploadURLInfo@basic'
+  'FileUploadURLInfo@go.basic.mod':
+    id: 'FileUploadURLInfo@go.basic.mod'
     name: 'FileUploadURLInfo'
+    type: 'model'
     fields:
       'AccessURL':
         type: 'string'
@@ -1471,9 +1553,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/file_upload_url_info.go'
 
-  'NamespaceContext@basic':
-    id: 'NamespaceContext@basic'
+  'NamespaceContext@go.basic.mod':
+    id: 'NamespaceContext@go.basic.mod'
     name: 'NamespaceContext'
+    type: 'model'
     description: |-
       This model is used to indicate the context of a namespace
     fields:
@@ -1502,9 +1585,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_context.go'
 
-  'NamespaceCreate@basic':
-    id: 'NamespaceCreate@basic'
+  'NamespaceCreate@go.basic.mod':
+    id: 'NamespaceCreate@go.basic.mod'
     name: 'NamespaceCreate'
+    type: 'model'
     fields:
       'DisplayName':
         type: 'string'
@@ -1521,9 +1605,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_create.go'
 
-  'NamespaceInfo@basic':
-    id: 'NamespaceInfo@basic'
+  'NamespaceInfo@go.basic.mod':
+    id: 'NamespaceInfo@go.basic.mod'
     name: 'NamespaceInfo'
+    type: 'model'
     fields:
       'ClientID':
         type: 'string'
@@ -1559,9 +1644,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_info.go'
 
-  'NamespacePublisherInfo@basic':
-    id: 'NamespacePublisherInfo@basic'
+  'NamespacePublisherInfo@go.basic.mod':
+    id: 'NamespacePublisherInfo@go.basic.mod'
     name: 'NamespacePublisherInfo'
+    type: 'model'
     fields:
       'Publisher':
         type: 'bool'
@@ -1578,9 +1664,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_publisher_info.go'
 
-  'NamespaceSimpleInfo@basic':
-    id: 'NamespaceSimpleInfo@basic'
+  'NamespaceSimpleInfo@go.basic.mod':
+    id: 'NamespaceSimpleInfo@go.basic.mod'
     name: 'NamespaceSimpleInfo'
+    type: 'model'
     fields:
       'DisplayName':
         type: 'string'
@@ -1592,9 +1679,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_simple_info.go'
 
-  'NamespaceStatusUpdate@basic':
-    id: 'NamespaceStatusUpdate@basic'
+  'NamespaceStatusUpdate@go.basic.mod':
+    id: 'NamespaceStatusUpdate@go.basic.mod'
     name: 'NamespaceStatusUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating namespace status API call.
     fields:
@@ -1608,9 +1696,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_status_update.go'
 
-  'NamespaceUpdate@basic':
-    id: 'NamespaceUpdate@basic'
+  'NamespaceUpdate@go.basic.mod':
+    id: 'NamespaceUpdate@go.basic.mod'
     name: 'NamespaceUpdate'
+    type: 'model'
     fields:
       'DisplayName':
         type: 'string'
@@ -1622,9 +1711,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_update.go'
 
-  'Permission@basic':
-    id: 'Permission@basic'
+  'Permission@go.basic.mod':
+    id: 'Permission@go.basic.mod'
     name: 'Permission'
+    type: 'model'
     fields:
       'Action':
         type: 'int32'
@@ -1637,9 +1727,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/permission.go'
 
-  'RetrieveCountryGroupResponse@basic':
-    id: 'RetrieveCountryGroupResponse@basic'
+  'RetrieveCountryGroupResponse@go.basic.mod':
+    id: 'RetrieveCountryGroupResponse@go.basic.mod'
     name: 'RetrieveCountryGroupResponse'
+    type: 'model'
     fields:
       'Countries':
         type: '[]*CountryObject'
@@ -1655,9 +1746,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/retrieve_country_group_response.go'
 
-  'RetrieveTimeResponse@basic':
-    id: 'RetrieveTimeResponse@basic'
+  'RetrieveTimeResponse@go.basic.mod':
+    id: 'RetrieveTimeResponse@go.basic.mod'
     name: 'RetrieveTimeResponse'
+    type: 'model'
     fields:
       'CurrentTime':
         type: 'string'
@@ -1667,9 +1759,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/retrieve_time_response.go'
 
-  'UpdateCountryGroupRequest@basic':
-    id: 'UpdateCountryGroupRequest@basic'
+  'UpdateCountryGroupRequest@go.basic.mod':
+    id: 'UpdateCountryGroupRequest@go.basic.mod'
     name: 'UpdateCountryGroupRequest'
+    type: 'model'
     fields:
       'Countries':
         type: '[]*CountryObject'
@@ -1682,9 +1775,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/update_country_group_request.go'
 
-  'UserProfileAdmin@basic':
-    id: 'UserProfileAdmin@basic'
+  'UserProfileAdmin@go.basic.mod':
+    id: 'UserProfileAdmin@go.basic.mod'
     name: 'UserProfileAdmin'
+    type: 'model'
     description: |-
       A DTO object for updating user profile API call.
     fields:
@@ -1747,9 +1841,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_admin.go'
 
-  'UserProfileBulkRequest@basic':
-    id: 'UserProfileBulkRequest@basic'
+  'UserProfileBulkRequest@go.basic.mod':
+    id: 'UserProfileBulkRequest@go.basic.mod'
     name: 'UserProfileBulkRequest'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -1761,9 +1856,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_bulk_request.go'
 
-  'UserProfileCreate@basic':
-    id: 'UserProfileCreate@basic'
+  'UserProfileCreate@go.basic.mod':
+    id: 'UserProfileCreate@go.basic.mod'
     name: 'UserProfileCreate'
+    type: 'model'
     description: |-
       A DTO object for creating user profile API call.
     fields:
@@ -1815,9 +1911,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_create.go'
 
-  'UserProfileInfo@basic':
-    id: 'UserProfileInfo@basic'
+  'UserProfileInfo@go.basic.mod':
+    id: 'UserProfileInfo@go.basic.mod'
     name: 'UserProfileInfo'
+    type: 'model'
     fields:
       'AvatarLargeURL':
         type: 'string'
@@ -1870,9 +1967,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_info.go'
 
-  'UserProfilePrivateCreate@basic':
-    id: 'UserProfilePrivateCreate@basic'
+  'UserProfilePrivateCreate@go.basic.mod':
+    id: 'UserProfilePrivateCreate@go.basic.mod'
     name: 'UserProfilePrivateCreate'
+    type: 'model'
     description: |-
       A DTO object for creating user profile API call.
     fields:
@@ -1927,9 +2025,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_private_create.go'
 
-  'UserProfilePrivateInfo@basic':
-    id: 'UserProfilePrivateInfo@basic'
+  'UserProfilePrivateInfo@go.basic.mod':
+    id: 'UserProfilePrivateInfo@go.basic.mod'
     name: 'UserProfilePrivateInfo'
+    type: 'model'
     fields:
       'AvatarLargeURL':
         type: 'string'
@@ -1985,9 +2084,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_private_info.go'
 
-  'UserProfilePublicInfo@basic':
-    id: 'UserProfilePublicInfo@basic'
+  'UserProfilePublicInfo@go.basic.mod':
+    id: 'UserProfilePublicInfo@go.basic.mod'
     name: 'UserProfilePublicInfo'
+    type: 'model'
     fields:
       'AvatarLargeURL':
         type: 'string'
@@ -2018,9 +2118,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_public_info.go'
 
-  'UserProfileStatusUpdate@basic':
-    id: 'UserProfileStatusUpdate@basic'
+  'UserProfileStatusUpdate@go.basic.mod':
+    id: 'UserProfileStatusUpdate@go.basic.mod'
     name: 'UserProfileStatusUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating user profile status API call.
     fields:
@@ -2034,9 +2135,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_status_update.go'
 
-  'UserProfileUpdate@basic':
-    id: 'UserProfileUpdate@basic'
+  'UserProfileUpdate@go.basic.mod':
+    id: 'UserProfileUpdate@go.basic.mod'
     name: 'UserProfileUpdate'
+    type: 'model'
     description: |-
       A DTO object for updating user profile API call.
     fields:
@@ -2096,9 +2198,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_profile_update.go'
 
-  'UserZipCode@basic':
-    id: 'UserZipCode@basic'
+  'UserZipCode@go.basic.mod':
+    id: 'UserZipCode@go.basic.mod'
     name: 'UserZipCode'
+    type: 'model'
     fields:
       'ZipCode':
         type: 'string'
@@ -2108,9 +2211,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_zip_code.go'
 
-  'UserZipCodeUpdate@basic':
-    id: 'UserZipCodeUpdate@basic'
+  'UserZipCodeUpdate@go.basic.mod':
+    id: 'UserZipCodeUpdate@go.basic.mod'
     name: 'UserZipCodeUpdate'
+    type: 'model'
     fields:
       'ZipCode':
         type: 'string'
@@ -2122,9 +2226,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/user_zip_code_update.go'
 
-  'ValidationErrorEntity@basic':
-    id: 'ValidationErrorEntity@basic'
+  'ValidationErrorEntity@go.basic.mod':
+    id: 'ValidationErrorEntity@go.basic.mod'
     name: 'ValidationErrorEntity'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -2146,11 +2251,12 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AddCountryGroupShort@basic':
-    id: 'AddCountryGroupShort@basic'
+  'AddCountryGroupShort@go.basic.fun':
+    id: 'AddCountryGroupShort@go.basic.fun'
     name: 'AddCountryGroupShort'
+    type: 'function'
     description: |-
       Add a country groups
       Country code must follow ISO3166-1 alpha-2.
@@ -2159,7 +2265,7 @@ functions:
         * Action code : 11201
         *  Returns : newly created country group
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.AddCountryGroupParams'
         required: true
@@ -2183,9 +2289,10 @@ functions:
       - 'group'
       - 'misc'
 
-  'AdminGetUserProfilePublicInfoByIdsShort@basic':
-    id: 'AdminGetUserProfilePublicInfoByIdsShort@basic'
+  'AdminGetUserProfilePublicInfoByIdsShort@go.basic.fun':
+    id: 'AdminGetUserProfilePublicInfoByIdsShort@go.basic.fun'
     name: 'AdminGetUserProfilePublicInfoByIdsShort'
+    type: 'function'
     description: |-
       Admin get user public profile by ids.
       Other detail info:
@@ -2194,7 +2301,7 @@ functions:
         *  Action code : 11405
         *  Returns : user public profiles
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.AdminGetUserProfilePublicInfoByIdsParams'
         required: true
@@ -2222,16 +2329,17 @@ functions:
       - 'public'
       - 'user'
 
-  'AnonymizeUserProfileShort@basic':
-    id: 'AnonymizeUserProfileShort@basic'
+  'AnonymizeUserProfileShort@go.basic.fun':
+    id: 'AnonymizeUserProfileShort@go.basic.fun'
     name: 'AnonymizeUserProfileShort'
+    type: 'function'
     description: |-
       Anonymize user profile.
       Other detail info:
 
         * Action code : 11501
     struct: 'AnonymizationService'
-    parameters:
+    arguments:
       params:
         type: '*anonymization.AnonymizeUserProfileParams'
         required: true
@@ -2255,9 +2363,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'ChangeNamespaceStatusShort@basic':
-    id: 'ChangeNamespaceStatusShort@basic'
+  'ChangeNamespaceStatusShort@go.basic.fun':
+    id: 'ChangeNamespaceStatusShort@go.basic.fun'
     name: 'ChangeNamespaceStatusShort'
+    type: 'function'
     description: |-
       Change a namespace status.
       Other detail info:
@@ -2265,7 +2374,7 @@ functions:
         * Action code : 11306
         *  Returns : updated namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.ChangeNamespaceStatusParams'
         required: true
@@ -2288,16 +2397,17 @@ functions:
       - 'namespace'
       - 'status'
 
-  'CreateConfigShort@basic':
-    id: 'CreateConfigShort@basic'
+  'CreateConfigShort@go.basic.fun':
+    id: 'CreateConfigShort@go.basic.fun'
     name: 'CreateConfigShort'
+    type: 'function'
     description: |-
       Create a config.
       Other detail info:
 
         * Returns : created config
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.CreateConfigParams'
         required: true
@@ -2319,9 +2429,10 @@ functions:
       - 'config'
       - 'create'
 
-  'CreateMyProfileShort@basic':
-    id: 'CreateMyProfileShort@basic'
+  'CreateMyProfileShort@go.basic.fun':
+    id: 'CreateMyProfileShort@go.basic.fun'
     name: 'CreateMyProfileShort'
+    type: 'function'
     description: |-
       Create my profile.
        Client with user token can create user profile in target namespace
@@ -2336,7 +2447,7 @@ functions:
         *  Country : ISO3166-1 alpha-2 two letter, e.g. US
         * Timezone : IANA time zone, e.g. Asia/Shanghai
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.CreateMyProfileParams'
         required: true
@@ -2360,9 +2471,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'CreateNamespaceShort@basic':
-    id: 'CreateNamespaceShort@basic'
+  'CreateNamespaceShort@go.basic.fun':
+    id: 'CreateNamespaceShort@go.basic.fun'
     name: 'CreateNamespaceShort'
+    type: 'function'
     description: |-
       Create a namespace.
       By default the namespace is enabled.
@@ -2381,7 +2493,7 @@ functions:
         * Action code : 11301
         *  Returns : created namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.CreateNamespaceParams'
         required: true
@@ -2403,16 +2515,17 @@ functions:
       - 'create'
       - 'namespace'
 
-  'DeleteConfigShort@basic':
-    id: 'DeleteConfigShort@basic'
+  'DeleteConfigShort@go.basic.fun':
+    id: 'DeleteConfigShort@go.basic.fun'
     name: 'DeleteConfigShort'
+    type: 'function'
     description: |-
       Delete a config.
       Other detail info:
 
         * Returns : created config
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.DeleteConfigParams'
         required: true
@@ -2434,13 +2547,14 @@ functions:
       - 'config'
       - 'delete'
 
-  'DeleteCountryGroupShort@basic':
-    id: 'DeleteCountryGroupShort@basic'
+  'DeleteCountryGroupShort@go.basic.fun':
+    id: 'DeleteCountryGroupShort@go.basic.fun'
     name: 'DeleteCountryGroupShort'
+    type: 'function'
     description: |-
       Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.DeleteCountryGroupParams'
         required: true
@@ -2464,9 +2578,10 @@ functions:
       - 'group'
       - 'misc'
 
-  'DeleteNamespaceShort@basic':
-    id: 'DeleteNamespaceShort@basic'
+  'DeleteNamespaceShort@go.basic.fun':
+    id: 'DeleteNamespaceShort@go.basic.fun'
     name: 'DeleteNamespaceShort'
+    type: 'function'
     description: |-
       Delete a namespace.
       Other detail info:
@@ -2474,7 +2589,7 @@ functions:
         * Action code : 11307
         *  Returns : deleted namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.DeleteNamespaceParams'
         required: true
@@ -2496,9 +2611,10 @@ functions:
       - 'delete'
       - 'namespace'
 
-  'DeleteUserProfileShort@basic':
-    id: 'DeleteUserProfileShort@basic'
+  'DeleteUserProfileShort@go.basic.fun':
+    id: 'DeleteUserProfileShort@go.basic.fun'
     name: 'DeleteUserProfileShort'
+    type: 'function'
     description: |-
       Delete user profile.
       Other detail info:
@@ -2506,7 +2622,7 @@ functions:
         * Action code : 11407
         *  Returns : Delete user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.DeleteUserProfileParams'
         required: true
@@ -2529,9 +2645,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'GeneratedUploadURLShort@basic':
-    id: 'GeneratedUploadURLShort@basic'
+  'GeneratedUploadURLShort@go.basic.fun':
+    id: 'GeneratedUploadURLShort@go.basic.fun'
     name: 'GeneratedUploadURLShort'
+    type: 'function'
     description: |-
       Generate an upload URL. It's valid for 10 minutes.
       Other detail info:
@@ -2539,7 +2656,7 @@ functions:
         * Action code : 11101
         *  Returns : URL data
     struct: 'FileUploadService'
-    parameters:
+    arguments:
       params:
         type: '*file_upload.GeneratedUploadURLParams'
         required: true
@@ -2563,9 +2680,10 @@ functions:
       - 'upload'
       - 'url'
 
-  'GeneratedUserUploadContentURLShort@basic':
-    id: 'GeneratedUserUploadContentURLShort@basic'
+  'GeneratedUserUploadContentURLShort@go.basic.fun':
+    id: 'GeneratedUserUploadContentURLShort@go.basic.fun'
     name: 'GeneratedUserUploadContentURLShort'
+    type: 'function'
     description: |-
       Generate an upload URL for user content. It's valid for 10 minutes.
       Other detail info:
@@ -2573,7 +2691,7 @@ functions:
         * Action code : 11102
         *  Returns : URL data
     struct: 'FileUploadService'
-    parameters:
+    arguments:
       params:
         type: '*file_upload.GeneratedUserUploadContentURLParams'
         required: true
@@ -2599,9 +2717,10 @@ functions:
       - 'url'
       - 'user'
 
-  'GetChildNamespacesShort@basic':
-    id: 'GetChildNamespacesShort@basic'
+  'GetChildNamespacesShort@go.basic.fun':
+    id: 'GetChildNamespacesShort@go.basic.fun'
     name: 'GetChildNamespacesShort'
+    type: 'function'
     description: |-
       Get child namespaces.
       If input namespace is publisher namespace, then it will return its all studio namespace.
@@ -2610,7 +2729,7 @@ functions:
 
         * Returns : list of child namespaces
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetChildNamespacesParams'
         required: true
@@ -2634,16 +2753,17 @@ functions:
       - 'namespace'
       - 'namespaces'
 
-  'GetConfigShort@basic':
-    id: 'GetConfigShort@basic'
+  'GetConfigShort@go.basic.fun':
+    id: 'GetConfigShort@go.basic.fun'
     name: 'GetConfigShort'
+    type: 'function'
     description: |-
       Get a config.
       Other detail info:
 
         * Returns : config
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.GetConfigParams'
         required: true
@@ -2665,9 +2785,10 @@ functions:
       - 'config'
       - 'get'
 
-  'GetCountriesShort@basic':
-    id: 'GetCountriesShort@basic'
+  'GetCountriesShort@go.basic.fun':
+    id: 'GetCountriesShort@go.basic.fun'
     name: 'GetCountriesShort'
+    type: 'function'
     description: |-
       List countries.
       Other detail info:
@@ -2675,7 +2796,7 @@ functions:
         * Action code : 11204
         *  Returns : country code list
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.GetCountriesParams'
         required: true
@@ -2698,9 +2819,10 @@ functions:
       - 'get'
       - 'misc'
 
-  'GetCountryGroupsShort@basic':
-    id: 'GetCountryGroupsShort@basic'
+  'GetCountryGroupsShort@go.basic.fun':
+    id: 'GetCountryGroupsShort@go.basic.fun'
     name: 'GetCountryGroupsShort'
+    type: 'function'
     description: |-
       List country groups. Will return all available country groups if the query param is not specified
       Other detail info:
@@ -2708,7 +2830,7 @@ functions:
         * Action code : 11203
         *  Returns : list of country groups
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.GetCountryGroupsParams'
         required: true
@@ -2732,9 +2854,10 @@ functions:
       - 'groups'
       - 'misc'
 
-  'GetCustomAttributesInfoShort@basic':
-    id: 'GetCustomAttributesInfoShort@basic'
+  'GetCustomAttributesInfoShort@go.basic.fun':
+    id: 'GetCustomAttributesInfoShort@go.basic.fun'
     name: 'GetCustomAttributesInfoShort'
+    type: 'function'
     description: |-
       Get user custom attributes.
       Other detail info:
@@ -2742,7 +2865,7 @@ functions:
         * Returns : custom attributes
         *  Action code : 11403
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetCustomAttributesInfoParams'
         required: true
@@ -2768,9 +2891,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'GetGameNamespacesShort@basic':
-    id: 'GetGameNamespacesShort@basic'
+  'GetGameNamespacesShort@go.basic.fun':
+    id: 'GetGameNamespacesShort@go.basic.fun'
     name: 'GetGameNamespacesShort'
+    type: 'function'
     description: |-
       Get game namespaces.
       In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
@@ -2779,7 +2903,7 @@ functions:
         * Action code : 11308
         *  Returns : list of namespaces
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetGameNamespacesParams'
         required: true
@@ -2803,9 +2927,10 @@ functions:
       - 'namespace'
       - 'namespaces'
 
-  'GetLanguagesShort@basic':
-    id: 'GetLanguagesShort@basic'
+  'GetLanguagesShort@go.basic.fun':
+    id: 'GetLanguagesShort@go.basic.fun'
     name: 'GetLanguagesShort'
+    type: 'function'
     description: |-
       List languages.
       Other detail info:
@@ -2813,7 +2938,7 @@ functions:
         * Action code : 11206
         *  Returns : language list
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.GetLanguagesParams'
         required: true
@@ -2836,9 +2961,10 @@ functions:
       - 'languages'
       - 'misc'
 
-  'GetMyPrivateCustomAttributesInfoShort@basic':
-    id: 'GetMyPrivateCustomAttributesInfoShort@basic'
+  'GetMyPrivateCustomAttributesInfoShort@go.basic.fun':
+    id: 'GetMyPrivateCustomAttributesInfoShort@go.basic.fun'
     name: 'GetMyPrivateCustomAttributesInfoShort'
+    type: 'function'
     description: |-
       Get my private custom attributes.
       Other detail info:
@@ -2846,7 +2972,7 @@ functions:
         * Returns : custom attributes
         *  Action code : 11403
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetMyPrivateCustomAttributesInfoParams'
         required: true
@@ -2874,9 +3000,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'GetMyProfileInfoShort@basic':
-    id: 'GetMyProfileInfoShort@basic'
+  'GetMyProfileInfoShort@go.basic.fun':
+    id: 'GetMyProfileInfoShort@go.basic.fun'
     name: 'GetMyProfileInfoShort'
+    type: 'function'
     description: |-
       Get my profile
        Client with user token can get user profile in target namespace
@@ -2890,7 +3017,7 @@ functions:
         *  Language : allowed format: en, en-US
         *  Timezone : IANA time zone, e.g. Asia/Shanghai
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetMyProfileInfoParams'
         required: true
@@ -2915,9 +3042,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'GetMyZipCodeShort@basic':
-    id: 'GetMyZipCodeShort@basic'
+  'GetMyZipCodeShort@go.basic.fun':
+    id: 'GetMyZipCodeShort@go.basic.fun'
     name: 'GetMyZipCodeShort'
+    type: 'function'
     description: |-
       Get my zip code.
       Other detail info:
@@ -2925,7 +3053,7 @@ functions:
         * Action code : 11407
         *  Returns : user zip code
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetMyZipCodeParams'
         required: true
@@ -2951,9 +3079,10 @@ functions:
       - 'user'
       - 'zip'
 
-  'GetNamespaceShort@basic':
-    id: 'GetNamespaceShort@basic'
+  'GetNamespaceShort@go.basic.fun':
+    id: 'GetNamespaceShort@go.basic.fun'
     name: 'GetNamespaceShort'
+    type: 'function'
     description: |-
       Get a namespace.
       In multi tenant mode, parentNamespace will be returned.
@@ -2962,7 +3091,7 @@ functions:
         * Action code : 11304
         *  Returns : namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetNamespaceParams'
         required: true
@@ -2984,16 +3113,17 @@ functions:
       - 'get'
       - 'namespace'
 
-  'GetNamespace1Short@basic':
-    id: 'GetNamespace1Short@basic'
+  'GetNamespace1Short@go.basic.fun':
+    id: 'GetNamespace1Short@go.basic.fun'
     name: 'GetNamespace1Short'
+    type: 'function'
     description: |-
       Get a namespace info.
       Other detail info:
 
         * Returns : namespace info
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetNamespace1Params'
         required: true
@@ -3016,16 +3146,17 @@ functions:
       - 'get'
       - 'namespace'
 
-  'GetNamespaceContextShort@basic':
-    id: 'GetNamespaceContextShort@basic'
+  'GetNamespaceContextShort@go.basic.fun':
+    id: 'GetNamespaceContextShort@go.basic.fun'
     name: 'GetNamespaceContextShort'
+    type: 'function'
     description: |-
       Get context of namespace.
       Other detail info:
 
         * Returns : context of namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetNamespaceContextParams'
         required: true
@@ -3048,9 +3179,10 @@ functions:
       - 'get'
       - 'namespace'
 
-  'GetNamespacePublisherShort@basic':
-    id: 'GetNamespacePublisherShort@basic'
+  'GetNamespacePublisherShort@go.basic.fun':
+    id: 'GetNamespacePublisherShort@go.basic.fun'
     name: 'GetNamespacePublisherShort'
+    type: 'function'
     description: |-
       Get namespace info related publisher namespace.
       Other detail info:
@@ -3058,7 +3190,7 @@ functions:
         * Action code : 11305
         *  Returns : Namespace info related publisher namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetNamespacePublisherParams'
         required: true
@@ -3081,9 +3213,10 @@ functions:
       - 'namespace'
       - 'publisher'
 
-  'GetNamespacesShort@basic':
-    id: 'GetNamespacesShort@basic'
+  'GetNamespacesShort@go.basic.fun':
+    id: 'GetNamespacesShort@go.basic.fun'
     name: 'GetNamespacesShort'
+    type: 'function'
     description: |-
       Get all namespaces.
       Other detail info:
@@ -3091,7 +3224,7 @@ functions:
         * Action code : 11303
         *  Returns : list of namespaces
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.GetNamespacesParams'
         required: true
@@ -3114,9 +3247,10 @@ functions:
       - 'namespace'
       - 'namespaces'
 
-  'GetPrivateCustomAttributesInfoShort@basic':
-    id: 'GetPrivateCustomAttributesInfoShort@basic'
+  'GetPrivateCustomAttributesInfoShort@go.basic.fun':
+    id: 'GetPrivateCustomAttributesInfoShort@go.basic.fun'
     name: 'GetPrivateCustomAttributesInfoShort'
+    type: 'function'
     description: |-
       Get user private custom attributes.
       Other detail info:
@@ -3124,7 +3258,7 @@ functions:
         * Returns : custom attributes
         *  Action code : 11403
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetPrivateCustomAttributesInfoParams'
         required: true
@@ -3151,9 +3285,10 @@ functions:
       - 'profile'
       - 'user'
 
-  'GetPublisherConfigShort@basic':
-    id: 'GetPublisherConfigShort@basic'
+  'GetPublisherConfigShort@go.basic.fun':
+    id: 'GetPublisherConfigShort@go.basic.fun'
     name: 'GetPublisherConfigShort'
+    type: 'function'
     description: |-
       Get a publisher config.
       It will return a publisher namespace config of the given namespace and key.
@@ -3161,7 +3296,7 @@ functions:
 
         * Returns : config
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.GetPublisherConfigParams'
         required: true
@@ -3184,9 +3319,10 @@ functions:
       - 'get'
       - 'publisher'
 
-  'GetTimeZonesShort@basic':
-    id: 'GetTimeZonesShort@basic'
+  'GetTimeZonesShort@go.basic.fun':
+    id: 'GetTimeZonesShort@go.basic.fun'
     name: 'GetTimeZonesShort'
+    type: 'function'
     description: |-
       List time zones.
       Other detail info:
@@ -3194,7 +3330,7 @@ functions:
         * Action code : 11205
         *  Returns : time zones
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.GetTimeZonesParams'
         required: true
@@ -3218,9 +3354,10 @@ functions:
       - 'time'
       - 'zones'
 
-  'GetUserProfileInfoShort@basic':
-    id: 'GetUserProfileInfoShort@basic'
+  'GetUserProfileInfoShort@go.basic.fun':
+    id: 'GetUserProfileInfoShort@go.basic.fun'
     name: 'GetUserProfileInfoShort'
+    type: 'function'
     description: |-
       Get user profile.
       Other detail info:
@@ -3228,7 +3365,7 @@ functions:
         * Returns : user profile
         *  Action code : 11403
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetUserProfileInfoParams'
         required: true
@@ -3252,16 +3389,17 @@ functions:
       - 'profile'
       - 'user'
 
-  'GetUserProfileInfoByPublicIDShort@basic':
-    id: 'GetUserProfileInfoByPublicIDShort@basic'
+  'GetUserProfileInfoByPublicIDShort@go.basic.fun':
+    id: 'GetUserProfileInfoByPublicIDShort@go.basic.fun'
     name: 'GetUserProfileInfoByPublicIDShort'
+    type: 'function'
     description: |-
       Get user profile by public id.
       Other detail info:
 
         * Returns : user profile info
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.GetUserProfileInfoByPublicIDParams'
         required: true
@@ -3288,16 +3426,17 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicBulkGetUserProfilePublicInfoShort@basic':
-    id: 'PublicBulkGetUserProfilePublicInfoShort@basic'
+  'PublicBulkGetUserProfilePublicInfoShort@go.basic.fun':
+    id: 'PublicBulkGetUserProfilePublicInfoShort@go.basic.fun'
     name: 'PublicBulkGetUserProfilePublicInfoShort'
+    type: 'function'
     description: |-
       Bulk get user public profile by ids.
       Other detail info:
 
         * Returns : user public profiles
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicBulkGetUserProfilePublicInfoParams'
         required: true
@@ -3323,9 +3462,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicCreateUserProfileShort@basic':
-    id: 'PublicCreateUserProfileShort@basic'
+  'PublicCreateUserProfileShort@go.basic.fun':
+    id: 'PublicCreateUserProfileShort@go.basic.fun'
     name: 'PublicCreateUserProfileShort'
+    type: 'function'
     description: |-
       Create user profile.
       Other detail info:
@@ -3335,7 +3475,7 @@ functions:
         *  Timezone : IANA time zone, e.g. Asia/Shanghai
         *  Returns : Created user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicCreateUserProfileParams'
         required: true
@@ -3359,9 +3499,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGeneratedUploadURLShort@basic':
-    id: 'PublicGeneratedUploadURLShort@basic'
+  'PublicGeneratedUploadURLShort@go.basic.fun':
+    id: 'PublicGeneratedUploadURLShort@go.basic.fun'
     name: 'PublicGeneratedUploadURLShort'
+    type: 'function'
     description: |-
       Generate an upload URL. It's valid for 10 minutes.
       Other detail info:
@@ -3369,7 +3510,7 @@ functions:
         * Action code : 11101
         *  Returns : URL data
     struct: 'FileUploadService'
-    parameters:
+    arguments:
       params:
         type: '*file_upload.PublicGeneratedUploadURLParams'
         required: true
@@ -3394,9 +3535,10 @@ functions:
       - 'upload'
       - 'url'
 
-  'PublicGeneratedUserUploadContentURLShort@basic':
-    id: 'PublicGeneratedUserUploadContentURLShort@basic'
+  'PublicGeneratedUserUploadContentURLShort@go.basic.fun':
+    id: 'PublicGeneratedUserUploadContentURLShort@go.basic.fun'
     name: 'PublicGeneratedUserUploadContentURLShort'
+    type: 'function'
     description: |-
       Generate an upload URL for user content. It's valid for 10 minutes.
       There are two types of storage limits per user: maximum file count and maximum total file size.
@@ -3415,7 +3557,7 @@ functions:
         * Action code : 11102
         *  Returns : URL data
     struct: 'FileUploadService'
-    parameters:
+    arguments:
       params:
         type: '*file_upload.PublicGeneratedUserUploadContentURLParams'
         required: true
@@ -3442,16 +3584,17 @@ functions:
       - 'url'
       - 'user'
 
-  'PublicGetCountriesShort@basic':
-    id: 'PublicGetCountriesShort@basic'
+  'PublicGetCountriesShort@go.basic.fun':
+    id: 'PublicGetCountriesShort@go.basic.fun'
     name: 'PublicGetCountriesShort'
+    type: 'function'
     description: |-
       List countries.
       Other detail info:
 
         * Returns : country code list
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.PublicGetCountriesParams'
         required: true
@@ -3475,9 +3618,10 @@ functions:
       - 'misc'
       - 'public'
 
-  'PublicGetCustomAttributesInfoShort@basic':
-    id: 'PublicGetCustomAttributesInfoShort@basic'
+  'PublicGetCustomAttributesInfoShort@go.basic.fun':
+    id: 'PublicGetCustomAttributesInfoShort@go.basic.fun'
     name: 'PublicGetCustomAttributesInfoShort'
+    type: 'function'
     description: |-
       Get custom attributes info.
       Other detail info:
@@ -3485,7 +3629,7 @@ functions:
         * Action code : 11404
         *  Returns : user custom attributes
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicGetCustomAttributesInfoParams'
         required: true
@@ -3512,16 +3656,17 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetLanguagesShort@basic':
-    id: 'PublicGetLanguagesShort@basic'
+  'PublicGetLanguagesShort@go.basic.fun':
+    id: 'PublicGetLanguagesShort@go.basic.fun'
     name: 'PublicGetLanguagesShort'
+    type: 'function'
     description: |-
       List languages.
       Other detail info:
 
         * Returns : language list
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.PublicGetLanguagesParams'
         required: true
@@ -3545,9 +3690,10 @@ functions:
       - 'misc'
       - 'public'
 
-  'PublicGetNamespacePublisherShort@basic':
-    id: 'PublicGetNamespacePublisherShort@basic'
+  'PublicGetNamespacePublisherShort@go.basic.fun':
+    id: 'PublicGetNamespacePublisherShort@go.basic.fun'
     name: 'PublicGetNamespacePublisherShort'
+    type: 'function'
     description: |-
       Get namespace info related publisher namespace.
       Other detail info:
@@ -3555,7 +3701,7 @@ functions:
         * Action code : 11305
         *  Returns : Namespace info related publisher namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.PublicGetNamespacePublisherParams'
         required: true
@@ -3579,9 +3725,10 @@ functions:
       - 'public'
       - 'publisher'
 
-  'PublicGetNamespacesShort@basic':
-    id: 'PublicGetNamespacesShort@basic'
+  'PublicGetNamespacesShort@go.basic.fun':
+    id: 'PublicGetNamespacesShort@go.basic.fun'
     name: 'PublicGetNamespacesShort'
+    type: 'function'
     description: |-
       Get all namespaces.
       Other detail info:
@@ -3589,7 +3736,7 @@ functions:
         * Action code : 11303
         *  Returns : list of namespaces
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.PublicGetNamespacesParams'
         required: true
@@ -3613,13 +3760,14 @@ functions:
       - 'namespaces'
       - 'public'
 
-  'PublicGetTimeShort@basic':
-    id: 'PublicGetTimeShort@basic'
+  'PublicGetTimeShort@go.basic.fun':
+    id: 'PublicGetTimeShort@go.basic.fun'
     name: 'PublicGetTimeShort'
+    type: 'function'
     description: |-
       Get server time
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.PublicGetTimeParams'
         required: true
@@ -3643,16 +3791,17 @@ functions:
       - 'public'
       - 'time'
 
-  'PublicGetTimeZonesShort@basic':
-    id: 'PublicGetTimeZonesShort@basic'
+  'PublicGetTimeZonesShort@go.basic.fun':
+    id: 'PublicGetTimeZonesShort@go.basic.fun'
     name: 'PublicGetTimeZonesShort'
+    type: 'function'
     description: |-
       List time zones.
       Other detail info:
 
         * Returns : time zones
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.PublicGetTimeZonesParams'
         required: true
@@ -3677,9 +3826,10 @@ functions:
       - 'time'
       - 'zones'
 
-  'PublicGetUserProfileInfoShort@basic':
-    id: 'PublicGetUserProfileInfoShort@basic'
+  'PublicGetUserProfileInfoShort@go.basic.fun':
+    id: 'PublicGetUserProfileInfoShort@go.basic.fun'
     name: 'PublicGetUserProfileInfoShort'
+    type: 'function'
     description: |-
       Get user profile.
       Other detail info:
@@ -3687,7 +3837,7 @@ functions:
         * Action code : 11403
         *  Returns : user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicGetUserProfileInfoParams'
         required: true
@@ -3712,16 +3862,17 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetUserProfileInfoByPublicIDShort@basic':
-    id: 'PublicGetUserProfileInfoByPublicIDShort@basic'
+  'PublicGetUserProfileInfoByPublicIDShort@go.basic.fun':
+    id: 'PublicGetUserProfileInfoByPublicIDShort@go.basic.fun'
     name: 'PublicGetUserProfileInfoByPublicIDShort'
+    type: 'function'
     description: |-
       Get user public profile by public id.
       Other detail info:
 
         * Returns : user public profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicGetUserProfileInfoByPublicIDParams'
         required: true
@@ -3748,9 +3899,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetUserProfilePublicInfoShort@basic':
-    id: 'PublicGetUserProfilePublicInfoShort@basic'
+  'PublicGetUserProfilePublicInfoShort@go.basic.fun':
+    id: 'PublicGetUserProfilePublicInfoShort@go.basic.fun'
     name: 'PublicGetUserProfilePublicInfoShort'
+    type: 'function'
     description: |-
       Get user profile public info.
       Other detail info:
@@ -3758,7 +3910,7 @@ functions:
         * Action code : 11404
         *  Returns : user public profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicGetUserProfilePublicInfoParams'
         required: true
@@ -3783,9 +3935,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetUserProfilePublicInfoByIdsShort@basic':
-    id: 'PublicGetUserProfilePublicInfoByIdsShort@basic'
+  'PublicGetUserProfilePublicInfoByIdsShort@go.basic.fun':
+    id: 'PublicGetUserProfilePublicInfoByIdsShort@go.basic.fun'
     name: 'PublicGetUserProfilePublicInfoByIdsShort'
+    type: 'function'
     description: |-
       Get user public profile by ids.
       Other detail info:
@@ -3793,7 +3946,7 @@ functions:
         * Action code : 11405
         *  Returns : user public profiles
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicGetUserProfilePublicInfoByIdsParams'
         required: true
@@ -3820,9 +3973,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicUpdateCustomAttributesPartiallyShort@basic':
-    id: 'PublicUpdateCustomAttributesPartiallyShort@basic'
+  'PublicUpdateCustomAttributesPartiallyShort@go.basic.fun':
+    id: 'PublicUpdateCustomAttributesPartiallyShort@go.basic.fun'
     name: 'PublicUpdateCustomAttributesPartiallyShort'
+    type: 'function'
     description: |-
       Update partially custom attributes tied to user id.
       Other detail info:
@@ -3831,7 +3985,7 @@ functions:
         *  Request body : allowed format: JSON object
         *  Returns : Updated custom attributes
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicUpdateCustomAttributesPartiallyParams'
         required: true
@@ -3858,9 +4012,10 @@ functions:
       - 'update'
       - 'user'
 
-  'PublicUpdateUserProfileShort@basic':
-    id: 'PublicUpdateUserProfileShort@basic'
+  'PublicUpdateUserProfileShort@go.basic.fun':
+    id: 'PublicUpdateUserProfileShort@go.basic.fun'
     name: 'PublicUpdateUserProfileShort'
+    type: 'function'
     description: |-
       Update user profile.
       Other detail info:
@@ -3870,7 +4025,7 @@ functions:
         *  Timezone : IANA time zone, e.g. Asia/Shanghai
         *  Returns : Updated user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicUpdateUserProfileParams'
         required: true
@@ -3894,9 +4049,10 @@ functions:
       - 'update'
       - 'user'
 
-  'PublicUpdateUserProfileStatusShort@basic':
-    id: 'PublicUpdateUserProfileStatusShort@basic'
+  'PublicUpdateUserProfileStatusShort@go.basic.fun':
+    id: 'PublicUpdateUserProfileStatusShort@go.basic.fun'
     name: 'PublicUpdateUserProfileStatusShort'
+    type: 'function'
     description: |-
       Update user profile status.
       Other detail info:
@@ -3904,7 +4060,7 @@ functions:
         * Action code : 11406
         *  Returns : user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.PublicUpdateUserProfileStatusParams'
         required: true
@@ -3929,16 +4085,17 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateConfigShort@basic':
-    id: 'UpdateConfigShort@basic'
+  'UpdateConfigShort@go.basic.fun':
+    id: 'UpdateConfigShort@go.basic.fun'
     name: 'UpdateConfigShort'
+    type: 'function'
     description: |-
       Update a config.
       Other detail info:
 
         * Returns : created config
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.UpdateConfigParams'
         required: true
@@ -3960,9 +4117,10 @@ functions:
       - 'config'
       - 'update'
 
-  'UpdateCountryGroupShort@basic':
-    id: 'UpdateCountryGroupShort@basic'
+  'UpdateCountryGroupShort@go.basic.fun':
+    id: 'UpdateCountryGroupShort@go.basic.fun'
     name: 'UpdateCountryGroupShort'
+    type: 'function'
     description: |-
       Update a country groups. The countryGroupCode must be exist beforehand.
       Valid update behaviour :
@@ -3973,7 +4131,7 @@ functions:
         * Action code : 11202
         *  Returns : updated country group
     struct: 'MiscService'
-    parameters:
+    arguments:
       params:
         type: '*misc.UpdateCountryGroupParams'
         required: true
@@ -3997,9 +4155,10 @@ functions:
       - 'misc'
       - 'update'
 
-  'UpdateCustomAttributesPartiallyShort@basic':
-    id: 'UpdateCustomAttributesPartiallyShort@basic'
+  'UpdateCustomAttributesPartiallyShort@go.basic.fun':
+    id: 'UpdateCustomAttributesPartiallyShort@go.basic.fun'
     name: 'UpdateCustomAttributesPartiallyShort'
+    type: 'function'
     description: |-
       Update partially custom attributes tied to the user id.
       Other detail info:
@@ -4008,7 +4167,7 @@ functions:
         *  Request body : allowed format: JSON object
         *  Returns : Updated custom attributes
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateCustomAttributesPartiallyParams'
         required: true
@@ -4034,9 +4193,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateMyPrivateCustomAttributesPartiallyShort@basic':
-    id: 'UpdateMyPrivateCustomAttributesPartiallyShort@basic'
+  'UpdateMyPrivateCustomAttributesPartiallyShort@go.basic.fun':
+    id: 'UpdateMyPrivateCustomAttributesPartiallyShort@go.basic.fun'
     name: 'UpdateMyPrivateCustomAttributesPartiallyShort'
+    type: 'function'
     description: |-
       Update partially private custom attributes tied to me.
       Other detail info:
@@ -4045,7 +4205,7 @@ functions:
         *  Request body : allowed format: JSON object
         *  Returns : Updated custom attributes
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateMyPrivateCustomAttributesPartiallyParams'
         required: true
@@ -4073,9 +4233,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateMyProfileShort@basic':
-    id: 'UpdateMyProfileShort@basic'
+  'UpdateMyProfileShort@go.basic.fun':
+    id: 'UpdateMyProfileShort@go.basic.fun'
     name: 'UpdateMyProfileShort'
+    type: 'function'
     description: |-
       Update my profile.
       Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
@@ -4089,7 +4250,7 @@ functions:
         *  Language : allowed format: en, en-US
         *  Timezone : IANA time zone, e.g. Asia/Shanghai
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateMyProfileParams'
         required: true
@@ -4113,9 +4274,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateMyZipCodeShort@basic':
-    id: 'UpdateMyZipCodeShort@basic'
+  'UpdateMyZipCodeShort@go.basic.fun':
+    id: 'UpdateMyZipCodeShort@go.basic.fun'
     name: 'UpdateMyZipCodeShort'
+    type: 'function'
     description: |-
       Update my zip code.
       Other detail info:
@@ -4123,7 +4285,7 @@ functions:
         * Action code : 11408
         *  Returns : user zip code
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateMyZipCodeParams'
         required: true
@@ -4149,9 +4311,10 @@ functions:
       - 'user'
       - 'zip'
 
-  'UpdateNamespaceShort@basic':
-    id: 'UpdateNamespaceShort@basic'
+  'UpdateNamespaceShort@go.basic.fun':
+    id: 'UpdateNamespaceShort@go.basic.fun'
     name: 'UpdateNamespaceShort'
+    type: 'function'
     description: |-
       Update namespace basic info.
       displayName rule:
@@ -4168,7 +4331,7 @@ functions:
         * Action code : 11302
         *  Returns : updated namespace
     struct: 'NamespaceService'
-    parameters:
+    arguments:
       params:
         type: '*namespace.UpdateNamespaceParams'
         required: true
@@ -4190,9 +4353,10 @@ functions:
       - 'namespace'
       - 'update'
 
-  'UpdatePrivateCustomAttributesPartiallyShort@basic':
-    id: 'UpdatePrivateCustomAttributesPartiallyShort@basic'
+  'UpdatePrivateCustomAttributesPartiallyShort@go.basic.fun':
+    id: 'UpdatePrivateCustomAttributesPartiallyShort@go.basic.fun'
     name: 'UpdatePrivateCustomAttributesPartiallyShort'
+    type: 'function'
     description: |-
       Update partially private custom attributes tied to the user id.
       Other detail info:
@@ -4201,7 +4365,7 @@ functions:
         *  Request body : allowed format: JSON object
         *  Returns : Updated custom attributes
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdatePrivateCustomAttributesPartiallyParams'
         required: true
@@ -4228,9 +4392,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateUserProfileShort@basic':
-    id: 'UpdateUserProfileShort@basic'
+  'UpdateUserProfileShort@go.basic.fun':
+    id: 'UpdateUserProfileShort@go.basic.fun'
     name: 'UpdateUserProfileShort'
+    type: 'function'
     description: |-
       Update user profile.
       Other detail info:
@@ -4238,7 +4403,7 @@ functions:
         * Action code : 11402
         *  Returns : Updated user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateUserProfileParams'
         required: true
@@ -4261,9 +4426,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateUserProfileStatusShort@basic':
-    id: 'UpdateUserProfileStatusShort@basic'
+  'UpdateUserProfileStatusShort@go.basic.fun':
+    id: 'UpdateUserProfileStatusShort@go.basic.fun'
     name: 'UpdateUserProfileStatusShort'
+    type: 'function'
     description: |-
       Update user profile status.
       Other detail info:
@@ -4271,7 +4437,7 @@ functions:
         * Action code : 11406
         *  Returns : user profile
     struct: 'UserProfileService'
-    parameters:
+    arguments:
       params:
         type: '*user_profile.UpdateUserProfileStatusParams'
         required: true
@@ -4294,3 +4460,5 @@ functions:
       - 'status'
       - 'update'
       - 'user'
+
+  # endregion functions

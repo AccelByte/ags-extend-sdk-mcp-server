@@ -1,9 +1,10 @@
-structs:
+symbols:
   # region models
 
-  'ApimodelsConfigurationRequest@loginqueue':
-    id: 'ApimodelsConfigurationRequest@loginqueue'
+  'ApimodelsConfigurationRequest@jv.loginqueue.mod':
+    id: 'ApimodelsConfigurationRequest@jv.loginqueue.mod'
     name: 'ApimodelsConfigurationRequest'
+    type: 'model'
     fields:
       'enabled':
         type: 'Boolean'
@@ -35,9 +36,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsConfigurationRequest.java'
 
-  'ApimodelsConfigurationResponse@loginqueue':
-    id: 'ApimodelsConfigurationResponse@loginqueue'
+  'ApimodelsConfigurationResponse@jv.loginqueue.mod':
+    id: 'ApimodelsConfigurationResponse@jv.loginqueue.mod'
     name: 'ApimodelsConfigurationResponse'
+    type: 'model'
     fields:
       'enabled':
         type: 'Boolean'
@@ -72,9 +74,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsConfigurationResponse.java'
 
-  'ApimodelsLink@loginqueue':
-    id: 'ApimodelsLink@loginqueue'
+  'ApimodelsLink@jv.loginqueue.mod':
+    id: 'ApimodelsLink@jv.loginqueue.mod'
     name: 'ApimodelsLink'
+    type: 'model'
     fields:
       'action':
         type: 'String'
@@ -88,9 +91,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsLink.java'
 
-  'ApimodelsQueueStatusResponse@loginqueue':
-    id: 'ApimodelsQueueStatusResponse@loginqueue'
+  'ApimodelsQueueStatusResponse@jv.loginqueue.mod':
+    id: 'ApimodelsQueueStatusResponse@jv.loginqueue.mod'
     name: 'ApimodelsQueueStatusResponse'
+    type: 'model'
     fields:
       'isActive':
         type: 'Boolean'
@@ -113,9 +117,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsQueueStatusResponse.java'
 
-  'ApimodelsRefreshTicketResponse@loginqueue':
-    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+  'ApimodelsRefreshTicketResponse@jv.loginqueue.mod':
+    id: 'ApimodelsRefreshTicketResponse@jv.loginqueue.mod'
     name: 'ApimodelsRefreshTicketResponse'
+    type: 'model'
     fields:
       'cancel':
         type: 'ApimodelsLink'
@@ -141,9 +146,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/loginqueue/models/ApimodelsRefreshTicketResponse.java'
 
-  'ResponseError@loginqueue':
-    id: 'ResponseError@loginqueue'
+  'ResponseError@jv.loginqueue.mod':
+    id: 'ResponseError@jv.loginqueue.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'errorCode':
         type: 'Integer'
@@ -168,15 +174,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminGetConfiguration@loginqueue':
-    id: 'AdminGetConfiguration@loginqueue'
+  'AdminGetConfiguration@jv.loginqueue.fun':
+    id: 'AdminGetConfiguration@jv.loginqueue.fun'
     name: 'AdminGetConfiguration'
+    type: 'function'
     description: |-
       This API is used to get log queue configuration of a namespace.
       Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
-    parameters:
+    arguments:
       'namespace':
         type: 'String'
         required: true
@@ -209,12 +216,13 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetStatus@loginqueue':
-    id: 'AdminGetStatus@loginqueue'
+  'AdminGetStatus@jv.loginqueue.fun':
+    id: 'AdminGetStatus@jv.loginqueue.fun'
     name: 'AdminGetStatus'
+    type: 'function'
     description: |-
       Get login queue status
-    parameters:
+    arguments:
       'namespace':
         type: 'String'
         required: true
@@ -247,9 +255,10 @@ functions:
       - 'status'
       - 'v1'
 
-  'AdminUpdateConfiguration@loginqueue':
-    id: 'AdminUpdateConfiguration@loginqueue'
+  'AdminUpdateConfiguration@jv.loginqueue.fun':
+    id: 'AdminUpdateConfiguration@jv.loginqueue.fun'
     name: 'AdminUpdateConfiguration'
+    type: 'function'
     description: |-
       This API is used to set/update log queue configuration of a namespace.
       This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
@@ -271,7 +280,7 @@ functions:
       * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
       * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
       * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
-    parameters:
+    arguments:
       'body':
         type: 'ApimodelsConfigurationRequest'
         required: true
@@ -308,12 +317,13 @@ functions:
       - 'update'
       - 'v1'
 
-  'CancelTicket@loginqueue':
-    id: 'CancelTicket@loginqueue'
+  'CancelTicket@jv.loginqueue.fun':
+    id: 'CancelTicket@jv.loginqueue.fun'
     name: 'CancelTicket'
+    type: 'function'
     description: |-
       Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
-    parameters:
+    arguments:
       'namespace':
         type: 'String'
         required: true
@@ -345,12 +355,13 @@ functions:
       - 'ticket'
       - 'v1'
 
-  'RefreshTicket@loginqueue':
-    id: 'RefreshTicket@loginqueue'
+  'RefreshTicket@jv.loginqueue.fun':
+    id: 'RefreshTicket@jv.loginqueue.fun'
     name: 'RefreshTicket'
+    type: 'function'
     description: |-
       Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
-    parameters:
+    arguments:
       'namespace':
         type: 'String'
         required: true
@@ -381,3 +392,4 @@ functions:
       - 'refresh'
       - 'ticket'
       - 'v1'
+  # endregion functions

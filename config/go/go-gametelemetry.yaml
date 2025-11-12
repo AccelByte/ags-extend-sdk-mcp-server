@@ -1,10 +1,16 @@
-structs:
-  'JusticeGametelemetryService@gametelemetry':
-    id: 'JusticeGametelemetryService@gametelemetry'
-    name: 'JusticeGametelemetryService'
+symbols:
+  'NewGametelemetryClient@go.gametelemetry.fun':
+    id: 'NewGametelemetryClient@go.gametelemetry.fun'
+    name: 'NewGametelemetryClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*gametelemetryclient.JusticeGametelemetryService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/gametelemetry-sdk/pkg/gametelemetryclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/justice_gametelemetry_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/gametelemetryclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'GametelemetryOperationsService@gametelemetry':
-    id: 'GametelemetryOperationsService@gametelemetry'
+  'GametelemetryOperationsService@go.gametelemetry.mod':
+    id: 'GametelemetryOperationsService@go.gametelemetry.mod'
     name: 'GametelemetryOperationsService'
+    type: 'model'
     fields:
       Client:
         type: '*gametelemetryclient.JusticeGametelemetryService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'TelemetryService@gametelemetry':
-    id: 'TelemetryService@gametelemetry'
+  'TelemetryService@go.gametelemetry.mod':
+    id: 'TelemetryService@go.gametelemetry.mod'
     name: 'TelemetryService'
+    type: 'model'
     fields:
       Client:
         type: '*gametelemetryclient.JusticeGametelemetryService'
@@ -65,9 +73,10 @@ structs:
 
   # region params
 
-  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@gametelemetry':
-    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@gametelemetry'
+  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@go.gametelemetry.mod':
+    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams@go.gametelemetry.mod'
     name: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams'
+    type: 'model'
     fields:
       'DeviceType':
         type: 'string'
@@ -127,18 +136,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/telemetry/get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_parameters.go'
 
-  'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@gametelemetry':
-    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@gametelemetry'
+  'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@go.gametelemetry.mod':
+    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetParams@go.gametelemetry.mod'
     name: 'GetNamespacesGameTelemetryV1AdminNamespacesGetParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gametelemetry-sdk/pkg/gametelemetryclient/telemetry'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/telemetry/get_namespaces_game_telemetry_v1_admin_namespaces_get_parameters.go'
 
-  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@gametelemetry':
-    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@gametelemetry'
+  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@go.gametelemetry.mod':
+    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams@go.gametelemetry.mod'
     name: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams'
+    type: 'model'
     fields:
       'Cookie':
         type: 'string'
@@ -151,9 +161,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations/protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_parameters.go'
 
-  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@gametelemetry':
-    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@gametelemetry'
+  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@go.gametelemetry.mod':
+    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams@go.gametelemetry.mod'
     name: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*TelemetryBody'
@@ -166,9 +177,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclient/gametelemetry_operations/protected_save_events_game_telemetry_v1_protected_events_post_parameters.go'
 
-  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@gametelemetry':
-    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@gametelemetry'
+  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@go.gametelemetry.mod':
+    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams@go.gametelemetry.mod'
     name: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams'
+    type: 'model'
     fields:
       'Cookie':
         type: 'string'
@@ -188,9 +200,10 @@ structs:
 
   # region models
 
-  'BaseErrorResponse@gametelemetry':
-    id: 'BaseErrorResponse@gametelemetry'
+  'BaseErrorResponse@go.gametelemetry.mod':
+    id: 'BaseErrorResponse@go.gametelemetry.mod'
     name: 'BaseErrorResponse'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int64'
@@ -203,9 +216,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/base_error_response.go'
 
-  'GetNamespaceEventResponse@gametelemetry':
-    id: 'GetNamespaceEventResponse@gametelemetry'
+  'GetNamespaceEventResponse@go.gametelemetry.mod':
+    id: 'GetNamespaceEventResponse@go.gametelemetry.mod'
     name: 'GetNamespaceEventResponse'
+    type: 'model'
     fields:
       'EventID':
         type: 'string'
@@ -236,9 +250,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/get_namespace_event_response.go'
 
-  'HTTPValidationError@gametelemetry':
-    id: 'HTTPValidationError@gametelemetry'
+  'HTTPValidationError@go.gametelemetry.mod':
+    id: 'HTTPValidationError@go.gametelemetry.mod'
     name: 'HTTPValidationError'
+    type: 'model'
     fields:
       'Detail':
         type: '[]*ValidationError'
@@ -248,9 +263,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/http_validation_error.go'
 
-  'ListBaseResponseStr@gametelemetry':
-    id: 'ListBaseResponseStr@gametelemetry'
+  'ListBaseResponseStr@go.gametelemetry.mod':
+    id: 'ListBaseResponseStr@go.gametelemetry.mod'
     name: 'ListBaseResponseStr'
+    type: 'model'
     fields:
       'Data':
         type: '[]string'
@@ -260,9 +276,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/list_base_response_str.go'
 
-  'PagedResponseGetNamespaceEventResponse@gametelemetry':
-    id: 'PagedResponseGetNamespaceEventResponse@gametelemetry'
+  'PagedResponseGetNamespaceEventResponse@go.gametelemetry.mod':
+    id: 'PagedResponseGetNamespaceEventResponse@go.gametelemetry.mod'
     name: 'PagedResponseGetNamespaceEventResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*GetNamespaceEventResponse'
@@ -275,9 +292,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/paged_response_get_namespace_event_response.go'
 
-  'Paging@gametelemetry':
-    id: 'Paging@gametelemetry'
+  'Paging@go.gametelemetry.mod':
+    id: 'Paging@go.gametelemetry.mod'
     name: 'Paging'
+    type: 'model'
     fields:
       'Next':
         type: 'string'
@@ -290,9 +308,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/paging.go'
 
-  'PlayTimeResponse@gametelemetry':
-    id: 'PlayTimeResponse@gametelemetry'
+  'PlayTimeResponse@go.gametelemetry.mod':
+    id: 'PlayTimeResponse@go.gametelemetry.mod'
     name: 'PlayTimeResponse'
+    type: 'model'
     fields:
       'TotalPlaytime':
         type: 'float64'
@@ -302,9 +321,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/play_time_response.go'
 
-  'TelemetryBody@gametelemetry':
-    id: 'TelemetryBody@gametelemetry'
+  'TelemetryBody@go.gametelemetry.mod':
+    id: 'TelemetryBody@go.gametelemetry.mod'
     name: 'TelemetryBody'
+    type: 'model'
     fields:
       'ClientTimestamp':
         type: '*strfmt.DateTime'
@@ -336,9 +356,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gametelemetry-sdk/pkg/gametelemetryclientmodels/telemetry_body.go'
 
-  'ValidationError@gametelemetry':
-    id: 'ValidationError@gametelemetry'
+  'ValidationError@go.gametelemetry.mod':
+    id: 'ValidationError@go.gametelemetry.mod'
     name: 'ValidationError'
+    type: 'model'
     fields:
       'Loc':
         type: '[]string'
@@ -356,16 +377,17 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@gametelemetry':
-    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@gametelemetry'
+  'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@go.gametelemetry.fun':
+    id: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort@go.gametelemetry.fun'
     name: 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetShort'
+    type: 'function'
     description: |-
       This endpoint requires valid JWT token and telemetry permission
       This endpoint retrieves event list
     struct: 'TelemetryService'
-    parameters:
+    arguments:
       params:
         type: '*telemetry.GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGetParams'
         required: true
@@ -393,14 +415,15 @@ functions:
       - 'telemetry'
       - 'v1'
 
-  'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@gametelemetry':
-    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@gametelemetry'
+  'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@go.gametelemetry.fun':
+    id: 'GetNamespacesGameTelemetryV1AdminNamespacesGetShort@go.gametelemetry.fun'
     name: 'GetNamespacesGameTelemetryV1AdminNamespacesGetShort'
+    type: 'function'
     description: |-
       This endpoint requires valid JWT token and telemetry permission
       This endpoint retrieves namespace list
     struct: 'TelemetryService'
-    parameters:
+    arguments:
       params:
         type: '*telemetry.GetNamespacesGameTelemetryV1AdminNamespacesGetParams'
         required: true
@@ -426,9 +449,10 @@ functions:
       - 'telemetry'
       - 'v1'
 
-  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@gametelemetry':
-    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@gametelemetry'
+  'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@go.gametelemetry.fun':
+    id: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort@go.gametelemetry.fun'
     name: 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetShort'
+    type: 'function'
     description: |-
       This endpoint requires valid JWT token.
       This endpoint does not require permission.
@@ -437,7 +461,7 @@ functions:
 
       Players' Steam account must be set into public to enable the service fetch their total playtime data.
     struct: 'GametelemetryOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*gametelemetry_operations.ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimeGetParams'
         required: true
@@ -468,9 +492,10 @@ functions:
       - 'telemetry'
       - 'v1'
 
-  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@gametelemetry':
-    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@gametelemetry'
+  'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@go.gametelemetry.fun':
+    id: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort@go.gametelemetry.fun'
     name: 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostShort'
+    type: 'function'
     description: |-
       This endpoint requires valid JWT token.
       This endpoint does not require permission.
@@ -525,7 +550,7 @@ functions:
 
       - **DeviceType (optional)**: The device type of the user.
     struct: 'GametelemetryOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*gametelemetry_operations.ProtectedSaveEventsGameTelemetryV1ProtectedEventsPostParams'
         required: true
@@ -554,16 +579,17 @@ functions:
       - 'telemetry'
       - 'v1'
 
-  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@gametelemetry':
-    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@gametelemetry'
+  'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@go.gametelemetry.fun':
+    id: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort@go.gametelemetry.fun'
     name: 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutShort'
+    type: 'function'
     description: |-
       This endpoint requires valid JWT token.
       This endpoint does not require permission.
 
       This endpoint update player's total playtime in a specific game (AppId) from service's cache.
     struct: 'GametelemetryOperationsService'
-    parameters:
+    arguments:
       params:
         type: '*gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIDPlaytimePlaytimePutParams'
         required: true
@@ -594,3 +620,5 @@ functions:
       - 'telemetry'
       - 'update'
       - 'v1'
+
+  # endregion functions

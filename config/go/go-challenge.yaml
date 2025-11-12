@@ -1,10 +1,16 @@
-structs:
-  'JusticeChallengeService@challenge':
-    id: 'JusticeChallengeService@challenge'
-    name: 'JusticeChallengeService'
+symbols:
+  'NewChallengeClient@go.challenge.fun':
+    id: 'NewChallengeClient@go.challenge.fun'
+    name: 'NewChallengeClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*challengeclient.JusticeChallengeService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/challenge-sdk/pkg/challengeclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/justice_challenge_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/challengeclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'ChallengeConfigurationService@challenge':
-    id: 'ChallengeConfigurationService@challenge'
+  'ChallengeConfigurationService@go.challenge.mod':
+    id: 'ChallengeConfigurationService@go.challenge.mod'
     name: 'ChallengeConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ChallengeListService@challenge':
-    id: 'ChallengeListService@challenge'
+  'ChallengeListService@go.challenge.mod':
+    id: 'ChallengeListService@go.challenge.mod'
     name: 'ChallengeListService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ChallengeProgressionService@challenge':
-    id: 'ChallengeProgressionService@challenge'
+  'ChallengeProgressionService@go.challenge.mod':
+    id: 'ChallengeProgressionService@go.challenge.mod'
     name: 'ChallengeProgressionService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GoalConfigurationService@challenge':
-    id: 'GoalConfigurationService@challenge'
+  'GoalConfigurationService@go.challenge.mod':
+    id: 'GoalConfigurationService@go.challenge.mod'
     name: 'GoalConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PlayerRewardService@challenge':
-    id: 'PlayerRewardService@challenge'
+  'PlayerRewardService@go.challenge.mod':
+    id: 'PlayerRewardService@go.challenge.mod'
     name: 'PlayerRewardService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PluginsService@challenge':
-    id: 'PluginsService@challenge'
+  'PluginsService@go.challenge.mod':
+    id: 'PluginsService@go.challenge.mod'
     name: 'PluginsService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'SchedulesService@challenge':
-    id: 'SchedulesService@challenge'
+  'SchedulesService@go.challenge.mod':
+    id: 'SchedulesService@go.challenge.mod'
     name: 'SchedulesService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -181,9 +194,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UtilitiesService@challenge':
-    id: 'UtilitiesService@challenge'
+  'UtilitiesService@go.challenge.mod':
+    id: 'UtilitiesService@go.challenge.mod'
     name: 'UtilitiesService'
+    type: 'model'
     fields:
       Client:
         type: '*challengeclient.JusticeChallengeService'
@@ -209,9 +223,10 @@ structs:
 
   # region params
 
-  'AdminClaimUserRewardsParams@challenge':
-    id: 'AdminClaimUserRewardsParams@challenge'
+  'AdminClaimUserRewardsParams@go.challenge.mod':
+    id: 'AdminClaimUserRewardsParams@go.challenge.mod'
     name: 'AdminClaimUserRewardsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelClaimUserRewardsReq'
@@ -231,9 +246,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_user_rewards_parameters.go'
 
-  'AdminClaimUserRewardsByGoalCodeParams@challenge':
-    id: 'AdminClaimUserRewardsByGoalCodeParams@challenge'
+  'AdminClaimUserRewardsByGoalCodeParams@go.challenge.mod':
+    id: 'AdminClaimUserRewardsByGoalCodeParams@go.challenge.mod'
     name: 'AdminClaimUserRewardsByGoalCodeParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelClaimUserRewardsByGoalCodeRequest'
@@ -254,9 +270,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_user_rewards_by_goal_code_parameters.go'
 
-  'AdminClaimUsersRewardsParams@challenge':
-    id: 'AdminClaimUsersRewardsParams@challenge'
+  'AdminClaimUsersRewardsParams@go.challenge.mod':
+    id: 'AdminClaimUsersRewardsParams@go.challenge.mod'
     name: 'AdminClaimUsersRewardsParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*ModelClaimUsersRewardsRequest'
@@ -271,9 +288,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_claim_users_rewards_parameters.go'
 
-  'AdminCreateAssignmentPluginParams@challenge':
-    id: 'AdminCreateAssignmentPluginParams@challenge'
+  'AdminCreateAssignmentPluginParams@go.challenge.mod':
+    id: 'AdminCreateAssignmentPluginParams@go.challenge.mod'
     name: 'AdminCreateAssignmentPluginParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelPluginAssignmentRequest'
@@ -288,9 +306,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_create_assignment_plugin_parameters.go'
 
-  'AdminCreateChallengeParams@challenge':
-    id: 'AdminCreateChallengeParams@challenge'
+  'AdminCreateChallengeParams@go.challenge.mod':
+    id: 'AdminCreateChallengeParams@go.challenge.mod'
     name: 'AdminCreateChallengeParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateChallengeRequest'
@@ -305,9 +324,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_create_challenge_parameters.go'
 
-  'AdminCreateGoalParams@challenge':
-    id: 'AdminCreateGoalParams@challenge'
+  'AdminCreateGoalParams@go.challenge.mod':
+    id: 'AdminCreateGoalParams@go.challenge.mod'
     name: 'AdminCreateGoalParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelCreateGoalRequest'
@@ -327,9 +347,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_create_goal_parameters.go'
 
-  'AdminDeleteAssignmentPluginParams@challenge':
-    id: 'AdminDeleteAssignmentPluginParams@challenge'
+  'AdminDeleteAssignmentPluginParams@go.challenge.mod':
+    id: 'AdminDeleteAssignmentPluginParams@go.challenge.mod'
     name: 'AdminDeleteAssignmentPluginParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -341,9 +362,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_delete_assignment_plugin_parameters.go'
 
-  'AdminDeleteChallengeParams@challenge':
-    id: 'AdminDeleteChallengeParams@challenge'
+  'AdminDeleteChallengeParams@go.challenge.mod':
+    id: 'AdminDeleteChallengeParams@go.challenge.mod'
     name: 'AdminDeleteChallengeParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -360,9 +382,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_delete_challenge_parameters.go'
 
-  'AdminDeleteGoalParams@challenge':
-    id: 'AdminDeleteGoalParams@challenge'
+  'AdminDeleteGoalParams@go.challenge.mod':
+    id: 'AdminDeleteGoalParams@go.challenge.mod'
     name: 'AdminDeleteGoalParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -384,9 +407,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_delete_goal_parameters.go'
 
-  'AdminDeleteTiedChallengeParams@challenge':
-    id: 'AdminDeleteTiedChallengeParams@challenge'
+  'AdminDeleteTiedChallengeParams@go.challenge.mod':
+    id: 'AdminDeleteTiedChallengeParams@go.challenge.mod'
     name: 'AdminDeleteTiedChallengeParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -403,9 +427,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_delete_tied_challenge_parameters.go'
 
-  'AdminEvaluateProgressParams@challenge':
-    id: 'AdminEvaluateProgressParams@challenge'
+  'AdminEvaluateProgressParams@go.challenge.mod':
+    id: 'AdminEvaluateProgressParams@go.challenge.mod'
     name: 'AdminEvaluateProgressParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelEvaluatePlayerProgressionRequest'
@@ -425,9 +450,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/admin_evaluate_progress_parameters.go'
 
-  'AdminGetActiveChallengesParams@challenge':
-    id: 'AdminGetActiveChallengesParams@challenge'
+  'AdminGetActiveChallengesParams@go.challenge.mod':
+    id: 'AdminGetActiveChallengesParams@go.challenge.mod'
     name: 'AdminGetActiveChallengesParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -454,9 +480,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_active_challenges_parameters.go'
 
-  'AdminGetAssignmentPluginParams@challenge':
-    id: 'AdminGetAssignmentPluginParams@challenge'
+  'AdminGetAssignmentPluginParams@go.challenge.mod':
+    id: 'AdminGetAssignmentPluginParams@go.challenge.mod'
     name: 'AdminGetAssignmentPluginParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -468,9 +495,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_get_assignment_plugin_parameters.go'
 
-  'AdminGetChallengeParams@challenge':
-    id: 'AdminGetChallengeParams@challenge'
+  'AdminGetChallengeParams@go.challenge.mod':
+    id: 'AdminGetChallengeParams@go.challenge.mod'
     name: 'AdminGetChallengeParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -487,9 +515,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_challenge_parameters.go'
 
-  'AdminGetChallengesParams@challenge':
-    id: 'AdminGetChallengesParams@challenge'
+  'AdminGetChallengesParams@go.challenge.mod':
+    id: 'AdminGetChallengesParams@go.challenge.mod'
     name: 'AdminGetChallengesParams'
+    type: 'model'
     fields:
       'Keyword':
         type: 'string'
@@ -532,9 +561,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_challenges_parameters.go'
 
-  'AdminGetGoalParams@challenge':
-    id: 'AdminGetGoalParams@challenge'
+  'AdminGetGoalParams@go.challenge.mod':
+    id: 'AdminGetGoalParams@go.challenge.mod'
     name: 'AdminGetGoalParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -556,9 +586,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_get_goal_parameters.go'
 
-  'AdminGetGoalsParams@challenge':
-    id: 'AdminGetGoalsParams@challenge'
+  'AdminGetGoalsParams@go.challenge.mod':
+    id: 'AdminGetGoalsParams@go.challenge.mod'
     name: 'AdminGetGoalsParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -596,9 +627,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_get_goals_parameters.go'
 
-  'AdminGetItemReferencesParams@challenge':
-    id: 'AdminGetItemReferencesParams@challenge'
+  'AdminGetItemReferencesParams@go.challenge.mod':
+    id: 'AdminGetItemReferencesParams@go.challenge.mod'
     name: 'AdminGetItemReferencesParams'
+    type: 'model'
     fields:
       'ItemID':
         type: 'string'
@@ -615,9 +647,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/utilities/admin_get_item_references_parameters.go'
 
-  'AdminGetPeriodsParams@challenge':
-    id: 'AdminGetPeriodsParams@challenge'
+  'AdminGetPeriodsParams@go.challenge.mod':
+    id: 'AdminGetPeriodsParams@go.challenge.mod'
     name: 'AdminGetPeriodsParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -644,9 +677,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_get_periods_parameters.go'
 
-  'AdminGetUserProgressionParams@challenge':
-    id: 'AdminGetUserProgressionParams@challenge'
+  'AdminGetUserProgressionParams@go.challenge.mod':
+    id: 'AdminGetUserProgressionParams@go.challenge.mod'
     name: 'AdminGetUserProgressionParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -693,9 +727,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/admin_get_user_progression_parameters.go'
 
-  'AdminGetUserRewardsParams@challenge':
-    id: 'AdminGetUserRewardsParams@challenge'
+  'AdminGetUserRewardsParams@go.challenge.mod':
+    id: 'AdminGetUserRewardsParams@go.challenge.mod'
     name: 'AdminGetUserRewardsParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -743,9 +778,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/admin_get_user_rewards_parameters.go'
 
-  'AdminListSchedulesParams@challenge':
-    id: 'AdminListSchedulesParams@challenge'
+  'AdminListSchedulesParams@go.challenge.mod':
+    id: 'AdminListSchedulesParams@go.challenge.mod'
     name: 'AdminListSchedulesParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -782,9 +818,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/admin_list_schedules_parameters.go'
 
-  'AdminListSchedulesByGoalParams@challenge':
-    id: 'AdminListSchedulesByGoalParams@challenge'
+  'AdminListSchedulesByGoalParams@go.challenge.mod':
+    id: 'AdminListSchedulesByGoalParams@go.challenge.mod'
     name: 'AdminListSchedulesByGoalParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -821,9 +858,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/admin_list_schedules_by_goal_parameters.go'
 
-  'AdminRandomizeChallengeParams@challenge':
-    id: 'AdminRandomizeChallengeParams@challenge'
+  'AdminRandomizeChallengeParams@go.challenge.mod':
+    id: 'AdminRandomizeChallengeParams@go.challenge.mod'
     name: 'AdminRandomizeChallengeParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -840,9 +878,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_randomize_challenge_parameters.go'
 
-  'AdminUpdateAssignmentPluginParams@challenge':
-    id: 'AdminUpdateAssignmentPluginParams@challenge'
+  'AdminUpdateAssignmentPluginParams@go.challenge.mod':
+    id: 'AdminUpdateAssignmentPluginParams@go.challenge.mod'
     name: 'AdminUpdateAssignmentPluginParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelPluginAssignmentRequest'
@@ -857,9 +896,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/plugins/admin_update_assignment_plugin_parameters.go'
 
-  'AdminUpdateChallengeParams@challenge':
-    id: 'AdminUpdateChallengeParams@challenge'
+  'AdminUpdateChallengeParams@go.challenge.mod':
+    id: 'AdminUpdateChallengeParams@go.challenge.mod'
     name: 'AdminUpdateChallengeParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateChallengeRequest'
@@ -879,9 +919,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_update_challenge_parameters.go'
 
-  'AdminUpdateGoalsParams@challenge':
-    id: 'AdminUpdateGoalsParams@challenge'
+  'AdminUpdateGoalsParams@go.challenge.mod':
+    id: 'AdminUpdateGoalsParams@go.challenge.mod'
     name: 'AdminUpdateGoalsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateGoalRequest'
@@ -906,9 +947,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/goal_configuration/admin_update_goals_parameters.go'
 
-  'AdminUpdateTiedChallengeScheduleParams@challenge':
-    id: 'AdminUpdateTiedChallengeScheduleParams@challenge'
+  'AdminUpdateTiedChallengeScheduleParams@go.challenge.mod':
+    id: 'AdminUpdateTiedChallengeScheduleParams@go.challenge.mod'
     name: 'AdminUpdateTiedChallengeScheduleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelUpdateChallengeScheduleRequest'
@@ -928,9 +970,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_configuration/admin_update_tied_challenge_schedule_parameters.go'
 
-  'EvaluateMyProgressParams@challenge':
-    id: 'EvaluateMyProgressParams@challenge'
+  'EvaluateMyProgressParams@go.challenge.mod':
+    id: 'EvaluateMyProgressParams@go.challenge.mod'
     name: 'EvaluateMyProgressParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: '[]string'
@@ -947,9 +990,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/evaluate_my_progress_parameters.go'
 
-  'GetChallengesParams@challenge':
-    id: 'GetChallengesParams@challenge'
+  'GetChallengesParams@go.challenge.mod':
+    id: 'GetChallengesParams@go.challenge.mod'
     name: 'GetChallengesParams'
+    type: 'model'
     fields:
       'Keyword':
         type: 'string'
@@ -992,9 +1036,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_list/get_challenges_parameters.go'
 
-  'PublicClaimUserRewardsParams@challenge':
-    id: 'PublicClaimUserRewardsParams@challenge'
+  'PublicClaimUserRewardsParams@go.challenge.mod':
+    id: 'PublicClaimUserRewardsParams@go.challenge.mod'
     name: 'PublicClaimUserRewardsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelClaimUserRewardsReq'
@@ -1009,9 +1054,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_claim_user_rewards_parameters.go'
 
-  'PublicClaimUserRewardsByGoalCodeParams@challenge':
-    id: 'PublicClaimUserRewardsByGoalCodeParams@challenge'
+  'PublicClaimUserRewardsByGoalCodeParams@go.challenge.mod':
+    id: 'PublicClaimUserRewardsByGoalCodeParams@go.challenge.mod'
     name: 'PublicClaimUserRewardsByGoalCodeParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelClaimUserRewardsByGoalCodeRequest'
@@ -1029,9 +1075,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_claim_user_rewards_by_goal_code_parameters.go'
 
-  'PublicGetPastUserProgressionParams@challenge':
-    id: 'PublicGetPastUserProgressionParams@challenge'
+  'PublicGetPastUserProgressionParams@go.challenge.mod':
+    id: 'PublicGetPastUserProgressionParams@go.challenge.mod'
     name: 'PublicGetPastUserProgressionParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1073,9 +1120,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/public_get_past_user_progression_parameters.go'
 
-  'PublicGetScheduledGoalsParams@challenge':
-    id: 'PublicGetScheduledGoalsParams@challenge'
+  'PublicGetScheduledGoalsParams@go.challenge.mod':
+    id: 'PublicGetScheduledGoalsParams@go.challenge.mod'
     name: 'PublicGetScheduledGoalsParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1113,9 +1161,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_list/public_get_scheduled_goals_parameters.go'
 
-  'PublicGetUserProgressionParams@challenge':
-    id: 'PublicGetUserProgressionParams@challenge'
+  'PublicGetUserProgressionParams@go.challenge.mod':
+    id: 'PublicGetUserProgressionParams@go.challenge.mod'
     name: 'PublicGetUserProgressionParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1157,9 +1206,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/challenge_progression/public_get_user_progression_parameters.go'
 
-  'PublicGetUserRewardsParams@challenge':
-    id: 'PublicGetUserRewardsParams@challenge'
+  'PublicGetUserRewardsParams@go.challenge.mod':
+    id: 'PublicGetUserRewardsParams@go.challenge.mod'
     name: 'PublicGetUserRewardsParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1202,9 +1252,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/player_reward/public_get_user_rewards_parameters.go'
 
-  'PublicListSchedulesParams@challenge':
-    id: 'PublicListSchedulesParams@challenge'
+  'PublicListSchedulesParams@go.challenge.mod':
+    id: 'PublicListSchedulesParams@go.challenge.mod'
     name: 'PublicListSchedulesParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1236,9 +1287,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclient/schedules/public_list_schedules_parameters.go'
 
-  'PublicListSchedulesByGoalParams@challenge':
-    id: 'PublicListSchedulesByGoalParams@challenge'
+  'PublicListSchedulesByGoalParams@go.challenge.mod':
+    id: 'PublicListSchedulesByGoalParams@go.challenge.mod'
     name: 'PublicListSchedulesByGoalParams'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1274,9 +1326,10 @@ structs:
 
   # region models
 
-  'IamErrorResponse@challenge':
-    id: 'IamErrorResponse@challenge'
+  'IamErrorResponse@go.challenge.mod':
+    id: 'IamErrorResponse@go.challenge.mod'
     name: 'IamErrorResponse'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -1292,9 +1345,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/iam_error_response.go'
 
-  'IamPermission@challenge':
-    id: 'IamPermission@challenge'
+  'IamPermission@go.challenge.mod':
+    id: 'IamPermission@go.challenge.mod'
     name: 'IamPermission'
+    type: 'model'
     fields:
       'Action':
         type: 'int32'
@@ -1307,9 +1361,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/iam_permission.go'
 
-  'ModelChallengeReference@challenge':
-    id: 'ModelChallengeReference@challenge'
+  'ModelChallengeReference@go.challenge.mod':
+    id: 'ModelChallengeReference@go.challenge.mod'
     name: 'ModelChallengeReference'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1322,9 +1377,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_challenge_reference.go'
 
-  'ModelChallengeResponse@challenge':
-    id: 'ModelChallengeResponse@challenge'
+  'ModelChallengeResponse@go.challenge.mod':
+    id: 'ModelChallengeResponse@go.challenge.mod'
     name: 'ModelChallengeResponse'
+    type: 'model'
     fields:
       'ActiveGoalsPerRotation':
         type: 'int32'
@@ -1382,9 +1438,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_challenge_response.go'
 
-  'ModelClaimableUserReward@challenge':
-    id: 'ModelClaimableUserReward@challenge'
+  'ModelClaimableUserReward@go.challenge.mod':
+    id: 'ModelClaimableUserReward@go.challenge.mod'
     name: 'ModelClaimableUserReward'
+    type: 'model'
     fields:
       'GoalProgressionID':
         type: 'string'
@@ -1412,9 +1469,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claimable_user_reward.go'
 
-  'ModelClaimUserRewardsByGoalCodeRequest@challenge':
-    id: 'ModelClaimUserRewardsByGoalCodeRequest@challenge'
+  'ModelClaimUserRewardsByGoalCodeRequest@go.challenge.mod':
+    id: 'ModelClaimUserRewardsByGoalCodeRequest@go.challenge.mod'
     name: 'ModelClaimUserRewardsByGoalCodeRequest'
+    type: 'model'
     fields:
       'GoalCode':
         type: 'string'
@@ -1424,9 +1482,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_user_rewards_by_goal_code_request.go'
 
-  'ModelClaimUserRewardsReq@challenge':
-    id: 'ModelClaimUserRewardsReq@challenge'
+  'ModelClaimUserRewardsReq@go.challenge.mod':
+    id: 'ModelClaimUserRewardsReq@go.challenge.mod'
     name: 'ModelClaimUserRewardsReq'
+    type: 'model'
     fields:
       'RewardIDs':
         type: '[]string'
@@ -1438,9 +1497,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_user_rewards_req.go'
 
-  'ModelClaimUsersRewardsRequest@challenge':
-    id: 'ModelClaimUsersRewardsRequest@challenge'
+  'ModelClaimUsersRewardsRequest@go.challenge.mod':
+    id: 'ModelClaimUsersRewardsRequest@go.challenge.mod'
     name: 'ModelClaimUsersRewardsRequest'
+    type: 'model'
     fields:
       'RewardIds':
         type: '[]string'
@@ -1453,9 +1513,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_users_rewards_request.go'
 
-  'ModelClaimUsersRewardsResponse@challenge':
-    id: 'ModelClaimUsersRewardsResponse@challenge'
+  'ModelClaimUsersRewardsResponse@go.challenge.mod':
+    id: 'ModelClaimUsersRewardsResponse@go.challenge.mod'
     name: 'ModelClaimUsersRewardsResponse'
+    type: 'model'
     fields:
       'ErrorDetail':
         type: '*ResponseError'
@@ -1474,9 +1535,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_claim_users_rewards_response.go'
 
-  'ModelCreateChallengeRequest@challenge':
-    id: 'ModelCreateChallengeRequest@challenge'
+  'ModelCreateChallengeRequest@go.challenge.mod':
+    id: 'ModelCreateChallengeRequest@go.challenge.mod'
     name: 'ModelCreateChallengeRequest'
+    type: 'model'
     fields:
       'ActiveGoalsPerRotation':
         type: 'int32'
@@ -1527,9 +1589,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_create_challenge_request.go'
 
-  'ModelCreateGoalRequest@challenge':
-    id: 'ModelCreateGoalRequest@challenge'
+  'ModelCreateGoalRequest@go.challenge.mod':
+    id: 'ModelCreateGoalRequest@go.challenge.mod'
     name: 'ModelCreateGoalRequest'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -1560,9 +1623,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_create_goal_request.go'
 
-  'ModelEvaluatePlayerProgressionRequest@challenge':
-    id: 'ModelEvaluatePlayerProgressionRequest@challenge'
+  'ModelEvaluatePlayerProgressionRequest@go.challenge.mod':
+    id: 'ModelEvaluatePlayerProgressionRequest@go.challenge.mod'
     name: 'ModelEvaluatePlayerProgressionRequest'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -1572,9 +1636,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_evaluate_player_progression_request.go'
 
-  'ModelGetGoalsResponse@challenge':
-    id: 'ModelGetGoalsResponse@challenge'
+  'ModelGetGoalsResponse@go.challenge.mod':
+    id: 'ModelGetGoalsResponse@go.challenge.mod'
     name: 'ModelGetGoalsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelGoalResponse'
@@ -1590,9 +1655,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_get_goals_response.go'
 
-  'ModelGoalInSchedulesResponse@challenge':
-    id: 'ModelGoalInSchedulesResponse@challenge'
+  'ModelGoalInSchedulesResponse@go.challenge.mod':
+    id: 'ModelGoalInSchedulesResponse@go.challenge.mod'
     name: 'ModelGoalInSchedulesResponse'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1632,9 +1698,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_in_schedules_response.go'
 
-  'ModelGoalMeta@challenge':
-    id: 'ModelGoalMeta@challenge'
+  'ModelGoalMeta@go.challenge.mod':
+    id: 'ModelGoalMeta@go.challenge.mod'
     name: 'ModelGoalMeta'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -1659,9 +1726,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_meta.go'
 
-  'ModelGoalOrder@challenge':
-    id: 'ModelGoalOrder@challenge'
+  'ModelGoalOrder@go.challenge.mod':
+    id: 'ModelGoalOrder@go.challenge.mod'
     name: 'ModelGoalOrder'
+    type: 'model'
     fields:
       'Goal':
         type: '*ModelGoalResponse'
@@ -1674,9 +1742,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_order.go'
 
-  'ModelGoalProgressionResponse@challenge':
-    id: 'ModelGoalProgressionResponse@challenge'
+  'ModelGoalProgressionResponse@go.challenge.mod':
+    id: 'ModelGoalProgressionResponse@go.challenge.mod'
     name: 'ModelGoalProgressionResponse'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1707,9 +1776,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_progression_response.go'
 
-  'ModelGoalResponse@challenge':
-    id: 'ModelGoalResponse@challenge'
+  'ModelGoalResponse@go.challenge.mod':
+    id: 'ModelGoalResponse@go.challenge.mod'
     name: 'ModelGoalResponse'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -1754,9 +1824,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_response.go'
 
-  'ModelGoalSchedule@challenge':
-    id: 'ModelGoalSchedule@challenge'
+  'ModelGoalSchedule@go.challenge.mod':
+    id: 'ModelGoalSchedule@go.challenge.mod'
     name: 'ModelGoalSchedule'
+    type: 'model'
     fields:
       'EndTime':
         type: '*strfmt.DateTime'
@@ -1778,9 +1849,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_schedule.go'
 
-  'ModelGoalScheduleRequest@challenge':
-    id: 'ModelGoalScheduleRequest@challenge'
+  'ModelGoalScheduleRequest@go.challenge.mod':
+    id: 'ModelGoalScheduleRequest@go.challenge.mod'
     name: 'ModelGoalScheduleRequest'
+    type: 'model'
     fields:
       'EndTime':
         type: '*strfmt.DateTime'
@@ -1796,9 +1868,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_goal_schedule_request.go'
 
-  'ModelItemReference@challenge':
-    id: 'ModelItemReference@challenge'
+  'ModelItemReference@go.challenge.mod':
+    id: 'ModelItemReference@go.challenge.mod'
     name: 'ModelItemReference'
+    type: 'model'
     fields:
       'Module':
         type: 'string'
@@ -1811,9 +1884,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_item_reference.go'
 
-  'ModelItemReferenceResponse@challenge':
-    id: 'ModelItemReferenceResponse@challenge'
+  'ModelItemReferenceResponse@go.challenge.mod':
+    id: 'ModelItemReferenceResponse@go.challenge.mod'
     name: 'ModelItemReferenceResponse'
+    type: 'model'
     fields:
       'References':
         type: '[]*ModelItemReference'
@@ -1823,9 +1897,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_item_reference_response.go'
 
-  'ModelListChallengeResponse@challenge':
-    id: 'ModelListChallengeResponse@challenge'
+  'ModelListChallengeResponse@go.challenge.mod':
+    id: 'ModelListChallengeResponse@go.challenge.mod'
     name: 'ModelListChallengeResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelChallengeResponse'
@@ -1838,9 +1913,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_challenge_response.go'
 
-  'ModelListPeriodsResponse@challenge':
-    id: 'ModelListPeriodsResponse@challenge'
+  'ModelListPeriodsResponse@go.challenge.mod':
+    id: 'ModelListPeriodsResponse@go.challenge.mod'
     name: 'ModelListPeriodsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsPeriod'
@@ -1853,9 +1929,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_periods_response.go'
 
-  'ModelListScheduleByGoalResponse@challenge':
-    id: 'ModelListScheduleByGoalResponse@challenge'
+  'ModelListScheduleByGoalResponse@go.challenge.mod':
+    id: 'ModelListScheduleByGoalResponse@go.challenge.mod'
     name: 'ModelListScheduleByGoalResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelScheduleByGoalResponse'
@@ -1868,9 +1945,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_schedule_by_goal_response.go'
 
-  'ModelListSchedulesResponse@challenge':
-    id: 'ModelListSchedulesResponse@challenge'
+  'ModelListSchedulesResponse@go.challenge.mod':
+    id: 'ModelListSchedulesResponse@go.challenge.mod'
     name: 'ModelListSchedulesResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelScheduleResponse'
@@ -1883,9 +1961,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_schedules_response.go'
 
-  'ModelListUserRewardsResponse@challenge':
-    id: 'ModelListUserRewardsResponse@challenge'
+  'ModelListUserRewardsResponse@go.challenge.mod':
+    id: 'ModelListUserRewardsResponse@go.challenge.mod'
     name: 'ModelListUserRewardsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelUserReward'
@@ -1898,9 +1977,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_list_user_rewards_response.go'
 
-  'ModelPagination@challenge':
-    id: 'ModelPagination@challenge'
+  'ModelPagination@go.challenge.mod':
+    id: 'ModelPagination@go.challenge.mod'
     name: 'ModelPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -1919,9 +1999,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_pagination.go'
 
-  'ModelPluginAsignmentAppConfig@challenge':
-    id: 'ModelPluginAsignmentAppConfig@challenge'
+  'ModelPluginAsignmentAppConfig@go.challenge.mod':
+    id: 'ModelPluginAsignmentAppConfig@go.challenge.mod'
     name: 'ModelPluginAsignmentAppConfig'
+    type: 'model'
     fields:
       'AppName':
         type: 'string'
@@ -1931,9 +2012,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_asignment_app_config.go'
 
-  'ModelPluginAssignmentCustomConfig@challenge':
-    id: 'ModelPluginAssignmentCustomConfig@challenge'
+  'ModelPluginAssignmentCustomConfig@go.challenge.mod':
+    id: 'ModelPluginAssignmentCustomConfig@go.challenge.mod'
     name: 'ModelPluginAssignmentCustomConfig'
+    type: 'model'
     fields:
       'GrpcServerAddress':
         type: 'string'
@@ -1943,9 +2025,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_custom_config.go'
 
-  'ModelPluginAssignmentRequest@challenge':
-    id: 'ModelPluginAssignmentRequest@challenge'
+  'ModelPluginAssignmentRequest@go.challenge.mod':
+    id: 'ModelPluginAssignmentRequest@go.challenge.mod'
     name: 'ModelPluginAssignmentRequest'
+    type: 'model'
     fields:
       'AppName':
         type: 'string'
@@ -1961,9 +2044,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_request.go'
 
-  'ModelPluginAssignmentResponse@challenge':
-    id: 'ModelPluginAssignmentResponse@challenge'
+  'ModelPluginAssignmentResponse@go.challenge.mod':
+    id: 'ModelPluginAssignmentResponse@go.challenge.mod'
     name: 'ModelPluginAssignmentResponse'
+    type: 'model'
     fields:
       'AppConfig':
         type: '*ModelPluginAsignmentAppConfig'
@@ -1979,9 +2063,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_plugin_assignment_response.go'
 
-  'ModelPredicate@challenge':
-    id: 'ModelPredicate@challenge'
+  'ModelPredicate@go.challenge.mod':
+    id: 'ModelPredicate@go.challenge.mod'
     name: 'ModelPredicate'
+    type: 'model'
     fields:
       'Matcher':
         type: 'string'
@@ -2003,9 +2088,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_predicate.go'
 
-  'ModelRequirement@challenge':
-    id: 'ModelRequirement@challenge'
+  'ModelRequirement@go.challenge.mod':
+    id: 'ModelRequirement@go.challenge.mod'
     name: 'ModelRequirement'
+    type: 'model'
     fields:
       'Operator':
         type: 'string'
@@ -2018,9 +2104,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_requirement.go'
 
-  'ModelRequirementProgressionResponse@challenge':
-    id: 'ModelRequirementProgressionResponse@challenge'
+  'ModelRequirementProgressionResponse@go.challenge.mod':
+    id: 'ModelRequirementProgressionResponse@go.challenge.mod'
     name: 'ModelRequirementProgressionResponse'
+    type: 'model'
     fields:
       'CompletedAt':
         type: 'string'
@@ -2051,9 +2138,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_requirement_progression_response.go'
 
-  'ModelResetConfig@challenge':
-    id: 'ModelResetConfig@challenge'
+  'ModelResetConfig@go.challenge.mod':
+    id: 'ModelResetConfig@go.challenge.mod'
     name: 'ModelResetConfig'
+    type: 'model'
     fields:
       'ResetDate':
         type: 'int32'
@@ -2075,9 +2163,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_reset_config.go'
 
-  'ModelReward@challenge':
-    id: 'ModelReward@challenge'
+  'ModelReward@go.challenge.mod':
+    id: 'ModelReward@go.challenge.mod'
     name: 'ModelReward'
+    type: 'model'
     fields:
       'ItemID':
         type: 'string'
@@ -2096,9 +2185,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_reward.go'
 
-  'ModelSchedule@challenge':
-    id: 'ModelSchedule@challenge'
+  'ModelSchedule@go.challenge.mod':
+    id: 'ModelSchedule@go.challenge.mod'
     name: 'ModelSchedule'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -2126,9 +2216,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule.go'
 
-  'ModelScheduleByGoalResponse@challenge':
-    id: 'ModelScheduleByGoalResponse@challenge'
+  'ModelScheduleByGoalResponse@go.challenge.mod':
+    id: 'ModelScheduleByGoalResponse@go.challenge.mod'
     name: 'ModelScheduleByGoalResponse'
+    type: 'model'
     fields:
       'EndTime':
         type: 'strfmt.DateTime'
@@ -2141,9 +2232,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule_by_goal_response.go'
 
-  'ModelScheduleResponse@challenge':
-    id: 'ModelScheduleResponse@challenge'
+  'ModelScheduleResponse@go.challenge.mod':
+    id: 'ModelScheduleResponse@go.challenge.mod'
     name: 'ModelScheduleResponse'
+    type: 'model'
     fields:
       'EndTime':
         type: 'strfmt.DateTime'
@@ -2159,9 +2251,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_schedule_response.go'
 
-  'ModelUpdateChallengeRequest@challenge':
-    id: 'ModelUpdateChallengeRequest@challenge'
+  'ModelUpdateChallengeRequest@go.challenge.mod':
+    id: 'ModelUpdateChallengeRequest@go.challenge.mod'
     name: 'ModelUpdateChallengeRequest'
+    type: 'model'
     fields:
       'ActiveGoalsPerRotation':
         type: 'int32'
@@ -2207,9 +2300,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_challenge_request.go'
 
-  'ModelUpdateChallengeScheduleRequest@challenge':
-    id: 'ModelUpdateChallengeScheduleRequest@challenge'
+  'ModelUpdateChallengeScheduleRequest@go.challenge.mod':
+    id: 'ModelUpdateChallengeScheduleRequest@go.challenge.mod'
     name: 'ModelUpdateChallengeScheduleRequest'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -2222,9 +2316,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_challenge_schedule_request.go'
 
-  'ModelUpdateGoalRequest@challenge':
-    id: 'ModelUpdateGoalRequest@challenge'
+  'ModelUpdateGoalRequest@go.challenge.mod':
+    id: 'ModelUpdateGoalRequest@go.challenge.mod'
     name: 'ModelUpdateGoalRequest'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -2252,9 +2347,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_update_goal_request.go'
 
-  'ModelUserProgressionPeriodResponseMeta@challenge':
-    id: 'ModelUserProgressionPeriodResponseMeta@challenge'
+  'ModelUserProgressionPeriodResponseMeta@go.challenge.mod':
+    id: 'ModelUserProgressionPeriodResponseMeta@go.challenge.mod'
     name: 'ModelUserProgressionPeriodResponseMeta'
+    type: 'model'
     fields:
       'EndTime':
         type: 'string'
@@ -2267,9 +2363,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_period_response_meta.go'
 
-  'ModelUserProgressionResponse@challenge':
-    id: 'ModelUserProgressionResponse@challenge'
+  'ModelUserProgressionResponse@go.challenge.mod':
+    id: 'ModelUserProgressionResponse@go.challenge.mod'
     name: 'ModelUserProgressionResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelGoalProgressionResponse'
@@ -2285,9 +2382,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_response.go'
 
-  'ModelUserProgressionResponseMeta@challenge':
-    id: 'ModelUserProgressionResponseMeta@challenge'
+  'ModelUserProgressionResponseMeta@go.challenge.mod':
+    id: 'ModelUserProgressionResponseMeta@go.challenge.mod'
     name: 'ModelUserProgressionResponseMeta'
+    type: 'model'
     fields:
       'Code':
         type: 'string'
@@ -2317,9 +2415,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_progression_response_meta.go'
 
-  'ModelUserReward@challenge':
-    id: 'ModelUserReward@challenge'
+  'ModelUserReward@go.challenge.mod':
+    id: 'ModelUserReward@go.challenge.mod'
     name: 'ModelUserReward'
+    type: 'model'
     fields:
       'ChallengeCode':
         type: 'string'
@@ -2362,9 +2461,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/model_user_reward.go'
 
-  'ModelsPeriod@challenge':
-    id: 'ModelsPeriod@challenge'
+  'ModelsPeriod@go.challenge.mod':
+    id: 'ModelsPeriod@go.challenge.mod'
     name: 'ModelsPeriod'
+    type: 'model'
     fields:
       'EndTime':
         type: 'strfmt.DateTime'
@@ -2380,9 +2480,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/challenge-sdk/pkg/challengeclientmodels/models_period.go'
 
-  'ResponseError@challenge':
-    id: 'ResponseError@challenge'
+  'ResponseError@go.challenge.mod':
+    id: 'ResponseError@go.challenge.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'Attributes':
         type: 'map[string]string'
@@ -2406,15 +2507,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminClaimUserRewardsShort@challenge':
-    id: 'AdminClaimUserRewardsShort@challenge'
+  'AdminClaimUserRewardsShort@go.challenge.fun':
+    id: 'AdminClaimUserRewardsShort@go.challenge.fun'
     name: 'AdminClaimUserRewardsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.AdminClaimUserRewardsParams'
         required: true
@@ -2440,13 +2542,14 @@ functions:
       - 'rewards'
       - 'user'
 
-  'AdminClaimUserRewardsByGoalCodeShort@challenge':
-    id: 'AdminClaimUserRewardsByGoalCodeShort@challenge'
+  'AdminClaimUserRewardsByGoalCodeShort@go.challenge.fun':
+    id: 'AdminClaimUserRewardsByGoalCodeShort@go.challenge.fun'
     name: 'AdminClaimUserRewardsByGoalCodeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.AdminClaimUserRewardsByGoalCodeParams'
         required: true
@@ -2475,13 +2578,14 @@ functions:
       - 'rewards'
       - 'user'
 
-  'AdminClaimUsersRewardsShort@challenge':
-    id: 'AdminClaimUsersRewardsShort@challenge'
+  'AdminClaimUsersRewardsShort@go.challenge.fun':
+    id: 'AdminClaimUsersRewardsShort@go.challenge.fun'
     name: 'AdminClaimUsersRewardsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.AdminClaimUsersRewardsParams'
         required: true
@@ -2507,13 +2611,14 @@ functions:
       - 'rewards'
       - 'users'
 
-  'AdminCreateAssignmentPluginShort@challenge':
-    id: 'AdminCreateAssignmentPluginShort@challenge'
+  'AdminCreateAssignmentPluginShort@go.challenge.fun':
+    id: 'AdminCreateAssignmentPluginShort@go.challenge.fun'
     name: 'AdminCreateAssignmentPluginShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
     struct: 'PluginsService'
-    parameters:
+    arguments:
       params:
         type: '*plugins.AdminCreateAssignmentPluginParams'
         required: true
@@ -2538,9 +2643,10 @@ functions:
       - 'plugin'
       - 'plugins'
 
-  'AdminCreateChallengeShort@challenge':
-    id: 'AdminCreateChallengeShort@challenge'
+  'AdminCreateChallengeShort@go.challenge.fun':
+    id: 'AdminCreateChallengeShort@go.challenge.fun'
     name: 'AdminCreateChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
       Challenge is a collection of goals that can be completed by players. Challenge can have rules that specify what and when goals will be available for players to be taken.
@@ -2565,7 +2671,7 @@ functions:
       - false: a goal will only be assigned to one period
       - tags: challenge's labels.
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminCreateChallengeParams'
         required: true
@@ -2589,9 +2695,10 @@ functions:
       - 'configuration'
       - 'create'
 
-  'AdminCreateGoalShort@challenge':
-    id: 'AdminCreateGoalShort@challenge'
+  'AdminCreateGoalShort@go.challenge.fun':
+    id: 'AdminCreateGoalShort@go.challenge.fun'
     name: 'AdminCreateGoalShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
       Request body:
@@ -2627,7 +2734,7 @@ functions:
       Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
       Number of goals per challenge is **limited to 100 goals**.
     struct: 'GoalConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*goal_configuration.AdminCreateGoalParams'
         required: true
@@ -2651,13 +2758,14 @@ functions:
       - 'create'
       - 'goal'
 
-  'AdminDeleteAssignmentPluginShort@challenge':
-    id: 'AdminDeleteAssignmentPluginShort@challenge'
+  'AdminDeleteAssignmentPluginShort@go.challenge.fun':
+    id: 'AdminDeleteAssignmentPluginShort@go.challenge.fun'
     name: 'AdminDeleteAssignmentPluginShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
     struct: 'PluginsService'
-    parameters:
+    arguments:
       params:
         type: '*plugins.AdminDeleteAssignmentPluginParams'
         required: true
@@ -2682,13 +2790,14 @@ functions:
       - 'plugin'
       - 'plugins'
 
-  'AdminDeleteChallengeShort@challenge':
-    id: 'AdminDeleteChallengeShort@challenge'
+  'AdminDeleteChallengeShort@go.challenge.fun':
+    id: 'AdminDeleteChallengeShort@go.challenge.fun'
     name: 'AdminDeleteChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminDeleteChallengeParams'
         required: true
@@ -2712,13 +2821,14 @@ functions:
       - 'configuration'
       - 'delete'
 
-  'AdminDeleteGoalShort@challenge':
-    id: 'AdminDeleteGoalShort@challenge'
+  'AdminDeleteGoalShort@go.challenge.fun':
+    id: 'AdminDeleteGoalShort@go.challenge.fun'
     name: 'AdminDeleteGoalShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
     struct: 'GoalConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*goal_configuration.AdminDeleteGoalParams'
         required: true
@@ -2742,14 +2852,15 @@ functions:
       - 'delete'
       - 'goal'
 
-  'AdminDeleteTiedChallengeShort@challenge':
-    id: 'AdminDeleteTiedChallengeShort@challenge'
+  'AdminDeleteTiedChallengeShort@go.challenge.fun':
+    id: 'AdminDeleteTiedChallengeShort@go.challenge.fun'
     name: 'AdminDeleteTiedChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
       - This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminDeleteTiedChallengeParams'
         required: true
@@ -2774,14 +2885,15 @@ functions:
       - 'delete'
       - 'tied'
 
-  'AdminEvaluateProgressShort@challenge':
-    id: 'AdminEvaluateProgressShort@challenge'
+  'AdminEvaluateProgressShort@go.challenge.fun':
+    id: 'AdminEvaluateProgressShort@go.challenge.fun'
     name: 'AdminEvaluateProgressShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
       - Limited up to 10 users per request
     struct: 'ChallengeProgressionService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_progression.AdminEvaluateProgressParams'
         required: true
@@ -2806,14 +2918,15 @@ functions:
       - 'progress'
       - 'progression'
 
-  'AdminGetActiveChallengesShort@challenge':
-    id: 'AdminGetActiveChallengesShort@challenge'
+  'AdminGetActiveChallengesShort@go.challenge.fun':
+    id: 'AdminGetActiveChallengesShort@go.challenge.fun'
     name: 'AdminGetActiveChallengesShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
       The endpoint provides you an access to list of currently active challenges in which the player is participating
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminGetActiveChallengesParams'
         required: true
@@ -2839,13 +2952,14 @@ functions:
       - 'configuration'
       - 'get'
 
-  'AdminGetAssignmentPluginShort@challenge':
-    id: 'AdminGetAssignmentPluginShort@challenge'
+  'AdminGetAssignmentPluginShort@go.challenge.fun':
+    id: 'AdminGetAssignmentPluginShort@go.challenge.fun'
     name: 'AdminGetAssignmentPluginShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
     struct: 'PluginsService'
-    parameters:
+    arguments:
       params:
         type: '*plugins.AdminGetAssignmentPluginParams'
         required: true
@@ -2870,13 +2984,14 @@ functions:
       - 'plugin'
       - 'plugins'
 
-  'AdminGetChallengeShort@challenge':
-    id: 'AdminGetChallengeShort@challenge'
+  'AdminGetChallengeShort@go.challenge.fun':
+    id: 'AdminGetChallengeShort@go.challenge.fun'
     name: 'AdminGetChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminGetChallengeParams'
         required: true
@@ -2900,13 +3015,14 @@ functions:
       - 'configuration'
       - 'get'
 
-  'AdminGetChallengesShort@challenge':
-    id: 'AdminGetChallengesShort@challenge'
+  'AdminGetChallengesShort@go.challenge.fun':
+    id: 'AdminGetChallengesShort@go.challenge.fun'
     name: 'AdminGetChallengesShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminGetChallengesParams'
         required: true
@@ -2931,13 +3047,14 @@ functions:
       - 'configuration'
       - 'get'
 
-  'AdminGetGoalShort@challenge':
-    id: 'AdminGetGoalShort@challenge'
+  'AdminGetGoalShort@go.challenge.fun':
+    id: 'AdminGetGoalShort@go.challenge.fun'
     name: 'AdminGetGoalShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'GoalConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*goal_configuration.AdminGetGoalParams'
         required: true
@@ -2961,13 +3078,14 @@ functions:
       - 'get'
       - 'goal'
 
-  'AdminGetGoalsShort@challenge':
-    id: 'AdminGetGoalsShort@challenge'
+  'AdminGetGoalsShort@go.challenge.fun':
+    id: 'AdminGetGoalsShort@go.challenge.fun'
     name: 'AdminGetGoalsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'GoalConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*goal_configuration.AdminGetGoalsParams'
         required: true
@@ -2992,13 +3110,14 @@ functions:
       - 'goal'
       - 'goals'
 
-  'AdminGetItemReferencesShort@challenge':
-    id: 'AdminGetItemReferencesShort@challenge'
+  'AdminGetItemReferencesShort@go.challenge.fun':
+    id: 'AdminGetItemReferencesShort@go.challenge.fun'
     name: 'AdminGetItemReferencesShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'UtilitiesService'
-    parameters:
+    arguments:
       params:
         type: '*utilities.AdminGetItemReferencesParams'
         required: true
@@ -3023,13 +3142,14 @@ functions:
       - 'references'
       - 'utilities'
 
-  'AdminGetPeriodsShort@challenge':
-    id: 'AdminGetPeriodsShort@challenge'
+  'AdminGetPeriodsShort@go.challenge.fun':
+    id: 'AdminGetPeriodsShort@go.challenge.fun'
     name: 'AdminGetPeriodsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminGetPeriodsParams'
         required: true
@@ -3054,13 +3174,14 @@ functions:
       - 'get'
       - 'periods'
 
-  'AdminGetUserProgressionShort@challenge':
-    id: 'AdminGetUserProgressionShort@challenge'
+  'AdminGetUserProgressionShort@go.challenge.fun':
+    id: 'AdminGetUserProgressionShort@go.challenge.fun'
     name: 'AdminGetUserProgressionShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
     struct: 'ChallengeProgressionService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_progression.AdminGetUserProgressionParams'
         required: true
@@ -3085,13 +3206,14 @@ functions:
       - 'progression'
       - 'user'
 
-  'AdminGetUserRewardsShort@challenge':
-    id: 'AdminGetUserRewardsShort@challenge'
+  'AdminGetUserRewardsShort@go.challenge.fun':
+    id: 'AdminGetUserRewardsShort@go.challenge.fun'
     name: 'AdminGetUserRewardsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.AdminGetUserRewardsParams'
         required: true
@@ -3117,15 +3239,16 @@ functions:
       - 'rewards'
       - 'user'
 
-  'AdminListSchedulesShort@challenge':
-    id: 'AdminListSchedulesShort@challenge'
+  'AdminListSchedulesShort@go.challenge.fun':
+    id: 'AdminListSchedulesShort@go.challenge.fun'
     name: 'AdminListSchedulesShort'
+    type: 'function'
     description: |-
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
       List schedules of given challenge for specific user. To query schedules prior to specific date time, use dateTime parameter.
     struct: 'SchedulesService'
-    parameters:
+    arguments:
       params:
         type: '*schedules.AdminListSchedulesParams'
         required: true
@@ -3148,15 +3271,16 @@ functions:
       - 'list'
       - 'schedules'
 
-  'AdminListSchedulesByGoalShort@challenge':
-    id: 'AdminListSchedulesByGoalShort@challenge'
+  'AdminListSchedulesByGoalShort@go.challenge.fun':
+    id: 'AdminListSchedulesByGoalShort@go.challenge.fun'
     name: 'AdminListSchedulesByGoalShort'
+    type: 'function'
     description: |-
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
       List schedules of given goal in a challenge for specific user.
     struct: 'SchedulesService'
-    parameters:
+    arguments:
       params:
         type: '*schedules.AdminListSchedulesByGoalParams'
         required: true
@@ -3181,14 +3305,15 @@ functions:
       - 'list'
       - 'schedules'
 
-  'AdminRandomizeChallengeShort@challenge':
-    id: 'AdminRandomizeChallengeShort@challenge'
+  'AdminRandomizeChallengeShort@go.challenge.fun':
+    id: 'AdminRandomizeChallengeShort@go.challenge.fun'
     name: 'AdminRandomizeChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
       This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminRandomizeChallengeParams'
         required: true
@@ -3212,13 +3337,14 @@ functions:
       - 'configuration'
       - 'randomize'
 
-  'AdminUpdateAssignmentPluginShort@challenge':
-    id: 'AdminUpdateAssignmentPluginShort@challenge'
+  'AdminUpdateAssignmentPluginShort@go.challenge.fun':
+    id: 'AdminUpdateAssignmentPluginShort@go.challenge.fun'
     name: 'AdminUpdateAssignmentPluginShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
     struct: 'PluginsService'
-    parameters:
+    arguments:
       params:
         type: '*plugins.AdminUpdateAssignmentPluginParams'
         required: true
@@ -3243,9 +3369,10 @@ functions:
       - 'plugins'
       - 'update'
 
-  'AdminUpdateChallengeShort@challenge':
-    id: 'AdminUpdateChallengeShort@challenge'
+  'AdminUpdateChallengeShort@go.challenge.fun':
+    id: 'AdminUpdateChallengeShort@go.challenge.fun'
     name: 'AdminUpdateChallengeShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
       Request body:
@@ -3268,7 +3395,7 @@ functions:
       - false: a goal will only be assigned to one period
       - tags: challenge's labels.
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminUpdateChallengeParams'
         required: true
@@ -3292,9 +3419,10 @@ functions:
       - 'configuration'
       - 'update'
 
-  'AdminUpdateGoalsShort@challenge':
-    id: 'AdminUpdateGoalsShort@challenge'
+  'AdminUpdateGoalsShort@go.challenge.fun':
+    id: 'AdminUpdateGoalsShort@go.challenge.fun'
     name: 'AdminUpdateGoalsShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
       ### Request body:
@@ -3326,7 +3454,7 @@ functions:
       The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
       Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
     struct: 'GoalConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*goal_configuration.AdminUpdateGoalsParams'
         required: true
@@ -3351,9 +3479,10 @@ functions:
       - 'goals'
       - 'update'
 
-  'AdminUpdateTiedChallengeScheduleShort@challenge':
-    id: 'AdminUpdateTiedChallengeScheduleShort@challenge'
+  'AdminUpdateTiedChallengeScheduleShort@go.challenge.fun':
+    id: 'AdminUpdateTiedChallengeScheduleShort@go.challenge.fun'
     name: 'AdminUpdateTiedChallengeScheduleShort'
+    type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
       ### Request body:
@@ -3362,7 +3491,7 @@ functions:
       - ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
       - endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
     struct: 'ChallengeConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_configuration.AdminUpdateTiedChallengeScheduleParams'
         required: true
@@ -3388,13 +3517,14 @@ functions:
       - 'tied'
       - 'update'
 
-  'EvaluateMyProgressShort@challenge':
-    id: 'EvaluateMyProgressShort@challenge'
+  'EvaluateMyProgressShort@go.challenge.fun':
+    id: 'EvaluateMyProgressShort@go.challenge.fun'
     name: 'EvaluateMyProgressShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
     struct: 'ChallengeProgressionService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_progression.EvaluateMyProgressParams'
         required: true
@@ -3419,13 +3549,14 @@ functions:
       - 'progress'
       - 'progression'
 
-  'GetChallengesShort@challenge':
-    id: 'GetChallengesShort@challenge'
+  'GetChallengesShort@go.challenge.fun':
+    id: 'GetChallengesShort@go.challenge.fun'
     name: 'GetChallengesShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'ChallengeListService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_list.GetChallengesParams'
         required: true
@@ -3449,13 +3580,14 @@ functions:
       - 'get'
       - 'list'
 
-  'PublicClaimUserRewardsShort@challenge':
-    id: 'PublicClaimUserRewardsShort@challenge'
+  'PublicClaimUserRewardsShort@go.challenge.fun':
+    id: 'PublicClaimUserRewardsShort@go.challenge.fun'
     name: 'PublicClaimUserRewardsShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.PublicClaimUserRewardsParams'
         required: true
@@ -3481,13 +3613,14 @@ functions:
       - 'rewards'
       - 'user'
 
-  'PublicClaimUserRewardsByGoalCodeShort@challenge':
-    id: 'PublicClaimUserRewardsByGoalCodeShort@challenge'
+  'PublicClaimUserRewardsByGoalCodeShort@go.challenge.fun':
+    id: 'PublicClaimUserRewardsByGoalCodeShort@go.challenge.fun'
     name: 'PublicClaimUserRewardsByGoalCodeShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.PublicClaimUserRewardsByGoalCodeParams'
         required: true
@@ -3516,13 +3649,14 @@ functions:
       - 'rewards'
       - 'user'
 
-  'PublicGetPastUserProgressionShort@challenge':
-    id: 'PublicGetPastUserProgressionShort@challenge'
+  'PublicGetPastUserProgressionShort@go.challenge.fun':
+    id: 'PublicGetPastUserProgressionShort@go.challenge.fun'
     name: 'PublicGetPastUserProgressionShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
     struct: 'ChallengeProgressionService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_progression.PublicGetPastUserProgressionParams'
         required: true
@@ -3548,13 +3682,14 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetScheduledGoalsShort@challenge':
-    id: 'PublicGetScheduledGoalsShort@challenge'
+  'PublicGetScheduledGoalsShort@go.challenge.fun':
+    id: 'PublicGetScheduledGoalsShort@go.challenge.fun'
     name: 'PublicGetScheduledGoalsShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
     struct: 'ChallengeListService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_list.PublicGetScheduledGoalsParams'
         required: true
@@ -3580,13 +3715,14 @@ functions:
       - 'public'
       - 'scheduled'
 
-  'PublicGetUserProgressionShort@challenge':
-    id: 'PublicGetUserProgressionShort@challenge'
+  'PublicGetUserProgressionShort@go.challenge.fun':
+    id: 'PublicGetUserProgressionShort@go.challenge.fun'
     name: 'PublicGetUserProgressionShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
     struct: 'ChallengeProgressionService'
-    parameters:
+    arguments:
       params:
         type: '*challenge_progression.PublicGetUserProgressionParams'
         required: true
@@ -3611,13 +3747,14 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetUserRewardsShort@challenge':
-    id: 'PublicGetUserRewardsShort@challenge'
+  'PublicGetUserRewardsShort@go.challenge.fun':
+    id: 'PublicGetUserRewardsShort@go.challenge.fun'
     name: 'PublicGetUserRewardsShort'
+    type: 'function'
     description: |-
       - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
     struct: 'PlayerRewardService'
-    parameters:
+    arguments:
       params:
         type: '*player_reward.PublicGetUserRewardsParams'
         required: true
@@ -3643,15 +3780,16 @@ functions:
       - 'rewards'
       - 'user'
 
-  'PublicListSchedulesShort@challenge':
-    id: 'PublicListSchedulesShort@challenge'
+  'PublicListSchedulesShort@go.challenge.fun':
+    id: 'PublicListSchedulesShort@go.challenge.fun'
     name: 'PublicListSchedulesShort'
+    type: 'function'
     description: |-
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
       List schedules of given challenge for specific user. To query schedules prior to specific date time, use dateTime parameter.
     struct: 'SchedulesService'
-    parameters:
+    arguments:
       params:
         type: '*schedules.PublicListSchedulesParams'
         required: true
@@ -3674,15 +3812,16 @@ functions:
       - 'public'
       - 'schedules'
 
-  'PublicListSchedulesByGoalShort@challenge':
-    id: 'PublicListSchedulesByGoalShort@challenge'
+  'PublicListSchedulesByGoalShort@go.challenge.fun':
+    id: 'PublicListSchedulesByGoalShort@go.challenge.fun'
     name: 'PublicListSchedulesByGoalShort'
+    type: 'function'
     description: |-
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
       List schedules of given goal in a challenge for specific user.
     struct: 'SchedulesService'
-    parameters:
+    arguments:
       params:
         type: '*schedules.PublicListSchedulesByGoalParams'
         required: true
@@ -3706,3 +3845,5 @@ functions:
       - 'list'
       - 'public'
       - 'schedules'
+
+  # endregion functions

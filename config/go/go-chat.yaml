@@ -1,10 +1,16 @@
-structs:
-  'JusticeChatService@chat':
-    id: 'JusticeChatService@chat'
-    name: 'JusticeChatService'
+symbols:
+  'NewChatClient@go.chat.fun':
+    id: 'NewChatClient@go.chat.fun'
+    name: 'NewChatClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*chatclient.JusticeChatService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/chat-sdk/pkg/chatclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/justice_chat_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/chatclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'EmptyService@chat':
-    id: 'EmptyService@chat'
+  'EmptyService@go.chat.mod':
+    id: 'EmptyService@go.chat.mod'
     name: 'EmptyService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ConfigService@chat':
-    id: 'ConfigService@chat'
+  'ConfigService@go.chat.mod':
+    id: 'ConfigService@go.chat.mod'
     name: 'ConfigService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'InboxService@chat':
-    id: 'InboxService@chat'
+  'InboxService@go.chat.mod':
+    id: 'InboxService@go.chat.mod'
     name: 'InboxService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ModerationService@chat':
-    id: 'ModerationService@chat'
+  'ModerationService@go.chat.mod':
+    id: 'ModerationService@go.chat.mod'
     name: 'ModerationService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'ProfanityService@chat':
-    id: 'ProfanityService@chat'
+  'ProfanityService@go.chat.mod':
+    id: 'ProfanityService@go.chat.mod'
     name: 'ProfanityService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'TopicService@chat':
-    id: 'TopicService@chat'
+  'TopicService@go.chat.mod':
+    id: 'TopicService@go.chat.mod'
     name: 'TopicService'
+    type: 'model'
     fields:
       Client:
         type: '*chatclient.JusticeChatService'
@@ -161,9 +173,10 @@ structs:
 
   # region params
 
-  'AdminAddInboxCategoryParams@chat':
-    id: 'AdminAddInboxCategoryParams@chat'
+  'AdminAddInboxCategoryParams@go.chat.mod':
+    id: 'AdminAddInboxCategoryParams@go.chat.mod'
     name: 'AdminAddInboxCategoryParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAddInboxCategoryRequest'
@@ -178,9 +191,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_add_inbox_category_parameters.go'
 
-  'AdminAddTopicMemberParams@chat':
-    id: 'AdminAddTopicMemberParams@chat'
+  'AdminAddTopicMemberParams@go.chat.mod':
+    id: 'AdminAddTopicMemberParams@go.chat.mod'
     name: 'AdminAddTopicMemberParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APIAddMemberParams'
@@ -205,9 +219,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_add_topic_member_parameters.go'
 
-  'AdminBanTopicMembersParams@chat':
-    id: 'AdminBanTopicMembersParams@chat'
+  'AdminBanTopicMembersParams@go.chat.mod':
+    id: 'AdminBanTopicMembersParams@go.chat.mod'
     name: 'AdminBanTopicMembersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBanTopicMemberParam'
@@ -227,9 +242,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_ban_topic_members_parameters.go'
 
-  'AdminChannelTopicInfoParams@chat':
-    id: 'AdminChannelTopicInfoParams@chat'
+  'AdminChannelTopicInfoParams@go.chat.mod':
+    id: 'AdminChannelTopicInfoParams@go.chat.mod'
     name: 'AdminChannelTopicInfoParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -246,9 +262,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_info_parameters.go'
 
-  'AdminChannelTopicListParams@chat':
-    id: 'AdminChannelTopicListParams@chat'
+  'AdminChannelTopicListParams@go.chat.mod':
+    id: 'AdminChannelTopicListParams@go.chat.mod'
     name: 'AdminChannelTopicListParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -275,9 +292,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_list_parameters.go'
 
-  'AdminChannelTopicSummaryParams@chat':
-    id: 'AdminChannelTopicSummaryParams@chat'
+  'AdminChannelTopicSummaryParams@go.chat.mod':
+    id: 'AdminChannelTopicSummaryParams@go.chat.mod'
     name: 'AdminChannelTopicSummaryParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -289,9 +307,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_channel_topic_summary_parameters.go'
 
-  'AdminChatHistoryParams@chat':
-    id: 'AdminChatHistoryParams@chat'
+  'AdminChatHistoryParams@go.chat.mod':
+    id: 'AdminChatHistoryParams@go.chat.mod'
     name: 'AdminChatHistoryParams'
+    type: 'model'
     fields:
       'ChatID':
         type: '[]string'
@@ -358,9 +377,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_chat_history_parameters.go'
 
-  'AdminCreateNamespaceTopicParams@chat':
-    id: 'AdminCreateNamespaceTopicParams@chat'
+  'AdminCreateNamespaceTopicParams@go.chat.mod':
+    id: 'AdminCreateNamespaceTopicParams@go.chat.mod'
     name: 'AdminCreateNamespaceTopicParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APICreateNamespaceTopicParams'
@@ -375,9 +395,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_create_namespace_topic_parameters.go'
 
-  'AdminCreateTopicParams@chat':
-    id: 'AdminCreateTopicParams@chat'
+  'AdminCreateTopicParams@go.chat.mod':
+    id: 'AdminCreateTopicParams@go.chat.mod'
     name: 'AdminCreateTopicParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APICreateTopicParams'
@@ -392,9 +413,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_create_topic_parameters.go'
 
-  'AdminDeleteChatParams@chat':
-    id: 'AdminDeleteChatParams@chat'
+  'AdminDeleteChatParams@go.chat.mod':
+    id: 'AdminDeleteChatParams@go.chat.mod'
     name: 'AdminDeleteChatParams'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -416,9 +438,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_delete_chat_parameters.go'
 
-  'AdminDeleteChatSnapshotParams@chat':
-    id: 'AdminDeleteChatSnapshotParams@chat'
+  'AdminDeleteChatSnapshotParams@go.chat.mod':
+    id: 'AdminDeleteChatSnapshotParams@go.chat.mod'
     name: 'AdminDeleteChatSnapshotParams'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -435,9 +458,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/admin_delete_chat_snapshot_parameters.go'
 
-  'AdminDeleteInboxCategoryParams@chat':
-    id: 'AdminDeleteInboxCategoryParams@chat'
+  'AdminDeleteInboxCategoryParams@go.chat.mod':
+    id: 'AdminDeleteInboxCategoryParams@go.chat.mod'
     name: 'AdminDeleteInboxCategoryParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -454,9 +478,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_delete_inbox_category_parameters.go'
 
-  'AdminDeleteInboxMessageParams@chat':
-    id: 'AdminDeleteInboxMessageParams@chat'
+  'AdminDeleteInboxMessageParams@go.chat.mod':
+    id: 'AdminDeleteInboxMessageParams@go.chat.mod'
     name: 'AdminDeleteInboxMessageParams'
+    type: 'model'
     fields:
       'Force':
         type: 'bool'
@@ -478,9 +503,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_delete_inbox_message_parameters.go'
 
-  'AdminDeleteTopicParams@chat':
-    id: 'AdminDeleteTopicParams@chat'
+  'AdminDeleteTopicParams@go.chat.mod':
+    id: 'AdminDeleteTopicParams@go.chat.mod'
     name: 'AdminDeleteTopicParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -497,9 +523,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_delete_topic_parameters.go'
 
-  'AdminFilterChatMessageParams@chat':
-    id: 'AdminFilterChatMessageParams@chat'
+  'AdminFilterChatMessageParams@go.chat.mod':
+    id: 'AdminFilterChatMessageParams@go.chat.mod'
     name: 'AdminFilterChatMessageParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsMessageRequest'
@@ -519,18 +546,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_filter_chat_message_parameters.go'
 
-  'AdminGetAllConfigV1Params@chat':
-    id: 'AdminGetAllConfigV1Params@chat'
+  'AdminGetAllConfigV1Params@go.chat.mod':
+    id: 'AdminGetAllConfigV1Params@go.chat.mod'
     name: 'AdminGetAllConfigV1Params'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_all_config_v1_parameters.go'
 
-  'AdminGetCategorySchemaParams@chat':
-    id: 'AdminGetCategorySchemaParams@chat'
+  'AdminGetCategorySchemaParams@go.chat.mod':
+    id: 'AdminGetCategorySchemaParams@go.chat.mod'
     name: 'AdminGetCategorySchemaParams'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -547,9 +575,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_category_schema_parameters.go'
 
-  'AdminGetChatSnapshotParams@chat':
-    id: 'AdminGetChatSnapshotParams@chat'
+  'AdminGetChatSnapshotParams@go.chat.mod':
+    id: 'AdminGetChatSnapshotParams@go.chat.mod'
     name: 'AdminGetChatSnapshotParams'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -566,9 +595,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/admin_get_chat_snapshot_parameters.go'
 
-  'AdminGetConfigV1Params@chat':
-    id: 'AdminGetConfigV1Params@chat'
+  'AdminGetConfigV1Params@go.chat.mod':
+    id: 'AdminGetConfigV1Params@go.chat.mod'
     name: 'AdminGetConfigV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -580,9 +610,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_config_v1_parameters.go'
 
-  'AdminGetInboxCategoriesParams@chat':
-    id: 'AdminGetInboxCategoriesParams@chat'
+  'AdminGetInboxCategoriesParams@go.chat.mod':
+    id: 'AdminGetInboxCategoriesParams@go.chat.mod'
     name: 'AdminGetInboxCategoriesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -594,9 +625,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_categories_parameters.go'
 
-  'AdminGetInboxMessagesParams@chat':
-    id: 'AdminGetInboxMessagesParams@chat'
+  'AdminGetInboxMessagesParams@go.chat.mod':
+    id: 'AdminGetInboxMessagesParams@go.chat.mod'
     name: 'AdminGetInboxMessagesParams'
+    type: 'model'
     fields:
       'ActiveOnly':
         type: 'bool'
@@ -658,9 +690,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_messages_parameters.go'
 
-  'AdminGetInboxStatsParams@chat':
-    id: 'AdminGetInboxStatsParams@chat'
+  'AdminGetInboxStatsParams@go.chat.mod':
+    id: 'AdminGetInboxStatsParams@go.chat.mod'
     name: 'AdminGetInboxStatsParams'
+    type: 'model'
     fields:
       'MessageID':
         type: '[]string'
@@ -677,9 +710,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_stats_parameters.go'
 
-  'AdminGetInboxUsersParams@chat':
-    id: 'AdminGetInboxUsersParams@chat'
+  'AdminGetInboxUsersParams@go.chat.mod':
+    id: 'AdminGetInboxUsersParams@go.chat.mod'
     name: 'AdminGetInboxUsersParams'
+    type: 'model'
     fields:
       'Inbox':
         type: 'string'
@@ -716,18 +750,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_get_inbox_users_parameters.go'
 
-  'AdminGetLogConfigParams@chat':
-    id: 'AdminGetLogConfigParams@chat'
+  'AdminGetLogConfigParams@go.chat.mod':
+    id: 'AdminGetLogConfigParams@go.chat.mod'
     name: 'AdminGetLogConfigParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/config'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_get_log_config_parameters.go'
 
-  'AdminListKafkaTopicParams@chat':
-    id: 'AdminListKafkaTopicParams@chat'
+  'AdminListKafkaTopicParams@go.chat.mod':
+    id: 'AdminListKafkaTopicParams@go.chat.mod'
     name: 'AdminListKafkaTopicParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -739,9 +774,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_list_kafka_topic_parameters.go'
 
-  'AdminPatchUpdateLogConfigParams@chat':
-    id: 'AdminPatchUpdateLogConfigParams@chat'
+  'AdminPatchUpdateLogConfigParams@go.chat.mod':
+    id: 'AdminPatchUpdateLogConfigParams@go.chat.mod'
     name: 'AdminPatchUpdateLogConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*LogconfigConfiguration'
@@ -751,9 +787,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_patch_update_log_config_parameters.go'
 
-  'AdminProfanityCreateParams@chat':
-    id: 'AdminProfanityCreateParams@chat'
+  'AdminProfanityCreateParams@go.chat.mod':
+    id: 'AdminProfanityCreateParams@go.chat.mod'
     name: 'AdminProfanityCreateParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDictionaryInsertRequest'
@@ -768,9 +805,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_create_parameters.go'
 
-  'AdminProfanityCreateBulkParams@chat':
-    id: 'AdminProfanityCreateBulkParams@chat'
+  'AdminProfanityCreateBulkParams@go.chat.mod':
+    id: 'AdminProfanityCreateBulkParams@go.chat.mod'
     name: 'AdminProfanityCreateBulkParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDictionaryInsertBulkRequest'
@@ -785,9 +823,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_create_bulk_parameters.go'
 
-  'AdminProfanityDeleteParams@chat':
-    id: 'AdminProfanityDeleteParams@chat'
+  'AdminProfanityDeleteParams@go.chat.mod':
+    id: 'AdminProfanityDeleteParams@go.chat.mod'
     name: 'AdminProfanityDeleteParams'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -804,9 +843,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_delete_parameters.go'
 
-  'AdminProfanityExportParams@chat':
-    id: 'AdminProfanityExportParams@chat'
+  'AdminProfanityExportParams@go.chat.mod':
+    id: 'AdminProfanityExportParams@go.chat.mod'
     name: 'AdminProfanityExportParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -818,9 +858,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_export_parameters.go'
 
-  'AdminProfanityGroupParams@chat':
-    id: 'AdminProfanityGroupParams@chat'
+  'AdminProfanityGroupParams@go.chat.mod':
+    id: 'AdminProfanityGroupParams@go.chat.mod'
     name: 'AdminProfanityGroupParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -842,9 +883,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_group_parameters.go'
 
-  'AdminProfanityImportParams@chat':
-    id: 'AdminProfanityImportParams@chat'
+  'AdminProfanityImportParams@go.chat.mod':
+    id: 'AdminProfanityImportParams@go.chat.mod'
     name: 'AdminProfanityImportParams'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -874,9 +916,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_import_parameters.go'
 
-  'AdminProfanityQueryParams@chat':
-    id: 'AdminProfanityQueryParams@chat'
+  'AdminProfanityQueryParams@go.chat.mod':
+    id: 'AdminProfanityQueryParams@go.chat.mod'
     name: 'AdminProfanityQueryParams'
+    type: 'model'
     fields:
       'FilterMask':
         type: 'string'
@@ -923,9 +966,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_query_parameters.go'
 
-  'AdminProfanityUpdateParams@chat':
-    id: 'AdminProfanityUpdateParams@chat'
+  'AdminProfanityUpdateParams@go.chat.mod':
+    id: 'AdminProfanityUpdateParams@go.chat.mod'
     name: 'AdminProfanityUpdateParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDictionaryUpdateRequest'
@@ -945,9 +989,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/profanity/admin_profanity_update_parameters.go'
 
-  'AdminQueryTopicParams@chat':
-    id: 'AdminQueryTopicParams@chat'
+  'AdminQueryTopicParams@go.chat.mod':
+    id: 'AdminQueryTopicParams@go.chat.mod'
     name: 'AdminQueryTopicParams'
+    type: 'model'
     fields:
       'IncludeMembers':
         type: 'bool'
@@ -1004,9 +1049,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_topic_parameters.go'
 
-  'AdminQueryTopicLogParams@chat':
-    id: 'AdminQueryTopicLogParams@chat'
+  'AdminQueryTopicLogParams@go.chat.mod':
+    id: 'AdminQueryTopicLogParams@go.chat.mod'
     name: 'AdminQueryTopicLogParams'
+    type: 'model'
     fields:
       'EndCreatedAt':
         type: 'int64'
@@ -1058,9 +1104,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_topic_log_parameters.go'
 
-  'AdminQueryUsersTopicParams@chat':
-    id: 'AdminQueryUsersTopicParams@chat'
+  'AdminQueryUsersTopicParams@go.chat.mod':
+    id: 'AdminQueryUsersTopicParams@go.chat.mod'
     name: 'AdminQueryUsersTopicParams'
+    type: 'model'
     fields:
       'IncludePastTopics':
         type: 'bool'
@@ -1102,9 +1149,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_query_users_topic_parameters.go'
 
-  'AdminRemoveTopicMemberParams@chat':
-    id: 'AdminRemoveTopicMemberParams@chat'
+  'AdminRemoveTopicMemberParams@go.chat.mod':
+    id: 'AdminRemoveTopicMemberParams@go.chat.mod'
     name: 'AdminRemoveTopicMemberParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1126,9 +1174,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_remove_topic_member_parameters.go'
 
-  'AdminSaveInboxMessageParams@chat':
-    id: 'AdminSaveInboxMessageParams@chat'
+  'AdminSaveInboxMessageParams@go.chat.mod':
+    id: 'AdminSaveInboxMessageParams@go.chat.mod'
     name: 'AdminSaveInboxMessageParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSaveInboxMessageRequest'
@@ -1143,9 +1192,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_save_inbox_message_parameters.go'
 
-  'AdminSendChatParams@chat':
-    id: 'AdminSendChatParams@chat'
+  'AdminSendChatParams@go.chat.mod':
+    id: 'AdminSendChatParams@go.chat.mod'
     name: 'AdminSendChatParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APISendChatParams'
@@ -1165,9 +1215,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_send_chat_parameters.go'
 
-  'AdminSendInboxMessageParams@chat':
-    id: 'AdminSendInboxMessageParams@chat'
+  'AdminSendInboxMessageParams@go.chat.mod':
+    id: 'AdminSendInboxMessageParams@go.chat.mod'
     name: 'AdminSendInboxMessageParams'
+    type: 'model'
     fields:
       'Body':
         type: 'ModelsSendInboxMessageRequest'
@@ -1187,9 +1238,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_send_inbox_message_parameters.go'
 
-  'AdminTopicChatHistoryParams@chat':
-    id: 'AdminTopicChatHistoryParams@chat'
+  'AdminTopicChatHistoryParams@go.chat.mod':
+    id: 'AdminTopicChatHistoryParams@go.chat.mod'
     name: 'AdminTopicChatHistoryParams'
+    type: 'model'
     fields:
       'EndCreatedAt':
         type: 'int64'
@@ -1251,9 +1303,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_chat_history_parameters.go'
 
-  'AdminTopicListParams@chat':
-    id: 'AdminTopicListParams@chat'
+  'AdminTopicListParams@go.chat.mod':
+    id: 'AdminTopicListParams@go.chat.mod'
     name: 'AdminTopicListParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1280,9 +1333,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_list_parameters.go'
 
-  'AdminTopicMembersParams@chat':
-    id: 'AdminTopicMembersParams@chat'
+  'AdminTopicMembersParams@go.chat.mod':
+    id: 'AdminTopicMembersParams@go.chat.mod'
     name: 'AdminTopicMembersParams'
+    type: 'model'
     fields:
       'IsBanned':
         type: 'bool'
@@ -1324,9 +1378,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_members_parameters.go'
 
-  'AdminTopicShardsParams@chat':
-    id: 'AdminTopicShardsParams@chat'
+  'AdminTopicShardsParams@go.chat.mod':
+    id: 'AdminTopicShardsParams@go.chat.mod'
     name: 'AdminTopicShardsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1343,9 +1398,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_topic_shards_parameters.go'
 
-  'AdminUnbanTopicMembersParams@chat':
-    id: 'AdminUnbanTopicMembersParams@chat'
+  'AdminUnbanTopicMembersParams@go.chat.mod':
+    id: 'AdminUnbanTopicMembersParams@go.chat.mod'
     name: 'AdminUnbanTopicMembersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUnbanTopicMemberParam'
@@ -1365,9 +1421,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_unban_topic_members_parameters.go'
 
-  'AdminUnsendInboxMessageParams@chat':
-    id: 'AdminUnsendInboxMessageParams@chat'
+  'AdminUnsendInboxMessageParams@go.chat.mod':
+    id: 'AdminUnsendInboxMessageParams@go.chat.mod'
     name: 'AdminUnsendInboxMessageParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUnsendInboxMessageRequest'
@@ -1387,9 +1444,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_unsend_inbox_message_parameters.go'
 
-  'AdminUpdateConfigV1Params@chat':
-    id: 'AdminUpdateConfigV1Params@chat'
+  'AdminUpdateConfigV1Params@go.chat.mod':
+    id: 'AdminUpdateConfigV1Params@go.chat.mod'
     name: 'AdminUpdateConfigV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsConfigResponse'
@@ -1404,9 +1462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/admin_update_config_v1_parameters.go'
 
-  'AdminUpdateInboxCategoryParams@chat':
-    id: 'AdminUpdateInboxCategoryParams@chat'
+  'AdminUpdateInboxCategoryParams@go.chat.mod':
+    id: 'AdminUpdateInboxCategoryParams@go.chat.mod'
     name: 'AdminUpdateInboxCategoryParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateInboxCategoryRequest'
@@ -1426,9 +1485,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_update_inbox_category_parameters.go'
 
-  'AdminUpdateInboxMessageParams@chat':
-    id: 'AdminUpdateInboxMessageParams@chat'
+  'AdminUpdateInboxMessageParams@go.chat.mod':
+    id: 'AdminUpdateInboxMessageParams@go.chat.mod'
     name: 'AdminUpdateInboxMessageParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateInboxMessageRequest'
@@ -1448,9 +1508,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/inbox/admin_update_inbox_message_parameters.go'
 
-  'AdminUpdateTopicParams@chat':
-    id: 'AdminUpdateTopicParams@chat'
+  'AdminUpdateTopicParams@go.chat.mod':
+    id: 'AdminUpdateTopicParams@go.chat.mod'
     name: 'AdminUpdateTopicParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APIUpdateTopicParams'
@@ -1470,9 +1531,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/admin_update_topic_parameters.go'
 
-  'ExportConfigParams@chat':
-    id: 'ExportConfigParams@chat'
+  'ExportConfigParams@go.chat.mod':
+    id: 'ExportConfigParams@go.chat.mod'
     name: 'ExportConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1484,9 +1546,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/export_config_parameters.go'
 
-  'ImportConfigParams@chat':
-    id: 'ImportConfigParams@chat'
+  'ImportConfigParams@go.chat.mod':
+    id: 'ImportConfigParams@go.chat.mod'
     name: 'ImportConfigParams'
+    type: 'model'
     fields:
       'File':
         type: '[]byte'
@@ -1503,9 +1566,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/import_config_parameters.go'
 
-  'PublicBanTopicMembersParams@chat':
-    id: 'PublicBanTopicMembersParams@chat'
+  'PublicBanTopicMembersParams@go.chat.mod':
+    id: 'PublicBanTopicMembersParams@go.chat.mod'
     name: 'PublicBanTopicMembersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPublicBanTopicMembersRequest'
@@ -1525,9 +1589,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_ban_topic_members_parameters.go'
 
-  'PublicChatHistoryParams@chat':
-    id: 'PublicChatHistoryParams@chat'
+  'PublicChatHistoryParams@go.chat.mod':
+    id: 'PublicChatHistoryParams@go.chat.mod'
     name: 'PublicChatHistoryParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1559,9 +1624,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_chat_history_parameters.go'
 
-  'PublicDeleteChatParams@chat':
-    id: 'PublicDeleteChatParams@chat'
+  'PublicDeleteChatParams@go.chat.mod':
+    id: 'PublicDeleteChatParams@go.chat.mod'
     name: 'PublicDeleteChatParams'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -1583,9 +1649,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_delete_chat_parameters.go'
 
-  'PublicGetChatSnapshotParams@chat':
-    id: 'PublicGetChatSnapshotParams@chat'
+  'PublicGetChatSnapshotParams@go.chat.mod':
+    id: 'PublicGetChatSnapshotParams@go.chat.mod'
     name: 'PublicGetChatSnapshotParams'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -1607,9 +1674,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/moderation/public_get_chat_snapshot_parameters.go'
 
-  'PublicGetConfigV1Params@chat':
-    id: 'PublicGetConfigV1Params@chat'
+  'PublicGetConfigV1Params@go.chat.mod':
+    id: 'PublicGetConfigV1Params@go.chat.mod'
     name: 'PublicGetConfigV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1621,18 +1689,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/config/public_get_config_v1_parameters.go'
 
-  'PublicGetMessagesParams@chat':
-    id: 'PublicGetMessagesParams@chat'
+  'PublicGetMessagesParams@go.chat.mod':
+    id: 'PublicGetMessagesParams@go.chat.mod'
     name: 'PublicGetMessagesParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclient/'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient//public_get_messages_parameters.go'
 
-  'PublicGetMutedTopicsParams@chat':
-    id: 'PublicGetMutedTopicsParams@chat'
+  'PublicGetMutedTopicsParams@go.chat.mod':
+    id: 'PublicGetMutedTopicsParams@go.chat.mod'
     name: 'PublicGetMutedTopicsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1644,9 +1713,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_get_muted_topics_parameters.go'
 
-  'PublicMuteUserParams@chat':
-    id: 'PublicMuteUserParams@chat'
+  'PublicMuteUserParams@go.chat.mod':
+    id: 'PublicMuteUserParams@go.chat.mod'
     name: 'PublicMuteUserParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APIMuteUserRequest'
@@ -1666,9 +1736,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_mute_user_parameters.go'
 
-  'PublicTopicListParams@chat':
-    id: 'PublicTopicListParams@chat'
+  'PublicTopicListParams@go.chat.mod':
+    id: 'PublicTopicListParams@go.chat.mod'
     name: 'PublicTopicListParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1695,9 +1766,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_topic_list_parameters.go'
 
-  'PublicUnbanTopicMembersParams@chat':
-    id: 'PublicUnbanTopicMembersParams@chat'
+  'PublicUnbanTopicMembersParams@go.chat.mod':
+    id: 'PublicUnbanTopicMembersParams@go.chat.mod'
     name: 'PublicUnbanTopicMembersParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsPublicUnbanTopicMembersRequest'
@@ -1717,9 +1789,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclient/topic/public_unban_topic_members_parameters.go'
 
-  'PublicUnmuteUserParams@chat':
-    id: 'PublicUnmuteUserParams@chat'
+  'PublicUnmuteUserParams@go.chat.mod':
+    id: 'PublicUnmuteUserParams@go.chat.mod'
     name: 'PublicUnmuteUserParams'
+    type: 'model'
     fields:
       'Body':
         type: '*APIUnmuteUserRequest'
@@ -1743,9 +1816,10 @@ structs:
 
   # region models
 
-  'APIAddMemberParams@chat':
-    id: 'APIAddMemberParams@chat'
+  'APIAddMemberParams@go.chat.mod':
+    id: 'APIAddMemberParams@go.chat.mod'
     name: 'APIAddMemberParams'
+    type: 'model'
     fields:
       'IsAdmin':
         type: 'bool'
@@ -1755,9 +1829,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_add_member_params.go'
 
-  'APICreateNamespaceTopicParams@chat':
-    id: 'APICreateNamespaceTopicParams@chat'
+  'APICreateNamespaceTopicParams@go.chat.mod':
+    id: 'APICreateNamespaceTopicParams@go.chat.mod'
     name: 'APICreateNamespaceTopicParams'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -1770,9 +1845,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_namespace_topic_params.go'
 
-  'APICreateTopicParams@chat':
-    id: 'APICreateTopicParams@chat'
+  'APICreateTopicParams@go.chat.mod':
+    id: 'APICreateTopicParams@go.chat.mod'
     name: 'APICreateTopicParams'
+    type: 'model'
     fields:
       'Admins':
         type: '[]string'
@@ -1803,9 +1879,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_topic_params.go'
 
-  'APICreateTopicResponse@chat':
-    id: 'APICreateTopicResponse@chat'
+  'APICreateTopicResponse@go.chat.mod':
+    id: 'APICreateTopicResponse@go.chat.mod'
     name: 'APICreateTopicResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -1839,9 +1916,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_create_topic_response.go'
 
-  'APIMutedTopicResponse@chat':
-    id: 'APIMutedTopicResponse@chat'
+  'APIMutedTopicResponse@go.chat.mod':
+    id: 'APIMutedTopicResponse@go.chat.mod'
     name: 'APIMutedTopicResponse'
+    type: 'model'
     fields:
       'ExpirationTime':
         type: 'int64'
@@ -1857,9 +1935,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_muted_topic_response.go'
 
-  'APIMuteUserRequest@chat':
-    id: 'APIMuteUserRequest@chat'
+  'APIMuteUserRequest@go.chat.mod':
+    id: 'APIMuteUserRequest@go.chat.mod'
     name: 'APIMuteUserRequest'
+    type: 'model'
     fields:
       'Duration':
         type: 'int32'
@@ -1872,9 +1951,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_mute_user_request.go'
 
-  'APISendChatParams@chat':
-    id: 'APISendChatParams@chat'
+  'APISendChatParams@go.chat.mod':
+    id: 'APISendChatParams@go.chat.mod'
     name: 'APISendChatParams'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -1884,9 +1964,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_send_chat_params.go'
 
-  'APIUnmuteUserRequest@chat':
-    id: 'APIUnmuteUserRequest@chat'
+  'APIUnmuteUserRequest@go.chat.mod':
+    id: 'APIUnmuteUserRequest@go.chat.mod'
     name: 'APIUnmuteUserRequest'
+    type: 'model'
     fields:
       'UserID':
         type: 'string'
@@ -1896,9 +1977,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_unmute_user_request.go'
 
-  'APIUpdateTopicParams@chat':
-    id: 'APIUpdateTopicParams@chat'
+  'APIUpdateTopicParams@go.chat.mod':
+    id: 'APIUpdateTopicParams@go.chat.mod'
     name: 'APIUpdateTopicParams'
+    type: 'model'
     fields:
       'Description':
         type: 'string'
@@ -1914,9 +1996,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/api_update_topic_params.go'
 
-  'LogAppMessageDeclaration@chat':
-    id: 'LogAppMessageDeclaration@chat'
+  'LogAppMessageDeclaration@go.chat.mod':
+    id: 'LogAppMessageDeclaration@go.chat.mod'
     name: 'LogAppMessageDeclaration'
+    type: 'model'
     fields:
       'Attributes':
         type: '[]string'
@@ -1941,9 +2024,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/log_app_message_declaration.go'
 
-  'LogconfigConfiguration@chat':
-    id: 'LogconfigConfiguration@chat'
+  'LogconfigConfiguration@go.chat.mod':
+    id: 'LogconfigConfiguration@go.chat.mod'
     name: 'LogconfigConfiguration'
+    type: 'model'
     fields:
       'InternalAccessLogEnabled':
         type: 'bool'
@@ -1965,9 +2049,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/logconfig_configuration.go'
 
-  'MessageActionAddUserToTopicResult@chat':
-    id: 'MessageActionAddUserToTopicResult@chat'
+  'MessageActionAddUserToTopicResult@go.chat.mod':
+    id: 'MessageActionAddUserToTopicResult@go.chat.mod'
     name: 'MessageActionAddUserToTopicResult'
+    type: 'model'
     fields:
       'Processed':
         type: 'int64'
@@ -1983,9 +2068,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/message_action_add_user_to_topic_result.go'
 
-  'MessageActionDeleteTopicResult@chat':
-    id: 'MessageActionDeleteTopicResult@chat'
+  'MessageActionDeleteTopicResult@go.chat.mod':
+    id: 'MessageActionDeleteTopicResult@go.chat.mod'
     name: 'MessageActionDeleteTopicResult'
+    type: 'model'
     fields:
       'Processed':
         type: 'int64'
@@ -1998,9 +2084,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/message_action_delete_topic_result.go'
 
-  'ModelsAddInboxCategoryRequest@chat':
-    id: 'ModelsAddInboxCategoryRequest@chat'
+  'ModelsAddInboxCategoryRequest@go.chat.mod':
+    id: 'ModelsAddInboxCategoryRequest@go.chat.mod'
     name: 'ModelsAddInboxCategoryRequest'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -2028,9 +2115,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_add_inbox_category_request.go'
 
-  'ModelsAddInboxCategoryResponse@chat':
-    id: 'ModelsAddInboxCategoryResponse@chat'
+  'ModelsAddInboxCategoryResponse@go.chat.mod':
+    id: 'ModelsAddInboxCategoryResponse@go.chat.mod'
     name: 'ModelsAddInboxCategoryResponse'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -2058,9 +2146,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_add_inbox_category_response.go'
 
-  'ModelsBanTopicMemberParam@chat':
-    id: 'ModelsBanTopicMemberParam@chat'
+  'ModelsBanTopicMemberParam@go.chat.mod':
+    id: 'ModelsBanTopicMemberParam@go.chat.mod'
     name: 'ModelsBanTopicMemberParam'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -2070,9 +2159,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_ban_topic_member_param.go'
 
-  'ModelsBanTopicMemberResult@chat':
-    id: 'ModelsBanTopicMemberResult@chat'
+  'ModelsBanTopicMemberResult@go.chat.mod':
+    id: 'ModelsBanTopicMemberResult@go.chat.mod'
     name: 'ModelsBanTopicMemberResult'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -2082,9 +2172,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_ban_topic_member_result.go'
 
-  'ModelsCategoryHook@chat':
-    id: 'ModelsCategoryHook@chat'
+  'ModelsCategoryHook@go.chat.mod':
+    id: 'ModelsCategoryHook@go.chat.mod'
     name: 'ModelsCategoryHook'
+    type: 'model'
     fields:
       'Driver':
         type: 'string'
@@ -2097,9 +2188,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_category_hook.go'
 
-  'ModelsChannelTopicResponse@chat':
-    id: 'ModelsChannelTopicResponse@chat'
+  'ModelsChannelTopicResponse@go.chat.mod':
+    id: 'ModelsChannelTopicResponse@go.chat.mod'
     name: 'ModelsChannelTopicResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -2139,9 +2231,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_response.go'
 
-  'ModelsChannelTopicSummaryResponse@chat':
-    id: 'ModelsChannelTopicSummaryResponse@chat'
+  'ModelsChannelTopicSummaryResponse@go.chat.mod':
+    id: 'ModelsChannelTopicSummaryResponse@go.chat.mod'
     name: 'ModelsChannelTopicSummaryResponse'
+    type: 'model'
     fields:
       'TotalChannel':
         type: 'int32'
@@ -2154,9 +2247,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_summary_response.go'
 
-  'ModelsChannelTopicWithPaginationResponse@chat':
-    id: 'ModelsChannelTopicWithPaginationResponse@chat'
+  'ModelsChannelTopicWithPaginationResponse@go.chat.mod':
+    id: 'ModelsChannelTopicWithPaginationResponse@go.chat.mod'
     name: 'ModelsChannelTopicWithPaginationResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsChannelTopicResponse'
@@ -2172,9 +2266,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_channel_topic_with_pagination_response.go'
 
-  'ModelsChatMessageResponse@chat':
-    id: 'ModelsChatMessageResponse@chat'
+  'ModelsChatMessageResponse@go.chat.mod':
+    id: 'ModelsChatMessageResponse@go.chat.mod'
     name: 'ModelsChatMessageResponse'
+    type: 'model'
     fields:
       'From':
         type: 'string'
@@ -2199,9 +2294,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_message_response.go'
 
-  'ModelsChatMessageWithPaginationResponse@chat':
-    id: 'ModelsChatMessageWithPaginationResponse@chat'
+  'ModelsChatMessageWithPaginationResponse@go.chat.mod':
+    id: 'ModelsChatMessageWithPaginationResponse@go.chat.mod'
     name: 'ModelsChatMessageWithPaginationResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsChatMessageResponse'
@@ -2217,9 +2313,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_message_with_pagination_response.go'
 
-  'ModelsChatSnapshotMessage@chat':
-    id: 'ModelsChatSnapshotMessage@chat'
+  'ModelsChatSnapshotMessage@go.chat.mod':
+    id: 'ModelsChatSnapshotMessage@go.chat.mod'
     name: 'ModelsChatSnapshotMessage'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -2238,9 +2335,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_snapshot_message.go'
 
-  'ModelsChatSnapshots@chat':
-    id: 'ModelsChatSnapshots@chat'
+  'ModelsChatSnapshots@go.chat.mod':
+    id: 'ModelsChatSnapshots@go.chat.mod'
     name: 'ModelsChatSnapshots'
+    type: 'model'
     fields:
       'ChatID':
         type: 'string'
@@ -2271,9 +2369,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_chat_snapshots.go'
 
-  'ModelsConfig@chat':
-    id: 'ModelsConfig@chat'
+  'ModelsConfig@go.chat.mod':
+    id: 'ModelsConfig@go.chat.mod'
     name: 'ModelsConfig'
+    type: 'model'
     fields:
       'ChatRateLimitBurst':
         type: 'int32'
@@ -2346,9 +2445,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config.go'
 
-  'ModelsConfigExport@chat':
-    id: 'ModelsConfigExport@chat'
+  'ModelsConfigExport@go.chat.mod':
+    id: 'ModelsConfigExport@go.chat.mod'
     name: 'ModelsConfigExport'
+    type: 'model'
     fields:
       'ChatRateLimitBurst':
         type: 'int32'
@@ -2412,9 +2512,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_export.go'
 
-  'ModelsConfigList@chat':
-    id: 'ModelsConfigList@chat'
+  'ModelsConfigList@go.chat.mod':
+    id: 'ModelsConfigList@go.chat.mod'
     name: 'ModelsConfigList'
+    type: 'model'
     fields:
       'Configs':
         type: '[]*ModelsConfig'
@@ -2424,9 +2525,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_list.go'
 
-  'ModelsConfigResponse@chat':
-    id: 'ModelsConfigResponse@chat'
+  'ModelsConfigResponse@go.chat.mod':
+    id: 'ModelsConfigResponse@go.chat.mod'
     name: 'ModelsConfigResponse'
+    type: 'model'
     fields:
       'ChatRateLimitBurst':
         type: 'int32'
@@ -2490,9 +2592,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_config_response.go'
 
-  'ModelsDictionary@chat':
-    id: 'ModelsDictionary@chat'
+  'ModelsDictionary@go.chat.mod':
+    id: 'ModelsDictionary@go.chat.mod'
     name: 'ModelsDictionary'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -2514,9 +2617,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary.go'
 
-  'ModelsDictionaryChild@chat':
-    id: 'ModelsDictionaryChild@chat'
+  'ModelsDictionaryChild@go.chat.mod':
+    id: 'ModelsDictionaryChild@go.chat.mod'
     name: 'ModelsDictionaryChild'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -2529,9 +2633,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_child.go'
 
-  'ModelsDictionaryExport@chat':
-    id: 'ModelsDictionaryExport@chat'
+  'ModelsDictionaryExport@go.chat.mod':
+    id: 'ModelsDictionaryExport@go.chat.mod'
     name: 'ModelsDictionaryExport'
+    type: 'model'
     fields:
       'Dictionaries':
         type: '[]*ModelsDictionaryExportItem'
@@ -2541,9 +2646,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_export.go'
 
-  'ModelsDictionaryExportItem@chat':
-    id: 'ModelsDictionaryExportItem@chat'
+  'ModelsDictionaryExportItem@go.chat.mod':
+    id: 'ModelsDictionaryExportItem@go.chat.mod'
     name: 'ModelsDictionaryExportItem'
+    type: 'model'
     fields:
       'FalseNegative':
         type: '[]string'
@@ -2559,9 +2665,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_export_item.go'
 
-  'ModelsDictionaryGroup@chat':
-    id: 'ModelsDictionaryGroup@chat'
+  'ModelsDictionaryGroup@go.chat.mod':
+    id: 'ModelsDictionaryGroup@go.chat.mod'
     name: 'ModelsDictionaryGroup'
+    type: 'model'
     fields:
       'Count':
         type: 'int32'
@@ -2574,9 +2681,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_group.go'
 
-  'ModelsDictionaryImportResult@chat':
-    id: 'ModelsDictionaryImportResult@chat'
+  'ModelsDictionaryImportResult@go.chat.mod':
+    id: 'ModelsDictionaryImportResult@go.chat.mod'
     name: 'ModelsDictionaryImportResult'
+    type: 'model'
     fields:
       'Words':
         type: '*ModelsDictionaryWordChanges'
@@ -2586,9 +2694,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_import_result.go'
 
-  'ModelsDictionaryInsertBulkRequest@chat':
-    id: 'ModelsDictionaryInsertBulkRequest@chat'
+  'ModelsDictionaryInsertBulkRequest@go.chat.mod':
+    id: 'ModelsDictionaryInsertBulkRequest@go.chat.mod'
     name: 'ModelsDictionaryInsertBulkRequest'
+    type: 'model'
     fields:
       'Dictionaries':
         type: '[]*ModelsDictionaryInsertRequest'
@@ -2598,9 +2707,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_insert_bulk_request.go'
 
-  'ModelsDictionaryInsertRequest@chat':
-    id: 'ModelsDictionaryInsertRequest@chat'
+  'ModelsDictionaryInsertRequest@go.chat.mod':
+    id: 'ModelsDictionaryInsertRequest@go.chat.mod'
     name: 'ModelsDictionaryInsertRequest'
+    type: 'model'
     fields:
       'FalseNegative':
         type: '[]string'
@@ -2619,9 +2729,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_insert_request.go'
 
-  'ModelsDictionaryQueryResult@chat':
-    id: 'ModelsDictionaryQueryResult@chat'
+  'ModelsDictionaryQueryResult@go.chat.mod':
+    id: 'ModelsDictionaryQueryResult@go.chat.mod'
     name: 'ModelsDictionaryQueryResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsDictionaryWithChildren'
@@ -2637,9 +2748,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_query_result.go'
 
-  'ModelsDictionaryUpdateRequest@chat':
-    id: 'ModelsDictionaryUpdateRequest@chat'
+  'ModelsDictionaryUpdateRequest@go.chat.mod':
+    id: 'ModelsDictionaryUpdateRequest@go.chat.mod'
     name: 'ModelsDictionaryUpdateRequest'
+    type: 'model'
     fields:
       'FalseNegative':
         type: '[]string'
@@ -2658,9 +2770,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_update_request.go'
 
-  'ModelsDictionaryWithChildren@chat':
-    id: 'ModelsDictionaryWithChildren@chat'
+  'ModelsDictionaryWithChildren@go.chat.mod':
+    id: 'ModelsDictionaryWithChildren@go.chat.mod'
     name: 'ModelsDictionaryWithChildren'
+    type: 'model'
     fields:
       'FalseNegatives':
         type: '[]*ModelsDictionaryChild'
@@ -2688,9 +2801,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_with_children.go'
 
-  'ModelsDictionaryWordChanges@chat':
-    id: 'ModelsDictionaryWordChanges@chat'
+  'ModelsDictionaryWordChanges@go.chat.mod':
+    id: 'ModelsDictionaryWordChanges@go.chat.mod'
     name: 'ModelsDictionaryWordChanges'
+    type: 'model'
     fields:
       'Added':
         type: '[]string'
@@ -2712,9 +2826,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_dictionary_word_changes.go'
 
-  'ModelsGetInboxCategoriesResponseItem@chat':
-    id: 'ModelsGetInboxCategoriesResponseItem@chat'
+  'ModelsGetInboxCategoriesResponseItem@go.chat.mod':
+    id: 'ModelsGetInboxCategoriesResponseItem@go.chat.mod'
     name: 'ModelsGetInboxCategoriesResponseItem'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -2742,9 +2857,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_categories_response_item.go'
 
-  'ModelsGetInboxMessagesResponse@chat':
-    id: 'ModelsGetInboxMessagesResponse@chat'
+  'ModelsGetInboxMessagesResponse@go.chat.mod':
+    id: 'ModelsGetInboxMessagesResponse@go.chat.mod'
     name: 'ModelsGetInboxMessagesResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetInboxMessagesResponseData'
@@ -2760,9 +2876,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_messages_response.go'
 
-  'ModelsGetInboxMessagesResponseData@chat':
-    id: 'ModelsGetInboxMessagesResponseData@chat'
+  'ModelsGetInboxMessagesResponseData@go.chat.mod':
+    id: 'ModelsGetInboxMessagesResponseData@go.chat.mod'
     name: 'ModelsGetInboxMessagesResponseData'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -2799,9 +2916,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_messages_response_data.go'
 
-  'ModelsGetInboxStatsResponse@chat':
-    id: 'ModelsGetInboxStatsResponse@chat'
+  'ModelsGetInboxStatsResponse@go.chat.mod':
+    id: 'ModelsGetInboxStatsResponse@go.chat.mod'
     name: 'ModelsGetInboxStatsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsMessageStats'
@@ -2811,9 +2929,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_stats_response.go'
 
-  'ModelsGetInboxUsersResponse@chat':
-    id: 'ModelsGetInboxUsersResponse@chat'
+  'ModelsGetInboxUsersResponse@go.chat.mod':
+    id: 'ModelsGetInboxUsersResponse@go.chat.mod'
     name: 'ModelsGetInboxUsersResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserInbox'
@@ -2829,9 +2948,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_inbox_users_response.go'
 
-  'ModelsGetListTopicKafkaResponse@chat':
-    id: 'ModelsGetListTopicKafkaResponse@chat'
+  'ModelsGetListTopicKafkaResponse@go.chat.mod':
+    id: 'ModelsGetListTopicKafkaResponse@go.chat.mod'
     name: 'ModelsGetListTopicKafkaResponse'
+    type: 'model'
     fields:
       'TopicName':
         type: '[]string'
@@ -2841,9 +2961,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_get_list_topic_kafka_response.go'
 
-  'ModelsImportConfigResponse@chat':
-    id: 'ModelsImportConfigResponse@chat'
+  'ModelsImportConfigResponse@go.chat.mod':
+    id: 'ModelsImportConfigResponse@go.chat.mod'
     name: 'ModelsImportConfigResponse'
+    type: 'model'
     fields:
       'FailedConfigs':
         type: '[]string'
@@ -2862,18 +2983,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_import_config_response.go'
 
-  'ModelsJSONSchemaType@chat':
-    id: 'ModelsJSONSchemaType@chat'
+  'ModelsJSONSchemaType@go.chat.mod':
+    id: 'ModelsJSONSchemaType@go.chat.mod'
     name: 'ModelsJSONSchemaType'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_json_schema_type.go'
 
-  'ModelsMessageRequest@chat':
-    id: 'ModelsMessageRequest@chat'
+  'ModelsMessageRequest@go.chat.mod':
+    id: 'ModelsMessageRequest@go.chat.mod'
     name: 'ModelsMessageRequest'
+    type: 'model'
     fields:
       'Message':
         type: 'string'
@@ -2895,9 +3017,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_request.go'
 
-  'ModelsMessageResultWithAttributes@chat':
-    id: 'ModelsMessageResultWithAttributes@chat'
+  'ModelsMessageResultWithAttributes@go.chat.mod':
+    id: 'ModelsMessageResultWithAttributes@go.chat.mod'
     name: 'ModelsMessageResultWithAttributes'
+    type: 'model'
     fields:
       'Action':
         type: 'string'
@@ -2928,9 +3051,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_result_with_attributes.go'
 
-  'ModelsMessageStats@chat':
-    id: 'ModelsMessageStats@chat'
+  'ModelsMessageStats@go.chat.mod':
+    id: 'ModelsMessageStats@go.chat.mod'
     name: 'ModelsMessageStats'
+    type: 'model'
     fields:
       'ID':
         type: 'string'
@@ -2949,9 +3073,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_message_stats.go'
 
-  'ModelsPagination@chat':
-    id: 'ModelsPagination@chat'
+  'ModelsPagination@go.chat.mod':
+    id: 'ModelsPagination@go.chat.mod'
     name: 'ModelsPagination'
+    type: 'model'
     fields:
       'Next':
         type: 'string'
@@ -2964,9 +3089,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_pagination.go'
 
-  'ModelsPublicBanTopicMembersRequest@chat':
-    id: 'ModelsPublicBanTopicMembersRequest@chat'
+  'ModelsPublicBanTopicMembersRequest@go.chat.mod':
+    id: 'ModelsPublicBanTopicMembersRequest@go.chat.mod'
     name: 'ModelsPublicBanTopicMembersRequest'
+    type: 'model'
     fields:
       'UserIDs':
         type: '[]string'
@@ -2976,9 +3102,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_ban_topic_members_request.go'
 
-  'ModelsPublicBanTopicMembersResponse@chat':
-    id: 'ModelsPublicBanTopicMembersResponse@chat'
+  'ModelsPublicBanTopicMembersResponse@go.chat.mod':
+    id: 'ModelsPublicBanTopicMembersResponse@go.chat.mod'
     name: 'ModelsPublicBanTopicMembersResponse'
+    type: 'model'
     fields:
       'UserIDs':
         type: '[]string'
@@ -2988,9 +3115,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_ban_topic_members_response.go'
 
-  'ModelsPublicConfigResponse@chat':
-    id: 'ModelsPublicConfigResponse@chat'
+  'ModelsPublicConfigResponse@go.chat.mod':
+    id: 'ModelsPublicConfigResponse@go.chat.mod'
     name: 'ModelsPublicConfigResponse'
+    type: 'model'
     fields:
       'ChatRateLimitBurst':
         type: 'int32'
@@ -3024,9 +3152,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_config_response.go'
 
-  'ModelsPublicUnbanTopicMembersRequest@chat':
-    id: 'ModelsPublicUnbanTopicMembersRequest@chat'
+  'ModelsPublicUnbanTopicMembersRequest@go.chat.mod':
+    id: 'ModelsPublicUnbanTopicMembersRequest@go.chat.mod'
     name: 'ModelsPublicUnbanTopicMembersRequest'
+    type: 'model'
     fields:
       'UserIDs':
         type: '[]string'
@@ -3036,9 +3165,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_unban_topic_members_request.go'
 
-  'ModelsPublicUnbanTopicMembersResponse@chat':
-    id: 'ModelsPublicUnbanTopicMembersResponse@chat'
+  'ModelsPublicUnbanTopicMembersResponse@go.chat.mod':
+    id: 'ModelsPublicUnbanTopicMembersResponse@go.chat.mod'
     name: 'ModelsPublicUnbanTopicMembersResponse'
+    type: 'model'
     fields:
       'UserIDs':
         type: '[]string'
@@ -3048,9 +3178,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_public_unban_topic_members_response.go'
 
-  'ModelsSaveInboxMessageRequest@chat':
-    id: 'ModelsSaveInboxMessageRequest@chat'
+  'ModelsSaveInboxMessageRequest@go.chat.mod':
+    id: 'ModelsSaveInboxMessageRequest@go.chat.mod'
     name: 'ModelsSaveInboxMessageRequest'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -3075,9 +3206,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_save_inbox_message_request.go'
 
-  'ModelsSaveInboxMessageResponse@chat':
-    id: 'ModelsSaveInboxMessageResponse@chat'
+  'ModelsSaveInboxMessageResponse@go.chat.mod':
+    id: 'ModelsSaveInboxMessageResponse@go.chat.mod'
     name: 'ModelsSaveInboxMessageResponse'
+    type: 'model'
     fields:
       'Category':
         type: 'string'
@@ -3105,27 +3237,28 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_save_inbox_message_response.go'
 
-  'ModelsSendInboxMessageRequest@chat':
-    id: 'ModelsSendInboxMessageRequest@chat'
+  'ModelsSendInboxMessageRequest@go.chat.mod':
+    id: 'ModelsSendInboxMessageRequest@go.chat.mod'
     name: 'ModelsSendInboxMessageRequest'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_send_inbox_message_request.go'
 
-  'ModelsSendInboxMessageResponse@chat':
-    id: 'ModelsSendInboxMessageResponse@chat'
+  'ModelsSendInboxMessageResponse@go.chat.mod':
+    id: 'ModelsSendInboxMessageResponse@go.chat.mod'
     name: 'ModelsSendInboxMessageResponse'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_send_inbox_message_response.go'
 
-  'ModelsTopicInfo@chat':
-    id: 'ModelsTopicInfo@chat'
+  'ModelsTopicInfo@go.chat.mod':
+    id: 'ModelsTopicInfo@go.chat.mod'
     name: 'ModelsTopicInfo'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -3153,9 +3286,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_info.go'
 
-  'ModelsTopicLogItem@chat':
-    id: 'ModelsTopicLogItem@chat'
+  'ModelsTopicLogItem@go.chat.mod':
+    id: 'ModelsTopicLogItem@go.chat.mod'
     name: 'ModelsTopicLogItem'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -3183,9 +3317,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_log_item.go'
 
-  'ModelsTopicLogWithPaginationResponse@chat':
-    id: 'ModelsTopicLogWithPaginationResponse@chat'
+  'ModelsTopicLogWithPaginationResponse@go.chat.mod':
+    id: 'ModelsTopicLogWithPaginationResponse@go.chat.mod'
     name: 'ModelsTopicLogWithPaginationResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsTopicLogItem'
@@ -3198,9 +3333,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_log_with_pagination_response.go'
 
-  'ModelsTopicMemberResponse@chat':
-    id: 'ModelsTopicMemberResponse@chat'
+  'ModelsTopicMemberResponse@go.chat.mod':
+    id: 'ModelsTopicMemberResponse@go.chat.mod'
     name: 'ModelsTopicMemberResponse'
+    type: 'model'
     fields:
       'IsAdmin':
         type: 'bool'
@@ -3219,9 +3355,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_member_response.go'
 
-  'ModelsTopicMemberWithPaginationResponse@chat':
-    id: 'ModelsTopicMemberWithPaginationResponse@chat'
+  'ModelsTopicMemberWithPaginationResponse@go.chat.mod':
+    id: 'ModelsTopicMemberWithPaginationResponse@go.chat.mod'
     name: 'ModelsTopicMemberWithPaginationResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsTopicMemberResponse'
@@ -3237,9 +3374,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_member_with_pagination_response.go'
 
-  'ModelsTopicResponse@chat':
-    id: 'ModelsTopicResponse@chat'
+  'ModelsTopicResponse@go.chat.mod':
+    id: 'ModelsTopicResponse@go.chat.mod'
     name: 'ModelsTopicResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'int64'
@@ -3267,9 +3405,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_topic_response.go'
 
-  'ModelsUnbanTopicMemberParam@chat':
-    id: 'ModelsUnbanTopicMemberParam@chat'
+  'ModelsUnbanTopicMemberParam@go.chat.mod':
+    id: 'ModelsUnbanTopicMemberParam@go.chat.mod'
     name: 'ModelsUnbanTopicMemberParam'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -3279,9 +3418,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unban_topic_member_param.go'
 
-  'ModelsUnbanTopicMemberResult@chat':
-    id: 'ModelsUnbanTopicMemberResult@chat'
+  'ModelsUnbanTopicMemberResult@go.chat.mod':
+    id: 'ModelsUnbanTopicMemberResult@go.chat.mod'
     name: 'ModelsUnbanTopicMemberResult'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -3291,9 +3431,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unban_topic_member_result.go'
 
-  'ModelsUnsendInboxMessageRequest@chat':
-    id: 'ModelsUnsendInboxMessageRequest@chat'
+  'ModelsUnsendInboxMessageRequest@go.chat.mod':
+    id: 'ModelsUnsendInboxMessageRequest@go.chat.mod'
     name: 'ModelsUnsendInboxMessageRequest'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -3303,18 +3444,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unsend_inbox_message_request.go'
 
-  'ModelsUnsendInboxMessageResponse@chat':
-    id: 'ModelsUnsendInboxMessageResponse@chat'
+  'ModelsUnsendInboxMessageResponse@go.chat.mod':
+    id: 'ModelsUnsendInboxMessageResponse@go.chat.mod'
     name: 'ModelsUnsendInboxMessageResponse'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/chat-sdk/pkg/chatclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_unsend_inbox_message_response.go'
 
-  'ModelsUpdateInboxCategoryRequest@chat':
-    id: 'ModelsUpdateInboxCategoryRequest@chat'
+  'ModelsUpdateInboxCategoryRequest@go.chat.mod':
+    id: 'ModelsUpdateInboxCategoryRequest@go.chat.mod'
     name: 'ModelsUpdateInboxCategoryRequest'
+    type: 'model'
     fields:
       'Enabled':
         type: 'bool'
@@ -3339,9 +3481,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_update_inbox_category_request.go'
 
-  'ModelsUpdateInboxMessageRequest@chat':
-    id: 'ModelsUpdateInboxMessageRequest@chat'
+  'ModelsUpdateInboxMessageRequest@go.chat.mod':
+    id: 'ModelsUpdateInboxMessageRequest@go.chat.mod'
     name: 'ModelsUpdateInboxMessageRequest'
+    type: 'model'
     fields:
       'ExpiredAt':
         type: 'int64'
@@ -3360,9 +3503,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_update_inbox_message_request.go'
 
-  'ModelsUserInbox@chat':
-    id: 'ModelsUserInbox@chat'
+  'ModelsUserInbox@go.chat.mod':
+    id: 'ModelsUserInbox@go.chat.mod'
     name: 'ModelsUserInbox'
+    type: 'model'
     fields:
       'Keep':
         type: 'bool'
@@ -3378,9 +3522,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/models_user_inbox.go'
 
-  'ResponseError@chat':
-    id: 'ResponseError@chat'
+  'ResponseError@go.chat.mod':
+    id: 'ResponseError@go.chat.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -3393,9 +3538,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/response_error.go'
 
-  'RestapiErrorResponseBody@chat':
-    id: 'RestapiErrorResponseBody@chat'
+  'RestapiErrorResponseBody@go.chat.mod':
+    id: 'RestapiErrorResponseBody@go.chat.mod'
     name: 'RestapiErrorResponseBody'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -3408,9 +3554,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/chat-sdk/pkg/chatclientmodels/restapi_error_response_body.go'
 
-  'TopicInfoMember@chat':
-    id: 'TopicInfoMember@chat'
+  'TopicInfoMember@go.chat.mod':
+    id: 'TopicInfoMember@go.chat.mod'
     name: 'TopicInfoMember'
+    type: 'model'
     fields:
       'LeftAt':
         type: 'int64'
@@ -3425,15 +3572,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminAddInboxCategoryShort@chat':
-    id: 'AdminAddInboxCategoryShort@chat'
+  'AdminAddInboxCategoryShort@go.chat.fun':
+    id: 'AdminAddInboxCategoryShort@go.chat.fun'
     name: 'AdminAddInboxCategoryShort'
+    type: 'function'
     description: |-
       Add inbox category.
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminAddInboxCategoryParams'
         required: true
@@ -3457,13 +3605,14 @@ functions:
       - 'category'
       - 'inbox'
 
-  'AdminAddTopicMemberShort@chat':
-    id: 'AdminAddTopicMemberShort@chat'
+  'AdminAddTopicMemberShort@go.chat.fun':
+    id: 'AdminAddTopicMemberShort@go.chat.fun'
     name: 'AdminAddTopicMemberShort'
+    type: 'function'
     description: |-
       Add new member for topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminAddTopicMemberParams'
         required: true
@@ -3487,13 +3636,14 @@ functions:
       - 'member'
       - 'topic'
 
-  'AdminBanTopicMembersShort@chat':
-    id: 'AdminBanTopicMembersShort@chat'
+  'AdminBanTopicMembersShort@go.chat.fun':
+    id: 'AdminBanTopicMembersShort@go.chat.fun'
     name: 'AdminBanTopicMembersShort'
+    type: 'function'
     description: |-
       Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminBanTopicMembersParams'
         required: true
@@ -3517,13 +3667,14 @@ functions:
       - 'members'
       - 'topic'
 
-  'AdminChannelTopicInfoShort@chat':
-    id: 'AdminChannelTopicInfoShort@chat'
+  'AdminChannelTopicInfoShort@go.chat.fun':
+    id: 'AdminChannelTopicInfoShort@go.chat.fun'
     name: 'AdminChannelTopicInfoShort'
+    type: 'function'
     description: |-
       Get chat list of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminChannelTopicInfoParams'
         required: true
@@ -3547,13 +3698,14 @@ functions:
       - 'info'
       - 'topic'
 
-  'AdminChannelTopicListShort@chat':
-    id: 'AdminChannelTopicListShort@chat'
+  'AdminChannelTopicListShort@go.chat.fun':
+    id: 'AdminChannelTopicListShort@go.chat.fun'
     name: 'AdminChannelTopicListShort'
+    type: 'function'
     description: |-
       Get channel chat list of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminChannelTopicListParams'
         required: true
@@ -3577,13 +3729,14 @@ functions:
       - 'list'
       - 'topic'
 
-  'AdminChannelTopicSummaryShort@chat':
-    id: 'AdminChannelTopicSummaryShort@chat'
+  'AdminChannelTopicSummaryShort@go.chat.fun':
+    id: 'AdminChannelTopicSummaryShort@go.chat.fun'
     name: 'AdminChannelTopicSummaryShort'
+    type: 'function'
     description: |-
       Get chat list of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminChannelTopicSummaryParams'
         required: true
@@ -3607,13 +3760,14 @@ functions:
       - 'summary'
       - 'topic'
 
-  'AdminChatHistoryShort@chat':
-    id: 'AdminChatHistoryShort@chat'
+  'AdminChatHistoryShort@go.chat.fun':
+    id: 'AdminChatHistoryShort@go.chat.fun'
     name: 'AdminChatHistoryShort'
+    type: 'function'
     description: |-
       Get chat history in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminChatHistoryParams'
         required: true
@@ -3637,13 +3791,14 @@ functions:
       - 'history'
       - 'topic'
 
-  'AdminCreateNamespaceTopicShort@chat':
-    id: 'AdminCreateNamespaceTopicShort@chat'
+  'AdminCreateNamespaceTopicShort@go.chat.fun':
+    id: 'AdminCreateNamespaceTopicShort@go.chat.fun'
     name: 'AdminCreateNamespaceTopicShort'
+    type: 'function'
     description: |-
       Create new namespace group topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminCreateNamespaceTopicParams'
         required: true
@@ -3667,13 +3822,14 @@ functions:
       - 'namespace'
       - 'topic'
 
-  'AdminCreateTopicShort@chat':
-    id: 'AdminCreateTopicShort@chat'
+  'AdminCreateTopicShort@go.chat.fun':
+    id: 'AdminCreateTopicShort@go.chat.fun'
     name: 'AdminCreateTopicShort'
+    type: 'function'
     description: |-
       Create new group topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminCreateTopicParams'
         required: true
@@ -3696,13 +3852,14 @@ functions:
       - 'create'
       - 'topic'
 
-  'AdminDeleteChatShort@chat':
-    id: 'AdminDeleteChatShort@chat'
+  'AdminDeleteChatShort@go.chat.fun':
+    id: 'AdminDeleteChatShort@go.chat.fun'
     name: 'AdminDeleteChatShort'
+    type: 'function'
     description: |-
       Delete chat.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminDeleteChatParams'
         required: true
@@ -3726,13 +3883,14 @@ functions:
       - 'delete'
       - 'topic'
 
-  'AdminDeleteChatSnapshotShort@chat':
-    id: 'AdminDeleteChatSnapshotShort@chat'
+  'AdminDeleteChatSnapshotShort@go.chat.fun':
+    id: 'AdminDeleteChatSnapshotShort@go.chat.fun'
     name: 'AdminDeleteChatSnapshotShort'
+    type: 'function'
     description: |-
       Delete the chat snapshot
     struct: 'ModerationService'
-    parameters:
+    arguments:
       params:
         type: '*moderation.AdminDeleteChatSnapshotParams'
         required: true
@@ -3757,13 +3915,14 @@ functions:
       - 'moderation'
       - 'snapshot'
 
-  'AdminDeleteInboxCategoryShort@chat':
-    id: 'AdminDeleteInboxCategoryShort@chat'
+  'AdminDeleteInboxCategoryShort@go.chat.fun':
+    id: 'AdminDeleteInboxCategoryShort@go.chat.fun'
     name: 'AdminDeleteInboxCategoryShort'
+    type: 'function'
     description: |-
       Delete inbox category
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminDeleteInboxCategoryParams'
         required: true
@@ -3787,13 +3946,14 @@ functions:
       - 'delete'
       - 'inbox'
 
-  'AdminDeleteInboxMessageShort@chat':
-    id: 'AdminDeleteInboxMessageShort@chat'
+  'AdminDeleteInboxMessageShort@go.chat.fun':
+    id: 'AdminDeleteInboxMessageShort@go.chat.fun'
     name: 'AdminDeleteInboxMessageShort'
+    type: 'function'
     description: |-
       Delete inbox message
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminDeleteInboxMessageParams'
         required: true
@@ -3817,13 +3977,14 @@ functions:
       - 'inbox'
       - 'message'
 
-  'AdminDeleteTopicShort@chat':
-    id: 'AdminDeleteTopicShort@chat'
+  'AdminDeleteTopicShort@go.chat.fun':
+    id: 'AdminDeleteTopicShort@go.chat.fun'
     name: 'AdminDeleteTopicShort'
+    type: 'function'
     description: |-
       Delete topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminDeleteTopicParams'
         required: true
@@ -3846,13 +4007,14 @@ functions:
       - 'delete'
       - 'topic'
 
-  'AdminFilterChatMessageShort@chat':
-    id: 'AdminFilterChatMessageShort@chat'
+  'AdminFilterChatMessageShort@go.chat.fun':
+    id: 'AdminFilterChatMessageShort@go.chat.fun'
     name: 'AdminFilterChatMessageShort'
+    type: 'function'
     description: |-
       For testing purpose, doesn't send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminFilterChatMessageParams'
         required: true
@@ -3877,13 +4039,14 @@ functions:
       - 'message'
       - 'topic'
 
-  'AdminGetAllConfigV1Short@chat':
-    id: 'AdminGetAllConfigV1Short@chat'
+  'AdminGetAllConfigV1Short@go.chat.fun':
+    id: 'AdminGetAllConfigV1Short@go.chat.fun'
     name: 'AdminGetAllConfigV1Short'
+    type: 'function'
     description: |-
       Get chat config of all namespaces.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetAllConfigV1Params'
         required: true
@@ -3908,13 +4071,14 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetCategorySchemaShort@chat':
-    id: 'AdminGetCategorySchemaShort@chat'
+  'AdminGetCategorySchemaShort@go.chat.fun':
+    id: 'AdminGetCategorySchemaShort@go.chat.fun'
     name: 'AdminGetCategorySchemaShort'
+    type: 'function'
     description: |-
       Get category schema.
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminGetCategorySchemaParams'
         required: true
@@ -3939,13 +4103,14 @@ functions:
       - 'inbox'
       - 'schema'
 
-  'AdminGetChatSnapshotShort@chat':
-    id: 'AdminGetChatSnapshotShort@chat'
+  'AdminGetChatSnapshotShort@go.chat.fun':
+    id: 'AdminGetChatSnapshotShort@go.chat.fun'
     name: 'AdminGetChatSnapshotShort'
+    type: 'function'
     description: |-
       Get the chat snapshot
     struct: 'ModerationService'
-    parameters:
+    arguments:
       params:
         type: '*moderation.AdminGetChatSnapshotParams'
         required: true
@@ -3970,13 +4135,14 @@ functions:
       - 'moderation'
       - 'snapshot'
 
-  'AdminGetConfigV1Short@chat':
-    id: 'AdminGetConfigV1Short@chat'
+  'AdminGetConfigV1Short@go.chat.fun':
+    id: 'AdminGetConfigV1Short@go.chat.fun'
     name: 'AdminGetConfigV1Short'
+    type: 'function'
     description: |-
       Get chat config of a namespace.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetConfigV1Params'
         required: true
@@ -4000,13 +4166,14 @@ functions:
       - 'get'
       - 'v1'
 
-  'AdminGetInboxCategoriesShort@chat':
-    id: 'AdminGetInboxCategoriesShort@chat'
+  'AdminGetInboxCategoriesShort@go.chat.fun':
+    id: 'AdminGetInboxCategoriesShort@go.chat.fun'
     name: 'AdminGetInboxCategoriesShort'
+    type: 'function'
     description: |-
       Get inbox categories
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminGetInboxCategoriesParams'
         required: true
@@ -4030,13 +4197,14 @@ functions:
       - 'get'
       - 'inbox'
 
-  'AdminGetInboxMessagesShort@chat':
-    id: 'AdminGetInboxMessagesShort@chat'
+  'AdminGetInboxMessagesShort@go.chat.fun':
+    id: 'AdminGetInboxMessagesShort@go.chat.fun'
     name: 'AdminGetInboxMessagesShort'
+    type: 'function'
     description: |-
       Get inbox messages
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminGetInboxMessagesParams'
         required: true
@@ -4060,13 +4228,14 @@ functions:
       - 'inbox'
       - 'messages'
 
-  'AdminGetInboxStatsShort@chat':
-    id: 'AdminGetInboxStatsShort@chat'
+  'AdminGetInboxStatsShort@go.chat.fun':
+    id: 'AdminGetInboxStatsShort@go.chat.fun'
     name: 'AdminGetInboxStatsShort'
+    type: 'function'
     description: |-
       Get inbox stats
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminGetInboxStatsParams'
         required: true
@@ -4090,13 +4259,14 @@ functions:
       - 'inbox'
       - 'stats'
 
-  'AdminGetInboxUsersShort@chat':
-    id: 'AdminGetInboxUsersShort@chat'
+  'AdminGetInboxUsersShort@go.chat.fun':
+    id: 'AdminGetInboxUsersShort@go.chat.fun'
     name: 'AdminGetInboxUsersShort'
+    type: 'function'
     description: |-
       Get inbox users
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminGetInboxUsersParams'
         required: true
@@ -4120,9 +4290,10 @@ functions:
       - 'inbox'
       - 'users'
 
-  'AdminGetLogConfigShort@chat':
-    id: 'AdminGetLogConfigShort@chat'
+  'AdminGetLogConfigShort@go.chat.fun':
+    id: 'AdminGetLogConfigShort@go.chat.fun'
     name: 'AdminGetLogConfigShort'
+    type: 'function'
     description: |-
       Get Log Configuration
       logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
@@ -4131,7 +4302,7 @@ functions:
       logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
       slowQueryThreshold use for logging slow threshold in time measure is nano second
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminGetLogConfigParams'
         required: true
@@ -4155,13 +4326,14 @@ functions:
       - 'get'
       - 'log'
 
-  'AdminListKafkaTopicShort@chat':
-    id: 'AdminListKafkaTopicShort@chat'
+  'AdminListKafkaTopicShort@go.chat.fun':
+    id: 'AdminListKafkaTopicShort@go.chat.fun'
     name: 'AdminListKafkaTopicShort'
+    type: 'function'
     description: |-
       Get list kafka topic. example result chat,sessionNotification
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminListKafkaTopicParams'
         required: true
@@ -4186,9 +4358,10 @@ functions:
       - 'list'
       - 'topic'
 
-  'AdminPatchUpdateLogConfigShort@chat':
-    id: 'AdminPatchUpdateLogConfigShort@chat'
+  'AdminPatchUpdateLogConfigShort@go.chat.fun':
+    id: 'AdminPatchUpdateLogConfigShort@go.chat.fun'
     name: 'AdminPatchUpdateLogConfigShort'
+    type: 'function'
     description: |-
       Update Log Configuration
       logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
@@ -4197,7 +4370,7 @@ functions:
       logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
       slowQueryThreshold use for logging slow threshold in time measure is nano second
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminPatchUpdateLogConfigParams'
         required: true
@@ -4222,13 +4395,14 @@ functions:
       - 'patch'
       - 'update'
 
-  'AdminProfanityCreateShort@chat':
-    id: 'AdminProfanityCreateShort@chat'
+  'AdminProfanityCreateShort@go.chat.fun':
+    id: 'AdminProfanityCreateShort@go.chat.fun'
     name: 'AdminProfanityCreateShort'
+    type: 'function'
     description: |-
       Insert new word for profanity censor
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityCreateParams'
         required: true
@@ -4251,13 +4425,14 @@ functions:
       - 'create'
       - 'profanity'
 
-  'AdminProfanityCreateBulkShort@chat':
-    id: 'AdminProfanityCreateBulkShort@chat'
+  'AdminProfanityCreateBulkShort@go.chat.fun':
+    id: 'AdminProfanityCreateBulkShort@go.chat.fun'
     name: 'AdminProfanityCreateBulkShort'
+    type: 'function'
     description: |-
       Bulk insert new word for profanity censor
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityCreateBulkParams'
         required: true
@@ -4281,13 +4456,14 @@ functions:
       - 'create'
       - 'profanity'
 
-  'AdminProfanityDeleteShort@chat':
-    id: 'AdminProfanityDeleteShort@chat'
+  'AdminProfanityDeleteShort@go.chat.fun':
+    id: 'AdminProfanityDeleteShort@go.chat.fun'
     name: 'AdminProfanityDeleteShort'
+    type: 'function'
     description: |-
       Delete profanity words.
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityDeleteParams'
         required: true
@@ -4310,13 +4486,14 @@ functions:
       - 'delete'
       - 'profanity'
 
-  'AdminProfanityExportShort@chat':
-    id: 'AdminProfanityExportShort@chat'
+  'AdminProfanityExportShort@go.chat.fun':
+    id: 'AdminProfanityExportShort@go.chat.fun'
     name: 'AdminProfanityExportShort'
+    type: 'function'
     description: |-
       Export profanity words
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityExportParams'
         required: true
@@ -4339,13 +4516,14 @@ functions:
       - 'export'
       - 'profanity'
 
-  'AdminProfanityGroupShort@chat':
-    id: 'AdminProfanityGroupShort@chat'
+  'AdminProfanityGroupShort@go.chat.fun':
+    id: 'AdminProfanityGroupShort@go.chat.fun'
     name: 'AdminProfanityGroupShort'
+    type: 'function'
     description: |-
       Get profanity words group.
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityGroupParams'
         required: true
@@ -4368,13 +4546,14 @@ functions:
       - 'group'
       - 'profanity'
 
-  'AdminProfanityImportShort@chat':
-    id: 'AdminProfanityImportShort@chat'
+  'AdminProfanityImportShort@go.chat.fun':
+    id: 'AdminProfanityImportShort@go.chat.fun'
     name: 'AdminProfanityImportShort'
+    type: 'function'
     description: |-
       Import profanity words
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityImportParams'
         required: true
@@ -4397,13 +4576,14 @@ functions:
       - 'import'
       - 'profanity'
 
-  'AdminProfanityQueryShort@chat':
-    id: 'AdminProfanityQueryShort@chat'
+  'AdminProfanityQueryShort@go.chat.fun':
+    id: 'AdminProfanityQueryShort@go.chat.fun'
     name: 'AdminProfanityQueryShort'
+    type: 'function'
     description: |-
       Query all profanity words.
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityQueryParams'
         required: true
@@ -4426,13 +4606,14 @@ functions:
       - 'profanity'
       - 'query'
 
-  'AdminProfanityUpdateShort@chat':
-    id: 'AdminProfanityUpdateShort@chat'
+  'AdminProfanityUpdateShort@go.chat.fun':
+    id: 'AdminProfanityUpdateShort@go.chat.fun'
     name: 'AdminProfanityUpdateShort'
+    type: 'function'
     description: |-
       Update profanity word
     struct: 'ProfanityService'
-    parameters:
+    arguments:
       params:
         type: '*profanity.AdminProfanityUpdateParams'
         required: true
@@ -4455,13 +4636,14 @@ functions:
       - 'profanity'
       - 'update'
 
-  'AdminQueryTopicShort@chat':
-    id: 'AdminQueryTopicShort@chat'
+  'AdminQueryTopicShort@go.chat.fun':
+    id: 'AdminQueryTopicShort@go.chat.fun'
     name: 'AdminQueryTopicShort'
+    type: 'function'
     description: |-
       Get topics in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminQueryTopicParams'
         required: true
@@ -4484,13 +4666,14 @@ functions:
       - 'query'
       - 'topic'
 
-  'AdminQueryTopicLogShort@chat':
-    id: 'AdminQueryTopicLogShort@chat'
+  'AdminQueryTopicLogShort@go.chat.fun':
+    id: 'AdminQueryTopicLogShort@go.chat.fun'
     name: 'AdminQueryTopicLogShort'
+    type: 'function'
     description: |-
       Get chat log of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminQueryTopicLogParams'
         required: true
@@ -4514,13 +4697,14 @@ functions:
       - 'query'
       - 'topic'
 
-  'AdminQueryUsersTopicShort@chat':
-    id: 'AdminQueryUsersTopicShort@chat'
+  'AdminQueryUsersTopicShort@go.chat.fun':
+    id: 'AdminQueryUsersTopicShort@go.chat.fun'
     name: 'AdminQueryUsersTopicShort'
+    type: 'function'
     description: |-
       Get user's topics in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminQueryUsersTopicParams'
         required: true
@@ -4544,13 +4728,14 @@ functions:
       - 'topic'
       - 'users'
 
-  'AdminRemoveTopicMemberShort@chat':
-    id: 'AdminRemoveTopicMemberShort@chat'
+  'AdminRemoveTopicMemberShort@go.chat.fun':
+    id: 'AdminRemoveTopicMemberShort@go.chat.fun'
     name: 'AdminRemoveTopicMemberShort'
+    type: 'function'
     description: |-
       Remove member from topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminRemoveTopicMemberParams'
         required: true
@@ -4574,13 +4759,14 @@ functions:
       - 'remove'
       - 'topic'
 
-  'AdminSaveInboxMessageShort@chat':
-    id: 'AdminSaveInboxMessageShort@chat'
+  'AdminSaveInboxMessageShort@go.chat.fun':
+    id: 'AdminSaveInboxMessageShort@go.chat.fun'
     name: 'AdminSaveInboxMessageShort'
+    type: 'function'
     description: |-
       Save inbox message
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminSaveInboxMessageParams'
         required: true
@@ -4604,13 +4790,14 @@ functions:
       - 'message'
       - 'save'
 
-  'AdminSendChatShort@chat':
-    id: 'AdminSendChatShort@chat'
+  'AdminSendChatShort@go.chat.fun':
+    id: 'AdminSendChatShort@go.chat.fun'
     name: 'AdminSendChatShort'
+    type: 'function'
     description: |-
       Send message to chat topic as system.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminSendChatParams'
         required: true
@@ -4634,13 +4821,14 @@ functions:
       - 'send'
       - 'topic'
 
-  'AdminSendInboxMessageShort@chat':
-    id: 'AdminSendInboxMessageShort@chat'
+  'AdminSendInboxMessageShort@go.chat.fun':
+    id: 'AdminSendInboxMessageShort@go.chat.fun'
     name: 'AdminSendInboxMessageShort'
+    type: 'function'
     description: |-
       Send inbox message
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminSendInboxMessageParams'
         required: true
@@ -4664,13 +4852,14 @@ functions:
       - 'message'
       - 'send'
 
-  'AdminTopicChatHistoryShort@chat':
-    id: 'AdminTopicChatHistoryShort@chat'
+  'AdminTopicChatHistoryShort@go.chat.fun':
+    id: 'AdminTopicChatHistoryShort@go.chat.fun'
     name: 'AdminTopicChatHistoryShort'
+    type: 'function'
     description: |-
       Get chat history in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminTopicChatHistoryParams'
         required: true
@@ -4694,13 +4883,14 @@ functions:
       - 'history'
       - 'topic'
 
-  'AdminTopicListShort@chat':
-    id: 'AdminTopicListShort@chat'
+  'AdminTopicListShort@go.chat.fun':
+    id: 'AdminTopicListShort@go.chat.fun'
     name: 'AdminTopicListShort'
+    type: 'function'
     description: |-
       Get chat list of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminTopicListParams'
         required: true
@@ -4723,13 +4913,14 @@ functions:
       - 'list'
       - 'topic'
 
-  'AdminTopicMembersShort@chat':
-    id: 'AdminTopicMembersShort@chat'
+  'AdminTopicMembersShort@go.chat.fun':
+    id: 'AdminTopicMembersShort@go.chat.fun'
     name: 'AdminTopicMembersShort'
+    type: 'function'
     description: |-
       Get topic members.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminTopicMembersParams'
         required: true
@@ -4752,13 +4943,14 @@ functions:
       - 'members'
       - 'topic'
 
-  'AdminTopicShardsShort@chat':
-    id: 'AdminTopicShardsShort@chat'
+  'AdminTopicShardsShort@go.chat.fun':
+    id: 'AdminTopicShardsShort@go.chat.fun'
     name: 'AdminTopicShardsShort'
+    type: 'function'
     description: |-
       Get shard list from topic.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminTopicShardsParams'
         required: true
@@ -4781,13 +4973,14 @@ functions:
       - 'shards'
       - 'topic'
 
-  'AdminUnbanTopicMembersShort@chat':
-    id: 'AdminUnbanTopicMembersShort@chat'
+  'AdminUnbanTopicMembersShort@go.chat.fun':
+    id: 'AdminUnbanTopicMembersShort@go.chat.fun'
     name: 'AdminUnbanTopicMembersShort'
+    type: 'function'
     description: |-
       Unban users in some topic.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminUnbanTopicMembersParams'
         required: true
@@ -4811,13 +5004,14 @@ functions:
       - 'topic'
       - 'unban'
 
-  'AdminUnsendInboxMessageShort@chat':
-    id: 'AdminUnsendInboxMessageShort@chat'
+  'AdminUnsendInboxMessageShort@go.chat.fun':
+    id: 'AdminUnsendInboxMessageShort@go.chat.fun'
     name: 'AdminUnsendInboxMessageShort'
+    type: 'function'
     description: |-
       Unsend inbox message
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminUnsendInboxMessageParams'
         required: true
@@ -4841,13 +5035,14 @@ functions:
       - 'message'
       - 'unsend'
 
-  'AdminUpdateConfigV1Short@chat':
-    id: 'AdminUpdateConfigV1Short@chat'
+  'AdminUpdateConfigV1Short@go.chat.fun':
+    id: 'AdminUpdateConfigV1Short@go.chat.fun'
     name: 'AdminUpdateConfigV1Short'
+    type: 'function'
     description: |-
       Update chat config of a namespace.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.AdminUpdateConfigV1Params'
         required: true
@@ -4871,13 +5066,14 @@ functions:
       - 'update'
       - 'v1'
 
-  'AdminUpdateInboxCategoryShort@chat':
-    id: 'AdminUpdateInboxCategoryShort@chat'
+  'AdminUpdateInboxCategoryShort@go.chat.fun':
+    id: 'AdminUpdateInboxCategoryShort@go.chat.fun'
     name: 'AdminUpdateInboxCategoryShort'
+    type: 'function'
     description: |-
       Update inbox category
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminUpdateInboxCategoryParams'
         required: true
@@ -4901,13 +5097,14 @@ functions:
       - 'inbox'
       - 'update'
 
-  'AdminUpdateInboxMessageShort@chat':
-    id: 'AdminUpdateInboxMessageShort@chat'
+  'AdminUpdateInboxMessageShort@go.chat.fun':
+    id: 'AdminUpdateInboxMessageShort@go.chat.fun'
     name: 'AdminUpdateInboxMessageShort'
+    type: 'function'
     description: |-
       Update inbox message
     struct: 'InboxService'
-    parameters:
+    arguments:
       params:
         type: '*inbox.AdminUpdateInboxMessageParams'
         required: true
@@ -4931,13 +5128,14 @@ functions:
       - 'message'
       - 'update'
 
-  'AdminUpdateTopicShort@chat':
-    id: 'AdminUpdateTopicShort@chat'
+  'AdminUpdateTopicShort@go.chat.fun':
+    id: 'AdminUpdateTopicShort@go.chat.fun'
     name: 'AdminUpdateTopicShort'
+    type: 'function'
     description: |-
       Update group topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.AdminUpdateTopicParams'
         required: true
@@ -4960,13 +5158,14 @@ functions:
       - 'topic'
       - 'update'
 
-  'ExportConfigShort@chat':
-    id: 'ExportConfigShort@chat'
+  'ExportConfigShort@go.chat.fun':
+    id: 'ExportConfigShort@go.chat.fun'
     name: 'ExportConfigShort'
+    type: 'function'
     description: |-
       Export chat configuration to a json file. The file can then be imported from the /import endpoint.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.ExportConfigParams'
         required: true
@@ -4988,14 +5187,15 @@ functions:
       - 'config'
       - 'export'
 
-  'ImportConfigShort@chat':
-    id: 'ImportConfigShort@chat'
+  'ImportConfigShort@go.chat.fun':
+    id: 'ImportConfigShort@go.chat.fun'
     name: 'ImportConfigShort'
+    type: 'function'
     description: |-
       Import config configuration from file. The existing configuration will be replaced.
       The json file to import can be obtained from the /export endpoint.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.ImportConfigParams'
         required: true
@@ -5017,13 +5217,14 @@ functions:
       - 'config'
       - 'import'
 
-  'PublicBanTopicMembersShort@chat':
-    id: 'PublicBanTopicMembersShort@chat'
+  'PublicBanTopicMembersShort@go.chat.fun':
+    id: 'PublicBanTopicMembersShort@go.chat.fun'
     name: 'PublicBanTopicMembersShort'
+    type: 'function'
     description: |-
       Ban topic members in a group topic.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicBanTopicMembersParams'
         required: true
@@ -5047,13 +5248,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'PublicChatHistoryShort@chat':
-    id: 'PublicChatHistoryShort@chat'
+  'PublicChatHistoryShort@go.chat.fun':
+    id: 'PublicChatHistoryShort@go.chat.fun'
     name: 'PublicChatHistoryShort'
+    type: 'function'
     description: |-
       get chat history in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicChatHistoryParams'
         required: true
@@ -5077,13 +5279,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'PublicDeleteChatShort@chat':
-    id: 'PublicDeleteChatShort@chat'
+  'PublicDeleteChatShort@go.chat.fun':
+    id: 'PublicDeleteChatShort@go.chat.fun'
     name: 'PublicDeleteChatShort'
+    type: 'function'
     description: |-
       Delete chat.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicDeleteChatParams'
         required: true
@@ -5107,13 +5310,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'PublicGetChatSnapshotShort@chat':
-    id: 'PublicGetChatSnapshotShort@chat'
+  'PublicGetChatSnapshotShort@go.chat.fun':
+    id: 'PublicGetChatSnapshotShort@go.chat.fun'
     name: 'PublicGetChatSnapshotShort'
+    type: 'function'
     description: |-
       Get the chat snapshot
     struct: 'ModerationService'
-    parameters:
+    arguments:
       params:
         type: '*moderation.PublicGetChatSnapshotParams'
         required: true
@@ -5138,13 +5342,14 @@ functions:
       - 'public'
       - 'snapshot'
 
-  'PublicGetConfigV1Short@chat':
-    id: 'PublicGetConfigV1Short@chat'
+  'PublicGetConfigV1Short@go.chat.fun':
+    id: 'PublicGetConfigV1Short@go.chat.fun'
     name: 'PublicGetConfigV1Short'
+    type: 'function'
     description: |-
       Get chat config of a namespace.
     struct: 'ConfigService'
-    parameters:
+    arguments:
       params:
         type: '*config.PublicGetConfigV1Params'
         required: true
@@ -5168,13 +5373,14 @@ functions:
       - 'public'
       - 'v1'
 
-  'PublicGetMessagesShort@chat':
-    id: 'PublicGetMessagesShort@chat'
+  'PublicGetMessagesShort@go.chat.fun':
+    id: 'PublicGetMessagesShort@go.chat.fun'
     name: 'PublicGetMessagesShort'
+    type: 'function'
     description: |-
       get the list of messages.
     struct: 'EmptyService'
-    parameters:
+    arguments:
       params:
         type: '*.PublicGetMessagesParams'
         required: true
@@ -5197,13 +5403,14 @@ functions:
       - 'messages'
       - 'public'
 
-  'PublicGetMutedTopicsShort@chat':
-    id: 'PublicGetMutedTopicsShort@chat'
+  'PublicGetMutedTopicsShort@go.chat.fun':
+    id: 'PublicGetMutedTopicsShort@go.chat.fun'
     name: 'PublicGetMutedTopicsShort'
+    type: 'function'
     description: |-
       get chat muted topics in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicGetMutedTopicsParams'
         required: true
@@ -5228,13 +5435,14 @@ functions:
       - 'topic'
       - 'topics'
 
-  'PublicMuteUserShort@chat':
-    id: 'PublicMuteUserShort@chat'
+  'PublicMuteUserShort@go.chat.fun':
+    id: 'PublicMuteUserShort@go.chat.fun'
     name: 'PublicMuteUserShort'
+    type: 'function'
     description: |-
       Mute user.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicMuteUserParams'
         required: true
@@ -5258,13 +5466,14 @@ functions:
       - 'topic'
       - 'user'
 
-  'PublicTopicListShort@chat':
-    id: 'PublicTopicListShort@chat'
+  'PublicTopicListShort@go.chat.fun':
+    id: 'PublicTopicListShort@go.chat.fun'
     name: 'PublicTopicListShort'
+    type: 'function'
     description: |-
       get chat list of topic in a namespace.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicTopicListParams'
         required: true
@@ -5287,13 +5496,14 @@ functions:
       - 'public'
       - 'topic'
 
-  'PublicUnbanTopicMembersShort@chat':
-    id: 'PublicUnbanTopicMembersShort@chat'
+  'PublicUnbanTopicMembersShort@go.chat.fun':
+    id: 'PublicUnbanTopicMembersShort@go.chat.fun'
     name: 'PublicUnbanTopicMembersShort'
+    type: 'function'
     description: |-
       Unban topic members in a group topic.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicUnbanTopicMembersParams'
         required: true
@@ -5317,13 +5527,14 @@ functions:
       - 'topic'
       - 'unban'
 
-  'PublicUnmuteUserShort@chat':
-    id: 'PublicUnmuteUserShort@chat'
+  'PublicUnmuteUserShort@go.chat.fun':
+    id: 'PublicUnmuteUserShort@go.chat.fun'
     name: 'PublicUnmuteUserShort'
+    type: 'function'
     description: |-
       Unmute user.
     struct: 'TopicService'
-    parameters:
+    arguments:
       params:
         type: '*topic.PublicUnmuteUserParams'
         required: true
@@ -5346,3 +5557,5 @@ functions:
       - 'topic'
       - 'unmute'
       - 'user'
+
+  # endregion functions

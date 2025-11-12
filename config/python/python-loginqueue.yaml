@@ -1,9 +1,10 @@
-structs:
+symbols:
   # region models
 
-  'ApimodelsConfigurationRequest@loginqueue':
-    id: 'ApimodelsConfigurationRequest@loginqueue'
+  'ApimodelsConfigurationRequest@py.loginqueue.mod':
+    id: 'ApimodelsConfigurationRequest@py.loginqueue.mod'
     name: 'ApimodelsConfigurationRequest'
+    type: 'model'
     fields:
       'enabled':
         type: 'bool'
@@ -37,9 +38,10 @@ structs:
     example: |-
       apimodels_configuration_request = loginqueue_models.ApimodelsConfigurationRequest.create(...)
 
-  'ApimodelsConfigurationResponse@loginqueue':
-    id: 'ApimodelsConfigurationResponse@loginqueue'
+  'ApimodelsConfigurationResponse@py.loginqueue.mod':
+    id: 'ApimodelsConfigurationResponse@py.loginqueue.mod'
     name: 'ApimodelsConfigurationResponse'
+    type: 'model'
     fields:
       'enabled':
         type: 'bool'
@@ -76,9 +78,10 @@ structs:
     example: |-
       apimodels_configuration_response = loginqueue_models.ApimodelsConfigurationResponse.create(...)
 
-  'ApimodelsLink@loginqueue':
-    id: 'ApimodelsLink@loginqueue'
+  'ApimodelsLink@py.loginqueue.mod':
+    id: 'ApimodelsLink@py.loginqueue.mod'
     name: 'ApimodelsLink'
+    type: 'model'
     fields:
       'action':
         type: 'str'
@@ -94,9 +97,10 @@ structs:
     example: |-
       apimodels_link = loginqueue_models.ApimodelsLink.create(...)
 
-  'ApimodelsQueueStatusResponse@loginqueue':
-    id: 'ApimodelsQueueStatusResponse@loginqueue'
+  'ApimodelsQueueStatusResponse@py.loginqueue.mod':
+    id: 'ApimodelsQueueStatusResponse@py.loginqueue.mod'
     name: 'ApimodelsQueueStatusResponse'
+    type: 'model'
     fields:
       'is_active':
         type: 'bool'
@@ -121,9 +125,10 @@ structs:
     example: |-
       apimodels_queue_status_response = loginqueue_models.ApimodelsQueueStatusResponse.create(...)
 
-  'ApimodelsRefreshTicketResponse@loginqueue':
-    id: 'ApimodelsRefreshTicketResponse@loginqueue'
+  'ApimodelsRefreshTicketResponse@py.loginqueue.mod':
+    id: 'ApimodelsRefreshTicketResponse@py.loginqueue.mod'
     name: 'ApimodelsRefreshTicketResponse'
+    type: 'model'
     fields:
       'cancel':
         type: 'ApimodelsLink'
@@ -151,9 +156,10 @@ structs:
     example: |-
       apimodels_refresh_ticket_response = loginqueue_models.ApimodelsRefreshTicketResponse.create(...)
 
-  'ResponseError@loginqueue':
-    id: 'ResponseError@loginqueue'
+  'ResponseError@py.loginqueue.mod':
+    id: 'ResponseError@py.loginqueue.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'error_code':
         type: 'int'
@@ -180,15 +186,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'admin_get_configuration@loginqueue':
-    id: 'admin_get_configuration@loginqueue'
+  'admin_get_configuration@py.loginqueue.fun':
+    id: 'admin_get_configuration@py.loginqueue.fun'
     name: 'admin_get_configuration'
+    type: 'function'
     description: |-
       This API is used to get log queue configuration of a namespace.
       Calling this endpoint with namespace which has not set up configuration will return a valid configuration with default value
-    parameters:
+    arguments:
       'namespace':
         type: 'str'
         required: true
@@ -212,12 +219,13 @@ functions:
       - 'get'
       - 'v1'
 
-  'admin_get_status@loginqueue':
-    id: 'admin_get_status@loginqueue'
+  'admin_get_status@py.loginqueue.fun':
+    id: 'admin_get_status@py.loginqueue.fun'
     name: 'admin_get_status'
+    type: 'function'
     description: |-
       Get login queue status
-    parameters:
+    arguments:
       'namespace':
         type: 'str'
         required: true
@@ -241,9 +249,10 @@ functions:
       - 'status'
       - 'v1'
 
-  'admin_update_configuration@loginqueue':
-    id: 'admin_update_configuration@loginqueue'
+  'admin_update_configuration@py.loginqueue.fun':
+    id: 'admin_update_configuration@py.loginqueue.fun'
     name: 'admin_update_configuration'
+    type: 'function'
     description: |-
       This API is used to set/update log queue configuration of a namespace.
       This endpoint has upsert behavior. Calling the endpoint to a namespace with no configuration will make the service to create a new configuration.
@@ -265,7 +274,7 @@ functions:
       * minActivationPeriodInSecond, playerReconnectGracePeriodInSecond, playerPollingTimeInSecond and queueReconnectGracePeriodInSecond must be > 0 and <= 21600 (0 < x <= 21600)
       * playerPollingTimeInSecond must be smaller than queueReconnectGracePeriodInSecond
       * safetyMarginPercentage must be >= 0 and < 100 (0 <= x < 100)
-    parameters:
+    arguments:
       'body':
         type: 'ApimodelsConfigurationRequest'
         required: true
@@ -292,12 +301,13 @@ functions:
       - 'update'
       - 'v1'
 
-  'cancel_ticket@loginqueue':
-    id: 'cancel_ticket@loginqueue'
+  'cancel_ticket@py.loginqueue.fun':
+    id: 'cancel_ticket@py.loginqueue.fun'
     name: 'cancel_ticket'
+    type: 'function'
     description: |-
       Cancel ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID"
-    parameters:
+    arguments:
       'namespace':
         type: 'str'
         required: true
@@ -320,12 +330,13 @@ functions:
       - 'ticket'
       - 'v1'
 
-  'refresh_ticket@loginqueue':
-    id: 'refresh_ticket@loginqueue'
+  'refresh_ticket@py.loginqueue.fun':
+    id: 'refresh_ticket@py.loginqueue.fun'
     name: 'refresh_ticket'
+    type: 'function'
     description: |-
       Refresh ticket. This endpoint requires ticket to be placed in the authorization header with this format: "Bearer ticketID". When the ticketID is empty or not found the response status will be 401
-    parameters:
+    arguments:
       'namespace':
         type: 'str'
         required: true
@@ -347,3 +358,4 @@ functions:
       - 'refresh'
       - 'ticket'
       - 'v1'
+  # endregion functions

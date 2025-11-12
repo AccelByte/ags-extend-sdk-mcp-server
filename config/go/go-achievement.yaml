@@ -1,10 +1,16 @@
-structs:
-  'JusticeAchievementService@achievement':
-    id: 'JusticeAchievementService@achievement'
-    name: 'JusticeAchievementService'
+symbols:
+  'NewAchievementClient@go.achievement.fun':
+    id: 'NewAchievementClient@go.achievement.fun'
+    name: 'NewAchievementClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*achievementclient.JusticeAchievementService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/achievement-sdk/pkg/achievementclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/justice_achievement_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/achievementclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AchievementsService@achievement':
-    id: 'AchievementsService@achievement'
+  'AchievementsService@go.achievement.mod':
+    id: 'AchievementsService@go.achievement.mod'
     name: 'AchievementsService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'AnonymizationService@achievement':
-    id: 'AnonymizationService@achievement'
+  'AnonymizationService@go.achievement.mod':
+    id: 'AnonymizationService@go.achievement.mod'
     name: 'AnonymizationService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GlobalAchievementsService@achievement':
-    id: 'GlobalAchievementsService@achievement'
+  'GlobalAchievementsService@go.achievement.mod':
+    id: 'GlobalAchievementsService@go.achievement.mod'
     name: 'GlobalAchievementsService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PlatformAchievementService@achievement':
-    id: 'PlatformAchievementService@achievement'
+  'PlatformAchievementService@go.achievement.mod':
+    id: 'PlatformAchievementService@go.achievement.mod'
     name: 'PlatformAchievementService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'TagsService@achievement':
-    id: 'TagsService@achievement'
+  'TagsService@go.achievement.mod':
+    id: 'TagsService@go.achievement.mod'
     name: 'TagsService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserAchievementsService@achievement':
-    id: 'UserAchievementsService@achievement'
+  'UserAchievementsService@go.achievement.mod':
+    id: 'UserAchievementsService@go.achievement.mod'
     name: 'UserAchievementsService'
+    type: 'model'
     fields:
       Client:
         type: '*achievementclient.JusticeAchievementService'
@@ -161,9 +173,10 @@ structs:
 
   # region params
 
-  'AdminAnonymizeUserAchievementParams@achievement':
-    id: 'AdminAnonymizeUserAchievementParams@achievement'
+  'AdminAnonymizeUserAchievementParams@go.achievement.mod':
+    id: 'AdminAnonymizeUserAchievementParams@go.achievement.mod'
     name: 'AdminAnonymizeUserAchievementParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -180,9 +193,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/anonymization/admin_anonymize_user_achievement_parameters.go'
 
-  'AdminBulkUnlockAchievementParams@achievement':
-    id: 'AdminBulkUnlockAchievementParams@achievement'
+  'AdminBulkUnlockAchievementParams@go.achievement.mod':
+    id: 'AdminBulkUnlockAchievementParams@go.achievement.mod'
     name: 'AdminBulkUnlockAchievementParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBulkUnlockAchievementRequest'
@@ -202,9 +216,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_bulk_unlock_achievement_parameters.go'
 
-  'AdminCreateNewAchievementParams@achievement':
-    id: 'AdminCreateNewAchievementParams@achievement'
+  'AdminCreateNewAchievementParams@go.achievement.mod':
+    id: 'AdminCreateNewAchievementParams@go.achievement.mod'
     name: 'AdminCreateNewAchievementParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsAchievementRequest'
@@ -219,9 +234,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_create_new_achievement_parameters.go'
 
-  'AdminDeleteAchievementParams@achievement':
-    id: 'AdminDeleteAchievementParams@achievement'
+  'AdminDeleteAchievementParams@go.achievement.mod':
+    id: 'AdminDeleteAchievementParams@go.achievement.mod'
     name: 'AdminDeleteAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -238,9 +254,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_delete_achievement_parameters.go'
 
-  'AdminGetAchievementParams@achievement':
-    id: 'AdminGetAchievementParams@achievement'
+  'AdminGetAchievementParams@go.achievement.mod':
+    id: 'AdminGetAchievementParams@go.achievement.mod'
     name: 'AdminGetAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -257,9 +274,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_get_achievement_parameters.go'
 
-  'AdminListAchievementsParams@achievement':
-    id: 'AdminListAchievementsParams@achievement'
+  'AdminListAchievementsParams@go.achievement.mod':
+    id: 'AdminListAchievementsParams@go.achievement.mod'
     name: 'AdminListAchievementsParams'
+    type: 'model'
     fields:
       'Global':
         type: 'bool'
@@ -296,9 +314,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_list_achievements_parameters.go'
 
-  'AdminListGlobalAchievementContributorsParams@achievement':
-    id: 'AdminListGlobalAchievementContributorsParams@achievement'
+  'AdminListGlobalAchievementContributorsParams@go.achievement.mod':
+    id: 'AdminListGlobalAchievementContributorsParams@go.achievement.mod'
     name: 'AdminListGlobalAchievementContributorsParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -330,9 +349,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_global_achievement_contributors_parameters.go'
 
-  'AdminListGlobalAchievementsParams@achievement':
-    id: 'AdminListGlobalAchievementsParams@achievement'
+  'AdminListGlobalAchievementsParams@go.achievement.mod':
+    id: 'AdminListGlobalAchievementsParams@go.achievement.mod'
     name: 'AdminListGlobalAchievementsParams'
+    type: 'model'
     fields:
       'AchievementCodes':
         type: 'string'
@@ -374,9 +394,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_global_achievements_parameters.go'
 
-  'AdminListTagsParams@achievement':
-    id: 'AdminListTagsParams@achievement'
+  'AdminListTagsParams@go.achievement.mod':
+    id: 'AdminListTagsParams@go.achievement.mod'
     name: 'AdminListTagsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -408,9 +429,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/tags/admin_list_tags_parameters.go'
 
-  'AdminListUserAchievementsParams@achievement':
-    id: 'AdminListUserAchievementsParams@achievement'
+  'AdminListUserAchievementsParams@go.achievement.mod':
+    id: 'AdminListUserAchievementsParams@go.achievement.mod'
     name: 'AdminListUserAchievementsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -452,9 +474,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_list_user_achievements_parameters.go'
 
-  'AdminListUserContributionsParams@achievement':
-    id: 'AdminListUserContributionsParams@achievement'
+  'AdminListUserContributionsParams@go.achievement.mod':
+    id: 'AdminListUserContributionsParams@go.achievement.mod'
     name: 'AdminListUserContributionsParams'
+    type: 'model'
     fields:
       'AchievementCodes':
         type: 'string'
@@ -496,9 +519,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/admin_list_user_contributions_parameters.go'
 
-  'AdminResetAchievementParams@achievement':
-    id: 'AdminResetAchievementParams@achievement'
+  'AdminResetAchievementParams@go.achievement.mod':
+    id: 'AdminResetAchievementParams@go.achievement.mod'
     name: 'AdminResetAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -520,9 +544,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_reset_achievement_parameters.go'
 
-  'AdminUnlockAchievementParams@achievement':
-    id: 'AdminUnlockAchievementParams@achievement'
+  'AdminUnlockAchievementParams@go.achievement.mod':
+    id: 'AdminUnlockAchievementParams@go.achievement.mod'
     name: 'AdminUnlockAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -544,9 +569,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_unlock_achievement_parameters.go'
 
-  'AdminUpdateAchievementParams@achievement':
-    id: 'AdminUpdateAchievementParams@achievement'
+  'AdminUpdateAchievementParams@go.achievement.mod':
+    id: 'AdminUpdateAchievementParams@go.achievement.mod'
     name: 'AdminUpdateAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -566,9 +592,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_update_achievement_parameters.go'
 
-  'AdminUpdateAchievementListOrderParams@achievement':
-    id: 'AdminUpdateAchievementListOrderParams@achievement'
+  'AdminUpdateAchievementListOrderParams@go.achievement.mod':
+    id: 'AdminUpdateAchievementListOrderParams@go.achievement.mod'
     name: 'AdminUpdateAchievementListOrderParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -588,9 +615,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/admin_update_achievement_list_order_parameters.go'
 
-  'BulkCreatePSNEventParams@achievement':
-    id: 'BulkCreatePSNEventParams@achievement'
+  'BulkCreatePSNEventParams@go.achievement.mod':
+    id: 'BulkCreatePSNEventParams@go.achievement.mod'
     name: 'BulkCreatePSNEventParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBulkCreatePSNEvents'
@@ -605,9 +633,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/platform_achievement/bulk_create_p_s_n_event_parameters.go'
 
-  'ClaimGlobalAchievementRewardParams@achievement':
-    id: 'ClaimGlobalAchievementRewardParams@achievement'
+  'ClaimGlobalAchievementRewardParams@go.achievement.mod':
+    id: 'ClaimGlobalAchievementRewardParams@go.achievement.mod'
     name: 'ClaimGlobalAchievementRewardParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -629,9 +658,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/claim_global_achievement_reward_parameters.go'
 
-  'ExportAchievementsParams@achievement':
-    id: 'ExportAchievementsParams@achievement'
+  'ExportAchievementsParams@go.achievement.mod':
+    id: 'ExportAchievementsParams@go.achievement.mod'
     name: 'ExportAchievementsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -648,9 +678,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/export_achievements_parameters.go'
 
-  'ImportAchievementsParams@achievement':
-    id: 'ImportAchievementsParams@achievement'
+  'ImportAchievementsParams@go.achievement.mod':
+    id: 'ImportAchievementsParams@go.achievement.mod'
     name: 'ImportAchievementsParams'
+    type: 'model'
     fields:
       'File':
         type: '[]byte'
@@ -672,9 +703,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/import_achievements_parameters.go'
 
-  'ListGlobalAchievementContributorsParams@achievement':
-    id: 'ListGlobalAchievementContributorsParams@achievement'
+  'ListGlobalAchievementContributorsParams@go.achievement.mod':
+    id: 'ListGlobalAchievementContributorsParams@go.achievement.mod'
     name: 'ListGlobalAchievementContributorsParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -706,9 +738,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/list_global_achievement_contributors_parameters.go'
 
-  'ListUserContributionsParams@achievement':
-    id: 'ListUserContributionsParams@achievement'
+  'ListUserContributionsParams@go.achievement.mod':
+    id: 'ListUserContributionsParams@go.achievement.mod'
     name: 'ListUserContributionsParams'
+    type: 'model'
     fields:
       'AchievementCodes':
         type: 'string'
@@ -750,9 +783,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/list_user_contributions_parameters.go'
 
-  'PublicBulkUnlockAchievementParams@achievement':
-    id: 'PublicBulkUnlockAchievementParams@achievement'
+  'PublicBulkUnlockAchievementParams@go.achievement.mod':
+    id: 'PublicBulkUnlockAchievementParams@go.achievement.mod'
     name: 'PublicBulkUnlockAchievementParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBulkUnlockAchievementRequest'
@@ -772,9 +806,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_bulk_unlock_achievement_parameters.go'
 
-  'PublicGetAchievementParams@achievement':
-    id: 'PublicGetAchievementParams@achievement'
+  'PublicGetAchievementParams@go.achievement.mod':
+    id: 'PublicGetAchievementParams@go.achievement.mod'
     name: 'PublicGetAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -796,9 +831,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/public_get_achievement_parameters.go'
 
-  'PublicListAchievementsParams@achievement':
-    id: 'PublicListAchievementsParams@achievement'
+  'PublicListAchievementsParams@go.achievement.mod':
+    id: 'PublicListAchievementsParams@go.achievement.mod'
     name: 'PublicListAchievementsParams'
+    type: 'model'
     fields:
       'Global':
         type: 'bool'
@@ -840,9 +876,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/achievements/public_list_achievements_parameters.go'
 
-  'PublicListGlobalAchievementsParams@achievement':
-    id: 'PublicListGlobalAchievementsParams@achievement'
+  'PublicListGlobalAchievementsParams@go.achievement.mod':
+    id: 'PublicListGlobalAchievementsParams@go.achievement.mod'
     name: 'PublicListGlobalAchievementsParams'
+    type: 'model'
     fields:
       'AchievementCodes':
         type: 'string'
@@ -884,9 +921,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/global_achievements/public_list_global_achievements_parameters.go'
 
-  'PublicListTagsParams@achievement':
-    id: 'PublicListTagsParams@achievement'
+  'PublicListTagsParams@go.achievement.mod':
+    id: 'PublicListTagsParams@go.achievement.mod'
     name: 'PublicListTagsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -918,9 +956,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/tags/public_list_tags_parameters.go'
 
-  'PublicListUserAchievementsParams@achievement':
-    id: 'PublicListUserAchievementsParams@achievement'
+  'PublicListUserAchievementsParams@go.achievement.mod':
+    id: 'PublicListUserAchievementsParams@go.achievement.mod'
     name: 'PublicListUserAchievementsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -962,9 +1001,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_list_user_achievements_parameters.go'
 
-  'PublicUnlockAchievementParams@achievement':
-    id: 'PublicUnlockAchievementParams@achievement'
+  'PublicUnlockAchievementParams@go.achievement.mod':
+    id: 'PublicUnlockAchievementParams@go.achievement.mod'
     name: 'PublicUnlockAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -986,9 +1026,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/public_unlock_achievement_parameters.go'
 
-  'ResetGlobalAchievementParams@achievement':
-    id: 'ResetGlobalAchievementParams@achievement'
+  'ResetGlobalAchievementParams@go.achievement.mod':
+    id: 'ResetGlobalAchievementParams@go.achievement.mod'
     name: 'ResetGlobalAchievementParams'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1009,9 +1050,10 @@ structs:
 
   # region models
 
-  'ModelsAchievementOrderUpdateRequest@achievement':
-    id: 'ModelsAchievementOrderUpdateRequest@achievement'
+  'ModelsAchievementOrderUpdateRequest@go.achievement.mod':
+    id: 'ModelsAchievementOrderUpdateRequest@go.achievement.mod'
     name: 'ModelsAchievementOrderUpdateRequest'
+    type: 'model'
     fields:
       'TargetOrder':
         type: 'int32'
@@ -1021,9 +1063,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_order_update_request.go'
 
-  'ModelsAchievementRequest@achievement':
-    id: 'ModelsAchievementRequest@achievement'
+  'ModelsAchievementRequest@go.achievement.mod':
+    id: 'ModelsAchievementRequest@go.achievement.mod'
     name: 'ModelsAchievementRequest'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1069,9 +1112,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_request.go'
 
-  'ModelsAchievementResponse@achievement':
-    id: 'ModelsAchievementResponse@achievement'
+  'ModelsAchievementResponse@go.achievement.mod':
+    id: 'ModelsAchievementResponse@go.achievement.mod'
     name: 'ModelsAchievementResponse'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1134,9 +1178,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_response.go'
 
-  'ModelsAchievementUpdateRequest@achievement':
-    id: 'ModelsAchievementUpdateRequest@achievement'
+  'ModelsAchievementUpdateRequest@go.achievement.mod':
+    id: 'ModelsAchievementUpdateRequest@go.achievement.mod'
     name: 'ModelsAchievementUpdateRequest'
+    type: 'model'
     fields:
       'CustomAttributes':
         type: 'interface{}'
@@ -1179,9 +1224,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_achievement_update_request.go'
 
-  'ModelsAdditionalInfo@achievement':
-    id: 'ModelsAdditionalInfo@achievement'
+  'ModelsAdditionalInfo@go.achievement.mod':
+    id: 'ModelsAdditionalInfo@go.achievement.mod'
     name: 'ModelsAdditionalInfo'
+    type: 'model'
     fields:
       'NumberOfAchievements':
         type: 'int64'
@@ -1197,9 +1243,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_additional_info.go'
 
-  'ModelsBulkCreatePSNEventResponse@achievement':
-    id: 'ModelsBulkCreatePSNEventResponse@achievement'
+  'ModelsBulkCreatePSNEventResponse@go.achievement.mod':
+    id: 'ModelsBulkCreatePSNEventResponse@go.achievement.mod'
     name: 'ModelsBulkCreatePSNEventResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsPSNEventResult'
@@ -1209,9 +1256,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_create_p_s_n_event_response.go'
 
-  'ModelsBulkCreatePSNEvents@achievement':
-    id: 'ModelsBulkCreatePSNEvents@achievement'
+  'ModelsBulkCreatePSNEvents@go.achievement.mod':
+    id: 'ModelsBulkCreatePSNEvents@go.achievement.mod'
     name: 'ModelsBulkCreatePSNEvents'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsCreatePSNEvent'
@@ -1221,9 +1269,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_create_p_s_n_events.go'
 
-  'ModelsBulkUnlockAchievementRequest@achievement':
-    id: 'ModelsBulkUnlockAchievementRequest@achievement'
+  'ModelsBulkUnlockAchievementRequest@go.achievement.mod':
+    id: 'ModelsBulkUnlockAchievementRequest@go.achievement.mod'
     name: 'ModelsBulkUnlockAchievementRequest'
+    type: 'model'
     fields:
       'AchievementCodes':
         type: '[]string'
@@ -1233,9 +1282,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_unlock_achievement_request.go'
 
-  'ModelsBulkUnlockAchievementResponse@achievement':
-    id: 'ModelsBulkUnlockAchievementResponse@achievement'
+  'ModelsBulkUnlockAchievementResponse@go.achievement.mod':
+    id: 'ModelsBulkUnlockAchievementResponse@go.achievement.mod'
     name: 'ModelsBulkUnlockAchievementResponse'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1251,9 +1301,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_bulk_unlock_achievement_response.go'
 
-  'ModelsContributorResponse@achievement':
-    id: 'ModelsContributorResponse@achievement'
+  'ModelsContributorResponse@go.achievement.mod':
+    id: 'ModelsContributorResponse@go.achievement.mod'
     name: 'ModelsContributorResponse'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1281,9 +1332,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_contributor_response.go'
 
-  'ModelsCreatePSNEvent@achievement':
-    id: 'ModelsCreatePSNEvent@achievement'
+  'ModelsCreatePSNEvent@go.achievement.mod':
+    id: 'ModelsCreatePSNEvent@go.achievement.mod'
     name: 'ModelsCreatePSNEvent'
+    type: 'model'
     fields:
       'Events':
         type: '[]*ModelsPSNEvent'
@@ -1299,9 +1351,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_create_p_s_n_event.go'
 
-  'ModelsErrorDetails@achievement':
-    id: 'ModelsErrorDetails@achievement'
+  'ModelsErrorDetails@go.achievement.mod':
+    id: 'ModelsErrorDetails@go.achievement.mod'
     name: 'ModelsErrorDetails'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -1317,9 +1370,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_error_details.go'
 
-  'ModelsGlobalAchievementResponse@achievement':
-    id: 'ModelsGlobalAchievementResponse@achievement'
+  'ModelsGlobalAchievementResponse@go.achievement.mod':
+    id: 'ModelsGlobalAchievementResponse@go.achievement.mod'
     name: 'ModelsGlobalAchievementResponse'
+    type: 'model'
     fields:
       'AchievedAt':
         type: '*strfmt.DateTime'
@@ -1353,9 +1407,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_global_achievement_response.go'
 
-  'ModelsIcon@achievement':
-    id: 'ModelsIcon@achievement'
+  'ModelsIcon@go.achievement.mod':
+    id: 'ModelsIcon@go.achievement.mod'
     name: 'ModelsIcon'
+    type: 'model'
     fields:
       'Slug':
         type: 'string'
@@ -1368,9 +1423,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_icon.go'
 
-  'ModelsPaginatedAchievementResponse@achievement':
-    id: 'ModelsPaginatedAchievementResponse@achievement'
+  'ModelsPaginatedAchievementResponse@go.achievement.mod':
+    id: 'ModelsPaginatedAchievementResponse@go.achievement.mod'
     name: 'ModelsPaginatedAchievementResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsAchievementResponse'
@@ -1383,9 +1439,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_achievement_response.go'
 
-  'ModelsPaginatedContributorResponse@achievement':
-    id: 'ModelsPaginatedContributorResponse@achievement'
+  'ModelsPaginatedContributorResponse@go.achievement.mod':
+    id: 'ModelsPaginatedContributorResponse@go.achievement.mod'
     name: 'ModelsPaginatedContributorResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsContributorResponse'
@@ -1398,9 +1455,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_contributor_response.go'
 
-  'ModelsPaginatedGlobalAchievementResponse@achievement':
-    id: 'ModelsPaginatedGlobalAchievementResponse@achievement'
+  'ModelsPaginatedGlobalAchievementResponse@go.achievement.mod':
+    id: 'ModelsPaginatedGlobalAchievementResponse@go.achievement.mod'
     name: 'ModelsPaginatedGlobalAchievementResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGlobalAchievementResponse'
@@ -1413,9 +1471,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_global_achievement_response.go'
 
-  'ModelsPaginatedTagResponse@achievement':
-    id: 'ModelsPaginatedTagResponse@achievement'
+  'ModelsPaginatedTagResponse@go.achievement.mod':
+    id: 'ModelsPaginatedTagResponse@go.achievement.mod'
     name: 'ModelsPaginatedTagResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsTagResponse'
@@ -1428,9 +1487,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_tag_response.go'
 
-  'ModelsPaginatedUserAchievementResponse@achievement':
-    id: 'ModelsPaginatedUserAchievementResponse@achievement'
+  'ModelsPaginatedUserAchievementResponse@go.achievement.mod':
+    id: 'ModelsPaginatedUserAchievementResponse@go.achievement.mod'
     name: 'ModelsPaginatedUserAchievementResponse'
+    type: 'model'
     fields:
       'CountInfo':
         type: '*ModelsAdditionalInfo'
@@ -1446,9 +1506,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_user_achievement_response.go'
 
-  'ModelsPaginatedUserContributionResponse@achievement':
-    id: 'ModelsPaginatedUserContributionResponse@achievement'
+  'ModelsPaginatedUserContributionResponse@go.achievement.mod':
+    id: 'ModelsPaginatedUserContributionResponse@go.achievement.mod'
     name: 'ModelsPaginatedUserContributionResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserContributionResponse'
@@ -1461,9 +1522,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_paginated_user_contribution_response.go'
 
-  'ModelsPagination@achievement':
-    id: 'ModelsPagination@achievement'
+  'ModelsPagination@go.achievement.mod':
+    id: 'ModelsPagination@go.achievement.mod'
     name: 'ModelsPagination'
+    type: 'model'
     fields:
       'Next':
         type: 'string'
@@ -1476,9 +1538,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_pagination.go'
 
-  'ModelsPSNEvent@achievement':
-    id: 'ModelsPSNEvent@achievement'
+  'ModelsPSNEvent@go.achievement.mod':
+    id: 'ModelsPSNEvent@go.achievement.mod'
     name: 'ModelsPSNEvent'
+    type: 'model'
     fields:
       'DateTime':
         type: 'string'
@@ -1497,9 +1560,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event.go'
 
-  'ModelsPSNEventData@achievement':
-    id: 'ModelsPSNEventData@achievement'
+  'ModelsPSNEventData@go.achievement.mod':
+    id: 'ModelsPSNEventData@go.achievement.mod'
     name: 'ModelsPSNEventData'
+    type: 'model'
     fields:
       'EventName':
         type: 'string'
@@ -1512,9 +1576,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event_data.go'
 
-  'ModelsPSNEventResult@achievement':
-    id: 'ModelsPSNEventResult@achievement'
+  'ModelsPSNEventResult@go.achievement.mod':
+    id: 'ModelsPSNEventResult@go.achievement.mod'
     name: 'ModelsPSNEventResult'
+    type: 'model'
     fields:
       'ErrorDetail':
         type: '*ModelsErrorDetails'
@@ -1530,9 +1595,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_p_s_n_event_result.go'
 
-  'ModelsPublicAchievementResponse@achievement':
-    id: 'ModelsPublicAchievementResponse@achievement'
+  'ModelsPublicAchievementResponse@go.achievement.mod':
+    id: 'ModelsPublicAchievementResponse@go.achievement.mod'
     name: 'ModelsPublicAchievementResponse'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1592,9 +1658,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_public_achievement_response.go'
 
-  'ModelsPublicAchievementsResponse@achievement':
-    id: 'ModelsPublicAchievementsResponse@achievement'
+  'ModelsPublicAchievementsResponse@go.achievement.mod':
+    id: 'ModelsPublicAchievementsResponse@go.achievement.mod'
     name: 'ModelsPublicAchievementsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsPublicAchievementResponse'
@@ -1607,9 +1674,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_public_achievements_response.go'
 
-  'ModelsTagResponse@achievement':
-    id: 'ModelsTagResponse@achievement'
+  'ModelsTagResponse@go.achievement.mod':
+    id: 'ModelsTagResponse@go.achievement.mod'
     name: 'ModelsTagResponse'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'strfmt.DateTime'
@@ -1625,9 +1693,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_tag_response.go'
 
-  'ModelsUserAchievementResponse@achievement':
-    id: 'ModelsUserAchievementResponse@achievement'
+  'ModelsUserAchievementResponse@go.achievement.mod':
+    id: 'ModelsUserAchievementResponse@go.achievement.mod'
     name: 'ModelsUserAchievementResponse'
+    type: 'model'
     fields:
       'AchievedAt':
         type: 'strfmt.DateTime'
@@ -1652,9 +1721,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_user_achievement_response.go'
 
-  'ModelsUserContributionResponse@achievement':
-    id: 'ModelsUserContributionResponse@achievement'
+  'ModelsUserContributionResponse@go.achievement.mod':
+    id: 'ModelsUserContributionResponse@go.achievement.mod'
     name: 'ModelsUserContributionResponse'
+    type: 'model'
     fields:
       'AchievementCode':
         type: 'string'
@@ -1686,9 +1756,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_user_contribution_response.go'
 
-  'ResponseError@achievement':
-    id: 'ResponseError@achievement'
+  'ResponseError@go.achievement.mod':
+    id: 'ResponseError@go.achievement.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -1701,9 +1772,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/response_error.go'
 
-  'ServiceImportConfigResponse@achievement':
-    id: 'ServiceImportConfigResponse@achievement'
+  'ServiceImportConfigResponse@go.achievement.mod':
+    id: 'ServiceImportConfigResponse@go.achievement.mod'
     name: 'ServiceImportConfigResponse'
+    type: 'model'
     fields:
       'FailedConfigs':
         type: '[]string'
@@ -1724,11 +1796,12 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminAnonymizeUserAchievementShort@achievement':
-    id: 'AdminAnonymizeUserAchievementShort@achievement'
+  'AdminAnonymizeUserAchievementShort@go.achievement.fun':
+    id: 'AdminAnonymizeUserAchievementShort@go.achievement.fun'
     name: 'AdminAnonymizeUserAchievementShort'
+    type: 'function'
     description: |-
       This API will delete specified user achievement
 
@@ -1738,7 +1811,7 @@ functions:
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
     struct: 'AnonymizationService'
-    parameters:
+    arguments:
       params:
         type: '*anonymization.AdminAnonymizeUserAchievementParams'
         required: true
@@ -1763,14 +1836,15 @@ functions:
       - 'anonymize'
       - 'user'
 
-  'AdminBulkUnlockAchievementShort@achievement':
-    id: 'AdminBulkUnlockAchievementShort@achievement'
+  'AdminBulkUnlockAchievementShort@go.achievement.fun':
+    id: 'AdminBulkUnlockAchievementShort@go.achievement.fun'
     name: 'AdminBulkUnlockAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.AdminBulkUnlockAchievementParams'
         required: true
@@ -1796,9 +1870,10 @@ functions:
       - 'unlock'
       - 'user'
 
-  'AdminCreateNewAchievementShort@achievement':
-    id: 'AdminCreateNewAchievementShort@achievement'
+  'AdminCreateNewAchievementShort@go.achievement.fun':
+    id: 'AdminCreateNewAchievementShort@go.achievement.fun'
     name: 'AdminCreateNewAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]` and scope `social`
@@ -1817,7 +1892,7 @@ functions:
       - slug: specify the image they want to use, it can be file image name or something
       to define the achievement icon.
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminCreateNewAchievementParams'
         required: true
@@ -1842,14 +1917,15 @@ functions:
       - 'create'
       - 'new'
 
-  'AdminDeleteAchievementShort@achievement':
-    id: 'AdminDeleteAchievementShort@achievement'
+  'AdminDeleteAchievementShort@go.achievement.fun':
+    id: 'AdminDeleteAchievementShort@go.achievement.fun'
     name: 'AdminDeleteAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminDeleteAchievementParams'
         required: true
@@ -1873,14 +1949,15 @@ functions:
       - 'admin'
       - 'delete'
 
-  'AdminGetAchievementShort@achievement':
-    id: 'AdminGetAchievementShort@achievement'
+  'AdminGetAchievementShort@go.achievement.fun':
+    id: 'AdminGetAchievementShort@go.achievement.fun'
     name: 'AdminGetAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminGetAchievementParams'
         required: true
@@ -1904,14 +1981,15 @@ functions:
       - 'admin'
       - 'get'
 
-  'AdminListAchievementsShort@achievement':
-    id: 'AdminListAchievementsShort@achievement'
+  'AdminListAchievementsShort@go.achievement.fun':
+    id: 'AdminListAchievementsShort@go.achievement.fun'
     name: 'AdminListAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminListAchievementsParams'
         required: true
@@ -1934,14 +2012,15 @@ functions:
       - 'admin'
       - 'list'
 
-  'AdminListGlobalAchievementContributorsShort@achievement':
-    id: 'AdminListGlobalAchievementContributorsShort@achievement'
+  'AdminListGlobalAchievementContributorsShort@go.achievement.fun':
+    id: 'AdminListGlobalAchievementContributorsShort@go.achievement.fun'
     name: 'AdminListGlobalAchievementContributorsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.AdminListGlobalAchievementContributorsParams'
         required: true
@@ -1967,9 +2046,10 @@ functions:
       - 'global'
       - 'list'
 
-  'AdminListGlobalAchievementsShort@achievement':
-    id: 'AdminListGlobalAchievementsShort@achievement'
+  'AdminListGlobalAchievementsShort@go.achievement.fun':
+    id: 'AdminListGlobalAchievementsShort@go.achievement.fun'
     name: 'AdminListGlobalAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
@@ -1984,7 +2064,7 @@ functions:
 
       Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.AdminListGlobalAchievementsParams'
         required: true
@@ -2008,14 +2088,15 @@ functions:
       - 'global'
       - 'list'
 
-  'AdminListTagsShort@achievement':
-    id: 'AdminListTagsShort@achievement'
+  'AdminListTagsShort@go.achievement.fun':
+    id: 'AdminListTagsShort@go.achievement.fun'
     name: 'AdminListTagsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'TagsService'
-    parameters:
+    arguments:
       params:
         type: '*tags.AdminListTagsParams'
         required: true
@@ -2038,9 +2119,10 @@ functions:
       - 'list'
       - 'tags'
 
-  'AdminListUserAchievementsShort@achievement':
-    id: 'AdminListUserAchievementsShort@achievement'
+  'AdminListUserAchievementsShort@go.achievement.fun':
+    id: 'AdminListUserAchievementsShort@go.achievement.fun'
     name: 'AdminListUserAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
@@ -2060,7 +2142,7 @@ functions:
 
       `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.AdminListUserAchievementsParams'
         required: true
@@ -2084,14 +2166,15 @@ functions:
       - 'list'
       - 'user'
 
-  'AdminListUserContributionsShort@achievement':
-    id: 'AdminListUserContributionsShort@achievement'
+  'AdminListUserContributionsShort@go.achievement.fun':
+    id: 'AdminListUserContributionsShort@go.achievement.fun'
     name: 'AdminListUserContributionsShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.AdminListUserContributionsParams'
         required: true
@@ -2117,9 +2200,10 @@ functions:
       - 'list'
       - 'user'
 
-  'AdminResetAchievementShort@achievement':
-    id: 'AdminResetAchievementShort@achievement'
+  'AdminResetAchievementShort@go.achievement.fun':
+    id: 'AdminResetAchievementShort@go.achievement.fun'
     name: 'AdminResetAchievementShort'
+    type: 'function'
     description: |-
       [TEST FACILITY ONLY]
 
@@ -2129,7 +2213,7 @@ functions:
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.AdminResetAchievementParams'
         required: true
@@ -2154,14 +2238,15 @@ functions:
       - 'reset'
       - 'user'
 
-  'AdminUnlockAchievementShort@achievement':
-    id: 'AdminUnlockAchievementShort@achievement'
+  'AdminUnlockAchievementShort@go.achievement.fun':
+    id: 'AdminUnlockAchievementShort@go.achievement.fun'
     name: 'AdminUnlockAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.AdminUnlockAchievementParams'
         required: true
@@ -2186,14 +2271,15 @@ functions:
       - 'unlock'
       - 'user'
 
-  'AdminUpdateAchievementShort@achievement':
-    id: 'AdminUpdateAchievementShort@achievement'
+  'AdminUpdateAchievementShort@go.achievement.fun':
+    id: 'AdminUpdateAchievementShort@go.achievement.fun'
     name: 'AdminUpdateAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminUpdateAchievementParams'
         required: true
@@ -2217,14 +2303,15 @@ functions:
       - 'admin'
       - 'update'
 
-  'AdminUpdateAchievementListOrderShort@achievement':
-    id: 'AdminUpdateAchievementListOrderShort@achievement'
+  'AdminUpdateAchievementListOrderShort@go.achievement.fun':
+    id: 'AdminUpdateAchievementListOrderShort@go.achievement.fun'
     name: 'AdminUpdateAchievementListOrderShort'
+    type: 'function'
     description: |-
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.AdminUpdateAchievementListOrderParams'
         required: true
@@ -2250,13 +2337,14 @@ functions:
       - 'order'
       - 'update'
 
-  'BulkCreatePSNEventShort@achievement':
-    id: 'BulkCreatePSNEventShort@achievement'
+  'BulkCreatePSNEventShort@go.achievement.fun':
+    id: 'BulkCreatePSNEventShort@go.achievement.fun'
     name: 'BulkCreatePSNEventShort'
+    type: 'function'
     description: |-
       Create PSN UDS events. Player need to login first using playstation token to IAM service.
     struct: 'PlatformAchievementService'
-    parameters:
+    arguments:
       params:
         type: '*platform_achievement.BulkCreatePSNEventParams'
         required: true
@@ -2282,9 +2370,10 @@ functions:
       - 'platform'
       - 'psn'
 
-  'ClaimGlobalAchievementRewardShort@achievement':
-    id: 'ClaimGlobalAchievementRewardShort@achievement'
+  'ClaimGlobalAchievementRewardShort@go.achievement.fun':
+    id: 'ClaimGlobalAchievementRewardShort@go.achievement.fun'
     name: 'ClaimGlobalAchievementRewardShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
@@ -2299,7 +2388,7 @@ functions:
 
       Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.ClaimGlobalAchievementRewardParams'
         required: true
@@ -2324,9 +2413,10 @@ functions:
       - 'global'
       - 'reward'
 
-  'ExportAchievementsShort@achievement':
-    id: 'ExportAchievementsShort@achievement'
+  'ExportAchievementsShort@go.achievement.fun':
+    id: 'ExportAchievementsShort@go.achievement.fun'
     name: 'ExportAchievementsShort'
+    type: 'function'
     description: |-
       Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]`
 
@@ -2334,7 +2424,7 @@ functions:
 
       Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.ExportAchievementsParams'
         required: true
@@ -2356,9 +2446,10 @@ functions:
       - 'achievements'
       - 'export'
 
-  'ImportAchievementsShort@achievement':
-    id: 'ImportAchievementsShort@achievement'
+  'ImportAchievementsShort@go.achievement.fun':
+    id: 'ImportAchievementsShort@go.achievement.fun'
     name: 'ImportAchievementsShort'
+    type: 'function'
     description: |-
       Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
 
@@ -2369,7 +2460,7 @@ functions:
       - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
       - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.ImportAchievementsParams'
         required: true
@@ -2391,14 +2482,15 @@ functions:
       - 'achievements'
       - 'import'
 
-  'ListGlobalAchievementContributorsShort@achievement':
-    id: 'ListGlobalAchievementContributorsShort@achievement'
+  'ListGlobalAchievementContributorsShort@go.achievement.fun':
+    id: 'ListGlobalAchievementContributorsShort@go.achievement.fun'
     name: 'ListGlobalAchievementContributorsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.ListGlobalAchievementContributorsParams'
         required: true
@@ -2423,14 +2515,15 @@ functions:
       - 'global'
       - 'list'
 
-  'ListUserContributionsShort@achievement':
-    id: 'ListUserContributionsShort@achievement'
+  'ListUserContributionsShort@go.achievement.fun':
+    id: 'ListUserContributionsShort@go.achievement.fun'
     name: 'ListUserContributionsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.ListUserContributionsParams'
         required: true
@@ -2455,14 +2548,15 @@ functions:
       - 'list'
       - 'user'
 
-  'PublicBulkUnlockAchievementShort@achievement':
-    id: 'PublicBulkUnlockAchievementShort@achievement'
+  'PublicBulkUnlockAchievementShort@go.achievement.fun':
+    id: 'PublicBulkUnlockAchievementShort@go.achievement.fun'
     name: 'PublicBulkUnlockAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.PublicBulkUnlockAchievementParams'
         required: true
@@ -2488,14 +2582,15 @@ functions:
       - 'unlock'
       - 'user'
 
-  'PublicGetAchievementShort@achievement':
-    id: 'PublicGetAchievementShort@achievement'
+  'PublicGetAchievementShort@go.achievement.fun':
+    id: 'PublicGetAchievementShort@go.achievement.fun'
     name: 'PublicGetAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.PublicGetAchievementParams'
         required: true
@@ -2519,14 +2614,15 @@ functions:
       - 'get'
       - 'public'
 
-  'PublicListAchievementsShort@achievement':
-    id: 'PublicListAchievementsShort@achievement'
+  'PublicListAchievementsShort@go.achievement.fun':
+    id: 'PublicListAchievementsShort@go.achievement.fun'
     name: 'PublicListAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'AchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*achievements.PublicListAchievementsParams'
         required: true
@@ -2549,9 +2645,10 @@ functions:
       - 'list'
       - 'public'
 
-  'PublicListGlobalAchievementsShort@achievement':
-    id: 'PublicListGlobalAchievementsShort@achievement'
+  'PublicListGlobalAchievementsShort@go.achievement.fun':
+    id: 'PublicListGlobalAchievementsShort@go.achievement.fun'
     name: 'PublicListGlobalAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
@@ -2566,7 +2663,7 @@ functions:
 
       Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.PublicListGlobalAchievementsParams'
         required: true
@@ -2590,14 +2687,15 @@ functions:
       - 'list'
       - 'public'
 
-  'PublicListTagsShort@achievement':
-    id: 'PublicListTagsShort@achievement'
+  'PublicListTagsShort@go.achievement.fun':
+    id: 'PublicListTagsShort@go.achievement.fun'
     name: 'PublicListTagsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
     struct: 'TagsService'
-    parameters:
+    arguments:
       params:
         type: '*tags.PublicListTagsParams'
         required: true
@@ -2620,9 +2718,10 @@ functions:
       - 'public'
       - 'tags'
 
-  'PublicListUserAchievementsShort@achievement':
-    id: 'PublicListUserAchievementsShort@achievement'
+  'PublicListUserAchievementsShort@go.achievement.fun':
+    id: 'PublicListUserAchievementsShort@go.achievement.fun'
     name: 'PublicListUserAchievementsShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
@@ -2642,7 +2741,7 @@ functions:
 
       `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.PublicListUserAchievementsParams'
         required: true
@@ -2666,14 +2765,15 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicUnlockAchievementShort@achievement':
-    id: 'PublicUnlockAchievementShort@achievement'
+  'PublicUnlockAchievementShort@go.achievement.fun':
+    id: 'PublicUnlockAchievementShort@go.achievement.fun'
     name: 'PublicUnlockAchievementShort'
+    type: 'function'
     description: |-
       Required permission
       `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
     struct: 'UserAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*user_achievements.PublicUnlockAchievementParams'
         required: true
@@ -2698,9 +2798,10 @@ functions:
       - 'unlock'
       - 'user'
 
-  'ResetGlobalAchievementShort@achievement':
-    id: 'ResetGlobalAchievementShort@achievement'
+  'ResetGlobalAchievementShort@go.achievement.fun':
+    id: 'ResetGlobalAchievementShort@go.achievement.fun'
     name: 'ResetGlobalAchievementShort'
+    type: 'function'
     description: |-
       [TEST FACILITY ONLY]
 
@@ -2710,7 +2811,7 @@ functions:
       Required permission
       `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
     struct: 'GlobalAchievementsService'
-    parameters:
+    arguments:
       params:
         type: '*global_achievements.ResetGlobalAchievementParams'
         required: true
@@ -2733,3 +2834,5 @@ functions:
       - 'achievements'
       - 'global'
       - 'reset'
+
+  # endregion functions

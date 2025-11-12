@@ -1,10 +1,16 @@
-structs:
-  'JusticeGdprService@gdpr':
-    id: 'JusticeGdprService@gdpr'
-    name: 'JusticeGdprService'
+symbols:
+  'NewGdprClient@go.gdpr.fun':
+    id: 'NewGdprClient@go.gdpr.fun'
+    name: 'NewGdprClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*gdprclient.JusticeGdprService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/gdpr-sdk/pkg/gdprclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/justice_gdpr_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/gdprclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'ConfigurationService@gdpr':
-    id: 'ConfigurationService@gdpr'
+  'ConfigurationService@go.gdpr.mod':
+    id: 'ConfigurationService@go.gdpr.mod'
     name: 'ConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'DataDeletionService@gdpr':
-    id: 'DataDeletionService@gdpr'
+  'DataDeletionService@go.gdpr.mod':
+    id: 'DataDeletionService@go.gdpr.mod'
     name: 'DataDeletionService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'DataDeletionS2SService@gdpr':
-    id: 'DataDeletionS2SService@gdpr'
+  'DataDeletionS2SService@go.gdpr.mod':
+    id: 'DataDeletionS2SService@go.gdpr.mod'
     name: 'DataDeletionS2SService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'DataRetrievalService@gdpr':
-    id: 'DataRetrievalService@gdpr'
+  'DataRetrievalService@go.gdpr.mod':
+    id: 'DataRetrievalService@go.gdpr.mod'
     name: 'DataRetrievalService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'DataRetrievalS2SService@gdpr':
-    id: 'DataRetrievalS2SService@gdpr'
+  'DataRetrievalS2SService@go.gdpr.mod':
+    id: 'DataRetrievalS2SService@go.gdpr.mod'
     name: 'DataRetrievalS2SService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PlatformAccountClosureClientService@gdpr':
-    id: 'PlatformAccountClosureClientService@gdpr'
+  'PlatformAccountClosureClientService@go.gdpr.mod':
+    id: 'PlatformAccountClosureClientService@go.gdpr.mod'
     name: 'PlatformAccountClosureClientService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'PlatformAccountClosureHistoryService@gdpr':
-    id: 'PlatformAccountClosureHistoryService@gdpr'
+  'PlatformAccountClosureHistoryService@go.gdpr.mod':
+    id: 'PlatformAccountClosureHistoryService@go.gdpr.mod'
     name: 'PlatformAccountClosureHistoryService'
+    type: 'model'
     fields:
       Client:
         type: '*gdprclient.JusticeGdprService'
@@ -185,9 +198,10 @@ structs:
 
   # region params
 
-  'AdminCancelUserAccountDeletionRequestParams@gdpr':
-    id: 'AdminCancelUserAccountDeletionRequestParams@gdpr'
+  'AdminCancelUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'AdminCancelUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'AdminCancelUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -204,9 +218,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_cancel_user_account_deletion_request_parameters.go'
 
-  'AdminCancelUserPersonalDataRequestParams@gdpr':
-    id: 'AdminCancelUserPersonalDataRequestParams@gdpr'
+  'AdminCancelUserPersonalDataRequestParams@go.gdpr.mod':
+    id: 'AdminCancelUserPersonalDataRequestParams@go.gdpr.mod'
     name: 'AdminCancelUserPersonalDataRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -228,9 +243,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_cancel_user_personal_data_request_parameters.go'
 
-  'AdminDeletePlatformAccountClosureClientParams@gdpr':
-    id: 'AdminDeletePlatformAccountClosureClientParams@gdpr'
+  'AdminDeletePlatformAccountClosureClientParams@go.gdpr.mod':
+    id: 'AdminDeletePlatformAccountClosureClientParams@go.gdpr.mod'
     name: 'AdminDeletePlatformAccountClosureClientParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -247,9 +263,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_delete_platform_account_closure_client_parameters.go'
 
-  'AdminGeneratePersonalDataURLParams@gdpr':
-    id: 'AdminGeneratePersonalDataURLParams@gdpr'
+  'AdminGeneratePersonalDataURLParams@go.gdpr.mod':
+    id: 'AdminGeneratePersonalDataURLParams@go.gdpr.mod'
     name: 'AdminGeneratePersonalDataURLParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -276,9 +293,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_generate_personal_data_url_parameters.go'
 
-  'AdminGetListDeletionDataRequestParams@gdpr':
-    id: 'AdminGetListDeletionDataRequestParams@gdpr'
+  'AdminGetListDeletionDataRequestParams@go.gdpr.mod':
+    id: 'AdminGetListDeletionDataRequestParams@go.gdpr.mod'
     name: 'AdminGetListDeletionDataRequestParams'
+    type: 'model'
     fields:
       'After':
         type: 'string'
@@ -315,9 +333,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_get_list_deletion_data_request_parameters.go'
 
-  'AdminGetListPersonalDataRequestParams@gdpr':
-    id: 'AdminGetListPersonalDataRequestParams@gdpr'
+  'AdminGetListPersonalDataRequestParams@go.gdpr.mod':
+    id: 'AdminGetListPersonalDataRequestParams@go.gdpr.mod'
     name: 'AdminGetListPersonalDataRequestParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -344,9 +363,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_get_list_personal_data_request_parameters.go'
 
-  'AdminGetPlatformAccountClosureClientParams@gdpr':
-    id: 'AdminGetPlatformAccountClosureClientParams@gdpr'
+  'AdminGetPlatformAccountClosureClientParams@go.gdpr.mod':
+    id: 'AdminGetPlatformAccountClosureClientParams@go.gdpr.mod'
     name: 'AdminGetPlatformAccountClosureClientParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -363,9 +383,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_get_platform_account_closure_client_parameters.go'
 
-  'AdminGetPlatformAccountClosureClientsParams@gdpr':
-    id: 'AdminGetPlatformAccountClosureClientsParams@gdpr'
+  'AdminGetPlatformAccountClosureClientsParams@go.gdpr.mod':
+    id: 'AdminGetPlatformAccountClosureClientsParams@go.gdpr.mod'
     name: 'AdminGetPlatformAccountClosureClientsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -377,9 +398,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_get_platform_account_closure_clients_parameters.go'
 
-  'AdminGetPlatformAccountClosureServicesConfigurationParams@gdpr':
-    id: 'AdminGetPlatformAccountClosureServicesConfigurationParams@gdpr'
+  'AdminGetPlatformAccountClosureServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminGetPlatformAccountClosureServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminGetPlatformAccountClosureServicesConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -391,9 +413,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_get_platform_account_closure_services_configuration_parameters.go'
 
-  'AdminGetServicesConfigurationParams@gdpr':
-    id: 'AdminGetServicesConfigurationParams@gdpr'
+  'AdminGetServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminGetServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminGetServicesConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -405,9 +428,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_get_services_configuration_parameters.go'
 
-  'AdminGetUserAccountDeletionRequestParams@gdpr':
-    id: 'AdminGetUserAccountDeletionRequestParams@gdpr'
+  'AdminGetUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'AdminGetUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'AdminGetUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -424,9 +448,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_get_user_account_deletion_request_parameters.go'
 
-  'AdminGetUserPersonalDataRequestsParams@gdpr':
-    id: 'AdminGetUserPersonalDataRequestsParams@gdpr'
+  'AdminGetUserPersonalDataRequestsParams@go.gdpr.mod':
+    id: 'AdminGetUserPersonalDataRequestsParams@go.gdpr.mod'
     name: 'AdminGetUserPersonalDataRequestsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -453,9 +478,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_get_user_personal_data_requests_parameters.go'
 
-  'AdminGetUserPlatformAccountClosureHistoriesParams@gdpr':
-    id: 'AdminGetUserPlatformAccountClosureHistoriesParams@gdpr'
+  'AdminGetUserPlatformAccountClosureHistoriesParams@go.gdpr.mod':
+    id: 'AdminGetUserPlatformAccountClosureHistoriesParams@go.gdpr.mod'
     name: 'AdminGetUserPlatformAccountClosureHistoriesParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -487,9 +513,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_history/admin_get_user_platform_account_closure_histories_parameters.go'
 
-  'AdminMockPlatformAccountClosureDataParams@gdpr':
-    id: 'AdminMockPlatformAccountClosureDataParams@gdpr'
+  'AdminMockPlatformAccountClosureDataParams@go.gdpr.mod':
+    id: 'AdminMockPlatformAccountClosureDataParams@go.gdpr.mod'
     name: 'AdminMockPlatformAccountClosureDataParams'
+    type: 'model'
     fields:
       'Body':
         type: '*DTOPlatformAccountClosureMockRequest'
@@ -509,9 +536,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_mock_platform_account_closure_data_parameters.go'
 
-  'AdminRequestDataRetrievalParams@gdpr':
-    id: 'AdminRequestDataRetrievalParams@gdpr'
+  'AdminRequestDataRetrievalParams@go.gdpr.mod':
+    id: 'AdminRequestDataRetrievalParams@go.gdpr.mod'
     name: 'AdminRequestDataRetrievalParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -533,9 +561,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/admin_request_data_retrieval_parameters.go'
 
-  'AdminResetPlatformAccountClosureServicesConfigurationParams@gdpr':
-    id: 'AdminResetPlatformAccountClosureServicesConfigurationParams@gdpr'
+  'AdminResetPlatformAccountClosureServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminResetPlatformAccountClosureServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminResetPlatformAccountClosureServicesConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -547,9 +576,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_reset_platform_account_closure_services_configuration_parameters.go'
 
-  'AdminResetServicesConfigurationParams@gdpr':
-    id: 'AdminResetServicesConfigurationParams@gdpr'
+  'AdminResetServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminResetServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminResetServicesConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -561,9 +591,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_reset_services_configuration_parameters.go'
 
-  'AdminSubmitUserAccountDeletionRequestParams@gdpr':
-    id: 'AdminSubmitUserAccountDeletionRequestParams@gdpr'
+  'AdminSubmitUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'AdminSubmitUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'AdminSubmitUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -580,9 +611,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/admin_submit_user_account_deletion_request_parameters.go'
 
-  'AdminUpdatePlatformAccountClosureClientParams@gdpr':
-    id: 'AdminUpdatePlatformAccountClosureClientParams@gdpr'
+  'AdminUpdatePlatformAccountClosureClientParams@go.gdpr.mod':
+    id: 'AdminUpdatePlatformAccountClosureClientParams@go.gdpr.mod'
     name: 'AdminUpdatePlatformAccountClosureClientParams'
+    type: 'model'
     fields:
       'Body':
         type: '*DTOPlatformAccountClosureClientRequest'
@@ -602,9 +634,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_update_platform_account_closure_client_parameters.go'
 
-  'AdminUpdatePlatformAccountClosureServicesConfigurationParams@gdpr':
-    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationParams@gdpr'
+  'AdminUpdatePlatformAccountClosureServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminUpdatePlatformAccountClosureServicesConfigurationParams'
+    type: 'model'
     fields:
       'Body':
         type: '*DTOServiceConfigurationUpdateRequest'
@@ -619,9 +652,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_update_platform_account_closure_services_configuration_parameters.go'
 
-  'AdminUpdateServicesConfigurationParams@gdpr':
-    id: 'AdminUpdateServicesConfigurationParams@gdpr'
+  'AdminUpdateServicesConfigurationParams@go.gdpr.mod':
+    id: 'AdminUpdateServicesConfigurationParams@go.gdpr.mod'
     name: 'AdminUpdateServicesConfigurationParams'
+    type: 'model'
     fields:
       'Body':
         type: '*DTOServiceConfigurationUpdateRequest'
@@ -636,9 +670,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/admin_update_services_configuration_parameters.go'
 
-  'AdminValidateXboxBPCertFileParams@gdpr':
-    id: 'AdminValidateXboxBPCertFileParams@gdpr'
+  'AdminValidateXboxBPCertFileParams@go.gdpr.mod':
+    id: 'AdminValidateXboxBPCertFileParams@go.gdpr.mod'
     name: 'AdminValidateXboxBPCertFileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*DTOXboxBPCertValidationRequest'
@@ -653,9 +688,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/platform_account_closure_client/admin_validate_xbox_b_p_cert_file_parameters.go'
 
-  'DeleteAdminEmailConfigurationParams@gdpr':
-    id: 'DeleteAdminEmailConfigurationParams@gdpr'
+  'DeleteAdminEmailConfigurationParams@go.gdpr.mod':
+    id: 'DeleteAdminEmailConfigurationParams@go.gdpr.mod'
     name: 'DeleteAdminEmailConfigurationParams'
+    type: 'model'
     fields:
       'Emails':
         type: '[]string'
@@ -672,9 +708,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/delete_admin_email_configuration_parameters.go'
 
-  'GetAdminEmailConfigurationParams@gdpr':
-    id: 'GetAdminEmailConfigurationParams@gdpr'
+  'GetAdminEmailConfigurationParams@go.gdpr.mod':
+    id: 'GetAdminEmailConfigurationParams@go.gdpr.mod'
     name: 'GetAdminEmailConfigurationParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -686,18 +723,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/get_admin_email_configuration_parameters.go'
 
-  'PublicCancelMyAccountDeletionRequestParams@gdpr':
-    id: 'PublicCancelMyAccountDeletionRequestParams@gdpr'
+  'PublicCancelMyAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'PublicCancelMyAccountDeletionRequestParams@go.gdpr.mod'
     name: 'PublicCancelMyAccountDeletionRequestParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_cancel_my_account_deletion_request_parameters.go'
 
-  'PublicCancelUserAccountDeletionRequestParams@gdpr':
-    id: 'PublicCancelUserAccountDeletionRequestParams@gdpr'
+  'PublicCancelUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'PublicCancelUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'PublicCancelUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -714,9 +752,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_cancel_user_account_deletion_request_parameters.go'
 
-  'PublicCancelUserPersonalDataRequestParams@gdpr':
-    id: 'PublicCancelUserPersonalDataRequestParams@gdpr'
+  'PublicCancelUserPersonalDataRequestParams@go.gdpr.mod':
+    id: 'PublicCancelUserPersonalDataRequestParams@go.gdpr.mod'
     name: 'PublicCancelUserPersonalDataRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -738,9 +777,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_cancel_user_personal_data_request_parameters.go'
 
-  'PublicGeneratePersonalDataURLParams@gdpr':
-    id: 'PublicGeneratePersonalDataURLParams@gdpr'
+  'PublicGeneratePersonalDataURLParams@go.gdpr.mod':
+    id: 'PublicGeneratePersonalDataURLParams@go.gdpr.mod'
     name: 'PublicGeneratePersonalDataURLParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -767,18 +807,19 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_generate_personal_data_url_parameters.go'
 
-  'PublicGetMyAccountDeletionStatusParams@gdpr':
-    id: 'PublicGetMyAccountDeletionStatusParams@gdpr'
+  'PublicGetMyAccountDeletionStatusParams@go.gdpr.mod':
+    id: 'PublicGetMyAccountDeletionStatusParams@go.gdpr.mod'
     name: 'PublicGetMyAccountDeletionStatusParams'
-    fields:
+    type: 'model'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_get_my_account_deletion_status_parameters.go'
 
-  'PublicGetUserAccountDeletionStatusParams@gdpr':
-    id: 'PublicGetUserAccountDeletionStatusParams@gdpr'
+  'PublicGetUserAccountDeletionStatusParams@go.gdpr.mod':
+    id: 'PublicGetUserAccountDeletionStatusParams@go.gdpr.mod'
     name: 'PublicGetUserAccountDeletionStatusParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -795,9 +836,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_get_user_account_deletion_status_parameters.go'
 
-  'PublicGetUserPersonalDataRequestsParams@gdpr':
-    id: 'PublicGetUserPersonalDataRequestsParams@gdpr'
+  'PublicGetUserPersonalDataRequestsParams@go.gdpr.mod':
+    id: 'PublicGetUserPersonalDataRequestsParams@go.gdpr.mod'
     name: 'PublicGetUserPersonalDataRequestsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -824,9 +866,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_get_user_personal_data_requests_parameters.go'
 
-  'PublicRequestDataRetrievalParams@gdpr':
-    id: 'PublicRequestDataRetrievalParams@gdpr'
+  'PublicRequestDataRetrievalParams@go.gdpr.mod':
+    id: 'PublicRequestDataRetrievalParams@go.gdpr.mod'
     name: 'PublicRequestDataRetrievalParams'
+    type: 'model'
     fields:
       'LanguageTag':
         type: 'string'
@@ -853,9 +896,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_request_data_retrieval_parameters.go'
 
-  'PublicSubmitMyAccountDeletionRequestParams@gdpr':
-    id: 'PublicSubmitMyAccountDeletionRequestParams@gdpr'
+  'PublicSubmitMyAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'PublicSubmitMyAccountDeletionRequestParams@go.gdpr.mod'
     name: 'PublicSubmitMyAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'PlatformID':
         type: 'string'
@@ -872,9 +916,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_submit_my_account_deletion_request_parameters.go'
 
-  'PublicSubmitUserAccountDeletionRequestParams@gdpr':
-    id: 'PublicSubmitUserAccountDeletionRequestParams@gdpr'
+  'PublicSubmitUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'PublicSubmitUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'PublicSubmitUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'LanguageTag':
         type: 'string'
@@ -901,9 +946,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_submit_user_account_deletion_request_parameters.go'
 
-  'S2SGeneratePersonalDataURLParams@gdpr':
-    id: 'S2SGeneratePersonalDataURLParams@gdpr'
+  'S2SGeneratePersonalDataURLParams@go.gdpr.mod':
+    id: 'S2SGeneratePersonalDataURLParams@go.gdpr.mod'
     name: 'S2SGeneratePersonalDataURLParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -925,9 +971,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_generate_personal_data_url_parameters.go'
 
-  'S2SGetDataRequestByRequestIDParams@gdpr':
-    id: 'S2SGetDataRequestByRequestIDParams@gdpr'
+  'S2SGetDataRequestByRequestIDParams@go.gdpr.mod':
+    id: 'S2SGetDataRequestByRequestIDParams@go.gdpr.mod'
     name: 'S2SGetDataRequestByRequestIDParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -944,9 +991,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_get_data_request_by_request_id_parameters.go'
 
-  'S2SGetListFinishedAccountDeletionRequestParams@gdpr':
-    id: 'S2SGetListFinishedAccountDeletionRequestParams@gdpr'
+  'S2SGetListFinishedAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'S2SGetListFinishedAccountDeletionRequestParams@go.gdpr.mod'
     name: 'S2SGetListFinishedAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'End':
         type: 'string'
@@ -968,9 +1016,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s/s2_s_get_list_finished_account_deletion_request_parameters.go'
 
-  'S2SGetListFinishedPersonalDataRequestParams@gdpr':
-    id: 'S2SGetListFinishedPersonalDataRequestParams@gdpr'
+  'S2SGetListFinishedPersonalDataRequestParams@go.gdpr.mod':
+    id: 'S2SGetListFinishedPersonalDataRequestParams@go.gdpr.mod'
     name: 'S2SGetListFinishedPersonalDataRequestParams'
+    type: 'model'
     fields:
       'End':
         type: 'string'
@@ -992,9 +1041,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_get_list_finished_personal_data_request_parameters.go'
 
-  'S2SRequestDataRetrievalParams@gdpr':
-    id: 'S2SRequestDataRetrievalParams@gdpr'
+  'S2SRequestDataRetrievalParams@go.gdpr.mod':
+    id: 'S2SRequestDataRetrievalParams@go.gdpr.mod'
     name: 'S2SRequestDataRetrievalParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1011,9 +1061,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_s2_s/s2_s_request_data_retrieval_parameters.go'
 
-  'S2SSubmitUserAccountDeletionRequestParams@gdpr':
-    id: 'S2SSubmitUserAccountDeletionRequestParams@gdpr'
+  'S2SSubmitUserAccountDeletionRequestParams@go.gdpr.mod':
+    id: 'S2SSubmitUserAccountDeletionRequestParams@go.gdpr.mod'
     name: 'S2SSubmitUserAccountDeletionRequestParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1030,9 +1081,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_s2_s/s2_s_submit_user_account_deletion_request_parameters.go'
 
-  'SaveAdminEmailConfigurationParams@gdpr':
-    id: 'SaveAdminEmailConfigurationParams@gdpr'
+  'SaveAdminEmailConfigurationParams@go.gdpr.mod':
+    id: 'SaveAdminEmailConfigurationParams@go.gdpr.mod'
     name: 'SaveAdminEmailConfigurationParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]string'
@@ -1047,9 +1099,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/configuration/save_admin_email_configuration_parameters.go'
 
-  'UpdateAdminEmailConfigurationParams@gdpr':
-    id: 'UpdateAdminEmailConfigurationParams@gdpr'
+  'UpdateAdminEmailConfigurationParams@go.gdpr.mod':
+    id: 'UpdateAdminEmailConfigurationParams@go.gdpr.mod'
     name: 'UpdateAdminEmailConfigurationParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]string'
@@ -1068,9 +1121,10 @@ structs:
 
   # region models
 
-  'DTOExtendConfigDTO@gdpr':
-    id: 'DTOExtendConfigDTO@gdpr'
+  'DTOExtendConfigDTO@go.gdpr.mod':
+    id: 'DTOExtendConfigDTO@go.gdpr.mod'
     name: 'DTOExtendConfigDTO'
+    type: 'model'
     fields:
       'AppName':
         type: 'string'
@@ -1087,9 +1141,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_extend_config_dto.go'
 
-  'DTOFinishedDataDeletion@gdpr':
-    id: 'DTOFinishedDataDeletion@gdpr'
+  'DTOFinishedDataDeletion@go.gdpr.mod':
+    id: 'DTOFinishedDataDeletion@go.gdpr.mod'
     name: 'DTOFinishedDataDeletion'
+    type: 'model'
     fields:
       'FailedMessage':
         type: 'string'
@@ -1121,9 +1176,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_finished_data_deletion.go'
 
-  'DTOFinishedDataRequest@gdpr':
-    id: 'DTOFinishedDataRequest@gdpr'
+  'DTOFinishedDataRequest@go.gdpr.mod':
+    id: 'DTOFinishedDataRequest@go.gdpr.mod'
     name: 'DTOFinishedDataRequest'
+    type: 'model'
     fields:
       'DataExpirationDate':
         type: '*strfmt.DateTime'
@@ -1163,9 +1219,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_finished_data_request.go'
 
-  'DTOListFinishedDataDeletion@gdpr':
-    id: 'DTOListFinishedDataDeletion@gdpr'
+  'DTOListFinishedDataDeletion@go.gdpr.mod':
+    id: 'DTOListFinishedDataDeletion@go.gdpr.mod'
     name: 'DTOListFinishedDataDeletion'
+    type: 'model'
     fields:
       'Data':
         type: '[]*DTOFinishedDataDeletion'
@@ -1175,9 +1232,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_list_finished_data_deletion.go'
 
-  'DTOListFinishedDataRequests@gdpr':
-    id: 'DTOListFinishedDataRequests@gdpr'
+  'DTOListFinishedDataRequests@go.gdpr.mod':
+    id: 'DTOListFinishedDataRequests@go.gdpr.mod'
     name: 'DTOListFinishedDataRequests'
+    type: 'model'
     fields:
       'Data':
         type: '[]*DTOFinishedDataRequest'
@@ -1187,9 +1245,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_list_finished_data_requests.go'
 
-  'DTOPlatformAccountClosureClientRequest@gdpr':
-    id: 'DTOPlatformAccountClosureClientRequest@gdpr'
+  'DTOPlatformAccountClosureClientRequest@go.gdpr.mod':
+    id: 'DTOPlatformAccountClosureClientRequest@go.gdpr.mod'
     name: 'DTOPlatformAccountClosureClientRequest'
+    type: 'model'
     fields:
       'BpCert':
         type: 'string'
@@ -1231,9 +1290,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_client_request.go'
 
-  'DTOPlatformAccountClosureClientResponse@gdpr':
-    id: 'DTOPlatformAccountClosureClientResponse@gdpr'
+  'DTOPlatformAccountClosureClientResponse@go.gdpr.mod':
+    id: 'DTOPlatformAccountClosureClientResponse@go.gdpr.mod'
     name: 'DTOPlatformAccountClosureClientResponse'
+    type: 'model'
     fields:
       'BpCertExpireAt':
         type: 'int64'
@@ -1267,9 +1327,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_client_response.go'
 
-  'DTOPlatformAccountClosureClientsResponse@gdpr':
-    id: 'DTOPlatformAccountClosureClientsResponse@gdpr'
+  'DTOPlatformAccountClosureClientsResponse@go.gdpr.mod':
+    id: 'DTOPlatformAccountClosureClientsResponse@go.gdpr.mod'
     name: 'DTOPlatformAccountClosureClientsResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*DTOPlatformAccountClosureClientResponse'
@@ -1279,9 +1340,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_clients_response.go'
 
-  'DTOPlatformAccountClosureMockRequest@gdpr':
-    id: 'DTOPlatformAccountClosureMockRequest@gdpr'
+  'DTOPlatformAccountClosureMockRequest@go.gdpr.mod':
+    id: 'DTOPlatformAccountClosureMockRequest@go.gdpr.mod'
     name: 'DTOPlatformAccountClosureMockRequest'
+    type: 'model'
     fields:
       'PlatformUserID':
         type: 'string'
@@ -1299,9 +1361,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_platform_account_closure_mock_request.go'
 
-  'DTOS2SDataRequestSummary@gdpr':
-    id: 'DTOS2SDataRequestSummary@gdpr'
+  'DTOS2SDataRequestSummary@go.gdpr.mod':
+    id: 'DTOS2SDataRequestSummary@go.gdpr.mod'
     name: 'DTOS2SDataRequestSummary'
+    type: 'model'
     fields:
       'FailedMessage':
         type: 'string'
@@ -1323,9 +1386,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_s2_s_data_request_summary.go'
 
-  'DTOServiceConfigDTO@gdpr':
-    id: 'DTOServiceConfigDTO@gdpr'
+  'DTOServiceConfigDTO@go.gdpr.mod':
+    id: 'DTOServiceConfigDTO@go.gdpr.mod'
     name: 'DTOServiceConfigDTO'
+    type: 'model'
     fields:
       'Protocol':
         type: 'string'
@@ -1347,9 +1411,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_config_dto.go'
 
-  'DTOServiceConfigurationDTO@gdpr':
-    id: 'DTOServiceConfigurationDTO@gdpr'
+  'DTOServiceConfigurationDTO@go.gdpr.mod':
+    id: 'DTOServiceConfigurationDTO@go.gdpr.mod'
     name: 'DTOServiceConfigurationDTO'
+    type: 'model'
     fields:
       'ExtendConfig':
         type: '*DTOExtendConfigDTO'
@@ -1376,9 +1441,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_configuration_dto.go'
 
-  'DTOServiceConfigurationUpdateRequest@gdpr':
-    id: 'DTOServiceConfigurationUpdateRequest@gdpr'
+  'DTOServiceConfigurationUpdateRequest@go.gdpr.mod':
+    id: 'DTOServiceConfigurationUpdateRequest@go.gdpr.mod'
     name: 'DTOServiceConfigurationUpdateRequest'
+    type: 'model'
     fields:
       'Services':
         type: '[]*DTOServiceConfigurationDTO'
@@ -1390,9 +1456,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_service_configuration_update_request.go'
 
-  'DTOServicesConfigurationResponse@gdpr':
-    id: 'DTOServicesConfigurationResponse@gdpr'
+  'DTOServicesConfigurationResponse@go.gdpr.mod':
+    id: 'DTOServicesConfigurationResponse@go.gdpr.mod'
     name: 'DTOServicesConfigurationResponse'
+    type: 'model'
     fields:
       'Services':
         type: '[]*DTOServiceConfigurationDTO'
@@ -1404,9 +1471,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_services_configuration_response.go'
 
-  'DTOUserPlatformAccountClosureHistoriesResponse@gdpr':
-    id: 'DTOUserPlatformAccountClosureHistoriesResponse@gdpr'
+  'DTOUserPlatformAccountClosureHistoriesResponse@go.gdpr.mod':
+    id: 'DTOUserPlatformAccountClosureHistoriesResponse@go.gdpr.mod'
     name: 'DTOUserPlatformAccountClosureHistoriesResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*DTOUserPlatformAccountClosureHistory'
@@ -1419,9 +1487,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_user_platform_account_closure_histories_response.go'
 
-  'DTOUserPlatformAccountClosureHistory@gdpr':
-    id: 'DTOUserPlatformAccountClosureHistory@gdpr'
+  'DTOUserPlatformAccountClosureHistory@go.gdpr.mod':
+    id: 'DTOUserPlatformAccountClosureHistory@go.gdpr.mod'
     name: 'DTOUserPlatformAccountClosureHistory'
+    type: 'model'
     fields:
       'ClosedDate':
         type: 'int64'
@@ -1446,9 +1515,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_user_platform_account_closure_history.go'
 
-  'DTOXboxBPCertValidationRequest@gdpr':
-    id: 'DTOXboxBPCertValidationRequest@gdpr'
+  'DTOXboxBPCertValidationRequest@go.gdpr.mod':
+    id: 'DTOXboxBPCertValidationRequest@go.gdpr.mod'
     name: 'DTOXboxBPCertValidationRequest'
+    type: 'model'
     fields:
       'BpCert':
         type: 'string'
@@ -1461,9 +1531,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_xbox_b_p_cert_validation_request.go'
 
-  'DTOXboxBPCertValidationResponse@gdpr':
-    id: 'DTOXboxBPCertValidationResponse@gdpr'
+  'DTOXboxBPCertValidationResponse@go.gdpr.mod':
+    id: 'DTOXboxBPCertValidationResponse@go.gdpr.mod'
     name: 'DTOXboxBPCertValidationResponse'
+    type: 'model'
     fields:
       'ExpirationDate':
         type: 'int64'
@@ -1476,9 +1547,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/dto_xbox_b_p_cert_validation_response.go'
 
-  'ModelsDataRetrievalResponse@gdpr':
-    id: 'ModelsDataRetrievalResponse@gdpr'
+  'ModelsDataRetrievalResponse@go.gdpr.mod':
+    id: 'ModelsDataRetrievalResponse@go.gdpr.mod'
     name: 'ModelsDataRetrievalResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1494,9 +1566,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_data_retrieval_response.go'
 
-  'ModelsDeletionData@gdpr':
-    id: 'ModelsDeletionData@gdpr'
+  'ModelsDeletionData@go.gdpr.mod':
+    id: 'ModelsDeletionData@go.gdpr.mod'
     name: 'ModelsDeletionData'
+    type: 'model'
     fields:
       'DisplayName':
         type: 'string'
@@ -1518,9 +1591,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_deletion_data.go'
 
-  'ModelsDeletionStatus@gdpr':
-    id: 'ModelsDeletionStatus@gdpr'
+  'ModelsDeletionStatus@go.gdpr.mod':
+    id: 'ModelsDeletionStatus@go.gdpr.mod'
     name: 'ModelsDeletionStatus'
+    type: 'model'
     fields:
       'DeletionDate':
         type: 'string'
@@ -1545,9 +1619,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_deletion_status.go'
 
-  'ModelsListDeletionDataResponse@gdpr':
-    id: 'ModelsListDeletionDataResponse@gdpr'
+  'ModelsListDeletionDataResponse@go.gdpr.mod':
+    id: 'ModelsListDeletionDataResponse@go.gdpr.mod'
     name: 'ModelsListDeletionDataResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsDeletionData'
@@ -1560,9 +1635,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_list_deletion_data_response.go'
 
-  'ModelsListPersonalDataResponse@gdpr':
-    id: 'ModelsListPersonalDataResponse@gdpr'
+  'ModelsListPersonalDataResponse@go.gdpr.mod':
+    id: 'ModelsListPersonalDataResponse@go.gdpr.mod'
     name: 'ModelsListPersonalDataResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsPersonalData'
@@ -1575,9 +1651,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_list_personal_data_response.go'
 
-  'ModelsPagination@gdpr':
-    id: 'ModelsPagination@gdpr'
+  'ModelsPagination@go.gdpr.mod':
+    id: 'ModelsPagination@go.gdpr.mod'
     name: 'ModelsPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -1596,9 +1673,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_pagination.go'
 
-  'ModelsPersonalData@gdpr':
-    id: 'ModelsPersonalData@gdpr'
+  'ModelsPersonalData@go.gdpr.mod':
+    id: 'ModelsPersonalData@go.gdpr.mod'
     name: 'ModelsPersonalData'
+    type: 'model'
     fields:
       'DataExpirationDate':
         type: 'strfmt.DateTime'
@@ -1626,9 +1704,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_personal_data.go'
 
-  'ModelsRequestDeleteResponse@gdpr':
-    id: 'ModelsRequestDeleteResponse@gdpr'
+  'ModelsRequestDeleteResponse@go.gdpr.mod':
+    id: 'ModelsRequestDeleteResponse@go.gdpr.mod'
     name: 'ModelsRequestDeleteResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1641,9 +1720,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_request_delete_response.go'
 
-  'ModelsS2SDataRetrievalResponse@gdpr':
-    id: 'ModelsS2SDataRetrievalResponse@gdpr'
+  'ModelsS2SDataRetrievalResponse@go.gdpr.mod':
+    id: 'ModelsS2SDataRetrievalResponse@go.gdpr.mod'
     name: 'ModelsS2SDataRetrievalResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1662,9 +1742,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_data_retrieval_response.go'
 
-  'ModelsS2SRequestDeleteResponse@gdpr':
-    id: 'ModelsS2SRequestDeleteResponse@gdpr'
+  'ModelsS2SRequestDeleteResponse@go.gdpr.mod':
+    id: 'ModelsS2SRequestDeleteResponse@go.gdpr.mod'
     name: 'ModelsS2SRequestDeleteResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1677,9 +1758,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_request_delete_response.go'
 
-  'ModelsS2SUserDataURL@gdpr':
-    id: 'ModelsS2SUserDataURL@gdpr'
+  'ModelsS2SUserDataURL@go.gdpr.mod':
+    id: 'ModelsS2SUserDataURL@go.gdpr.mod'
     name: 'ModelsS2SUserDataURL'
+    type: 'model'
     fields:
       'URL':
         type: 'string'
@@ -1691,9 +1773,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_s2_s_user_data_url.go'
 
-  'ModelsUserDataURL@gdpr':
-    id: 'ModelsUserDataURL@gdpr'
+  'ModelsUserDataURL@go.gdpr.mod':
+    id: 'ModelsUserDataURL@go.gdpr.mod'
     name: 'ModelsUserDataURL'
+    type: 'model'
     fields:
       'URL':
         type: 'string'
@@ -1703,9 +1786,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_data_url.go'
 
-  'ModelsUserPersonalData@gdpr':
-    id: 'ModelsUserPersonalData@gdpr'
+  'ModelsUserPersonalData@go.gdpr.mod':
+    id: 'ModelsUserPersonalData@go.gdpr.mod'
     name: 'ModelsUserPersonalData'
+    type: 'model'
     fields:
       'DataExpirationDate':
         type: 'strfmt.DateTime'
@@ -1721,9 +1805,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_personal_data.go'
 
-  'ModelsUserPersonalDataResponse@gdpr':
-    id: 'ModelsUserPersonalDataResponse@gdpr'
+  'ModelsUserPersonalDataResponse@go.gdpr.mod':
+    id: 'ModelsUserPersonalDataResponse@go.gdpr.mod'
     name: 'ModelsUserPersonalDataResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserPersonalData'
@@ -1736,9 +1821,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclientmodels/models_user_personal_data_response.go'
 
-  'ResponseError@gdpr':
-    id: 'ResponseError@gdpr'
+  'ResponseError@go.gdpr.mod':
+    id: 'ResponseError@go.gdpr.mod'
     name: 'ResponseError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -1756,16 +1842,17 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminCancelUserAccountDeletionRequestShort@gdpr':
-    id: 'AdminCancelUserAccountDeletionRequestShort@gdpr'
+  'AdminCancelUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'AdminCancelUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'AdminCancelUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Cancel user's account deletion request
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.AdminCancelUserAccountDeletionRequestParams'
         required: true
@@ -1792,14 +1879,15 @@ functions:
       - 'request'
       - 'user'
 
-  'AdminCancelUserPersonalDataRequestShort@gdpr':
-    id: 'AdminCancelUserPersonalDataRequestShort@gdpr'
+  'AdminCancelUserPersonalDataRequestShort@go.gdpr.fun':
+    id: 'AdminCancelUserPersonalDataRequestShort@go.gdpr.fun'
     name: 'AdminCancelUserPersonalDataRequestShort'
+    type: 'function'
     description: |-
       Cancel user's personal data requests
       Scope: account
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.AdminCancelUserPersonalDataRequestParams'
         required: true
@@ -1826,9 +1914,10 @@ functions:
       - 'retrieval'
       - 'user'
 
-  'AdminDeletePlatformAccountClosureClientShort@gdpr':
-    id: 'AdminDeletePlatformAccountClosureClientShort@gdpr'
+  'AdminDeletePlatformAccountClosureClientShort@go.gdpr.fun':
+    id: 'AdminDeletePlatformAccountClosureClientShort@go.gdpr.fun'
     name: 'AdminDeletePlatformAccountClosureClientShort'
+    type: 'function'
     description: |-
       Delete platform account closure client.
       The namespace should be **publisher or studio namespace**
@@ -1838,7 +1927,7 @@ functions:
       - xbox
       - psn
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminDeletePlatformAccountClosureClientParams'
         required: true
@@ -1864,9 +1953,10 @@ functions:
       - 'delete'
       - 'platform'
 
-  'AdminGeneratePersonalDataURLShort@gdpr':
-    id: 'AdminGeneratePersonalDataURLShort@gdpr'
+  'AdminGeneratePersonalDataURLShort@go.gdpr.fun':
+    id: 'AdminGeneratePersonalDataURLShort@go.gdpr.fun'
     name: 'AdminGeneratePersonalDataURLShort'
+    type: 'function'
     description: |-
       Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
 
@@ -1875,7 +1965,7 @@ functions:
 
       If admin request data for themselves, password is need to be set
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.AdminGeneratePersonalDataURLParams'
         required: true
@@ -1901,14 +1991,15 @@ functions:
       - 'retrieval'
       - 'url'
 
-  'AdminGetListDeletionDataRequestShort@gdpr':
-    id: 'AdminGetListDeletionDataRequestShort@gdpr'
+  'AdminGetListDeletionDataRequestShort@go.gdpr.fun':
+    id: 'AdminGetListDeletionDataRequestShort@go.gdpr.fun'
     name: 'AdminGetListDeletionDataRequestShort'
+    type: 'function'
     description: |-
       Retrieve all user's account deletion requests in specified date
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.AdminGetListDeletionDataRequestParams'
         required: true
@@ -1934,14 +2025,15 @@ functions:
       - 'list'
       - 'request'
 
-  'AdminGetListPersonalDataRequestShort@gdpr':
-    id: 'AdminGetListPersonalDataRequestShort@gdpr'
+  'AdminGetListPersonalDataRequestShort@go.gdpr.fun':
+    id: 'AdminGetListPersonalDataRequestShort@go.gdpr.fun'
     name: 'AdminGetListPersonalDataRequestShort'
+    type: 'function'
     description: |-
       Get list personal data requests
       Scope: account
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.AdminGetListPersonalDataRequestParams'
         required: true
@@ -1968,9 +2060,10 @@ functions:
       - 'request'
       - 'retrieval'
 
-  'AdminGetPlatformAccountClosureClientShort@gdpr':
-    id: 'AdminGetPlatformAccountClosureClientShort@gdpr'
+  'AdminGetPlatformAccountClosureClientShort@go.gdpr.fun':
+    id: 'AdminGetPlatformAccountClosureClientShort@go.gdpr.fun'
     name: 'AdminGetPlatformAccountClosureClientShort'
+    type: 'function'
     description: |-
       Get platform account closure config.
       The namespace should be **publisher or studio namespace**
@@ -1981,7 +2074,7 @@ functions:
       - psn
       Scope: account
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminGetPlatformAccountClosureClientParams'
         required: true
@@ -2007,9 +2100,10 @@ functions:
       - 'get'
       - 'platform'
 
-  'AdminGetPlatformAccountClosureClientsShort@gdpr':
-    id: 'AdminGetPlatformAccountClosureClientsShort@gdpr'
+  'AdminGetPlatformAccountClosureClientsShort@go.gdpr.fun':
+    id: 'AdminGetPlatformAccountClosureClientsShort@go.gdpr.fun'
     name: 'AdminGetPlatformAccountClosureClientsShort'
+    type: 'function'
     description: |-
       Get platform account closure configs.
       ------
@@ -2019,7 +2113,7 @@ functions:
       - psn
       Scope: account
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminGetPlatformAccountClosureClientsParams'
         required: true
@@ -2046,14 +2140,15 @@ functions:
       - 'get'
       - 'platform'
 
-  'AdminGetPlatformAccountClosureServicesConfigurationShort@gdpr':
-    id: 'AdminGetPlatformAccountClosureServicesConfigurationShort@gdpr'
+  'AdminGetPlatformAccountClosureServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminGetPlatformAccountClosureServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminGetPlatformAccountClosureServicesConfigurationShort'
+    type: 'function'
     description: |-
       Get registered platform account closure services configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminGetPlatformAccountClosureServicesConfigurationParams'
         required: true
@@ -2080,14 +2175,15 @@ functions:
       - 'platform'
       - 'services'
 
-  'AdminGetServicesConfigurationShort@gdpr':
-    id: 'AdminGetServicesConfigurationShort@gdpr'
+  'AdminGetServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminGetServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminGetServicesConfigurationShort'
+    type: 'function'
     description: |-
       Get Registered Services Configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminGetServicesConfigurationParams'
         required: true
@@ -2111,14 +2207,15 @@ functions:
       - 'get'
       - 'services'
 
-  'AdminGetUserAccountDeletionRequestShort@gdpr':
-    id: 'AdminGetUserAccountDeletionRequestShort@gdpr'
+  'AdminGetUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'AdminGetUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'AdminGetUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Retrieve specific user's account deletion request
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.AdminGetUserAccountDeletionRequestParams'
         required: true
@@ -2145,14 +2242,15 @@ functions:
       - 'request'
       - 'user'
 
-  'AdminGetUserPersonalDataRequestsShort@gdpr':
-    id: 'AdminGetUserPersonalDataRequestsShort@gdpr'
+  'AdminGetUserPersonalDataRequestsShort@go.gdpr.fun':
+    id: 'AdminGetUserPersonalDataRequestsShort@go.gdpr.fun'
     name: 'AdminGetUserPersonalDataRequestsShort'
+    type: 'function'
     description: |-
       Get user's personal data requests
       Scope: account
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.AdminGetUserPersonalDataRequestsParams'
         required: true
@@ -2179,9 +2277,10 @@ functions:
       - 'retrieval'
       - 'user'
 
-  'AdminGetUserPlatformAccountClosureHistoriesShort@gdpr':
-    id: 'AdminGetUserPlatformAccountClosureHistoriesShort@gdpr'
+  'AdminGetUserPlatformAccountClosureHistoriesShort@go.gdpr.fun':
+    id: 'AdminGetUserPlatformAccountClosureHistoriesShort@go.gdpr.fun'
     name: 'AdminGetUserPlatformAccountClosureHistoriesShort'
+    type: 'function'
     description: |-
       Get user's platform account closure histories.
       Scope: account
@@ -2192,7 +2291,7 @@ functions:
       - steamnetwork
       - xbox
     struct: 'PlatformAccountClosureHistoryService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_history.AdminGetUserPlatformAccountClosureHistoriesParams'
         required: true
@@ -2220,9 +2319,10 @@ functions:
       - 'platform'
       - 'user'
 
-  'AdminMockPlatformAccountClosureDataShort@gdpr':
-    id: 'AdminMockPlatformAccountClosureDataShort@gdpr'
+  'AdminMockPlatformAccountClosureDataShort@go.gdpr.fun':
+    id: 'AdminMockPlatformAccountClosureDataShort@go.gdpr.fun'
     name: 'AdminMockPlatformAccountClosureDataShort'
+    type: 'function'
     description: |-
       Mock platform account closure data.
       -----
@@ -2233,7 +2333,7 @@ functions:
       - psn
       Scope: account
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminMockPlatformAccountClosureDataParams'
         required: true
@@ -2260,9 +2360,10 @@ functions:
       - 'mock'
       - 'platform'
 
-  'AdminRequestDataRetrievalShort@gdpr':
-    id: 'AdminRequestDataRetrievalShort@gdpr'
+  'AdminRequestDataRetrievalShort@go.gdpr.fun':
+    id: 'AdminRequestDataRetrievalShort@go.gdpr.fun'
     name: 'AdminRequestDataRetrievalShort'
+    type: 'function'
     description: |-
       Submit user personal data retrieval request.
       Scope: account
@@ -2270,7 +2371,7 @@ functions:
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.AdminRequestDataRetrievalParams'
         required: true
@@ -2294,15 +2395,16 @@ functions:
       - 'request'
       - 'retrieval'
 
-  'AdminResetPlatformAccountClosureServicesConfigurationShort@gdpr':
-    id: 'AdminResetPlatformAccountClosureServicesConfigurationShort@gdpr'
+  'AdminResetPlatformAccountClosureServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminResetPlatformAccountClosureServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminResetPlatformAccountClosureServicesConfigurationShort'
+    type: 'function'
     description: |-
       **[TEST FACILITY ONLY]**
       Reset registered platform account closure services configuration to use the default configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminResetPlatformAccountClosureServicesConfigurationParams'
         required: true
@@ -2329,15 +2431,16 @@ functions:
       - 'reset'
       - 'services'
 
-  'AdminResetServicesConfigurationShort@gdpr':
-    id: 'AdminResetServicesConfigurationShort@gdpr'
+  'AdminResetServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminResetServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminResetServicesConfigurationShort'
+    type: 'function'
     description: |-
       **[TEST FACILITY ONLY]**
       Reset Registered Services Configuration to use the default configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminResetServicesConfigurationParams'
         required: true
@@ -2361,14 +2464,15 @@ functions:
       - 'reset'
       - 'services'
 
-  'AdminSubmitUserAccountDeletionRequestShort@gdpr':
-    id: 'AdminSubmitUserAccountDeletionRequestShort@gdpr'
+  'AdminSubmitUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'AdminSubmitUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'AdminSubmitUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Submit user's account deletion request.
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.AdminSubmitUserAccountDeletionRequestParams'
         required: true
@@ -2395,9 +2499,10 @@ functions:
       - 'submit'
       - 'user'
 
-  'AdminUpdatePlatformAccountClosureClientShort@gdpr':
-    id: 'AdminUpdatePlatformAccountClosureClientShort@gdpr'
+  'AdminUpdatePlatformAccountClosureClientShort@go.gdpr.fun':
+    id: 'AdminUpdatePlatformAccountClosureClientShort@go.gdpr.fun'
     name: 'AdminUpdatePlatformAccountClosureClientShort'
+    type: 'function'
     description: |-
       Update platform account closure client.
       The namespace should be the **publisher or studio namespace**.
@@ -2408,7 +2513,7 @@ functions:
       - psn
       Scope: account
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminUpdatePlatformAccountClosureClientParams'
         required: true
@@ -2434,14 +2539,15 @@ functions:
       - 'platform'
       - 'update'
 
-  'AdminUpdatePlatformAccountClosureServicesConfigurationShort@gdpr':
-    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationShort@gdpr'
+  'AdminUpdatePlatformAccountClosureServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminUpdatePlatformAccountClosureServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminUpdatePlatformAccountClosureServicesConfigurationShort'
+    type: 'function'
     description: |-
       Update registered platform account closure services configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminUpdatePlatformAccountClosureServicesConfigurationParams'
         required: true
@@ -2468,14 +2574,15 @@ functions:
       - 'services'
       - 'update'
 
-  'AdminUpdateServicesConfigurationShort@gdpr':
-    id: 'AdminUpdateServicesConfigurationShort@gdpr'
+  'AdminUpdateServicesConfigurationShort@go.gdpr.fun':
+    id: 'AdminUpdateServicesConfigurationShort@go.gdpr.fun'
     name: 'AdminUpdateServicesConfigurationShort'
+    type: 'function'
     description: |-
       Update Registered Services Configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.AdminUpdateServicesConfigurationParams'
         required: true
@@ -2499,13 +2606,14 @@ functions:
       - 'services'
       - 'update'
 
-  'AdminValidateXboxBPCertFileShort@gdpr':
-    id: 'AdminValidateXboxBPCertFileShort@gdpr'
+  'AdminValidateXboxBPCertFileShort@go.gdpr.fun':
+    id: 'AdminValidateXboxBPCertFileShort@go.gdpr.fun'
     name: 'AdminValidateXboxBPCertFileShort'
+    type: 'function'
     description: |-
       Check xbox BP cert file whether it's expired and return expiration date
     struct: 'PlatformAccountClosureClientService'
-    parameters:
+    arguments:
       params:
         type: '*platform_account_closure_client.AdminValidateXboxBPCertFileParams'
         required: true
@@ -2535,14 +2643,15 @@ functions:
       - 'validate'
       - 'xbox'
 
-  'DeleteAdminEmailConfigurationShort@gdpr':
-    id: 'DeleteAdminEmailConfigurationShort@gdpr'
+  'DeleteAdminEmailConfigurationShort@go.gdpr.fun':
+    id: 'DeleteAdminEmailConfigurationShort@go.gdpr.fun'
     name: 'DeleteAdminEmailConfigurationShort'
+    type: 'function'
     description: |-
       Delete a list of admin email addresses to stop receiving personal data request notification.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.DeleteAdminEmailConfigurationParams'
         required: true
@@ -2566,14 +2675,15 @@ functions:
       - 'delete'
       - 'email'
 
-  'GetAdminEmailConfigurationShort@gdpr':
-    id: 'GetAdminEmailConfigurationShort@gdpr'
+  'GetAdminEmailConfigurationShort@go.gdpr.fun':
+    id: 'GetAdminEmailConfigurationShort@go.gdpr.fun'
     name: 'GetAdminEmailConfigurationShort'
+    type: 'function'
     description: |-
       Get list of admin email address configuration.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.GetAdminEmailConfigurationParams'
         required: true
@@ -2597,14 +2707,15 @@ functions:
       - 'email'
       - 'get'
 
-  'PublicCancelMyAccountDeletionRequestShort@gdpr':
-    id: 'PublicCancelMyAccountDeletionRequestShort@gdpr'
+  'PublicCancelMyAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'PublicCancelMyAccountDeletionRequestShort@go.gdpr.fun'
     name: 'PublicCancelMyAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Cancel my account deletion request
       Requires valid user access token
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicCancelMyAccountDeletionRequestParams'
         required: true
@@ -2631,15 +2742,16 @@ functions:
       - 'public'
       - 'request'
 
-  'PublicCancelUserAccountDeletionRequestShort@gdpr':
-    id: 'PublicCancelUserAccountDeletionRequestShort@gdpr'
+  'PublicCancelUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'PublicCancelUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'PublicCancelUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Cancel user's account deletion request
       Requires valid user access token
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicCancelUserAccountDeletionRequestParams'
         required: true
@@ -2666,15 +2778,16 @@ functions:
       - 'request'
       - 'user'
 
-  'PublicCancelUserPersonalDataRequestShort@gdpr':
-    id: 'PublicCancelUserPersonalDataRequestShort@gdpr'
+  'PublicCancelUserPersonalDataRequestShort@go.gdpr.fun':
+    id: 'PublicCancelUserPersonalDataRequestShort@go.gdpr.fun'
     name: 'PublicCancelUserPersonalDataRequestShort'
+    type: 'function'
     description: |-
       Cancel user's personal data requests
       Requires valid user access token
       Scope: account
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.PublicCancelUserPersonalDataRequestParams'
         required: true
@@ -2701,9 +2814,10 @@ functions:
       - 'retrieval'
       - 'user'
 
-  'PublicGeneratePersonalDataURLShort@gdpr':
-    id: 'PublicGeneratePersonalDataURLShort@gdpr'
+  'PublicGeneratePersonalDataURLShort@go.gdpr.fun':
+    id: 'PublicGeneratePersonalDataURLShort@go.gdpr.fun'
     name: 'PublicGeneratePersonalDataURLShort'
+    type: 'function'
     description: |-
       Generate personal data download url
       Requires valid user access token
@@ -2712,7 +2826,7 @@ functions:
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.PublicGeneratePersonalDataURLParams'
         required: true
@@ -2738,14 +2852,15 @@ functions:
       - 'retrieval'
       - 'url'
 
-  'PublicGetMyAccountDeletionStatusShort@gdpr':
-    id: 'PublicGetMyAccountDeletionStatusShort@gdpr'
+  'PublicGetMyAccountDeletionStatusShort@go.gdpr.fun':
+    id: 'PublicGetMyAccountDeletionStatusShort@go.gdpr.fun'
     name: 'PublicGetMyAccountDeletionStatusShort'
+    type: 'function'
     description: |-
       Retrieve my account deletion status
       Requires valid user access token
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicGetMyAccountDeletionStatusParams'
         required: true
@@ -2772,15 +2887,16 @@ functions:
       - 'public'
       - 'status'
 
-  'PublicGetUserAccountDeletionStatusShort@gdpr':
-    id: 'PublicGetUserAccountDeletionStatusShort@gdpr'
+  'PublicGetUserAccountDeletionStatusShort@go.gdpr.fun':
+    id: 'PublicGetUserAccountDeletionStatusShort@go.gdpr.fun'
     name: 'PublicGetUserAccountDeletionStatusShort'
+    type: 'function'
     description: |-
       Retrieve specific user's account deletion status
       Requires valid user access token
       Scope: account
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicGetUserAccountDeletionStatusParams'
         required: true
@@ -2807,15 +2923,16 @@ functions:
       - 'status'
       - 'user'
 
-  'PublicGetUserPersonalDataRequestsShort@gdpr':
-    id: 'PublicGetUserPersonalDataRequestsShort@gdpr'
+  'PublicGetUserPersonalDataRequestsShort@go.gdpr.fun':
+    id: 'PublicGetUserPersonalDataRequestsShort@go.gdpr.fun'
     name: 'PublicGetUserPersonalDataRequestsShort'
+    type: 'function'
     description: |-
       Get user's personal data requests
       Requires valid user access token
       Scope: account
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.PublicGetUserPersonalDataRequestsParams'
         required: true
@@ -2842,9 +2959,10 @@ functions:
       - 'retrieval'
       - 'user'
 
-  'PublicRequestDataRetrievalShort@gdpr':
-    id: 'PublicRequestDataRetrievalShort@gdpr'
+  'PublicRequestDataRetrievalShort@go.gdpr.fun':
+    id: 'PublicRequestDataRetrievalShort@go.gdpr.fun'
     name: 'PublicRequestDataRetrievalShort'
+    type: 'function'
     description: |-
       Submit personal data retrieval request.
       Scope: account
@@ -2852,7 +2970,7 @@ functions:
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
     struct: 'DataRetrievalService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval.PublicRequestDataRetrievalParams'
         required: true
@@ -2876,9 +2994,10 @@ functions:
       - 'request'
       - 'retrieval'
 
-  'PublicSubmitMyAccountDeletionRequestShort@gdpr':
-    id: 'PublicSubmitMyAccountDeletionRequestShort@gdpr'
+  'PublicSubmitMyAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'PublicSubmitMyAccountDeletionRequestShort@go.gdpr.fun'
     name: 'PublicSubmitMyAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Submit my account deletion requests.
       Requires valid user access token
@@ -2887,7 +3006,7 @@ functions:
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicSubmitMyAccountDeletionRequestParams'
         required: true
@@ -2914,9 +3033,10 @@ functions:
       - 'request'
       - 'submit'
 
-  'PublicSubmitUserAccountDeletionRequestShort@gdpr':
-    id: 'PublicSubmitUserAccountDeletionRequestShort@gdpr'
+  'PublicSubmitUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'PublicSubmitUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'PublicSubmitUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Submit user's account deletion request.
       Requires valid user access token and password
@@ -2925,7 +3045,7 @@ functions:
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
     struct: 'DataDeletionService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion.PublicSubmitUserAccountDeletionRequestParams'
         required: true
@@ -2952,9 +3072,10 @@ functions:
       - 'submit'
       - 'user'
 
-  'S2SGeneratePersonalDataURLShort@gdpr':
-    id: 'S2SGeneratePersonalDataURLShort@gdpr'
+  'S2SGeneratePersonalDataURLShort@go.gdpr.fun':
+    id: 'S2SGeneratePersonalDataURLShort@go.gdpr.fun'
     name: 'S2SGeneratePersonalDataURLShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -2965,7 +3086,7 @@ functions:
       ---
       ## This API for S2S integration purpose only
     struct: 'DataRetrievalS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval_s2_s.S2SGeneratePersonalDataURLParams'
         required: true
@@ -2991,9 +3112,10 @@ functions:
       - 's2s'
       - 'url'
 
-  'S2SGetDataRequestByRequestIDShort@gdpr':
-    id: 'S2SGetDataRequestByRequestIDShort@gdpr'
+  'S2SGetDataRequestByRequestIDShort@go.gdpr.fun':
+    id: 'S2SGetDataRequestByRequestIDShort@go.gdpr.fun'
     name: 'S2SGetDataRequestByRequestIDShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -3003,7 +3125,7 @@ functions:
       ---
       ## This API for S2S integration purpose only
     struct: 'DataRetrievalS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval_s2_s.S2SGetDataRequestByRequestIDParams'
         required: true
@@ -3030,9 +3152,10 @@ functions:
       - 'retrieval'
       - 's2s'
 
-  'S2SGetListFinishedAccountDeletionRequestShort@gdpr':
-    id: 'S2SGetListFinishedAccountDeletionRequestShort@gdpr'
+  'S2SGetListFinishedAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'S2SGetListFinishedAccountDeletionRequestShort@go.gdpr.fun'
     name: 'S2SGetListFinishedAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -3046,7 +3169,7 @@ functions:
       ---
       ## This API for S2S integration purpose only
     struct: 'DataDeletionS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion_s2_s.S2SGetListFinishedAccountDeletionRequestParams'
         required: true
@@ -3074,9 +3197,10 @@ functions:
       - 'request'
       - 's2s'
 
-  'S2SGetListFinishedPersonalDataRequestShort@gdpr':
-    id: 'S2SGetListFinishedPersonalDataRequestShort@gdpr'
+  'S2SGetListFinishedPersonalDataRequestShort@go.gdpr.fun':
+    id: 'S2SGetListFinishedPersonalDataRequestShort@go.gdpr.fun'
     name: 'S2SGetListFinishedPersonalDataRequestShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -3090,7 +3214,7 @@ functions:
       ---
       ## This API for S2S integration purpose only
     struct: 'DataRetrievalS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval_s2_s.S2SGetListFinishedPersonalDataRequestParams'
         required: true
@@ -3118,9 +3242,10 @@ functions:
       - 'retrieval'
       - 's2s'
 
-  'S2SRequestDataRetrievalShort@gdpr':
-    id: 'S2SRequestDataRetrievalShort@gdpr'
+  'S2SRequestDataRetrievalShort@go.gdpr.fun':
+    id: 'S2SRequestDataRetrievalShort@go.gdpr.fun'
     name: 'S2SRequestDataRetrievalShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -3135,7 +3260,7 @@ functions:
 
       1. This API will **not send GDPR email notification** both for player and admin notification.
     struct: 'DataRetrievalS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_retrieval_s2_s.S2SRequestDataRetrievalParams'
         required: true
@@ -3159,9 +3284,10 @@ functions:
       - 'retrieval'
       - 's2s'
 
-  'S2SSubmitUserAccountDeletionRequestShort@gdpr':
-    id: 'S2SSubmitUserAccountDeletionRequestShort@gdpr'
+  'S2SSubmitUserAccountDeletionRequestShort@go.gdpr.fun':
+    id: 'S2SSubmitUserAccountDeletionRequestShort@go.gdpr.fun'
     name: 'S2SSubmitUserAccountDeletionRequestShort'
+    type: 'function'
     description: |-
       Scope: account
 
@@ -3177,7 +3303,7 @@ functions:
       1. This API will **not send GDPR email notification** both for player and admin notification.
       2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
     struct: 'DataDeletionS2SService'
-    parameters:
+    arguments:
       params:
         type: '*data_deletion_s2_s.S2SSubmitUserAccountDeletionRequestParams'
         required: true
@@ -3204,14 +3330,15 @@ functions:
       - 'submit'
       - 'user'
 
-  'SaveAdminEmailConfigurationShort@gdpr':
-    id: 'SaveAdminEmailConfigurationShort@gdpr'
+  'SaveAdminEmailConfigurationShort@go.gdpr.fun':
+    id: 'SaveAdminEmailConfigurationShort@go.gdpr.fun'
     name: 'SaveAdminEmailConfigurationShort'
+    type: 'function'
     description: |-
       Add admin email address for receiving personal data request notification.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.SaveAdminEmailConfigurationParams'
         required: true
@@ -3235,14 +3362,15 @@ functions:
       - 'email'
       - 'save'
 
-  'UpdateAdminEmailConfigurationShort@gdpr':
-    id: 'UpdateAdminEmailConfigurationShort@gdpr'
+  'UpdateAdminEmailConfigurationShort@go.gdpr.fun':
+    id: 'UpdateAdminEmailConfigurationShort@go.gdpr.fun'
     name: 'UpdateAdminEmailConfigurationShort'
+    type: 'function'
     description: |-
       Update admin email address for receiving personal data request notification.
       Scope: account
     struct: 'ConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*configuration.UpdateAdminEmailConfigurationParams'
         required: true
@@ -3265,3 +3393,5 @@ functions:
       - 'configuration'
       - 'email'
       - 'update'
+
+  # endregion functions

@@ -1,10 +1,16 @@
-structs:
-  'JusticeLeaderboardService@leaderboard':
-    id: 'JusticeLeaderboardService@leaderboard'
-    name: 'JusticeLeaderboardService'
+symbols:
+  'NewLeaderboardClient@go.leaderboard.fun':
+    id: 'NewLeaderboardClient@go.leaderboard.fun'
+    name: 'NewLeaderboardClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*leaderboardclient.JusticeLeaderboardService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/leaderboard-sdk/pkg/leaderboardclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/justice_leaderboard_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/leaderboardclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'AnonymizationService@leaderboard':
-    id: 'AnonymizationService@leaderboard'
+  'AnonymizationService@go.leaderboard.mod':
+    id: 'AnonymizationService@go.leaderboard.mod'
     name: 'AnonymizationService'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'LeaderboardConfigurationService@leaderboard':
-    id: 'LeaderboardConfigurationService@leaderboard'
+  'LeaderboardConfigurationService@go.leaderboard.mod':
+    id: 'LeaderboardConfigurationService@go.leaderboard.mod'
     name: 'LeaderboardConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'LeaderboardConfigurationV3Service@leaderboard':
-    id: 'LeaderboardConfigurationV3Service@leaderboard'
+  'LeaderboardConfigurationV3Service@go.leaderboard.mod':
+    id: 'LeaderboardConfigurationV3Service@go.leaderboard.mod'
     name: 'LeaderboardConfigurationV3Service'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'LeaderboardDataService@leaderboard':
-    id: 'LeaderboardDataService@leaderboard'
+  'LeaderboardDataService@go.leaderboard.mod':
+    id: 'LeaderboardDataService@go.leaderboard.mod'
     name: 'LeaderboardDataService'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'LeaderboardDataV3Service@leaderboard':
-    id: 'LeaderboardDataV3Service@leaderboard'
+  'LeaderboardDataV3Service@go.leaderboard.mod':
+    id: 'LeaderboardDataV3Service@go.leaderboard.mod'
     name: 'LeaderboardDataV3Service'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserDataService@leaderboard':
-    id: 'UserDataService@leaderboard'
+  'UserDataService@go.leaderboard.mod':
+    id: 'UserDataService@go.leaderboard.mod'
     name: 'UserDataService'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserDataV3Service@leaderboard':
-    id: 'UserDataV3Service@leaderboard'
+  'UserDataV3Service@go.leaderboard.mod':
+    id: 'UserDataV3Service@go.leaderboard.mod'
     name: 'UserDataV3Service'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -181,9 +194,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserVisibilityService@leaderboard':
-    id: 'UserVisibilityService@leaderboard'
+  'UserVisibilityService@go.leaderboard.mod':
+    id: 'UserVisibilityService@go.leaderboard.mod'
     name: 'UserVisibilityService'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -205,9 +219,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserVisibilityV3Service@leaderboard':
-    id: 'UserVisibilityV3Service@leaderboard'
+  'UserVisibilityV3Service@go.leaderboard.mod':
+    id: 'UserVisibilityV3Service@go.leaderboard.mod'
     name: 'UserVisibilityV3Service'
+    type: 'model'
     fields:
       Client:
         type: '*leaderboardclient.JusticeLeaderboardService'
@@ -233,9 +248,10 @@ structs:
 
   # region params
 
-  'AdminAnonymizeUserLeaderboardAdminV1Params@leaderboard':
-    id: 'AdminAnonymizeUserLeaderboardAdminV1Params@leaderboard'
+  'AdminAnonymizeUserLeaderboardAdminV1Params@go.leaderboard.mod':
+    id: 'AdminAnonymizeUserLeaderboardAdminV1Params@go.leaderboard.mod'
     name: 'AdminAnonymizeUserLeaderboardAdminV1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -252,9 +268,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/anonymization/admin_anonymize_user_leaderboard_admin_v1_parameters.go'
 
-  'AdminGetArchivedLeaderboardRankingDataV1HandlerParams@leaderboard':
-    id: 'AdminGetArchivedLeaderboardRankingDataV1HandlerParams@leaderboard'
+  'AdminGetArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod':
+    id: 'AdminGetArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod'
     name: 'AdminGetArchivedLeaderboardRankingDataV1HandlerParams'
+    type: 'model'
     fields:
       'LeaderboardCodes':
         type: 'string'
@@ -276,9 +293,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/admin_get_archived_leaderboard_ranking_data_v1_handler_parameters.go'
 
-  'BulkGetUsersRankingPublicV3Params@leaderboard':
-    id: 'BulkGetUsersRankingPublicV3Params@leaderboard'
+  'BulkGetUsersRankingPublicV3Params@go.leaderboard.mod':
+    id: 'BulkGetUsersRankingPublicV3Params@go.leaderboard.mod'
     name: 'BulkGetUsersRankingPublicV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsBulkUserIDsRequest'
@@ -303,9 +321,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/bulk_get_users_ranking_public_v3_parameters.go'
 
-  'CreateArchivedLeaderboardRankingDataV1HandlerParams@leaderboard':
-    id: 'CreateArchivedLeaderboardRankingDataV1HandlerParams@leaderboard'
+  'CreateArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod':
+    id: 'CreateArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod'
     name: 'CreateArchivedLeaderboardRankingDataV1HandlerParams'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsArchiveLeaderboardReq'
@@ -320,9 +339,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/create_archived_leaderboard_ranking_data_v1_handler_parameters.go'
 
-  'CreateLeaderboardConfigurationAdminV1Params@leaderboard':
-    id: 'CreateLeaderboardConfigurationAdminV1Params@leaderboard'
+  'CreateLeaderboardConfigurationAdminV1Params@go.leaderboard.mod':
+    id: 'CreateLeaderboardConfigurationAdminV1Params@go.leaderboard.mod'
     name: 'CreateLeaderboardConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsLeaderboardConfigReq'
@@ -337,9 +357,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/create_leaderboard_configuration_admin_v1_parameters.go'
 
-  'CreateLeaderboardConfigurationAdminV3Params@leaderboard':
-    id: 'CreateLeaderboardConfigurationAdminV3Params@leaderboard'
+  'CreateLeaderboardConfigurationAdminV3Params@go.leaderboard.mod':
+    id: 'CreateLeaderboardConfigurationAdminV3Params@go.leaderboard.mod'
     name: 'CreateLeaderboardConfigurationAdminV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsLeaderboardConfigReqV3'
@@ -354,9 +375,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/create_leaderboard_configuration_admin_v3_parameters.go'
 
-  'CreateLeaderboardConfigurationPublicV1Params@leaderboard':
-    id: 'CreateLeaderboardConfigurationPublicV1Params@leaderboard'
+  'CreateLeaderboardConfigurationPublicV1Params@go.leaderboard.mod':
+    id: 'CreateLeaderboardConfigurationPublicV1Params@go.leaderboard.mod'
     name: 'CreateLeaderboardConfigurationPublicV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsLeaderboardConfigReq'
@@ -371,9 +393,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/create_leaderboard_configuration_public_v1_parameters.go'
 
-  'DeleteAllUserRankingByCycleIDAdminV3Params@leaderboard':
-    id: 'DeleteAllUserRankingByCycleIDAdminV3Params@leaderboard'
+  'DeleteAllUserRankingByCycleIDAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteAllUserRankingByCycleIDAdminV3Params@go.leaderboard.mod'
     name: 'DeleteAllUserRankingByCycleIDAdminV3Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -395,9 +418,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/delete_all_user_ranking_by_cycle_id_admin_v3_parameters.go'
 
-  'DeleteBulkLeaderboardConfigurationAdminV1Params@leaderboard':
-    id: 'DeleteBulkLeaderboardConfigurationAdminV1Params@leaderboard'
+  'DeleteBulkLeaderboardConfigurationAdminV1Params@go.leaderboard.mod':
+    id: 'DeleteBulkLeaderboardConfigurationAdminV1Params@go.leaderboard.mod'
     name: 'DeleteBulkLeaderboardConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDeleteBulkLeaderboardsReq'
@@ -412,9 +436,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/delete_bulk_leaderboard_configuration_admin_v1_parameters.go'
 
-  'DeleteBulkLeaderboardConfigurationAdminV3Params@leaderboard':
-    id: 'DeleteBulkLeaderboardConfigurationAdminV3Params@leaderboard'
+  'DeleteBulkLeaderboardConfigurationAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteBulkLeaderboardConfigurationAdminV3Params@go.leaderboard.mod'
     name: 'DeleteBulkLeaderboardConfigurationAdminV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsDeleteBulkLeaderboardsReq'
@@ -429,9 +454,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/delete_bulk_leaderboard_configuration_admin_v3_parameters.go'
 
-  'DeleteLeaderboardConfigurationAdminV1Params@leaderboard':
-    id: 'DeleteLeaderboardConfigurationAdminV1Params@leaderboard'
+  'DeleteLeaderboardConfigurationAdminV1Params@go.leaderboard.mod':
+    id: 'DeleteLeaderboardConfigurationAdminV1Params@go.leaderboard.mod'
     name: 'DeleteLeaderboardConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -448,9 +474,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/delete_leaderboard_configuration_admin_v1_parameters.go'
 
-  'DeleteLeaderboardConfigurationAdminV3Params@leaderboard':
-    id: 'DeleteLeaderboardConfigurationAdminV3Params@leaderboard'
+  'DeleteLeaderboardConfigurationAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteLeaderboardConfigurationAdminV3Params@go.leaderboard.mod'
     name: 'DeleteLeaderboardConfigurationAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -467,9 +494,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/delete_leaderboard_configuration_admin_v3_parameters.go'
 
-  'DeleteUserRankingAdminV1Params@leaderboard':
-    id: 'DeleteUserRankingAdminV1Params@leaderboard'
+  'DeleteUserRankingAdminV1Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingAdminV1Params@go.leaderboard.mod'
     name: 'DeleteUserRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -491,9 +519,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/delete_user_ranking_admin_v1_parameters.go'
 
-  'DeleteUserRankingAdminV3Params@leaderboard':
-    id: 'DeleteUserRankingAdminV3Params@leaderboard'
+  'DeleteUserRankingAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingAdminV3Params@go.leaderboard.mod'
     name: 'DeleteUserRankingAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -515,9 +544,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/delete_user_ranking_admin_v3_parameters.go'
 
-  'DeleteUserRankingByCycleIDAdminV3Params@leaderboard':
-    id: 'DeleteUserRankingByCycleIDAdminV3Params@leaderboard'
+  'DeleteUserRankingByCycleIDAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingByCycleIDAdminV3Params@go.leaderboard.mod'
     name: 'DeleteUserRankingByCycleIDAdminV3Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -544,9 +574,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/delete_user_ranking_by_cycle_id_admin_v3_parameters.go'
 
-  'DeleteUserRankingByLeaderboardCodeAdminV1Params@leaderboard':
-    id: 'DeleteUserRankingByLeaderboardCodeAdminV1Params@leaderboard'
+  'DeleteUserRankingByLeaderboardCodeAdminV1Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingByLeaderboardCodeAdminV1Params@go.leaderboard.mod'
     name: 'DeleteUserRankingByLeaderboardCodeAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -563,9 +594,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/delete_user_ranking_by_leaderboard_code_admin_v1_parameters.go'
 
-  'DeleteUserRankingByLeaderboardCodeAdminV3Params@leaderboard':
-    id: 'DeleteUserRankingByLeaderboardCodeAdminV3Params@leaderboard'
+  'DeleteUserRankingByLeaderboardCodeAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingByLeaderboardCodeAdminV3Params@go.leaderboard.mod'
     name: 'DeleteUserRankingByLeaderboardCodeAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -582,9 +614,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/delete_user_ranking_by_leaderboard_code_admin_v3_parameters.go'
 
-  'DeleteUserRankingPublicV1Params@leaderboard':
-    id: 'DeleteUserRankingPublicV1Params@leaderboard'
+  'DeleteUserRankingPublicV1Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingPublicV1Params@go.leaderboard.mod'
     name: 'DeleteUserRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -606,9 +639,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/delete_user_ranking_public_v1_parameters.go'
 
-  'DeleteUserRankingsAdminV1Params@leaderboard':
-    id: 'DeleteUserRankingsAdminV1Params@leaderboard'
+  'DeleteUserRankingsAdminV1Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingsAdminV1Params@go.leaderboard.mod'
     name: 'DeleteUserRankingsAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: '[]string'
@@ -630,9 +664,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/delete_user_rankings_admin_v1_parameters.go'
 
-  'DeleteUserRankingsAdminV3Params@leaderboard':
-    id: 'DeleteUserRankingsAdminV3Params@leaderboard'
+  'DeleteUserRankingsAdminV3Params@go.leaderboard.mod':
+    id: 'DeleteUserRankingsAdminV3Params@go.leaderboard.mod'
     name: 'DeleteUserRankingsAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: '[]string'
@@ -654,9 +689,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/delete_user_rankings_admin_v3_parameters.go'
 
-  'GetAllTimeLeaderboardRankingAdminV1Params@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingAdminV1Params@leaderboard'
+  'GetAllTimeLeaderboardRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetAllTimeLeaderboardRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetAllTimeLeaderboardRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -683,9 +719,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_all_time_leaderboard_ranking_admin_v1_parameters.go'
 
-  'GetAllTimeLeaderboardRankingAdminV3Params@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingAdminV3Params@leaderboard'
+  'GetAllTimeLeaderboardRankingAdminV3Params@go.leaderboard.mod':
+    id: 'GetAllTimeLeaderboardRankingAdminV3Params@go.leaderboard.mod'
     name: 'GetAllTimeLeaderboardRankingAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -712,9 +749,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_all_time_leaderboard_ranking_admin_v3_parameters.go'
 
-  'GetAllTimeLeaderboardRankingPublicV1Params@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV1Params@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetAllTimeLeaderboardRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetAllTimeLeaderboardRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -741,9 +779,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_all_time_leaderboard_ranking_public_v1_parameters.go'
 
-  'GetAllTimeLeaderboardRankingPublicV2Params@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV2Params@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV2Params@go.leaderboard.mod':
+    id: 'GetAllTimeLeaderboardRankingPublicV2Params@go.leaderboard.mod'
     name: 'GetAllTimeLeaderboardRankingPublicV2Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -770,9 +809,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_all_time_leaderboard_ranking_public_v2_parameters.go'
 
-  'GetAllTimeLeaderboardRankingPublicV3Params@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV3Params@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV3Params@go.leaderboard.mod':
+    id: 'GetAllTimeLeaderboardRankingPublicV3Params@go.leaderboard.mod'
     name: 'GetAllTimeLeaderboardRankingPublicV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -799,9 +839,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_all_time_leaderboard_ranking_public_v3_parameters.go'
 
-  'GetArchivedLeaderboardRankingDataV1HandlerParams@leaderboard':
-    id: 'GetArchivedLeaderboardRankingDataV1HandlerParams@leaderboard'
+  'GetArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod':
+    id: 'GetArchivedLeaderboardRankingDataV1HandlerParams@go.leaderboard.mod'
     name: 'GetArchivedLeaderboardRankingDataV1HandlerParams'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -828,9 +869,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_archived_leaderboard_ranking_data_v1_handler_parameters.go'
 
-  'GetCurrentCycleLeaderboardRankingAdminV3Params@leaderboard':
-    id: 'GetCurrentCycleLeaderboardRankingAdminV3Params@leaderboard'
+  'GetCurrentCycleLeaderboardRankingAdminV3Params@go.leaderboard.mod':
+    id: 'GetCurrentCycleLeaderboardRankingAdminV3Params@go.leaderboard.mod'
     name: 'GetCurrentCycleLeaderboardRankingAdminV3Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -867,9 +909,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_current_cycle_leaderboard_ranking_admin_v3_parameters.go'
 
-  'GetCurrentCycleLeaderboardRankingPublicV3Params@leaderboard':
-    id: 'GetCurrentCycleLeaderboardRankingPublicV3Params@leaderboard'
+  'GetCurrentCycleLeaderboardRankingPublicV3Params@go.leaderboard.mod':
+    id: 'GetCurrentCycleLeaderboardRankingPublicV3Params@go.leaderboard.mod'
     name: 'GetCurrentCycleLeaderboardRankingPublicV3Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -906,9 +949,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_current_cycle_leaderboard_ranking_public_v3_parameters.go'
 
-  'GetCurrentMonthLeaderboardRankingAdminV1Params@leaderboard':
-    id: 'GetCurrentMonthLeaderboardRankingAdminV1Params@leaderboard'
+  'GetCurrentMonthLeaderboardRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetCurrentMonthLeaderboardRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetCurrentMonthLeaderboardRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -940,9 +984,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_month_leaderboard_ranking_admin_v1_parameters.go'
 
-  'GetCurrentMonthLeaderboardRankingPublicV1Params@leaderboard':
-    id: 'GetCurrentMonthLeaderboardRankingPublicV1Params@leaderboard'
+  'GetCurrentMonthLeaderboardRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetCurrentMonthLeaderboardRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetCurrentMonthLeaderboardRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -974,9 +1019,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_month_leaderboard_ranking_public_v1_parameters.go'
 
-  'GetCurrentSeasonLeaderboardRankingAdminV1Params@leaderboard':
-    id: 'GetCurrentSeasonLeaderboardRankingAdminV1Params@leaderboard'
+  'GetCurrentSeasonLeaderboardRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetCurrentSeasonLeaderboardRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetCurrentSeasonLeaderboardRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1008,9 +1054,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_season_leaderboard_ranking_admin_v1_parameters.go'
 
-  'GetCurrentSeasonLeaderboardRankingPublicV1Params@leaderboard':
-    id: 'GetCurrentSeasonLeaderboardRankingPublicV1Params@leaderboard'
+  'GetCurrentSeasonLeaderboardRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetCurrentSeasonLeaderboardRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetCurrentSeasonLeaderboardRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1042,9 +1089,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_season_leaderboard_ranking_public_v1_parameters.go'
 
-  'GetCurrentWeekLeaderboardRankingAdminV1Params@leaderboard':
-    id: 'GetCurrentWeekLeaderboardRankingAdminV1Params@leaderboard'
+  'GetCurrentWeekLeaderboardRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetCurrentWeekLeaderboardRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetCurrentWeekLeaderboardRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1076,9 +1124,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_week_leaderboard_ranking_admin_v1_parameters.go'
 
-  'GetCurrentWeekLeaderboardRankingPublicV1Params@leaderboard':
-    id: 'GetCurrentWeekLeaderboardRankingPublicV1Params@leaderboard'
+  'GetCurrentWeekLeaderboardRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetCurrentWeekLeaderboardRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetCurrentWeekLeaderboardRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1110,9 +1159,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_current_week_leaderboard_ranking_public_v1_parameters.go'
 
-  'GetHiddenUsersV2Params@leaderboard':
-    id: 'GetHiddenUsersV2Params@leaderboard'
+  'GetHiddenUsersV2Params@go.leaderboard.mod':
+    id: 'GetHiddenUsersV2Params@go.leaderboard.mod'
     name: 'GetHiddenUsersV2Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1139,9 +1189,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility/get_hidden_users_v2_parameters.go'
 
-  'GetHiddenUsersV3Params@leaderboard':
-    id: 'GetHiddenUsersV3Params@leaderboard'
+  'GetHiddenUsersV3Params@go.leaderboard.mod':
+    id: 'GetHiddenUsersV3Params@go.leaderboard.mod'
     name: 'GetHiddenUsersV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1168,9 +1219,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility_v3/get_hidden_users_v3_parameters.go'
 
-  'GetLeaderboardConfigurationAdminV1Params@leaderboard':
-    id: 'GetLeaderboardConfigurationAdminV1Params@leaderboard'
+  'GetLeaderboardConfigurationAdminV1Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationAdminV1Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1187,9 +1239,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/get_leaderboard_configuration_admin_v1_parameters.go'
 
-  'GetLeaderboardConfigurationAdminV3Params@leaderboard':
-    id: 'GetLeaderboardConfigurationAdminV3Params@leaderboard'
+  'GetLeaderboardConfigurationAdminV3Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationAdminV3Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1206,9 +1259,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/get_leaderboard_configuration_admin_v3_parameters.go'
 
-  'GetLeaderboardConfigurationPublicV3Params@leaderboard':
-    id: 'GetLeaderboardConfigurationPublicV3Params@leaderboard'
+  'GetLeaderboardConfigurationPublicV3Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationPublicV3Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationPublicV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1225,9 +1279,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/get_leaderboard_configuration_public_v3_parameters.go'
 
-  'GetLeaderboardConfigurationsAdminV1Params@leaderboard':
-    id: 'GetLeaderboardConfigurationsAdminV1Params@leaderboard'
+  'GetLeaderboardConfigurationsAdminV1Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationsAdminV1Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationsAdminV1Params'
+    type: 'model'
     fields:
       'IsArchived':
         type: 'bool'
@@ -1259,9 +1314,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/get_leaderboard_configurations_admin_v1_parameters.go'
 
-  'GetLeaderboardConfigurationsAdminV3Params@leaderboard':
-    id: 'GetLeaderboardConfigurationsAdminV3Params@leaderboard'
+  'GetLeaderboardConfigurationsAdminV3Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationsAdminV3Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationsAdminV3Params'
+    type: 'model'
     fields:
       'IsDeleted':
         type: 'bool'
@@ -1288,9 +1344,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/get_leaderboard_configurations_admin_v3_parameters.go'
 
-  'GetLeaderboardConfigurationsPublicV1Params@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV1Params@leaderboard'
+  'GetLeaderboardConfigurationsPublicV1Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationsPublicV1Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationsPublicV1Params'
+    type: 'model'
     fields:
       'IsArchived':
         type: 'bool'
@@ -1322,9 +1379,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/get_leaderboard_configurations_public_v1_parameters.go'
 
-  'GetLeaderboardConfigurationsPublicV2Params@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV2Params@leaderboard'
+  'GetLeaderboardConfigurationsPublicV2Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationsPublicV2Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationsPublicV2Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1346,9 +1404,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/get_leaderboard_configurations_public_v2_parameters.go'
 
-  'GetLeaderboardConfigurationsPublicV3Params@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV3Params@leaderboard'
+  'GetLeaderboardConfigurationsPublicV3Params@go.leaderboard.mod':
+    id: 'GetLeaderboardConfigurationsPublicV3Params@go.leaderboard.mod'
     name: 'GetLeaderboardConfigurationsPublicV3Params'
+    type: 'model'
     fields:
       'IsDeleted':
         type: 'bool'
@@ -1375,9 +1434,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/get_leaderboard_configurations_public_v3_parameters.go'
 
-  'GetTodayLeaderboardRankingAdminV1Params@leaderboard':
-    id: 'GetTodayLeaderboardRankingAdminV1Params@leaderboard'
+  'GetTodayLeaderboardRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetTodayLeaderboardRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetTodayLeaderboardRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1409,9 +1469,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_today_leaderboard_ranking_admin_v1_parameters.go'
 
-  'GetTodayLeaderboardRankingPublicV1Params@leaderboard':
-    id: 'GetTodayLeaderboardRankingPublicV1Params@leaderboard'
+  'GetTodayLeaderboardRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetTodayLeaderboardRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetTodayLeaderboardRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1443,9 +1504,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_today_leaderboard_ranking_public_v1_parameters.go'
 
-  'GetUserLeaderboardRankingsAdminV1Params@leaderboard':
-    id: 'GetUserLeaderboardRankingsAdminV1Params@leaderboard'
+  'GetUserLeaderboardRankingsAdminV1Params@go.leaderboard.mod':
+    id: 'GetUserLeaderboardRankingsAdminV1Params@go.leaderboard.mod'
     name: 'GetUserLeaderboardRankingsAdminV1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1477,9 +1539,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_data/get_user_leaderboard_rankings_admin_v1_parameters.go'
 
-  'GetUserLeaderboardRankingsAdminV3Params@leaderboard':
-    id: 'GetUserLeaderboardRankingsAdminV3Params@leaderboard'
+  'GetUserLeaderboardRankingsAdminV3Params@go.leaderboard.mod':
+    id: 'GetUserLeaderboardRankingsAdminV3Params@go.leaderboard.mod'
     name: 'GetUserLeaderboardRankingsAdminV3Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int64'
@@ -1511,9 +1574,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_data_v3/get_user_leaderboard_rankings_admin_v3_parameters.go'
 
-  'GetUserRankingAdminV1Params@leaderboard':
-    id: 'GetUserRankingAdminV1Params@leaderboard'
+  'GetUserRankingAdminV1Params@go.leaderboard.mod':
+    id: 'GetUserRankingAdminV1Params@go.leaderboard.mod'
     name: 'GetUserRankingAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1540,9 +1604,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_user_ranking_admin_v1_parameters.go'
 
-  'GetUserRankingAdminV3Params@leaderboard':
-    id: 'GetUserRankingAdminV3Params@leaderboard'
+  'GetUserRankingAdminV3Params@go.leaderboard.mod':
+    id: 'GetUserRankingAdminV3Params@go.leaderboard.mod'
     name: 'GetUserRankingAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1569,9 +1634,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_user_ranking_admin_v3_parameters.go'
 
-  'GetUserRankingPublicV1Params@leaderboard':
-    id: 'GetUserRankingPublicV1Params@leaderboard'
+  'GetUserRankingPublicV1Params@go.leaderboard.mod':
+    id: 'GetUserRankingPublicV1Params@go.leaderboard.mod'
     name: 'GetUserRankingPublicV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1598,9 +1664,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data/get_user_ranking_public_v1_parameters.go'
 
-  'GetUserRankingPublicV3Params@leaderboard':
-    id: 'GetUserRankingPublicV3Params@leaderboard'
+  'GetUserRankingPublicV3Params@go.leaderboard.mod':
+    id: 'GetUserRankingPublicV3Params@go.leaderboard.mod'
     name: 'GetUserRankingPublicV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1627,9 +1694,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_data_v3/get_user_ranking_public_v3_parameters.go'
 
-  'GetUserVisibilityStatusV2Params@leaderboard':
-    id: 'GetUserVisibilityStatusV2Params@leaderboard'
+  'GetUserVisibilityStatusV2Params@go.leaderboard.mod':
+    id: 'GetUserVisibilityStatusV2Params@go.leaderboard.mod'
     name: 'GetUserVisibilityStatusV2Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1651,9 +1719,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility/get_user_visibility_status_v2_parameters.go'
 
-  'GetUserVisibilityStatusV3Params@leaderboard':
-    id: 'GetUserVisibilityStatusV3Params@leaderboard'
+  'GetUserVisibilityStatusV3Params@go.leaderboard.mod':
+    id: 'GetUserVisibilityStatusV3Params@go.leaderboard.mod'
     name: 'GetUserVisibilityStatusV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1675,9 +1744,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility_v3/get_user_visibility_status_v3_parameters.go'
 
-  'HardDeleteLeaderboardAdminV1Params@leaderboard':
-    id: 'HardDeleteLeaderboardAdminV1Params@leaderboard'
+  'HardDeleteLeaderboardAdminV1Params@go.leaderboard.mod':
+    id: 'HardDeleteLeaderboardAdminV1Params@go.leaderboard.mod'
     name: 'HardDeleteLeaderboardAdminV1Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1694,9 +1764,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/hard_delete_leaderboard_admin_v1_parameters.go'
 
-  'HardDeleteLeaderboardAdminV3Params@leaderboard':
-    id: 'HardDeleteLeaderboardAdminV3Params@leaderboard'
+  'HardDeleteLeaderboardAdminV3Params@go.leaderboard.mod':
+    id: 'HardDeleteLeaderboardAdminV3Params@go.leaderboard.mod'
     name: 'HardDeleteLeaderboardAdminV3Params'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1713,9 +1784,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/hard_delete_leaderboard_admin_v3_parameters.go'
 
-  'SetUserLeaderboardVisibilityStatusV2Params@leaderboard':
-    id: 'SetUserLeaderboardVisibilityStatusV2Params@leaderboard'
+  'SetUserLeaderboardVisibilityStatusV2Params@go.leaderboard.mod':
+    id: 'SetUserLeaderboardVisibilityStatusV2Params@go.leaderboard.mod'
     name: 'SetUserLeaderboardVisibilityStatusV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSetUserVisibilityRequest'
@@ -1740,9 +1812,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility/set_user_leaderboard_visibility_status_v2_parameters.go'
 
-  'SetUserLeaderboardVisibilityV3Params@leaderboard':
-    id: 'SetUserLeaderboardVisibilityV3Params@leaderboard'
+  'SetUserLeaderboardVisibilityV3Params@go.leaderboard.mod':
+    id: 'SetUserLeaderboardVisibilityV3Params@go.leaderboard.mod'
     name: 'SetUserLeaderboardVisibilityV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSetUserVisibilityRequest'
@@ -1767,9 +1840,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility_v3/set_user_leaderboard_visibility_v3_parameters.go'
 
-  'SetUserVisibilityStatusV2Params@leaderboard':
-    id: 'SetUserVisibilityStatusV2Params@leaderboard'
+  'SetUserVisibilityStatusV2Params@go.leaderboard.mod':
+    id: 'SetUserVisibilityStatusV2Params@go.leaderboard.mod'
     name: 'SetUserVisibilityStatusV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSetUserVisibilityRequest'
@@ -1789,9 +1863,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility/set_user_visibility_status_v2_parameters.go'
 
-  'SetUserVisibilityV3Params@leaderboard':
-    id: 'SetUserVisibilityV3Params@leaderboard'
+  'SetUserVisibilityV3Params@go.leaderboard.mod':
+    id: 'SetUserVisibilityV3Params@go.leaderboard.mod'
     name: 'SetUserVisibilityV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsSetUserVisibilityRequest'
@@ -1811,9 +1886,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/user_visibility_v3/set_user_visibility_v3_parameters.go'
 
-  'UpdateLeaderboardConfigurationAdminV1Params@leaderboard':
-    id: 'UpdateLeaderboardConfigurationAdminV1Params@leaderboard'
+  'UpdateLeaderboardConfigurationAdminV1Params@go.leaderboard.mod':
+    id: 'UpdateLeaderboardConfigurationAdminV1Params@go.leaderboard.mod'
     name: 'UpdateLeaderboardConfigurationAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateLeaderboardConfigReq'
@@ -1833,9 +1909,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration/update_leaderboard_configuration_admin_v1_parameters.go'
 
-  'UpdateLeaderboardConfigurationAdminV3Params@leaderboard':
-    id: 'UpdateLeaderboardConfigurationAdminV3Params@leaderboard'
+  'UpdateLeaderboardConfigurationAdminV3Params@go.leaderboard.mod':
+    id: 'UpdateLeaderboardConfigurationAdminV3Params@go.leaderboard.mod'
     name: 'UpdateLeaderboardConfigurationAdminV3Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateLeaderboardConfigReqV3'
@@ -1855,9 +1932,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclient/leaderboard_configuration_v3/update_leaderboard_configuration_admin_v3_parameters.go'
 
-  'UpdateUserPointAdminV1Params@leaderboard':
-    id: 'UpdateUserPointAdminV1Params@leaderboard'
+  'UpdateUserPointAdminV1Params@go.leaderboard.mod':
+    id: 'UpdateUserPointAdminV1Params@go.leaderboard.mod'
     name: 'UpdateUserPointAdminV1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*ModelsUpdateUserPointAdminV1Request'
@@ -1886,9 +1964,10 @@ structs:
 
   # region models
 
-  'ModelsArchiveLeaderboardReq@leaderboard':
-    id: 'ModelsArchiveLeaderboardReq@leaderboard'
+  'ModelsArchiveLeaderboardReq@go.leaderboard.mod':
+    id: 'ModelsArchiveLeaderboardReq@go.leaderboard.mod'
     name: 'ModelsArchiveLeaderboardReq'
+    type: 'model'
     fields:
       'LeaderboardCodes':
         type: '[]string'
@@ -1904,9 +1983,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_archive_leaderboard_req.go'
 
-  'ModelsArchiveLeaderboardSignedURLResponse@leaderboard':
-    id: 'ModelsArchiveLeaderboardSignedURLResponse@leaderboard'
+  'ModelsArchiveLeaderboardSignedURLResponse@go.leaderboard.mod':
+    id: 'ModelsArchiveLeaderboardSignedURLResponse@go.leaderboard.mod'
     name: 'ModelsArchiveLeaderboardSignedURLResponse'
+    type: 'model'
     fields:
       'LeaderboardCode':
         type: 'string'
@@ -1919,9 +1999,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_archive_leaderboard_signed_url_response.go'
 
-  'ModelsBulkUserIDsRequest@leaderboard':
-    id: 'ModelsBulkUserIDsRequest@leaderboard'
+  'ModelsBulkUserIDsRequest@go.leaderboard.mod':
+    id: 'ModelsBulkUserIDsRequest@go.leaderboard.mod'
     name: 'ModelsBulkUserIDsRequest'
+    type: 'model'
     fields:
       'UserIds':
         type: '[]string'
@@ -1931,9 +2012,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_bulk_user_i_ds_request.go'
 
-  'ModelsBulkUserRankingResponseV3@leaderboard':
-    id: 'ModelsBulkUserRankingResponseV3@leaderboard'
+  'ModelsBulkUserRankingResponseV3@go.leaderboard.mod':
+    id: 'ModelsBulkUserRankingResponseV3@go.leaderboard.mod'
     name: 'ModelsBulkUserRankingResponseV3'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserRankingResponseV3'
@@ -1943,9 +2025,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_bulk_user_ranking_response_v3.go'
 
-  'ModelsDailyConfig@leaderboard':
-    id: 'ModelsDailyConfig@leaderboard'
+  'ModelsDailyConfig@go.leaderboard.mod':
+    id: 'ModelsDailyConfig@go.leaderboard.mod'
     name: 'ModelsDailyConfig'
+    type: 'model'
     fields:
       'ResetTime':
         type: 'string'
@@ -1955,9 +2038,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_daily_config.go'
 
-  'ModelsDeleteBulkLeaderboardFailedResp@leaderboard':
-    id: 'ModelsDeleteBulkLeaderboardFailedResp@leaderboard'
+  'ModelsDeleteBulkLeaderboardFailedResp@go.leaderboard.mod':
+    id: 'ModelsDeleteBulkLeaderboardFailedResp@go.leaderboard.mod'
     name: 'ModelsDeleteBulkLeaderboardFailedResp'
+    type: 'model'
     fields:
       'Error':
         type: 'string'
@@ -1970,9 +2054,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_delete_bulk_leaderboard_failed_resp.go'
 
-  'ModelsDeleteBulkLeaderboardsReq@leaderboard':
-    id: 'ModelsDeleteBulkLeaderboardsReq@leaderboard'
+  'ModelsDeleteBulkLeaderboardsReq@go.leaderboard.mod':
+    id: 'ModelsDeleteBulkLeaderboardsReq@go.leaderboard.mod'
     name: 'ModelsDeleteBulkLeaderboardsReq'
+    type: 'model'
     fields:
       'LeaderboardCodes':
         type: '[]string'
@@ -1982,9 +2067,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_delete_bulk_leaderboards_req.go'
 
-  'ModelsDeleteBulkLeaderboardsResp@leaderboard':
-    id: 'ModelsDeleteBulkLeaderboardsResp@leaderboard'
+  'ModelsDeleteBulkLeaderboardsResp@go.leaderboard.mod':
+    id: 'ModelsDeleteBulkLeaderboardsResp@go.leaderboard.mod'
     name: 'ModelsDeleteBulkLeaderboardsResp'
+    type: 'model'
     fields:
       'Failed':
         type: '[]*ModelsDeleteBulkLeaderboardFailedResp'
@@ -1994,9 +2080,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_delete_bulk_leaderboards_resp.go'
 
-  'ModelsGetAllLeaderboardConfigsPublicResp@leaderboard':
-    id: 'ModelsGetAllLeaderboardConfigsPublicResp@leaderboard'
+  'ModelsGetAllLeaderboardConfigsPublicResp@go.leaderboard.mod':
+    id: 'ModelsGetAllLeaderboardConfigsPublicResp@go.leaderboard.mod'
     name: 'ModelsGetAllLeaderboardConfigsPublicResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetLeaderboardConfigPublicResp'
@@ -2009,9 +2096,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_leaderboard_configs_public_resp.go'
 
-  'ModelsGetAllLeaderboardConfigsPublicRespV3@leaderboard':
-    id: 'ModelsGetAllLeaderboardConfigsPublicRespV3@leaderboard'
+  'ModelsGetAllLeaderboardConfigsPublicRespV3@go.leaderboard.mod':
+    id: 'ModelsGetAllLeaderboardConfigsPublicRespV3@go.leaderboard.mod'
     name: 'ModelsGetAllLeaderboardConfigsPublicRespV3'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetLeaderboardConfigPublicRespV3'
@@ -2024,9 +2112,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_leaderboard_configs_public_resp_v3.go'
 
-  'ModelsGetAllLeaderboardConfigsResp@leaderboard':
-    id: 'ModelsGetAllLeaderboardConfigsResp@leaderboard'
+  'ModelsGetAllLeaderboardConfigsResp@go.leaderboard.mod':
+    id: 'ModelsGetAllLeaderboardConfigsResp@go.leaderboard.mod'
     name: 'ModelsGetAllLeaderboardConfigsResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetLeaderboardConfigResp'
@@ -2039,9 +2128,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_leaderboard_configs_resp.go'
 
-  'ModelsGetAllLeaderboardConfigsRespV3@leaderboard':
-    id: 'ModelsGetAllLeaderboardConfigsRespV3@leaderboard'
+  'ModelsGetAllLeaderboardConfigsRespV3@go.leaderboard.mod':
+    id: 'ModelsGetAllLeaderboardConfigsRespV3@go.leaderboard.mod'
     name: 'ModelsGetAllLeaderboardConfigsRespV3'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsGetLeaderboardConfigRespV3'
@@ -2054,9 +2144,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_leaderboard_configs_resp_v3.go'
 
-  'ModelsGetAllUserLeaderboardsResp@leaderboard':
-    id: 'ModelsGetAllUserLeaderboardsResp@leaderboard'
+  'ModelsGetAllUserLeaderboardsResp@go.leaderboard.mod':
+    id: 'ModelsGetAllUserLeaderboardsResp@go.leaderboard.mod'
     name: 'ModelsGetAllUserLeaderboardsResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserLeaderboardRanking'
@@ -2069,9 +2160,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_user_leaderboards_resp.go'
 
-  'ModelsGetAllUserLeaderboardsRespV3@leaderboard':
-    id: 'ModelsGetAllUserLeaderboardsRespV3@leaderboard'
+  'ModelsGetAllUserLeaderboardsRespV3@go.leaderboard.mod':
+    id: 'ModelsGetAllUserLeaderboardsRespV3@go.leaderboard.mod'
     name: 'ModelsGetAllUserLeaderboardsRespV3'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserLeaderboardRankingV3'
@@ -2084,9 +2176,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_all_user_leaderboards_resp_v3.go'
 
-  'ModelsGetHiddenUserResponse@leaderboard':
-    id: 'ModelsGetHiddenUserResponse@leaderboard'
+  'ModelsGetHiddenUserResponse@go.leaderboard.mod':
+    id: 'ModelsGetHiddenUserResponse@go.leaderboard.mod'
     name: 'ModelsGetHiddenUserResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]string'
@@ -2099,9 +2192,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_hidden_user_response.go'
 
-  'ModelsGetLeaderboardConfigPublicResp@leaderboard':
-    id: 'ModelsGetLeaderboardConfigPublicResp@leaderboard'
+  'ModelsGetLeaderboardConfigPublicResp@go.leaderboard.mod':
+    id: 'ModelsGetLeaderboardConfigPublicResp@go.leaderboard.mod'
     name: 'ModelsGetLeaderboardConfigPublicResp'
+    type: 'model'
     fields:
       'IconURL':
         type: 'string'
@@ -2120,9 +2214,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_leaderboard_config_public_resp.go'
 
-  'ModelsGetLeaderboardConfigPublicRespV3@leaderboard':
-    id: 'ModelsGetLeaderboardConfigPublicRespV3@leaderboard'
+  'ModelsGetLeaderboardConfigPublicRespV3@go.leaderboard.mod':
+    id: 'ModelsGetLeaderboardConfigPublicRespV3@go.leaderboard.mod'
     name: 'ModelsGetLeaderboardConfigPublicRespV3'
+    type: 'model'
     fields:
       'AllTime':
         type: 'bool'
@@ -2147,9 +2242,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_leaderboard_config_public_resp_v3.go'
 
-  'ModelsGetLeaderboardConfigResp@leaderboard':
-    id: 'ModelsGetLeaderboardConfigResp@leaderboard'
+  'ModelsGetLeaderboardConfigResp@go.leaderboard.mod':
+    id: 'ModelsGetLeaderboardConfigResp@go.leaderboard.mod'
     name: 'ModelsGetLeaderboardConfigResp'
+    type: 'model'
     fields:
       'Daily':
         type: '*ModelsDailyConfig'
@@ -2195,9 +2291,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_leaderboard_config_resp.go'
 
-  'ModelsGetLeaderboardConfigRespV3@leaderboard':
-    id: 'ModelsGetLeaderboardConfigRespV3@leaderboard'
+  'ModelsGetLeaderboardConfigRespV3@go.leaderboard.mod':
+    id: 'ModelsGetLeaderboardConfigRespV3@go.leaderboard.mod'
     name: 'ModelsGetLeaderboardConfigRespV3'
+    type: 'model'
     fields:
       'AllTime':
         type: 'bool'
@@ -2240,9 +2337,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_leaderboard_config_resp_v3.go'
 
-  'ModelsGetLeaderboardRankingResp@leaderboard':
-    id: 'ModelsGetLeaderboardRankingResp@leaderboard'
+  'ModelsGetLeaderboardRankingResp@go.leaderboard.mod':
+    id: 'ModelsGetLeaderboardRankingResp@go.leaderboard.mod'
     name: 'ModelsGetLeaderboardRankingResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*ModelsUserPoint'
@@ -2255,9 +2353,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_leaderboard_ranking_resp.go'
 
-  'ModelsGetUserVisibilityResponse@leaderboard':
-    id: 'ModelsGetUserVisibilityResponse@leaderboard'
+  'ModelsGetUserVisibilityResponse@go.leaderboard.mod':
+    id: 'ModelsGetUserVisibilityResponse@go.leaderboard.mod'
     name: 'ModelsGetUserVisibilityResponse'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -2273,9 +2372,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_get_user_visibility_response.go'
 
-  'ModelsLeaderboardConfigReq@leaderboard':
-    id: 'ModelsLeaderboardConfigReq@leaderboard'
+  'ModelsLeaderboardConfigReq@go.leaderboard.mod':
+    id: 'ModelsLeaderboardConfigReq@go.leaderboard.mod'
     name: 'ModelsLeaderboardConfigReq'
+    type: 'model'
     fields:
       'Daily':
         type: '*ModelsDailyConfig'
@@ -2312,9 +2412,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_leaderboard_config_req.go'
 
-  'ModelsLeaderboardConfigReqV3@leaderboard':
-    id: 'ModelsLeaderboardConfigReqV3@leaderboard'
+  'ModelsLeaderboardConfigReqV3@go.leaderboard.mod':
+    id: 'ModelsLeaderboardConfigReqV3@go.leaderboard.mod'
     name: 'ModelsLeaderboardConfigReqV3'
+    type: 'model'
     fields:
       'AllTime':
         type: 'bool'
@@ -2345,9 +2446,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_leaderboard_config_req_v3.go'
 
-  'ModelsMonthlyConfig@leaderboard':
-    id: 'ModelsMonthlyConfig@leaderboard'
+  'ModelsMonthlyConfig@go.leaderboard.mod':
+    id: 'ModelsMonthlyConfig@go.leaderboard.mod'
     name: 'ModelsMonthlyConfig'
+    type: 'model'
     fields:
       'ResetDate':
         type: 'int64'
@@ -2360,9 +2462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_monthly_config.go'
 
-  'ModelsPagination@leaderboard':
-    id: 'ModelsPagination@leaderboard'
+  'ModelsPagination@go.leaderboard.mod':
+    id: 'ModelsPagination@go.leaderboard.mod'
     name: 'ModelsPagination'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -2381,9 +2484,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_pagination.go'
 
-  'ModelsPaginationV3@leaderboard':
-    id: 'ModelsPaginationV3@leaderboard'
+  'ModelsPaginationV3@go.leaderboard.mod':
+    id: 'ModelsPaginationV3@go.leaderboard.mod'
     name: 'ModelsPaginationV3'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -2402,9 +2506,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_pagination_v3.go'
 
-  'ModelsSetUserVisibilityRequest@leaderboard':
-    id: 'ModelsSetUserVisibilityRequest@leaderboard'
+  'ModelsSetUserVisibilityRequest@go.leaderboard.mod':
+    id: 'ModelsSetUserVisibilityRequest@go.leaderboard.mod'
     name: 'ModelsSetUserVisibilityRequest'
+    type: 'model'
     fields:
       'Visibility':
         type: 'bool'
@@ -2414,9 +2519,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_set_user_visibility_request.go'
 
-  'ModelsUpdateLeaderboardConfigReq@leaderboard':
-    id: 'ModelsUpdateLeaderboardConfigReq@leaderboard'
+  'ModelsUpdateLeaderboardConfigReq@go.leaderboard.mod':
+    id: 'ModelsUpdateLeaderboardConfigReq@go.leaderboard.mod'
     name: 'ModelsUpdateLeaderboardConfigReq'
+    type: 'model'
     fields:
       'Daily':
         type: '*ModelsDailyConfig'
@@ -2450,9 +2556,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_update_leaderboard_config_req.go'
 
-  'ModelsUpdateLeaderboardConfigReqV3@leaderboard':
-    id: 'ModelsUpdateLeaderboardConfigReqV3@leaderboard'
+  'ModelsUpdateLeaderboardConfigReqV3@go.leaderboard.mod':
+    id: 'ModelsUpdateLeaderboardConfigReqV3@go.leaderboard.mod'
     name: 'ModelsUpdateLeaderboardConfigReqV3'
+    type: 'model'
     fields:
       'AllTime':
         type: 'bool'
@@ -2477,9 +2584,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_update_leaderboard_config_req_v3.go'
 
-  'ModelsUpdateUserPointAdminV1Request@leaderboard':
-    id: 'ModelsUpdateUserPointAdminV1Request@leaderboard'
+  'ModelsUpdateUserPointAdminV1Request@go.leaderboard.mod':
+    id: 'ModelsUpdateUserPointAdminV1Request@go.leaderboard.mod'
     name: 'ModelsUpdateUserPointAdminV1Request'
+    type: 'model'
     fields:
       'Inc':
         type: 'float64'
@@ -2492,9 +2600,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_update_user_point_admin_v1_request.go'
 
-  'ModelsUpdateUserPointAdminV1Response@leaderboard':
-    id: 'ModelsUpdateUserPointAdminV1Response@leaderboard'
+  'ModelsUpdateUserPointAdminV1Response@go.leaderboard.mod':
+    id: 'ModelsUpdateUserPointAdminV1Response@go.leaderboard.mod'
     name: 'ModelsUpdateUserPointAdminV1Response'
+    type: 'model'
     fields:
       'Point':
         type: 'float64'
@@ -2507,9 +2616,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_update_user_point_admin_v1_response.go'
 
-  'ModelsUserCycleRankingResponseDetail@leaderboard':
-    id: 'ModelsUserCycleRankingResponseDetail@leaderboard'
+  'ModelsUserCycleRankingResponseDetail@go.leaderboard.mod':
+    id: 'ModelsUserCycleRankingResponseDetail@go.leaderboard.mod'
     name: 'ModelsUserCycleRankingResponseDetail'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2531,9 +2641,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_cycle_ranking_response_detail.go'
 
-  'ModelsUserLeaderboardRanking@leaderboard':
-    id: 'ModelsUserLeaderboardRanking@leaderboard'
+  'ModelsUserLeaderboardRanking@go.leaderboard.mod':
+    id: 'ModelsUserLeaderboardRanking@go.leaderboard.mod'
     name: 'ModelsUserLeaderboardRanking'
+    type: 'model'
     fields:
       'AllTime':
         type: '*ModelsUserRankingResponseDetail'
@@ -2564,9 +2675,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_leaderboard_ranking.go'
 
-  'ModelsUserLeaderboardRankingV3@leaderboard':
-    id: 'ModelsUserLeaderboardRankingV3@leaderboard'
+  'ModelsUserLeaderboardRankingV3@go.leaderboard.mod':
+    id: 'ModelsUserLeaderboardRankingV3@go.leaderboard.mod'
     name: 'ModelsUserLeaderboardRankingV3'
+    type: 'model'
     fields:
       'AllTime':
         type: '*ModelsUserRankingResponseDetailV3'
@@ -2588,9 +2700,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_leaderboard_ranking_v3.go'
 
-  'ModelsUserPoint@leaderboard':
-    id: 'ModelsUserPoint@leaderboard'
+  'ModelsUserPoint@go.leaderboard.mod':
+    id: 'ModelsUserPoint@go.leaderboard.mod'
     name: 'ModelsUserPoint'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2609,9 +2722,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_point.go'
 
-  'ModelsUserRankingResponse@leaderboard':
-    id: 'ModelsUserRankingResponse@leaderboard'
+  'ModelsUserRankingResponse@go.leaderboard.mod':
+    id: 'ModelsUserRankingResponse@go.leaderboard.mod'
     name: 'ModelsUserRankingResponse'
+    type: 'model'
     fields:
       'AllTime':
         type: '*ModelsUserRankingResponseDetail'
@@ -2636,9 +2750,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_ranking_response.go'
 
-  'ModelsUserRankingResponseDetail@leaderboard':
-    id: 'ModelsUserRankingResponseDetail@leaderboard'
+  'ModelsUserRankingResponseDetail@go.leaderboard.mod':
+    id: 'ModelsUserRankingResponseDetail@go.leaderboard.mod'
     name: 'ModelsUserRankingResponseDetail'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2657,9 +2772,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_ranking_response_detail.go'
 
-  'ModelsUserRankingResponseDetailV3@leaderboard':
-    id: 'ModelsUserRankingResponseDetailV3@leaderboard'
+  'ModelsUserRankingResponseDetailV3@go.leaderboard.mod':
+    id: 'ModelsUserRankingResponseDetailV3@go.leaderboard.mod'
     name: 'ModelsUserRankingResponseDetailV3'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2678,9 +2794,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_ranking_response_detail_v3.go'
 
-  'ModelsUserRankingResponseV3@leaderboard':
-    id: 'ModelsUserRankingResponseV3@leaderboard'
+  'ModelsUserRankingResponseV3@go.leaderboard.mod':
+    id: 'ModelsUserRankingResponseV3@go.leaderboard.mod'
     name: 'ModelsUserRankingResponseV3'
+    type: 'model'
     fields:
       'AllTime':
         type: '*ModelsUserRankingResponseDetailV3'
@@ -2696,9 +2813,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_user_ranking_response_v3.go'
 
-  'ModelsWeeklyConfig@leaderboard':
-    id: 'ModelsWeeklyConfig@leaderboard'
+  'ModelsWeeklyConfig@go.leaderboard.mod':
+    id: 'ModelsWeeklyConfig@go.leaderboard.mod'
     name: 'ModelsWeeklyConfig'
+    type: 'model'
     fields:
       'ResetDay':
         type: 'int64'
@@ -2711,9 +2829,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/models_weekly_config.go'
 
-  'ResponseErrorResponse@leaderboard':
-    id: 'ResponseErrorResponse@leaderboard'
+  'ResponseErrorResponse@go.leaderboard.mod':
+    id: 'ResponseErrorResponse@go.leaderboard.mod'
     name: 'ResponseErrorResponse'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -2726,9 +2845,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/response_error_response.go'
 
-  'V2Entry@leaderboard':
-    id: 'V2Entry@leaderboard'
+  'V2Entry@go.leaderboard.mod':
+    id: 'V2Entry@go.leaderboard.mod'
     name: 'V2Entry'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2744,9 +2864,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/v2_entry.go'
 
-  'V2GetAllLeaderboardConfigsPublicResp@leaderboard':
-    id: 'V2GetAllLeaderboardConfigsPublicResp@leaderboard'
+  'V2GetAllLeaderboardConfigsPublicResp@go.leaderboard.mod':
+    id: 'V2GetAllLeaderboardConfigsPublicResp@go.leaderboard.mod'
     name: 'V2GetAllLeaderboardConfigsPublicResp'
+    type: 'model'
     fields:
       'Data':
         type: '[]*V2GetLeaderboardConfigPublicResp'
@@ -2759,9 +2880,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/v2_get_all_leaderboard_configs_public_resp.go'
 
-  'V2GetLeaderboardConfigPublicResp@leaderboard':
-    id: 'V2GetLeaderboardConfigPublicResp@leaderboard'
+  'V2GetLeaderboardConfigPublicResp@go.leaderboard.mod':
+    id: 'V2GetLeaderboardConfigPublicResp@go.leaderboard.mod'
     name: 'V2GetLeaderboardConfigPublicResp'
+    type: 'model'
     fields:
       'IconURL':
         type: 'string'
@@ -2780,9 +2902,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/v2_get_leaderboard_config_public_resp.go'
 
-  'V2GetPublicLeaderboardRankingResponse@leaderboard':
-    id: 'V2GetPublicLeaderboardRankingResponse@leaderboard'
+  'V2GetPublicLeaderboardRankingResponse@go.leaderboard.mod':
+    id: 'V2GetPublicLeaderboardRankingResponse@go.leaderboard.mod'
     name: 'V2GetPublicLeaderboardRankingResponse'
+    type: 'model'
     fields:
       'Data':
         type: '[]*V2Entry'
@@ -2795,9 +2918,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/leaderboard-sdk/pkg/leaderboardclientmodels/v2_get_public_leaderboard_ranking_response.go'
 
-  'V2PaginationV2@leaderboard':
-    id: 'V2PaginationV2@leaderboard'
+  'V2PaginationV2@go.leaderboard.mod':
+    id: 'V2PaginationV2@go.leaderboard.mod'
     name: 'V2PaginationV2'
+    type: 'model'
     fields:
       'First':
         type: 'string'
@@ -2818,15 +2942,16 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminAnonymizeUserLeaderboardAdminV1Short@leaderboard':
-    id: 'AdminAnonymizeUserLeaderboardAdminV1Short@leaderboard'
+  'AdminAnonymizeUserLeaderboardAdminV1Short@go.leaderboard.fun':
+    id: 'AdminAnonymizeUserLeaderboardAdminV1Short@go.leaderboard.fun'
     name: 'AdminAnonymizeUserLeaderboardAdminV1Short'
+    type: 'function'
     description: |-
       This API will delete specified user leaderboard
     struct: 'AnonymizationService'
-    parameters:
+    arguments:
       params:
         type: '*anonymization.AdminAnonymizeUserLeaderboardAdminV1Params'
         required: true
@@ -2852,13 +2977,14 @@ functions:
       - 'user'
       - 'v1'
 
-  'AdminGetArchivedLeaderboardRankingDataV1HandlerShort@leaderboard':
-    id: 'AdminGetArchivedLeaderboardRankingDataV1HandlerShort@leaderboard'
+  'AdminGetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun':
+    id: 'AdminGetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun'
     name: 'AdminGetArchivedLeaderboardRankingDataV1HandlerShort'
+    type: 'function'
     description: |-
       Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.AdminGetArchivedLeaderboardRankingDataV1HandlerParams'
         required: true
@@ -2886,13 +3012,14 @@ functions:
       - 'ranking'
       - 'v1'
 
-  'BulkGetUsersRankingPublicV3Short@leaderboard':
-    id: 'BulkGetUsersRankingPublicV3Short@leaderboard'
+  'BulkGetUsersRankingPublicV3Short@go.leaderboard.fun':
+    id: 'BulkGetUsersRankingPublicV3Short@go.leaderboard.fun'
     name: 'BulkGetUsersRankingPublicV3Short'
+    type: 'function'
     description: |-
       Bulk get users ranking in leaderboard, max allowed 20 userIDs at a time.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.BulkGetUsersRankingPublicV3Params'
         required: true
@@ -2920,14 +3047,15 @@ functions:
       - 'users'
       - 'v3'
 
-  'CreateArchivedLeaderboardRankingDataV1HandlerShort@leaderboard':
-    id: 'CreateArchivedLeaderboardRankingDataV1HandlerShort@leaderboard'
+  'CreateArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun':
+    id: 'CreateArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun'
     name: 'CreateArchivedLeaderboardRankingDataV1HandlerShort'
+    type: 'function'
     description: |-
       Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
       remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.CreateArchivedLeaderboardRankingDataV1HandlerParams'
         required: true
@@ -2954,9 +3082,10 @@ functions:
       - 'ranking'
       - 'v1'
 
-  'CreateLeaderboardConfigurationAdminV1Short@leaderboard':
-    id: 'CreateLeaderboardConfigurationAdminV1Short@leaderboard'
+  'CreateLeaderboardConfigurationAdminV1Short@go.leaderboard.fun':
+    id: 'CreateLeaderboardConfigurationAdminV1Short@go.leaderboard.fun'
     name: 'CreateLeaderboardConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       Fields :
 
@@ -2989,7 +3118,7 @@ functions:
 
         * Stat Code is related with statistic code in statistic service. (required).
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.CreateLeaderboardConfigurationAdminV1Params'
         required: true
@@ -3014,9 +3143,10 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'CreateLeaderboardConfigurationAdminV3Short@leaderboard':
-    id: 'CreateLeaderboardConfigurationAdminV3Short@leaderboard'
+  'CreateLeaderboardConfigurationAdminV3Short@go.leaderboard.fun':
+    id: 'CreateLeaderboardConfigurationAdminV3Short@go.leaderboard.fun'
     name: 'CreateLeaderboardConfigurationAdminV3Short'
+    type: 'function'
     description: |-
       Fields :
 
@@ -3046,7 +3176,7 @@ functions:
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.CreateLeaderboardConfigurationAdminV3Params'
         required: true
@@ -3071,9 +3201,10 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'CreateLeaderboardConfigurationPublicV1Short@leaderboard':
-    id: 'CreateLeaderboardConfigurationPublicV1Short@leaderboard'
+  'CreateLeaderboardConfigurationPublicV1Short@go.leaderboard.fun':
+    id: 'CreateLeaderboardConfigurationPublicV1Short@go.leaderboard.fun'
     name: 'CreateLeaderboardConfigurationPublicV1Short'
+    type: 'function'
     description: |-
       Public endpoint to create a new leaderboard.
 
@@ -3110,7 +3241,7 @@ functions:
 
         * Stat Code is related with statistic code in statistic service. (required).
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.CreateLeaderboardConfigurationPublicV1Params'
         required: true
@@ -3135,9 +3266,10 @@ functions:
       - 'public'
       - 'v1'
 
-  'DeleteAllUserRankingByCycleIDAdminV3Short@leaderboard':
-    id: 'DeleteAllUserRankingByCycleIDAdminV3Short@leaderboard'
+  'DeleteAllUserRankingByCycleIDAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteAllUserRankingByCycleIDAdminV3Short@go.leaderboard.fun'
     name: 'DeleteAllUserRankingByCycleIDAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint will delete user ranking by cycleId
 
@@ -3146,7 +3278,7 @@ functions:
 
       Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.DeleteAllUserRankingByCycleIDAdminV3Params'
         required: true
@@ -3177,13 +3309,14 @@ functions:
       - 'user'
       - 'v3'
 
-  'DeleteBulkLeaderboardConfigurationAdminV1Short@leaderboard':
-    id: 'DeleteBulkLeaderboardConfigurationAdminV1Short@leaderboard'
+  'DeleteBulkLeaderboardConfigurationAdminV1Short@go.leaderboard.fun':
+    id: 'DeleteBulkLeaderboardConfigurationAdminV1Short@go.leaderboard.fun'
     name: 'DeleteBulkLeaderboardConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint delete multiple leaderboards configuration in one request
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.DeleteBulkLeaderboardConfigurationAdminV1Params'
         required: true
@@ -3209,13 +3342,14 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'DeleteBulkLeaderboardConfigurationAdminV3Short@leaderboard':
-    id: 'DeleteBulkLeaderboardConfigurationAdminV3Short@leaderboard'
+  'DeleteBulkLeaderboardConfigurationAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteBulkLeaderboardConfigurationAdminV3Short@go.leaderboard.fun'
     name: 'DeleteBulkLeaderboardConfigurationAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint delete multiple leaderboards configuration in one request
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.DeleteBulkLeaderboardConfigurationAdminV3Params'
         required: true
@@ -3241,13 +3375,14 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'DeleteLeaderboardConfigurationAdminV1Short@leaderboard':
-    id: 'DeleteLeaderboardConfigurationAdminV1Short@leaderboard'
+  'DeleteLeaderboardConfigurationAdminV1Short@go.leaderboard.fun':
+    id: 'DeleteLeaderboardConfigurationAdminV1Short@go.leaderboard.fun'
     name: 'DeleteLeaderboardConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint delete a leaderboard configuration
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.DeleteLeaderboardConfigurationAdminV1Params'
         required: true
@@ -3272,13 +3407,14 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'DeleteLeaderboardConfigurationAdminV3Short@leaderboard':
-    id: 'DeleteLeaderboardConfigurationAdminV3Short@leaderboard'
+  'DeleteLeaderboardConfigurationAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteLeaderboardConfigurationAdminV3Short@go.leaderboard.fun'
     name: 'DeleteLeaderboardConfigurationAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint delete a leaderboard configuration
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.DeleteLeaderboardConfigurationAdminV3Params'
         required: true
@@ -3303,9 +3439,10 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'DeleteUserRankingAdminV1Short@leaderboard':
-    id: 'DeleteUserRankingAdminV1Short@leaderboard'
+  'DeleteUserRankingAdminV1Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingAdminV1Short@go.leaderboard.fun'
     name: 'DeleteUserRankingAdminV1Short'
+    type: 'function'
     description: |-
       Delete user ranking
 
@@ -3313,7 +3450,7 @@ functions:
       If leaderboard with given leaderboard code not found, it will return http status not found (404).
       If the leaderboard is found and no entry found in it, it will still return success (204)
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.DeleteUserRankingAdminV1Params'
         required: true
@@ -3340,9 +3477,10 @@ functions:
       - 'user'
       - 'v1'
 
-  'DeleteUserRankingAdminV3Short@leaderboard':
-    id: 'DeleteUserRankingAdminV3Short@leaderboard'
+  'DeleteUserRankingAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingAdminV3Short@go.leaderboard.fun'
     name: 'DeleteUserRankingAdminV3Short'
+    type: 'function'
     description: |-
       Delete user ranking
 
@@ -3350,7 +3488,7 @@ functions:
       If leaderboard with given leaderboard code not found, it will return http status not found (404).
       If the leaderboard is found and no entry found in it, it will still return success (204)
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.DeleteUserRankingAdminV3Params'
         required: true
@@ -3377,9 +3515,10 @@ functions:
       - 'user'
       - 'v3'
 
-  'DeleteUserRankingByCycleIDAdminV3Short@leaderboard':
-    id: 'DeleteUserRankingByCycleIDAdminV3Short@leaderboard'
+  'DeleteUserRankingByCycleIDAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingByCycleIDAdminV3Short@go.leaderboard.fun'
     name: 'DeleteUserRankingByCycleIDAdminV3Short'
+    type: 'function'
     description: |-
       Delete user ranking by cycle id
 
@@ -3387,7 +3526,7 @@ functions:
       If leaderboard with given leaderboard code not found, it will return http status not found (404).
       If the leaderboard is found and no entry found in it, it will still return success (204)
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.DeleteUserRankingByCycleIDAdminV3Params'
         required: true
@@ -3417,9 +3556,10 @@ functions:
       - 'user'
       - 'v3'
 
-  'DeleteUserRankingByLeaderboardCodeAdminV1Short@leaderboard':
-    id: 'DeleteUserRankingByLeaderboardCodeAdminV1Short@leaderboard'
+  'DeleteUserRankingByLeaderboardCodeAdminV1Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingByLeaderboardCodeAdminV1Short@go.leaderboard.fun'
     name: 'DeleteUserRankingByLeaderboardCodeAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint will delete user ranking by leaderboard code
 
@@ -3428,7 +3568,7 @@ functions:
 
       Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.DeleteUserRankingByLeaderboardCodeAdminV1Params'
         required: true
@@ -3457,9 +3597,10 @@ functions:
       - 'user'
       - 'v1'
 
-  'DeleteUserRankingByLeaderboardCodeAdminV3Short@leaderboard':
-    id: 'DeleteUserRankingByLeaderboardCodeAdminV3Short@leaderboard'
+  'DeleteUserRankingByLeaderboardCodeAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingByLeaderboardCodeAdminV3Short@go.leaderboard.fun'
     name: 'DeleteUserRankingByLeaderboardCodeAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint will delete user ranking by leaderboard code
 
@@ -3468,7 +3609,7 @@ functions:
 
       Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.DeleteUserRankingByLeaderboardCodeAdminV3Params'
         required: true
@@ -3497,9 +3638,10 @@ functions:
       - 'user'
       - 'v3'
 
-  'DeleteUserRankingPublicV1Short@leaderboard':
-    id: 'DeleteUserRankingPublicV1Short@leaderboard'
+  'DeleteUserRankingPublicV1Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingPublicV1Short@go.leaderboard.fun'
     name: 'DeleteUserRankingPublicV1Short'
+    type: 'function'
     description: |-
       Delete user ranking
 
@@ -3507,7 +3649,7 @@ functions:
       If leaderboard with given leaderboard code not found, it will return http status not found (404).
       If the leaderboard is found and no entry found in it, it will still return success (204)
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.DeleteUserRankingPublicV1Params'
         required: true
@@ -3534,15 +3676,16 @@ functions:
       - 'user'
       - 'v1'
 
-  'DeleteUserRankingsAdminV1Short@leaderboard':
-    id: 'DeleteUserRankingsAdminV1Short@leaderboard'
+  'DeleteUserRankingsAdminV1Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingsAdminV1Short@go.leaderboard.fun'
     name: 'DeleteUserRankingsAdminV1Short'
+    type: 'function'
     description: |-
       Delete user ranking across leaderboard
 
       Remove entry with provided userId from leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.DeleteUserRankingsAdminV1Params'
         required: true
@@ -3569,15 +3712,16 @@ functions:
       - 'user'
       - 'v1'
 
-  'DeleteUserRankingsAdminV3Short@leaderboard':
-    id: 'DeleteUserRankingsAdminV3Short@leaderboard'
+  'DeleteUserRankingsAdminV3Short@go.leaderboard.fun':
+    id: 'DeleteUserRankingsAdminV3Short@go.leaderboard.fun'
     name: 'DeleteUserRankingsAdminV3Short'
+    type: 'function'
     description: |-
       Delete user ranking across leaderboard
 
       Remove entry with provided userId from leaderboard.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.DeleteUserRankingsAdminV3Params'
         required: true
@@ -3604,13 +3748,14 @@ functions:
       - 'user'
       - 'v3'
 
-  'GetAllTimeLeaderboardRankingAdminV1Short@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingAdminV1Short@leaderboard'
+  'GetAllTimeLeaderboardRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetAllTimeLeaderboardRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetAllTimeLeaderboardRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get rankings in an all time leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetAllTimeLeaderboardRankingAdminV1Params'
         required: true
@@ -3638,13 +3783,14 @@ functions:
       - 'time'
       - 'v1'
 
-  'GetAllTimeLeaderboardRankingAdminV3Short@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingAdminV3Short@leaderboard'
+  'GetAllTimeLeaderboardRankingAdminV3Short@go.leaderboard.fun':
+    id: 'GetAllTimeLeaderboardRankingAdminV3Short@go.leaderboard.fun'
     name: 'GetAllTimeLeaderboardRankingAdminV3Short'
+    type: 'function'
     description: |-
       Get rankings in an all time leaderboard.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetAllTimeLeaderboardRankingAdminV3Params'
         required: true
@@ -3672,13 +3818,14 @@ functions:
       - 'time'
       - 'v3'
 
-  'GetAllTimeLeaderboardRankingPublicV1Short@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV1Short@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetAllTimeLeaderboardRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetAllTimeLeaderboardRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get rankings in an all time leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetAllTimeLeaderboardRankingPublicV1Params'
         required: true
@@ -3706,13 +3853,14 @@ functions:
       - 'time'
       - 'v1'
 
-  'GetAllTimeLeaderboardRankingPublicV2Short@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV2Short@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV2Short@go.leaderboard.fun':
+    id: 'GetAllTimeLeaderboardRankingPublicV2Short@go.leaderboard.fun'
     name: 'GetAllTimeLeaderboardRankingPublicV2Short'
+    type: 'function'
     description: |-
       Get rankings in an all time leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetAllTimeLeaderboardRankingPublicV2Params'
         required: true
@@ -3740,13 +3888,14 @@ functions:
       - 'time'
       - 'v2'
 
-  'GetAllTimeLeaderboardRankingPublicV3Short@leaderboard':
-    id: 'GetAllTimeLeaderboardRankingPublicV3Short@leaderboard'
+  'GetAllTimeLeaderboardRankingPublicV3Short@go.leaderboard.fun':
+    id: 'GetAllTimeLeaderboardRankingPublicV3Short@go.leaderboard.fun'
     name: 'GetAllTimeLeaderboardRankingPublicV3Short'
+    type: 'function'
     description: |-
       Get rankings in an all time leaderboard.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetAllTimeLeaderboardRankingPublicV3Params'
         required: true
@@ -3774,13 +3923,14 @@ functions:
       - 'time'
       - 'v3'
 
-  'GetArchivedLeaderboardRankingDataV1HandlerShort@leaderboard':
-    id: 'GetArchivedLeaderboardRankingDataV1HandlerShort@leaderboard'
+  'GetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun':
+    id: 'GetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun'
     name: 'GetArchivedLeaderboardRankingDataV1HandlerShort'
+    type: 'function'
     description: |-
       Get signed url in an all time leaderboard that archived. NOTE: This will be a bulk endpoint to get sign url
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetArchivedLeaderboardRankingDataV1HandlerParams'
         required: true
@@ -3807,13 +3957,14 @@ functions:
       - 'ranking'
       - 'v1'
 
-  'GetCurrentCycleLeaderboardRankingAdminV3Short@leaderboard':
-    id: 'GetCurrentCycleLeaderboardRankingAdminV3Short@leaderboard'
+  'GetCurrentCycleLeaderboardRankingAdminV3Short@go.leaderboard.fun':
+    id: 'GetCurrentCycleLeaderboardRankingAdminV3Short@go.leaderboard.fun'
     name: 'GetCurrentCycleLeaderboardRankingAdminV3Short'
+    type: 'function'
     description: |-
       Get rankings in cycle leaderboard.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetCurrentCycleLeaderboardRankingAdminV3Params'
         required: true
@@ -3841,13 +3992,14 @@ functions:
       - 'ranking'
       - 'v3'
 
-  'GetCurrentCycleLeaderboardRankingPublicV3Short@leaderboard':
-    id: 'GetCurrentCycleLeaderboardRankingPublicV3Short@leaderboard'
+  'GetCurrentCycleLeaderboardRankingPublicV3Short@go.leaderboard.fun':
+    id: 'GetCurrentCycleLeaderboardRankingPublicV3Short@go.leaderboard.fun'
     name: 'GetCurrentCycleLeaderboardRankingPublicV3Short'
+    type: 'function'
     description: |-
       Get rankings in cycle leaderboard.
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetCurrentCycleLeaderboardRankingPublicV3Params'
         required: true
@@ -3875,13 +4027,14 @@ functions:
       - 'ranking'
       - 'v3'
 
-  'GetCurrentMonthLeaderboardRankingAdminV1Short@leaderboard':
-    id: 'GetCurrentMonthLeaderboardRankingAdminV1Short@leaderboard'
+  'GetCurrentMonthLeaderboardRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetCurrentMonthLeaderboardRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetCurrentMonthLeaderboardRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get rankings in current month leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentMonthLeaderboardRankingAdminV1Params'
         required: true
@@ -3909,13 +4062,14 @@ functions:
       - 'ranking'
       - 'v1'
 
-  'GetCurrentMonthLeaderboardRankingPublicV1Short@leaderboard':
-    id: 'GetCurrentMonthLeaderboardRankingPublicV1Short@leaderboard'
+  'GetCurrentMonthLeaderboardRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetCurrentMonthLeaderboardRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetCurrentMonthLeaderboardRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get rankings in current month leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentMonthLeaderboardRankingPublicV1Params'
         required: true
@@ -3943,13 +4097,14 @@ functions:
       - 'ranking'
       - 'v1'
 
-  'GetCurrentSeasonLeaderboardRankingAdminV1Short@leaderboard':
-    id: 'GetCurrentSeasonLeaderboardRankingAdminV1Short@leaderboard'
+  'GetCurrentSeasonLeaderboardRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetCurrentSeasonLeaderboardRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetCurrentSeasonLeaderboardRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get rankings in current season leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentSeasonLeaderboardRankingAdminV1Params'
         required: true
@@ -3977,13 +4132,14 @@ functions:
       - 'season'
       - 'v1'
 
-  'GetCurrentSeasonLeaderboardRankingPublicV1Short@leaderboard':
-    id: 'GetCurrentSeasonLeaderboardRankingPublicV1Short@leaderboard'
+  'GetCurrentSeasonLeaderboardRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetCurrentSeasonLeaderboardRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetCurrentSeasonLeaderboardRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get rankings in current season leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentSeasonLeaderboardRankingPublicV1Params'
         required: true
@@ -4011,13 +4167,14 @@ functions:
       - 'season'
       - 'v1'
 
-  'GetCurrentWeekLeaderboardRankingAdminV1Short@leaderboard':
-    id: 'GetCurrentWeekLeaderboardRankingAdminV1Short@leaderboard'
+  'GetCurrentWeekLeaderboardRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetCurrentWeekLeaderboardRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetCurrentWeekLeaderboardRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get rankings in current week leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentWeekLeaderboardRankingAdminV1Params'
         required: true
@@ -4045,13 +4202,14 @@ functions:
       - 'v1'
       - 'week'
 
-  'GetCurrentWeekLeaderboardRankingPublicV1Short@leaderboard':
-    id: 'GetCurrentWeekLeaderboardRankingPublicV1Short@leaderboard'
+  'GetCurrentWeekLeaderboardRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetCurrentWeekLeaderboardRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetCurrentWeekLeaderboardRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get rankings in current week leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetCurrentWeekLeaderboardRankingPublicV1Params'
         required: true
@@ -4079,13 +4237,14 @@ functions:
       - 'v1'
       - 'week'
 
-  'GetHiddenUsersV2Short@leaderboard':
-    id: 'GetHiddenUsersV2Short@leaderboard'
+  'GetHiddenUsersV2Short@go.leaderboard.fun':
+    id: 'GetHiddenUsersV2Short@go.leaderboard.fun'
     name: 'GetHiddenUsersV2Short'
+    type: 'function'
     description: |-
       Return hidden users on a leaderboard
     struct: 'UserVisibilityService'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility.GetHiddenUsersV2Params'
         required: true
@@ -4111,13 +4270,14 @@ functions:
       - 'v2'
       - 'visibility'
 
-  'GetHiddenUsersV3Short@leaderboard':
-    id: 'GetHiddenUsersV3Short@leaderboard'
+  'GetHiddenUsersV3Short@go.leaderboard.fun':
+    id: 'GetHiddenUsersV3Short@go.leaderboard.fun'
     name: 'GetHiddenUsersV3Short'
+    type: 'function'
     description: |-
       Return hidden users on a leaderboard
     struct: 'UserVisibilityV3Service'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility_v3.GetHiddenUsersV3Params'
         required: true
@@ -4143,13 +4303,14 @@ functions:
       - 'v3'
       - 'visibility'
 
-  'GetLeaderboardConfigurationAdminV1Short@leaderboard':
-    id: 'GetLeaderboardConfigurationAdminV1Short@leaderboard'
+  'GetLeaderboardConfigurationAdminV1Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationAdminV1Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint returns a leaderboard configuration
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.GetLeaderboardConfigurationAdminV1Params'
         required: true
@@ -4174,13 +4335,14 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'GetLeaderboardConfigurationAdminV3Short@leaderboard':
-    id: 'GetLeaderboardConfigurationAdminV3Short@leaderboard'
+  'GetLeaderboardConfigurationAdminV3Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationAdminV3Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint returns a leaderboard configuration
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.GetLeaderboardConfigurationAdminV3Params'
         required: true
@@ -4205,13 +4367,14 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'GetLeaderboardConfigurationPublicV3Short@leaderboard':
-    id: 'GetLeaderboardConfigurationPublicV3Short@leaderboard'
+  'GetLeaderboardConfigurationPublicV3Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationPublicV3Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationPublicV3Short'
+    type: 'function'
     description: |-
       This endpoint returns a leaderboard configuration
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.GetLeaderboardConfigurationPublicV3Params'
         required: true
@@ -4236,13 +4399,14 @@ functions:
       - 'public'
       - 'v3'
 
-  'GetLeaderboardConfigurationsAdminV1Short@leaderboard':
-    id: 'GetLeaderboardConfigurationsAdminV1Short@leaderboard'
+  'GetLeaderboardConfigurationsAdminV1Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationsAdminV1Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationsAdminV1Short'
+    type: 'function'
     description: |-
       This endpoint return all leaderboard configurations
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.GetLeaderboardConfigurationsAdminV1Params'
         required: true
@@ -4268,13 +4432,14 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'GetLeaderboardConfigurationsAdminV3Short@leaderboard':
-    id: 'GetLeaderboardConfigurationsAdminV3Short@leaderboard'
+  'GetLeaderboardConfigurationsAdminV3Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationsAdminV3Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationsAdminV3Short'
+    type: 'function'
     description: |-
       This endpoint return all leaderboard configurations
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.GetLeaderboardConfigurationsAdminV3Params'
         required: true
@@ -4300,13 +4465,14 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'GetLeaderboardConfigurationsPublicV1Short@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV1Short@leaderboard'
+  'GetLeaderboardConfigurationsPublicV1Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationsPublicV1Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationsPublicV1Short'
+    type: 'function'
     description: |-
       This endpoint return all leaderboard configurations
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.GetLeaderboardConfigurationsPublicV1Params'
         required: true
@@ -4332,13 +4498,14 @@ functions:
       - 'public'
       - 'v1'
 
-  'GetLeaderboardConfigurationsPublicV2Short@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV2Short@leaderboard'
+  'GetLeaderboardConfigurationsPublicV2Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationsPublicV2Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationsPublicV2Short'
+    type: 'function'
     description: |-
       This endpoint return all leaderboard configurations
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.GetLeaderboardConfigurationsPublicV2Params'
         required: true
@@ -4364,13 +4531,14 @@ functions:
       - 'public'
       - 'v2'
 
-  'GetLeaderboardConfigurationsPublicV3Short@leaderboard':
-    id: 'GetLeaderboardConfigurationsPublicV3Short@leaderboard'
+  'GetLeaderboardConfigurationsPublicV3Short@go.leaderboard.fun':
+    id: 'GetLeaderboardConfigurationsPublicV3Short@go.leaderboard.fun'
     name: 'GetLeaderboardConfigurationsPublicV3Short'
+    type: 'function'
     description: |-
       This endpoint return all leaderboard configurations
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.GetLeaderboardConfigurationsPublicV3Params'
         required: true
@@ -4396,13 +4564,14 @@ functions:
       - 'public'
       - 'v3'
 
-  'GetTodayLeaderboardRankingAdminV1Short@leaderboard':
-    id: 'GetTodayLeaderboardRankingAdminV1Short@leaderboard'
+  'GetTodayLeaderboardRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetTodayLeaderboardRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetTodayLeaderboardRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get rankings in today leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetTodayLeaderboardRankingAdminV1Params'
         required: true
@@ -4429,13 +4598,14 @@ functions:
       - 'today'
       - 'v1'
 
-  'GetTodayLeaderboardRankingPublicV1Short@leaderboard':
-    id: 'GetTodayLeaderboardRankingPublicV1Short@leaderboard'
+  'GetTodayLeaderboardRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetTodayLeaderboardRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetTodayLeaderboardRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get rankings in today leaderboard.
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetTodayLeaderboardRankingPublicV1Params'
         required: true
@@ -4462,13 +4632,14 @@ functions:
       - 'today'
       - 'v1'
 
-  'GetUserLeaderboardRankingsAdminV1Short@leaderboard':
-    id: 'GetUserLeaderboardRankingsAdminV1Short@leaderboard'
+  'GetUserLeaderboardRankingsAdminV1Short@go.leaderboard.fun':
+    id: 'GetUserLeaderboardRankingsAdminV1Short@go.leaderboard.fun'
     name: 'GetUserLeaderboardRankingsAdminV1Short'
+    type: 'function'
     description: |-
       Get user leaderboard rankings
     struct: 'UserDataService'
-    parameters:
+    arguments:
       params:
         type: '*user_data.GetUserLeaderboardRankingsAdminV1Params'
         required: true
@@ -4495,13 +4666,14 @@ functions:
       - 'user'
       - 'v1'
 
-  'GetUserLeaderboardRankingsAdminV3Short@leaderboard':
-    id: 'GetUserLeaderboardRankingsAdminV3Short@leaderboard'
+  'GetUserLeaderboardRankingsAdminV3Short@go.leaderboard.fun':
+    id: 'GetUserLeaderboardRankingsAdminV3Short@go.leaderboard.fun'
     name: 'GetUserLeaderboardRankingsAdminV3Short'
+    type: 'function'
     description: |-
       Get user leaderboard rankings
     struct: 'UserDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*user_data_v3.GetUserLeaderboardRankingsAdminV3Params'
         required: true
@@ -4528,13 +4700,14 @@ functions:
       - 'user'
       - 'v3'
 
-  'GetUserRankingAdminV1Short@leaderboard':
-    id: 'GetUserRankingAdminV1Short@leaderboard'
+  'GetUserRankingAdminV1Short@go.leaderboard.fun':
+    id: 'GetUserRankingAdminV1Short@go.leaderboard.fun'
     name: 'GetUserRankingAdminV1Short'
+    type: 'function'
     description: |-
       Get user ranking in leaderboard
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetUserRankingAdminV1Params'
         required: true
@@ -4561,13 +4734,14 @@ functions:
       - 'user'
       - 'v1'
 
-  'GetUserRankingAdminV3Short@leaderboard':
-    id: 'GetUserRankingAdminV3Short@leaderboard'
+  'GetUserRankingAdminV3Short@go.leaderboard.fun':
+    id: 'GetUserRankingAdminV3Short@go.leaderboard.fun'
     name: 'GetUserRankingAdminV3Short'
+    type: 'function'
     description: |-
       Get user ranking in leaderboard
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetUserRankingAdminV3Params'
         required: true
@@ -4594,13 +4768,14 @@ functions:
       - 'user'
       - 'v3'
 
-  'GetUserRankingPublicV1Short@leaderboard':
-    id: 'GetUserRankingPublicV1Short@leaderboard'
+  'GetUserRankingPublicV1Short@go.leaderboard.fun':
+    id: 'GetUserRankingPublicV1Short@go.leaderboard.fun'
     name: 'GetUserRankingPublicV1Short'
+    type: 'function'
     description: |-
       Get user ranking in leaderboard
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.GetUserRankingPublicV1Params'
         required: true
@@ -4627,13 +4802,14 @@ functions:
       - 'user'
       - 'v1'
 
-  'GetUserRankingPublicV3Short@leaderboard':
-    id: 'GetUserRankingPublicV3Short@leaderboard'
+  'GetUserRankingPublicV3Short@go.leaderboard.fun':
+    id: 'GetUserRankingPublicV3Short@go.leaderboard.fun'
     name: 'GetUserRankingPublicV3Short'
+    type: 'function'
     description: |-
       Get user ranking in leaderboard
     struct: 'LeaderboardDataV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data_v3.GetUserRankingPublicV3Params'
         required: true
@@ -4660,13 +4836,14 @@ functions:
       - 'user'
       - 'v3'
 
-  'GetUserVisibilityStatusV2Short@leaderboard':
-    id: 'GetUserVisibilityStatusV2Short@leaderboard'
+  'GetUserVisibilityStatusV2Short@go.leaderboard.fun':
+    id: 'GetUserVisibilityStatusV2Short@go.leaderboard.fun'
     name: 'GetUserVisibilityStatusV2Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityService'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility.GetUserVisibilityStatusV2Params'
         required: true
@@ -4691,13 +4868,14 @@ functions:
       - 'v2'
       - 'visibility'
 
-  'GetUserVisibilityStatusV3Short@leaderboard':
-    id: 'GetUserVisibilityStatusV3Short@leaderboard'
+  'GetUserVisibilityStatusV3Short@go.leaderboard.fun':
+    id: 'GetUserVisibilityStatusV3Short@go.leaderboard.fun'
     name: 'GetUserVisibilityStatusV3Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityV3Service'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility_v3.GetUserVisibilityStatusV3Params'
         required: true
@@ -4722,9 +4900,10 @@ functions:
       - 'v3'
       - 'visibility'
 
-  'HardDeleteLeaderboardAdminV1Short@leaderboard':
-    id: 'HardDeleteLeaderboardAdminV1Short@leaderboard'
+  'HardDeleteLeaderboardAdminV1Short@go.leaderboard.fun':
+    id: 'HardDeleteLeaderboardAdminV1Short@go.leaderboard.fun'
     name: 'HardDeleteLeaderboardAdminV1Short'
+    type: 'function'
     description: |-
       [Test Facility Only]
 
@@ -4743,7 +4922,7 @@ functions:
 
       Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.HardDeleteLeaderboardAdminV1Params'
         required: true
@@ -4769,9 +4948,10 @@ functions:
       - 'leaderboard'
       - 'v1'
 
-  'HardDeleteLeaderboardAdminV3Short@leaderboard':
-    id: 'HardDeleteLeaderboardAdminV3Short@leaderboard'
+  'HardDeleteLeaderboardAdminV3Short@go.leaderboard.fun':
+    id: 'HardDeleteLeaderboardAdminV3Short@go.leaderboard.fun'
     name: 'HardDeleteLeaderboardAdminV3Short'
+    type: 'function'
     description: |-
       [Test Facility Only]
 
@@ -4790,7 +4970,7 @@ functions:
 
       Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.HardDeleteLeaderboardAdminV3Params'
         required: true
@@ -4816,13 +4996,14 @@ functions:
       - 'leaderboard'
       - 'v3'
 
-  'SetUserLeaderboardVisibilityStatusV2Short@leaderboard':
-    id: 'SetUserLeaderboardVisibilityStatusV2Short@leaderboard'
+  'SetUserLeaderboardVisibilityStatusV2Short@go.leaderboard.fun':
+    id: 'SetUserLeaderboardVisibilityStatusV2Short@go.leaderboard.fun'
     name: 'SetUserLeaderboardVisibilityStatusV2Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityService'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility.SetUserLeaderboardVisibilityStatusV2Params'
         required: true
@@ -4848,13 +5029,14 @@ functions:
       - 'v2'
       - 'visibility'
 
-  'SetUserLeaderboardVisibilityV3Short@leaderboard':
-    id: 'SetUserLeaderboardVisibilityV3Short@leaderboard'
+  'SetUserLeaderboardVisibilityV3Short@go.leaderboard.fun':
+    id: 'SetUserLeaderboardVisibilityV3Short@go.leaderboard.fun'
     name: 'SetUserLeaderboardVisibilityV3Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityV3Service'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility_v3.SetUserLeaderboardVisibilityV3Params'
         required: true
@@ -4879,13 +5061,14 @@ functions:
       - 'v3'
       - 'visibility'
 
-  'SetUserVisibilityStatusV2Short@leaderboard':
-    id: 'SetUserVisibilityStatusV2Short@leaderboard'
+  'SetUserVisibilityStatusV2Short@go.leaderboard.fun':
+    id: 'SetUserVisibilityStatusV2Short@go.leaderboard.fun'
     name: 'SetUserVisibilityStatusV2Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityService'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility.SetUserVisibilityStatusV2Params'
         required: true
@@ -4910,13 +5093,14 @@ functions:
       - 'v2'
       - 'visibility'
 
-  'SetUserVisibilityV3Short@leaderboard':
-    id: 'SetUserVisibilityV3Short@leaderboard'
+  'SetUserVisibilityV3Short@go.leaderboard.fun':
+    id: 'SetUserVisibilityV3Short@go.leaderboard.fun'
     name: 'SetUserVisibilityV3Short'
+    type: 'function'
     description: |-
       User with false visibility status will have hidden attribute set to true on it's leaderboard entry
     struct: 'UserVisibilityV3Service'
-    parameters:
+    arguments:
       params:
         type: '*user_visibility_v3.SetUserVisibilityV3Params'
         required: true
@@ -4940,9 +5124,10 @@ functions:
       - 'v3'
       - 'visibility'
 
-  'UpdateLeaderboardConfigurationAdminV1Short@leaderboard':
-    id: 'UpdateLeaderboardConfigurationAdminV1Short@leaderboard'
+  'UpdateLeaderboardConfigurationAdminV1Short@go.leaderboard.fun':
+    id: 'UpdateLeaderboardConfigurationAdminV1Short@go.leaderboard.fun'
     name: 'UpdateLeaderboardConfigurationAdminV1Short'
+    type: 'function'
     description: |-
       Fields :
 
@@ -4971,7 +5156,7 @@ functions:
 
         * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
     struct: 'LeaderboardConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration.UpdateLeaderboardConfigurationAdminV1Params'
         required: true
@@ -4996,9 +5181,10 @@ functions:
       - 'update'
       - 'v1'
 
-  'UpdateLeaderboardConfigurationAdminV3Short@leaderboard':
-    id: 'UpdateLeaderboardConfigurationAdminV3Short@leaderboard'
+  'UpdateLeaderboardConfigurationAdminV3Short@go.leaderboard.fun':
+    id: 'UpdateLeaderboardConfigurationAdminV3Short@go.leaderboard.fun'
     name: 'UpdateLeaderboardConfigurationAdminV3Short'
+    type: 'function'
     description: |-
       Fields :
 
@@ -5028,7 +5214,7 @@ functions:
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
     struct: 'LeaderboardConfigurationV3Service'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_configuration_v3.UpdateLeaderboardConfigurationAdminV3Params'
         required: true
@@ -5053,9 +5239,10 @@ functions:
       - 'update'
       - 'v3'
 
-  'UpdateUserPointAdminV1Short@leaderboard':
-    id: 'UpdateUserPointAdminV1Short@leaderboard'
+  'UpdateUserPointAdminV1Short@go.leaderboard.fun':
+    id: 'UpdateUserPointAdminV1Short@go.leaderboard.fun'
     name: 'UpdateUserPointAdminV1Short'
+    type: 'function'
     description: |-
       Update user point in a leaderboard. This endpoint uses for test utility only.
 
@@ -5071,7 +5258,7 @@ functions:
 
         * Returns: user ranking
     struct: 'LeaderboardDataService'
-    parameters:
+    arguments:
       params:
         type: '*leaderboard_data.UpdateUserPointAdminV1Params'
         required: true
@@ -5097,3 +5284,5 @@ functions:
       - 'update'
       - 'user'
       - 'v1'
+
+  # endregion functions

@@ -1,10 +1,16 @@
-structs:
-  'JusticeSocialService@social':
-    id: 'JusticeSocialService@social'
-    name: 'JusticeSocialService'
+symbols:
+  'NewSocialClient@go.social.fun':
+    id: 'NewSocialClient@go.social.fun'
+    name: 'NewSocialClient'
+    type: 'function'
+    arguments:
+      configRepository:
+        type: 'repository.ConfigRepository'
+    return_type: '*socialclient.JusticeSocialService'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-modular-sdk/social-sdk/pkg/socialclient'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/justice_social_service_client.go'
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/factory/socialclientfactory.go'
@@ -13,9 +19,10 @@ structs:
 
   # region wrappers
 
-  'GameProfileService@social':
-    id: 'GameProfileService@social'
+  'GameProfileService@go.social.mod':
+    id: 'GameProfileService@go.social.mod'
     name: 'GameProfileService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -37,9 +44,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'GlobalStatisticService@social':
-    id: 'GlobalStatisticService@social'
+  'GlobalStatisticService@go.social.mod':
+    id: 'GlobalStatisticService@go.social.mod'
     name: 'GlobalStatisticService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -61,9 +69,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'SlotService@social':
-    id: 'SlotService@social'
+  'SlotService@go.social.mod':
+    id: 'SlotService@go.social.mod'
     name: 'SlotService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -85,9 +94,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'SlotConfigService@social':
-    id: 'SlotConfigService@social'
+  'SlotConfigService@go.social.mod':
+    id: 'SlotConfigService@go.social.mod'
     name: 'SlotConfigService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -109,9 +119,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'StatConfigurationService@social':
-    id: 'StatConfigurationService@social'
+  'StatConfigurationService@go.social.mod':
+    id: 'StatConfigurationService@go.social.mod'
     name: 'StatConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -133,9 +144,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'StatCycleConfigurationService@social':
-    id: 'StatCycleConfigurationService@social'
+  'StatCycleConfigurationService@go.social.mod':
+    id: 'StatCycleConfigurationService@go.social.mod'
     name: 'StatCycleConfigurationService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -157,9 +169,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserStatisticService@social':
-    id: 'UserStatisticService@social'
+  'UserStatisticService@go.social.mod':
+    id: 'UserStatisticService@go.social.mod'
     name: 'UserStatisticService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -181,9 +194,10 @@ structs:
           TokenRepository:  tokenRepo,
       }
 
-  'UserStatisticCycleService@social':
-    id: 'UserStatisticCycleService@social'
+  'UserStatisticCycleService@go.social.mod':
+    id: 'UserStatisticCycleService@go.social.mod'
     name: 'UserStatisticCycleService'
+    type: 'model'
     fields:
       Client:
         type: '*socialclient.JusticeSocialService'
@@ -209,9 +223,10 @@ structs:
 
   # region params
 
-  'AdminListUsersStatItemsParams@social':
-    id: 'AdminListUsersStatItemsParams@social'
+  'AdminListUsersStatItemsParams@go.social.mod':
+    id: 'AdminListUsersStatItemsParams@go.social.mod'
     name: 'AdminListUsersStatItemsParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -243,9 +258,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/admin_list_users_stat_items_parameters.go'
 
-  'BulkAddStatsParams@social':
-    id: 'BulkAddStatsParams@social'
+  'BulkAddStatsParams@go.social.mod':
+    id: 'BulkAddStatsParams@go.social.mod'
     name: 'BulkAddStatsParams'
+    type: 'model'
     fields:
       'Body':
         type: '*BulkCycleStatsAdd'
@@ -265,9 +281,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/bulk_add_stats_parameters.go'
 
-  'BulkCreateUserStatItemsParams@social':
-    id: 'BulkCreateUserStatItemsParams@social'
+  'BulkCreateUserStatItemsParams@go.social.mod':
+    id: 'BulkCreateUserStatItemsParams@go.social.mod'
     name: 'BulkCreateUserStatItemsParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemCreate'
@@ -287,9 +304,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_create_user_stat_items_parameters.go'
 
-  'BulkFetchOrDefaultStatItemsParams@social':
-    id: 'BulkFetchOrDefaultStatItemsParams@social'
+  'BulkFetchOrDefaultStatItemsParams@go.social.mod':
+    id: 'BulkFetchOrDefaultStatItemsParams@go.social.mod'
     name: 'BulkFetchOrDefaultStatItemsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -311,9 +329,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_fetch_or_default_stat_items_parameters.go'
 
-  'BulkFetchOrDefaultStatItems1Params@social':
-    id: 'BulkFetchOrDefaultStatItems1Params@social'
+  'BulkFetchOrDefaultStatItems1Params@go.social.mod':
+    id: 'BulkFetchOrDefaultStatItems1Params@go.social.mod'
     name: 'BulkFetchOrDefaultStatItems1Params'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -340,9 +359,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_fetch_or_default_stat_items_1_parameters.go'
 
-  'BulkFetchStatItemsParams@social':
-    id: 'BulkFetchStatItemsParams@social'
+  'BulkFetchStatItemsParams@go.social.mod':
+    id: 'BulkFetchStatItemsParams@go.social.mod'
     name: 'BulkFetchStatItemsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -364,9 +384,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_fetch_stat_items_parameters.go'
 
-  'BulkFetchStatItems1Params@social':
-    id: 'BulkFetchStatItems1Params@social'
+  'BulkFetchStatItems1Params@go.social.mod':
+    id: 'BulkFetchStatItems1Params@go.social.mod'
     name: 'BulkFetchStatItems1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -388,9 +409,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_fetch_stat_items_1_parameters.go'
 
-  'BulkGetOrDefaultByUserIDParams@social':
-    id: 'BulkGetOrDefaultByUserIDParams@social'
+  'BulkGetOrDefaultByUserIDParams@go.social.mod':
+    id: 'BulkGetOrDefaultByUserIDParams@go.social.mod'
     name: 'BulkGetOrDefaultByUserIDParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -415,9 +437,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_get_or_default_by_user_id_parameters.go'
 
-  'BulkGetStatCycleParams@social':
-    id: 'BulkGetStatCycleParams@social'
+  'BulkGetStatCycleParams@go.social.mod':
+    id: 'BulkGetStatCycleParams@go.social.mod'
     name: 'BulkGetStatCycleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*BulkStatCycleRequest'
@@ -432,9 +455,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/bulk_get_stat_cycle_parameters.go'
 
-  'BulkGetStatCycle1Params@social':
-    id: 'BulkGetStatCycle1Params@social'
+  'BulkGetStatCycle1Params@go.social.mod':
+    id: 'BulkGetStatCycle1Params@go.social.mod'
     name: 'BulkGetStatCycle1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*BulkStatCycleRequest'
@@ -449,9 +473,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/bulk_get_stat_cycle_1_parameters.go'
 
-  'BulkIncUserStatItemParams@social':
-    id: 'BulkIncUserStatItemParams@social'
+  'BulkIncUserStatItemParams@go.social.mod':
+    id: 'BulkIncUserStatItemParams@go.social.mod'
     name: 'BulkIncUserStatItemParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemInc'
@@ -466,9 +491,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_inc_user_stat_item_parameters.go'
 
-  'BulkIncUserStatItem1Params@social':
-    id: 'BulkIncUserStatItem1Params@social'
+  'BulkIncUserStatItem1Params@go.social.mod':
+    id: 'BulkIncUserStatItem1Params@go.social.mod'
     name: 'BulkIncUserStatItem1Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemInc'
@@ -488,9 +514,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_inc_user_stat_item_1_parameters.go'
 
-  'BulkIncUserStatItemValueParams@social':
-    id: 'BulkIncUserStatItemValueParams@social'
+  'BulkIncUserStatItemValueParams@go.social.mod':
+    id: 'BulkIncUserStatItemValueParams@go.social.mod'
     name: 'BulkIncUserStatItemValueParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemInc'
@@ -505,9 +532,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_inc_user_stat_item_value_parameters.go'
 
-  'BulkIncUserStatItemValue1Params@social':
-    id: 'BulkIncUserStatItemValue1Params@social'
+  'BulkIncUserStatItemValue1Params@go.social.mod':
+    id: 'BulkIncUserStatItemValue1Params@go.social.mod'
     name: 'BulkIncUserStatItemValue1Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemInc'
@@ -527,9 +555,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_inc_user_stat_item_value_1_parameters.go'
 
-  'BulkIncUserStatItemValue2Params@social':
-    id: 'BulkIncUserStatItemValue2Params@social'
+  'BulkIncUserStatItemValue2Params@go.social.mod':
+    id: 'BulkIncUserStatItemValue2Params@go.social.mod'
     name: 'BulkIncUserStatItemValue2Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemInc'
@@ -549,9 +578,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_inc_user_stat_item_value_2_parameters.go'
 
-  'BulkResetUserStatItemParams@social':
-    id: 'BulkResetUserStatItemParams@social'
+  'BulkResetUserStatItemParams@go.social.mod':
+    id: 'BulkResetUserStatItemParams@go.social.mod'
     name: 'BulkResetUserStatItemParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemReset'
@@ -566,9 +596,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_reset_user_stat_item_parameters.go'
 
-  'BulkResetUserStatItem1Params@social':
-    id: 'BulkResetUserStatItem1Params@social'
+  'BulkResetUserStatItem1Params@go.social.mod':
+    id: 'BulkResetUserStatItem1Params@go.social.mod'
     name: 'BulkResetUserStatItem1Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemReset'
@@ -588,9 +619,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_reset_user_stat_item_1_parameters.go'
 
-  'BulkResetUserStatItem2Params@social':
-    id: 'BulkResetUserStatItem2Params@social'
+  'BulkResetUserStatItem2Params@go.social.mod':
+    id: 'BulkResetUserStatItem2Params@go.social.mod'
     name: 'BulkResetUserStatItem2Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemReset'
@@ -605,9 +637,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_reset_user_stat_item_2_parameters.go'
 
-  'BulkResetUserStatItem3Params@social':
-    id: 'BulkResetUserStatItem3Params@social'
+  'BulkResetUserStatItem3Params@go.social.mod':
+    id: 'BulkResetUserStatItem3Params@go.social.mod'
     name: 'BulkResetUserStatItem3Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemReset'
@@ -627,9 +660,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_reset_user_stat_item_3_parameters.go'
 
-  'BulkResetUserStatItemValuesParams@social':
-    id: 'BulkResetUserStatItemValuesParams@social'
+  'BulkResetUserStatItemValuesParams@go.social.mod':
+    id: 'BulkResetUserStatItemValuesParams@go.social.mod'
     name: 'BulkResetUserStatItemValuesParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -654,9 +688,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_reset_user_stat_item_values_parameters.go'
 
-  'BulkUpdateUserStatItemParams@social':
-    id: 'BulkUpdateUserStatItemParams@social'
+  'BulkUpdateUserStatItemParams@go.social.mod':
+    id: 'BulkUpdateUserStatItemParams@go.social.mod'
     name: 'BulkUpdateUserStatItemParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -681,9 +716,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_update_user_stat_item_parameters.go'
 
-  'BulkUpdateUserStatItem1Params@social':
-    id: 'BulkUpdateUserStatItem1Params@social'
+  'BulkUpdateUserStatItem1Params@go.social.mod':
+    id: 'BulkUpdateUserStatItem1Params@go.social.mod'
     name: 'BulkUpdateUserStatItem1Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemUpdate'
@@ -698,9 +734,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_update_user_stat_item_1_parameters.go'
 
-  'BulkUpdateUserStatItem2Params@social':
-    id: 'BulkUpdateUserStatItem2Params@social'
+  'BulkUpdateUserStatItem2Params@go.social.mod':
+    id: 'BulkUpdateUserStatItem2Params@go.social.mod'
     name: 'BulkUpdateUserStatItem2Params'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -725,9 +762,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_update_user_stat_item_2_parameters.go'
 
-  'BulkUpdateUserStatItemV2Params@social':
-    id: 'BulkUpdateUserStatItemV2Params@social'
+  'BulkUpdateUserStatItemV2Params@go.social.mod':
+    id: 'BulkUpdateUserStatItemV2Params@go.social.mod'
     name: 'BulkUpdateUserStatItemV2Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemUpdate'
@@ -742,9 +780,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/bulk_update_user_stat_item_v2_parameters.go'
 
-  'CreateStatParams@social':
-    id: 'CreateStatParams@social'
+  'CreateStatParams@go.social.mod':
+    id: 'CreateStatParams@go.social.mod'
     name: 'CreateStatParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatCreate'
@@ -759,9 +798,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/create_stat_parameters.go'
 
-  'CreateStat1Params@social':
-    id: 'CreateStat1Params@social'
+  'CreateStat1Params@go.social.mod':
+    id: 'CreateStat1Params@go.social.mod'
     name: 'CreateStat1Params'
+    type: 'model'
     fields:
       'Body':
         type: '*StatCreate'
@@ -776,9 +816,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/create_stat_1_parameters.go'
 
-  'CreateStatCycleParams@social':
-    id: 'CreateStatCycleParams@social'
+  'CreateStatCycleParams@go.social.mod':
+    id: 'CreateStatCycleParams@go.social.mod'
     name: 'CreateStatCycleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatCycleCreate'
@@ -793,9 +834,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/create_stat_cycle_parameters.go'
 
-  'CreateUserStatItemParams@social':
-    id: 'CreateUserStatItemParams@social'
+  'CreateUserStatItemParams@go.social.mod':
+    id: 'CreateUserStatItemParams@go.social.mod'
     name: 'CreateUserStatItemParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -817,9 +859,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/create_user_stat_item_parameters.go'
 
-  'DeleteNamespaceSlotConfigParams@social':
-    id: 'DeleteNamespaceSlotConfigParams@social'
+  'DeleteNamespaceSlotConfigParams@go.social.mod':
+    id: 'DeleteNamespaceSlotConfigParams@go.social.mod'
     name: 'DeleteNamespaceSlotConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -831,9 +874,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/delete_namespace_slot_config_parameters.go'
 
-  'DeleteStatParams@social':
-    id: 'DeleteStatParams@social'
+  'DeleteStatParams@go.social.mod':
+    id: 'DeleteStatParams@go.social.mod'
     name: 'DeleteStatParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -850,9 +894,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/delete_stat_parameters.go'
 
-  'DeleteStatCycleParams@social':
-    id: 'DeleteStatCycleParams@social'
+  'DeleteStatCycleParams@go.social.mod':
+    id: 'DeleteStatCycleParams@go.social.mod'
     name: 'DeleteStatCycleParams'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -869,9 +914,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/delete_stat_cycle_parameters.go'
 
-  'DeleteTiedStatParams@social':
-    id: 'DeleteTiedStatParams@social'
+  'DeleteTiedStatParams@go.social.mod':
+    id: 'DeleteTiedStatParams@go.social.mod'
     name: 'DeleteTiedStatParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -888,9 +934,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/delete_tied_stat_parameters.go'
 
-  'DeleteUserSlotConfigParams@social':
-    id: 'DeleteUserSlotConfigParams@social'
+  'DeleteUserSlotConfigParams@go.social.mod':
+    id: 'DeleteUserSlotConfigParams@go.social.mod'
     name: 'DeleteUserSlotConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -907,9 +954,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/delete_user_slot_config_parameters.go'
 
-  'DeleteUserStatItemsParams@social':
-    id: 'DeleteUserStatItemsParams@social'
+  'DeleteUserStatItemsParams@go.social.mod':
+    id: 'DeleteUserStatItemsParams@go.social.mod'
     name: 'DeleteUserStatItemsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -931,9 +979,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/delete_user_stat_items_parameters.go'
 
-  'DeleteUserStatItems1Params@social':
-    id: 'DeleteUserStatItems1Params@social'
+  'DeleteUserStatItems1Params@go.social.mod':
+    id: 'DeleteUserStatItems1Params@go.social.mod'
     name: 'DeleteUserStatItems1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -955,9 +1004,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/delete_user_stat_items_1_parameters.go'
 
-  'DeleteUserStatItems2Params@social':
-    id: 'DeleteUserStatItems2Params@social'
+  'DeleteUserStatItems2Params@go.social.mod':
+    id: 'DeleteUserStatItems2Params@go.social.mod'
     name: 'DeleteUserStatItems2Params'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -984,9 +1034,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/delete_user_stat_items_2_parameters.go'
 
-  'ExportStatCycleParams@social':
-    id: 'ExportStatCycleParams@social'
+  'ExportStatCycleParams@go.social.mod':
+    id: 'ExportStatCycleParams@go.social.mod'
     name: 'ExportStatCycleParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -998,9 +1049,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/export_stat_cycle_parameters.go'
 
-  'ExportStatsParams@social':
-    id: 'ExportStatsParams@social'
+  'ExportStatsParams@go.social.mod':
+    id: 'ExportStatsParams@go.social.mod'
     name: 'ExportStatsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1012,9 +1064,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/export_stats_parameters.go'
 
-  'GetGlobalStatItemByStatCodeParams@social':
-    id: 'GetGlobalStatItemByStatCodeParams@social'
+  'GetGlobalStatItemByStatCodeParams@go.social.mod':
+    id: 'GetGlobalStatItemByStatCodeParams@go.social.mod'
     name: 'GetGlobalStatItemByStatCodeParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1031,9 +1084,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/global_statistic/get_global_stat_item_by_stat_code_parameters.go'
 
-  'GetGlobalStatItemByStatCode1Params@social':
-    id: 'GetGlobalStatItemByStatCode1Params@social'
+  'GetGlobalStatItemByStatCode1Params@go.social.mod':
+    id: 'GetGlobalStatItemByStatCode1Params@go.social.mod'
     name: 'GetGlobalStatItemByStatCode1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1050,9 +1104,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/global_statistic/get_global_stat_item_by_stat_code_1_parameters.go'
 
-  'GetGlobalStatItemsParams@social':
-    id: 'GetGlobalStatItemsParams@social'
+  'GetGlobalStatItemsParams@go.social.mod':
+    id: 'GetGlobalStatItemsParams@go.social.mod'
     name: 'GetGlobalStatItemsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -1075,9 +1130,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/global_statistic/get_global_stat_items_parameters.go'
 
-  'GetGlobalStatItems1Params@social':
-    id: 'GetGlobalStatItems1Params@social'
+  'GetGlobalStatItems1Params@go.social.mod':
+    id: 'GetGlobalStatItems1Params@go.social.mod'
     name: 'GetGlobalStatItems1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -1100,9 +1156,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/global_statistic/get_global_stat_items_1_parameters.go'
 
-  'GetNamespaceSlotConfigParams@social':
-    id: 'GetNamespaceSlotConfigParams@social'
+  'GetNamespaceSlotConfigParams@go.social.mod':
+    id: 'GetNamespaceSlotConfigParams@go.social.mod'
     name: 'GetNamespaceSlotConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1114,9 +1171,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/get_namespace_slot_config_parameters.go'
 
-  'GetProfileParams@social':
-    id: 'GetProfileParams@social'
+  'GetProfileParams@go.social.mod':
+    id: 'GetProfileParams@go.social.mod'
     name: 'GetProfileParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1138,9 +1196,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/get_profile_parameters.go'
 
-  'GetSlotDataParams@social':
-    id: 'GetSlotDataParams@social'
+  'GetSlotDataParams@go.social.mod':
+    id: 'GetSlotDataParams@go.social.mod'
     name: 'GetSlotDataParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1162,9 +1221,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/get_slot_data_parameters.go'
 
-  'GetStatParams@social':
-    id: 'GetStatParams@social'
+  'GetStatParams@go.social.mod':
+    id: 'GetStatParams@go.social.mod'
     name: 'GetStatParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1181,9 +1241,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/get_stat_parameters.go'
 
-  'GetStatCycleParams@social':
-    id: 'GetStatCycleParams@social'
+  'GetStatCycleParams@go.social.mod':
+    id: 'GetStatCycleParams@go.social.mod'
     name: 'GetStatCycleParams'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -1200,9 +1261,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/get_stat_cycle_parameters.go'
 
-  'GetStatCycle1Params@social':
-    id: 'GetStatCycle1Params@social'
+  'GetStatCycle1Params@go.social.mod':
+    id: 'GetStatCycle1Params@go.social.mod'
     name: 'GetStatCycle1Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -1219,9 +1281,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/get_stat_cycle_1_parameters.go'
 
-  'GetStatCyclesParams@social':
-    id: 'GetStatCyclesParams@social'
+  'GetStatCyclesParams@go.social.mod':
+    id: 'GetStatCyclesParams@go.social.mod'
     name: 'GetStatCyclesParams'
+    type: 'model'
     fields:
       'CycleType':
         type: 'string'
@@ -1255,9 +1318,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/get_stat_cycles_parameters.go'
 
-  'GetStatCycles1Params@social':
-    id: 'GetStatCycles1Params@social'
+  'GetStatCycles1Params@go.social.mod':
+    id: 'GetStatCycles1Params@go.social.mod'
     name: 'GetStatCycles1Params'
+    type: 'model'
     fields:
       'CycleType':
         type: 'string'
@@ -1291,9 +1355,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/get_stat_cycles_1_parameters.go'
 
-  'GetStatItemsParams@social':
-    id: 'GetStatItemsParams@social'
+  'GetStatItemsParams@go.social.mod':
+    id: 'GetStatItemsParams@go.social.mod'
     name: 'GetStatItemsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -1321,9 +1386,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/get_stat_items_parameters.go'
 
-  'GetStatsParams@social':
-    id: 'GetStatsParams@social'
+  'GetStatsParams@go.social.mod':
+    id: 'GetStatsParams@go.social.mod'
     name: 'GetStatsParams'
+    type: 'model'
     fields:
       'CycleIds':
         type: 'string'
@@ -1356,9 +1422,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/get_stats_parameters.go'
 
-  'GetUserNamespaceSlotsParams@social':
-    id: 'GetUserNamespaceSlotsParams@social'
+  'GetUserNamespaceSlotsParams@go.social.mod':
+    id: 'GetUserNamespaceSlotsParams@go.social.mod'
     name: 'GetUserNamespaceSlotsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1375,9 +1442,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/get_user_namespace_slots_parameters.go'
 
-  'GetUserProfilesParams@social':
-    id: 'GetUserProfilesParams@social'
+  'GetUserProfilesParams@go.social.mod':
+    id: 'GetUserProfilesParams@go.social.mod'
     name: 'GetUserProfilesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1394,9 +1462,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/get_user_profiles_parameters.go'
 
-  'GetUserSlotConfigParams@social':
-    id: 'GetUserSlotConfigParams@social'
+  'GetUserSlotConfigParams@go.social.mod':
+    id: 'GetUserSlotConfigParams@go.social.mod'
     name: 'GetUserSlotConfigParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1413,9 +1482,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/get_user_slot_config_parameters.go'
 
-  'GetUserStatCycleItemsParams@social':
-    id: 'GetUserStatCycleItemsParams@social'
+  'GetUserStatCycleItemsParams@go.social.mod':
+    id: 'GetUserStatCycleItemsParams@go.social.mod'
     name: 'GetUserStatCycleItemsParams'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -1459,9 +1529,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic_cycle/get_user_stat_cycle_items_parameters.go'
 
-  'GetUserStatCycleItems1Params@social':
-    id: 'GetUserStatCycleItems1Params@social'
+  'GetUserStatCycleItems1Params@go.social.mod':
+    id: 'GetUserStatCycleItems1Params@go.social.mod'
     name: 'GetUserStatCycleItems1Params'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -1499,9 +1570,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic_cycle/get_user_stat_cycle_items_1_parameters.go'
 
-  'GetUserStatItemsParams@social':
-    id: 'GetUserStatItemsParams@social'
+  'GetUserStatItemsParams@go.social.mod':
+    id: 'GetUserStatItemsParams@go.social.mod'
     name: 'GetUserStatItemsParams'
+    type: 'model'
     fields:
       'IsPublic':
         type: 'bool'
@@ -1545,9 +1617,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/get_user_stat_items_parameters.go'
 
-  'ImportStatCycleParams@social':
-    id: 'ImportStatCycleParams@social'
+  'ImportStatCycleParams@go.social.mod':
+    id: 'ImportStatCycleParams@go.social.mod'
     name: 'ImportStatCycleParams'
+    type: 'model'
     fields:
       'File':
         type: '[]byte'
@@ -1567,9 +1640,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/import_stat_cycle_parameters.go'
 
-  'ImportStatsParams@social':
-    id: 'ImportStatsParams@social'
+  'ImportStatsParams@go.social.mod':
+    id: 'ImportStatsParams@go.social.mod'
     name: 'ImportStatsParams'
+    type: 'model'
     fields:
       'File':
         type: '[]byte'
@@ -1589,9 +1663,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/import_stats_parameters.go'
 
-  'IncUserStatItemValueParams@social':
-    id: 'IncUserStatItemValueParams@social'
+  'IncUserStatItemValueParams@go.social.mod':
+    id: 'IncUserStatItemValueParams@go.social.mod'
     name: 'IncUserStatItemValueParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatItemInc'
@@ -1616,9 +1691,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/inc_user_stat_item_value_parameters.go'
 
-  'PublicBulkCreateUserStatItemsParams@social':
-    id: 'PublicBulkCreateUserStatItemsParams@social'
+  'PublicBulkCreateUserStatItemsParams@go.social.mod':
+    id: 'PublicBulkCreateUserStatItemsParams@go.social.mod'
     name: 'PublicBulkCreateUserStatItemsParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemCreate'
@@ -1638,9 +1714,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_bulk_create_user_stat_items_parameters.go'
 
-  'PublicBulkIncUserStatItemParams@social':
-    id: 'PublicBulkIncUserStatItemParams@social'
+  'PublicBulkIncUserStatItemParams@go.social.mod':
+    id: 'PublicBulkIncUserStatItemParams@go.social.mod'
     name: 'PublicBulkIncUserStatItemParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemInc'
@@ -1655,9 +1732,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_bulk_inc_user_stat_item_parameters.go'
 
-  'PublicBulkIncUserStatItem1Params@social':
-    id: 'PublicBulkIncUserStatItem1Params@social'
+  'PublicBulkIncUserStatItem1Params@go.social.mod':
+    id: 'PublicBulkIncUserStatItem1Params@go.social.mod'
     name: 'PublicBulkIncUserStatItem1Params'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkStatItemInc'
@@ -1677,9 +1755,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_bulk_inc_user_stat_item_1_parameters.go'
 
-  'PublicBulkIncUserStatItemValueParams@social':
-    id: 'PublicBulkIncUserStatItemValueParams@social'
+  'PublicBulkIncUserStatItemValueParams@go.social.mod':
+    id: 'PublicBulkIncUserStatItemValueParams@go.social.mod'
     name: 'PublicBulkIncUserStatItemValueParams'
+    type: 'model'
     fields:
       'Body':
         type: '[]*BulkUserStatItemInc'
@@ -1694,9 +1773,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_bulk_inc_user_stat_item_value_parameters.go'
 
-  'PublicCreateProfileParams@social':
-    id: 'PublicCreateProfileParams@social'
+  'PublicCreateProfileParams@go.social.mod':
+    id: 'PublicCreateProfileParams@go.social.mod'
     name: 'PublicCreateProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*GameProfileRequest'
@@ -1716,9 +1796,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_create_profile_parameters.go'
 
-  'PublicCreateUserNamespaceSlotParams@social':
-    id: 'PublicCreateUserNamespaceSlotParams@social'
+  'PublicCreateUserNamespaceSlotParams@go.social.mod':
+    id: 'PublicCreateUserNamespaceSlotParams@go.social.mod'
     name: 'PublicCreateUserNamespaceSlotParams'
+    type: 'model'
     fields:
       'Checksum':
         type: 'string'
@@ -1758,9 +1839,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_create_user_namespace_slot_parameters.go'
 
-  'PublicCreateUserStatItemParams@social':
-    id: 'PublicCreateUserStatItemParams@social'
+  'PublicCreateUserStatItemParams@go.social.mod':
+    id: 'PublicCreateUserStatItemParams@go.social.mod'
     name: 'PublicCreateUserStatItemParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1782,9 +1864,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_create_user_stat_item_parameters.go'
 
-  'PublicDeleteProfileParams@social':
-    id: 'PublicDeleteProfileParams@social'
+  'PublicDeleteProfileParams@go.social.mod':
+    id: 'PublicDeleteProfileParams@go.social.mod'
     name: 'PublicDeleteProfileParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1806,9 +1889,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_delete_profile_parameters.go'
 
-  'PublicDeleteUserNamespaceSlotParams@social':
-    id: 'PublicDeleteUserNamespaceSlotParams@social'
+  'PublicDeleteUserNamespaceSlotParams@go.social.mod':
+    id: 'PublicDeleteUserNamespaceSlotParams@go.social.mod'
     name: 'PublicDeleteUserNamespaceSlotParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1830,9 +1914,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_delete_user_namespace_slot_parameters.go'
 
-  'PublicGetProfileParams@social':
-    id: 'PublicGetProfileParams@social'
+  'PublicGetProfileParams@go.social.mod':
+    id: 'PublicGetProfileParams@go.social.mod'
     name: 'PublicGetProfileParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1854,9 +1939,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_get_profile_parameters.go'
 
-  'PublicGetProfileAttributeParams@social':
-    id: 'PublicGetProfileAttributeParams@social'
+  'PublicGetProfileAttributeParams@go.social.mod':
+    id: 'PublicGetProfileAttributeParams@go.social.mod'
     name: 'PublicGetProfileAttributeParams'
+    type: 'model'
     fields:
       'AttributeName':
         type: 'string'
@@ -1883,9 +1969,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_get_profile_attribute_parameters.go'
 
-  'PublicGetSlotDataParams@social':
-    id: 'PublicGetSlotDataParams@social'
+  'PublicGetSlotDataParams@go.social.mod':
+    id: 'PublicGetSlotDataParams@go.social.mod'
     name: 'PublicGetSlotDataParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1907,9 +1994,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_get_slot_data_parameters.go'
 
-  'PublicGetUserGameProfilesParams@social':
-    id: 'PublicGetUserGameProfilesParams@social'
+  'PublicGetUserGameProfilesParams@go.social.mod':
+    id: 'PublicGetUserGameProfilesParams@go.social.mod'
     name: 'PublicGetUserGameProfilesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1926,9 +2014,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_get_user_game_profiles_parameters.go'
 
-  'PublicGetUserNamespaceSlotsParams@social':
-    id: 'PublicGetUserNamespaceSlotsParams@social'
+  'PublicGetUserNamespaceSlotsParams@go.social.mod':
+    id: 'PublicGetUserNamespaceSlotsParams@go.social.mod'
     name: 'PublicGetUserNamespaceSlotsParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1945,9 +2034,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_get_user_namespace_slots_parameters.go'
 
-  'PublicGetUserProfilesParams@social':
-    id: 'PublicGetUserProfilesParams@social'
+  'PublicGetUserProfilesParams@go.social.mod':
+    id: 'PublicGetUserProfilesParams@go.social.mod'
     name: 'PublicGetUserProfilesParams'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -1964,9 +2054,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_get_user_profiles_parameters.go'
 
-  'PublicIncUserStatItemParams@social':
-    id: 'PublicIncUserStatItemParams@social'
+  'PublicIncUserStatItemParams@go.social.mod':
+    id: 'PublicIncUserStatItemParams@go.social.mod'
     name: 'PublicIncUserStatItemParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatItemInc'
@@ -1991,9 +2082,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_inc_user_stat_item_parameters.go'
 
-  'PublicIncUserStatItemValueParams@social':
-    id: 'PublicIncUserStatItemValueParams@social'
+  'PublicIncUserStatItemValueParams@go.social.mod':
+    id: 'PublicIncUserStatItemValueParams@go.social.mod'
     name: 'PublicIncUserStatItemValueParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatItemInc'
@@ -2018,9 +2110,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_inc_user_stat_item_value_parameters.go'
 
-  'PublicListAllMyStatItemsParams@social':
-    id: 'PublicListAllMyStatItemsParams@social'
+  'PublicListAllMyStatItemsParams@go.social.mod':
+    id: 'PublicListAllMyStatItemsParams@go.social.mod'
     name: 'PublicListAllMyStatItemsParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2047,9 +2140,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_list_all_my_stat_items_parameters.go'
 
-  'PublicListMyStatCycleItemsParams@social':
-    id: 'PublicListMyStatCycleItemsParams@social'
+  'PublicListMyStatCycleItemsParams@go.social.mod':
+    id: 'PublicListMyStatCycleItemsParams@go.social.mod'
     name: 'PublicListMyStatCycleItemsParams'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -2082,9 +2176,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic_cycle/public_list_my_stat_cycle_items_parameters.go'
 
-  'PublicListMyStatItemsParams@social':
-    id: 'PublicListMyStatItemsParams@social'
+  'PublicListMyStatItemsParams@go.social.mod':
+    id: 'PublicListMyStatItemsParams@go.social.mod'
     name: 'PublicListMyStatItemsParams'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -2117,9 +2212,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_list_my_stat_items_parameters.go'
 
-  'PublicQueryUserStatItemsParams@social':
-    id: 'PublicQueryUserStatItemsParams@social'
+  'PublicQueryUserStatItemsParams@go.social.mod':
+    id: 'PublicQueryUserStatItemsParams@go.social.mod'
     name: 'PublicQueryUserStatItemsParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2151,9 +2247,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_query_user_stat_items_parameters.go'
 
-  'PublicQueryUserStatItems1Params@social':
-    id: 'PublicQueryUserStatItems1Params@social'
+  'PublicQueryUserStatItems1Params@go.social.mod':
+    id: 'PublicQueryUserStatItems1Params@go.social.mod'
     name: 'PublicQueryUserStatItems1Params'
+    type: 'model'
     fields:
       'Limit':
         type: 'int32'
@@ -2191,9 +2288,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_query_user_stat_items_1_parameters.go'
 
-  'PublicQueryUserStatItems2Params@social':
-    id: 'PublicQueryUserStatItems2Params@social'
+  'PublicQueryUserStatItems2Params@go.social.mod':
+    id: 'PublicQueryUserStatItems2Params@go.social.mod'
     name: 'PublicQueryUserStatItems2Params'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2225,9 +2323,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/public_query_user_stat_items_2_parameters.go'
 
-  'PublicUpdateAttributeParams@social':
-    id: 'PublicUpdateAttributeParams@social'
+  'PublicUpdateAttributeParams@go.social.mod':
+    id: 'PublicUpdateAttributeParams@go.social.mod'
     name: 'PublicUpdateAttributeParams'
+    type: 'model'
     fields:
       'AttributeName':
         type: 'string'
@@ -2257,9 +2356,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_update_attribute_parameters.go'
 
-  'PublicUpdateProfileParams@social':
-    id: 'PublicUpdateProfileParams@social'
+  'PublicUpdateProfileParams@go.social.mod':
+    id: 'PublicUpdateProfileParams@go.social.mod'
     name: 'PublicUpdateProfileParams'
+    type: 'model'
     fields:
       'Body':
         type: '*GameProfileRequest'
@@ -2284,9 +2384,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/game_profile/public_update_profile_parameters.go'
 
-  'PublicUpdateUserNamespaceSlotParams@social':
-    id: 'PublicUpdateUserNamespaceSlotParams@social'
+  'PublicUpdateUserNamespaceSlotParams@go.social.mod':
+    id: 'PublicUpdateUserNamespaceSlotParams@go.social.mod'
     name: 'PublicUpdateUserNamespaceSlotParams'
+    type: 'model'
     fields:
       'Checksum':
         type: 'string'
@@ -2331,9 +2432,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_update_user_namespace_slot_parameters.go'
 
-  'PublicUpdateUserNamespaceSlotMetadataParams@social':
-    id: 'PublicUpdateUserNamespaceSlotMetadataParams@social'
+  'PublicUpdateUserNamespaceSlotMetadataParams@go.social.mod':
+    id: 'PublicUpdateUserNamespaceSlotMetadataParams@go.social.mod'
     name: 'PublicUpdateUserNamespaceSlotMetadataParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SlotMetadataUpdate'
@@ -2358,9 +2460,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot/public_update_user_namespace_slot_metadata_parameters.go'
 
-  'QueryStatsParams@social':
-    id: 'QueryStatsParams@social'
+  'QueryStatsParams@go.social.mod':
+    id: 'QueryStatsParams@go.social.mod'
     name: 'QueryStatsParams'
+    type: 'model'
     fields:
       'IsGlobal':
         type: 'bool'
@@ -2393,9 +2496,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/query_stats_parameters.go'
 
-  'ResetUserStatItemValueParams@social':
-    id: 'ResetUserStatItemValueParams@social'
+  'ResetUserStatItemValueParams@go.social.mod':
+    id: 'ResetUserStatItemValueParams@go.social.mod'
     name: 'ResetUserStatItemValueParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2425,9 +2529,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/reset_user_stat_item_value_parameters.go'
 
-  'ResetUserStatItemValue1Params@social':
-    id: 'ResetUserStatItemValue1Params@social'
+  'ResetUserStatItemValue1Params@go.social.mod':
+    id: 'ResetUserStatItemValue1Params@go.social.mod'
     name: 'ResetUserStatItemValue1Params'
+    type: 'model'
     fields:
       'Namespace':
         type: 'string'
@@ -2449,9 +2554,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/reset_user_stat_item_value_1_parameters.go'
 
-  'StopStatCycleParams@social':
-    id: 'StopStatCycleParams@social'
+  'StopStatCycleParams@go.social.mod':
+    id: 'StopStatCycleParams@go.social.mod'
     name: 'StopStatCycleParams'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -2468,9 +2574,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/stop_stat_cycle_parameters.go'
 
-  'UpdateNamespaceSlotConfigParams@social':
-    id: 'UpdateNamespaceSlotConfigParams@social'
+  'UpdateNamespaceSlotConfigParams@go.social.mod':
+    id: 'UpdateNamespaceSlotConfigParams@go.social.mod'
     name: 'UpdateNamespaceSlotConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SlotConfigUpdate'
@@ -2485,9 +2592,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/update_namespace_slot_config_parameters.go'
 
-  'UpdateStatParams@social':
-    id: 'UpdateStatParams@social'
+  'UpdateStatParams@go.social.mod':
+    id: 'UpdateStatParams@go.social.mod'
     name: 'UpdateStatParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatUpdate'
@@ -2507,9 +2615,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_configuration/update_stat_parameters.go'
 
-  'UpdateStatCycleParams@social':
-    id: 'UpdateStatCycleParams@social'
+  'UpdateStatCycleParams@go.social.mod':
+    id: 'UpdateStatCycleParams@go.social.mod'
     name: 'UpdateStatCycleParams'
+    type: 'model'
     fields:
       'Body':
         type: '*StatCycleUpdate'
@@ -2529,9 +2638,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/stat_cycle_configuration/update_stat_cycle_parameters.go'
 
-  'UpdateUserSlotConfigParams@social':
-    id: 'UpdateUserSlotConfigParams@social'
+  'UpdateUserSlotConfigParams@go.social.mod':
+    id: 'UpdateUserSlotConfigParams@go.social.mod'
     name: 'UpdateUserSlotConfigParams'
+    type: 'model'
     fields:
       'Body':
         type: '*SlotConfigUpdate'
@@ -2551,9 +2661,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/slot_config/update_user_slot_config_parameters.go'
 
-  'UpdateUserStatItemValueParams@social':
-    id: 'UpdateUserStatItemValueParams@social'
+  'UpdateUserStatItemValueParams@go.social.mod':
+    id: 'UpdateUserStatItemValueParams@go.social.mod'
     name: 'UpdateUserStatItemValueParams'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2583,9 +2694,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclient/user_statistic/update_user_stat_item_value_parameters.go'
 
-  'UpdateUserStatItemValue1Params@social':
-    id: 'UpdateUserStatItemValue1Params@social'
+  'UpdateUserStatItemValue1Params@go.social.mod':
+    id: 'UpdateUserStatItemValue1Params@go.social.mod'
     name: 'UpdateUserStatItemValue1Params'
+    type: 'model'
     fields:
       'AdditionalKey':
         type: 'string'
@@ -2619,9 +2731,10 @@ structs:
 
   # region models
 
-  'ADTOObjectForResettingUserStatItems@social':
-    id: 'ADTOObjectForResettingUserStatItems@social'
+  'ADTOObjectForResettingUserStatItems@go.social.mod':
+    id: 'ADTOObjectForResettingUserStatItems@go.social.mod'
     name: 'ADTOObjectForResettingUserStatItems'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2638,9 +2751,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/a_dto_object_for_resetting_user_stat_items.go'
 
-  'ADTOObjectForUserStatItemValue@social':
-    id: 'ADTOObjectForUserStatItemValue@social'
+  'ADTOObjectForUserStatItemValue@go.social.mod':
+    id: 'ADTOObjectForUserStatItemValue@go.social.mod'
     name: 'ADTOObjectForUserStatItemValue'
+    type: 'model'
     fields:
       'ProfileID':
         type: 'string'
@@ -2662,9 +2776,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/a_dto_object_for_user_stat_item_value.go'
 
-  'Attribute@social':
-    id: 'Attribute@social'
+  'Attribute@go.social.mod':
+    id: 'Attribute@go.social.mod'
     name: 'Attribute'
+    type: 'model'
     fields:
       'Name':
         type: 'string'
@@ -2677,9 +2792,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/attribute.go'
 
-  'BulkCycleStatsAdd@social':
-    id: 'BulkCycleStatsAdd@social'
+  'BulkCycleStatsAdd@go.social.mod':
+    id: 'BulkCycleStatsAdd@go.social.mod'
     name: 'BulkCycleStatsAdd'
+    type: 'model'
     fields:
       'StatCodes':
         type: '[]string'
@@ -2689,9 +2805,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_cycle_stats_add.go'
 
-  'BulkStatCycleOperationResult@social':
-    id: 'BulkStatCycleOperationResult@social'
+  'BulkStatCycleOperationResult@go.social.mod':
+    id: 'BulkStatCycleOperationResult@go.social.mod'
     name: 'BulkStatCycleOperationResult'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -2710,9 +2827,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_cycle_operation_result.go'
 
-  'BulkStatCycleRequest@social':
-    id: 'BulkStatCycleRequest@social'
+  'BulkStatCycleRequest@go.social.mod':
+    id: 'BulkStatCycleRequest@go.social.mod'
     name: 'BulkStatCycleRequest'
+    type: 'model'
     fields:
       'CycleIds':
         type: '[]string'
@@ -2722,9 +2840,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_cycle_request.go'
 
-  'BulkStatCycleResult@social':
-    id: 'BulkStatCycleResult@social'
+  'BulkStatCycleResult@go.social.mod':
+    id: 'BulkStatCycleResult@go.social.mod'
     name: 'BulkStatCycleResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*StatCycleInfo'
@@ -2734,9 +2853,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_cycle_result.go'
 
-  'BulkStatItemCreate@social':
-    id: 'BulkStatItemCreate@social'
+  'BulkStatItemCreate@go.social.mod':
+    id: 'BulkStatItemCreate@go.social.mod'
     name: 'BulkStatItemCreate'
+    type: 'model'
     fields:
       'StatCode':
         type: 'string'
@@ -2746,9 +2866,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_item_create.go'
 
-  'BulkStatItemInc@social':
-    id: 'BulkStatItemInc@social'
+  'BulkStatItemInc@go.social.mod':
+    id: 'BulkStatItemInc@go.social.mod'
     name: 'BulkStatItemInc'
+    type: 'model'
     fields:
       'Inc':
         type: 'float64'
@@ -2761,9 +2882,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_item_inc.go'
 
-  'BulkStatItemReset@social':
-    id: 'BulkStatItemReset@social'
+  'BulkStatItemReset@go.social.mod':
+    id: 'BulkStatItemReset@go.social.mod'
     name: 'BulkStatItemReset'
+    type: 'model'
     fields:
       'StatCode':
         type: 'string'
@@ -2773,9 +2895,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_item_reset.go'
 
-  'BulkStatItemUpdate@social':
-    id: 'BulkStatItemUpdate@social'
+  'BulkStatItemUpdate@go.social.mod':
+    id: 'BulkStatItemUpdate@go.social.mod'
     name: 'BulkStatItemUpdate'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2799,9 +2922,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_item_update.go'
 
-  'BulkStatOperationResult@social':
-    id: 'BulkStatOperationResult@social'
+  'BulkStatOperationResult@go.social.mod':
+    id: 'BulkStatOperationResult@go.social.mod'
     name: 'BulkStatOperationResult'
+    type: 'model'
     fields:
       'Details':
         type: 'interface{}'
@@ -2823,9 +2947,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_stat_operation_result.go'
 
-  'BulkUserStatItemByStatCodes@social':
-    id: 'BulkUserStatItemByStatCodes@social'
+  'BulkUserStatItemByStatCodes@go.social.mod':
+    id: 'BulkUserStatItemByStatCodes@go.social.mod'
     name: 'BulkUserStatItemByStatCodes'
+    type: 'model'
     fields:
       'StatCodes':
         type: '[]string'
@@ -2835,9 +2960,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_user_stat_item_by_stat_codes.go'
 
-  'BulkUserStatItemInc@social':
-    id: 'BulkUserStatItemInc@social'
+  'BulkUserStatItemInc@go.social.mod':
+    id: 'BulkUserStatItemInc@go.social.mod'
     name: 'BulkUserStatItemInc'
+    type: 'model'
     fields:
       'Inc':
         type: 'float64'
@@ -2853,9 +2979,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_user_stat_item_inc.go'
 
-  'BulkUserStatItemReset@social':
-    id: 'BulkUserStatItemReset@social'
+  'BulkUserStatItemReset@go.social.mod':
+    id: 'BulkUserStatItemReset@go.social.mod'
     name: 'BulkUserStatItemReset'
+    type: 'model'
     fields:
       'StatCode':
         type: 'string'
@@ -2868,9 +2995,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_user_stat_item_reset.go'
 
-  'BulkUserStatItemUpdate@social':
-    id: 'BulkUserStatItemUpdate@social'
+  'BulkUserStatItemUpdate@go.social.mod':
+    id: 'BulkUserStatItemUpdate@go.social.mod'
     name: 'BulkUserStatItemUpdate'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -2902,9 +3030,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/bulk_user_stat_item_update.go'
 
-  'CycleOverride@social':
-    id: 'CycleOverride@social'
+  'CycleOverride@go.social.mod':
+    id: 'CycleOverride@go.social.mod'
     name: 'CycleOverride'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -2920,9 +3049,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/cycle_override.go'
 
-  'CycleOverrideRequest@social':
-    id: 'CycleOverrideRequest@social'
+  'CycleOverrideRequest@go.social.mod':
+    id: 'CycleOverrideRequest@go.social.mod'
     name: 'CycleOverrideRequest'
+    type: 'model'
     fields:
       'CycleID':
         type: 'string'
@@ -2938,9 +3068,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/cycle_override_request.go'
 
-  'ErrorEntity@social':
-    id: 'ErrorEntity@social'
+  'ErrorEntity@go.social.mod':
+    id: 'ErrorEntity@go.social.mod'
     name: 'ErrorEntity'
+    type: 'model'
     fields:
       'DevStackTrace':
         type: 'string'
@@ -2970,9 +3101,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/error_entity.go'
 
-  'FieldValidationError@social':
-    id: 'FieldValidationError@social'
+  'FieldValidationError@go.social.mod':
+    id: 'FieldValidationError@go.social.mod'
     name: 'FieldValidationError'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'string'
@@ -2994,9 +3126,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/field_validation_error.go'
 
-  'GameProfileHeader@social':
-    id: 'GameProfileHeader@social'
+  'GameProfileHeader@go.social.mod':
+    id: 'GameProfileHeader@go.social.mod'
     name: 'GameProfileHeader'
+    type: 'model'
     fields:
       'AvatarURL':
         type: 'string'
@@ -3024,9 +3157,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/game_profile_header.go'
 
-  'GameProfileInfo@social':
-    id: 'GameProfileInfo@social'
+  'GameProfileInfo@go.social.mod':
+    id: 'GameProfileInfo@go.social.mod'
     name: 'GameProfileInfo'
+    type: 'model'
     fields:
       'Achievements':
         type: '[]string'
@@ -3066,9 +3200,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/game_profile_info.go'
 
-  'GameProfilePublicInfo@social':
-    id: 'GameProfilePublicInfo@social'
+  'GameProfilePublicInfo@go.social.mod':
+    id: 'GameProfilePublicInfo@go.social.mod'
     name: 'GameProfilePublicInfo'
+    type: 'model'
     fields:
       'AvatarURL':
         type: 'string'
@@ -3087,9 +3222,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/game_profile_public_info.go'
 
-  'GameProfileRequest@social':
-    id: 'GameProfileRequest@social'
+  'GameProfileRequest@go.social.mod':
+    id: 'GameProfileRequest@go.social.mod'
     name: 'GameProfileRequest'
+    type: 'model'
     fields:
       'Achievements':
         type: '[]string'
@@ -3120,9 +3256,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/game_profile_request.go'
 
-  'GlobalStatItemInfo@social':
-    id: 'GlobalStatItemInfo@social'
+  'GlobalStatItemInfo@go.social.mod':
+    id: 'GlobalStatItemInfo@go.social.mod'
     name: 'GlobalStatItemInfo'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'strfmt.DateTime'
@@ -3153,9 +3290,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/global_stat_item_info.go'
 
-  'GlobalStatItemPagingSlicedResult@social':
-    id: 'GlobalStatItemPagingSlicedResult@social'
+  'GlobalStatItemPagingSlicedResult@go.social.mod':
+    id: 'GlobalStatItemPagingSlicedResult@go.social.mod'
     name: 'GlobalStatItemPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*GlobalStatItemInfo'
@@ -3168,9 +3306,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/global_stat_item_paging_sliced_result.go'
 
-  'NamespaceSlotConfigInfo@social':
-    id: 'NamespaceSlotConfigInfo@social'
+  'NamespaceSlotConfigInfo@go.social.mod':
+    id: 'NamespaceSlotConfigInfo@go.social.mod'
     name: 'NamespaceSlotConfigInfo'
+    type: 'model'
     fields:
       'MaxSlots':
         type: 'int32'
@@ -3186,9 +3325,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/namespace_slot_config_info.go'
 
-  'Paging@social':
-    id: 'Paging@social'
+  'Paging@go.social.mod':
+    id: 'Paging@go.social.mod'
     name: 'Paging'
+    type: 'model'
     fields:
       'Next':
         type: 'string'
@@ -3201,9 +3341,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/paging.go'
 
-  'Permission@social':
-    id: 'Permission@social'
+  'Permission@go.social.mod':
+    id: 'Permission@go.social.mod'
     name: 'Permission'
+    type: 'model'
     fields:
       'Action':
         type: 'int32'
@@ -3216,9 +3357,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/permission.go'
 
-  'SlotConfigUpdate@social':
-    id: 'SlotConfigUpdate@social'
+  'SlotConfigUpdate@go.social.mod':
+    id: 'SlotConfigUpdate@go.social.mod'
     name: 'SlotConfigUpdate'
+    type: 'model'
     fields:
       'MaxSlots':
         type: 'int32'
@@ -3231,9 +3373,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/slot_config_update.go'
 
-  'SlotInfo@social':
-    id: 'SlotInfo@social'
+  'SlotInfo@go.social.mod':
+    id: 'SlotInfo@go.social.mod'
     name: 'SlotInfo'
+    type: 'model'
     fields:
       'Checksum':
         type: 'string'
@@ -3284,9 +3427,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/slot_info.go'
 
-  'SlotMetadataUpdate@social':
-    id: 'SlotMetadataUpdate@social'
+  'SlotMetadataUpdate@go.social.mod':
+    id: 'SlotMetadataUpdate@go.social.mod'
     name: 'SlotMetadataUpdate'
+    type: 'model'
     fields:
       'CustomAttribute':
         type: 'string'
@@ -3302,9 +3446,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/slot_metadata_update.go'
 
-  'StatCreate@social':
-    id: 'StatCreate@social'
+  'StatCreate@go.social.mod':
+    id: 'StatCreate@go.social.mod'
     name: 'StatCreate'
+    type: 'model'
     fields:
       'CapCycleOverride':
         type: 'bool'
@@ -3374,9 +3519,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_create.go'
 
-  'StatCycleCreate@social':
-    id: 'StatCycleCreate@social'
+  'StatCycleCreate@go.social.mod':
+    id: 'StatCycleCreate@go.social.mod'
     name: 'StatCycleCreate'
+    type: 'model'
     fields:
       'CycleType':
         type: 'string'
@@ -3432,9 +3578,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_cycle_create.go'
 
-  'StatCycleInfo@social':
-    id: 'StatCycleInfo@social'
+  'StatCycleInfo@go.social.mod':
+    id: 'StatCycleInfo@go.social.mod'
     name: 'StatCycleInfo'
+    type: 'model'
     fields:
       'CreatedAt':
         type: 'strfmt.DateTime'
@@ -3492,9 +3639,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_cycle_info.go'
 
-  'StatCyclePagingSlicedResult@social':
-    id: 'StatCyclePagingSlicedResult@social'
+  'StatCyclePagingSlicedResult@go.social.mod':
+    id: 'StatCyclePagingSlicedResult@go.social.mod'
     name: 'StatCyclePagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*StatCycleInfo'
@@ -3507,9 +3655,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_cycle_paging_sliced_result.go'
 
-  'StatCycleUpdate@social':
-    id: 'StatCycleUpdate@social'
+  'StatCycleUpdate@go.social.mod':
+    id: 'StatCycleUpdate@go.social.mod'
     name: 'StatCycleUpdate'
+    type: 'model'
     fields:
       'CycleType':
         type: 'string'
@@ -3560,9 +3709,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_cycle_update.go'
 
-  'StatImportInfo@social':
-    id: 'StatImportInfo@social'
+  'StatImportInfo@go.social.mod':
+    id: 'StatImportInfo@go.social.mod'
     name: 'StatImportInfo'
+    type: 'model'
     fields:
       'FailedConfigs':
         type: '[]string'
@@ -3581,9 +3731,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_import_info.go'
 
-  'StatInfo@social':
-    id: 'StatInfo@social'
+  'StatInfo@go.social.mod':
+    id: 'StatInfo@go.social.mod'
     name: 'StatInfo'
+    type: 'model'
     fields:
       'CapCycleOverride':
         type: 'bool'
@@ -3653,9 +3804,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_info.go'
 
-  'StatItemInc@social':
-    id: 'StatItemInc@social'
+  'StatItemInc@go.social.mod':
+    id: 'StatItemInc@go.social.mod'
     name: 'StatItemInc'
+    type: 'model'
     fields:
       'Inc':
         type: 'float64'
@@ -3665,9 +3817,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_item_inc.go'
 
-  'StatItemIncResult@social':
-    id: 'StatItemIncResult@social'
+  'StatItemIncResult@go.social.mod':
+    id: 'StatItemIncResult@go.social.mod'
     name: 'StatItemIncResult'
+    type: 'model'
     fields:
       'CurrentValue':
         type: 'float64'
@@ -3677,9 +3830,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_item_inc_result.go'
 
-  'StatItemUpdate@social':
-    id: 'StatItemUpdate@social'
+  'StatItemUpdate@go.social.mod':
+    id: 'StatItemUpdate@go.social.mod'
     name: 'StatItemUpdate'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -3697,9 +3851,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_item_update.go'
 
-  'StatItemValue@social':
-    id: 'StatItemValue@social'
+  'StatItemValue@go.social.mod':
+    id: 'StatItemValue@go.social.mod'
     name: 'StatItemValue'
+    type: 'model'
     fields:
       'CreatedAt':
         type: '*strfmt.DateTime'
@@ -3726,9 +3881,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_item_value.go'
 
-  'StatItemValuePagingSlicedResult@social':
-    id: 'StatItemValuePagingSlicedResult@social'
+  'StatItemValuePagingSlicedResult@go.social.mod':
+    id: 'StatItemValuePagingSlicedResult@go.social.mod'
     name: 'StatItemValuePagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*StatItemValue'
@@ -3741,9 +3897,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_item_value_paging_sliced_result.go'
 
-  'StatPagingSlicedResult@social':
-    id: 'StatPagingSlicedResult@social'
+  'StatPagingSlicedResult@go.social.mod':
+    id: 'StatPagingSlicedResult@go.social.mod'
     name: 'StatPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*StatInfo'
@@ -3756,9 +3913,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_paging_sliced_result.go'
 
-  'StatResetInfo@social':
-    id: 'StatResetInfo@social'
+  'StatResetInfo@go.social.mod':
+    id: 'StatResetInfo@go.social.mod'
     name: 'StatResetInfo'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -3770,9 +3928,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_reset_info.go'
 
-  'StatUpdate@social':
-    id: 'StatUpdate@social'
+  'StatUpdate@go.social.mod':
+    id: 'StatUpdate@go.social.mod'
     name: 'StatUpdate'
+    type: 'model'
     fields:
       'CapCycleOverride':
         type: 'bool'
@@ -3816,9 +3975,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/stat_update.go'
 
-  'UserGameProfiles@social':
-    id: 'UserGameProfiles@social'
+  'UserGameProfiles@go.social.mod':
+    id: 'UserGameProfiles@go.social.mod'
     name: 'UserGameProfiles'
+    type: 'model'
     fields:
       'GameProfiles':
         type: '[]*GameProfilePublicInfo'
@@ -3831,9 +3991,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_game_profiles.go'
 
-  'UserSlotConfigInfo@social':
-    id: 'UserSlotConfigInfo@social'
+  'UserSlotConfigInfo@go.social.mod':
+    id: 'UserSlotConfigInfo@go.social.mod'
     name: 'UserSlotConfigInfo'
+    type: 'model'
     fields:
       'MaxSlots':
         type: 'int32'
@@ -3852,9 +4013,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_slot_config_info.go'
 
-  'UserStatCycleItemInfo@social':
-    id: 'UserStatCycleItemInfo@social'
+  'UserStatCycleItemInfo@go.social.mod':
+    id: 'UserStatCycleItemInfo@go.social.mod'
     name: 'UserStatCycleItemInfo'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -3897,9 +4059,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_stat_cycle_item_info.go'
 
-  'UserStatCycleItemPagingSlicedResult@social':
-    id: 'UserStatCycleItemPagingSlicedResult@social'
+  'UserStatCycleItemPagingSlicedResult@go.social.mod':
+    id: 'UserStatCycleItemPagingSlicedResult@go.social.mod'
     name: 'UserStatCycleItemPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*UserStatCycleItemInfo'
@@ -3912,9 +4075,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_stat_cycle_item_paging_sliced_result.go'
 
-  'UserStatItemInfo@social':
-    id: 'UserStatItemInfo@social'
+  'UserStatItemInfo@go.social.mod':
+    id: 'UserStatItemInfo@go.social.mod'
     name: 'UserStatItemInfo'
+    type: 'model'
     fields:
       'AdditionalData':
         type: 'interface{}'
@@ -3948,9 +4112,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_stat_item_info.go'
 
-  'UserStatItemPagingSlicedResult@social':
-    id: 'UserStatItemPagingSlicedResult@social'
+  'UserStatItemPagingSlicedResult@go.social.mod':
+    id: 'UserStatItemPagingSlicedResult@go.social.mod'
     name: 'UserStatItemPagingSlicedResult'
+    type: 'model'
     fields:
       'Data':
         type: '[]*UserStatItemInfo'
@@ -3963,9 +4128,10 @@ structs:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/social-sdk/pkg/socialclientmodels/user_stat_item_paging_sliced_result.go'
 
-  'ValidationErrorEntity@social':
-    id: 'ValidationErrorEntity@social'
+  'ValidationErrorEntity@go.social.mod':
+    id: 'ValidationErrorEntity@go.social.mod'
     name: 'ValidationErrorEntity'
+    type: 'model'
     fields:
       'ErrorCode':
         type: 'int32'
@@ -3987,11 +4153,12 @@ structs:
 
   # endregion models
 
-functions:
+  # region functions
 
-  'AdminListUsersStatItemsShort@social':
-    id: 'AdminListUsersStatItemsShort@social'
+  'AdminListUsersStatItemsShort@go.social.fun':
+    id: 'AdminListUsersStatItemsShort@go.social.fun'
     name: 'AdminListUsersStatItemsShort'
+    type: 'function'
     description: |-
       Admin list all statItems of user
       NOTE: Legacy endpoint , please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
@@ -4002,7 +4169,7 @@ functions:
       Other detail info:
         *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.AdminListUsersStatItemsParams'
         required: true
@@ -4029,13 +4196,14 @@ functions:
       - 'user'
       - 'users'
 
-  'BulkAddStatsShort@social':
-    id: 'BulkAddStatsShort@social'
+  'BulkAddStatsShort@go.social.fun':
+    id: 'BulkAddStatsShort@go.social.fun'
     name: 'BulkAddStatsShort'
+    type: 'function'
     description: |-
       Bulk add stat cycle to stats.
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.BulkAddStatsParams'
         required: true
@@ -4061,16 +4229,17 @@ functions:
       - 'stat'
       - 'stats'
 
-  'BulkCreateUserStatItemsShort@social':
-    id: 'BulkCreateUserStatItemsShort@social'
+  'BulkCreateUserStatItemsShort@go.social.fun':
+    id: 'BulkCreateUserStatItemsShort@go.social.fun'
     name: 'BulkCreateUserStatItemsShort'
+    type: 'function'
     description: |-
       Bulk create user's statItems.
       Other detail info:
 
         *  Returns : bulk created result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkCreateUserStatItemsParams'
         required: true
@@ -4096,15 +4265,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkFetchOrDefaultStatItemsShort@social':
-    id: 'BulkFetchOrDefaultStatItemsShort@social'
+  'BulkFetchOrDefaultStatItemsShort@go.social.fun':
+    id: 'BulkFetchOrDefaultStatItemsShort@go.social.fun'
     name: 'BulkFetchOrDefaultStatItemsShort'
+    type: 'function'
     description: |-
       Bulk fetch multiple user's stat item values for a given namespace and statCode.
       NOTE: If stat item does not exist, will return default value. Other detail info:
       + *Returns*: list of user's stat item values
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkFetchOrDefaultStatItemsParams'
         required: true
@@ -4132,15 +4302,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkFetchOrDefaultStatItems1Short@social':
-    id: 'BulkFetchOrDefaultStatItems1Short@social'
+  'BulkFetchOrDefaultStatItems1Short@go.social.fun':
+    id: 'BulkFetchOrDefaultStatItems1Short@go.social.fun'
     name: 'BulkFetchOrDefaultStatItems1Short'
+    type: 'function'
     description: |-
       Bulk fetch multiple user's stat item values for a given namespace and statCode.
       NOTE: If stat item does not exist, will return default value. Other detail info:
       + *Returns*: list of user's stat item values
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkFetchOrDefaultStatItems1Params'
         required: true
@@ -4169,15 +4340,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkFetchStatItemsShort@social':
-    id: 'BulkFetchStatItemsShort@social'
+  'BulkFetchStatItemsShort@go.social.fun':
+    id: 'BulkFetchStatItemsShort@go.social.fun'
     name: 'BulkFetchStatItemsShort'
+    type: 'function'
     description: |-
       Bulk fetch multiple user's statitem value for a given namespace and statCode.
       Other detail info:
       + *Returns*: list of user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkFetchStatItemsParams'
         required: true
@@ -4203,15 +4375,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkFetchStatItems1Short@social':
-    id: 'BulkFetchStatItems1Short@social'
+  'BulkFetchStatItems1Short@go.social.fun':
+    id: 'BulkFetchStatItems1Short@go.social.fun'
     name: 'BulkFetchStatItems1Short'
+    type: 'function'
     description: |-
       Public bulk fetch multiple user's statitem value for a given namespace and statCode.
       Other detail info:
       + *Returns*: list of user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkFetchStatItems1Params'
         required: true
@@ -4238,9 +4411,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkGetOrDefaultByUserIDShort@social':
-    id: 'BulkGetOrDefaultByUserIDShort@social'
+  'BulkGetOrDefaultByUserIDShort@go.social.fun':
+    id: 'BulkGetOrDefaultByUserIDShort@go.social.fun'
     name: 'BulkGetOrDefaultByUserIDShort'
+    type: 'function'
     description: |-
       Bulk get user's statitems value for given namespace and user by multiple stat codes.
       Will return default value if player doesn't have the stat.
@@ -4249,7 +4423,7 @@ functions:
       + *Max stat codes*: 20
       + *Returns*: list of user's stat item values
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkGetOrDefaultByUserIDParams'
         required: true
@@ -4277,15 +4451,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkGetStatCycleShort@social':
-    id: 'BulkGetStatCycleShort@social'
+  'BulkGetStatCycleShort@go.social.fun':
+    id: 'BulkGetStatCycleShort@go.social.fun'
     name: 'BulkGetStatCycleShort'
+    type: 'function'
     description: |-
       Bulk get stat cycle.
       Other detail info:
           *  Returns : list of stat cycles
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.BulkGetStatCycleParams'
         required: true
@@ -4310,15 +4485,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'BulkGetStatCycle1Short@social':
-    id: 'BulkGetStatCycle1Short@social'
+  'BulkGetStatCycle1Short@go.social.fun':
+    id: 'BulkGetStatCycle1Short@go.social.fun'
     name: 'BulkGetStatCycle1Short'
+    type: 'function'
     description: |-
       Bulk get stat cycle.
       Other detail info:
           *  Returns : list of stat cycles
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.BulkGetStatCycle1Params'
         required: true
@@ -4344,15 +4520,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'BulkIncUserStatItemShort@social':
-    id: 'BulkIncUserStatItemShort@social'
+  'BulkIncUserStatItemShort@go.social.fun':
+    id: 'BulkIncUserStatItemShort@go.social.fun'
     name: 'BulkIncUserStatItemShort'
+    type: 'function'
     description: |-
       Bulk update multiple user's statitems value.
       Other detail info:
           *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkIncUserStatItemParams'
         required: true
@@ -4378,15 +4555,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkIncUserStatItem1Short@social':
-    id: 'BulkIncUserStatItem1Short@social'
+  'BulkIncUserStatItem1Short@go.social.fun':
+    id: 'BulkIncUserStatItem1Short@go.social.fun'
     name: 'BulkIncUserStatItem1Short'
+    type: 'function'
     description: |-
       Bulk update user's statitems value.
       Other detail info:
           *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkIncUserStatItem1Params'
         required: true
@@ -4413,13 +4591,14 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkIncUserStatItemValueShort@social':
-    id: 'BulkIncUserStatItemValueShort@social'
+  'BulkIncUserStatItemValueShort@go.social.fun':
+    id: 'BulkIncUserStatItemValueShort@go.social.fun'
     name: 'BulkIncUserStatItemValueShort'
+    type: 'function'
     description: |-
       Bulk update multiple user's statitems value.
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkIncUserStatItemValueParams'
         required: true
@@ -4446,15 +4625,16 @@ functions:
       - 'user'
       - 'value'
 
-  'BulkIncUserStatItemValue1Short@social':
-    id: 'BulkIncUserStatItemValue1Short@social'
+  'BulkIncUserStatItemValue1Short@go.social.fun':
+    id: 'BulkIncUserStatItemValue1Short@go.social.fun'
     name: 'BulkIncUserStatItemValue1Short'
+    type: 'function'
     description: |-
       Bulk update user's statitems value.
       Other detail info:
           *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkIncUserStatItemValue1Params'
         required: true
@@ -4482,15 +4662,16 @@ functions:
       - 'user'
       - 'value'
 
-  'BulkIncUserStatItemValue2Short@social':
-    id: 'BulkIncUserStatItemValue2Short@social'
+  'BulkIncUserStatItemValue2Short@go.social.fun':
+    id: 'BulkIncUserStatItemValue2Short@go.social.fun'
     name: 'BulkIncUserStatItemValue2Short'
+    type: 'function'
     description: |-
       Public bulk update user's statitems value.
       Other detail info:
           *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkIncUserStatItemValue2Params'
         required: true
@@ -4518,9 +4699,10 @@ functions:
       - 'user'
       - 'value'
 
-  'BulkResetUserStatItemShort@social':
-    id: 'BulkResetUserStatItemShort@social'
+  'BulkResetUserStatItemShort@go.social.fun':
+    id: 'BulkResetUserStatItemShort@go.social.fun'
     name: 'BulkResetUserStatItemShort'
+    type: 'function'
     description: |-
       Bulk reset multiple user's statitems value.
       User's statitem value will be reset to the default value defined in the statistic configuration.
@@ -4528,7 +4710,7 @@ functions:
       Other detail info:
       + *Returns*: bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkResetUserStatItemParams'
         required: true
@@ -4554,15 +4736,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkResetUserStatItem1Short@social':
-    id: 'BulkResetUserStatItem1Short@social'
+  'BulkResetUserStatItem1Short@go.social.fun':
+    id: 'BulkResetUserStatItem1Short@go.social.fun'
     name: 'BulkResetUserStatItem1Short'
+    type: 'function'
     description: |-
       Bulk reset user's statitems value for given namespace and user.
       Other detail info:
       + *Returns*: bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkResetUserStatItem1Params'
         required: true
@@ -4589,9 +4772,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkResetUserStatItem2Short@social':
-    id: 'BulkResetUserStatItem2Short@social'
+  'BulkResetUserStatItem2Short@go.social.fun':
+    id: 'BulkResetUserStatItem2Short@go.social.fun'
     name: 'BulkResetUserStatItem2Short'
+    type: 'function'
     description: |-
       Bulk reset multiple user's statitems value.
       User's statitem value will be reset to the default value defined in the statistic configuration.
@@ -4599,7 +4783,7 @@ functions:
       Other detail info:
       + *Returns*: bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkResetUserStatItem2Params'
         required: true
@@ -4626,15 +4810,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkResetUserStatItem3Short@social':
-    id: 'BulkResetUserStatItem3Short@social'
+  'BulkResetUserStatItem3Short@go.social.fun':
+    id: 'BulkResetUserStatItem3Short@go.social.fun'
     name: 'BulkResetUserStatItem3Short'
+    type: 'function'
     description: |-
       Public bulk reset user's statitems value for given namespace and user.
       Other detail info:
       + *Returns*: bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkResetUserStatItem3Params'
         required: true
@@ -4661,15 +4846,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'BulkResetUserStatItemValuesShort@social':
-    id: 'BulkResetUserStatItemValuesShort@social'
+  'BulkResetUserStatItemValuesShort@go.social.fun':
+    id: 'BulkResetUserStatItemValuesShort@go.social.fun'
     name: 'BulkResetUserStatItemValuesShort'
+    type: 'function'
     description: |-
       Bulk reset user's statitem values for given namespace and user.
       Other detail info:
       + *Returns*: bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkResetUserStatItemValuesParams'
         required: true
@@ -4696,9 +4882,10 @@ functions:
       - 'user'
       - 'values'
 
-  'BulkUpdateUserStatItemShort@social':
-    id: 'BulkUpdateUserStatItemShort@social'
+  'BulkUpdateUserStatItemShort@go.social.fun':
+    id: 'BulkUpdateUserStatItemShort@go.social.fun'
     name: 'BulkUpdateUserStatItemShort'
+    type: 'function'
     description: |-
       Bulk update user's statitems value for given namespace and user with specific update strategy.
       There are four supported update strategies:
@@ -4775,7 +4962,7 @@ functions:
       }
       ]
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkUpdateUserStatItemParams'
         required: true
@@ -4801,9 +4988,10 @@ functions:
       - 'update'
       - 'user'
 
-  'BulkUpdateUserStatItem1Short@social':
-    id: 'BulkUpdateUserStatItem1Short@social'
+  'BulkUpdateUserStatItem1Short@go.social.fun':
+    id: 'BulkUpdateUserStatItem1Short@go.social.fun'
     name: 'BulkUpdateUserStatItem1Short'
+    type: 'function'
     description: |-
       Public bulk update multiple user's statitems value with specific update strategy.
       There are four supported update strategies:
@@ -4875,7 +5063,7 @@ functions:
       }
       ]
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkUpdateUserStatItem1Params'
         required: true
@@ -4902,9 +5090,10 @@ functions:
       - 'update'
       - 'user'
 
-  'BulkUpdateUserStatItem2Short@social':
-    id: 'BulkUpdateUserStatItem2Short@social'
+  'BulkUpdateUserStatItem2Short@go.social.fun':
+    id: 'BulkUpdateUserStatItem2Short@go.social.fun'
     name: 'BulkUpdateUserStatItem2Short'
+    type: 'function'
     description: |-
       Public bulk update user's statitems value for given namespace and user with specific update strategy.
       There are four supported update strategies:
@@ -4981,7 +5170,7 @@ functions:
       }
       ]
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkUpdateUserStatItem2Params'
         required: true
@@ -5008,9 +5197,10 @@ functions:
       - 'update'
       - 'user'
 
-  'BulkUpdateUserStatItemV2Short@social':
-    id: 'BulkUpdateUserStatItemV2Short@social'
+  'BulkUpdateUserStatItemV2Short@go.social.fun':
+    id: 'BulkUpdateUserStatItemV2Short@go.social.fun'
     name: 'BulkUpdateUserStatItemV2Short'
+    type: 'function'
     description: |-
       Bulk update multiple user's statitems value with specific update strategy.
       There are four supported update strategies:
@@ -5082,7 +5272,7 @@ functions:
       }
       ]
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.BulkUpdateUserStatItemV2Params'
         required: true
@@ -5109,9 +5299,10 @@ functions:
       - 'user'
       - 'v2'
 
-  'CreateStatShort@social':
-    id: 'CreateStatShort@social'
+  'CreateStatShort@go.social.fun':
+    id: 'CreateStatShort@go.social.fun'
     name: 'CreateStatShort'
+    type: 'function'
     description: |-
       Create stat.
       Other detail info:
@@ -5120,7 +5311,7 @@ functions:
             * default maximum value is 1.7976931348623157e+308
             * Field globalAggregationMethod will be ignored when setAsGlobal field is false
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.CreateStatParams'
         required: true
@@ -5143,9 +5334,10 @@ functions:
       - 'create'
       - 'stat'
 
-  'CreateStat1Short@social':
-    id: 'CreateStat1Short@social'
+  'CreateStat1Short@go.social.fun':
+    id: 'CreateStat1Short@go.social.fun'
     name: 'CreateStat1Short'
+    type: 'function'
     description: |-
       Create stat.
       Other detail info:
@@ -5154,7 +5346,7 @@ functions:
             * default maximum value is 1.7976931348623157e+308
             * Field globalAggregationMethod will be ignored when setAsGlobal field is false
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.CreateStat1Params'
         required: true
@@ -5178,9 +5370,10 @@ functions:
       - 'create'
       - 'stat'
 
-  'CreateStatCycleShort@social':
-    id: 'CreateStatCycleShort@social'
+  'CreateStatCycleShort@go.social.fun':
+    id: 'CreateStatCycleShort@go.social.fun'
     name: 'CreateStatCycleShort'
+    type: 'function'
     description: |-
       Create stat cycle.
       Fields:
@@ -5196,7 +5389,7 @@ functions:
       Other detail info:
             *  Returns : created stat cycle
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.CreateStatCycleParams'
         required: true
@@ -5220,15 +5413,16 @@ functions:
       - 'cycle'
       - 'stat'
 
-  'CreateUserStatItemShort@social':
-    id: 'CreateUserStatItemShort@social'
+  'CreateUserStatItemShort@go.social.fun':
+    id: 'CreateUserStatItemShort@go.social.fun'
     name: 'CreateUserStatItemShort'
+    type: 'function'
     description: |-
       Create statItem for a user.
       Other detail info:
             *  Returns : created user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.CreateUserStatItemParams'
         required: true
@@ -5253,9 +5447,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'DeleteNamespaceSlotConfigShort@social':
-    id: 'DeleteNamespaceSlotConfigShort@social'
+  'DeleteNamespaceSlotConfigShort@go.social.fun':
+    id: 'DeleteNamespaceSlotConfigShort@go.social.fun'
     name: 'DeleteNamespaceSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -5263,7 +5458,7 @@ functions:
       Deletes a namespace slot configuration, the configuration will be default after delete.
       Other detail info:
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.DeleteNamespaceSlotConfigParams'
         required: true
@@ -5287,13 +5482,14 @@ functions:
       - 'namespace'
       - 'slot'
 
-  'DeleteStatShort@social':
-    id: 'DeleteStatShort@social'
+  'DeleteStatShort@go.social.fun':
+    id: 'DeleteStatShort@go.social.fun'
     name: 'DeleteStatShort'
+    type: 'function'
     description: |-
       Deletes stat template.
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.DeleteStatParams'
         required: true
@@ -5316,13 +5512,14 @@ functions:
       - 'delete'
       - 'stat'
 
-  'DeleteStatCycleShort@social':
-    id: 'DeleteStatCycleShort@social'
+  'DeleteStatCycleShort@go.social.fun':
+    id: 'DeleteStatCycleShort@go.social.fun'
     name: 'DeleteStatCycleShort'
+    type: 'function'
     description: |-
       Deletes stat cycle.
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.DeleteStatCycleParams'
         required: true
@@ -5346,13 +5543,14 @@ functions:
       - 'delete'
       - 'stat'
 
-  'DeleteTiedStatShort@social':
-    id: 'DeleteTiedStatShort@social'
+  'DeleteTiedStatShort@go.social.fun':
+    id: 'DeleteTiedStatShort@go.social.fun'
     name: 'DeleteTiedStatShort'
+    type: 'function'
     description: |-
       Deletes stat template.
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.DeleteTiedStatParams'
         required: true
@@ -5376,9 +5574,10 @@ functions:
       - 'stat'
       - 'tied'
 
-  'DeleteUserSlotConfigShort@social':
-    id: 'DeleteUserSlotConfigShort@social'
+  'DeleteUserSlotConfigShort@go.social.fun':
+    id: 'DeleteUserSlotConfigShort@go.social.fun'
     name: 'DeleteUserSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -5386,7 +5585,7 @@ functions:
       Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.
       Other detail info:
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.DeleteUserSlotConfigParams'
         required: true
@@ -5410,16 +5609,17 @@ functions:
       - 'slot'
       - 'user'
 
-  'DeleteUserStatItemsShort@social':
-    id: 'DeleteUserStatItemsShort@social'
+  'DeleteUserStatItemsShort@go.social.fun':
+    id: 'DeleteUserStatItemsShort@go.social.fun'
     name: 'DeleteUserStatItemsShort'
+    type: 'function'
     description: |-
       This endpoint is for testing purpose. Use this endpoint for cleaning up after testing.
       Delete user's statItems given stat code.
       Other detail info:
               *  Returns : no content
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.DeleteUserStatItemsParams'
         required: true
@@ -5444,15 +5644,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'DeleteUserStatItems1Short@social':
-    id: 'DeleteUserStatItems1Short@social'
+  'DeleteUserStatItems1Short@go.social.fun':
+    id: 'DeleteUserStatItems1Short@go.social.fun'
     name: 'DeleteUserStatItems1Short'
+    type: 'function'
     description: |-
       Delete user's statItems given stat code.
       Other detail info:
                 *  Returns : no content
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.DeleteUserStatItems1Params'
         required: true
@@ -5478,9 +5679,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'DeleteUserStatItems2Short@social':
-    id: 'DeleteUserStatItems2Short@social'
+  'DeleteUserStatItems2Short@go.social.fun':
+    id: 'DeleteUserStatItems2Short@go.social.fun'
     name: 'DeleteUserStatItems2Short'
+    type: 'function'
     description: |-
       Delete user's stat items for given namespace, statCode, and user Id.
       If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName).
@@ -5490,7 +5692,7 @@ functions:
       Other detail info:
                   *  Returns : no content
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.DeleteUserStatItems2Params'
         required: true
@@ -5516,13 +5718,14 @@ functions:
       - 'statistic'
       - 'user'
 
-  'ExportStatCycleShort@social':
-    id: 'ExportStatCycleShort@social'
+  'ExportStatCycleShort@go.social.fun':
+    id: 'ExportStatCycleShort@go.social.fun'
     name: 'ExportStatCycleShort'
+    type: 'function'
     description: |-
       Export all stat cycle configurations for a given namespace into file At current, only JSON file is supported.
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.ExportStatCycleParams'
         required: true
@@ -5546,13 +5749,14 @@ functions:
       - 'export'
       - 'stat'
 
-  'ExportStatsShort@social':
-    id: 'ExportStatsShort@social'
+  'ExportStatsShort@go.social.fun':
+    id: 'ExportStatsShort@go.social.fun'
     name: 'ExportStatsShort'
+    type: 'function'
     description: |-
       Export all stat configurations for a given namespace into file At current, only JSON file is supported.
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.ExportStatsParams'
         required: true
@@ -5576,15 +5780,16 @@ functions:
       - 'stat'
       - 'stats'
 
-  'GetGlobalStatItemByStatCodeShort@social':
-    id: 'GetGlobalStatItemByStatCodeShort@social'
+  'GetGlobalStatItemByStatCodeShort@go.social.fun':
+    id: 'GetGlobalStatItemByStatCodeShort@go.social.fun'
     name: 'GetGlobalStatItemByStatCodeShort'
+    type: 'function'
     description: |-
       Get global statItem by stat code.
       Other detail info:
                     *  Returns : global stat item
     struct: 'GlobalStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*global_statistic.GetGlobalStatItemByStatCodeParams'
         required: true
@@ -5611,15 +5816,16 @@ functions:
       - 'stat'
       - 'statistic'
 
-  'GetGlobalStatItemByStatCode1Short@social':
-    id: 'GetGlobalStatItemByStatCode1Short@social'
+  'GetGlobalStatItemByStatCode1Short@go.social.fun':
+    id: 'GetGlobalStatItemByStatCode1Short@go.social.fun'
     name: 'GetGlobalStatItemByStatCode1Short'
+    type: 'function'
     description: |-
       Get global statItem by stat code.
       Other detail info:
                     *  Returns : global stat item
     struct: 'GlobalStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*global_statistic.GetGlobalStatItemByStatCode1Params'
         required: true
@@ -5647,13 +5853,14 @@ functions:
       - 'stat'
       - 'statistic'
 
-  'GetGlobalStatItemsShort@social':
-    id: 'GetGlobalStatItemsShort@social'
+  'GetGlobalStatItemsShort@go.social.fun':
+    id: 'GetGlobalStatItemsShort@go.social.fun'
     name: 'GetGlobalStatItemsShort'
+    type: 'function'
     description: |-
       List global statItems by pagination.
     struct: 'GlobalStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*global_statistic.GetGlobalStatItemsParams'
         required: true
@@ -5678,15 +5885,16 @@ functions:
       - 'stat'
       - 'statistic'
 
-  'GetGlobalStatItems1Short@social':
-    id: 'GetGlobalStatItems1Short@social'
+  'GetGlobalStatItems1Short@go.social.fun':
+    id: 'GetGlobalStatItems1Short@go.social.fun'
     name: 'GetGlobalStatItems1Short'
+    type: 'function'
     description: |-
       List global statItems by pagination.
       Other detail info:
                     *  Returns : stat items
     struct: 'GlobalStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*global_statistic.GetGlobalStatItems1Params'
         required: true
@@ -5712,9 +5920,10 @@ functions:
       - 'stat'
       - 'statistic'
 
-  'GetNamespaceSlotConfigShort@social':
-    id: 'GetNamespaceSlotConfigShort@social'
+  'GetNamespaceSlotConfigShort@go.social.fun':
+    id: 'GetNamespaceSlotConfigShort@go.social.fun'
     name: 'GetNamespaceSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -5723,7 +5932,7 @@ functions:
       Other detail info:
                     *  Returns : namespace slot config info
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.GetNamespaceSlotConfigParams'
         required: true
@@ -5747,9 +5956,10 @@ functions:
       - 'namespace'
       - 'slot'
 
-  'GetProfileShort@social':
-    id: 'GetProfileShort@social'
+  'GetProfileShort@go.social.fun':
+    id: 'GetProfileShort@go.social.fun'
     name: 'GetProfileShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -5758,7 +5968,7 @@ functions:
       Other detail info:
                     *  Returns : game profile info
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.GetProfileParams'
         required: true
@@ -5781,9 +5991,10 @@ functions:
       - 'get'
       - 'profile'
 
-  'GetSlotDataShort@social':
-    id: 'GetSlotDataShort@social'
+  'GetSlotDataShort@go.social.fun':
+    id: 'GetSlotDataShort@go.social.fun'
     name: 'GetSlotDataShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -5792,7 +6003,7 @@ functions:
       Other detail info:
                     *  Returns : slot data
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.GetSlotDataParams'
         required: true
@@ -5815,15 +6026,16 @@ functions:
       - 'get'
       - 'slot'
 
-  'GetStatShort@social':
-    id: 'GetStatShort@social'
+  'GetStatShort@go.social.fun':
+    id: 'GetStatShort@go.social.fun'
     name: 'GetStatShort'
+    type: 'function'
     description: |-
       Get stat by statCode.
       Other detail info:
                     *  Returns : stat info
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.GetStatParams'
         required: true
@@ -5846,15 +6058,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'GetStatCycleShort@social':
-    id: 'GetStatCycleShort@social'
+  'GetStatCycleShort@go.social.fun':
+    id: 'GetStatCycleShort@go.social.fun'
     name: 'GetStatCycleShort'
+    type: 'function'
     description: |-
       Get stat cycle.
       Other detail info:
                     *  Returns : stat cycle info
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.GetStatCycleParams'
         required: true
@@ -5878,15 +6091,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'GetStatCycle1Short@social':
-    id: 'GetStatCycle1Short@social'
+  'GetStatCycle1Short@go.social.fun':
+    id: 'GetStatCycle1Short@go.social.fun'
     name: 'GetStatCycle1Short'
+    type: 'function'
     description: |-
       Get stat cycle.
       Other detail info:
                     *  Returns : stat cycle info
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.GetStatCycle1Params'
         required: true
@@ -5911,15 +6125,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'GetStatCyclesShort@social':
-    id: 'GetStatCyclesShort@social'
+  'GetStatCyclesShort@go.social.fun':
+    id: 'GetStatCyclesShort@go.social.fun'
     name: 'GetStatCyclesShort'
+    type: 'function'
     description: |-
       List stat cycles by pagination.
       Other detail info:
                     *  Returns : stat cycles
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.GetStatCyclesParams'
         required: true
@@ -5944,15 +6159,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'GetStatCycles1Short@social':
-    id: 'GetStatCycles1Short@social'
+  'GetStatCycles1Short@go.social.fun':
+    id: 'GetStatCycles1Short@go.social.fun'
     name: 'GetStatCycles1Short'
+    type: 'function'
     description: |-
       List stat cycles by pagination.
       Other detail info:
                     *  Returns : stat cycles
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.GetStatCycles1Params'
         required: true
@@ -5978,15 +6194,16 @@ functions:
       - 'get'
       - 'stat'
 
-  'GetStatItemsShort@social':
-    id: 'GetStatItemsShort@social'
+  'GetStatItemsShort@go.social.fun':
+    id: 'GetStatItemsShort@go.social.fun'
     name: 'GetStatItemsShort'
+    type: 'function'
     description: |-
       Get users' stat item values for a given namespace and statCode.
       Other info:
       + *Returns*: list of users' stat item values
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.GetStatItemsParams'
         required: true
@@ -6011,15 +6228,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'GetStatsShort@social':
-    id: 'GetStatsShort@social'
+  'GetStatsShort@go.social.fun':
+    id: 'GetStatsShort@go.social.fun'
     name: 'GetStatsShort'
+    type: 'function'
     description: |-
       List stats by pagination.
       Other detail info:
                     *  Returns : stats
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.GetStatsParams'
         required: true
@@ -6043,9 +6261,10 @@ functions:
       - 'stat'
       - 'stats'
 
-  'GetUserNamespaceSlotsShort@social':
-    id: 'GetUserNamespaceSlotsShort@social'
+  'GetUserNamespaceSlotsShort@go.social.fun':
+    id: 'GetUserNamespaceSlotsShort@go.social.fun'
     name: 'GetUserNamespaceSlotsShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6054,7 +6273,7 @@ functions:
       Other detail info:
                     *  Returns : list of slots
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.GetUserNamespaceSlotsParams'
         required: true
@@ -6079,9 +6298,10 @@ functions:
       - 'slots'
       - 'user'
 
-  'GetUserProfilesShort@social':
-    id: 'GetUserProfilesShort@social'
+  'GetUserProfilesShort@go.social.fun':
+    id: 'GetUserProfilesShort@go.social.fun'
     name: 'GetUserProfilesShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6090,7 +6310,7 @@ functions:
       Other detail info:
                     *  Returns : list of profiles
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.GetUserProfilesParams'
         required: true
@@ -6115,9 +6335,10 @@ functions:
       - 'profiles'
       - 'user'
 
-  'GetUserSlotConfigShort@social':
-    id: 'GetUserSlotConfigShort@social'
+  'GetUserSlotConfigShort@go.social.fun':
+    id: 'GetUserSlotConfigShort@go.social.fun'
     name: 'GetUserSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6126,7 +6347,7 @@ functions:
       Other detail info:
                     * Returns: slot config info
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.GetUserSlotConfigParams'
         required: true
@@ -6150,15 +6371,16 @@ functions:
       - 'slot'
       - 'user'
 
-  'GetUserStatCycleItemsShort@social':
-    id: 'GetUserStatCycleItemsShort@social'
+  'GetUserStatCycleItemsShort@go.social.fun':
+    id: 'GetUserStatCycleItemsShort@go.social.fun'
     name: 'GetUserStatCycleItemsShort'
+    type: 'function'
     description: |-
       List user's statCycleItems by statCycle.
       Other detail info:
                       *  Returns : stat cycle items
     struct: 'UserStatisticCycleService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic_cycle.GetUserStatCycleItemsParams'
         required: true
@@ -6184,15 +6406,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'GetUserStatCycleItems1Short@social':
-    id: 'GetUserStatCycleItems1Short@social'
+  'GetUserStatCycleItems1Short@go.social.fun':
+    id: 'GetUserStatCycleItems1Short@go.social.fun'
     name: 'GetUserStatCycleItems1Short'
+    type: 'function'
     description: |-
       List user's statCycleItems by statCycle.
       Other detail info:
                       *  Returns : stat cycle items
     struct: 'UserStatisticCycleService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic_cycle.GetUserStatCycleItems1Params'
         required: true
@@ -6219,15 +6442,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'GetUserStatItemsShort@social':
-    id: 'GetUserStatItemsShort@social'
+  'GetUserStatItemsShort@go.social.fun':
+    id: 'GetUserStatItemsShort@go.social.fun'
     name: 'GetUserStatItemsShort'
+    type: 'function'
     description: |-
       List user's statItems.
       Other detail info:
                       *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.GetUserStatItemsParams'
         required: true
@@ -6252,13 +6476,14 @@ functions:
       - 'statistic'
       - 'user'
 
-  'ImportStatCycleShort@social':
-    id: 'ImportStatCycleShort@social'
+  'ImportStatCycleShort@go.social.fun':
+    id: 'ImportStatCycleShort@go.social.fun'
     name: 'ImportStatCycleShort'
+    type: 'function'
     description: |-
       Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.ImportStatCycleParams'
         required: true
@@ -6282,13 +6507,14 @@ functions:
       - 'import'
       - 'stat'
 
-  'ImportStatsShort@social':
-    id: 'ImportStatsShort@social'
+  'ImportStatsShort@go.social.fun':
+    id: 'ImportStatsShort@go.social.fun'
     name: 'ImportStatsShort'
+    type: 'function'
     description: |-
       Import stat configurations for a given namespace from file. At current, only JSON file is supported.
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.ImportStatsParams'
         required: true
@@ -6312,15 +6538,16 @@ functions:
       - 'stat'
       - 'stats'
 
-  'IncUserStatItemValueShort@social':
-    id: 'IncUserStatItemValueShort@social'
+  'IncUserStatItemValueShort@go.social.fun':
+    id: 'IncUserStatItemValueShort@go.social.fun'
     name: 'IncUserStatItemValueShort'
+    type: 'function'
     description: |-
       Update user's statitem value.
       Other detail info:
                       *  Returns : updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.IncUserStatItemValueParams'
         required: true
@@ -6346,15 +6573,16 @@ functions:
       - 'user'
       - 'value'
 
-  'PublicBulkCreateUserStatItemsShort@social':
-    id: 'PublicBulkCreateUserStatItemsShort@social'
+  'PublicBulkCreateUserStatItemsShort@go.social.fun':
+    id: 'PublicBulkCreateUserStatItemsShort@go.social.fun'
     name: 'PublicBulkCreateUserStatItemsShort'
+    type: 'function'
     description: |-
       Bulk create statItems.
       Other detail info:
                       *  Returns : bulk created result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicBulkCreateUserStatItemsParams'
         required: true
@@ -6381,15 +6609,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicBulkIncUserStatItemShort@social':
-    id: 'PublicBulkIncUserStatItemShort@social'
+  'PublicBulkIncUserStatItemShort@go.social.fun':
+    id: 'PublicBulkIncUserStatItemShort@go.social.fun'
     name: 'PublicBulkIncUserStatItemShort'
+    type: 'function'
     description: |-
       Public bulk update multiple user's statitems value.
       Other detail info:
                       *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicBulkIncUserStatItemParams'
         required: true
@@ -6416,15 +6645,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicBulkIncUserStatItem1Short@social':
-    id: 'PublicBulkIncUserStatItem1Short@social'
+  'PublicBulkIncUserStatItem1Short@go.social.fun':
+    id: 'PublicBulkIncUserStatItem1Short@go.social.fun'
     name: 'PublicBulkIncUserStatItem1Short'
+    type: 'function'
     description: |-
       Public bulk update user's statitems value.
       Other detail info:
                       *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicBulkIncUserStatItem1Params'
         required: true
@@ -6452,15 +6682,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicBulkIncUserStatItemValueShort@social':
-    id: 'PublicBulkIncUserStatItemValueShort@social'
+  'PublicBulkIncUserStatItemValueShort@go.social.fun':
+    id: 'PublicBulkIncUserStatItemValueShort@go.social.fun'
     name: 'PublicBulkIncUserStatItemValueShort'
+    type: 'function'
     description: |-
       Public bulk update multiple user's statitems value.
       Other detail info:
                       *  Returns : bulk updated result
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicBulkIncUserStatItemValueParams'
         required: true
@@ -6488,9 +6719,10 @@ functions:
       - 'user'
       - 'value'
 
-  'PublicCreateProfileShort@social':
-    id: 'PublicCreateProfileShort@social'
+  'PublicCreateProfileShort@go.social.fun':
+    id: 'PublicCreateProfileShort@go.social.fun'
     name: 'PublicCreateProfileShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6500,7 +6732,7 @@ functions:
                       *  Returns
       : created game profile
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicCreateProfileParams'
         required: true
@@ -6524,9 +6756,10 @@ functions:
       - 'profile'
       - 'public'
 
-  'PublicCreateUserNamespaceSlotShort@social':
-    id: 'PublicCreateUserNamespaceSlotShort@social'
+  'PublicCreateUserNamespaceSlotShort@go.social.fun':
+    id: 'PublicCreateUserNamespaceSlotShort@go.social.fun'
     name: 'PublicCreateUserNamespaceSlotShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6535,7 +6768,7 @@ functions:
       Other detail info:
                       *  Returns : created slot info
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicCreateUserNamespaceSlotParams'
         required: true
@@ -6560,15 +6793,16 @@ functions:
       - 'slot'
       - 'user'
 
-  'PublicCreateUserStatItemShort@social':
-    id: 'PublicCreateUserStatItemShort@social'
+  'PublicCreateUserStatItemShort@go.social.fun':
+    id: 'PublicCreateUserStatItemShort@go.social.fun'
     name: 'PublicCreateUserStatItemShort'
+    type: 'function'
     description: |-
       Create user's statItem.
       Other detail info:
                       *  Returns : created user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicCreateUserStatItemParams'
         required: true
@@ -6594,16 +6828,17 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicDeleteProfileShort@social':
-    id: 'PublicDeleteProfileShort@social'
+  'PublicDeleteProfileShort@go.social.fun':
+    id: 'PublicDeleteProfileShort@go.social.fun'
     name: 'PublicDeleteProfileShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
 
       Deletes game profile.
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicDeleteProfileParams'
         required: true
@@ -6627,9 +6862,10 @@ functions:
       - 'profile'
       - 'public'
 
-  'PublicDeleteUserNamespaceSlotShort@social':
-    id: 'PublicDeleteUserNamespaceSlotShort@social'
+  'PublicDeleteUserNamespaceSlotShort@go.social.fun':
+    id: 'PublicDeleteUserNamespaceSlotShort@go.social.fun'
     name: 'PublicDeleteUserNamespaceSlotShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6637,7 +6873,7 @@ functions:
       Deletes the slot.
       Other detail info:
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicDeleteUserNamespaceSlotParams'
         required: true
@@ -6662,9 +6898,10 @@ functions:
       - 'slot'
       - 'user'
 
-  'PublicGetProfileShort@social':
-    id: 'PublicGetProfileShort@social'
+  'PublicGetProfileShort@go.social.fun':
+    id: 'PublicGetProfileShort@go.social.fun'
     name: 'PublicGetProfileShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6673,7 +6910,7 @@ functions:
       Other detail info:
                       *  Returns : game profile info
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicGetProfileParams'
         required: true
@@ -6697,9 +6934,10 @@ functions:
       - 'profile'
       - 'public'
 
-  'PublicGetProfileAttributeShort@social':
-    id: 'PublicGetProfileAttributeShort@social'
+  'PublicGetProfileAttributeShort@go.social.fun':
+    id: 'PublicGetProfileAttributeShort@go.social.fun'
     name: 'PublicGetProfileAttributeShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6708,7 +6946,7 @@ functions:
       Other detail info:
                       *  Returns : attribute info
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicGetProfileAttributeParams'
         required: true
@@ -6733,9 +6971,10 @@ functions:
       - 'profile'
       - 'public'
 
-  'PublicGetSlotDataShort@social':
-    id: 'PublicGetSlotDataShort@social'
+  'PublicGetSlotDataShort@go.social.fun':
+    id: 'PublicGetSlotDataShort@go.social.fun'
     name: 'PublicGetSlotDataShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6744,7 +6983,7 @@ functions:
       Other detail info:
                       *  Returns : slot data
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicGetSlotDataParams'
         required: true
@@ -6768,9 +7007,10 @@ functions:
       - 'public'
       - 'slot'
 
-  'PublicGetUserGameProfilesShort@social':
-    id: 'PublicGetUserGameProfilesShort@social'
+  'PublicGetUserGameProfilesShort@go.social.fun':
+    id: 'PublicGetUserGameProfilesShort@go.social.fun'
     name: 'PublicGetUserGameProfilesShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6779,7 +7019,7 @@ functions:
       Other detail info:
                       *  Returns : list of profiles
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicGetUserGameProfilesParams'
         required: true
@@ -6805,9 +7045,10 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicGetUserNamespaceSlotsShort@social':
-    id: 'PublicGetUserNamespaceSlotsShort@social'
+  'PublicGetUserNamespaceSlotsShort@go.social.fun':
+    id: 'PublicGetUserNamespaceSlotsShort@go.social.fun'
     name: 'PublicGetUserNamespaceSlotsShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6816,7 +7057,7 @@ functions:
       Other detail info:
                       *  Returns : list of slots
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicGetUserNamespaceSlotsParams'
         required: true
@@ -6842,9 +7083,10 @@ functions:
       - 'slots'
       - 'user'
 
-  'PublicGetUserProfilesShort@social':
-    id: 'PublicGetUserProfilesShort@social'
+  'PublicGetUserProfilesShort@go.social.fun':
+    id: 'PublicGetUserProfilesShort@go.social.fun'
     name: 'PublicGetUserProfilesShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -6853,7 +7095,7 @@ functions:
       Other detail info:
                       *  Returns : list of profiles
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicGetUserProfilesParams'
         required: true
@@ -6879,15 +7121,16 @@ functions:
       - 'public'
       - 'user'
 
-  'PublicIncUserStatItemShort@social':
-    id: 'PublicIncUserStatItemShort@social'
+  'PublicIncUserStatItemShort@go.social.fun':
+    id: 'PublicIncUserStatItemShort@go.social.fun'
     name: 'PublicIncUserStatItemShort'
+    type: 'function'
     description: |-
       Public update user's statitem value.
       Other detail info:
                       *  Returns : updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicIncUserStatItemParams'
         required: true
@@ -6913,15 +7156,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicIncUserStatItemValueShort@social':
-    id: 'PublicIncUserStatItemValueShort@social'
+  'PublicIncUserStatItemValueShort@go.social.fun':
+    id: 'PublicIncUserStatItemValueShort@go.social.fun'
     name: 'PublicIncUserStatItemValueShort'
+    type: 'function'
     description: |-
       Public update user's statitem value.
       Other detail info:
                       *  Returns : updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicIncUserStatItemValueParams'
         required: true
@@ -6948,9 +7192,10 @@ functions:
       - 'user'
       - 'value'
 
-  'PublicListAllMyStatItemsShort@social':
-    id: 'PublicListAllMyStatItemsShort@social'
+  'PublicListAllMyStatItemsShort@go.social.fun':
+    id: 'PublicListAllMyStatItemsShort@go.social.fun'
     name: 'PublicListAllMyStatItemsShort'
+    type: 'function'
     description: |-
       Public list all statItems of user.
       NOTE:
@@ -6959,7 +7204,7 @@ functions:
       Other detail info:
                     *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicListAllMyStatItemsParams'
         required: true
@@ -6987,15 +7232,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicListMyStatCycleItemsShort@social':
-    id: 'PublicListMyStatCycleItemsShort@social'
+  'PublicListMyStatCycleItemsShort@go.social.fun':
+    id: 'PublicListMyStatCycleItemsShort@go.social.fun'
     name: 'PublicListMyStatCycleItemsShort'
+    type: 'function'
     description: |-
       List user's statCycleItems by statCycle.
       Other detail info:
                     *  Returns : stat cycle items
     struct: 'UserStatisticCycleService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic_cycle.PublicListMyStatCycleItemsParams'
         required: true
@@ -7023,15 +7269,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicListMyStatItemsShort@social':
-    id: 'PublicListMyStatItemsShort@social'
+  'PublicListMyStatItemsShort@go.social.fun':
+    id: 'PublicListMyStatItemsShort@go.social.fun'
     name: 'PublicListMyStatItemsShort'
+    type: 'function'
     description: |-
       Public list all statItems by pagination.
       Other detail info:
                     *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicListMyStatItemsParams'
         required: true
@@ -7058,9 +7305,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicQueryUserStatItemsShort@social':
-    id: 'PublicQueryUserStatItemsShort@social'
+  'PublicQueryUserStatItemsShort@go.social.fun':
+    id: 'PublicQueryUserStatItemsShort@go.social.fun'
     name: 'PublicQueryUserStatItemsShort'
+    type: 'function'
     description: |-
       Public list all statItems of user.
       NOTE:
@@ -7069,7 +7317,7 @@ functions:
       Other detail info:
                   *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicQueryUserStatItemsParams'
         required: true
@@ -7095,15 +7343,16 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicQueryUserStatItems1Short@social':
-    id: 'PublicQueryUserStatItems1Short@social'
+  'PublicQueryUserStatItems1Short@go.social.fun':
+    id: 'PublicQueryUserStatItems1Short@go.social.fun'
     name: 'PublicQueryUserStatItems1Short'
+    type: 'function'
     description: |-
       Public list all statItems by pagination.
       Other detail info:
                   *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicQueryUserStatItems1Params'
         required: true
@@ -7130,9 +7379,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicQueryUserStatItems2Short@social':
-    id: 'PublicQueryUserStatItems2Short@social'
+  'PublicQueryUserStatItems2Short@go.social.fun':
+    id: 'PublicQueryUserStatItems2Short@go.social.fun'
     name: 'PublicQueryUserStatItems2Short'
+    type: 'function'
     description: |-
       Public list all statItems of user.
       NOTE:
@@ -7141,7 +7391,7 @@ functions:
       Other detail info:
                 *  Returns : stat items
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.PublicQueryUserStatItems2Params'
         required: true
@@ -7168,9 +7418,10 @@ functions:
       - 'statistic'
       - 'user'
 
-  'PublicUpdateAttributeShort@social':
-    id: 'PublicUpdateAttributeShort@social'
+  'PublicUpdateAttributeShort@go.social.fun':
+    id: 'PublicUpdateAttributeShort@go.social.fun'
     name: 'PublicUpdateAttributeShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7179,7 +7430,7 @@ functions:
       Other detail info:
                 *  Returns : updated attribute
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicUpdateAttributeParams'
         required: true
@@ -7204,9 +7455,10 @@ functions:
       - 'public'
       - 'update'
 
-  'PublicUpdateProfileShort@social':
-    id: 'PublicUpdateProfileShort@social'
+  'PublicUpdateProfileShort@go.social.fun':
+    id: 'PublicUpdateProfileShort@go.social.fun'
     name: 'PublicUpdateProfileShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7215,7 +7467,7 @@ functions:
       Other detail info:
                 *  Returns : updated game profile
     struct: 'GameProfileService'
-    parameters:
+    arguments:
       params:
         type: '*game_profile.PublicUpdateProfileParams'
         required: true
@@ -7239,9 +7491,10 @@ functions:
       - 'public'
       - 'update'
 
-  'PublicUpdateUserNamespaceSlotShort@social':
-    id: 'PublicUpdateUserNamespaceSlotShort@social'
+  'PublicUpdateUserNamespaceSlotShort@go.social.fun':
+    id: 'PublicUpdateUserNamespaceSlotShort@go.social.fun'
     name: 'PublicUpdateUserNamespaceSlotShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7250,7 +7503,7 @@ functions:
       Other detail info:
                 *  Returns : updated slot
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicUpdateUserNamespaceSlotParams'
         required: true
@@ -7275,9 +7528,10 @@ functions:
       - 'update'
       - 'user'
 
-  'PublicUpdateUserNamespaceSlotMetadataShort@social':
-    id: 'PublicUpdateUserNamespaceSlotMetadataShort@social'
+  'PublicUpdateUserNamespaceSlotMetadataShort@go.social.fun':
+    id: 'PublicUpdateUserNamespaceSlotMetadataShort@go.social.fun'
     name: 'PublicUpdateUserNamespaceSlotMetadataShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7286,7 +7540,7 @@ functions:
       Other detail info:
                 *  Returns : updated slot
     struct: 'SlotService'
-    parameters:
+    arguments:
       params:
         type: '*slot.PublicUpdateUserNamespaceSlotMetadataParams'
         required: true
@@ -7312,15 +7566,16 @@ functions:
       - 'update'
       - 'user'
 
-  'QueryStatsShort@social':
-    id: 'QueryStatsShort@social'
+  'QueryStatsShort@go.social.fun':
+    id: 'QueryStatsShort@go.social.fun'
     name: 'QueryStatsShort'
+    type: 'function'
     description: |-
       Query stats by keyword.
       Other detail info:
                 *  Returns : stats
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.QueryStatsParams'
         required: true
@@ -7344,9 +7599,10 @@ functions:
       - 'stat'
       - 'stats'
 
-  'ResetUserStatItemValueShort@social':
-    id: 'ResetUserStatItemValueShort@social'
+  'ResetUserStatItemValueShort@go.social.fun':
+    id: 'ResetUserStatItemValueShort@go.social.fun'
     name: 'ResetUserStatItemValueShort'
+    type: 'function'
     description: |-
       Reset user's statitem value for a given namespace and user.
       User's statitem value will be reset to the default value defined in the statistic configuration.
@@ -7354,7 +7610,7 @@ functions:
       Other detail info:
       + *Returns*: updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.ResetUserStatItemValueParams'
         required: true
@@ -7380,9 +7636,10 @@ functions:
       - 'user'
       - 'value'
 
-  'ResetUserStatItemValue1Short@social':
-    id: 'ResetUserStatItemValue1Short@social'
+  'ResetUserStatItemValue1Short@go.social.fun':
+    id: 'ResetUserStatItemValue1Short@go.social.fun'
     name: 'ResetUserStatItemValue1Short'
+    type: 'function'
     description: |-
       Reset user's statitem value for a given namespace and user.
       User's statitem value will be reset to the default value defined in the statistic configuration.
@@ -7390,7 +7647,7 @@ functions:
       Other detail info:
       + *Returns*: updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.ResetUserStatItemValue1Params'
         required: true
@@ -7417,15 +7674,16 @@ functions:
       - 'user'
       - 'value'
 
-  'StopStatCycleShort@social':
-    id: 'StopStatCycleShort@social'
+  'StopStatCycleShort@go.social.fun':
+    id: 'StopStatCycleShort@go.social.fun'
     name: 'StopStatCycleShort'
+    type: 'function'
     description: |-
       Stop stat cycle.
       Other detail info:
                 *  Returns : updated stat cycle
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.StopStatCycleParams'
         required: true
@@ -7449,9 +7707,10 @@ functions:
       - 'stat'
       - 'stop'
 
-  'UpdateNamespaceSlotConfigShort@social':
-    id: 'UpdateNamespaceSlotConfigShort@social'
+  'UpdateNamespaceSlotConfigShort@go.social.fun':
+    id: 'UpdateNamespaceSlotConfigShort@go.social.fun'
     name: 'UpdateNamespaceSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7460,7 +7719,7 @@ functions:
       Other detail info:
                 *  Returns : updated namespace slot config
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.UpdateNamespaceSlotConfigParams'
         required: true
@@ -7484,9 +7743,10 @@ functions:
       - 'slot'
       - 'update'
 
-  'UpdateStatShort@social':
-    id: 'UpdateStatShort@social'
+  'UpdateStatShort@go.social.fun':
+    id: 'UpdateStatShort@go.social.fun'
     name: 'UpdateStatShort'
+    type: 'function'
     description: |-
       Update stat.
       Other detail info:
@@ -7495,7 +7755,7 @@ functions:
                 *  Field globalAggregationMethod is not updatable when the stat status is TIED
                 *  Field visibility is not updatable when the stat status is TIED
     struct: 'StatConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_configuration.UpdateStatParams'
         required: true
@@ -7518,15 +7778,16 @@ functions:
       - 'stat'
       - 'update'
 
-  'UpdateStatCycleShort@social':
-    id: 'UpdateStatCycleShort@social'
+  'UpdateStatCycleShort@go.social.fun':
+    id: 'UpdateStatCycleShort@go.social.fun'
     name: 'UpdateStatCycleShort'
+    type: 'function'
     description: |-
       Update stat cycle.
       Other detail info:
                 *  Returns : updated stat cycle
     struct: 'StatCycleConfigurationService'
-    parameters:
+    arguments:
       params:
         type: '*stat_cycle_configuration.UpdateStatCycleParams'
         required: true
@@ -7550,9 +7811,10 @@ functions:
       - 'stat'
       - 'update'
 
-  'UpdateUserSlotConfigShort@social':
-    id: 'UpdateUserSlotConfigShort@social'
+  'UpdateUserSlotConfigShort@go.social.fun':
+    id: 'UpdateUserSlotConfigShort@go.social.fun'
     name: 'UpdateUserSlotConfigShort'
+    type: 'function'
     description: |-
       ## The endpoint is going to be deprecated
 
@@ -7561,7 +7823,7 @@ functions:
       Other detail info:
                 *  Returns : updated slot config
     struct: 'SlotConfigService'
-    parameters:
+    arguments:
       params:
         type: '*slot_config.UpdateUserSlotConfigParams'
         required: true
@@ -7585,9 +7847,10 @@ functions:
       - 'update'
       - 'user'
 
-  'UpdateUserStatItemValueShort@social':
-    id: 'UpdateUserStatItemValueShort@social'
+  'UpdateUserStatItemValueShort@go.social.fun':
+    id: 'UpdateUserStatItemValueShort@go.social.fun'
     name: 'UpdateUserStatItemValueShort'
+    type: 'function'
     description: |-
       Update user's statitem value for a given namespace and user with a certain update strategy.
       There are four supported update strategies:
@@ -7602,7 +7865,7 @@ functions:
       Other detail info:
       + *Returns*: updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.UpdateUserStatItemValueParams'
         required: true
@@ -7628,9 +7891,10 @@ functions:
       - 'user'
       - 'value'
 
-  'UpdateUserStatItemValue1Short@social':
-    id: 'UpdateUserStatItemValue1Short@social'
+  'UpdateUserStatItemValue1Short@go.social.fun':
+    id: 'UpdateUserStatItemValue1Short@go.social.fun'
     name: 'UpdateUserStatItemValue1Short'
+    type: 'function'
     description: |-
       Public update user's statitem value for a given namespace and user with a certain update strategy.
       There are four supported update strategies:
@@ -7645,7 +7909,7 @@ functions:
       Other detail info:
       + *Returns*: updated user's statItem
     struct: 'UserStatisticService'
-    parameters:
+    arguments:
       params:
         type: '*user_statistic.UpdateUserStatItemValue1Params'
         required: true
@@ -7671,3 +7935,5 @@ functions:
       - 'update'
       - 'user'
       - 'value'
+
+  # endregion functions
