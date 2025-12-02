@@ -1,5 +1,10 @@
 # Changelog
 
+## v2025.9.0
+
+* Updated config files.
+* Added scopes and permissions info.
+
 ## v2025.8.1
 
 ### Major Refactoring

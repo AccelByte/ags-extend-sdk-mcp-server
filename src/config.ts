@@ -5,7 +5,7 @@
 import { z } from 'zod/v3';
 
 const DEFAULT_NAME = 'extend-sdk-mcp-server';
-const DEFAULT_VERSION = '2025.8.1';
+const DEFAULT_VERSION = '2025.9.0';
 const DEFAULT_TRANSPORT = 'stdio';
 const DEFAULT_PORT = 3000;
 const DEFAULT_CONFIG_DIR = 'config/go';
