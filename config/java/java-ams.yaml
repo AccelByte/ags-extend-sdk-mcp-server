@@ -530,6 +530,60 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/models/ApiFleetArtifactsSampleRules.java'
 
+  'ApiFleetBulkActionErrorItemResponse@jv.ams.mod':
+    id: 'ApiFleetBulkActionErrorItemResponse@jv.ams.mod'
+    name: 'ApiFleetBulkActionErrorItemResponse'
+    type: 'model'
+    fields:
+      'fleetId':
+        type: 'String'
+        required: true
+      'errorMessage':
+        type: 'String'
+        required: false
+      'errorType':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.ams.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/models/ApiFleetBulkActionErrorItemResponse.java'
+
+  'ApiFleetBulkDeleteRequest@jv.ams.mod':
+    id: 'ApiFleetBulkDeleteRequest@jv.ams.mod'
+    name: 'ApiFleetBulkDeleteRequest'
+    type: 'model'
+    fields:
+      'fleetIds':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.ams.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/models/ApiFleetBulkDeleteRequest.java'
+
+  'ApiFleetBulkDeleteResponse@jv.ams.mod':
+    id: 'ApiFleetBulkDeleteResponse@jv.ams.mod'
+    name: 'ApiFleetBulkDeleteResponse'
+    type: 'model'
+    fields:
+      'errors':
+        type: 'List<ApiFleetBulkActionErrorItemResponse>'
+        required: true
+      'successCount':
+        type: 'Integer'
+        required: true
+      'totalCount':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.ams.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/models/ApiFleetBulkDeleteResponse.java'
+
   'ApiFleetClaimByKeysReq@jv.ams.mod':
     id: 'ApiFleetClaimByKeysReq@jv.ams.mod'
     name: 'ApiFleetClaimByKeysReq'
@@ -1991,6 +2045,51 @@ symbols:
       - 'commander'
       - 'fleet'
       - 'health'
+
+  'BulkFleetDelete@jv.ams.fun':
+    id: 'BulkFleetDelete@jv.ams.fun'
+    name: 'BulkFleetDelete'
+    type: 'function'
+    description: |-
+      Maximum of 1000 fleets allowed
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    arguments:
+      'body':
+        type: 'ApiFleetBulkDeleteRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'ApiFleetBulkDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.ams.models.*;'
+      - 'import net.accelbyte.sdk.api.ams.operations.fleets.*;'
+      - 'import net.accelbyte.sdk.api.ams.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/wrappers/Fleets.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/operations/fleets/BulkFleetDelete.java'
+    example: |-
+      try {
+          final BulkFleetDelete operation = BulkFleetDelete.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final Fleets wrapper = new Fleets(sdk);
+          final ApiFleetBulkDeleteResponse response = wrapper.bulkFleetDelete(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'delete'
+      - 'fleet'
+      - 'fleets'
 
   'DevelopmentServerConfigurationCreate@jv.ams.fun':
     id: 'DevelopmentServerConfigurationCreate@jv.ams.fun'

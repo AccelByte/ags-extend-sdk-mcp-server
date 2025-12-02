@@ -1461,11 +1461,21 @@ symbols:
     name: 'RetrieveAllLegalPoliciesByNamespaceParams'
     type: 'model'
     fields:
+      'Limit':
+        type: 'int32'
+        required: false
+        description: |-
+          Limit
       'Namespace':
         type: 'string'
         required: true
         description: |-
           Namespace
+      'Offset':
+        type: 'int32'
+        required: false
+        description: |-
+          Offset
       'VisibleOnly':
         type: 'bool'
         required: false
@@ -5668,7 +5678,7 @@ symbols:
     name: 'RetrieveAllLegalPoliciesByNamespaceShort'
     type: 'function'
     description: |-
-      Retrieve all base policies in the namespace.
+      Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
     struct: 'BaseLegalPoliciesWithNamespaceService'
     arguments:
       params:

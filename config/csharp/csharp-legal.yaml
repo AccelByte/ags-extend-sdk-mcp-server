@@ -4464,13 +4464,23 @@ symbols:
     name: 'RetrieveAllLegalPoliciesByNamespace'
     type: 'function'
     description: |-
-      Retrieve all base policies in the namespace.
+      Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
     arguments:
+      'Limit':
+        type: 'int'
+        required: false
+        description: |-
+          Limit
       'Namespace':
         type: 'string'
         required: true
         description: |-
           Namespace
+      'Offset':
+        type: 'int'
+        required: false
+        description: |-
+          Offset
       'VisibleOnly':
         type: 'bool'
         required: false
@@ -4487,6 +4497,8 @@ symbols:
       try
       {
           var operation = sdk.Legal.BaseLegalPoliciesWithNamespace.RetrieveAllLegalPoliciesByNamespaceOp
+              .SetLimit(...)
+              .SetOffset(...)
               .SetVisibleOnly(...)
               .Build(
                   namespace_,

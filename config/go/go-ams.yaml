@@ -567,6 +567,24 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/basic_health_check_parameters.go'
 
+  'BulkFleetDeleteParams@go.ams.mod':
+    id: 'BulkFleetDeleteParams@go.ams.mod'
+    name: 'BulkFleetDeleteParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*APIFleetBulkDeleteRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/bulk_fleet_delete_parameters.go'
+
   'DevelopmentServerConfigurationCreateParams@go.ams.mod':
     id: 'DevelopmentServerConfigurationCreateParams@go.ams.mod'
     name: 'DevelopmentServerConfigurationCreateParams'
@@ -1888,6 +1906,57 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_artifacts_sample_rules.go'
 
+  'APIFleetBulkActionErrorItemResponse@go.ams.mod':
+    id: 'APIFleetBulkActionErrorItemResponse@go.ams.mod'
+    name: 'APIFleetBulkActionErrorItemResponse'
+    type: 'model'
+    fields:
+      'ErrorMessage':
+        type: 'string'
+        required: false
+      'ErrorType':
+        type: 'string'
+        required: false
+      'FleetID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_bulk_action_error_item_response.go'
+
+  'APIFleetBulkDeleteRequest@go.ams.mod':
+    id: 'APIFleetBulkDeleteRequest@go.ams.mod'
+    name: 'APIFleetBulkDeleteRequest'
+    type: 'model'
+    fields:
+      'FleetIds':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_bulk_delete_request.go'
+
+  'APIFleetBulkDeleteResponse@go.ams.mod':
+    id: 'APIFleetBulkDeleteResponse@go.ams.mod'
+    name: 'APIFleetBulkDeleteResponse'
+    type: 'model'
+    fields:
+      'Errors':
+        type: '[]*APIFleetBulkActionErrorItemResponse'
+        required: true
+      'SuccessCount':
+        type: 'int32'
+        required: true
+      'TotalCount':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclientmodels/api_fleet_bulk_delete_response.go'
+
   'APIFleetClaimByKeysReq@go.ams.mod':
     id: 'APIFleetClaimByKeysReq@go.ams.mod'
     name: 'APIFleetClaimByKeysReq'
@@ -3115,6 +3184,39 @@ symbols:
       - 'commander'
       - 'fleet'
       - 'health'
+
+  'BulkFleetDeleteShort@go.ams.fun':
+    id: 'BulkFleetDeleteShort@go.ams.fun'
+    name: 'BulkFleetDeleteShort'
+    type: 'function'
+    description: |-
+      Maximum of 1000 fleets allowed
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    struct: 'FleetsService'
+    arguments:
+      params:
+        type: '*fleets.BulkFleetDeleteParams'
+        required: true
+    return_type: '(*fleets.BulkFleetDeleteResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleets.go'
+    example: |-
+      fleetsService := ams.FleetsService{ ... }
+      params := fleets.BulkFleetDeleteParams{ ... }
+      res, err := fleetsService.BulkFleetDeleteShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'delete'
+      - 'fleet'
+      - 'fleets'
 
   'DevelopmentServerConfigurationCreateShort@go.ams.fun':
     id: 'DevelopmentServerConfigurationCreateShort@go.ams.fun'

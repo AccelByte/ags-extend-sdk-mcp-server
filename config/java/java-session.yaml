@@ -6741,11 +6741,18 @@ symbols:
     name: 'PublicReadPartySessionStorage'
     type: 'function'
     description: |-
-      Read Party Session Storage by partyID
+      Read Party Session Storage by partyID (with reserved and member).
+      Contains "reserved" when Update Insert Party Session Reserved Storage User.
+      Contains "member" when Update Insert Party Session Storage User.
       Party Storage example:
       ```
       {
       "reserved": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      },
+      "member": {
       "userID1": {"key": "value"},
       "userID2": {"key": "value"},
       ...
@@ -6991,13 +6998,91 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'PublicUpdateInsertPartySessionStorage@jv.session.fun':
+    id: 'PublicUpdateInsertPartySessionStorage@jv.session.fun'
+    name: 'PublicUpdateInsertPartySessionStorage'
+    type: 'function'
+    description: |-
+      Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+      can store generic json
+      example json can store :
+      ```
+      {
+      "key": "value",
+      "number": 123,
+      }
+      ```
+      The data will be stored on the "member" storage field
+      example stored data :
+      ```
+      {
+      "member": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      }
+      }
+      ```
+    arguments:
+      'body':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'partyId':
+        type: 'String'
+        required: true
+        description: |-
+          partyID
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'Map<String, ?>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.session_storage.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicUpdateInsertPartySessionStorage.java'
+    example: |-
+      try {
+          final PublicUpdateInsertPartySessionStorage operation = PublicUpdateInsertPartySessionStorage.builder()
+              .build(
+                  body,
+                  namespace,
+                  partyId,
+                  userId,
+              );
+
+          final SessionStorage wrapper = new SessionStorage(sdk);
+          final Map<String, ?> response = wrapper.publicUpdateInsertPartySessionStorage(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'insert'
+      - 'party'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [UPDATE]'
+
   'PublicUpdateInsertPartySessionStorageReserved@jv.session.fun':
     id: 'PublicUpdateInsertPartySessionStorageReserved@jv.session.fun'
     name: 'PublicUpdateInsertPartySessionStorageReserved'
     type: 'function'
     description: |-
       **For Internal Use Only**
-      Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+      Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
       can store generic json
       example json can store :
       ```

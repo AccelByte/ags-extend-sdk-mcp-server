@@ -27136,9 +27136,6 @@ symbols:
     type: 'function'
     description: |-
       Notes:
-      - This endpoint retrieve the first page of the data if after and before parameters is empty
-      - **The pagination is not working yet**
-
 
       **Authentication:**
       The _**userId**_ parameter should match the one in the access token.
@@ -27148,26 +27145,21 @@ symbols:
         required: false
         description: |-
           Filter ban based on the ban status. If you set this, only active ban returned
-      'after':
-        type: 'String'
-        required: false
-        description: |-
-          Filter ban based on the date creation. If you set this, only user bans created after the date returned. The date is in ISO-8601. Example value: 2019-05-18T07:17:45Z. _Doesn't work yet_
-      'before':
-        type: 'String'
-        required: false
-        description: |-
-          Filter ban based on the date creation. If you set this, only user bans created before the date returned. The date is in ISO-8601. Example value: 2019-05-18T07:17:45Z. _Doesn't work yet_
       'limit':
         type: 'Integer'
         required: false
         description: |-
-          The number of data returned in one query. The maximum value of the limit is 100 and the minimum value of the limit is 1. If you set this into -1, then it returns all data. Default: -1. _Doesn't work yet_.
+          The number of data returned in one query. The maximum value of the limit is 100 and the minimum value of the limit is 1. If you set this into -1, then it returns all data. Default: -1.
       'namespace':
         type: 'String'
         required: true
         description: |-
           Namespace, only accept alphabet and numeric
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          The number of offset from expected limit. Default: 0
       'userId':
         type: 'String'
         required: true
@@ -27186,9 +27178,8 @@ symbols:
       try {
           final PublicGetUserBanHistoryV3 operation = PublicGetUserBanHistoryV3.builder()
               .activeOnly(...)
-              .after(...)
-              .before(...)
               .limit(...)
+              .offset(...)
               .build(
                   namespace,
                   userId,

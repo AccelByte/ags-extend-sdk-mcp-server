@@ -69,6 +69,31 @@ symbols:
           TokenRepository:  tokenRepo,
       }
 
+  'AsyncMessagingService@go.csm.mod':
+    id: 'AsyncMessagingService@go.csm.mod'
+    name: 'AsyncMessagingService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      asyncMessagingService := AsyncMessagingService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'ConfigurationService@go.csm.mod':
     id: 'ConfigurationService@go.csm.mod'
     name: 'ConfigurationService'
@@ -527,6 +552,47 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_no_sql_database_v2_parameters.go'
 
+  'CreateSubscriptionHandlerParams@go.csm.mod':
+    id: 'CreateSubscriptionHandlerParams@go.csm.mod'
+    name: 'CreateSubscriptionHandlerParams'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateSubscriptionRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/async_messaging/create_subscription_handler_parameters.go'
+
+  'CreateTopicHandlerParams@go.csm.mod':
+    id: 'CreateTopicHandlerParams@go.csm.mod'
+    name: 'CreateTopicHandlerParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*ApimodelCreateTopicRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/async_messaging/create_topic_handler_parameters.go'
+
   'DeleteAppImagesV1Params@go.csm.mod':
     id: 'DeleteAppImagesV1Params@go.csm.mod'
     name: 'DeleteAppImagesV1Params'
@@ -827,6 +893,26 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription_v3'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription_v3/delete_subscription_app_notification_v3_parameters.go'
+
+  'DeleteTopicHandlerParams@go.csm.mod':
+    id: 'DeleteTopicHandlerParams@go.csm.mod'
+    name: 'DeleteTopicHandlerParams'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'TopicName':
+        type: 'string'
+        required: true
+        description: |-
+          Topic Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/async_messaging/delete_topic_handler_parameters.go'
 
   'DeleteVariableV1Params@go.csm.mod':
     id: 'DeleteVariableV1Params@go.csm.mod'
@@ -1405,6 +1491,46 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/get_subscription_v2_handler_parameters.go'
 
+  'ListTopicsHandlerParams@go.csm.mod':
+    id: 'ListTopicsHandlerParams@go.csm.mod'
+    name: 'ListTopicsHandlerParams'
+    type: 'model'
+    fields:
+      'FuzzyTopicName':
+        type: 'string'
+        required: false
+        description: |-
+          Fuzzy search for topic name
+      'IsSubscribedByAppName':
+        type: 'string'
+        required: false
+        description: |-
+          Filter to get only topics subscribed by given app name
+      'IsUnsubscribedByAppName':
+        type: 'string'
+        required: false
+        description: |-
+          Filter to get only topics unsubscribed by given app name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit for pagination
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset for pagination
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/async_messaging/list_topics_handler_parameters.go'
+
   'PublicGetMessagesParams@go.csm.mod':
     id: 'PublicGetMessagesParams@go.csm.mod'
     name: 'PublicGetMessagesParams'
@@ -1549,6 +1675,21 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/start_app_v2_parameters.go'
 
+  'StartNoSQLClusterV2Params@go.csm.mod':
+    id: 'StartNoSQLClusterV2Params@go.csm.mod'
+    name: 'StartNoSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/start_no_sql_cluster_v2_parameters.go'
+
   'StopAppV1Params@go.csm.mod':
     id: 'StopAppV1Params@go.csm.mod'
     name: 'StopAppV1Params'
@@ -1591,6 +1732,21 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/stop_app_v2_parameters.go'
+
+  'StopNoSQLClusterV2Params@go.csm.mod':
+    id: 'StopNoSQLClusterV2Params@go.csm.mod'
+    name: 'StopNoSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/stop_no_sql_cluster_v2_parameters.go'
 
   'SubscribeAppNotificationV2Params@go.csm.mod':
     id: 'SubscribeAppNotificationV2Params@go.csm.mod'
@@ -1637,6 +1793,31 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/subscribe_v2_handler_parameters.go'
+
+  'UnsubscribeTopicHandlerParams@go.csm.mod':
+    id: 'UnsubscribeTopicHandlerParams@go.csm.mod'
+    name: 'UnsubscribeTopicHandlerParams'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'TopicName':
+        type: 'string'
+        required: true
+        description: |-
+          Topic Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/async_messaging/unsubscribe_topic_handler_parameters.go'
 
   'UnsubscribeV2HandlerParams@go.csm.mod':
     id: 'UnsubscribeV2HandlerParams@go.csm.mod'
@@ -1943,6 +2124,9 @@ symbols:
       'Message':
         type: 'string'
         required: false
+      'RedeploymentInfo':
+        type: '*ModelAppRedeploymentInfo'
+        required: false
       'Replica':
         type: '*ApimodelReplicaResponse'
         required: false
@@ -2144,6 +2328,48 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_no_sql_database_credential_request.go'
+
+  'ApimodelCreateSubscriptionRequest@go.csm.mod':
+    id: 'ApimodelCreateSubscriptionRequest@go.csm.mod'
+    name: 'ApimodelCreateSubscriptionRequest'
+    type: 'model'
+    fields:
+      'TopicNames':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_subscription_request.go'
+
+  'ApimodelCreateSubscriptionResponse@go.csm.mod':
+    id: 'ApimodelCreateSubscriptionResponse@go.csm.mod'
+    name: 'ApimodelCreateSubscriptionResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelTopicSubscription'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_subscription_response.go'
+
+  'ApimodelCreateTopicRequest@go.csm.mod':
+    id: 'ApimodelCreateTopicRequest@go.csm.mod'
+    name: 'ApimodelCreateTopicRequest'
+    type: 'model'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'TopicName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_topic_request.go'
 
   'ApimodelCSMAppLimitsResponse@go.csm.mod':
     id: 'ApimodelCSMAppLimitsResponse@go.csm.mod'
@@ -2569,6 +2795,22 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_increase_limit_form_request.go'
 
+  'ApimodelListTopicsResponse@go.csm.mod':
+    id: 'ApimodelListTopicsResponse@go.csm.mod'
+    name: 'ApimodelListTopicsResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelTopicDetailResponse'
+        required: true
+      'Pagination':
+        type: '*ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_list_topics_response.go'
+
   'ApimodelMemoryRequest@go.csm.mod':
     id: 'ApimodelMemoryRequest@go.csm.mod'
     name: 'ApimodelMemoryRequest'
@@ -2725,6 +2967,31 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_notification_type.go'
+
+  'ApimodelPaginationResponse@go.csm.mod':
+    id: 'ApimodelPaginationResponse@go.csm.mod'
+    name: 'ApimodelPaginationResponse'
+    type: 'model'
+    fields:
+      'First':
+        type: 'string'
+        required: false
+      'Last':
+        type: 'string'
+        required: false
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+      'TotalData':
+        type: 'int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_pagination_response.go'
 
   'ApimodelReplicaRequest@go.csm.mod':
     id: 'ApimodelReplicaRequest@go.csm.mod'
@@ -2912,6 +3179,99 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_subscriber_item_response.go'
+
+  'ApimodelTopicDetailResponse@go.csm.mod':
+    id: 'ApimodelTopicDetailResponse@go.csm.mod'
+    name: 'ApimodelTopicDetailResponse'
+    type: 'model'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'GameName':
+        type: 'string'
+        required: true
+      'ID':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+      'Subscribers':
+        type: '[]*ApimodelTopicSubscription'
+        required: false
+      'TopicArn':
+        type: 'string'
+        required: true
+      'TopicName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_topic_detail_response.go'
+
+  'ApimodelTopicResponse@go.csm.mod':
+    id: 'ApimodelTopicResponse@go.csm.mod'
+    name: 'ApimodelTopicResponse'
+    type: 'model'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+      'GameName':
+        type: 'string'
+        required: true
+      'ID':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+      'TopicArn':
+        type: 'string'
+        required: true
+      'TopicName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_topic_response.go'
+
+  'ApimodelTopicSubscription@go.csm.mod':
+    id: 'ApimodelTopicSubscription@go.csm.mod'
+    name: 'ApimodelTopicSubscription'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'QueueID':
+        type: 'string'
+        required: true
+      'SubscriptionArn':
+        type: 'string'
+        required: true
+      'SubscriptionID':
+        type: 'string'
+        required: true
+      'SubscriptionTime':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_topic_subscription.go'
 
   'ApimodelTunnelInfoResponse@go.csm.mod':
     id: 'ApimodelTunnelInfoResponse@go.csm.mod'
@@ -3742,6 +4102,38 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/log_app_message_declaration.go'
 
+  'ModelAppRedeploymentDetail@go.csm.mod':
+    id: 'ModelAppRedeploymentDetail@go.csm.mod'
+    name: 'ModelAppRedeploymentDetail'
+    type: 'model'
+    fields:
+      'Message':
+        type: 'string'
+        required: false
+      'ReasonID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_app_redeployment_detail.go'
+
+  'ModelAppRedeploymentInfo@go.csm.mod':
+    id: 'ModelAppRedeploymentInfo@go.csm.mod'
+    name: 'ModelAppRedeploymentInfo'
+    type: 'model'
+    fields:
+      'Details':
+        type: '[]*ModelAppRedeploymentDetail'
+        required: false
+      'ShouldRedeploy':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_app_redeployment_info.go'
+
   'ModelCSMAutoscalingDefaults@go.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@go.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -3909,9 +4301,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 2: `service-extension`
       - scenario 3: `event-handler`
       - scenario 1: `function-override`
+      - scenario 2: `service-extension`
 
       Default: `function-override`
     struct: 'AppService'
@@ -4188,6 +4580,74 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+
+  'CreateSubscriptionHandlerShort@go.csm.fun':
+    id: 'CreateSubscriptionHandlerShort@go.csm.fun'
+    name: 'CreateSubscriptionHandlerShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
+
+      Subscribe App queue to given Topic name list inside a game namespace.
+    struct: 'AsyncMessagingService'
+    arguments:
+      params:
+        type: '*async_messaging.CreateSubscriptionHandlerParams'
+        required: true
+    return_type: '(*async_messaging.CreateSubscriptionHandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      asyncMessagingService := csm.AsyncMessagingService{ ... }
+      params := async_messaging.CreateSubscriptionHandlerParams{ ... }
+      res, err := asyncMessagingService.CreateSubscriptionHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'subscription'
+
+  'CreateTopicHandlerShort@go.csm.fun':
+    id: 'CreateTopicHandlerShort@go.csm.fun'
+    name: 'CreateTopicHandlerShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
+
+      Create New Async Messaging Topic, the topic name is unique inside a game namespace.
+    struct: 'AsyncMessagingService'
+    arguments:
+      params:
+        type: '*async_messaging.CreateTopicHandlerParams'
+        required: true
+    return_type: '(*async_messaging.CreateTopicHandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      asyncMessagingService := csm.AsyncMessagingService{ ... }
+      params := async_messaging.CreateTopicHandlerParams{ ... }
+      res, err := asyncMessagingService.CreateTopicHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
 
   'DeleteAppImagesV1Short@go.csm.fun':
     id: 'DeleteAppImagesV1Short@go.csm.fun'
@@ -4649,6 +5109,40 @@ symbols:
       - 'subscription'
       - 'v3'
 
+  'DeleteTopicHandlerShort@go.csm.fun':
+    id: 'DeleteTopicHandlerShort@go.csm.fun'
+    name: 'DeleteTopicHandlerShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
+
+      Delete Async Messaging Topic inside a game namespace given its topic name.
+    struct: 'AsyncMessagingService'
+    arguments:
+      params:
+        type: '*async_messaging.DeleteTopicHandlerParams'
+        required: true
+    return_type: '(*async_messaging.DeleteTopicHandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      asyncMessagingService := csm.AsyncMessagingService{ ... }
+      params := async_messaging.DeleteTopicHandlerParams{ ... }
+      res, err := asyncMessagingService.DeleteTopicHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'async'
+      - 'delete'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+
   'DeleteVariableV1Short@go.csm.fun':
     id: 'DeleteVariableV1Short@go.csm.fun'
     name: 'DeleteVariableV1Short'
@@ -4797,9 +5291,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
     struct: 'AppService'
     arguments:
       params:
@@ -5332,16 +5826,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -5381,16 +5875,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -5571,6 +6065,40 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'ListTopicsHandlerShort@go.csm.fun':
+    id: 'ListTopicsHandlerShort@go.csm.fun'
+    name: 'ListTopicsHandlerShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
+
+      List all Async Messaging Topics inside a game namespace.
+    struct: 'AsyncMessagingService'
+    arguments:
+      params:
+        type: '*async_messaging.ListTopicsHandlerParams'
+        required: true
+    return_type: '(*async_messaging.ListTopicsHandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      asyncMessagingService := csm.AsyncMessagingService{ ... }
+      params := async_messaging.ListTopicsHandlerParams{ ... }
+      res, err := asyncMessagingService.ListTopicsHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'list'
+      - 'messaging'
+      - 'topics'
 
   'PublicGetMessagesShort@go.csm.fun':
     id: 'PublicGetMessagesShort@go.csm.fun'
@@ -5822,6 +6350,45 @@ symbols:
       - 'start'
       - 'v2'
 
+  'StartNoSQLClusterV2Short@go.csm.fun':
+    id: 'StartNoSQLClusterV2Short@go.csm.fun'
+    name: 'StartNoSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Start NoSQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    struct: 'ManagedResourcesService'
+    arguments:
+      params:
+        type: '*managed_resources.StartNoSQLClusterV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.StartNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.StartNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'StopAppV1Short@go.csm.fun':
     id: 'StopAppV1Short@go.csm.fun'
     name: 'StopAppV1Short'
@@ -5883,6 +6450,45 @@ symbols:
       }
     tags:
       - 'app'
+      - 'stop'
+      - 'v2'
+
+  'StopNoSQLClusterV2Short@go.csm.fun':
+    id: 'StopNoSQLClusterV2Short@go.csm.fun'
+    name: 'StopNoSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Stop NoSQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    struct: 'ManagedResourcesService'
+    arguments:
+      params:
+        type: '*managed_resources.StopNoSQLClusterV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.StopNoSQLClusterV2Params{ ... }
+      res, err := managedResourcesService.StopNoSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'stop'
       - 'v2'
 
@@ -5967,6 +6573,40 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+
+  'UnsubscribeTopicHandlerShort@go.csm.fun':
+    id: 'UnsubscribeTopicHandlerShort@go.csm.fun'
+    name: 'UnsubscribeTopicHandlerShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
+
+      Unsubscribe App queue from a topic by Topic Name.
+    struct: 'AsyncMessagingService'
+    arguments:
+      params:
+        type: '*async_messaging.UnsubscribeTopicHandlerParams'
+        required: true
+    return_type: '(*async_messaging.UnsubscribeTopicHandlerResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/async_messaging'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/asyncMessaging.go'
+    example: |-
+      asyncMessagingService := csm.AsyncMessagingService{ ... }
+      params := async_messaging.UnsubscribeTopicHandlerParams{ ... }
+      res, err := asyncMessagingService.UnsubscribeTopicHandlerShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+      - 'unsubscribe'
 
   'UnsubscribeV2HandlerShort@go.csm.fun':
     id: 'UnsubscribeV2HandlerShort@go.csm.fun'

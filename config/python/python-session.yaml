@@ -6028,11 +6028,18 @@ symbols:
     name: 'public_read_party_session_storage'
     type: 'function'
     description: |-
-      Read Party Session Storage by partyID
+      Read Party Session Storage by partyID (with reserved and member).
+      Contains "reserved" when Update Insert Party Session Reserved Storage User.
+      Contains "member" when Update Insert Party Session Storage User.
       Party Storage example:
       ```
       {
       "reserved": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      },
+      "member": {
       "userID1": {"key": "value"},
       "userID2": {"key": "value"},
       ...
@@ -6228,13 +6235,79 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'public_update_insert_party_session_storage@py.session.fun':
+    id: 'public_update_insert_party_session_storage@py.session.fun'
+    name: 'public_update_insert_party_session_storage'
+    type: 'function'
+    description: |-
+      Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+      can store generic json
+      example json can store :
+      ```
+      {
+      "key": "value",
+      "number": 123,
+      }
+      ```
+      The data will be stored on the "member" storage field
+      example stored data :
+      ```
+      {
+      "member": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      }
+      }
+      ```
+    arguments:
+      'body':
+        type: 'Dict[str, Any]'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Namespace
+      'party_id':
+        type: 'str'
+        required: true
+        description: |-
+          partyID
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          userID
+    return_type: 'Tuple[Union[None, Dict[str, Any]], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.session as session'
+      - 'import accelbyte_py_sdk.api.session.models as session_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/session/operations/session_storage/public_update_insert_pa_71696c.py'
+    example: |-
+      result, error = session.public_update_insert_party_session_storage(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'insert'
+      - 'party'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [UPDATE]'
+
   'public_update_insert_party_session_storage_reserved@py.session.fun':
     id: 'public_update_insert_party_session_storage_reserved@py.session.fun'
     name: 'public_update_insert_party_session_storage_reserved'
     type: 'function'
     description: |-
       **For Internal Use Only**
-      Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+      Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
       can store generic json
       example json can store :
       ```

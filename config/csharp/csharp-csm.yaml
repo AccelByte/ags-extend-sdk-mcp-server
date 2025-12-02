@@ -69,6 +69,9 @@ symbols:
       'Message':
         type: 'string'
         required: false
+      'RedeploymentInfo':
+        type: 'ModelAppRedeploymentInfo'
+        required: false
       'Replica':
         type: 'ApimodelReplicaResponse'
         required: false
@@ -285,6 +288,54 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateNoSQLDatabaseCredentialRequest.cs'
+
+  'ApimodelCreateSubscriptionRequest@cs.csm.mod':
+    id: 'ApimodelCreateSubscriptionRequest@cs.csm.mod'
+    name: 'ApimodelCreateSubscriptionRequest'
+    type: 'model'
+    fields:
+      'TopicNames':
+        type: 'List<string>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateSubscriptionRequest.cs'
+
+  'ApimodelCreateSubscriptionResponse@cs.csm.mod':
+    id: 'ApimodelCreateSubscriptionResponse@cs.csm.mod'
+    name: 'ApimodelCreateSubscriptionResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: 'List<ApimodelTopicSubscription>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateSubscriptionResponse.cs'
+
+  'ApimodelCreateTopicRequest@cs.csm.mod':
+    id: 'ApimodelCreateTopicRequest@cs.csm.mod'
+    name: 'ApimodelCreateTopicRequest'
+    type: 'model'
+    fields:
+      'TopicName':
+        type: 'string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateTopicRequest.cs'
 
   'ApimodelCSMAppLimitsResponse@cs.csm.mod':
     id: 'ApimodelCSMAppLimitsResponse@cs.csm.mod'
@@ -748,6 +799,24 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelIncreaseLimitFormRequest.cs'
 
+  'ApimodelListTopicsResponse@cs.csm.mod':
+    id: 'ApimodelListTopicsResponse@cs.csm.mod'
+    name: 'ApimodelListTopicsResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: 'List<ApimodelTopicDetailResponse>'
+        required: true
+      'Pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelListTopicsResponse.cs'
+
   'ApimodelMemoryRequest@cs.csm.mod':
     id: 'ApimodelMemoryRequest@cs.csm.mod'
     name: 'ApimodelMemoryRequest'
@@ -918,6 +987,33 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelNotificationType.cs'
+
+  'ApimodelPaginationResponse@cs.csm.mod':
+    id: 'ApimodelPaginationResponse@cs.csm.mod'
+    name: 'ApimodelPaginationResponse'
+    type: 'model'
+    fields:
+      'TotalData':
+        type: 'long'
+        required: true
+      'First':
+        type: 'string'
+        required: false
+      'Last':
+        type: 'string'
+        required: false
+      'Next':
+        type: 'string'
+        required: false
+      'Previous':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelPaginationResponse.cs'
 
   'ApimodelReplicaRequest@cs.csm.mod':
     id: 'ApimodelReplicaRequest@cs.csm.mod'
@@ -1125,6 +1221,105 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelSubscriberItemResponse.cs'
+
+  'ApimodelTopicDetailResponse@cs.csm.mod':
+    id: 'ApimodelTopicDetailResponse@cs.csm.mod'
+    name: 'ApimodelTopicDetailResponse'
+    type: 'model'
+    fields:
+      'GameName':
+        type: 'string'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+      'TopicArn':
+        type: 'string'
+        required: true
+      'TopicName':
+        type: 'string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'Subscribers':
+        type: 'List<ApimodelTopicSubscription>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelTopicDetailResponse.cs'
+
+  'ApimodelTopicResponse@cs.csm.mod':
+    id: 'ApimodelTopicResponse@cs.csm.mod'
+    name: 'ApimodelTopicResponse'
+    type: 'model'
+    fields:
+      'GameName':
+        type: 'string'
+        required: true
+      'Id':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+      'TopicArn':
+        type: 'string'
+        required: true
+      'TopicName':
+        type: 'string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelTopicResponse.cs'
+
+  'ApimodelTopicSubscription@cs.csm.mod':
+    id: 'ApimodelTopicSubscription@cs.csm.mod'
+    name: 'ApimodelTopicSubscription'
+    type: 'model'
+    fields:
+      'AppId':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'QueueId':
+        type: 'string'
+        required: true
+      'SubscriptionArn':
+        type: 'string'
+        required: true
+      'SubscriptionId':
+        type: 'string'
+        required: true
+      'SubscriptionTime':
+        type: 'string'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelTopicSubscription.cs'
 
   'ApimodelTunnelInfoResponse@cs.csm.mod':
     id: 'ApimodelTunnelInfoResponse@cs.csm.mod'
@@ -2029,6 +2224,42 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/LogAppMessageDeclaration.cs'
 
+  'ModelAppRedeploymentDetail@cs.csm.mod':
+    id: 'ModelAppRedeploymentDetail@cs.csm.mod'
+    name: 'ModelAppRedeploymentDetail'
+    type: 'model'
+    fields:
+      'ReasonId':
+        type: 'string'
+        required: true
+      'Message':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ModelAppRedeploymentDetail.cs'
+
+  'ModelAppRedeploymentInfo@cs.csm.mod':
+    id: 'ModelAppRedeploymentInfo@cs.csm.mod'
+    name: 'ModelAppRedeploymentInfo'
+    type: 'model'
+    fields:
+      'ShouldRedeploy':
+        type: 'bool'
+        required: true
+      'Details':
+        type: 'List<ModelAppRedeploymentDetail>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ModelAppRedeploymentInfo.cs'
+
   'ModelCSMAutoscalingDefaults@cs.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@cs.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -2220,9 +2451,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 2: `service-extension`
       - scenario 3: `event-handler`
       - scenario 1: `function-override`
+      - scenario 2: `service-extension`
 
       Default: `function-override`
     arguments:
@@ -2592,6 +2823,97 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+
+  'CreateSubscriptionHandler@cs.csm.fun':
+    id: 'CreateSubscriptionHandler@cs.csm.fun'
+    name: 'CreateSubscriptionHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
+
+      Subscribe App queue to given Topic name list inside a game namespace.
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: 'ApimodelCreateSubscriptionRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelCreateSubscriptionResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AsyncMessaging.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AsyncMessaging/CreateSubscriptionHandler.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AsyncMessaging.CreateSubscriptionHandlerOp
+              .Build();
+
+          var response = sdk.Csm.AsyncMessaging.CreateSubscriptionHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'subscription'
+
+  'CreateTopicHandler@cs.csm.fun':
+    id: 'CreateTopicHandler@cs.csm.fun'
+    name: 'CreateTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
+
+      Create New Async Messaging Topic, the topic name is unique inside a game namespace.
+    arguments:
+      'Body':
+        type: 'ApimodelCreateTopicRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelTopicResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AsyncMessaging.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AsyncMessaging/CreateTopicHandler.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AsyncMessaging.CreateTopicHandlerOp
+              .Build();
+
+          var response = sdk.Csm.AsyncMessaging.CreateTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
 
   'DeleteAppImagesV1@cs.csm.fun':
     id: 'DeleteAppImagesV1@cs.csm.fun'
@@ -3250,6 +3572,51 @@ symbols:
       - 'subscription'
       - 'v3'
 
+  'DeleteTopicHandler@cs.csm.fun':
+    id: 'DeleteTopicHandler@cs.csm.fun'
+    name: 'DeleteTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
+
+      Delete Async Messaging Topic inside a game namespace given its topic name.
+    arguments:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'TopicName':
+        type: 'string'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'ApimodelTopicResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AsyncMessaging.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AsyncMessaging/DeleteTopicHandler.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AsyncMessaging.DeleteTopicHandlerOp
+              .Build();
+
+          var response = sdk.Csm.AsyncMessaging.DeleteTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'delete'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+
   'DeleteVariableV1@cs.csm.fun':
     id: 'DeleteVariableV1@cs.csm.fun'
     name: 'DeleteVariableV1'
@@ -3482,9 +3849,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
     arguments:
       'Body':
         type: 'GeneratedGetAppListV1Request'
@@ -4278,16 +4645,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'Namespace':
         type: 'string'
@@ -4333,16 +4700,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     arguments:
       'App':
         type: 'string'
@@ -4583,6 +4950,78 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'ListTopicsHandler@cs.csm.fun':
+    id: 'ListTopicsHandler@cs.csm.fun'
+    name: 'ListTopicsHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
+
+      List all Async Messaging Topics inside a game namespace.
+    arguments:
+      'FuzzyTopicName':
+        type: 'string'
+        required: false
+        description: |-
+          Fuzzy search for topic name
+      'IsSubscribedByAppName':
+        type: 'string'
+        required: false
+        description: |-
+          Filter to get only topics subscribed by given app name
+      'IsUnsubscribedByAppName':
+        type: 'string'
+        required: false
+        description: |-
+          Filter to get only topics unsubscribed by given app name
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          Limit for pagination
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          Offset for pagination
+    return_type: 'ApimodelListTopicsResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AsyncMessaging.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AsyncMessaging/ListTopicsHandler.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AsyncMessaging.ListTopicsHandlerOp
+              .SetFuzzyTopicName(...)
+              .SetIsSubscribedByAppName(...)
+              .SetIsUnsubscribedByAppName(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Csm.AsyncMessaging.ListTopicsHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'list'
+      - 'messaging'
+      - 'topics'
 
   'PublicGetMessages@cs.csm.fun':
     id: 'PublicGetMessages@cs.csm.fun'
@@ -4915,6 +5354,51 @@ symbols:
       - 'start'
       - 'v2'
 
+  'StartNoSQLClusterV2@cs.csm.fun':
+    id: 'StartNoSQLClusterV2@cs.csm.fun'
+    name: 'StartNoSQLClusterV2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Start NoSQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    arguments:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/ManagedResources.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/ManagedResources/StartNoSQLClusterV2.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.ManagedResources.StartNoSQLClusterV2Op
+              .Build();
+
+          sdk.Csm.ManagedResources.StartNoSQLClusterV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'StopAppV1@cs.csm.fun':
     id: 'StopAppV1@cs.csm.fun'
     name: 'StopAppV1'
@@ -5001,6 +5485,51 @@ symbols:
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
       - 'app'
+      - 'stop'
+      - 'v2'
+
+  'StopNoSQLClusterV2@cs.csm.fun':
+    id: 'StopNoSQLClusterV2@cs.csm.fun'
+    name: 'StopNoSQLClusterV2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Stop NoSQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    arguments:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/ManagedResources.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/ManagedResources/StopNoSQLClusterV2.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.ManagedResources.StopNoSQLClusterV2Op
+              .Build();
+
+          sdk.Csm.ManagedResources.StopNoSQLClusterV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'stop'
       - 'v2'
 
@@ -5113,6 +5642,56 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+
+  'UnsubscribeTopicHandler@cs.csm.fun':
+    id: 'UnsubscribeTopicHandler@cs.csm.fun'
+    name: 'UnsubscribeTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
+
+      Unsubscribe App queue from a topic by Topic Name.
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+      'TopicName':
+        type: 'string'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'ApimodelTopicSubscription'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AsyncMessaging.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AsyncMessaging/UnsubscribeTopicHandler.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AsyncMessaging.UnsubscribeTopicHandlerOp
+              .Build();
+
+          var response = sdk.Csm.AsyncMessaging.UnsubscribeTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+      - 'unsubscribe'
 
   'UnsubscribeV2Handler@cs.csm.fun':
     id: 'UnsubscribeV2Handler@cs.csm.fun'

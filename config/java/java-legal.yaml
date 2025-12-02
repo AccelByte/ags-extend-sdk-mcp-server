@@ -4445,13 +4445,23 @@ symbols:
     name: 'RetrieveAllLegalPoliciesByNamespace'
     type: 'function'
     description: |-
-      Retrieve all base policies in the namespace.
+      Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
     arguments:
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit
       'namespace':
         type: 'String'
         required: true
         description: |-
           Namespace
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset
       'visibleOnly':
         type: 'Boolean'
         required: false
@@ -4467,6 +4477,8 @@ symbols:
     example: |-
       try {
           final RetrieveAllLegalPoliciesByNamespace operation = RetrieveAllLegalPoliciesByNamespace.builder()
+              .limit(...)
+              .offset(...)
               .visibleOnly(...)
               .build(
                   namespace,

@@ -6616,11 +6616,18 @@ symbols:
     name: 'PublicReadPartySessionStorage'
     type: 'function'
     description: |-
-      Read Party Session Storage by partyID
+      Read Party Session Storage by partyID (with reserved and member).
+      Contains "reserved" when Update Insert Party Session Reserved Storage User.
+      Contains "member" when Update Insert Party Session Storage User.
       Party Storage example:
       ```
       {
       "reserved": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      },
+      "member": {
       "userID1": {"key": "value"},
       "userID2": {"key": "value"},
       ...
@@ -6851,13 +6858,86 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'PublicUpdateInsertPartySessionStorage@cs.session.fun':
+    id: 'PublicUpdateInsertPartySessionStorage@cs.session.fun'
+    name: 'PublicUpdateInsertPartySessionStorage'
+    type: 'function'
+    description: |-
+      Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+      can store generic json
+      example json can store :
+      ```
+      {
+      "key": "value",
+      "number": 123,
+      }
+      ```
+      The data will be stored on the "member" storage field
+      example stored data :
+      ```
+      {
+      "member": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      }
+      }
+      ```
+    arguments:
+      'Body':
+        type: 'Dictionary<string, object>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PartyId':
+        type: 'string'
+        required: true
+        description: |-
+          partyID
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    return_type: 'Dictionary<string, object>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Session.Model;'
+      - 'using AccelByte.Sdk.Api.Session.Operation;'
+      - 'using AccelByte.Sdk.Api.Session.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Session/Wrapper/SessionStorage.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Session/Operation/SessionStorage/PublicUpdateInsertPartySessionStorage.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Session.SessionStorage.PublicUpdateInsertPartySessionStorageOp
+              .Build();
+
+          var response = sdk.Session.SessionStorage.PublicUpdateInsertPartySessionStorage(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'insert'
+      - 'party'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [UPDATE]'
+
   'PublicUpdateInsertPartySessionStorageReserved@cs.session.fun':
     id: 'PublicUpdateInsertPartySessionStorageReserved@cs.session.fun'
     name: 'PublicUpdateInsertPartySessionStorageReserved'
     type: 'function'
     description: |-
       **For Internal Use Only**
-      Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+      Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
       can store generic json
       example json can store :
       ```

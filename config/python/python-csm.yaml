@@ -69,6 +69,9 @@ symbols:
       'message':
         type: 'str'
         required: false
+      'redeployment_info':
+        type: 'ModelAppRedeploymentInfo'
+        required: false
       'replica':
         type: 'ApimodelReplicaResponse'
         required: false
@@ -297,6 +300,57 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_database_credential_request.py'
     example: |-
       apimodel_create_no_sql_database_credential_request = csm_models.ApimodelCreateNoSQLDatabaseCredentialRequest.create(...)
+
+  'ApimodelCreateSubscriptionRequest@py.csm.mod':
+    id: 'ApimodelCreateSubscriptionRequest@py.csm.mod'
+    name: 'ApimodelCreateSubscriptionRequest'
+    type: 'model'
+    fields:
+      'topic_names':
+        type: 'List[str]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_request.py'
+    example: |-
+      apimodel_create_subscription_request = csm_models.ApimodelCreateSubscriptionRequest.create(...)
+
+  'ApimodelCreateSubscriptionResponse@py.csm.mod':
+    id: 'ApimodelCreateSubscriptionResponse@py.csm.mod'
+    name: 'ApimodelCreateSubscriptionResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelTopicSubscription]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_response.py'
+    example: |-
+      apimodel_create_subscription_response = csm_models.ApimodelCreateSubscriptionResponse.create(...)
+
+  'ApimodelCreateTopicRequest@py.csm.mod':
+    id: 'ApimodelCreateTopicRequest@py.csm.mod'
+    name: 'ApimodelCreateTopicRequest'
+    type: 'model'
+    fields:
+      'topic_name':
+        type: 'str'
+        required: true
+      'description':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_topic_request.py'
+    example: |-
+      apimodel_create_topic_request = csm_models.ApimodelCreateTopicRequest.create(...)
 
   'ApimodelCSMAppLimitsResponse@py.csm.mod':
     id: 'ApimodelCSMAppLimitsResponse@py.csm.mod'
@@ -779,6 +833,25 @@ symbols:
     example: |-
       apimodel_increase_limit_form_request = csm_models.ApimodelIncreaseLimitFormRequest.create(...)
 
+  'ApimodelListTopicsResponse@py.csm.mod':
+    id: 'ApimodelListTopicsResponse@py.csm.mod'
+    name: 'ApimodelListTopicsResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelTopicDetailResponse]'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_list_topics_response.py'
+    example: |-
+      apimodel_list_topics_response = csm_models.ApimodelListTopicsResponse.create(...)
+
   'ApimodelMemoryRequest@py.csm.mod':
     id: 'ApimodelMemoryRequest@py.csm.mod'
     name: 'ApimodelMemoryRequest'
@@ -956,6 +1029,34 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_notification_type.py'
     example: |-
       apimodel_notification_type = csm_models.ApimodelNotificationType.create(...)
+
+  'ApimodelPaginationResponse@py.csm.mod':
+    id: 'ApimodelPaginationResponse@py.csm.mod'
+    name: 'ApimodelPaginationResponse'
+    type: 'model'
+    fields:
+      'total_data':
+        type: 'int'
+        required: true
+      'first':
+        type: 'str'
+        required: false
+      'last':
+        type: 'str'
+        required: false
+      'next_':
+        type: 'str'
+        required: false
+      'previous':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_pagination_response.py'
+    example: |-
+      apimodel_pagination_response = csm_models.ApimodelPaginationResponse.create(...)
 
   'ApimodelReplicaRequest@py.csm.mod':
     id: 'ApimodelReplicaRequest@py.csm.mod'
@@ -1173,6 +1274,108 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_response.py'
     example: |-
       apimodel_subscriber_item_response = csm_models.ApimodelSubscriberItemResponse.create(...)
+
+  'ApimodelTopicDetailResponse@py.csm.mod':
+    id: 'ApimodelTopicDetailResponse@py.csm.mod'
+    name: 'ApimodelTopicDetailResponse'
+    type: 'model'
+    fields:
+      'game_name':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'region':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+      'topic_arn':
+        type: 'str'
+        required: true
+      'topic_name':
+        type: 'str'
+        required: true
+      'description':
+        type: 'str'
+        required: false
+      'subscribers':
+        type: 'List[ApimodelTopicSubscription]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_topic_detail_response.py'
+    example: |-
+      apimodel_topic_detail_response = csm_models.ApimodelTopicDetailResponse.create(...)
+
+  'ApimodelTopicResponse@py.csm.mod':
+    id: 'ApimodelTopicResponse@py.csm.mod'
+    name: 'ApimodelTopicResponse'
+    type: 'model'
+    fields:
+      'game_name':
+        type: 'str'
+        required: true
+      'id_':
+        type: 'str'
+        required: true
+      'region':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+      'topic_arn':
+        type: 'str'
+        required: true
+      'topic_name':
+        type: 'str'
+        required: true
+      'description':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_topic_response.py'
+    example: |-
+      apimodel_topic_response = csm_models.ApimodelTopicResponse.create(...)
+
+  'ApimodelTopicSubscription@py.csm.mod':
+    id: 'ApimodelTopicSubscription@py.csm.mod'
+    name: 'ApimodelTopicSubscription'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'queue_id':
+        type: 'str'
+        required: true
+      'subscription_arn':
+        type: 'str'
+        required: true
+      'subscription_id':
+        type: 'str'
+        required: true
+      'subscription_time':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_topic_subscription.py'
+    example: |-
+      apimodel_topic_subscription = csm_models.ApimodelTopicSubscription.create(...)
 
   'ApimodelTunnelInfoResponse@py.csm.mod':
     id: 'ApimodelTunnelInfoResponse@py.csm.mod'
@@ -2114,6 +2317,44 @@ symbols:
     example: |-
       log_app_message_declaration = csm_models.LogAppMessageDeclaration.create(...)
 
+  'ModelAppRedeploymentDetail@py.csm.mod':
+    id: 'ModelAppRedeploymentDetail@py.csm.mod'
+    name: 'ModelAppRedeploymentDetail'
+    type: 'model'
+    fields:
+      'reason_id':
+        type: 'str'
+        required: true
+      'message':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/model_app_redeployment_detail.py'
+    example: |-
+      model_app_redeployment_detail = csm_models.ModelAppRedeploymentDetail.create(...)
+
+  'ModelAppRedeploymentInfo@py.csm.mod':
+    id: 'ModelAppRedeploymentInfo@py.csm.mod'
+    name: 'ModelAppRedeploymentInfo'
+    type: 'model'
+    fields:
+      'should_redeploy':
+        type: 'bool'
+        required: true
+      'details':
+        type: 'List[ModelAppRedeploymentDetail]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/model_app_redeployment_info.py'
+    example: |-
+      model_app_redeployment_info = csm_models.ModelAppRedeploymentInfo.create(...)
+
   'ModelCSMAutoscalingDefaults@py.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@py.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -2303,9 +2544,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 2: `service-extension`
       - scenario 3: `event-handler`
       - scenario 1: `function-override`
+      - scenario 2: `service-extension`
 
       Default: `function-override`
     arguments:
@@ -2626,6 +2867,83 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+
+  'create_subscription_handler@py.csm.fun':
+    id: 'create_subscription_handler@py.csm.fun'
+    name: 'create_subscription_handler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
+
+      Subscribe App queue to given Topic name list inside a game namespace.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateSubscriptionRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelCreateSubscriptionResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/async_messaging/create_subscription_handler.py'
+    example: |-
+      result, error = csm.create_subscription_handler(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'subscription'
+
+  'create_topic_handler@py.csm.fun':
+    id: 'create_topic_handler@py.csm.fun'
+    name: 'create_topic_handler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
+
+      Create New Async Messaging Topic, the topic name is unique inside a game namespace.
+    arguments:
+      'body':
+        type: 'ApimodelCreateTopicRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelTopicResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/async_messaging/create_topic_handler.py'
+    example: |-
+      result, error = csm.create_topic_handler(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
 
   'delete_app_images_v1@py.csm.fun':
     id: 'delete_app_images_v1@py.csm.fun'
@@ -3180,6 +3498,44 @@ symbols:
       - 'subscription'
       - 'v3'
 
+  'delete_topic_handler@py.csm.fun':
+    id: 'delete_topic_handler@py.csm.fun'
+    name: 'delete_topic_handler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
+
+      Delete Async Messaging Topic inside a game namespace given its topic name.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+      'topic_name':
+        type: 'str'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'Tuple[Union[None, ApimodelTopicResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/async_messaging/delete_topic_handler.py'
+    example: |-
+      result, error = csm.delete_topic_handler(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'async'
+      - 'delete'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+
   'delete_variable_v1@py.csm.fun':
     id: 'delete_variable_v1@py.csm.fun'
     name: 'delete_variable_v1'
@@ -3374,9 +3730,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
     arguments:
       'body':
         type: 'GeneratedGetAppListV1Request'
@@ -4032,16 +4388,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'namespace':
         type: 'str'
@@ -4080,16 +4436,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     arguments:
       'app':
         type: 'str'
@@ -4295,6 +4651,64 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'list_topics_handler@py.csm.fun':
+    id: 'list_topics_handler@py.csm.fun'
+    name: 'list_topics_handler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
+
+      List all Async Messaging Topics inside a game namespace.
+    arguments:
+      'fuzzy_topic_name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Fuzzy search for topic name
+      'is_subscribed_by_app_name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Filter to get only topics subscribed by given app name
+      'is_unsubscribed_by_app_name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Filter to get only topics unsubscribed by given app name
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Limit for pagination
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Offset for pagination
+    return_type: 'Tuple[Union[None, ApimodelListTopicsResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/async_messaging/list_topics_handler.py'
+    example: |-
+      result, error = csm.list_topics_handler(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'async'
+      - 'handler'
+      - 'list'
+      - 'messaging'
+      - 'topics'
 
   'public_get_messages@py.csm.fun':
     id: 'public_get_messages@py.csm.fun'
@@ -4578,6 +4992,44 @@ symbols:
       - 'start'
       - 'v2'
 
+  'start_no_sql_cluster_v2@py.csm.fun':
+    id: 'start_no_sql_cluster_v2@py.csm.fun'
+    name: 'start_no_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Start NoSQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources/start_no_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.start_no_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'stop_app_v1@py.csm.fun':
     id: 'stop_app_v1@py.csm.fun'
     name: 'stop_app_v1'
@@ -4650,6 +5102,44 @@ symbols:
           # handle_error(error)
     tags:
       - 'app'
+      - 'stop'
+      - 'v2'
+
+  'stop_no_sql_cluster_v2@py.csm.fun':
+    id: 'stop_no_sql_cluster_v2@py.csm.fun'
+    name: 'stop_no_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Stop NoSQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources/stop_no_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.stop_no_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'stop'
       - 'v2'
 
@@ -4748,6 +5238,49 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+
+  'unsubscribe_topic_handler@py.csm.fun':
+    id: 'unsubscribe_topic_handler@py.csm.fun'
+    name: 'unsubscribe_topic_handler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
+
+      Unsubscribe App queue from a topic by Topic Name.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+      'topic_name':
+        type: 'str'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'Tuple[Union[None, ApimodelTopicSubscription], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/async_messaging/unsubscribe_topic_handler.py'
+    example: |-
+      result, error = csm.unsubscribe_topic_handler(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'async'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+      - 'unsubscribe'
 
   'unsubscribe_v2_handler@py.csm.fun':
     id: 'unsubscribe_v2_handler@py.csm.fun'

@@ -556,6 +556,63 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Model/ApiFleetArtifactsSampleRules.cs'
 
+  'ApiFleetBulkActionErrorItemResponse@cs.ams.mod':
+    id: 'ApiFleetBulkActionErrorItemResponse@cs.ams.mod'
+    name: 'ApiFleetBulkActionErrorItemResponse'
+    type: 'model'
+    fields:
+      'FleetId':
+        type: 'string'
+        required: true
+      'ErrorMessage':
+        type: 'string'
+        required: false
+      'ErrorType':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Ams.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Model/ApiFleetBulkActionErrorItemResponse.cs'
+
+  'ApiFleetBulkDeleteRequest@cs.ams.mod':
+    id: 'ApiFleetBulkDeleteRequest@cs.ams.mod'
+    name: 'ApiFleetBulkDeleteRequest'
+    type: 'model'
+    fields:
+      'FleetIds':
+        type: 'List<string>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Ams.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Model/ApiFleetBulkDeleteRequest.cs'
+
+  'ApiFleetBulkDeleteResponse@cs.ams.mod':
+    id: 'ApiFleetBulkDeleteResponse@cs.ams.mod'
+    name: 'ApiFleetBulkDeleteResponse'
+    type: 'model'
+    fields:
+      'Errors':
+        type: 'List<ApiFleetBulkActionErrorItemResponse>'
+        required: true
+      'SuccessCount':
+        type: 'int'
+        required: true
+      'TotalCount':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Ams.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Model/ApiFleetBulkDeleteResponse.cs'
+
   'ApiFleetClaimByKeysReq@cs.ams.mod':
     id: 'ApiFleetClaimByKeysReq@cs.ams.mod'
     name: 'ApiFleetClaimByKeysReq'
@@ -2029,6 +2086,48 @@ symbols:
       - 'commander'
       - 'fleet'
       - 'health'
+
+  'BulkFleetDelete@cs.ams.fun':
+    id: 'BulkFleetDelete@cs.ams.fun'
+    name: 'BulkFleetDelete'
+    type: 'function'
+    description: |-
+      Maximum of 1000 fleets allowed
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    arguments:
+      'Body':
+        type: 'ApiFleetBulkDeleteRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'ApiFleetBulkDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Ams.Model;'
+      - 'using AccelByte.Sdk.Api.Ams.Operation;'
+      - 'using AccelByte.Sdk.Api.Ams.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Wrapper/Fleets.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Operation/Fleets/BulkFleetDelete.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Ams.Fleets.BulkFleetDeleteOp
+              .Build();
+
+          var response = sdk.Ams.Fleets.BulkFleetDelete(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'delete'
+      - 'fleet'
+      - 'fleets'
 
   'DevelopmentServerConfigurationCreate@cs.ams.fun':
     id: 'DevelopmentServerConfigurationCreate@cs.ams.fun'

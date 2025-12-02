@@ -582,6 +582,66 @@ symbols:
     example: |-
       api_fleet_artifacts_sample_rules = ams_models.ApiFleetArtifactsSampleRules.create(...)
 
+  'ApiFleetBulkActionErrorItemResponse@py.ams.mod':
+    id: 'ApiFleetBulkActionErrorItemResponse@py.ams.mod'
+    name: 'ApiFleetBulkActionErrorItemResponse'
+    type: 'model'
+    fields:
+      'fleet_id':
+        type: 'str'
+        required: true
+      'error_message':
+        type: 'str'
+        required: false
+      'error_type':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/models/api_fleet_bulk_action_error_item_response.py'
+    example: |-
+      api_fleet_bulk_action_error_item_response = ams_models.ApiFleetBulkActionErrorItemResponse.create(...)
+
+  'ApiFleetBulkDeleteRequest@py.ams.mod':
+    id: 'ApiFleetBulkDeleteRequest@py.ams.mod'
+    name: 'ApiFleetBulkDeleteRequest'
+    type: 'model'
+    fields:
+      'fleet_ids':
+        type: 'List[str]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/models/api_fleet_bulk_delete_request.py'
+    example: |-
+      api_fleet_bulk_delete_request = ams_models.ApiFleetBulkDeleteRequest.create(...)
+
+  'ApiFleetBulkDeleteResponse@py.ams.mod':
+    id: 'ApiFleetBulkDeleteResponse@py.ams.mod'
+    name: 'ApiFleetBulkDeleteResponse'
+    type: 'model'
+    fields:
+      'errors':
+        type: 'List[ApiFleetBulkActionErrorItemResponse]'
+        required: true
+      'success_count':
+        type: 'int'
+        required: true
+      'total_count':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/models/api_fleet_bulk_delete_response.py'
+    example: |-
+      api_fleet_bulk_delete_response = ams_models.ApiFleetBulkDeleteResponse.create(...)
+
   'ApiFleetClaimByKeysReq@py.ams.mod':
     id: 'ApiFleetClaimByKeysReq@py.ams.mod'
     name: 'ApiFleetClaimByKeysReq'
@@ -1982,6 +2042,41 @@ symbols:
       - 'commander'
       - 'fleet'
       - 'health'
+
+  'bulk_fleet_delete@py.ams.fun':
+    id: 'bulk_fleet_delete@py.ams.fun'
+    name: 'bulk_fleet_delete'
+    type: 'function'
+    description: |-
+      Maximum of 1000 fleets allowed
+
+      Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+    arguments:
+      'body':
+        type: 'ApiFleetBulkDeleteRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'Tuple[Union[None, ApiFleetBulkDeleteResponse], Union[None, ApiFleetBulkDeleteResponse, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.ams as ams'
+      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/operations/fleets/bulk_fleet_delete.py'
+    example: |-
+      result, error = ams.bulk_fleet_delete(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'bulk'
+      - 'delete'
+      - 'fleet'
+      - 'fleets'
 
   'development_server_configuration_create@py.ams.fun':
     id: 'development_server_configuration_create@py.ams.fun'

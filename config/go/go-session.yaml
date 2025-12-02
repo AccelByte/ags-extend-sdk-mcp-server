@@ -2287,6 +2287,34 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/player/public_store_player_attributes_parameters.go'
 
+  'PublicUpdateInsertPartySessionStorageParams@go.session.mod':
+    id: 'PublicUpdateInsertPartySessionStorageParams@go.session.mod'
+    name: 'PublicUpdateInsertPartySessionStorageParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PartyID':
+        type: 'string'
+        required: true
+        description: |-
+          partyID
+      'UserID':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_update_insert_party_session_storage_parameters.go'
+
   'PublicUpdateInsertPartySessionStorageReservedParams@go.session.mod':
     id: 'PublicUpdateInsertPartySessionStorageReservedParams@go.session.mod'
     name: 'PublicUpdateInsertPartySessionStorageReservedParams'
@@ -7772,11 +7800,18 @@ symbols:
     name: 'PublicReadPartySessionStorageShort'
     type: 'function'
     description: |-
-      Read Party Session Storage by partyID
+      Read Party Session Storage by partyID (with reserved and member).
+      Contains "reserved" when Update Insert Party Session Reserved Storage User.
+      Contains "member" when Update Insert Party Session Storage User.
       Party Storage example:
       ```
       {
       "reserved": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      },
+      "member": {
       "userID1": {"key": "value"},
       "userID2": {"key": "value"},
       ...
@@ -7956,13 +7991,67 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'PublicUpdateInsertPartySessionStorageShort@go.session.fun':
+    id: 'PublicUpdateInsertPartySessionStorageShort@go.session.fun'
+    name: 'PublicUpdateInsertPartySessionStorageShort'
+    type: 'function'
+    description: |-
+      Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+      can store generic json
+      example json can store :
+      ```
+      {
+      "key": "value",
+      "number": 123,
+      }
+      ```
+      The data will be stored on the "member" storage field
+      example stored data :
+      ```
+      {
+      "member": {
+      "userID1": {"key": "value"},
+      "userID2": {"key": "value"},
+      ...
+      }
+      }
+      ```
+    struct: 'SessionStorageService'
+    arguments:
+      params:
+        type: '*session_storage.PublicUpdateInsertPartySessionStorageParams'
+        required: true
+    return_type: '(*session_storage.PublicUpdateInsertPartySessionStorageResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/sessionStorage.go'
+    example: |-
+      sessionStorageService := session.SessionStorageService{ ... }
+      params := session_storage.PublicUpdateInsertPartySessionStorageParams{ ... }
+      res, err := sessionStorageService.PublicUpdateInsertPartySessionStorageShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'insert'
+      - 'party'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [UPDATE]'
+
   'PublicUpdateInsertPartySessionStorageReservedShort@go.session.fun':
     id: 'PublicUpdateInsertPartySessionStorageReservedShort@go.session.fun'
     name: 'PublicUpdateInsertPartySessionStorageReservedShort'
     type: 'function'
     description: |-
       **For Internal Use Only**
-      Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+      Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
       can store generic json
       example json can store :
       ```

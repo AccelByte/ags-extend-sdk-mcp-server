@@ -69,6 +69,9 @@ symbols:
       'message':
         type: 'String'
         required: false
+      'redeploymentInfo':
+        type: 'ModelAppRedeploymentInfo'
+        required: false
       'replica':
         type: 'ApimodelReplicaResponse'
         required: false
@@ -273,6 +276,51 @@ symbols:
       - 'import net.accelbyte.sdk.api.csm.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateNoSQLDatabaseCredentialRequest.java'
+
+  'ApimodelCreateSubscriptionRequest@jv.csm.mod':
+    id: 'ApimodelCreateSubscriptionRequest@jv.csm.mod'
+    name: 'ApimodelCreateSubscriptionRequest'
+    type: 'model'
+    fields:
+      'topicNames':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateSubscriptionRequest.java'
+
+  'ApimodelCreateSubscriptionResponse@jv.csm.mod':
+    id: 'ApimodelCreateSubscriptionResponse@jv.csm.mod'
+    name: 'ApimodelCreateSubscriptionResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List<ApimodelTopicSubscription>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateSubscriptionResponse.java'
+
+  'ApimodelCreateTopicRequest@jv.csm.mod':
+    id: 'ApimodelCreateTopicRequest@jv.csm.mod'
+    name: 'ApimodelCreateTopicRequest'
+    type: 'model'
+    fields:
+      'topicName':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateTopicRequest.java'
 
   'ApimodelCSMAppLimitsResponse@jv.csm.mod':
     id: 'ApimodelCSMAppLimitsResponse@jv.csm.mod'
@@ -717,6 +765,23 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelIncreaseLimitFormRequest.java'
 
+  'ApimodelListTopicsResponse@jv.csm.mod':
+    id: 'ApimodelListTopicsResponse@jv.csm.mod'
+    name: 'ApimodelListTopicsResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List<ApimodelTopicDetailResponse>'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelListTopicsResponse.java'
+
   'ApimodelMemoryRequest@jv.csm.mod':
     id: 'ApimodelMemoryRequest@jv.csm.mod'
     name: 'ApimodelMemoryRequest'
@@ -880,6 +945,32 @@ symbols:
       - 'import net.accelbyte.sdk.api.csm.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNotificationType.java'
+
+  'ApimodelPaginationResponse@jv.csm.mod':
+    id: 'ApimodelPaginationResponse@jv.csm.mod'
+    name: 'ApimodelPaginationResponse'
+    type: 'model'
+    fields:
+      'totalData':
+        type: 'Long'
+        required: true
+      'first':
+        type: 'String'
+        required: false
+      'last':
+        type: 'String'
+        required: false
+      'next':
+        type: 'String'
+        required: false
+      'previous':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelPaginationResponse.java'
 
   'ApimodelReplicaRequest@jv.csm.mod':
     id: 'ApimodelReplicaRequest@jv.csm.mod'
@@ -1077,6 +1168,102 @@ symbols:
       - 'import net.accelbyte.sdk.api.csm.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscriberItemResponse.java'
+
+  'ApimodelTopicDetailResponse@jv.csm.mod':
+    id: 'ApimodelTopicDetailResponse@jv.csm.mod'
+    name: 'ApimodelTopicDetailResponse'
+    type: 'model'
+    fields:
+      'gameName':
+        type: 'String'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'region':
+        type: 'String'
+        required: true
+      'studioName':
+        type: 'String'
+        required: true
+      'topicArn':
+        type: 'String'
+        required: true
+      'topicName':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+      'subscribers':
+        type: 'List<ApimodelTopicSubscription>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicDetailResponse.java'
+
+  'ApimodelTopicResponse@jv.csm.mod':
+    id: 'ApimodelTopicResponse@jv.csm.mod'
+    name: 'ApimodelTopicResponse'
+    type: 'model'
+    fields:
+      'gameName':
+        type: 'String'
+        required: true
+      'id':
+        type: 'String'
+        required: true
+      'region':
+        type: 'String'
+        required: true
+      'studioName':
+        type: 'String'
+        required: true
+      'topicArn':
+        type: 'String'
+        required: true
+      'topicName':
+        type: 'String'
+        required: true
+      'description':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicResponse.java'
+
+  'ApimodelTopicSubscription@jv.csm.mod':
+    id: 'ApimodelTopicSubscription@jv.csm.mod'
+    name: 'ApimodelTopicSubscription'
+    type: 'model'
+    fields:
+      'appId':
+        type: 'String'
+        required: true
+      'appName':
+        type: 'String'
+        required: true
+      'queueId':
+        type: 'String'
+        required: true
+      'subscriptionArn':
+        type: 'String'
+        required: true
+      'subscriptionId':
+        type: 'String'
+        required: true
+      'subscriptionTime':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicSubscription.java'
 
   'ApimodelTunnelInfoResponse@jv.csm.mod':
     id: 'ApimodelTunnelInfoResponse@jv.csm.mod'
@@ -1944,6 +2131,40 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/LogAppMessageDeclaration.java'
 
+  'ModelAppRedeploymentDetail@jv.csm.mod':
+    id: 'ModelAppRedeploymentDetail@jv.csm.mod'
+    name: 'ModelAppRedeploymentDetail'
+    type: 'model'
+    fields:
+      'reasonId':
+        type: 'String'
+        required: true
+      'message':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ModelAppRedeploymentDetail.java'
+
+  'ModelAppRedeploymentInfo@jv.csm.mod':
+    id: 'ModelAppRedeploymentInfo@jv.csm.mod'
+    name: 'ModelAppRedeploymentInfo'
+    type: 'model'
+    fields:
+      'shouldRedeploy':
+        type: 'Boolean'
+        required: true
+      'details':
+        type: 'List<ModelAppRedeploymentDetail>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ModelAppRedeploymentInfo.java'
+
   'ModelCSMAutoscalingDefaults@jv.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@jv.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -2134,9 +2355,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 2: `service-extension`
       - scenario 3: `event-handler`
       - scenario 1: `function-override`
+      - scenario 2: `service-extension`
 
       Default: `function-override`
     arguments:
@@ -2533,6 +2754,104 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+
+  'CreateSubscriptionHandler@jv.csm.fun':
+    id: 'CreateSubscriptionHandler@jv.csm.fun'
+    name: 'CreateSubscriptionHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
+
+      Subscribe App queue to given Topic name list inside a game namespace.
+    arguments:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateSubscriptionRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelCreateSubscriptionResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.async_messaging.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/CreateSubscriptionHandler.java'
+    example: |-
+      try {
+          final CreateSubscriptionHandler operation = CreateSubscriptionHandler.builder()
+              .build(
+                  app,
+                  body,
+                  namespace,
+              );
+
+          final AsyncMessaging wrapper = new AsyncMessaging(sdk);
+          final ApimodelCreateSubscriptionResponse response = wrapper.createSubscriptionHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'subscription'
+
+  'CreateTopicHandler@jv.csm.fun':
+    id: 'CreateTopicHandler@jv.csm.fun'
+    name: 'CreateTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
+
+      Create New Async Messaging Topic, the topic name is unique inside a game namespace.
+    arguments:
+      'body':
+        type: 'ApimodelCreateTopicRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelTopicResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.async_messaging.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/CreateTopicHandler.java'
+    example: |-
+      try {
+          final CreateTopicHandler operation = CreateTopicHandler.builder()
+              .build(
+                  body,
+                  namespace,
+              );
+
+          final AsyncMessaging wrapper = new AsyncMessaging(sdk);
+          final ApimodelTopicResponse response = wrapper.createTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'create'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
 
   'DeleteAppImagesV1@jv.csm.fun':
     id: 'DeleteAppImagesV1@jv.csm.fun'
@@ -3226,6 +3545,54 @@ symbols:
       - 'subscription'
       - 'v3'
 
+  'DeleteTopicHandler@jv.csm.fun':
+    id: 'DeleteTopicHandler@jv.csm.fun'
+    name: 'DeleteTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
+
+      Delete Async Messaging Topic inside a game namespace given its topic name.
+    arguments:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'topicName':
+        type: 'String'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'ApimodelTopicResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.async_messaging.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/DeleteTopicHandler.java'
+    example: |-
+      try {
+          final DeleteTopicHandler operation = DeleteTopicHandler.builder()
+              .build(
+                  namespace,
+                  topicName,
+              );
+
+          final AsyncMessaging wrapper = new AsyncMessaging(sdk);
+          final ApimodelTopicResponse response = wrapper.deleteTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'delete'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+
   'DeleteVariableV1@jv.csm.fun':
     id: 'DeleteVariableV1@jv.csm.fun'
     name: 'DeleteVariableV1'
@@ -3466,9 +3833,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
     arguments:
       'body':
         type: 'GeneratedGetAppListV1Request'
@@ -4279,16 +4646,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'namespace':
         type: 'String'
@@ -4336,16 +4703,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `available` : The cluster is accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     arguments:
       'app':
         type: 'String'
@@ -4602,6 +4969,78 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'ListTopicsHandler@jv.csm.fun':
+    id: 'ListTopicsHandler@jv.csm.fun'
+    name: 'ListTopicsHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
+
+      List all Async Messaging Topics inside a game namespace.
+    arguments:
+      'fuzzyTopicName':
+        type: 'String'
+        required: false
+        description: |-
+          Fuzzy search for topic name
+      'isSubscribedByAppName':
+        type: 'String'
+        required: false
+        description: |-
+          Filter to get only topics subscribed by given app name
+      'isUnsubscribedByAppName':
+        type: 'String'
+        required: false
+        description: |-
+          Filter to get only topics unsubscribed by given app name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit for pagination
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset for pagination
+    return_type: 'ApimodelListTopicsResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.async_messaging.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/ListTopicsHandler.java'
+    example: |-
+      try {
+          final ListTopicsHandler operation = ListTopicsHandler.builder()
+              .fuzzyTopicName(...)
+              .isSubscribedByAppName(...)
+              .isUnsubscribedByAppName(...)
+              .limit(...)
+              .offset(...)
+              .build(
+                  namespace,
+              );
+
+          final AsyncMessaging wrapper = new AsyncMessaging(sdk);
+          final ApimodelListTopicsResponse response = wrapper.listTopicsHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'list'
+      - 'messaging'
+      - 'topics'
 
   'PublicGetMessages@jv.csm.fun':
     id: 'PublicGetMessages@jv.csm.fun'
@@ -4957,6 +5396,53 @@ symbols:
       - 'start'
       - 'v2'
 
+  'StartNoSQLClusterV2@jv.csm.fun':
+    id: 'StartNoSQLClusterV2@jv.csm.fun'
+    name: 'StartNoSQLClusterV2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Start NoSQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.managed_resources.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ManagedResources.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/StartNoSQLClusterV2.java'
+    example: |-
+      try {
+          final StartNoSQLClusterV2 operation = StartNoSQLClusterV2.builder()
+              .build(
+                  namespace,
+              );
+
+          final ManagedResources wrapper = new ManagedResources(sdk);
+          wrapper.startNoSQLClusterV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'StopAppV1@jv.csm.fun':
     id: 'StopAppV1@jv.csm.fun'
     name: 'StopAppV1'
@@ -5050,6 +5536,53 @@ symbols:
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
       - 'app'
+      - 'stop'
+      - 'v2'
+
+  'StopNoSQLClusterV2@jv.csm.fun':
+    id: 'StopNoSQLClusterV2@jv.csm.fun'
+    name: 'StopNoSQLClusterV2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+      Stop NoSQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.managed_resources.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ManagedResources.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/StopNoSQLClusterV2.java'
+    example: |-
+      try {
+          final StopNoSQLClusterV2 operation = StopNoSQLClusterV2.builder()
+              .build(
+                  namespace,
+              );
+
+          final ManagedResources wrapper = new ManagedResources(sdk);
+          wrapper.stopNoSQLClusterV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
       - 'stop'
       - 'v2'
 
@@ -5170,6 +5703,60 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+
+  'UnsubscribeTopicHandler@jv.csm.fun':
+    id: 'UnsubscribeTopicHandler@jv.csm.fun'
+    name: 'UnsubscribeTopicHandler'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
+
+      Unsubscribe App queue from a topic by Topic Name.
+    arguments:
+      'app':
+        type: 'String'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Game Name
+      'topicName':
+        type: 'String'
+        required: true
+        description: |-
+          Topic Name
+    return_type: 'ApimodelTopicSubscription'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.async_messaging.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/UnsubscribeTopicHandler.java'
+    example: |-
+      try {
+          final UnsubscribeTopicHandler operation = UnsubscribeTopicHandler.builder()
+              .build(
+                  app,
+                  namespace,
+                  topicName,
+              );
+
+          final AsyncMessaging wrapper = new AsyncMessaging(sdk);
+          final ApimodelTopicSubscription response = wrapper.unsubscribeTopicHandler(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'async'
+      - 'handler'
+      - 'messaging'
+      - 'topic'
+      - 'unsubscribe'
 
   'UnsubscribeV2Handler@jv.csm.fun':
     id: 'UnsubscribeV2Handler@jv.csm.fun'
