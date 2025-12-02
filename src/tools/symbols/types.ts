@@ -65,6 +65,14 @@ const SymbolSchema = z
       .optional()
       .describe('Arguments of the symbol.'),
     returnType: z.string().optional().describe('Return type of the symbol.'),
+    permissions: z
+      .array(z.string())
+      .optional()
+      .describe('Permissions required to use the symbol.'),
+    scopes: z
+      .array(z.string())
+      .optional()
+      .describe('OAuth scopes required to use the symbol.'),
   })
   .describe(
     'Represents a symbol definition with metadata and usage information.'
