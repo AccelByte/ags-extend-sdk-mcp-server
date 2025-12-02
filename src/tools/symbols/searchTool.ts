@@ -11,12 +11,12 @@ import {
   SymbolTypeSchema,
   SymbolType,
   Symbol,
-  PaginatedSymbolSchema,
+  PaginatedSymbolSummarySchema,
 } from './types.js';
 import {
   calculateSymbolMatchScore,
   parseSearchTerms,
-  paginateSymbols,
+  symbolToSummary,
   validatePaginationParams,
 } from './utils.js';
 
@@ -64,7 +64,7 @@ function searchSymbolsTool(server: HLMcpServer) {
         ),
       },
       outputSchema: {
-        result: PaginatedSymbolSchema,
+        result: PaginatedSymbolSummarySchema,
       },
     },
     async ({
@@ -104,7 +104,20 @@ function searchSymbolsTool(server: HLMcpServer) {
       });
 
       const symbols = symbolsWithScores.map((item) => item.symbol);
-      const content = { result: paginateSymbols(symbols, limit, offset) };
+      const summaries = symbols.map(symbolToSummary);
+
+      // Paginate summaries
+      const end = Math.min(offset + limit, summaries.length);
+      const next = end < summaries.length ? end : undefined;
+      const data = summaries.slice(offset, end);
+
+      const content = {
+        result: {
+          data,
+          total: summaries.length,
+          next,
+        },
+      };
 
       return {
         content: [

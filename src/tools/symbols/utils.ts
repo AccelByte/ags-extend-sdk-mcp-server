@@ -7,12 +7,18 @@ import { join, normalize, resolve } from 'node:path';
 
 import yaml from 'js-yaml';
 
-import { Symbol, PaginatedSymbol, ConfigSchema } from './types.js';
+import {
+  Symbol,
+  SymbolSummary,
+  PaginatedSymbol,
+  ConfigSchema,
+} from './types.js';
 import logger from '../../logger.js';
 
 const ALLOWED_BASE_DIR = resolve(process.cwd(), 'config');
 const FUZZY_MATCH_THRESHOLD = 0.8;
 const FUZZY_MATCH_TERM_MIN_LENGTH = 3;
+const DESCRIPTION_TRUNCATE_LENGTH = 200;
 
 async function loadSymbols(configDir: string): Promise<Array<Symbol>> {
   const resolvedDir = resolve(normalize(configDir));
@@ -227,6 +233,33 @@ function validatePaginationParams(
   if (limit > maxLimit) throw new Error(`limit cannot exceed ${maxLimit}`);
 }
 
+function truncateDescription(
+  description: string | undefined,
+  maxLength: number = DESCRIPTION_TRUNCATE_LENGTH
+): string | undefined {
+  if (!description) {
+    return undefined;
+  }
+
+  if (description.length <= maxLength) {
+    return description;
+  }
+
+  return `${description.slice(0, maxLength)}...`;
+}
+
+function symbolToSummary(symbol: Symbol): SymbolSummary {
+  return {
+    id: symbol.id,
+    name: symbol.name,
+    type: symbol.type,
+    description: truncateDescription(symbol.description),
+    tags: symbol.tags,
+    permissions: symbol.permissions,
+    scopes: symbol.scopes,
+  };
+}
+
 export {
   calculateSymbolMatchScore,
   fuzzyMatch,
@@ -234,5 +267,7 @@ export {
   loadSymbols,
   parseSearchTerms,
   paginateSymbols,
+  symbolToSummary,
+  truncateDescription,
   validatePaginationParams,
 };

@@ -1,5 +1,16 @@
 # Changelog
 
+## v2025.9.1
+
+### Performance Improvements
+
+* **Reduced Token Usage in search-symbols Tool**: Optimized the `search-symbols` tool to significantly reduce token consumption:
+  * Introduced lightweight `SymbolSummary` schema for search results with only essential fields (id, name, type, truncated description, tags, permissions, scopes)
+  * Removed heavy fields from search results: `fields`, `arguments`, `example`, `imports`, `files`, `parent`, `returnType`
+  * Added automatic description truncation to 200 characters with ellipsis
+  * Full symbol details remain available via the `describe-symbols` tool when needed
+  * This change maintains backward compatibility with the recommended workflow (search → describe → analyze)
+
 ## v2025.9.0
 
 * Updated config files.

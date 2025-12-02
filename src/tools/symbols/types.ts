@@ -80,6 +80,40 @@ const SymbolSchema = z
 
 type Symbol = z.infer<typeof SymbolSchema>;
 
+const SymbolSummarySchema = z
+  .object({
+    id: z
+      .string()
+      .min(1, 'ID cannot be empty')
+      .describe('Unique identifier for the symbol.'),
+    name: z
+      .string()
+      .min(1, 'Name cannot be empty')
+      .describe('Name of the symbol.'),
+    type: SymbolTypeSchema.describe('Type of the symbol.'),
+    description: z
+      .string()
+      .optional()
+      .describe('Truncated description of the symbol.'),
+    tags: z
+      .array(z.string())
+      .optional()
+      .describe('Tags associated with the symbol.'),
+    permissions: z
+      .array(z.string())
+      .optional()
+      .describe('Permissions required to use the symbol.'),
+    scopes: z
+      .array(z.string())
+      .optional()
+      .describe('OAuth scopes required to use the symbol.'),
+  })
+  .describe(
+    'Lightweight summary of a symbol with essential fields only. Use "describe_symbols" to get full details.'
+  );
+
+type SymbolSummary = z.infer<typeof SymbolSummarySchema>;
+
 function createPaginatedSchema<T extends z.ZodTypeAny>(
   itemSchema: T,
   itemsName: string
@@ -107,6 +141,13 @@ const PaginatedSymbolSchema = createPaginatedSchema(SymbolSchema, 'symbols');
 
 type PaginatedSymbol = z.infer<typeof PaginatedSymbolSchema>;
 
+const PaginatedSymbolSummarySchema = createPaginatedSchema(
+  SymbolSummarySchema,
+  'symbol summaries'
+);
+
+type PaginatedSymbolSummary = z.infer<typeof PaginatedSymbolSummarySchema>;
+
 const ConfigSchema = z
   .object({
     symbols: z.record(SymbolSchema).describe('Symbols map.'),
@@ -122,8 +163,12 @@ export {
   SymbolTypeSchema,
   Symbol,
   SymbolSchema,
+  SymbolSummary,
+  SymbolSummarySchema,
   PaginatedSymbol,
   PaginatedSymbolSchema,
+  PaginatedSymbolSummary,
+  PaginatedSymbolSummarySchema,
   Config,
   ConfigSchema,
 };
