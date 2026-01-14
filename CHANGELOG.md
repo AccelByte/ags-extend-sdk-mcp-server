@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.1.0
+
+* Updated config files.
+
 ## v2025.9.1
 
 ### Performance Improvements
