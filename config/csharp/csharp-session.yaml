@@ -2225,6 +2225,9 @@ symbols:
       'UpdatedAt':
         type: 'DateTime'
         required: true
+      'Description':
+        type: 'string'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -4250,7 +4253,7 @@ symbols:
       With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
       If the API returns Not Found, alternatively what you can do is either:
       a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
       We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
       If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
     arguments:
@@ -4634,6 +4637,72 @@ symbols:
       - 'credentials'
       - 'platform'
       - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
+
+  'AdminUploadPlatformCredentials@cs.session.fun':
+    id: 'AdminUploadPlatformCredentials@cs.session.fun'
+    name: 'AdminUploadPlatformCredentials'
+    type: 'function'
+    description: |-
+      Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+    arguments:
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          the description of the uploaded file
+      'File':
+        type: 'Stream'
+        required: true
+        description: |-
+          the file to upload
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+      'Password':
+        type: 'string'
+        required: true
+        description: |-
+          the uploaded file password
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Session.Model;'
+      - 'using AccelByte.Sdk.Api.Session.Operation;'
+      - 'using AccelByte.Sdk.Api.Session.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Session/Wrapper/PlatformCredential.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Session/Operation/PlatformCredential/AdminUploadPlatformCredentials.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Session.PlatformCredential.AdminUploadPlatformCredentialsOp
+              .SetDescription(...)
+              .Build(
+                  file,
+                  namespace_,
+                  password,
+                  platformId,
+              );
+
+          sdk.Session.PlatformCredential.AdminUploadPlatformCredentials(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'credential'
+      - 'credentials'
+      - 'platform'
+      - 'upload'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
 

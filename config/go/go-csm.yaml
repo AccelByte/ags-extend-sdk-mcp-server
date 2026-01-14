@@ -1371,6 +1371,46 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/get_no_sql_access_tunnel_v2_parameters.go'
 
+  'GetNoSQLAppListV2Params@go.csm.mod':
+    id: 'GetNoSQLAppListV2Params@go.csm.mod'
+    name: 'GetNoSQLAppListV2Params'
+    type: 'model'
+    fields:
+      'AppName':
+        type: 'string'
+        required: false
+        description: |-
+          App Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit for pagination
+      'Namespace':
+        type: 'string'
+        required: false
+        description: |-
+          Game Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset for pagination
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+      'StudioName':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/get_no_sql_app_list_v2_parameters.go'
+
   'GetNoSQLClusterV2Params@go.csm.mod':
     id: 'GetNoSQLClusterV2Params@go.csm.mod'
     name: 'GetNoSQLClusterV2Params'
@@ -2388,10 +2428,19 @@ symbols:
       'ExtendAppEventHandlerCPULimit':
         type: 'int32'
         required: true
+      'ExtendAppEventHandlerMemoryLimit':
+        type: 'int32'
+        required: true
       'ExtendAppMemoryLimit':
         type: 'int32'
         required: true
       'ExtendAppReplicaLimit':
+        type: 'int32'
+        required: true
+      'ExtendAppServiceExtensionCPULimit':
+        type: 'int32'
+        required: true
+      'ExtendAppServiceExtensionMemoryLimit':
         type: 'int32'
         required: true
       'MaxSubscriberCount':
@@ -2839,6 +2888,44 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_memory_response.go'
+
+  'ApimodelNoSQLAppListResponse@go.csm.mod':
+    id: 'ApimodelNoSQLAppListResponse@go.csm.mod'
+    name: 'ApimodelNoSQLAppListResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelNoSQLAppResponse'
+        required: true
+      'Pagination':
+        type: '*ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_app_list_response.go'
+
+  'ApimodelNoSQLAppResponse@go.csm.mod':
+    id: 'ApimodelNoSQLAppResponse@go.csm.mod'
+    name: 'ApimodelNoSQLAppResponse'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'GameName':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_app_response.go'
 
   'ApimodelNoSQLDatabaseCredentialResponse@go.csm.mod':
     id: 'ApimodelNoSQLDatabaseCredentialResponse@go.csm.mod'
@@ -4301,9 +4388,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
       Default: `function-override`
     struct: 'AppService'
@@ -5291,9 +5378,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
     struct: 'AppService'
     arguments:
       params:
@@ -5816,6 +5903,53 @@ symbols:
       - 'tunnel'
       - 'v2'
 
+  'GetNoSQLAppListV2Short@go.csm.fun':
+    id: 'GetNoSQLAppListV2Short@go.csm.fun'
+    name: 'GetNoSQLAppListV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+      Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+    struct: 'ManagedResourcesService'
+    arguments:
+      params:
+        type: '*managed_resources.GetNoSQLAppListV2Params'
+        required: true
+    return_type: '(*managed_resources.GetNoSQLAppListV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.GetNoSQLAppListV2Params{ ... }
+      res, err := managedResourcesService.GetNoSQLAppListV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'GetNoSQLClusterV2Short@go.csm.fun':
     id: 'GetNoSQLClusterV2Short@go.csm.fun'
     name: 'GetNoSQLClusterV2Short'
@@ -5826,16 +5960,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -5875,16 +6009,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `available` : The cluster is accessible.
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:

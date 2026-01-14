@@ -851,6 +851,11 @@ symbols:
       'target_value':
         type: 'float'
         required: true
+      'id_':
+        type: 'str'
+        required: false
+        description: |-
+          this is only required for updating existing predicates, it will be ignored when creating goals
       'stat_cycle_id':
         type: 'str'
         required: false
@@ -1586,6 +1591,9 @@ symbols:
       The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
       Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
       Number of goals per challenge is **limited to 100 goals**.
+
+      **Important**
+      Add a new goal in a TIED challenge may affect users' data, please do not do this unless it's necessary. Then new goal will take effect in the next evaluation
     arguments:
       'body':
         type: 'ModelCreateGoalRequest'
@@ -1696,6 +1704,9 @@ symbols:
     type: 'function'
     description: |-
       - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+
+      **Important**
+      Delete a goal in a TIED challenge may affect/delete users' data, please do not delete a TIED goal unless it's necessary. User data will be deleted in the next evaluation
     arguments:
       'challenge_code':
         type: 'str'
@@ -2603,6 +2614,10 @@ symbols:
       Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
       The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
       Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
+
+      **Important**
+      - Update a goal in a TIED challenge may affect users' data, please do not update a TIED goal unless it's necessary. The updated goal will take effect in the next evaluation.
+      - When updating an existing predicate, ensure to put the predicate id in the request, otherwise a new predicate will be created with a new id
     arguments:
       'body':
         type: 'ModelUpdateGoalRequest'

@@ -2294,6 +2294,9 @@ symbols:
       'updated_at':
         type: 'str'
         required: true
+      'description':
+        type: 'str'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.session.models as session_models'
@@ -4003,7 +4006,7 @@ symbols:
       With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
       If the API returns Not Found, alternatively what you can do is either:
       a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
       We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
       If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
     arguments:
@@ -4338,6 +4341,59 @@ symbols:
       - 'credentials'
       - 'platform'
       - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
+
+  'admin_upload_platform_credentials@py.session.fun':
+    id: 'admin_upload_platform_credentials@py.session.fun'
+    name: 'admin_upload_platform_credentials'
+    type: 'function'
+    description: |-
+      Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+    arguments:
+      'description':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          the description of the uploaded file
+      'file':
+        type: 'Any'
+        required: true
+        description: |-
+          the file to upload
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+      'password':
+        type: 'str'
+        required: true
+        description: |-
+          the uploaded file password
+      'platform_id':
+        type: 'Union[str, AdminUploadPlatformCredentialsPlatformIdEnum]'
+        required: true
+        description: |-
+          Platform ID
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.session as session'
+      - 'import accelbyte_py_sdk.api.session.models as session_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/session/operations/platform_credential/admin_upload_platform_c_50325d.py'
+    example: |-
+      result, error = session.admin_upload_platform_credentials(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'credential'
+      - 'credentials'
+      - 'platform'
+      - 'upload'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
 

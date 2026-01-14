@@ -1392,6 +1392,41 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/platform_credential/admin_update_platform_credentials_parameters.go'
 
+  'AdminUploadPlatformCredentialsParams@go.session.mod':
+    id: 'AdminUploadPlatformCredentialsParams@go.session.mod'
+    name: 'AdminUploadPlatformCredentialsParams'
+    type: 'model'
+    fields:
+      'Description':
+        type: 'string'
+        required: false
+        description: |-
+          the description of the uploaded file
+      'File':
+        type: '[]byte'
+        required: true
+        description: |-
+          the file to upload
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+      'Password':
+        type: 'string'
+        required: true
+        description: |-
+          the uploaded file password
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/platform_credential'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/platform_credential/admin_upload_platform_credentials_parameters.go'
+
   'AdminUploadXBoxCertificateParams@go.session.mod':
     id: 'AdminUploadXBoxCertificateParams@go.session.mod'
     name: 'AdminUploadXBoxCertificateParams'
@@ -4547,6 +4582,9 @@ symbols:
       'CreatedBy':
         type: 'string'
         required: true
+      'Description':
+        type: 'string'
+        required: false
       'Namespace':
         type: 'string'
         required: true
@@ -5999,7 +6037,7 @@ symbols:
       With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
       If the API returns Not Found, alternatively what you can do is either:
       a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
       We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
       If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
     struct: 'PlatformCredentialService'
@@ -6301,6 +6339,40 @@ symbols:
       - 'credentials'
       - 'platform'
       - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
+
+  'AdminUploadPlatformCredentialsShort@go.session.fun':
+    id: 'AdminUploadPlatformCredentialsShort@go.session.fun'
+    name: 'AdminUploadPlatformCredentialsShort'
+    type: 'function'
+    description: |-
+      Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+    struct: 'PlatformCredentialService'
+    arguments:
+      params:
+        type: '*platform_credential.AdminUploadPlatformCredentialsParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/platform_credential'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/platformCredential.go'
+    example: |-
+      platformCredentialService := session.PlatformCredentialService{ ... }
+      params := platform_credential.AdminUploadPlatformCredentialsParams{ ... }
+      res, err := platformCredentialService.AdminUploadPlatformCredentialsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'credential'
+      - 'credentials'
+      - 'platform'
+      - 'upload'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
 

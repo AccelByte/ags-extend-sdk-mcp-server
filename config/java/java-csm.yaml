@@ -336,10 +336,19 @@ symbols:
       'extendAppEventHandlerCPULimit':
         type: 'Integer'
         required: true
+      'extendAppEventHandlerMemoryLimit':
+        type: 'Integer'
+        required: true
       'extendAppMemoryLimit':
         type: 'Integer'
         required: true
       'extendAppReplicaLimit':
+        type: 'Integer'
+        required: true
+      'extendAppServiceExtensionCPULimit':
+        type: 'Integer'
+        required: true
+      'extendAppServiceExtensionMemoryLimit':
         type: 'Integer'
         required: true
       'extendAppeEventHandlerMemoryLimit':
@@ -812,6 +821,46 @@ symbols:
       - 'import net.accelbyte.sdk.api.csm.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelMemoryResponse.java'
+
+  'ApimodelNoSQLAppListResponse@jv.csm.mod':
+    id: 'ApimodelNoSQLAppListResponse@jv.csm.mod'
+    name: 'ApimodelNoSQLAppListResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List<ApimodelNoSQLAppResponse>'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNoSQLAppListResponse.java'
+
+  'ApimodelNoSQLAppResponse@jv.csm.mod':
+    id: 'ApimodelNoSQLAppResponse@jv.csm.mod'
+    name: 'ApimodelNoSQLAppResponse'
+    type: 'model'
+    fields:
+      'appId':
+        type: 'String'
+        required: true
+      'appName':
+        type: 'String'
+        required: true
+      'gameName':
+        type: 'String'
+        required: true
+      'scenario':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNoSQLAppResponse.java'
 
   'ApimodelNoSQLDatabaseCredentialResponse@jv.csm.mod':
     id: 'ApimodelNoSQLDatabaseCredentialResponse@jv.csm.mod'
@@ -2355,9 +2404,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
       Default: `function-override`
     arguments:
@@ -3833,9 +3882,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
     arguments:
       'body':
         type: 'GeneratedGetAppListV1Request'
@@ -4636,6 +4685,91 @@ symbols:
       - 'tunnel'
       - 'v2'
 
+  'GetNoSQLAppListV2@jv.csm.fun':
+    id: 'GetNoSQLAppListV2@jv.csm.fun'
+    name: 'GetNoSQLAppListV2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+      Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+    arguments:
+      'appName':
+        type: 'String'
+        required: false
+        description: |-
+          App Name
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          Limit for pagination
+      'namespace':
+        type: 'String'
+        required: false
+        description: |-
+          Game Name
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          Offset for pagination
+      'resourceId':
+        type: 'String'
+        required: true
+        description: |-
+          Resource ID
+      'studioName':
+        type: 'String'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'ApimodelNoSQLAppListResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.csm.models.*;'
+      - 'import net.accelbyte.sdk.api.csm.operations.managed_resources.*;'
+      - 'import net.accelbyte.sdk.api.csm.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ManagedResources.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/GetNoSQLAppListV2.java'
+    example: |-
+      try {
+          final GetNoSQLAppListV2 operation = GetNoSQLAppListV2.builder()
+              .appName(...)
+              .limit(...)
+              .namespace(...)
+              .offset(...)
+              .build(
+                  resourceId,
+                  studioName,
+              );
+
+          final ManagedResources wrapper = new ManagedResources(sdk);
+          final ApimodelNoSQLAppListResponse response = wrapper.getNoSQLAppListV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'GetNoSQLClusterV2@jv.csm.fun':
     id: 'GetNoSQLClusterV2@jv.csm.fun'
     name: 'GetNoSQLClusterV2'
@@ -4646,16 +4780,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
     arguments:
       'namespace':
         type: 'String'
@@ -4703,16 +4837,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `available` : The cluster is accessible.
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     arguments:
       'app':
         type: 'String'

@@ -366,10 +366,19 @@ symbols:
       'extend_app_event_handler_cpu_limit':
         type: 'int'
         required: true
+      'extend_app_event_handler_memory_limit':
+        type: 'int'
+        required: true
       'extend_app_memory_limit':
         type: 'int'
         required: true
       'extend_app_replica_limit':
+        type: 'int'
+        required: true
+      'extend_app_service_extension_cpu_limit':
+        type: 'int'
+        required: true
+      'extend_app_service_extension_memory_limit':
         type: 'int'
         required: true
       'extend_appe_event_handler_memory_limit':
@@ -886,6 +895,50 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py'
     example: |-
       apimodel_memory_response = csm_models.ApimodelMemoryResponse.create(...)
+
+  'ApimodelNoSQLAppListResponse@py.csm.mod':
+    id: 'ApimodelNoSQLAppListResponse@py.csm.mod'
+    name: 'ApimodelNoSQLAppListResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelNoSQLAppResponse]'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_list_response.py'
+    example: |-
+      apimodel_no_sql_app_list_response = csm_models.ApimodelNoSQLAppListResponse.create(...)
+
+  'ApimodelNoSQLAppResponse@py.csm.mod':
+    id: 'ApimodelNoSQLAppResponse@py.csm.mod'
+    name: 'ApimodelNoSQLAppResponse'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'game_name':
+        type: 'str'
+        required: true
+      'scenario':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_response.py'
+    example: |-
+      apimodel_no_sql_app_response = csm_models.ApimodelNoSQLAppResponse.create(...)
 
   'ApimodelNoSQLDatabaseCredentialResponse@py.csm.mod':
     id: 'ApimodelNoSQLDatabaseCredentialResponse@py.csm.mod'
@@ -2544,9 +2597,9 @@ symbols:
       Creates new App for AB-Extend Customers
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
       Default: `function-override`
     arguments:
@@ -3730,9 +3783,9 @@ symbols:
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
     arguments:
       'body':
         type: 'GeneratedGetAppListV1Request'
@@ -4378,6 +4431,77 @@ symbols:
       - 'tunnel'
       - 'v2'
 
+  'get_no_sql_app_list_v2@py.csm.fun':
+    id: 'get_no_sql_app_list_v2@py.csm.fun'
+    name: 'get_no_sql_app_list_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+      Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+    arguments:
+      'app_name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          App Name
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Limit for pagination
+      'namespace':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Game Name
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Offset for pagination
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+      'studio_name':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelNoSQLAppListResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_app_list_v2.py'
+    example: |-
+      result, error = csm.get_no_sql_app_list_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'managed'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'get_no_sql_cluster_v2@py.csm.fun':
     id: 'get_no_sql_cluster_v2@py.csm.fun'
     name: 'get_no_sql_cluster_v2'
@@ -4388,16 +4512,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
     arguments:
       'namespace':
         type: 'str'
@@ -4436,16 +4560,16 @@ symbols:
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `available` : The cluster is accessible.
       - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
     arguments:
       'app':
         type: 'str'

@@ -1320,10 +1320,25 @@ symbols:
       'IgnoreAdditionalDataOnValueRejected':
         type: 'bool'
         required: false
+      'IncrementOnly':
+        type: 'bool'
+        required: false
       'IsPublic':
         type: 'bool'
         required: false
+      'Maximum':
+        type: 'double'
+        required: false
+      'Minimum':
+        type: 'double'
+        required: false
       'Name':
+        type: 'string'
+        required: false
+      'SetAsGlobal':
+        type: 'bool'
+        required: false
+      'SetBy':
         type: 'string'
         required: false
       'Tags':
@@ -7046,11 +7061,10 @@ symbols:
     type: 'function'
     description: |-
       Update stat.
+       Update a TIED stat will affect users' data, the updated stat will take effect in the next evaluation.
       Other detail info:
                 *  Returns : updated stat
                 *  Field globalAggregationMethod will be ignored when the stat is not set as global
-                *  Field globalAggregationMethod is not updatable when the stat status is TIED
-                *  Field visibility is not updatable when the stat status is TIED
     arguments:
       'Body':
         type: 'StatUpdate'

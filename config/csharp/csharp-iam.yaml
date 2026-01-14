@@ -15419,7 +15419,7 @@ symbols:
       This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
       - The maximum value of the limit is 100 and the minimum value of the limit is 1.
       - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp."
+      - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
     arguments:
       'After':
         type: 'double'
@@ -15435,7 +15435,7 @@ symbols:
         type: 'long'
         required: false
         description: |-
-          The number of data retrieved in a page
+          The number of data retrieved in a page. Default: 100
       'Namespace':
         type: 'string'
         required: true
@@ -20609,6 +20609,10 @@ symbols:
       ## The endpoint is going to be deprecated
       **Endpoint migration guide**
       - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
+
+      **Note for Multi Tenant Mode (Confidential Client):**
+      Only Super admin can set permission with resource & action.
+      Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
     arguments:
       'Body':
         type: 'ClientmodelClientCreateRequest'
@@ -20647,6 +20651,10 @@ symbols:
       ## The endpoint is going to be deprecated
       **Endpoint migration guide**
       - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
+
+      **Note for Multi Tenant Mode (Confidential Client):**
+      Only Super admin can set permission with resource & action.
+      Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
     arguments:
       'Body':
         type: 'ClientmodelClientCreateRequest'
@@ -27176,8 +27184,8 @@ symbols:
     type: 'function'
     description: |-
       Notes for this endpoint:
-      - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
       - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
       - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
       - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
@@ -27199,7 +27207,7 @@ symbols:
         type: 'long'
         required: false
         description: |-
-          The number of data retrieved in a page
+          The number of data retrieved in a page. Default: 100
       'Namespace':
         type: 'string'
         required: true

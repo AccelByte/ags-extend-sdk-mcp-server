@@ -1366,11 +1366,26 @@ symbols:
       'ignore_additional_data_on_value_rejected':
         type: 'bool'
         required: false
+      'increment_only':
+        type: 'bool'
+        required: false
       'is_public':
         type: 'bool'
         required: false
+      'maximum':
+        type: 'float'
+        required: false
+      'minimum':
+        type: 'float'
+        required: false
       'name':
         type: 'str'
+        required: false
+      'set_as_global':
+        type: 'bool'
+        required: false
+      'set_by':
+        type: 'Union[str, SetByEnum]'
         required: false
       'tags':
         type: 'List[str]'
@@ -6248,11 +6263,10 @@ symbols:
     type: 'function'
     description: |-
       Update stat.
+       Update a TIED stat will affect users' data, the updated stat will take effect in the next evaluation.
       Other detail info:
                 *  Returns : updated stat
                 *  Field globalAggregationMethod will be ignored when the stat is not set as global
-                *  Field globalAggregationMethod is not updatable when the stat status is TIED
-                *  Field visibility is not updatable when the stat status is TIED
     arguments:
       'body':
         type: 'StatUpdate'

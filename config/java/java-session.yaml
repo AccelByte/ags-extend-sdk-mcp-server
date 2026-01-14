@@ -2156,6 +2156,9 @@ symbols:
       'updatedAt':
         type: 'String'
         required: true
+      'description':
+        type: 'String'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.session.models.*;'
@@ -4252,7 +4255,7 @@ symbols:
       With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
       If the API returns Not Found, alternatively what you can do is either:
       a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+      b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
       We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
       If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
     arguments:
@@ -4660,6 +4663,72 @@ symbols:
       - 'credentials'
       - 'platform'
       - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
+
+  'AdminUploadPlatformCredentials@jv.session.fun':
+    id: 'AdminUploadPlatformCredentials@jv.session.fun'
+    name: 'AdminUploadPlatformCredentials'
+    type: 'function'
+    description: |-
+      Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+    arguments:
+      'description':
+        type: 'String'
+        required: false
+        description: |-
+          the description of the uploaded file
+      'file':
+        type: 'File'
+        required: true
+        description: |-
+          the file to upload
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+      'password':
+        type: 'String'
+        required: true
+        description: |-
+          the uploaded file password
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.platform_credential.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/PlatformCredential.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminUploadPlatformCredentials.java'
+    example: |-
+      try {
+          final AdminUploadPlatformCredentials operation = AdminUploadPlatformCredentials.builder()
+              .description(...)
+              .build(
+                  file,
+                  namespace,
+                  password,
+                  platformId,
+              );
+
+          final PlatformCredential wrapper = new PlatformCredential(sdk);
+          wrapper.adminUploadPlatformCredentials(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'credential'
+      - 'credentials'
+      - 'platform'
+      - 'upload'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE]'
 
