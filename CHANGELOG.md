@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.2.0
+
+* Updated config files.
+
 ## v2026.1.0
 
 * Updated config files.

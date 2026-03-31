@@ -18,10 +18,10 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 ### Alternative 1: Using STDIO transport (default)
 
-1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.1.0.
+1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.2.0.
 
     ```bash
-    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.1.0
+    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.2.0
     ```
 
 2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
@@ -37,7 +37,7 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
             "--rm",
             "-e",
             "CONFIG_DIR",
-            "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.1.0"
+            "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.2.0"
           ],
           "env": {
             "CONFIG_DIR": "config/go"
@@ -53,10 +53,10 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
 
 ### Alternative 2: Using Streamable HTTP transport
 
-1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.1.0.
+1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.2.0.
 
     ```bash
-    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.1.0
+    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.2.0
     ```
 
 2. Start the MCP server with streamable HTTP transport.
@@ -68,7 +68,7 @@ This **Model Context Protocol (MCP) server** exposes Extend SDK functions and mo
       -e CONFIG_DIR=config/go \
       -e NODE_ENV=production \
       -e LOG_LEVEL=info \
-      ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.1.0
+      ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.2.0
     ```
 
     The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
@@ -178,7 +178,7 @@ docker build -t extend-sdk-mcp-server:latest .
 
 GHCR_USERNAME=<your-username>
 GHCR_PASSWORD=<your-password>
-IMAGE_TAG=2026.1.0    # Matches AGS release, bump patch version for hotfix
+IMAGE_TAG=2026.2.0    # Matches AGS release, bump patch version for hotfix
 
 # Prepare builder
 
