@@ -291,6 +291,11 @@ symbols:
         required: true
         description: |-
           namespace, only accept alphabet and numeric. Will be converted to lowercase
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -321,6 +326,11 @@ symbols:
       'CreatedAt':
         type: 'DateTime'
         required: false
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          isTesting flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
       'ParentNamespace':
         type: 'string'
         required: false
@@ -396,6 +406,25 @@ symbols:
       - 'using AccelByte.Sdk.Api.Basic.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Basic/Model/NamespaceStatusUpdate.cs'
+
+  'NamespaceTestingFlagUpdate@cs.basic.mod':
+    id: 'NamespaceTestingFlagUpdate@cs.basic.mod'
+    name: 'NamespaceTestingFlagUpdate'
+    type: 'model'
+    description: |-
+      A DTO object for updating namespace testing flag API call.
+    fields:
+      'IsTesting':
+        type: 'bool'
+        required: true
+        description: |-
+          testing flag to indicate whether the namespace is for testing purposes
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Basic.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Basic/Model/NamespaceTestingFlagUpdate.cs'
 
   'NamespaceUpdate@cs.basic.mod':
     id: 'NamespaceUpdate@cs.basic.mod'
@@ -2294,6 +2323,11 @@ symbols:
         required: false
         description: |-
           only retrieves active namespaces
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          filter namespaces by testing flag (true, false, or empty for all)
     return_type: 'List<NamespaceInfo>'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -2308,6 +2342,7 @@ symbols:
       {
           var operation = sdk.Basic.Namespace.GetNamespacesOp
               .SetActiveOnly(...)
+              .SetIsTesting(...)
               .Build(
               );
 
@@ -3888,6 +3923,55 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]'
+
+  'UpdateTestingFlag@cs.basic.fun':
+    id: 'UpdateTestingFlag@cs.basic.fun'
+    name: 'UpdateTestingFlag'
+    type: 'function'
+    description: |-
+      Update namespace testing flag.
+      In multi-tenant mode, this is only applicable for studio namespaces, not game namespaces.
+      Other detail info:
+
+        * Returns : updated namespace
+    arguments:
+      'Body':
+        type: 'NamespaceTestingFlagUpdate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    return_type: 'NamespaceInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Basic.Model;'
+      - 'using AccelByte.Sdk.Api.Basic.Operation;'
+      - 'using AccelByte.Sdk.Api.Basic.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Basic/Wrapper/Namespace.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Basic/Operation/Namespace/UpdateTestingFlag.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Basic.Namespace.UpdateTestingFlagOp
+              .SetBody(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Basic.Namespace.UpdateTestingFlag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'flag'
+      - 'namespace'
+      - 'testing'
+      - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:NAMESPACE:TESTINGFLAG [UPDATE]'
 
   'UpdateUserProfile@cs.basic.fun':
     id: 'UpdateUserProfile@cs.basic.fun'

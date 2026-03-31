@@ -670,6 +670,11 @@ symbols:
         required: false
         description: |-
           only retrieves active namespaces
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          filter namespaces by testing flag (true, false, or empty for all)
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
     files:
@@ -1282,6 +1287,24 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/user_profile/update_private_custom_attributes_partially_parameters.go'
 
+  'UpdateTestingFlagParams@go.basic.mod':
+    id: 'UpdateTestingFlagParams@go.basic.mod'
+    name: 'UpdateTestingFlagParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*NamespaceTestingFlagUpdate'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclient/namespace/update_testing_flag_parameters.go'
+
   'UpdateUserProfileParams@go.basic.mod':
     id: 'UpdateUserProfileParams@go.basic.mod'
     name: 'UpdateUserProfileParams'
@@ -1595,6 +1618,11 @@ symbols:
         required: true
         description: |-
           display name
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
       'Namespace':
         type: 'string'
         required: true
@@ -1623,6 +1651,11 @@ symbols:
         required: true
         description: |-
           namespace display name
+      'IsTesting':
+        type: 'bool'
+        required: false
+        description: |-
+          isTesting flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
       'Namespace':
         type: 'string'
         required: true
@@ -1695,6 +1728,23 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_status_update.go'
+
+  'NamespaceTestingFlagUpdate@go.basic.mod':
+    id: 'NamespaceTestingFlagUpdate@go.basic.mod'
+    name: 'NamespaceTestingFlagUpdate'
+    type: 'model'
+    description: |-
+      A DTO object for updating namespace testing flag API call.
+    fields:
+      'IsTesting':
+        type: 'bool'
+        required: true
+        description: |-
+          testing flag to indicate whether the namespace is for testing purposes
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/basic-sdk/pkg/basicclientmodels/namespace_testing_flag_update.go'
 
   'NamespaceUpdate@go.basic.mod':
     id: 'NamespaceUpdate@go.basic.mod'
@@ -4479,6 +4529,43 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]'
+
+  'UpdateTestingFlagShort@go.basic.fun':
+    id: 'UpdateTestingFlagShort@go.basic.fun'
+    name: 'UpdateTestingFlagShort'
+    type: 'function'
+    description: |-
+      Update namespace testing flag.
+      In multi-tenant mode, this is only applicable for studio namespaces, not game namespaces.
+      Other detail info:
+
+        * Returns : updated namespace
+    struct: 'NamespaceService'
+    arguments:
+      params:
+        type: '*namespace.UpdateTestingFlagParams'
+        required: true
+    return_type: '(*namespace.UpdateTestingFlagResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/basic-sdk/pkg/basicclient/namespace'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/basic'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/basic/namespace.go'
+    example: |-
+      namespaceService := basic.NamespaceService{ ... }
+      params := namespace.UpdateTestingFlagParams{ ... }
+      res, err := namespaceService.UpdateTestingFlagShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'flag'
+      - 'namespace'
+      - 'testing'
+      - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:NAMESPACE:TESTINGFLAG [UPDATE]'
 
   'UpdateUserProfileShort@go.basic.fun':
     id: 'UpdateUserProfileShort@go.basic.fun'

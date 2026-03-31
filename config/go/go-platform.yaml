@@ -1410,6 +1410,25 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/campaign/bulk_enable_codes_parameters.go'
 
+  'BulkFulfillItemsV3Params@go.platform.mod':
+    id: 'BulkFulfillItemsV3Params@go.platform.mod'
+    name: 'BulkFulfillItemsV3Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: '[]*FulfillmentV3Request'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/fulfillment'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/fulfillment/bulk_fulfill_items_v3_parameters.go'
+
   'BulkGetLocaleItemsParams@go.platform.mod':
     id: 'BulkGetLocaleItemsParams@go.platform.mod'
     name: 'BulkGetLocaleItemsParams'
@@ -11744,6 +11763,22 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/service_plugin_config/upload_revocation_plugin_config_cert_parameters.go'
 
+  'UploadRevocationPluginConfigCertV2Params@go.platform.mod':
+    id: 'UploadRevocationPluginConfigCertV2Params@go.platform.mod'
+    name: 'UploadRevocationPluginConfigCertV2Params'
+    type: 'model'
+    fields:
+      'File':
+        type: '[]byte'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/service_plugin_config'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/service_plugin_config/upload_revocation_plugin_config_cert_v2_parameters.go'
+
   'UploadSectionPluginConfigCertParams@go.platform.mod':
     id: 'UploadSectionPluginConfigCertParams@go.platform.mod'
     name: 'UploadSectionPluginConfigCertParams'
@@ -18089,6 +18124,11 @@ symbols:
         required: true
         description: |-
           stateInfo
+      'StateReason':
+        type: 'string'
+        required: false
+        description: |-
+          reason
       'SubscriptionSummaries':
         type: '[]*SubscriptionSummary'
         required: false
@@ -18108,6 +18148,28 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/fulfillment_v2_result.go'
+
+  'FulfillmentV3Request@go.platform.mod':
+    id: 'FulfillmentV3Request@go.platform.mod'
+    name: 'FulfillmentV3Request'
+    type: 'model'
+    description: |-
+      A DTO object for fulfillment v3 request API call.
+    fields:
+      'Items':
+        type: '[]*FulfillmentV2RequestItem'
+        required: false
+        description: |-
+          items
+      'TransactionID':
+        type: 'string'
+        required: false
+        description: |-
+          transactionId
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/fulfillment_v3_request.go'
 
   'FullAppInfo@go.platform.mod':
     id: 'FullAppInfo@go.platform.mod'
@@ -31527,6 +31589,44 @@ symbols:
       - 'enable'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]'
+
+  'BulkFulfillItemsV3Short@go.platform.fun':
+    id: 'BulkFulfillItemsV3Short@go.platform.fun'
+    name: 'BulkFulfillItemsV3Short'
+    type: 'function'
+    description: |-
+      [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+      Other detail info:
+
+        * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+        *  Returns : list of fulfillment v2 result
+    struct: 'FulfillmentService'
+    arguments:
+      params:
+        type: '*fulfillment.BulkFulfillItemsV3Params'
+        required: true
+    return_type: '(*fulfillment.BulkFulfillItemsV3Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/fulfillment'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/fulfillment.go'
+    example: |-
+      fulfillmentService := platform.FulfillmentService{ ... }
+      params := fulfillment.BulkFulfillItemsV3Params{ ... }
+      res, err := fulfillmentService.BulkFulfillItemsV3Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'bulk'
+      - 'fulfill'
+      - 'fulfillment'
+      - 'items'
+      - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]'
 
   'BulkGetLocaleItemsShort@go.platform.fun':
     id: 'BulkGetLocaleItemsShort@go.platform.fun'
@@ -48668,7 +48768,7 @@ symbols:
     name: 'UpdateSectionShort'
     type: 'function'
     description: |-
-      This API is used to update s section.
+      This API is used to update a section.
 
       Other detail info:
                 * Returns : updated section data
@@ -49356,7 +49456,7 @@ symbols:
     name: 'UploadRevocationPluginConfigCertShort'
     type: 'function'
     description: |-
-      Upload revocation plugin custom config tls cert.Other detail info:
+      Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
                 * Returns : updated service plugin config
     struct: 'ServicePluginConfigService'
     arguments:
@@ -49384,6 +49484,43 @@ symbols:
       - 'revocation'
       - 'service'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
+
+  'UploadRevocationPluginConfigCertV2Short@go.platform.fun':
+    id: 'UploadRevocationPluginConfigCertV2Short@go.platform.fun'
+    name: 'UploadRevocationPluginConfigCertV2Short'
+    type: 'function'
+    description: |-
+      Upload revocation plugin custom config tls cert.Other detail info:
+                * Returns : updated service plugin config
+    struct: 'ServicePluginConfigService'
+    arguments:
+      params:
+        type: '*service_plugin_config.UploadRevocationPluginConfigCertV2Params'
+        required: true
+    return_type: '(*service_plugin_config.UploadRevocationPluginConfigCertV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/service_plugin_config'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/servicePluginConfig.go'
+    example: |-
+      servicePluginConfigService := platform.ServicePluginConfigService{ ... }
+      params := service_plugin_config.UploadRevocationPluginConfigCertV2Params{ ... }
+      res, err := servicePluginConfigService.UploadRevocationPluginConfigCertV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cert'
+      - 'config'
+      - 'plugin'
+      - 'revocation'
+      - 'service'
+      - 'upload'
+      - 'v2'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
 

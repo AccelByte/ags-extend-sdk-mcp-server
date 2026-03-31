@@ -6980,6 +6980,55 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:STAT [READ]'
 
+  'ResetStatCycle@jv.social.fun':
+    id: 'ResetStatCycle@jv.social.fun'
+    name: 'ResetStatCycle'
+    type: 'function'
+    description: |-
+      Reset stat cycle.
+      Other detail info:
+                * This endpoint will reset the cycle immediately
+    arguments:
+      'cycleId':
+        type: 'String'
+        required: true
+        description: |-
+          cycle id
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.social.models.*;'
+      - 'import net.accelbyte.sdk.api.social.operations.stat_cycle_configuration.*;'
+      - 'import net.accelbyte.sdk.api.social.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/social/wrappers/StatCycleConfiguration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/social/operations/stat_cycle_configuration/ResetStatCycle.java'
+    example: |-
+      try {
+          final ResetStatCycle operation = ResetStatCycle.builder()
+              .build(
+                  cycleId,
+                  namespace,
+              );
+
+          final StatCycleConfiguration wrapper = new StatCycleConfiguration(sdk);
+          wrapper.resetStatCycle(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'configuration'
+      - 'cycle'
+      - 'reset'
+      - 'stat'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]'
+
   'ResetUserStatItemValue@jv.social.fun':
     id: 'ResetUserStatItemValue@jv.social.fun'
     name: 'ResetUserStatItemValue'
@@ -7269,7 +7318,9 @@ symbols:
     description: |-
       Update stat cycle.
       Other detail info:
-                *  Returns : updated stat cycle
+                * STOPPED cycles cannot be updated
+                * If changing the start time of an ACTIVE cycle to a future time, the status will be set to INIT and the related user data will be removed
+                * If changing the cycle type of an ACTIVE cycle, the related user data will be removed
     arguments:
       'body':
         type: 'StatCycleUpdate'

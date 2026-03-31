@@ -74,6 +74,22 @@ symbols:
     example: |-
       models_bulk_user_ranking_response_v3 = leaderboard_models.ModelsBulkUserRankingResponseV3.create(...)
 
+  'ModelsCycleInfo@py.leaderboard.mod':
+    id: 'ModelsCycleInfo@py.leaderboard.mod'
+    name: 'ModelsCycleInfo'
+    type: 'model'
+    fields:
+      'version':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.leaderboard.models as leaderboard_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/leaderboard/models/models_cycle_info.py'
+    example: |-
+      models_cycle_info = leaderboard_models.ModelsCycleInfo.create(...)
+
   'ModelsDailyConfig@py.leaderboard.mod':
     id: 'ModelsDailyConfig@py.leaderboard.mod'
     name: 'ModelsDailyConfig'
@@ -341,6 +357,9 @@ symbols:
       'stat_code':
         type: 'str'
         required: true
+      'cycle_metadata':
+        type: 'Dict[str, ModelsCycleInfo]'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.leaderboard.models as leaderboard_models'
@@ -433,6 +452,9 @@ symbols:
       'updated_at':
         type: 'str'
         required: true
+      'cycle_metadata':
+        type: 'Dict[str, ModelsCycleInfo]'
+        required: false
       'deleted_at':
         type: 'str'
         required: false

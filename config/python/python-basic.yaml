@@ -302,6 +302,11 @@ symbols:
         required: true
         description: |-
           namespace, only accept alphabet and numeric. Will be converted to lowercase
+      'is_testing':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.basic.models as basic_models'
@@ -333,6 +338,11 @@ symbols:
       'created_at':
         type: 'str'
         required: false
+      'is_testing':
+        type: 'bool'
+        required: false
+        description: |-
+          isTesting flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
       'parent_namespace':
         type: 'str'
         required: false
@@ -412,6 +422,26 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/basic/models/namespace_status_update.py'
     example: |-
       namespace_status_update = basic_models.NamespaceStatusUpdate.create(...)
+
+  'NamespaceTestingFlagUpdate@py.basic.mod':
+    id: 'NamespaceTestingFlagUpdate@py.basic.mod'
+    name: 'NamespaceTestingFlagUpdate'
+    type: 'model'
+    description: |-
+      A DTO object for updating namespace testing flag API call.
+    fields:
+      'is_testing':
+        type: 'bool'
+        required: true
+        description: |-
+          testing flag to indicate whether the namespace is for testing purposes
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.basic.models as basic_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/basic/models/namespace_testing_flag_update.py'
+    example: |-
+      namespace_testing_flag_update = basic_models.NamespaceTestingFlagUpdate.create(...)
 
   'NamespaceUpdate@py.basic.mod':
     id: 'NamespaceUpdate@py.basic.mod'
@@ -2098,6 +2128,11 @@ symbols:
         required: false
         description: |-
           only retrieves active namespaces
+      'is_testing':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          filter namespaces by testing flag (true, false, or empty for all)
     return_type: 'Tuple[Union[None, List[NamespaceInfo]], Union[None, ErrorEntity, HttpResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -3412,6 +3447,45 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]'
+
+  'update_testing_flag@py.basic.fun':
+    id: 'update_testing_flag@py.basic.fun'
+    name: 'update_testing_flag'
+    type: 'function'
+    description: |-
+      Update namespace testing flag.
+      In multi-tenant mode, this is only applicable for studio namespaces, not game namespaces.
+      Other detail info:
+
+        * Returns : updated namespace
+    arguments:
+      'body':
+        type: 'Optional[NamespaceTestingFlagUpdate]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    return_type: 'Tuple[Union[None, NamespaceInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.basic as basic'
+      - 'import accelbyte_py_sdk.api.basic.models as basic_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/basic/operations/namespace/update_testing_flag.py'
+    example: |-
+      result, error = basic.update_testing_flag(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'flag'
+      - 'namespace'
+      - 'testing'
+      - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:NAMESPACE:TESTINGFLAG [UPDATE]'
 
   'update_user_profile@py.basic.fun':
     id: 'update_user_profile@py.basic.fun'

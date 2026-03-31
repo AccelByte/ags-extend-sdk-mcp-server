@@ -6590,6 +6590,11 @@ symbols:
         required: false
         description: |-
           fulfillment id
+      'StateReason':
+        type: 'string'
+        required: false
+        description: |-
+          reason
       'SubscriptionSummaries':
         type: 'List<SubscriptionSummary>'
         required: false
@@ -6601,6 +6606,30 @@ symbols:
       - 'using AccelByte.Sdk.Api.Platform.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/FulfillmentV2Result.cs'
+
+  'FulfillmentV3Request@cs.platform.mod':
+    id: 'FulfillmentV3Request@cs.platform.mod'
+    name: 'FulfillmentV3Request'
+    type: 'model'
+    description: |-
+      A DTO object for fulfillment v3 request API call.
+    fields:
+      'Items':
+        type: 'List<FulfillmentV2RequestItem>'
+        required: false
+        description: |-
+          items
+      'TransactionId':
+        type: 'string'
+        required: false
+        description: |-
+          transactionId
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/FulfillmentV3Request.cs'
 
   'FullAppInfo@cs.platform.mod':
     id: 'FullAppInfo@cs.platform.mod'
@@ -20889,6 +20918,54 @@ symbols:
       - 'enable'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]'
+
+  'BulkFulfillItemsV3@cs.platform.fun':
+    id: 'BulkFulfillItemsV3@cs.platform.fun'
+    name: 'BulkFulfillItemsV3'
+    type: 'function'
+    description: |-
+      [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+      Other detail info:
+
+        * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+        *  Returns : list of fulfillment v2 result
+    arguments:
+      'Body':
+        type: 'List<FulfillmentV3Request>'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'List<FulfillmentV2Result>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/Fulfillment.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/Fulfillment/BulkFulfillItemsV3.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.Fulfillment.BulkFulfillItemsV3Op
+              .Build();
+
+          var response = sdk.Platform.Fulfillment.BulkFulfillItemsV3(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'fulfill'
+      - 'fulfillment'
+      - 'items'
+      - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]'
 
   'BulkGetLocaleItems@cs.platform.fun':
     id: 'BulkGetLocaleItems@cs.platform.fun'
@@ -44949,7 +45026,7 @@ symbols:
     name: 'UpdateSection'
     type: 'function'
     description: |-
-      This API is used to update s section.
+      This API is used to update a section.
 
       Other detail info:
                 * Returns : updated section data
@@ -45844,7 +45921,7 @@ symbols:
     name: 'UploadRevocationPluginConfigCert'
     type: 'function'
     description: |-
-      Upload revocation plugin custom config tls cert.Other detail info:
+      Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
                 * Returns : updated service plugin config
     arguments:
       'File':
@@ -45882,6 +45959,53 @@ symbols:
       - 'revocation'
       - 'service'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
+
+  'UploadRevocationPluginConfigCertV2@cs.platform.fun':
+    id: 'UploadRevocationPluginConfigCertV2@cs.platform.fun'
+    name: 'UploadRevocationPluginConfigCertV2'
+    type: 'function'
+    description: |-
+      Upload revocation plugin custom config tls cert.Other detail info:
+                * Returns : updated service plugin config
+    arguments:
+      'File':
+        type: 'Stream'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+    return_type: 'RevocationPluginConfigInfo'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/ServicePluginConfig.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/ServicePluginConfig/UploadRevocationPluginConfigCertV2.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.ServicePluginConfig.UploadRevocationPluginConfigCertV2Op
+              .SetFile(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Platform.ServicePluginConfig.UploadRevocationPluginConfigCertV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cert'
+      - 'config'
+      - 'plugin'
+      - 'revocation'
+      - 'service'
+      - 'upload'
+      - 'v2'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
 

@@ -6760,6 +6760,11 @@ symbols:
         required: false
         description: |-
           fulfillment id
+      'state_reason':
+        type: 'str'
+        required: false
+        description: |-
+          reason
       'subscription_summaries':
         type: 'List[SubscriptionSummary]'
         required: false
@@ -6772,6 +6777,31 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/fulfillment_v2_result.py'
     example: |-
       fulfillment_v2_result = platform_models.FulfillmentV2Result.create(...)
+
+  'FulfillmentV3Request@py.platform.mod':
+    id: 'FulfillmentV3Request@py.platform.mod'
+    name: 'FulfillmentV3Request'
+    type: 'model'
+    description: |-
+      A DTO object for fulfillment v3 request API call.
+    fields:
+      'items':
+        type: 'List[FulfillmentV2RequestItem]'
+        required: false
+        description: |-
+          items
+      'transaction_id':
+        type: 'str'
+        required: false
+        description: |-
+          transactionId
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/fulfillment_v3_request.py'
+    example: |-
+      fulfillment_v3_request = platform_models.FulfillmentV3Request.create(...)
 
   'FullAppInfo@py.platform.mod':
     id: 'FullAppInfo@py.platform.mod'
@@ -21188,6 +21218,47 @@ symbols:
       - 'enable'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]'
+
+  'bulk_fulfill_items_v3@py.platform.fun':
+    id: 'bulk_fulfill_items_v3@py.platform.fun'
+    name: 'bulk_fulfill_items_v3'
+    type: 'function'
+    description: |-
+      [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+      Other detail info:
+
+        * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+        *  Returns : list of fulfillment v2 result
+    arguments:
+      'body':
+        type: 'List[FulfillmentV3Request]'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, List[FulfillmentV2Result]], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/fulfillment/bulk_fulfill_items_v3.py'
+    example: |-
+      result, error = platform.bulk_fulfill_items_v3(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'bulk'
+      - 'fulfill'
+      - 'fulfillment'
+      - 'items'
+      - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]'
 
   'bulk_get_locale_items@py.platform.fun':
     id: 'bulk_get_locale_items@py.platform.fun'
@@ -41013,7 +41084,7 @@ symbols:
     name: 'update_section'
     type: 'function'
     description: |-
-      This API is used to update s section.
+      This API is used to update a section.
 
       Other detail info:
                 * Returns : updated section data
@@ -41751,7 +41822,7 @@ symbols:
     name: 'upload_revocation_plugin_config_cert'
     type: 'function'
     description: |-
-      Upload revocation plugin custom config tls cert.Other detail info:
+      Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
                 * Returns : updated service plugin config
     arguments:
       'file':
@@ -41779,6 +41850,43 @@ symbols:
       - 'revocation'
       - 'service'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
+
+  'upload_revocation_plugin_config_cert_v2@py.platform.fun':
+    id: 'upload_revocation_plugin_config_cert_v2@py.platform.fun'
+    name: 'upload_revocation_plugin_config_cert_v2'
+    type: 'function'
+    description: |-
+      Upload revocation plugin custom config tls cert.Other detail info:
+                * Returns : updated service plugin config
+    arguments:
+      'file':
+        type: 'Optional[Any]'
+        required: false
+      'namespace':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[Union[None, RevocationPluginConfigInfo], Union[None, HttpResponse, ValidationErrorEntity]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/service_plugin_config/upload_revocation_plugi_23affe.py'
+    example: |-
+      result, error = platform.upload_revocation_plugin_config_cert_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cert'
+      - 'config'
+      - 'plugin'
+      - 'revocation'
+      - 'service'
+      - 'upload'
+      - 'v2'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
 

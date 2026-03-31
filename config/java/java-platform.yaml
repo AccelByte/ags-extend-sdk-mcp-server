@@ -6420,6 +6420,11 @@ symbols:
         required: false
         description: |-
           fulfillment id
+      'stateReason':
+        type: 'String'
+        required: false
+        description: |-
+          reason
       'subscriptionSummaries':
         type: 'List<SubscriptionSummary>'
         required: false
@@ -6430,6 +6435,29 @@ symbols:
       - 'import net.accelbyte.sdk.api.platform.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/FulfillmentV2Result.java'
+
+  'FulfillmentV3Request@jv.platform.mod':
+    id: 'FulfillmentV3Request@jv.platform.mod'
+    name: 'FulfillmentV3Request'
+    type: 'model'
+    description: |-
+      A DTO object for fulfillment v3 request API call.
+    fields:
+      'items':
+        type: 'List<FulfillmentV2RequestItem>'
+        required: false
+        description: |-
+          items
+      'transactionId':
+        type: 'String'
+        required: false
+        description: |-
+          transactionId
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/FulfillmentV3Request.java'
 
   'FullAppInfo@jv.platform.mod':
     id: 'FullAppInfo@jv.platform.mod'
@@ -20467,6 +20495,58 @@ symbols:
       - 'enable'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]'
+
+  'BulkFulfillItemsV3@jv.platform.fun':
+    id: 'BulkFulfillItemsV3@jv.platform.fun'
+    name: 'BulkFulfillItemsV3'
+    type: 'function'
+    description: |-
+      [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+      Other detail info:
+
+        * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+        *  Returns : list of fulfillment v2 result
+    arguments:
+      'body':
+        type: 'List<FulfillmentV3Request>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'List<FulfillmentV2Result>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.fulfillment.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/Fulfillment.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/fulfillment/BulkFulfillItemsV3.java'
+    example: |-
+      try {
+          final BulkFulfillItemsV3 operation = BulkFulfillItemsV3.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final Fulfillment wrapper = new Fulfillment(sdk);
+          final List<FulfillmentV2Result> response = wrapper.bulkFulfillItemsV3(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'bulk'
+      - 'fulfill'
+      - 'fulfillment'
+      - 'items'
+      - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]'
 
   'BulkGetLocaleItems@jv.platform.fun':
     id: 'BulkGetLocaleItems@jv.platform.fun'
@@ -45447,7 +45527,7 @@ symbols:
     name: 'UpdateSection'
     type: 'function'
     description: |-
-      This API is used to update s section.
+      This API is used to update a section.
 
       Other detail info:
                 * Returns : updated section data
@@ -46391,7 +46471,7 @@ symbols:
     name: 'UploadRevocationPluginConfigCert'
     type: 'function'
     description: |-
-      Upload revocation plugin custom config tls cert.Other detail info:
+      Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
                 * Returns : updated service plugin config
     arguments:
       'file':
@@ -46429,6 +46509,53 @@ symbols:
       - 'revocation'
       - 'service'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
+
+  'UploadRevocationPluginConfigCertV2@jv.platform.fun':
+    id: 'UploadRevocationPluginConfigCertV2@jv.platform.fun'
+    name: 'UploadRevocationPluginConfigCertV2'
+    type: 'function'
+    description: |-
+      Upload revocation plugin custom config tls cert.Other detail info:
+                * Returns : updated service plugin config
+    arguments:
+      'file':
+        type: 'File'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+    return_type: 'RevocationPluginConfigInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.service_plugin_config.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/ServicePluginConfig.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UploadRevocationPluginConfigCertV2.java'
+    example: |-
+      try {
+          final UploadRevocationPluginConfigCertV2 operation = UploadRevocationPluginConfigCertV2.builder()
+              .file(...)
+              .build(
+                  namespace,
+              );
+
+          final ServicePluginConfig wrapper = new ServicePluginConfig(sdk);
+          final RevocationPluginConfigInfo response = wrapper.uploadRevocationPluginConfigCertV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cert'
+      - 'config'
+      - 'plugin'
+      - 'revocation'
+      - 'service'
+      - 'upload'
+      - 'v2'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION[UPDATE]'
 

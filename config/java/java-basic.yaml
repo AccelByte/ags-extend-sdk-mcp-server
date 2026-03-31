@@ -280,6 +280,11 @@ symbols:
         required: true
         description: |-
           namespace, only accept alphabet and numeric. Will be converted to lowercase
+      'isTesting':
+        type: 'Boolean'
+        required: false
+        description: |-
+          flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.basic.models.*;'
@@ -309,6 +314,11 @@ symbols:
       'createdAt':
         type: 'String'
         required: false
+      'isTesting':
+        type: 'Boolean'
+        required: false
+        description: |-
+          isTesting flag to indicate whether the namespace is for testing purposes. In multi-tenant mode, only applicable for studio namespaces
       'parentNamespace':
         type: 'String'
         required: false
@@ -380,6 +390,24 @@ symbols:
       - 'import net.accelbyte.sdk.api.basic.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/basic/models/NamespaceStatusUpdate.java'
+
+  'NamespaceTestingFlagUpdate@jv.basic.mod':
+    id: 'NamespaceTestingFlagUpdate@jv.basic.mod'
+    name: 'NamespaceTestingFlagUpdate'
+    type: 'model'
+    description: |-
+      A DTO object for updating namespace testing flag API call.
+    fields:
+      'isTesting':
+        type: 'Boolean'
+        required: true
+        description: |-
+          testing flag to indicate whether the namespace is for testing purposes
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.basic.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/basic/models/NamespaceTestingFlagUpdate.java'
 
   'NamespaceUpdate@jv.basic.mod':
     id: 'NamespaceUpdate@jv.basic.mod'
@@ -2296,6 +2324,11 @@ symbols:
         required: false
         description: |-
           only retrieves active namespaces
+      'isTesting':
+        type: 'Boolean'
+        required: false
+        description: |-
+          filter namespaces by testing flag (true, false, or empty for all)
     return_type: 'List<NamespaceInfo>'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
@@ -2309,6 +2342,7 @@ symbols:
       try {
           final GetNamespaces operation = GetNamespaces.builder()
               .activeOnly(...)
+              .isTesting(...)
               .build();
 
           final Namespace wrapper = new Namespace(sdk);
@@ -3930,6 +3964,55 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]'
+
+  'UpdateTestingFlag@jv.basic.fun':
+    id: 'UpdateTestingFlag@jv.basic.fun'
+    name: 'UpdateTestingFlag'
+    type: 'function'
+    description: |-
+      Update namespace testing flag.
+      In multi-tenant mode, this is only applicable for studio namespaces, not game namespaces.
+      Other detail info:
+
+        * Returns : updated namespace
+    arguments:
+      'body':
+        type: 'NamespaceTestingFlagUpdate'
+        required: false
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace, only accept alphabet and numeric
+    return_type: 'NamespaceInfo'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.basic.models.*;'
+      - 'import net.accelbyte.sdk.api.basic.operations.namespace.*;'
+      - 'import net.accelbyte.sdk.api.basic.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/basic/wrappers/Namespace.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/basic/operations/namespace/UpdateTestingFlag.java'
+    example: |-
+      try {
+          final UpdateTestingFlag operation = UpdateTestingFlag.builder()
+              .body(...)
+              .build(
+                  namespace,
+              );
+
+          final Namespace wrapper = new Namespace(sdk);
+          final NamespaceInfo response = wrapper.updateTestingFlag(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'flag'
+      - 'namespace'
+      - 'testing'
+      - 'update'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:NAMESPACE:TESTINGFLAG [UPDATE]'
 
   'UpdateUserProfile@jv.basic.fun':
     id: 'UpdateUserProfile@jv.basic.fun'
