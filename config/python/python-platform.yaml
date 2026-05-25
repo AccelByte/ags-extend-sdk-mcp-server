@@ -1370,18 +1370,6 @@ symbols:
     example: |-
       billing_history_paging_sliced_result = platform_models.BillingHistoryPagingSlicedResult.create(...)
 
-  'BinarySchema@py.platform.mod':
-    id: 'BinarySchema@py.platform.mod'
-    name: 'BinarySchema'
-    type: 'model'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/binary_schema.py'
-    example: |-
-      binary_schema = platform_models.BinarySchema.create(...)
-
   'BoxItem@py.platform.mod':
     id: 'BoxItem@py.platform.mod'
     name: 'BoxItem'
@@ -2648,6 +2636,22 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/change_status_item_request.py'
     example: |-
       change_status_item_request = platform_models.ChangeStatusItemRequest.create(...)
+
+  'CheckBalanceResponse@py.platform.mod':
+    id: 'CheckBalanceResponse@py.platform.mod'
+    name: 'CheckBalanceResponse'
+    type: 'model'
+    fields:
+      'enough_balance':
+        type: 'bool'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/models/check_balance_response.py'
+    example: |-
+      check_balance_response = platform_models.CheckBalanceResponse.create(...)
 
   'CheckoutConfig@py.platform.mod':
     id: 'CheckoutConfig@py.platform.mod'
@@ -20732,6 +20736,46 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
 
+  'admin_sync_twitch_drops_entitlement@py.platform.fun':
+    id: 'admin_sync_twitch_drops_entitlement@py.platform.fun'
+    name: 'admin_sync_twitch_drops_entitlement'
+    type: 'function'
+    description: |-
+      Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+      *  Returns :
+    arguments:
+      'body':
+        type: 'TwitchSyncRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'user_id':
+        type: 'str'
+        required: true
+    return_type: 'Tuple[None, Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.platform as platform'
+      - 'import accelbyte_py_sdk.api.platform.models as platform_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/platform/operations/iap/admin_sync_twitch_drops_61485a.py'
+    example: |-
+      result, error = platform.admin_sync_twitch_drops_entitlement(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'drops'
+      - 'entitlement'
+      - 'iap'
+      - 'sync'
+      - 'twitch'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
+
   'anonymize_campaign@py.platform.fun':
     id: 'anonymize_campaign@py.platform.fun'
     name: 'anonymize_campaign'
@@ -21462,7 +21506,7 @@ symbols:
         required: true
         description: |-
           userId
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]'
+    return_type: 'Tuple[Union[None, CheckBalanceResponse], Union[None, ErrorEntity, HttpResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'from accelbyte_py_sdk.core import HttpResponse'
@@ -32292,7 +32336,7 @@ symbols:
       'namespace':
         type: 'str'
         required: true
-    return_type: 'Tuple[Union[None, BinarySchema], Union[None, HttpResponse]]'
+    return_type: 'Tuple[Union[None, Any], Union[None, HttpResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'from accelbyte_py_sdk.core import HttpResponse'

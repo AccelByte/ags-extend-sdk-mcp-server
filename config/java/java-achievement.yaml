@@ -199,6 +199,23 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/achievement/models/ModelsAdditionalInfo.java'
 
+  'ModelsBatchQueryUserAchievementRequest@jv.achievement.mod':
+    id: 'ModelsBatchQueryUserAchievementRequest@jv.achievement.mod'
+    name: 'ModelsBatchQueryUserAchievementRequest'
+    type: 'model'
+    fields:
+      'codes':
+        type: 'List<String>'
+        required: true
+      'status':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.achievement.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/achievement/models/ModelsBatchQueryUserAchievementRequest.java'
+
   'ModelsBulkCreatePSNEventResponse@jv.achievement.mod':
     id: 'ModelsBulkCreatePSNEventResponse@jv.achievement.mod'
     name: 'ModelsBulkCreatePSNEventResponse'
@@ -833,6 +850,76 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]'
+
+  'AdminBatchQueryUserAchievements@jv.achievement.fun':
+    id: 'AdminBatchQueryUserAchievements@jv.achievement.fun'
+    name: 'AdminBatchQueryUserAchievements'
+    type: 'function'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    arguments:
+      'body':
+        type: 'ModelsBatchQueryUserAchievementRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          user id
+    return_type: 'List<ModelsUserAchievementResponse>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.achievement.models.*;'
+      - 'import net.accelbyte.sdk.api.achievement.operations.user_achievements.*;'
+      - 'import net.accelbyte.sdk.api.achievement.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/achievement/wrappers/UserAchievements.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/achievement/operations/user_achievements/AdminBatchQueryUserAchievements.java'
+    example: |-
+      try {
+          final AdminBatchQueryUserAchievements operation = AdminBatchQueryUserAchievements.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final UserAchievements wrapper = new UserAchievements(sdk);
+          final List<ModelsUserAchievementResponse> response = wrapper.adminBatchQueryUserAchievements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'batch'
+      - 'query'
+      - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]'
+    scopes:
+      - 'social'
 
   'AdminBulkUnlockAchievement@jv.achievement.fun':
     id: 'AdminBulkUnlockAchievement@jv.achievement.fun'

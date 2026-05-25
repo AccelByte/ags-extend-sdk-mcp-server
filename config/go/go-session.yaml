@@ -1631,6 +1631,9 @@ symbols:
     name: 'JoinGameSessionParams'
     type: 'model'
     fields:
+      'Body':
+        type: '*ApimodelsJoinSessionRequest'
+        required: true
       'Namespace':
         type: 'string'
         required: true
@@ -1828,6 +1831,26 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/player/public_get_bulk_player_current_platform_parameters.go'
 
+  'PublicGetGameSessionPasswordParams@go.session.mod':
+    id: 'PublicGetGameSessionPasswordParams@go.session.mod'
+    name: 'PublicGetGameSessionPasswordParams'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          session ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/game_session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/game_session/public_get_game_session_password_parameters.go'
+
   'PublicGetPartyParams@go.session.mod':
     id: 'PublicGetPartyParams@go.session.mod'
     name: 'PublicGetPartyParams'
@@ -1847,6 +1870,26 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/party/public_get_party_parameters.go'
+
+  'PublicGetPartyPasswordParams@go.session.mod':
+    id: 'PublicGetPartyPasswordParams@go.session.mod'
+    name: 'PublicGetPartyPasswordParams'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PartyID':
+        type: 'string'
+        required: true
+        description: |-
+          Party ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/party/public_get_party_password_parameters.go'
 
   'PublicGetPlayerAttributesParams@go.session.mod':
     id: 'PublicGetPlayerAttributesParams@go.session.mod'
@@ -1981,6 +2024,9 @@ symbols:
     name: 'PublicPartyJoinParams'
     type: 'model'
     fields:
+      'Body':
+        type: '*ApimodelsJoinSessionRequest'
+        required: true
       'Namespace':
         type: 'string'
         required: true
@@ -2246,6 +2292,57 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_read_party_session_storage_parameters.go'
 
+  'PublicReplaceSessionStorageLeaderV2Params@go.session.mod':
+    id: 'PublicReplaceSessionStorageLeaderV2Params@go.session.mod'
+    name: 'PublicReplaceSessionStorageLeaderV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          sessionID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_replace_session_storage_leader_v2_parameters.go'
+
+  'PublicReplaceSessionStorageUserV2Params@go.session.mod':
+    id: 'PublicReplaceSessionStorageUserV2Params@go.session.mod'
+    name: 'PublicReplaceSessionStorageUserV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          sessionID
+      'UserID':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_replace_session_storage_user_v2_parameters.go'
+
   'PublicRevokeGameSessionCodeParams@go.session.mod':
     id: 'PublicRevokeGameSessionCodeParams@go.session.mod'
     name: 'PublicRevokeGameSessionCodeParams'
@@ -2321,6 +2418,29 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/player'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/player/public_store_player_attributes_parameters.go'
+
+  'PublicUpdateGameSessionPasswordParams@go.session.mod':
+    id: 'PublicUpdateGameSessionPasswordParams@go.session.mod'
+    name: 'PublicUpdateGameSessionPasswordParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdatePasswordRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          session ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/game_session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/game_session/public_update_game_session_password_parameters.go'
 
   'PublicUpdateInsertPartySessionStorageParams@go.session.mod':
     id: 'PublicUpdateInsertPartySessionStorageParams@go.session.mod'
@@ -2429,6 +2549,57 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_update_insert_session_storage_leader_parameters.go'
 
+  'PublicUpdateInsertSessionStorageLeaderV2Params@go.session.mod':
+    id: 'PublicUpdateInsertSessionStorageLeaderV2Params@go.session.mod'
+    name: 'PublicUpdateInsertSessionStorageLeaderV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          sessionID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_update_insert_session_storage_leader_v2_parameters.go'
+
+  'PublicUpdateInsertSessionStorageUserV2Params@go.session.mod':
+    id: 'PublicUpdateInsertSessionStorageUserV2Params@go.session.mod'
+    name: 'PublicUpdateInsertSessionStorageUserV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: 'interface{}'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'SessionID':
+        type: 'string'
+        required: true
+        description: |-
+          sessionID
+      'UserID':
+        type: 'string'
+        required: true
+        description: |-
+          userID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/session_storage/public_update_insert_session_storage_user_v2_parameters.go'
+
   'PublicUpdatePartyParams@go.session.mod':
     id: 'PublicUpdatePartyParams@go.session.mod'
     name: 'PublicUpdatePartyParams'
@@ -2451,6 +2622,29 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/party/public_update_party_parameters.go'
+
+  'PublicUpdatePartyPasswordParams@go.session.mod':
+    id: 'PublicUpdatePartyPasswordParams@go.session.mod'
+    name: 'PublicUpdatePartyPasswordParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*ApimodelsUpdatePasswordRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Namespace
+      'PartyID':
+        type: 'string'
+        required: true
+        description: |-
+          Party ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclient/party/public_update_party_password_parameters.go'
 
   'UpdateGameSessionParams@go.session.mod':
     id: 'UpdateGameSessionParams@go.session.mod'
@@ -2885,6 +3079,9 @@ symbols:
       'MinPlayers':
         type: 'int32'
         required: true
+      'Password':
+        type: 'string'
+        required: false
       'PreferredClaimKeys':
         type: '[]string'
         required: false
@@ -2951,6 +3148,9 @@ symbols:
       'MinPlayers':
         type: 'int32'
         required: true
+      'Password':
+        type: 'string'
+        required: false
       'TextChat':
         type: 'bool'
         required: true
@@ -3166,6 +3366,19 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_game_session_response.go'
 
+  'ApimodelsGetPasswordResponse@go.session.mod':
+    id: 'ApimodelsGetPasswordResponse@go.session.mod'
+    name: 'ApimodelsGetPasswordResponse'
+    type: 'model'
+    fields:
+      'Password':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_get_password_response.go'
+
   'ApimodelsGlobalConfigurationResponse@go.session.mod':
     id: 'ApimodelsGlobalConfigurationResponse@go.session.mod'
     name: 'ApimodelsGlobalConfigurationResponse'
@@ -3209,6 +3422,19 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_join_by_code_request.go'
+
+  'ApimodelsJoinSessionRequest@go.session.mod':
+    id: 'ApimodelsJoinSessionRequest@go.session.mod'
+    name: 'ApimodelsJoinSessionRequest'
+    type: 'model'
+    fields:
+      'Password':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_join_session_request.go'
 
   'ApimodelsKickResponse@go.session.mod':
     id: 'ApimodelsKickResponse@go.session.mod'
@@ -3989,6 +4215,9 @@ symbols:
       'MinPlayers':
         type: 'int32'
         required: true
+      'Password':
+        type: 'string'
+        required: false
       'PreferredClaimKeys':
         type: '[]string'
         required: false
@@ -4038,6 +4267,9 @@ symbols:
       'MinPlayers':
         type: 'int32'
         required: true
+      'Password':
+        type: 'string'
+        required: false
       'Type':
         type: 'string'
         required: true
@@ -4048,6 +4280,19 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_update_party_request.go'
+
+  'ApimodelsUpdatePasswordRequest@go.session.mod':
+    id: 'ApimodelsUpdatePasswordRequest@go.session.mod'
+    name: 'ApimodelsUpdatePasswordRequest'
+    type: 'model'
+    fields:
+      'NewPassword':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/session-sdk/pkg/sessionclientmodels/apimodels_update_password_request.go'
 
   'ApimodelsUserResponse@go.session.mod':
     id: 'ApimodelsUserResponse@go.session.mod'
@@ -4359,6 +4604,11 @@ symbols:
     name: 'ModelsNativeSessionSetting'
     type: 'model'
     fields:
+      'ActivePlatforms':
+        type: '[]string'
+        required: false
+        description: |-
+          Platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. Empty means all platforms are active.
       'LocalizedSessionName':
         type: 'interface{}'
         required: false
@@ -4696,6 +4946,7 @@ symbols:
       - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
       - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
       - PSNDisableSystemUIMenu: items whose operation from the PSN system software UI is to be disabled.
+      - activePlatforms: list of platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. If empty, all platforms are active.
       - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
       - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
       - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
@@ -6139,6 +6390,7 @@ symbols:
       - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
       - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
       - PSNDisableSystemUIMenu: items whose operation from the PSN system software UI is to be disabled.
+      - activePlatforms: list of platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. If empty, all platforms are active.
       - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
       - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
       - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
@@ -6207,6 +6459,8 @@ symbols:
     type: 'function'
     description: |-
       This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
+      For persistent sessions with DS_AMS or DS_CUSTOM, this endpoint can be used to update DS information when the dedicated server becomes available or when DS status changes occur.
+      Supported status only enums:"AVAILABLE, FAILED_TO_REQUEST, DS_ERROR, ENDED" example:"AVAILABLE"
     struct: 'GameSessionService'
     arguments:
       params:
@@ -6943,6 +7197,9 @@ symbols:
       - configurationName
       - attributes
 
+      maxPlayers override rules:
+      - maxPlayers can be set to a value lower than or equal to the template's maxPlayers. Values above the template ceiling are ignored and the template value is used instead.
+
       Supported platforms:
       1. STEAM
       2. PSN
@@ -7211,6 +7468,40 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [READ]'
 
+  'PublicGetGameSessionPasswordShort@go.session.fun':
+    id: 'PublicGetGameSessionPasswordShort@go.session.fun'
+    name: 'PublicGetGameSessionPasswordShort'
+    type: 'function'
+    description: |-
+      Get the plaintext password of a PASSWORD_PROTECTED game session. Only active members of the session may call this endpoint.
+    struct: 'GameSessionService'
+    arguments:
+      params:
+        type: '*game_session.PublicGetGameSessionPasswordParams'
+        required: true
+    return_type: '(*game_session.PublicGetGameSessionPasswordResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/game_session'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/gameSession.go'
+    example: |-
+      gameSessionService := session.GameSessionService{ ... }
+      params := game_session.PublicGetGameSessionPasswordParams{ ... }
+      res, err := gameSessionService.PublicGetGameSessionPasswordShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'game'
+      - 'get'
+      - 'password'
+      - 'public'
+      - 'session'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:GAME [READ]'
+
   'PublicGetPartyShort@go.session.fun':
     id: 'PublicGetPartyShort@go.session.fun'
     name: 'PublicGetPartyShort'
@@ -7239,6 +7530,39 @@ symbols:
     tags:
       - 'get'
       - 'party'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:PARTY [READ]'
+
+  'PublicGetPartyPasswordShort@go.session.fun':
+    id: 'PublicGetPartyPasswordShort@go.session.fun'
+    name: 'PublicGetPartyPasswordShort'
+    type: 'function'
+    description: |-
+      Get the plaintext password of a PASSWORD_PROTECTED party. Only active members of the party may call this endpoint.
+    struct: 'PartyService'
+    arguments:
+      params:
+        type: '*party.PublicGetPartyPasswordParams'
+        required: true
+    return_type: '(*party.PublicGetPartyPasswordResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/party.go'
+    example: |-
+      partyService := session.PartyService{ ... }
+      params := party.PublicGetPartyPasswordParams{ ... }
+      res, err := partyService.PublicGetPartyPasswordShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'get'
+      - 'party'
+      - 'password'
       - 'public'
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PARTY [READ]'
@@ -7918,6 +8242,101 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:STORAGE [READ]'
 
+  'PublicReplaceSessionStorageLeaderV2Short@go.session.fun':
+    id: 'PublicReplaceSessionStorageLeaderV2Short@go.session.fun'
+    name: 'PublicReplaceSessionStorageLeaderV2Short'
+    type: 'function'
+    description: |-
+      Replace entire Session Storage Leader with the request body. No merging is performed.
+
+      Leader (regular token): Only the session leader can replace leader storage. Complete replacement.
+      Game Admin (client token): Can replace leader storage. Complete replacement.
+
+      PUT semantics: The request body completely replaces the existing storage, no partial updates.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example request:
+      {
+      "gameState": {"round": "2"},
+      "difficulty": "hard"
+      }
+
+      Session Storage feature only available for Gamesession.
+    struct: 'SessionStorageService'
+    arguments:
+      params:
+        type: '*session_storage.PublicReplaceSessionStorageLeaderV2Params'
+        required: true
+    return_type: '(*session_storage.PublicReplaceSessionStorageLeaderV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/sessionStorage.go'
+    example: |-
+      sessionStorageService := session.SessionStorageService{ ... }
+      params := session_storage.PublicReplaceSessionStorageLeaderV2Params{ ... }
+      res, err := sessionStorageService.PublicReplaceSessionStorageLeaderV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'leader'
+      - 'public'
+      - 'replace'
+      - 'session'
+      - 'storage'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicReplaceSessionStorageUserV2Short@go.session.fun':
+    id: 'PublicReplaceSessionStorageUserV2Short@go.session.fun'
+    name: 'PublicReplaceSessionStorageUserV2Short'
+    type: 'function'
+    description: |-
+      Replace entire Session Storage User with the request body. No merging is performed.
+
+      User (regular token): Can only replace own user session storage. Complete replacement.
+      Game Admin (client token): Can replace any user's session storage. Complete replacement.
+
+      PUT semantics: The request body completely replaces the existing storage, no partial updates.
+      Example request:
+      {
+      "weapon": "sword",
+      "armor": "leather"
+      }
+
+      Session Storage feature only available for Gamesession.
+    struct: 'SessionStorageService'
+    arguments:
+      params:
+        type: '*session_storage.PublicReplaceSessionStorageUserV2Params'
+        required: true
+    return_type: '(*session_storage.PublicReplaceSessionStorageUserV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/sessionStorage.go'
+    example: |-
+      sessionStorageService := session.SessionStorageService{ ... }
+      params := session_storage.PublicReplaceSessionStorageUserV2Params{ ... }
+      res, err := sessionStorageService.PublicReplaceSessionStorageUserV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'public'
+      - 'replace'
+      - 'session'
+      - 'storage'
+      - 'user'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
   'PublicRevokeGameSessionCodeShort@go.session.fun':
     id: 'PublicRevokeGameSessionCodeShort@go.session.fun'
     name: 'PublicRevokeGameSessionCodeShort'
@@ -8063,6 +8482,40 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'PublicUpdateGameSessionPasswordShort@go.session.fun':
+    id: 'PublicUpdateGameSessionPasswordShort@go.session.fun'
+    name: 'PublicUpdateGameSessionPasswordShort'
+    type: 'function'
+    description: |-
+      Update the password of a PASSWORD_PROTECTED game session. Only the session leader may call this endpoint.
+    struct: 'GameSessionService'
+    arguments:
+      params:
+        type: '*game_session.PublicUpdateGameSessionPasswordParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/game_session'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/gameSession.go'
+    example: |-
+      gameSessionService := session.GameSessionService{ ... }
+      params := game_session.PublicUpdateGameSessionPasswordParams{ ... }
+      res, err := gameSessionService.PublicUpdateGameSessionPasswordShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'game'
+      - 'password'
+      - 'public'
+      - 'session'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:GAME [UPDATE]'
+
   'PublicUpdateInsertPartySessionStorageShort@go.session.fun':
     id: 'PublicUpdateInsertPartySessionStorageShort@go.session.fun'
     name: 'PublicUpdateInsertPartySessionStorageShort'
@@ -8178,17 +8631,23 @@ symbols:
     name: 'PublicUpdateInsertSessionStorageShort'
     type: 'function'
     description: |-
-      Update Insert Session Storage User. user can only update or insert user session storage data itself.
-      can store generic json
-      example json can store :
+      Update Insert Session Storage User. Performs selective merge with existing storage data.
+
+      User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Example patch:
       {
-      "storage": {
-      "storage": 1
-      },
-      "data": 123
+      "weapon": "sword",
+      "level": null
       }
-      game Admin can update or insert session storage
-      Session Storage feature only available for Gamesession
+
+      Session Storage feature only available for Gamesession.
+
+      Alternative v2 endpoints available with explicit semantics:
+      - PATCH /v2/.../storage/users/{userId} - Selective merge with partial updates
+      - PUT /v2/.../storage/users/{userId} - Complete replacement of entire storage
     struct: 'SessionStorageService'
     arguments:
       params:
@@ -8222,17 +8681,24 @@ symbols:
     name: 'PublicUpdateInsertSessionStorageLeaderShort'
     type: 'function'
     description: |-
-      Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.
-      can store generic json
-      example json can store :
+      Update Insert Session Storage Leader. Performs selective merge with existing leader storage data.
+
+      Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example patch:
       {
-      "leader": {
-      "leader": 1
-      },
-      "data": 123
+      "gameState": {"round": "2"},
+      "difficulty": null
       }
-      game Admin can update or insert session storage
-      Session Storage feature only available for Gamesession
+
+      Session Storage feature only available for Gamesession.
+
+      Alternative v2 endpoints available with explicit semantics:
+      - PATCH /v2/.../storage/leader - Selective merge with partial updates
+      - PUT /v2/.../storage/leader - Complete replacement of entire storage
     struct: 'SessionStorageService'
     arguments:
       params:
@@ -8259,6 +8725,103 @@ symbols:
       - 'session'
       - 'storage'
       - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicUpdateInsertSessionStorageLeaderV2Short@go.session.fun':
+    id: 'PublicUpdateInsertSessionStorageLeaderV2Short@go.session.fun'
+    name: 'PublicUpdateInsertSessionStorageLeaderV2Short'
+    type: 'function'
+    description: |-
+      Update partial Session Storage Leader. Performs selective merge with existing leader storage data.
+
+      Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example patch:
+      {
+      "gameState": {"round": "2"},
+      "difficulty": null
+      }
+
+      Session Storage feature only available for Gamesession.
+    struct: 'SessionStorageService'
+    arguments:
+      params:
+        type: '*session_storage.PublicUpdateInsertSessionStorageLeaderV2Params'
+        required: true
+    return_type: '(*session_storage.PublicUpdateInsertSessionStorageLeaderV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/sessionStorage.go'
+    example: |-
+      sessionStorageService := session.SessionStorageService{ ... }
+      params := session_storage.PublicUpdateInsertSessionStorageLeaderV2Params{ ... }
+      res, err := sessionStorageService.PublicUpdateInsertSessionStorageLeaderV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'insert'
+      - 'leader'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicUpdateInsertSessionStorageUserV2Short@go.session.fun':
+    id: 'PublicUpdateInsertSessionStorageUserV2Short@go.session.fun'
+    name: 'PublicUpdateInsertSessionStorageUserV2Short'
+    type: 'function'
+    description: |-
+      Update partial Session Storage User. Performs selective merge with existing storage data.
+
+      User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Example patch:
+      {
+      "weapon": "sword",
+      "level": null
+      }
+
+      Session Storage feature only available for Gamesession.
+    struct: 'SessionStorageService'
+    arguments:
+      params:
+        type: '*session_storage.PublicUpdateInsertSessionStorageUserV2Params'
+        required: true
+    return_type: '(*session_storage.PublicUpdateInsertSessionStorageUserV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/session_storage'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/sessionStorage.go'
+    example: |-
+      sessionStorageService := session.SessionStorageService{ ... }
+      params := session_storage.PublicUpdateInsertSessionStorageUserV2Params{ ... }
+      res, err := sessionStorageService.PublicUpdateInsertSessionStorageUserV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'insert'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+      - 'user'
+      - 'v2'
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
 
@@ -8300,6 +8863,39 @@ symbols:
       }
     tags:
       - 'party'
+      - 'public'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:PARTY [UPDATE]'
+
+  'PublicUpdatePartyPasswordShort@go.session.fun':
+    id: 'PublicUpdatePartyPasswordShort@go.session.fun'
+    name: 'PublicUpdatePartyPasswordShort'
+    type: 'function'
+    description: |-
+      Update the password of a PASSWORD_PROTECTED party. Only the party leader may call this endpoint.
+    struct: 'PartyService'
+    arguments:
+      params:
+        type: '*party.PublicUpdatePartyPasswordParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/session-sdk/pkg/sessionclient/party'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/session'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/session/party.go'
+    example: |-
+      partyService := session.PartyService{ ... }
+      params := party.PublicUpdatePartyPasswordParams{ ... }
+      res, err := partyService.PublicUpdatePartyPasswordShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'party'
+      - 'password'
       - 'public'
       - 'update'
     permissions:

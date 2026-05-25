@@ -1308,16 +1308,6 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/BillingHistoryPagingSlicedResult.java'
 
-  'BinarySchema@jv.platform.mod':
-    id: 'BinarySchema@jv.platform.mod'
-    name: 'BinarySchema'
-    type: 'model'
-    imports:
-      - 'import java.util.*;'
-      - 'import net.accelbyte.sdk.api.platform.models.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/BinarySchema.java'
-
   'BoxItem@jv.platform.mod':
     id: 'BoxItem@jv.platform.mod'
     name: 'BoxItem'
@@ -2524,6 +2514,20 @@ symbols:
       - 'import net.accelbyte.sdk.api.platform.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/ChangeStatusItemRequest.java'
+
+  'CheckBalanceResponse@jv.platform.mod':
+    id: 'CheckBalanceResponse@jv.platform.mod'
+    name: 'CheckBalanceResponse'
+    type: 'model'
+    fields:
+      'enoughBalance':
+        type: 'Boolean'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/models/CheckBalanceResponse.java'
 
   'CheckoutConfig@jv.platform.mod':
     id: 'CheckoutConfig@jv.platform.mod'
@@ -19864,6 +19868,57 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
 
+  'AdminSyncTwitchDropsEntitlement@jv.platform.fun':
+    id: 'AdminSyncTwitchDropsEntitlement@jv.platform.fun'
+    name: 'AdminSyncTwitchDropsEntitlement'
+    type: 'function'
+    description: |-
+      Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+      *  Returns :
+    arguments:
+      'body':
+        type: 'TwitchSyncRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'userId':
+        type: 'String'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.platform.models.*;'
+      - 'import net.accelbyte.sdk.api.platform.operations.iap.*;'
+      - 'import net.accelbyte.sdk.api.platform.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/wrappers/IAP.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/platform/operations/iap/AdminSyncTwitchDropsEntitlement.java'
+    example: |-
+      try {
+          final AdminSyncTwitchDropsEntitlement operation = AdminSyncTwitchDropsEntitlement.builder()
+              .build(
+                  body,
+                  namespace,
+                  userId,
+              );
+
+          final IAP wrapper = new IAP(sdk);
+          wrapper.adminSyncTwitchDropsEntitlement(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'drops'
+      - 'entitlement'
+      - 'iap'
+      - 'sync'
+      - 'twitch'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
+
   'AnonymizeCampaign@jv.platform.fun':
     id: 'AnonymizeCampaign@jv.platform.fun'
     name: 'AnonymizeCampaign'
@@ -20799,7 +20854,7 @@ symbols:
         required: true
         description: |-
           userId
-    return_type: 'void'
+    return_type: 'CheckBalanceResponse'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.platform.models.*;'
@@ -20819,7 +20874,7 @@ symbols:
               );
 
           final Wallet wrapper = new Wallet(sdk);
-          wrapper.checkBalance(operation);
+          final CheckBalanceResponse response = wrapper.checkBalance(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -34479,7 +34534,7 @@ symbols:
       'namespace':
         type: 'String'
         required: true
-    return_type: 'BinarySchema'
+    return_type: 'InputStream'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.platform.models.*;'
@@ -34497,7 +34552,7 @@ symbols:
               );
 
           final PaymentStation wrapper = new PaymentStation(sdk);
-          final BinarySchema response = wrapper.publicGetQRCode(operation);
+          final InputStream response = wrapper.publicGetQRCode(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }

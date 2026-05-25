@@ -1167,6 +1167,25 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/admin_sync_steam_iap_by_transaction_parameters.go'
 
+  'AdminSyncTwitchDropsEntitlementParams@go.platform.mod':
+    id: 'AdminSyncTwitchDropsEntitlementParams@go.platform.mod'
+    name: 'AdminSyncTwitchDropsEntitlementParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*TwitchSyncRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclient/iap/admin_sync_twitch_drops_entitlement_parameters.go'
+
   'AnonymizeCampaignParams@go.platform.mod':
     id: 'AnonymizeCampaignParams@go.platform.mod'
     name: 'AnonymizeCampaignParams'
@@ -13161,15 +13180,6 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/billing_history_paging_sliced_result.go'
 
-  'BinarySchema@go.platform.mod':
-    id: 'BinarySchema@go.platform.mod'
-    name: 'BinarySchema'
-    type: 'model'
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/binary_schema.go'
-
   'BoxItem@go.platform.mod':
     id: 'BoxItem@go.platform.mod'
     name: 'BoxItem'
@@ -14346,6 +14356,19 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/change_status_item_request.go'
+
+  'CheckBalanceResponse@go.platform.mod':
+    id: 'CheckBalanceResponse@go.platform.mod'
+    name: 'CheckBalanceResponse'
+    type: 'model'
+    fields:
+      'EnoughBalance':
+        type: 'bool'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/platform-sdk/pkg/platformclientmodels/check_balance_response.go'
 
   'CheckoutConfig@go.platform.mod':
     id: 'CheckoutConfig@go.platform.mod'
@@ -31122,6 +31145,43 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
 
+  'AdminSyncTwitchDropsEntitlementShort@go.platform.fun':
+    id: 'AdminSyncTwitchDropsEntitlementShort@go.platform.fun'
+    name: 'AdminSyncTwitchDropsEntitlementShort'
+    type: 'function'
+    description: |-
+      Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+      *  Returns :
+    struct: 'IAPService'
+    arguments:
+      params:
+        type: '*iap.AdminSyncTwitchDropsEntitlementParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/iap'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/platform'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/platform/iap.go'
+    example: |-
+      iapService := platform.IAPService{ ... }
+      params := iap.AdminSyncTwitchDropsEntitlementParams{ ... }
+      res, err := iapService.AdminSyncTwitchDropsEntitlementShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'admin'
+      - 'drops'
+      - 'entitlement'
+      - 'iap'
+      - 'sync'
+      - 'twitch'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
+
   'AnonymizeCampaignShort@go.platform.fun':
     id: 'AnonymizeCampaignShort@go.platform.fun'
     name: 'AnonymizeCampaignShort'
@@ -31785,7 +31845,7 @@ symbols:
       params:
         type: '*wallet.CheckBalanceParams'
         required: true
-    return_type: 'error'
+    return_type: '(*wallet.CheckBalanceResponse, error)'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclientmodels'
       - 'github.com/AccelByte/accelbyte-go-sdk/platform-sdk/pkg/platformclient/wallet'

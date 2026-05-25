@@ -209,6 +209,25 @@ symbols:
     example: |-
       models_additional_info = achievement_models.ModelsAdditionalInfo.create(...)
 
+  'ModelsBatchQueryUserAchievementRequest@py.achievement.mod':
+    id: 'ModelsBatchQueryUserAchievementRequest@py.achievement.mod'
+    name: 'ModelsBatchQueryUserAchievementRequest'
+    type: 'model'
+    fields:
+      'codes':
+        type: 'List[str]'
+        required: true
+      'status':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.achievement.models as achievement_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/achievement/models/models_batch_query_user_achievement_request.py'
+    example: |-
+      models_batch_query_user_achievement_request = achievement_models.ModelsBatchQueryUserAchievementRequest.create(...)
+
   'ModelsBulkCreatePSNEventResponse@py.achievement.mod':
     id: 'ModelsBulkCreatePSNEventResponse@py.achievement.mod'
     name: 'ModelsBulkCreatePSNEventResponse'
@@ -885,6 +904,65 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]'
+
+  'admin_batch_query_user_achievements@py.achievement.fun':
+    id: 'admin_batch_query_user_achievements@py.achievement.fun'
+    name: 'admin_batch_query_user_achievements'
+    type: 'function'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    arguments:
+      'body':
+        type: 'ModelsBatchQueryUserAchievementRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+      'user_id':
+        type: 'str'
+        required: true
+        description: |-
+          user id
+    return_type: 'Tuple[Union[None, List[ModelsUserAchievementResponse]], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.achievement as achievement'
+      - 'import accelbyte_py_sdk.api.achievement.models as achievement_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/achievement/operations/user_achievements/admin_batch_query_user__2f3d81.py'
+    example: |-
+      result, error = achievement.admin_batch_query_user_achievements(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'batch'
+      - 'query'
+      - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]'
+    scopes:
+      - 'social'
 
   'admin_bulk_unlock_achievement@py.achievement.fun':
     id: 'admin_bulk_unlock_achievement@py.achievement.fun'

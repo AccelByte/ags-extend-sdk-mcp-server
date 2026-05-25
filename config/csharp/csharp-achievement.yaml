@@ -204,6 +204,24 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Achievement/Model/ModelsAdditionalInfo.cs'
 
+  'ModelsBatchQueryUserAchievementRequest@cs.achievement.mod':
+    id: 'ModelsBatchQueryUserAchievementRequest@cs.achievement.mod'
+    name: 'ModelsBatchQueryUserAchievementRequest'
+    type: 'model'
+    fields:
+      'Codes':
+        type: 'List<string>'
+        required: true
+      'Status':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Achievement.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Achievement/Model/ModelsBatchQueryUserAchievementRequest.cs'
+
   'ModelsBulkCreatePSNEventResponse@cs.achievement.mod':
     id: 'ModelsBulkCreatePSNEventResponse@cs.achievement.mod'
     name: 'ModelsBulkCreatePSNEventResponse'
@@ -861,6 +879,72 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]'
+
+  'AdminBatchQueryUserAchievements@cs.achievement.fun':
+    id: 'AdminBatchQueryUserAchievements@cs.achievement.fun'
+    name: 'AdminBatchQueryUserAchievements'
+    type: 'function'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    arguments:
+      'Body':
+        type: 'ModelsBatchQueryUserAchievementRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserId':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+    return_type: 'List<ModelsUserAchievementResponse>'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Achievement.Model;'
+      - 'using AccelByte.Sdk.Api.Achievement.Operation;'
+      - 'using AccelByte.Sdk.Api.Achievement.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Achievement/Wrapper/UserAchievements.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Achievement/Operation/UserAchievements/AdminBatchQueryUserAchievements.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Achievement.UserAchievements.AdminBatchQueryUserAchievementsOp
+              .Build();
+
+          var response = sdk.Achievement.UserAchievements.AdminBatchQueryUserAchievements(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'batch'
+      - 'query'
+      - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]'
+    scopes:
+      - 'social'
 
   'AdminBulkUnlockAchievement@cs.achievement.fun':
     id: 'AdminBulkUnlockAchievement@cs.achievement.fun'

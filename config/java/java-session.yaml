@@ -408,6 +408,9 @@ symbols:
       'fallbackClaimKeys':
         type: 'List<String>'
         required: false
+      'password':
+        type: 'String'
+        required: false
       'preferredClaimKeys':
         type: 'List<String>'
         required: false
@@ -463,6 +466,9 @@ symbols:
       'type':
         type: 'String'
         required: true
+      'password':
+        type: 'String'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.session.models.*;'
@@ -682,6 +688,20 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGameSessionResponse.java'
 
+  'ApimodelsGetPasswordResponse@jv.session.mod':
+    id: 'ApimodelsGetPasswordResponse@jv.session.mod'
+    name: 'ApimodelsGetPasswordResponse'
+    type: 'model'
+    fields:
+      'password':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGetPasswordResponse.java'
+
   'ApimodelsGlobalConfigurationResponse@jv.session.mod':
     id: 'ApimodelsGlobalConfigurationResponse@jv.session.mod'
     name: 'ApimodelsGlobalConfigurationResponse'
@@ -727,6 +747,20 @@ symbols:
       - 'import net.accelbyte.sdk.api.session.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsJoinByCodeRequest.java'
+
+  'ApimodelsJoinSessionRequest@jv.session.mod':
+    id: 'ApimodelsJoinSessionRequest@jv.session.mod'
+    name: 'ApimodelsJoinSessionRequest'
+    type: 'model'
+    fields:
+      'password':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsJoinSessionRequest.java'
 
   'ApimodelsKickResponse@jv.session.mod':
     id: 'ApimodelsKickResponse@jv.session.mod'
@@ -1549,6 +1583,9 @@ symbols:
       'fallbackClaimKeys':
         type: 'List<String>'
         required: false
+      'password':
+        type: 'String'
+        required: false
       'preferredClaimKeys':
         type: 'List<String>'
         required: false
@@ -1590,11 +1627,28 @@ symbols:
       'version':
         type: 'Integer'
         required: true
+      'password':
+        type: 'String'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.session.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdatePartyRequest.java'
+
+  'ApimodelsUpdatePasswordRequest@jv.session.mod':
+    id: 'ApimodelsUpdatePasswordRequest@jv.session.mod'
+    name: 'ApimodelsUpdatePasswordRequest'
+    type: 'model'
+    fields:
+      'newPassword':
+        type: 'String'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdatePasswordRequest.java'
 
   'ApimodelsUserResponse@jv.session.mod':
     id: 'ApimodelsUserResponse@jv.session.mod'
@@ -1938,6 +1992,11 @@ symbols:
       'xboxTitleID':
         type: 'String'
         required: true
+      'activePlatforms':
+        type: 'List<String>'
+        required: false
+        description: |-
+          Platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. Empty means all platforms are active.
       'localizedSessionName':
         type: 'Map<String, ?>'
         required: false
@@ -2278,6 +2337,7 @@ symbols:
       - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
       - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
       - PSNDisableSystemUIMenu: items whose operation from the PSN system software UI is to be disabled.
+      - activePlatforms: list of platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. If empty, all platforms are active.
       - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
       - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
       - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
@@ -4383,6 +4443,7 @@ symbols:
       - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
       - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
       - PSNDisableSystemUIMenu: items whose operation from the PSN system software UI is to be disabled.
+      - activePlatforms: list of platforms to sync native sessions to. Allowed values: PSN, XBOX, STEAM. If empty, all platforms are active.
       - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
       - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
       - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
@@ -4469,6 +4530,8 @@ symbols:
     type: 'function'
     description: |-
       This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
+      For persistent sessions with DS_AMS or DS_CUSTOM, this endpoint can be used to update DS information when the dedicated server becomes available or when DS status changes occur.
+      Supported status only enums:"AVAILABLE, FAILED_TO_REQUEST, DS_ERROR, ENDED" example:"AVAILABLE"
     arguments:
       'body':
         type: 'ApimodelsUpdateGamesessionDSInformationRequest'
@@ -5315,6 +5378,9 @@ symbols:
     description: |-
       Join a game session.
     arguments:
+      'body':
+        type: 'ApimodelsJoinSessionRequest'
+        required: true
       'namespace':
         type: 'String'
         required: true
@@ -5338,6 +5404,7 @@ symbols:
       try {
           final JoinGameSession operation = JoinGameSession.builder()
               .build(
+                  body,
                   namespace,
                   sessionId,
               );
@@ -5482,6 +5549,9 @@ symbols:
       - joinability
       - configurationName
       - attributes
+
+      maxPlayers override rules:
+      - maxPlayers can be set to a value lower than or equal to the template's maxPlayers. Values above the template ceiling are ignored and the template value is used instead.
 
       Supported platforms:
       1. STEAM
@@ -5849,6 +5919,54 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [READ]'
 
+  'PublicGetGameSessionPassword@jv.session.fun':
+    id: 'PublicGetGameSessionPassword@jv.session.fun'
+    name: 'PublicGetGameSessionPassword'
+    type: 'function'
+    description: |-
+      Get the plaintext password of a PASSWORD_PROTECTED game session. Only active members of the session may call this endpoint.
+    arguments:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          session ID
+    return_type: 'ApimodelsGetPasswordResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.game_session.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/GameSession.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicGetGameSessionPassword.java'
+    example: |-
+      try {
+          final PublicGetGameSessionPassword operation = PublicGetGameSessionPassword.builder()
+              .build(
+                  namespace,
+                  sessionId,
+              );
+
+          final GameSession wrapper = new GameSession(sdk);
+          final ApimodelsGetPasswordResponse response = wrapper.publicGetGameSessionPassword(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'game'
+      - 'get'
+      - 'password'
+      - 'public'
+      - 'session'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:GAME [READ]'
+
   'PublicGetParty@jv.session.fun':
     id: 'PublicGetParty@jv.session.fun'
     name: 'PublicGetParty'
@@ -5891,6 +6009,53 @@ symbols:
     tags:
       - 'get'
       - 'party'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:PARTY [READ]'
+
+  'PublicGetPartyPassword@jv.session.fun':
+    id: 'PublicGetPartyPassword@jv.session.fun'
+    name: 'PublicGetPartyPassword'
+    type: 'function'
+    description: |-
+      Get the plaintext password of a PASSWORD_PROTECTED party. Only active members of the party may call this endpoint.
+    arguments:
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'partyId':
+        type: 'String'
+        required: true
+        description: |-
+          Party ID
+    return_type: 'ApimodelsGetPasswordResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.party.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/Party.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/party/PublicGetPartyPassword.java'
+    example: |-
+      try {
+          final PublicGetPartyPassword operation = PublicGetPartyPassword.builder()
+              .build(
+                  namespace,
+                  partyId,
+              );
+
+          final Party wrapper = new Party(sdk);
+          final ApimodelsGetPasswordResponse response = wrapper.publicGetPartyPassword(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'get'
+      - 'party'
+      - 'password'
       - 'public'
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PARTY [READ]'
@@ -6215,6 +6380,9 @@ symbols:
     description: |-
       Join a party. The user can either join a party they have been invited to, or any party with an "open" joinable setting.
     arguments:
+      'body':
+        type: 'ApimodelsJoinSessionRequest'
+        required: true
       'namespace':
         type: 'String'
         required: true
@@ -6238,6 +6406,7 @@ symbols:
       try {
           final PublicPartyJoin operation = PublicPartyJoin.builder()
               .build(
+                  body,
                   namespace,
                   partyId,
               );
@@ -6870,6 +7039,143 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:STORAGE [READ]'
 
+  'PublicReplaceSessionStorageLeaderV2@jv.session.fun':
+    id: 'PublicReplaceSessionStorageLeaderV2@jv.session.fun'
+    name: 'PublicReplaceSessionStorageLeaderV2'
+    type: 'function'
+    description: |-
+      Replace entire Session Storage Leader with the request body. No merging is performed.
+
+      Leader (regular token): Only the session leader can replace leader storage. Complete replacement.
+      Game Admin (client token): Can replace leader storage. Complete replacement.
+
+      PUT semantics: The request body completely replaces the existing storage, no partial updates.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example request:
+      {
+      "gameState": {"round": "2"},
+      "difficulty": "hard"
+      }
+
+      Session Storage feature only available for Gamesession.
+    arguments:
+      'body':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          sessionID
+    return_type: 'Map<String, ?>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.session_storage.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicReplaceSessionStorageLeaderV2.java'
+    example: |-
+      try {
+          final PublicReplaceSessionStorageLeaderV2 operation = PublicReplaceSessionStorageLeaderV2.builder()
+              .build(
+                  body,
+                  namespace,
+                  sessionId,
+              );
+
+          final SessionStorage wrapper = new SessionStorage(sdk);
+          final Map<String, ?> response = wrapper.publicReplaceSessionStorageLeaderV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'leader'
+      - 'public'
+      - 'replace'
+      - 'session'
+      - 'storage'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicReplaceSessionStorageUserV2@jv.session.fun':
+    id: 'PublicReplaceSessionStorageUserV2@jv.session.fun'
+    name: 'PublicReplaceSessionStorageUserV2'
+    type: 'function'
+    description: |-
+      Replace entire Session Storage User with the request body. No merging is performed.
+
+      User (regular token): Can only replace own user session storage. Complete replacement.
+      Game Admin (client token): Can replace any user's session storage. Complete replacement.
+
+      PUT semantics: The request body completely replaces the existing storage, no partial updates.
+      Example request:
+      {
+      "weapon": "sword",
+      "armor": "leather"
+      }
+
+      Session Storage feature only available for Gamesession.
+    arguments:
+      'body':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          sessionID
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'Map<String, ?>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.session_storage.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicReplaceSessionStorageUserV2.java'
+    example: |-
+      try {
+          final PublicReplaceSessionStorageUserV2 operation = PublicReplaceSessionStorageUserV2.builder()
+              .build(
+                  body,
+                  namespace,
+                  sessionId,
+                  userId,
+              );
+
+          final SessionStorage wrapper = new SessionStorage(sdk);
+          final Map<String, ?> response = wrapper.publicReplaceSessionStorageUserV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'public'
+      - 'replace'
+      - 'session'
+      - 'storage'
+      - 'user'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
   'PublicRevokeGameSessionCode@jv.session.fun':
     id: 'PublicRevokeGameSessionCode@jv.session.fun'
     name: 'PublicRevokeGameSessionCode'
@@ -7067,6 +7373,58 @@ symbols:
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:PLAYER [CREATE]'
 
+  'PublicUpdateGameSessionPassword@jv.session.fun':
+    id: 'PublicUpdateGameSessionPassword@jv.session.fun'
+    name: 'PublicUpdateGameSessionPassword'
+    type: 'function'
+    description: |-
+      Update the password of a PASSWORD_PROTECTED game session. Only the session leader may call this endpoint.
+    arguments:
+      'body':
+        type: 'ApimodelsUpdatePasswordRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          session ID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.game_session.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/GameSession.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicUpdateGameSessionPassword.java'
+    example: |-
+      try {
+          final PublicUpdateGameSessionPassword operation = PublicUpdateGameSessionPassword.builder()
+              .build(
+                  body,
+                  namespace,
+                  sessionId,
+              );
+
+          final GameSession wrapper = new GameSession(sdk);
+          wrapper.publicUpdateGameSessionPassword(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'game'
+      - 'password'
+      - 'public'
+      - 'session'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:GAME [UPDATE]'
+
   'PublicUpdateInsertPartySessionStorage@jv.session.fun':
     id: 'PublicUpdateInsertPartySessionStorage@jv.session.fun'
     name: 'PublicUpdateInsertPartySessionStorage'
@@ -7230,17 +7588,23 @@ symbols:
     name: 'PublicUpdateInsertSessionStorage'
     type: 'function'
     description: |-
-      Update Insert Session Storage User. user can only update or insert user session storage data itself.
-      can store generic json
-      example json can store :
+      Update Insert Session Storage User. Performs selective merge with existing storage data.
+
+      User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Example patch:
       {
-      "storage": {
-      "storage": 1
-      },
-      "data": 123
+      "weapon": "sword",
+      "level": null
       }
-      game Admin can update or insert session storage
-      Session Storage feature only available for Gamesession
+
+      Session Storage feature only available for Gamesession.
+
+      Alternative v2 endpoints available with explicit semantics:
+      - PATCH /v2/.../storage/users/{userId} - Selective merge with partial updates
+      - PUT /v2/.../storage/users/{userId} - Complete replacement of entire storage
     arguments:
       'body':
         type: 'Map<String, ?>'
@@ -7298,17 +7662,24 @@ symbols:
     name: 'PublicUpdateInsertSessionStorageLeader'
     type: 'function'
     description: |-
-      Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.
-      can store generic json
-      example json can store :
+      Update Insert Session Storage Leader. Performs selective merge with existing leader storage data.
+
+      Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example patch:
       {
-      "leader": {
-      "leader": 1
-      },
-      "data": 123
+      "gameState": {"round": "2"},
+      "difficulty": null
       }
-      game Admin can update or insert session storage
-      Session Storage feature only available for Gamesession
+
+      Session Storage feature only available for Gamesession.
+
+      Alternative v2 endpoints available with explicit semantics:
+      - PATCH /v2/.../storage/leader - Selective merge with partial updates
+      - PUT /v2/.../storage/leader - Complete replacement of entire storage
     arguments:
       'body':
         type: 'Map<String, ?>'
@@ -7353,6 +7724,145 @@ symbols:
       - 'session'
       - 'storage'
       - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicUpdateInsertSessionStorageLeaderV2@jv.session.fun':
+    id: 'PublicUpdateInsertSessionStorageLeaderV2@jv.session.fun'
+    name: 'PublicUpdateInsertSessionStorageLeaderV2'
+    type: 'function'
+    description: |-
+      Update partial Session Storage Leader. Performs selective merge with existing leader storage data.
+
+      Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Leader storage is separate from per-user storage and identified by session context, not userID.
+      Example patch:
+      {
+      "gameState": {"round": "2"},
+      "difficulty": null
+      }
+
+      Session Storage feature only available for Gamesession.
+    arguments:
+      'body':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          sessionID
+    return_type: 'Map<String, ?>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.session_storage.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicUpdateInsertSessionStorageLeaderV2.java'
+    example: |-
+      try {
+          final PublicUpdateInsertSessionStorageLeaderV2 operation = PublicUpdateInsertSessionStorageLeaderV2.builder()
+              .build(
+                  body,
+                  namespace,
+                  sessionId,
+              );
+
+          final SessionStorage wrapper = new SessionStorage(sdk);
+          final Map<String, ?> response = wrapper.publicUpdateInsertSessionStorageLeaderV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'insert'
+      - 'leader'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+      - 'v2'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
+
+  'PublicUpdateInsertSessionStorageUserV2@jv.session.fun':
+    id: 'PublicUpdateInsertSessionStorageUserV2@jv.session.fun'
+    name: 'PublicUpdateInsertSessionStorageUserV2'
+    type: 'function'
+    description: |-
+      Update partial Session Storage User. Performs selective merge with existing storage data.
+
+      User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+      Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+      Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+      Example patch:
+      {
+      "weapon": "sword",
+      "level": null
+      }
+
+      Session Storage feature only available for Gamesession.
+    arguments:
+      'body':
+        type: 'Map<String, ?>'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'sessionId':
+        type: 'String'
+        required: true
+        description: |-
+          sessionID
+      'userId':
+        type: 'String'
+        required: true
+        description: |-
+          userID
+    return_type: 'Map<String, ?>'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.session_storage.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicUpdateInsertSessionStorageUserV2.java'
+    example: |-
+      try {
+          final PublicUpdateInsertSessionStorageUserV2 operation = PublicUpdateInsertSessionStorageUserV2.builder()
+              .build(
+                  body,
+                  namespace,
+                  sessionId,
+                  userId,
+              );
+
+          final SessionStorage wrapper = new SessionStorage(sdk);
+          final Map<String, ?> response = wrapper.publicUpdateInsertSessionStorageUserV2(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'insert'
+      - 'public'
+      - 'session'
+      - 'storage'
+      - 'update'
+      - 'user'
+      - 'v2'
     permissions:
       - 'NAMESPACE:{namespace}:SESSION:STORAGE [CREATE]'
 
@@ -7412,6 +7922,57 @@ symbols:
       catch (Exception e)             { /* Handle exceptions. */ }
     tags:
       - 'party'
+      - 'public'
+      - 'update'
+    permissions:
+      - 'NAMESPACE:{namespace}:SESSION:PARTY [UPDATE]'
+
+  'PublicUpdatePartyPassword@jv.session.fun':
+    id: 'PublicUpdatePartyPassword@jv.session.fun'
+    name: 'PublicUpdatePartyPassword'
+    type: 'function'
+    description: |-
+      Update the password of a PASSWORD_PROTECTED party. Only the party leader may call this endpoint.
+    arguments:
+      'body':
+        type: 'ApimodelsUpdatePasswordRequest'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Namespace
+      'partyId':
+        type: 'String'
+        required: true
+        description: |-
+          Party ID
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.session.models.*;'
+      - 'import net.accelbyte.sdk.api.session.operations.party.*;'
+      - 'import net.accelbyte.sdk.api.session.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/wrappers/Party.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/session/operations/party/PublicUpdatePartyPassword.java'
+    example: |-
+      try {
+          final PublicUpdatePartyPassword operation = PublicUpdatePartyPassword.builder()
+              .build(
+                  body,
+                  namespace,
+                  partyId,
+              );
+
+          final Party wrapper = new Party(sdk);
+          wrapper.publicUpdatePartyPassword(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'party'
+      - 'password'
       - 'public'
       - 'update'
     permissions:

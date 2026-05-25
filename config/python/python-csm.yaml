@@ -89,6 +89,124 @@ symbols:
     example: |-
       apimodel_app_item = csm_models.ApimodelAppItem.create(...)
 
+  'ApimodelApplyAppConfigRequest@py.csm.mod':
+    id: 'ApimodelApplyAppConfigRequest@py.csm.mod'
+    name: 'ApimodelApplyAppConfigRequest'
+    type: 'model'
+    fields:
+      'scenario':
+        type: 'str'
+        required: true
+      'autoscaling':
+        type: 'ApimodelAutoscalingRequest'
+        required: false
+      'cpu':
+        type: 'ApimodelCPURequest'
+        required: false
+      'description':
+        type: 'str'
+        required: false
+      'memory':
+        type: 'ApimodelMemoryRequest'
+        required: false
+      'permissions':
+        type: 'List[ApimodelApplyPermissionItem]'
+        required: false
+      'replica':
+        type: 'ApimodelReplicaRequest'
+        required: false
+      'secrets':
+        type: 'List[ApimodelApplyConfigItem]'
+        required: false
+      'variables':
+        type: 'List[ApimodelApplyConfigItem]'
+        required: false
+      'vm_sharing_configuration':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_apply_app_config_request.py'
+    example: |-
+      apimodel_apply_app_config_request = csm_models.ApimodelApplyAppConfigRequest.create(...)
+
+  'ApimodelApplyConfigItem@py.csm.mod':
+    id: 'ApimodelApplyConfigItem@py.csm.mod'
+    name: 'ApimodelApplyConfigItem'
+    type: 'model'
+    fields:
+      'name':
+        type: 'str'
+        required: true
+      'value':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_apply_config_item.py'
+    example: |-
+      apimodel_apply_config_item = csm_models.ApimodelApplyConfigItem.create(...)
+
+  'ApimodelApplyPermissionItem@py.csm.mod':
+    id: 'ApimodelApplyPermissionItem@py.csm.mod'
+    name: 'ApimodelApplyPermissionItem'
+    type: 'model'
+    fields:
+      'action':
+        type: 'int'
+        required: true
+      'resource':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_apply_permission_item.py'
+    example: |-
+      apimodel_apply_permission_item = csm_models.ApimodelApplyPermissionItem.create(...)
+
+  'ApimodelAppUIResponse@py.csm.mod':
+    id: 'ApimodelAppUIResponse@py.csm.mod'
+    name: 'ApimodelAppUIResponse'
+    type: 'model'
+    fields:
+      'app_ui_id':
+        type: 'str'
+        required: true
+      'asset_base_path':
+        type: 'str'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'current_file_version':
+        type: 'str'
+        required: true
+      'game_namespace':
+        type: 'str'
+        required: true
+      'name':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'public_iam_client':
+        type: 'ApimodelPublicIAMClientResponse'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_app_ui_response.py'
+    example: |-
+      apimodel_app_ui_response = csm_models.ApimodelAppUIResponse.create(...)
+
   'ApimodelAutoscalingRequest@py.csm.mod':
     id: 'ApimodelAutoscalingRequest@py.csm.mod'
     name: 'ApimodelAutoscalingRequest'
@@ -194,6 +312,22 @@ symbols:
     example: |-
       apimodel_cpu_response = csm_models.ApimodelCPUResponse.create(...)
 
+  'ApimodelCreateAppUIRequest@py.csm.mod':
+    id: 'ApimodelCreateAppUIRequest@py.csm.mod'
+    name: 'ApimodelCreateAppUIRequest'
+    type: 'model'
+    fields:
+      'name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_app_ui_request.py'
+    example: |-
+      apimodel_create_app_ui_request = csm_models.ApimodelCreateAppUIRequest.create(...)
+
   'ApimodelCreateAppV2Request@py.csm.mod':
     id: 'ApimodelCreateAppV2Request@py.csm.mod'
     name: 'ApimodelCreateAppV2Request'
@@ -260,11 +394,58 @@ symbols:
     example: |-
       apimodel_create_deployment_v2_response = csm_models.ApimodelCreateDeploymentV2Response.create(...)
 
+  'ApimodelCreateKeyValueCredentialRequest@py.csm.mod':
+    id: 'ApimodelCreateKeyValueCredentialRequest@py.csm.mod'
+    name: 'ApimodelCreateKeyValueCredentialRequest'
+    type: 'model'
+    fields:
+      'password':
+        type: 'str'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_key_value_credential_request.py'
+    example: |-
+      apimodel_create_key_value_credential_request = csm_models.ApimodelCreateKeyValueCredentialRequest.create(...)
+
+  'ApimodelCreateKeyValueCredentialResponse@py.csm.mod':
+    id: 'ApimodelCreateKeyValueCredentialResponse@py.csm.mod'
+    name: 'ApimodelCreateKeyValueCredentialResponse'
+    type: 'model'
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+      'owner':
+        type: 'str'
+        required: true
+      'recommended_max_age_days':
+        type: 'int'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_key_value_credential_response.py'
+    example: |-
+      apimodel_create_key_value_credential_response = csm_models.ApimodelCreateKeyValueCredentialResponse.create(...)
+
   'ApimodelCreateNoSQLAppDatabaseRequest@py.csm.mod':
     id: 'ApimodelCreateNoSQLAppDatabaseRequest@py.csm.mod'
     name: 'ApimodelCreateNoSQLAppDatabaseRequest'
     type: 'model'
     fields:
+      'acknowledgements':
+        type: 'ApimodelNoSQLDatabaseAcknowledgements'
+        required: true
       'db_name':
         type: 'str'
         required: true
@@ -287,6 +468,9 @@ symbols:
     name: 'ApimodelCreateNoSQLDatabaseCredentialRequest'
     type: 'model'
     fields:
+      'acknowledgements':
+        type: 'ApimodelNoSQLDatabaseAcknowledgements'
+        required: true
       'password':
         type: 'str'
         required: true
@@ -300,6 +484,50 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_database_credential_request.py'
     example: |-
       apimodel_create_no_sql_database_credential_request = csm_models.ApimodelCreateNoSQLDatabaseCredentialRequest.create(...)
+
+  'ApimodelCreateSQLAppDatabaseRequest@py.csm.mod':
+    id: 'ApimodelCreateSQLAppDatabaseRequest@py.csm.mod'
+    name: 'ApimodelCreateSQLAppDatabaseRequest'
+    type: 'model'
+    fields:
+      'acknowledgements':
+        type: 'ApimodelSQLDatabaseAcknowledgements'
+        required: true
+      'db_name':
+        type: 'str'
+        required: true
+      'password':
+        type: 'str'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_sql_app_database_request.py'
+    example: |-
+      apimodel_create_sql_app_database_request = csm_models.ApimodelCreateSQLAppDatabaseRequest.create(...)
+
+  'ApimodelCreateSQLDatabaseCredentialRequest@py.csm.mod':
+    id: 'ApimodelCreateSQLDatabaseCredentialRequest@py.csm.mod'
+    name: 'ApimodelCreateSQLDatabaseCredentialRequest'
+    type: 'model'
+    fields:
+      'password':
+        type: 'str'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_sql_database_credential_request.py'
+    example: |-
+      apimodel_create_sql_database_credential_request = csm_models.ApimodelCreateSQLDatabaseCredentialRequest.create(...)
 
   'ApimodelCreateSubscriptionRequest@py.csm.mod':
     id: 'ApimodelCreateSubscriptionRequest@py.csm.mod'
@@ -422,6 +650,34 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_delete_no_sql_resource_response.py'
     example: |-
       apimodel_delete_no_sql_resource_response = csm_models.ApimodelDeleteNoSQLResourceResponse.create(...)
+
+  'ApimodelDeleteSQLResourceResponse@py.csm.mod':
+    id: 'ApimodelDeleteSQLResourceResponse@py.csm.mod'
+    name: 'ApimodelDeleteSQLResourceResponse'
+    type: 'model'
+    fields:
+      'platform_name':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_name':
+        type: 'str'
+        required: true
+      'resource_type':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_delete_sql_resource_response.py'
+    example: |-
+      apimodel_delete_sql_resource_response = csm_models.ApimodelDeleteSQLResourceResponse.create(...)
 
   'ApimodelGetAppImageListV2DataItem@py.csm.mod':
     id: 'ApimodelGetAppImageListV2DataItem@py.csm.mod'
@@ -633,6 +889,52 @@ symbols:
     example: |-
       apimodel_get_deployment_list_v2_response = csm_models.ApimodelGetDeploymentListV2Response.create(...)
 
+  'ApimodelGetIntegrationAppKeyValueResponse@py.csm.mod':
+    id: 'ApimodelGetIntegrationAppKeyValueResponse@py.csm.mod'
+    name: 'ApimodelGetIntegrationAppKeyValueResponse'
+    type: 'model'
+    fields:
+      'accept_key_value_secure_credential_handling':
+        type: 'bool'
+        required: true
+      'app_id':
+        type: 'str'
+        required: true
+      'credentials':
+        type: 'ApimodelIntegrationCredentialInfo'
+        required: true
+      'game_namespace':
+        type: 'str'
+        required: true
+      'hostnames':
+        type: 'str'
+        required: true
+      'integration_id':
+        type: 'str'
+        required: true
+      'platform_name':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_status':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'status_message':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_get_integration_app_key_value_response.py'
+    example: |-
+      apimodel_get_integration_app_key_value_response = csm_models.ApimodelGetIntegrationAppKeyValueResponse.create(...)
+
   'ApimodelGetListOfConfigurationsV2DataItem@py.csm.mod':
     id: 'ApimodelGetListOfConfigurationsV2DataItem@py.csm.mod'
     name: 'ApimodelGetListOfConfigurationsV2DataItem'
@@ -842,6 +1144,267 @@ symbols:
     example: |-
       apimodel_increase_limit_form_request = csm_models.ApimodelIncreaseLimitFormRequest.create(...)
 
+  'ApimodelIntegrateAppKeyValueRequest@py.csm.mod':
+    id: 'ApimodelIntegrateAppKeyValueRequest@py.csm.mod'
+    name: 'ApimodelIntegrateAppKeyValueRequest'
+    type: 'model'
+    fields:
+      'acknowledgements':
+        type: 'ApimodelKeyValueCredentialAcknowledgements'
+        required: true
+      'password':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_integrate_app_key_value_request.py'
+    example: |-
+      apimodel_integrate_app_key_value_request = csm_models.ApimodelIntegrateAppKeyValueRequest.create(...)
+
+  'ApimodelIntegrateAppKeyValueResponse@py.csm.mod':
+    id: 'ApimodelIntegrateAppKeyValueResponse@py.csm.mod'
+    name: 'ApimodelIntegrateAppKeyValueResponse'
+    type: 'model'
+    fields:
+      'accept_key_value_secure_credential_handling':
+        type: 'bool'
+        required: true
+      'app_id':
+        type: 'str'
+        required: true
+      'credentials':
+        type: 'ApimodelIntegrationCredentialInfo'
+        required: true
+      'game_namespace':
+        type: 'str'
+        required: true
+      'hostnames':
+        type: 'str'
+        required: true
+      'integration_id':
+        type: 'str'
+        required: true
+      'platform_name':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_status':
+        type: 'str'
+        required: true
+      'scenario':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'status_message':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_integrate_app_key_value_response.py'
+    example: |-
+      apimodel_integrate_app_key_value_response = csm_models.ApimodelIntegrateAppKeyValueResponse.create(...)
+
+  'ApimodelIntegrationCredentialInfo@py.csm.mod':
+    id: 'ApimodelIntegrationCredentialInfo@py.csm.mod'
+    name: 'ApimodelIntegrationCredentialInfo'
+    type: 'model'
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+      'owner':
+        type: 'str'
+        required: true
+      'recommended_max_age_days':
+        type: 'int'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_integration_credential_info.py'
+    example: |-
+      apimodel_integration_credential_info = csm_models.ApimodelIntegrationCredentialInfo.create(...)
+
+  'ApimodelIntegrationListItem@py.csm.mod':
+    id: 'ApimodelIntegrationListItem@py.csm.mod'
+    name: 'ApimodelIntegrationListItem'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'game_namespace':
+        type: 'str'
+        required: true
+      'integration_id':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'scenario':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'status_message':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_integration_list_item.py'
+    example: |-
+      apimodel_integration_list_item = csm_models.ApimodelIntegrationListItem.create(...)
+
+  'ApimodelKeyValueCredentialAcknowledgements@py.csm.mod':
+    id: 'ApimodelKeyValueCredentialAcknowledgements@py.csm.mod'
+    name: 'ApimodelKeyValueCredentialAcknowledgements'
+    type: 'model'
+    fields:
+      'accept_key_value_secure_credential_handling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_key_value_credential_acknowledgements.py'
+    example: |-
+      apimodel_key_value_credential_acknowledgements = csm_models.ApimodelKeyValueCredentialAcknowledgements.create(...)
+
+  'ApimodelKeyValueResourceListResponse@py.csm.mod':
+    id: 'ApimodelKeyValueResourceListResponse@py.csm.mod'
+    name: 'ApimodelKeyValueResourceListResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelKeyValueResourceResponse]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_key_value_resource_list_response.py'
+    example: |-
+      apimodel_key_value_resource_list_response = csm_models.ApimodelKeyValueResourceListResponse.create(...)
+
+  'ApimodelKeyValueResourceResponse@py.csm.mod':
+    id: 'ApimodelKeyValueResourceResponse@py.csm.mod'
+    name: 'ApimodelKeyValueResourceResponse'
+    type: 'model'
+    fields:
+      'cluster_name':
+        type: 'str'
+        required: true
+      'configuration':
+        type: 'DomainKeyValueResourceConfiguration'
+        required: true
+      'engine':
+        type: 'str'
+        required: true
+      'hostnames':
+        type: 'str'
+        required: true
+      'last_rotated_at':
+        type: 'str'
+        required: true
+      'platform_name':
+        type: 'str'
+        required: true
+      'region':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_name':
+        type: 'str'
+        required: true
+      'resource_type':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'status_message':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_key_value_resource_response.py'
+    example: |-
+      apimodel_key_value_resource_response = csm_models.ApimodelKeyValueResourceResponse.create(...)
+
+  'ApimodelListAppUIResponse@py.csm.mod':
+    id: 'ApimodelListAppUIResponse@py.csm.mod'
+    name: 'ApimodelListAppUIResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelAppUIResponse]'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_list_app_ui_response.py'
+    example: |-
+      apimodel_list_app_ui_response = csm_models.ApimodelListAppUIResponse.create(...)
+
+  'ApimodelListIntegratedAppsKeyValueResponse@py.csm.mod':
+    id: 'ApimodelListIntegratedAppsKeyValueResponse@py.csm.mod'
+    name: 'ApimodelListIntegratedAppsKeyValueResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelIntegrationListItem]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_list_integrated_apps_key_value_response.py'
+    example: |-
+      apimodel_list_integrated_apps_key_value_response = csm_models.ApimodelListIntegratedAppsKeyValueResponse.create(...)
+
   'ApimodelListTopicsResponse@py.csm.mod':
     id: 'ApimodelListTopicsResponse@py.csm.mod'
     name: 'ApimodelListTopicsResponse'
@@ -940,6 +1503,22 @@ symbols:
     example: |-
       apimodel_no_sql_app_response = csm_models.ApimodelNoSQLAppResponse.create(...)
 
+  'ApimodelNoSQLDatabaseAcknowledgements@py.csm.mod':
+    id: 'ApimodelNoSQLDatabaseAcknowledgements@py.csm.mod'
+    name: 'ApimodelNoSQLDatabaseAcknowledgements'
+    type: 'model'
+    fields:
+      'accept_nosql_secure_credential_handling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_acknowledgements.py'
+    example: |-
+      apimodel_no_sql_database_acknowledgements = csm_models.ApimodelNoSQLDatabaseAcknowledgements.create(...)
+
   'ApimodelNoSQLDatabaseCredentialResponse@py.csm.mod':
     id: 'ApimodelNoSQLDatabaseCredentialResponse@py.csm.mod'
     name: 'ApimodelNoSQLDatabaseCredentialResponse'
@@ -950,6 +1529,9 @@ symbols:
         required: true
       'owner':
         type: 'str'
+        required: true
+      'recommended_max_age_days':
+        type: 'int'
         required: true
       'username':
         type: 'str'
@@ -986,6 +1568,9 @@ symbols:
     name: 'ApimodelNoSQLDatabaseResponse'
     type: 'model'
     fields:
+      'accept_nosql_secure_credential_handling':
+        type: 'bool'
+        required: true
       'app_id':
         type: 'str'
         required: true
@@ -1046,6 +1631,9 @@ symbols:
         required: true
       'configuration':
         type: 'NosqlresourceNoSQLResourceConfiguration'
+        required: false
+      'engine_version':
+        type: 'str'
         required: false
       'hostnames':
         type: 'str'
@@ -1113,6 +1701,28 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_pagination_response.py'
     example: |-
       apimodel_pagination_response = csm_models.ApimodelPaginationResponse.create(...)
+
+  'ApimodelPublicIAMClientResponse@py.csm.mod':
+    id: 'ApimodelPublicIAMClientResponse@py.csm.mod'
+    name: 'ApimodelPublicIAMClientResponse'
+    type: 'model'
+    fields:
+      'client_id':
+        type: 'str'
+        required: true
+      'client_name':
+        type: 'str'
+        required: true
+      'redirect_uri_list':
+        type: 'List[str]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_public_iam_client_response.py'
+    example: |-
+      apimodel_public_iam_client_response = csm_models.ApimodelPublicIAMClientResponse.create(...)
 
   'ApimodelReplicaRequest@py.csm.mod':
     id: 'ApimodelReplicaRequest@py.csm.mod'
@@ -1245,6 +1855,199 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_self_subscribe_notification_request.py'
     example: |-
       apimodel_self_subscribe_notification_request = csm_models.ApimodelSelfSubscribeNotificationRequest.create(...)
+
+  'ApimodelSQLAppListResponse@py.csm.mod':
+    id: 'ApimodelSQLAppListResponse@py.csm.mod'
+    name: 'ApimodelSQLAppListResponse'
+    type: 'model'
+    fields:
+      'data':
+        type: 'List[ApimodelSQLAppResponse]'
+        required: true
+      'pagination':
+        type: 'ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_app_list_response.py'
+    example: |-
+      apimodel_sql_app_list_response = csm_models.ApimodelSQLAppListResponse.create(...)
+
+  'ApimodelSQLAppResponse@py.csm.mod':
+    id: 'ApimodelSQLAppResponse@py.csm.mod'
+    name: 'ApimodelSQLAppResponse'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'game_name':
+        type: 'str'
+        required: true
+      'scenario':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_app_response.py'
+    example: |-
+      apimodel_sql_app_response = csm_models.ApimodelSQLAppResponse.create(...)
+
+  'ApimodelSQLDatabaseAcknowledgements@py.csm.mod':
+    id: 'ApimodelSQLDatabaseAcknowledgements@py.csm.mod'
+    name: 'ApimodelSQLDatabaseAcknowledgements'
+    type: 'model'
+    fields:
+      'accept_sql_secure_credential_handling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_database_acknowledgements.py'
+    example: |-
+      apimodel_sql_database_acknowledgements = csm_models.ApimodelSQLDatabaseAcknowledgements.create(...)
+
+  'ApimodelSQLDatabaseCredentialResponse@py.csm.mod':
+    id: 'ApimodelSQLDatabaseCredentialResponse@py.csm.mod'
+    name: 'ApimodelSQLDatabaseCredentialResponse'
+    type: 'model'
+    fields:
+      'created_at':
+        type: 'str'
+        required: true
+      'owner':
+        type: 'str'
+        required: true
+      'recommended_max_age':
+        type: 'int'
+        required: true
+      'username':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_database_credential_response.py'
+    example: |-
+      apimodel_sql_database_credential_response = csm_models.ApimodelSQLDatabaseCredentialResponse.create(...)
+
+  'ApimodelSQLDatabaseDeleteResponse@py.csm.mod':
+    id: 'ApimodelSQLDatabaseDeleteResponse@py.csm.mod'
+    name: 'ApimodelSQLDatabaseDeleteResponse'
+    type: 'model'
+    fields:
+      'db_id':
+        type: 'str'
+        required: true
+      'db_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_database_delete_response.py'
+    example: |-
+      apimodel_sql_database_delete_response = csm_models.ApimodelSQLDatabaseDeleteResponse.create(...)
+
+  'ApimodelSQLDatabaseResponse@py.csm.mod':
+    id: 'ApimodelSQLDatabaseResponse@py.csm.mod'
+    name: 'ApimodelSQLDatabaseResponse'
+    type: 'model'
+    fields:
+      'accept_sql_secure_credential_handling':
+        type: 'bool'
+        required: true
+      'app_id':
+        type: 'str'
+        required: true
+      'credentials':
+        type: 'ApimodelSQLDatabaseCredentialResponse'
+        required: true
+      'db_id':
+        type: 'str'
+        required: true
+      'db_name':
+        type: 'str'
+        required: true
+      'game_namespace':
+        type: 'str'
+        required: true
+      'hostnames':
+        type: 'str'
+        required: true
+      'platform_name':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_status':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_database_response.py'
+    example: |-
+      apimodel_sql_database_response = csm_models.ApimodelSQLDatabaseResponse.create(...)
+
+  'ApimodelSQLResourceResponse@py.csm.mod':
+    id: 'ApimodelSQLResourceResponse@py.csm.mod'
+    name: 'ApimodelSQLResourceResponse'
+    type: 'model'
+    fields:
+      'platform_name':
+        type: 'str'
+        required: true
+      'resource_id':
+        type: 'str'
+        required: true
+      'resource_name':
+        type: 'str'
+        required: true
+      'resource_type':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'studio_name':
+        type: 'str'
+        required: true
+      'configuration':
+        type: 'SqlresourceSQLResourceConfiguration'
+        required: false
+      'engine_version':
+        type: 'str'
+        required: false
+      'hostnames':
+        type: 'str'
+        required: false
+      'last_rotated_at':
+        type: 'str'
+        required: false
+      'region':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_sql_resource_response.py'
+    example: |-
+      apimodel_sql_resource_response = csm_models.ApimodelSQLResourceResponse.create(...)
 
   'ApimodelSubscribeNotificationRequest@py.csm.mod':
     id: 'ApimodelSubscribeNotificationRequest@py.csm.mod'
@@ -1564,6 +2367,91 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_update_secret_configuration_v2_request.py'
     example: |-
       apimodel_update_secret_configuration_v2_request = csm_models.ApimodelUpdateSecretConfigurationV2Request.create(...)
+
+  'ApimodelUploadFileResponse@py.csm.mod':
+    id: 'ApimodelUploadFileResponse@py.csm.mod'
+    name: 'ApimodelUploadFileResponse'
+    type: 'model'
+    fields:
+      'app_ui':
+        type: 'ApimodelAppUIResponse'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_upload_file_response.py'
+    example: |-
+      apimodel_upload_file_response = csm_models.ApimodelUploadFileResponse.create(...)
+
+  'DomainKeyValueClusterConfig@py.csm.mod':
+    id: 'DomainKeyValueClusterConfig@py.csm.mod'
+    name: 'DomainKeyValueClusterConfig'
+    type: 'model'
+    fields:
+      'max_cluster_per_studio_private_cloud':
+        type: 'int'
+        required: true
+      'max_cluster_per_studio_shared_cloud':
+        type: 'int'
+        required: true
+      'max_integration_per_cluster':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_key_value_cluster_config.py'
+    example: |-
+      domain_key_value_cluster_config = csm_models.DomainKeyValueClusterConfig.create(...)
+
+  'DomainKeyValueResourceConfiguration@py.csm.mod':
+    id: 'DomainKeyValueResourceConfiguration@py.csm.mod'
+    name: 'DomainKeyValueResourceConfiguration'
+    type: 'model'
+    fields:
+      'cluster_name':
+        type: 'str'
+        required: true
+      'max_data_storage_gb':
+        type: 'int'
+        required: true
+      'max_ecpu_per_second':
+        type: 'int'
+        required: true
+      'profile_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_key_value_resource_configuration.py'
+    example: |-
+      domain_key_value_resource_configuration = csm_models.DomainKeyValueResourceConfiguration.create(...)
+
+  'DomainKeyValueUpdateConfiguration@py.csm.mod':
+    id: 'DomainKeyValueUpdateConfiguration@py.csm.mod'
+    name: 'DomainKeyValueUpdateConfiguration'
+    type: 'model'
+    fields:
+      'max_data_storage_gb':
+        type: 'int'
+        required: true
+      'max_ecpu_per_second':
+        type: 'int'
+        required: true
+      'profile_name':
+        type: 'str'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_key_value_update_configuration.py'
+    example: |-
+      domain_key_value_update_configuration = csm_models.DomainKeyValueUpdateConfiguration.create(...)
 
   'GeneratedCreateAppV1Request@py.csm.mod':
     id: 'GeneratedCreateAppV1Request@py.csm.mod'
@@ -2536,9 +3424,78 @@ symbols:
     example: |-
       response_error_response = csm_models.ResponseErrorResponse.create(...)
 
+  'SqlresourceSQLResourceConfiguration@py.csm.mod':
+    id: 'SqlresourceSQLResourceConfiguration@py.csm.mod'
+    name: 'SqlresourceSQLResourceConfiguration'
+    type: 'model'
+    fields:
+      'max_acu':
+        type: 'float'
+        required: true
+      'min_acu':
+        type: 'float'
+        required: true
+      'multi_az':
+        type: 'bool'
+        required: true
+      'profile_name':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/sqlresource_sql_resource_configuration.py'
+    example: |-
+      sqlresource_sql_resource_configuration = csm_models.SqlresourceSQLResourceConfiguration.create(...)
+
   # endregion models
 
   # region functions
+
+  'apply_app_config_v2@py.csm.fun':
+    id: 'apply_app_config_v2@py.csm.fun'
+    name: 'apply_app_config_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
+
+      Idempotent endpoint that creates or updates an Extend app from a declarative spec.
+      Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
+
+      Note: `preferred_k8s_namespace` is only used on the initial create call; it is ignored on subsequent apply calls.
+      On the first apply after creation the deletion phase is skipped (no prior apply state recorded).
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelApplyAppConfigRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'Tuple[Union[None, ApimodelAppItem], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_v2/apply_app_config_v2.py'
+    example: |-
+      result, error = csm.apply_app_config_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'apply'
+      - 'config'
+      - 'v2'
 
   'bulk_save_subscription_app_notification_v2@py.csm.fun':
     id: 'bulk_save_subscription_app_notification_v2@py.csm.fun'
@@ -2589,6 +3546,40 @@ symbols:
       - 'save'
       - 'subscription'
       - 'v2'
+
+  'create_app_ui@py.csm.fun':
+    id: 'create_app_ui@py.csm.fun'
+    name: 'create_app_ui'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
+
+      Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
+    arguments:
+      'body':
+        type: 'ApimodelCreateAppUIRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'Tuple[Union[None, ApimodelAppUIResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_ui/create_app_ui.py'
+    example: |-
+      result, error = csm.create_app_ui(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'create'
+      - 'ui'
 
   'create_app_v1@py.csm.fun':
     id: 'create_app_v1@py.csm.fun'
@@ -2646,9 +3637,9 @@ symbols:
       Create new extend app with name provided by {app} path parameter and specified scenario type
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -2796,6 +3787,144 @@ symbols:
       - 'deployment'
       - 'v2'
 
+  'create_key_value_cluster_v2@py.csm.fun':
+    id: 'create_key_value_cluster_v2@py.csm.fun'
+    name: 'create_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
+
+      Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
+
+      Cluster limits:
+      - Private cloud: up to 10 clusters per studio namespace
+      - Shared cloud: 1 cluster per studio namespace
+
+      Provisioning process is done asynchronously, you can check from the `status` field of the resource response.
+    arguments:
+      'body':
+        type: 'DomainKeyValueResourceConfiguration'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelKeyValueResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/create_key_value_cluster_v2.py'
+    example: |-
+      result, error = csm.create_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'create'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'create_key_value_credential_v2@py.csm.fun':
+    id: 'create_key_value_credential_v2@py.csm.fun'
+    name: 'create_key_value_credential_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
+
+      Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
+      Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
+      If the same username and password are provided, returns the existing credential (idempotent).
+
+      Acknowledgement for secure credential handling is only required at integrate-app; not needed for this endpoint.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateKeyValueCredentialRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelCreateKeyValueCredentialResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/create_key_value_credential_v2.py'
+    example: |-
+      result, error = csm.create_key_value_credential_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'credential'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'create_new_no_sql_database_credential_v2@py.csm.fun':
+    id: 'create_new_no_sql_database_credential_v2@py.csm.fun'
+    name: 'create_new_no_sql_database_credential_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
+
+      Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateNoSQLDatabaseCredentialRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelNoSQLDatabaseCredentialResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources/create_new_no_sql_datab_b22b67.py'
+    example: |-
+      result, error = csm.create_new_no_sql_database_credential_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'credential'
+      - 'database'
+      - 'managed'
+      - 'new'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'create_no_sql_cluster_v2@py.csm.fun':
     id: 'create_no_sql_cluster_v2@py.csm.fun'
     name: 'create_no_sql_cluster_v2'
@@ -2845,6 +3974,8 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
 
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
     arguments:
       'app':
         type: 'str'
@@ -2889,6 +4020,8 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
 
       Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
     arguments:
       'app':
         type: 'str'
@@ -2920,6 +4053,131 @@ symbols:
       - 'database'
       - 'managed'
       - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'create_sql_cluster_v2@py.csm.fun':
+    id: 'create_sql_cluster_v2@py.csm.fun'
+    name: 'create_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
+
+      Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
+      Only one SQL resource can be created for one studio/publisher namespace.
+
+      Provisioning process is done asynchronously, you can check from the `status` field of the resource response.
+    arguments:
+      'body':
+        type: 'SqlresourceSQLResourceConfiguration'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelSQLResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.create_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'create'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'create_sql_database_credential_v2@py.csm.fun':
+    id: 'create_sql_database_credential_v2@py.csm.fun'
+    name: 'create_sql_database_credential_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
+
+      Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateSQLDatabaseCredentialRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelSQLDatabaseCredentialResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_database_cre_9da946.py'
+    example: |-
+      result, error = csm.create_sql_database_credential_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'credential'
+      - 'database'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'create_sql_database_v2@py.csm.fun':
+    id: 'create_sql_database_v2@py.csm.fun'
+    name: 'create_sql_database_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
+
+      Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelCreateSQLAppDatabaseRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelSQLDatabaseResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_database_v2.py'
+    example: |-
+      result, error = csm.create_sql_database_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'create'
+      - 'database'
+      - 'managed'
       - 'resources'
       - 'sql'
       - 'v2'
@@ -3082,6 +4340,42 @@ symbols:
       - 'image'
       - 'images'
       - 'v2'
+
+  'delete_app_ui@py.csm.fun':
+    id: 'delete_app_ui@py.csm.fun'
+    name: 'delete_app_ui'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
+
+      Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
+    arguments:
+      'app_ui_name':
+        type: 'str'
+        required: true
+        description: |-
+          App UI Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_ui/delete_app_ui.py'
+    example: |-
+      result, error = csm.delete_app_ui(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'delete'
+      - 'ui'
 
   'delete_app_v1@py.csm.fun':
     id: 'delete_app_v1@py.csm.fun'
@@ -3253,6 +4547,47 @@ symbols:
       - 'deployment'
       - 'v2'
 
+  'delete_key_value_cluster_v2@py.csm.fun':
+    id: 'delete_key_value_cluster_v2@py.csm.fun'
+    name: 'delete_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
+
+      Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
+      Force-deletes all active integrations. Returns resource with status DELETING.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+    return_type: 'Tuple[Union[None, ApimodelKeyValueResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/delete_key_value_cluster_v2.py'
+    example: |-
+      result, error = csm.delete_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'delete'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
   'delete_no_sql_cluster_v2@py.csm.fun':
     id: 'delete_no_sql_cluster_v2@py.csm.fun'
     name: 'delete_no_sql_cluster_v2'
@@ -3415,6 +4750,84 @@ symbols:
       - 'configuration'
       - 'delete'
       - 'secret'
+      - 'v2'
+
+  'delete_sql_cluster_v2@py.csm.fun':
+    id: 'delete_sql_cluster_v2@py.csm.fun'
+    name: 'delete_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
+
+      You can only delete the cluster when its status is "available".
+
+      Deleting the cluster will:
+      - Remove SQL integration.
+      - Remove all the data from the SQL
+      - Remove all the credentials, including the Extend Appâs credentials.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelDeleteSQLResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/delete_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.delete_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'delete'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'delete_sql_database_v2@py.csm.fun':
+    id: 'delete_sql_database_v2@py.csm.fun'
+    name: 'delete_sql_database_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
+
+      Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelSQLDatabaseDeleteResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/delete_sql_database_v2.py'
+    example: |-
+      result, error = csm.delete_sql_database_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'database'
+      - 'delete'
+      - 'managed'
+      - 'resources'
+      - 'sql'
       - 'v2'
 
   'delete_subscription_app_notification_by_user_idv2@py.csm.fun':
@@ -4084,6 +5497,207 @@ symbols:
       - 'get'
       - 'v2'
 
+  'get_extend_file@py.csm.fun':
+    id: 'get_extend_file@py.csm.fun'
+    name: 'get_extend_file'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
+
+      Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
+    arguments:
+      'file_path':
+        type: 'str'
+        required: true
+        description: |-
+          Path to file under namespace assets
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/extend_files/get_extend_file.py'
+    example: |-
+      result, error = csm.get_extend_file(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'extend'
+      - 'file'
+      - 'files'
+      - 'get'
+
+  'get_integration_app_key_value_cluster_v2@py.csm.fun':
+    id: 'get_integration_app_key_value_cluster_v2@py.csm.fun'
+    name: 'get_integration_app_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
+
+      Get integration of an extend app with a cluster.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelGetIntegrationAppKeyValueResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_integration_app_key_181476.py'
+    example: |-
+      result, error = csm.get_integration_app_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'get'
+      - 'integration'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'get_key_value_cluster_limit_config_v2@py.csm.fun':
+    id: 'get_key_value_cluster_limit_config_v2@py.csm.fun'
+    name: 'get_key_value_cluster_limit_config_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get Key-Value cluster limit config.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, DomainKeyValueClusterConfig], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_key_value_cluster_l_62a4fb.py'
+    example: |-
+      result, error = csm.get_key_value_cluster_limit_config_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'config'
+      - 'get'
+      - 'key'
+      - 'limit'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'get_key_value_cluster_v2@py.csm.fun':
+    id: 'get_key_value_cluster_v2@py.csm.fun'
+    name: 'get_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
+
+      `status` field - indicates the Key-Value cluster status.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+    return_type: 'Tuple[Union[None, ApimodelKeyValueResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_key_value_cluster_v2.py'
+    example: |-
+      result, error = csm.get_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'get'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'get_list_integrated_app_key_value_cluster_v2@py.csm.fun':
+    id: 'get_list_integrated_app_key_value_cluster_v2@py.csm.fun'
+    name: 'get_list_integrated_app_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+    return_type: 'Tuple[Union[None, ApimodelListIntegratedAppsKeyValueResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_list_integrated_app_4a9d12.py'
+    example: |-
+      result, error = csm.get_list_integrated_app_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'get'
+      - 'integrated'
+      - 'key'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
   'get_list_of_deployment_v1@py.csm.fun':
     id: 'get_list_of_deployment_v1@py.csm.fun'
     name: 'get_list_of_deployment_v1'
@@ -4442,16 +6056,16 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
 
       Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
     arguments:
       'app_name':
         type: 'Optional[str]'
@@ -4515,16 +6129,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'namespace':
         type: 'str'
@@ -4564,15 +6178,15 @@ symbols:
 
       `resourceStatus` field - indicates the NoSQL cluster status:
       - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     arguments:
       'app':
         type: 'str'
@@ -4741,6 +6355,177 @@ symbols:
       - 'limits'
       - 'resources'
 
+  'get_sql_app_list_v2@py.csm.fun':
+    id: 'get_sql_app_list_v2@py.csm.fun'
+    name: 'get_sql_app_list_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
+
+      Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    arguments:
+      'app_name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          App Name
+      'game_namespace':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Game Name
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Limit for pagination
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Offset for pagination
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+    return_type: 'Tuple[Union[None, ApimodelSQLAppListResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_app_list_v2.py'
+    example: |-
+      result, error = csm.get_sql_app_list_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'get_sql_cluster_v2@py.csm.fun':
+    id: 'get_sql_cluster_v2@py.csm.fun'
+    name: 'get_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
+
+      Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
+
+      `status` field - indicates the SQL cluster status:
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelSQLResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.get_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'get'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'get_sql_database_v2@py.csm.fun':
+    id: 'get_sql_database_v2@py.csm.fun'
+    name: 'get_sql_database_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
+
+      Get a SQL database information returns the SQL database related information by given game namespace
+      and app name.
+
+      `resourceStatus` field - indicates the SQL cluster status:
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelSQLDatabaseResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_database_v2.py'
+    example: |-
+      result, error = csm.get_sql_database_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'database'
+      - 'get'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'get_subscription_v2_handler@py.csm.fun':
     id: 'get_subscription_v2_handler@py.csm.fun'
     name: 'get_subscription_v2_handler'
@@ -4778,6 +6563,137 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'integrate_app_key_value_cluster_v2@py.csm.fun':
+    id: 'integrate_app_key_value_cluster_v2@py.csm.fun'
+    name: 'integrate_app_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
+
+      Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'body':
+        type: 'ApimodelIntegrateAppKeyValueRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelIntegrateAppKeyValueResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/integrate_app_key_value_d23a27.py'
+    example: |-
+      result, error = csm.integrate_app_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'integrate'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'list_app_ui@py.csm.fun':
+    id: 'list_app_ui@py.csm.fun'
+    name: 'list_app_ui'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
+
+      Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
+    arguments:
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Limit for pagination
+      'name':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Filter by app UI name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          Offset for pagination
+    return_type: 'Tuple[Union[None, ApimodelListAppUIResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_ui/list_app_ui.py'
+    example: |-
+      result, error = csm.list_app_ui(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'list'
+      - 'ui'
+
+  'list_key_value_cluster_v2@py.csm.fun':
+    id: 'list_key_value_cluster_v2@py.csm.fun'
+    name: 'list_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      List Key-Value clusters by studio/publisher namespace.
+      If `refresh=true`, the service will sync cluster status from the provider (cached).
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'refresh':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Refresh status from provider
+    return_type: 'Tuple[Union[None, ApimodelKeyValueResourceListResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/list_key_value_cluster_v2.py'
+    example: |-
+      result, error = csm.list_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'key'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
 
   'list_topics_handler@py.csm.fun':
     id: 'list_topics_handler@py.csm.fun'
@@ -4859,6 +6775,48 @@ symbols:
       - 'get'
       - 'messages'
       - 'public'
+
+  'remove_integration_app_key_value_cluster_v2@py.csm.fun':
+    id: 'remove_integration_app_key_value_cluster_v2@py.csm.fun'
+    name: 'remove_integration_app_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
+
+      Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/remove_integration_app__84d881.py'
+    example: |-
+      result, error = csm.remove_integration_app_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'integration'
+      - 'key'
+      - 'managed'
+      - 'remove'
+      - 'resources'
+      - 'v2'
+      - 'value'
 
   'save_secret_v1@py.csm.fun':
     id: 'save_secret_v1@py.csm.fun'
@@ -5157,6 +7115,43 @@ symbols:
       - 'start'
       - 'v2'
 
+  'start_sql_cluster_v2@py.csm.fun':
+    id: 'start_sql_cluster_v2@py.csm.fun'
+    name: 'start_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Start SQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/start_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.start_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'stop_app_v1@py.csm.fun':
     id: 'stop_app_v1@py.csm.fun'
     name: 'stop_app_v1'
@@ -5265,6 +7260,43 @@ symbols:
       - 'cluster'
       - 'managed'
       - 'no'
+      - 'resources'
+      - 'sql'
+      - 'stop'
+      - 'v2'
+
+  'stop_sql_cluster_v2@py.csm.fun':
+    id: 'stop_sql_cluster_v2@py.csm.fun'
+    name: 'stop_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Stop SQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    arguments:
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/stop_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.stop_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'managed'
       - 'resources'
       - 'sql'
       - 'stop'
@@ -5608,6 +7640,50 @@ symbols:
       - 'update'
       - 'v2'
 
+  'update_key_value_cluster_v2@py.csm.fun':
+    id: 'update_key_value_cluster_v2@py.csm.fun'
+    name: 'update_key_value_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
+
+      Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
+      Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
+    arguments:
+      'body':
+        type: 'DomainKeyValueUpdateConfiguration'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+      'resource_id':
+        type: 'str'
+        required: true
+        description: |-
+          Resource ID
+    return_type: 'Tuple[Union[None, ApimodelKeyValueResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/update_key_value_cluster_v2.py'
+    example: |-
+      result, error = csm.update_key_value_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'update'
+      - 'v2'
+      - 'value'
+
   'update_no_sql_cluster_v2@py.csm.fun':
     id: 'update_no_sql_cluster_v2@py.csm.fun'
     name: 'update_no_sql_cluster_v2'
@@ -5747,6 +7823,46 @@ symbols:
       - 'update'
       - 'v2'
 
+  'update_sql_cluster_v2@py.csm.fun':
+    id: 'update_sql_cluster_v2@py.csm.fun'
+    name: 'update_sql_cluster_v2'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
+      The cluster must be in an available state to allow configuration updates.
+
+      Configuration update process may take some time to complete, you can check the updated status from the `status` field of the resource response.
+    arguments:
+      'body':
+        type: 'SqlresourceSQLResourceConfiguration'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Studio Name
+    return_type: 'Tuple[Union[None, ApimodelSQLResourceResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/managed_resources_sql/update_sql_cluster_v2.py'
+    example: |-
+      result, error = csm.update_sql_cluster_v2(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'update'
+      - 'v2'
+
   'update_variable_v1@py.csm.fun':
     id: 'update_variable_v1@py.csm.fun'
     name: 'update_variable_v1'
@@ -5844,4 +7960,51 @@ symbols:
       - 'update'
       - 'v2'
       - 'variable'
+
+  'upload_app_ui_file@py.csm.fun':
+    id: 'upload_app_ui_file@py.csm.fun'
+    name: 'upload_app_ui_file'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
+
+      Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
+    arguments:
+      'app_ui_name':
+        type: 'str'
+        required: true
+        description: |-
+          App UI Name
+      'file':
+        type: 'Any'
+        required: true
+        description: |-
+          Zip file containing App UI assets
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+      'version':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Version of the App UI assets, can be left empty by default is 'default'
+    return_type: 'Tuple[Union[None, ApimodelUploadFileResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_ui/upload_app_ui_file.py'
+    example: |-
+      result, error = csm.upload_app_ui_file(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'file'
+      - 'ui'
+      - 'upload'
   # endregion functions

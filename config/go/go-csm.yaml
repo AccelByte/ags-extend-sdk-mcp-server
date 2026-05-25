@@ -44,6 +44,31 @@ symbols:
           TokenRepository:  tokenRepo,
       }
 
+  'AppUIService@go.csm.mod':
+    id: 'AppUIService@go.csm.mod'
+    name: 'AppUIService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appUI.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appUiService := AppUIService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'AppV2Service@go.csm.mod':
     id: 'AppV2Service@go.csm.mod'
     name: 'AppV2Service'
@@ -194,6 +219,31 @@ symbols:
           TokenRepository:  tokenRepo,
       }
 
+  'ExtendFilesService@go.csm.mod':
+    id: 'ExtendFilesService@go.csm.mod'
+    name: 'ExtendFilesService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/extendFiles.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      extendFilesService := ExtendFilesService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'ImageService@go.csm.mod':
     id: 'ImageService@go.csm.mod'
     name: 'ImageService'
@@ -264,6 +314,56 @@ symbols:
     example: |-
       csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
       managedResourcesService := ManagedResourcesService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ManagedResourcesKeyValueService@go.csm.mod':
+    id: 'ManagedResourcesKeyValueService@go.csm.mod'
+    name: 'ManagedResourcesKeyValueService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      managedResourcesKeyValueService := ManagedResourcesKeyValueService{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'ManagedResourcesSQLService@go.csm.mod':
+    id: 'ManagedResourcesSQLService@go.csm.mod'
+    name: 'ManagedResourcesSQLService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSQL.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      managedResourcesSqlService := ManagedResourcesSQLService{
           Client:           csmClient,
           ConfigRepository: configRepo,
           TokenRepository:  tokenRepo,
@@ -373,6 +473,29 @@ symbols:
 
   # region params
 
+  'ApplyAppConfigV2Params@go.csm.mod':
+    id: 'ApplyAppConfigV2Params@go.csm.mod'
+    name: 'ApplyAppConfigV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelApplyAppConfigRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/apply_app_config_v2_parameters.go'
+
   'BulkSaveSubscriptionAppNotificationV2Params@go.csm.mod':
     id: 'BulkSaveSubscriptionAppNotificationV2Params@go.csm.mod'
     name: 'BulkSaveSubscriptionAppNotificationV2Params'
@@ -395,6 +518,24 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/bulk_save_subscription_app_notification_v2_parameters.go'
+
+  'CreateAppUIParams@go.csm.mod':
+    id: 'CreateAppUIParams@go.csm.mod'
+    name: 'CreateAppUIParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*ApimodelCreateAppUIRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_ui/create_app_ui_parameters.go'
 
   'CreateAppV1Params@go.csm.mod':
     id: 'CreateAppV1Params@go.csm.mod'
@@ -488,6 +629,70 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/create_deployment_v2_parameters.go'
 
+  'CreateKeyValueClusterV2Params@go.csm.mod':
+    id: 'CreateKeyValueClusterV2Params@go.csm.mod'
+    name: 'CreateKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*DomainKeyValueResourceConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/create_key_value_cluster_v2_parameters.go'
+
+  'CreateKeyValueCredentialV2Params@go.csm.mod':
+    id: 'CreateKeyValueCredentialV2Params@go.csm.mod'
+    name: 'CreateKeyValueCredentialV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateKeyValueCredentialRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/create_key_value_credential_v2_parameters.go'
+
+  'CreateNewNoSQLDatabaseCredentialV2Params@go.csm.mod':
+    id: 'CreateNewNoSQLDatabaseCredentialV2Params@go.csm.mod'
+    name: 'CreateNewNoSQLDatabaseCredentialV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateNoSQLDatabaseCredentialRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_new_no_sql_database_credential_v2_parameters.go'
+
   'CreateNoSQLClusterV2Params@go.csm.mod':
     id: 'CreateNoSQLClusterV2Params@go.csm.mod'
     name: 'CreateNoSQLClusterV2Params'
@@ -551,6 +756,70 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/create_no_sql_database_v2_parameters.go'
+
+  'CreateSQLClusterV2Params@go.csm.mod':
+    id: 'CreateSQLClusterV2Params@go.csm.mod'
+    name: 'CreateSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*SqlresourceSQLResourceConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/create_sql_cluster_v2_parameters.go'
+
+  'CreateSQLDatabaseCredentialV2Params@go.csm.mod':
+    id: 'CreateSQLDatabaseCredentialV2Params@go.csm.mod'
+    name: 'CreateSQLDatabaseCredentialV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateSQLDatabaseCredentialRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/create_sql_database_credential_v2_parameters.go'
+
+  'CreateSQLDatabaseV2Params@go.csm.mod':
+    id: 'CreateSQLDatabaseV2Params@go.csm.mod'
+    name: 'CreateSQLDatabaseV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelCreateSQLAppDatabaseRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/create_sql_database_v2_parameters.go'
 
   'CreateSubscriptionHandlerParams@go.csm.mod':
     id: 'CreateSubscriptionHandlerParams@go.csm.mod'
@@ -638,6 +907,26 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/image_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/image_v2/delete_app_images_v2_parameters.go'
+
+  'DeleteAppUIParams@go.csm.mod':
+    id: 'DeleteAppUIParams@go.csm.mod'
+    name: 'DeleteAppUIParams'
+    type: 'model'
+    fields:
+      'AppUIName':
+        type: 'string'
+        required: true
+        description: |-
+          App UI Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_ui/delete_app_ui_parameters.go'
 
   'DeleteAppV1Params@go.csm.mod':
     id: 'DeleteAppV1Params@go.csm.mod'
@@ -729,6 +1018,26 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/delete_deployment_v2_parameters.go'
 
+  'DeleteKeyValueClusterV2Params@go.csm.mod':
+    id: 'DeleteKeyValueClusterV2Params@go.csm.mod'
+    name: 'DeleteKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/delete_key_value_cluster_v2_parameters.go'
+
   'DeleteNoSQLClusterV2Params@go.csm.mod':
     id: 'DeleteNoSQLClusterV2Params@go.csm.mod'
     name: 'DeleteNoSQLClusterV2Params'
@@ -813,6 +1122,41 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/delete_secret_v2_parameters.go'
+
+  'DeleteSQLClusterV2Params@go.csm.mod':
+    id: 'DeleteSQLClusterV2Params@go.csm.mod'
+    name: 'DeleteSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/delete_sql_cluster_v2_parameters.go'
+
+  'DeleteSQLDatabaseV2Params@go.csm.mod':
+    id: 'DeleteSQLDatabaseV2Params@go.csm.mod'
+    name: 'DeleteSQLDatabaseV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/delete_sql_database_v2_parameters.go'
 
   'DeleteSubscriptionAppNotificationByUserIDV2Params@go.csm.mod':
     id: 'DeleteSubscriptionAppNotificationByUserIDV2Params@go.csm.mod'
@@ -1180,6 +1524,101 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/deployment_v2/get_deployment_v2_parameters.go'
 
+  'GetExtendFileParams@go.csm.mod':
+    id: 'GetExtendFileParams@go.csm.mod'
+    name: 'GetExtendFileParams'
+    type: 'model'
+    fields:
+      'FilePath':
+        type: 'string'
+        required: true
+        description: |-
+          Path to file under namespace assets
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/extend_files'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/extend_files/get_extend_file_parameters.go'
+
+  'GetIntegrationAppKeyValueClusterV2Params@go.csm.mod':
+    id: 'GetIntegrationAppKeyValueClusterV2Params@go.csm.mod'
+    name: 'GetIntegrationAppKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/get_integration_app_key_value_cluster_v2_parameters.go'
+
+  'GetKeyValueClusterLimitConfigV2Params@go.csm.mod':
+    id: 'GetKeyValueClusterLimitConfigV2Params@go.csm.mod'
+    name: 'GetKeyValueClusterLimitConfigV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/get_key_value_cluster_limit_config_v2_parameters.go'
+
+  'GetKeyValueClusterV2Params@go.csm.mod':
+    id: 'GetKeyValueClusterV2Params@go.csm.mod'
+    name: 'GetKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/get_key_value_cluster_v2_parameters.go'
+
+  'GetListIntegratedAppKeyValueClusterV2Params@go.csm.mod':
+    id: 'GetListIntegratedAppKeyValueClusterV2Params@go.csm.mod'
+    name: 'GetListIntegratedAppKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/get_list_integrated_app_key_value_cluster_v2_parameters.go'
+
   'GetListOfDeploymentV1Params@go.csm.mod':
     id: 'GetListOfDeploymentV1Params@go.csm.mod'
     name: 'GetListOfDeploymentV1Params'
@@ -1511,6 +1950,81 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/resources_limits/get_resources_limits_parameters.go'
 
+  'GetSQLAppListV2Params@go.csm.mod':
+    id: 'GetSQLAppListV2Params@go.csm.mod'
+    name: 'GetSQLAppListV2Params'
+    type: 'model'
+    fields:
+      'AppName':
+        type: 'string'
+        required: false
+        description: |-
+          App Name
+      'GameNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          Game Name
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit for pagination
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset for pagination
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/get_sql_app_list_v2_parameters.go'
+
+  'GetSQLClusterV2Params@go.csm.mod':
+    id: 'GetSQLClusterV2Params@go.csm.mod'
+    name: 'GetSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/get_sql_cluster_v2_parameters.go'
+
+  'GetSQLDatabaseV2Params@go.csm.mod':
+    id: 'GetSQLDatabaseV2Params@go.csm.mod'
+    name: 'GetSQLDatabaseV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/get_sql_database_v2_parameters.go'
+
   'GetSubscriptionV2HandlerParams@go.csm.mod':
     id: 'GetSubscriptionV2HandlerParams@go.csm.mod'
     name: 'GetSubscriptionV2HandlerParams'
@@ -1530,6 +2044,79 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/notification_subscription'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/get_subscription_v2_handler_parameters.go'
+
+  'IntegrateAppKeyValueClusterV2Params@go.csm.mod':
+    id: 'IntegrateAppKeyValueClusterV2Params@go.csm.mod'
+    name: 'IntegrateAppKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Body':
+        type: '*ApimodelIntegrateAppKeyValueRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/integrate_app_key_value_cluster_v2_parameters.go'
+
+  'ListAppUIParams@go.csm.mod':
+    id: 'ListAppUIParams@go.csm.mod'
+    name: 'ListAppUIParams'
+    type: 'model'
+    fields:
+      'Limit':
+        type: 'int64'
+        required: false
+        description: |-
+          Limit for pagination
+      'Name':
+        type: 'string'
+        required: false
+        description: |-
+          Filter by app UI name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+      'Offset':
+        type: 'int64'
+        required: false
+        description: |-
+          Offset for pagination
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_ui/list_app_ui_parameters.go'
+
+  'ListKeyValueClusterV2Params@go.csm.mod':
+    id: 'ListKeyValueClusterV2Params@go.csm.mod'
+    name: 'ListKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'Refresh':
+        type: 'bool'
+        required: false
+        description: |-
+          Refresh status from provider
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/list_key_value_cluster_v2_parameters.go'
 
   'ListTopicsHandlerParams@go.csm.mod':
     id: 'ListTopicsHandlerParams@go.csm.mod'
@@ -1579,6 +2166,26 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/messages'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/messages/public_get_messages_parameters.go'
+
+  'RemoveIntegrationAppKeyValueClusterV2Params@go.csm.mod':
+    id: 'RemoveIntegrationAppKeyValueClusterV2Params@go.csm.mod'
+    name: 'RemoveIntegrationAppKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/remove_integration_app_key_value_cluster_v2_parameters.go'
 
   'SaveSecretV1Params@go.csm.mod':
     id: 'SaveSecretV1Params@go.csm.mod'
@@ -1730,6 +2337,21 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/start_no_sql_cluster_v2_parameters.go'
 
+  'StartSQLClusterV2Params@go.csm.mod':
+    id: 'StartSQLClusterV2Params@go.csm.mod'
+    name: 'StartSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/start_sql_cluster_v2_parameters.go'
+
   'StopAppV1Params@go.csm.mod':
     id: 'StopAppV1Params@go.csm.mod'
     name: 'StopAppV1Params'
@@ -1787,6 +2409,21 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources/stop_no_sql_cluster_v2_parameters.go'
+
+  'StopSQLClusterV2Params@go.csm.mod':
+    id: 'StopSQLClusterV2Params@go.csm.mod'
+    name: 'StopSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/stop_sql_cluster_v2_parameters.go'
 
   'SubscribeAppNotificationV2Params@go.csm.mod':
     id: 'SubscribeAppNotificationV2Params@go.csm.mod'
@@ -1971,6 +2608,29 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/update_app_v2_parameters.go'
 
+  'UpdateKeyValueClusterV2Params@go.csm.mod':
+    id: 'UpdateKeyValueClusterV2Params@go.csm.mod'
+    name: 'UpdateKeyValueClusterV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*DomainKeyValueUpdateConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+      'ResourceID':
+        type: 'string'
+        required: true
+        description: |-
+          Resource ID
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_key_value/update_key_value_cluster_v2_parameters.go'
+
   'UpdateNoSQLClusterV2Params@go.csm.mod':
     id: 'UpdateNoSQLClusterV2Params@go.csm.mod'
     name: 'UpdateNoSQLClusterV2Params'
@@ -2045,6 +2705,24 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/update_secret_v2_parameters.go'
 
+  'UpdateSQLClusterV2Params@go.csm.mod':
+    id: 'UpdateSQLClusterV2Params@go.csm.mod'
+    name: 'UpdateSQLClusterV2Params'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*SqlresourceSQLResourceConfiguration'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Studio Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/managed_resources_sql/update_sql_cluster_v2_parameters.go'
+
   'UpdateVariableV1Params@go.csm.mod':
     id: 'UpdateVariableV1Params@go.csm.mod'
     name: 'UpdateVariableV1Params'
@@ -2100,6 +2778,36 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/configuration_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/update_variable_v2_parameters.go'
+
+  'UploadAppUIFileParams@go.csm.mod':
+    id: 'UploadAppUIFileParams@go.csm.mod'
+    name: 'UploadAppUIFileParams'
+    type: 'model'
+    fields:
+      'AppUIName':
+        type: 'string'
+        required: true
+        description: |-
+          App UI Name
+      'File':
+        type: '[]byte'
+        required: true
+        description: |-
+          Zip file containing App UI assets
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+      'Version':
+        type: 'string'
+        required: false
+        description: |-
+          Version of the App UI assets, can be left empty by default is 'default'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_ui/upload_app_ui_file_parameters.go'
 
   # endregion params
 
@@ -2190,6 +2898,112 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_item.go'
 
+  'ApimodelApplyAppConfigRequest@go.csm.mod':
+    id: 'ApimodelApplyAppConfigRequest@go.csm.mod'
+    name: 'ApimodelApplyAppConfigRequest'
+    type: 'model'
+    fields:
+      'Autoscaling':
+        type: '*ApimodelAutoscalingRequest'
+        required: false
+      'CPU':
+        type: '*ApimodelCPURequest'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Memory':
+        type: '*ApimodelMemoryRequest'
+        required: false
+      'Permissions':
+        type: '[]*ApimodelApplyPermissionItem'
+        required: false
+      'Replica':
+        type: '*ApimodelReplicaRequest'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: true
+      'Secrets':
+        type: '[]*ApimodelApplyConfigItem'
+        required: false
+      'Variables':
+        type: '[]*ApimodelApplyConfigItem'
+        required: false
+      'VMSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_apply_app_config_request.go'
+
+  'ApimodelApplyConfigItem@go.csm.mod':
+    id: 'ApimodelApplyConfigItem@go.csm.mod'
+    name: 'ApimodelApplyConfigItem'
+    type: 'model'
+    fields:
+      'Name':
+        type: 'string'
+        required: true
+      'Value':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_apply_config_item.go'
+
+  'ApimodelApplyPermissionItem@go.csm.mod':
+    id: 'ApimodelApplyPermissionItem@go.csm.mod'
+    name: 'ApimodelApplyPermissionItem'
+    type: 'model'
+    fields:
+      'Action':
+        type: 'int32'
+        required: true
+      'Resource':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_apply_permission_item.go'
+
+  'ApimodelAppUIResponse@go.csm.mod':
+    id: 'ApimodelAppUIResponse@go.csm.mod'
+    name: 'ApimodelAppUIResponse'
+    type: 'model'
+    fields:
+      'AppUIID':
+        type: 'string'
+        required: true
+      'AssetBasePath':
+        type: 'string'
+        required: true
+      'CreatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+      'CurrentFileVersion':
+        type: 'string'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'PublicIamClient':
+        type: '*ApimodelPublicIAMClientResponse'
+        required: false
+      'UpdatedAt':
+        type: 'strfmt.DateTime'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_ui_response.go'
+
   'ApimodelAutoscalingRequest@go.csm.mod':
     id: 'ApimodelAutoscalingRequest@go.csm.mod'
     name: 'ApimodelAutoscalingRequest'
@@ -2277,6 +3091,19 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_cpu_response.go'
 
+  'ApimodelCreateAppUIRequest@go.csm.mod':
+    id: 'ApimodelCreateAppUIRequest@go.csm.mod'
+    name: 'ApimodelCreateAppUIRequest'
+    type: 'model'
+    fields:
+      'Name':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_app_ui_request.go'
+
   'ApimodelCreateAppV2Request@go.csm.mod':
     id: 'ApimodelCreateAppV2Request@go.csm.mod'
     name: 'ApimodelCreateAppV2Request'
@@ -2334,11 +3161,52 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_deployment_v2_response.go'
 
+  'ApimodelCreateKeyValueCredentialRequest@go.csm.mod':
+    id: 'ApimodelCreateKeyValueCredentialRequest@go.csm.mod'
+    name: 'ApimodelCreateKeyValueCredentialRequest'
+    type: 'model'
+    fields:
+      'Password':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_key_value_credential_request.go'
+
+  'ApimodelCreateKeyValueCredentialResponse@go.csm.mod':
+    id: 'ApimodelCreateKeyValueCredentialResponse@go.csm.mod'
+    name: 'ApimodelCreateKeyValueCredentialResponse'
+    type: 'model'
+    fields:
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+      'RecommendedMaxAgeDays':
+        type: 'int32'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_key_value_credential_response.go'
+
   'ApimodelCreateNoSQLAppDatabaseRequest@go.csm.mod':
     id: 'ApimodelCreateNoSQLAppDatabaseRequest@go.csm.mod'
     name: 'ApimodelCreateNoSQLAppDatabaseRequest'
     type: 'model'
     fields:
+      'Acknowledgements':
+        type: '*ApimodelNoSQLDatabaseAcknowledgements'
+        required: true
       'DbName':
         type: 'string'
         required: true
@@ -2358,6 +3226,9 @@ symbols:
     name: 'ApimodelCreateNoSQLDatabaseCredentialRequest'
     type: 'model'
     fields:
+      'Acknowledgements':
+        type: '*ApimodelNoSQLDatabaseAcknowledgements'
+        required: true
       'Password':
         type: 'string'
         required: true
@@ -2368,6 +3239,44 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_no_sql_database_credential_request.go'
+
+  'ApimodelCreateSQLAppDatabaseRequest@go.csm.mod':
+    id: 'ApimodelCreateSQLAppDatabaseRequest@go.csm.mod'
+    name: 'ApimodelCreateSQLAppDatabaseRequest'
+    type: 'model'
+    fields:
+      'Acknowledgements':
+        type: '*ApimodelSQLDatabaseAcknowledgements'
+        required: true
+      'DbName':
+        type: 'string'
+        required: true
+      'Password':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_sql_app_database_request.go'
+
+  'ApimodelCreateSQLDatabaseCredentialRequest@go.csm.mod':
+    id: 'ApimodelCreateSQLDatabaseCredentialRequest@go.csm.mod'
+    name: 'ApimodelCreateSQLDatabaseCredentialRequest'
+    type: 'model'
+    fields:
+      'Password':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_sql_database_credential_request.go'
 
   'ApimodelCreateSubscriptionRequest@go.csm.mod':
     id: 'ApimodelCreateSubscriptionRequest@go.csm.mod'
@@ -2475,6 +3384,31 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_delete_no_sql_resource_response.go'
+
+  'ApimodelDeleteSQLResourceResponse@go.csm.mod':
+    id: 'ApimodelDeleteSQLResourceResponse@go.csm.mod'
+    name: 'ApimodelDeleteSQLResourceResponse'
+    type: 'model'
+    fields:
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceName':
+        type: 'string'
+        required: true
+      'ResourceType':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_delete_sql_resource_response.go'
 
   'ApimodelGetAppImageListV2DataItem@go.csm.mod':
     id: 'ApimodelGetAppImageListV2DataItem@go.csm.mod'
@@ -2658,6 +3592,49 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_deployment_list_v2_response.go'
+
+  'ApimodelGetIntegrationAppKeyValueResponse@go.csm.mod':
+    id: 'ApimodelGetIntegrationAppKeyValueResponse@go.csm.mod'
+    name: 'ApimodelGetIntegrationAppKeyValueResponse'
+    type: 'model'
+    fields:
+      'AcceptKeyValueSecureCredentialHandling':
+        type: 'bool'
+        required: true
+      'AppID':
+        type: 'string'
+        required: true
+      'Credentials':
+        type: '*ApimodelIntegrationCredentialInfo'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'Hostnames':
+        type: 'string'
+        required: true
+      'IntegrationID':
+        type: 'string'
+        required: true
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceStatus':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StatusMessage':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_integration_app_key_value_response.go'
 
   'ApimodelGetListOfConfigurationsV2DataItem@go.csm.mod':
     id: 'ApimodelGetListOfConfigurationsV2DataItem@go.csm.mod'
@@ -2844,6 +3821,240 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_increase_limit_form_request.go'
 
+  'ApimodelIntegrateAppKeyValueRequest@go.csm.mod':
+    id: 'ApimodelIntegrateAppKeyValueRequest@go.csm.mod'
+    name: 'ApimodelIntegrateAppKeyValueRequest'
+    type: 'model'
+    fields:
+      'Acknowledgements':
+        type: '*ApimodelKeyValueCredentialAcknowledgements'
+        required: true
+      'Password':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_integrate_app_key_value_request.go'
+
+  'ApimodelIntegrateAppKeyValueResponse@go.csm.mod':
+    id: 'ApimodelIntegrateAppKeyValueResponse@go.csm.mod'
+    name: 'ApimodelIntegrateAppKeyValueResponse'
+    type: 'model'
+    fields:
+      'AcceptKeyValueSecureCredentialHandling':
+        type: 'bool'
+        required: true
+      'AppID':
+        type: 'string'
+        required: true
+      'Credentials':
+        type: '*ApimodelIntegrationCredentialInfo'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'Hostnames':
+        type: 'string'
+        required: true
+      'IntegrationID':
+        type: 'string'
+        required: true
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceStatus':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StatusMessage':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_integrate_app_key_value_response.go'
+
+  'ApimodelIntegrationCredentialInfo@go.csm.mod':
+    id: 'ApimodelIntegrationCredentialInfo@go.csm.mod'
+    name: 'ApimodelIntegrationCredentialInfo'
+    type: 'model'
+    fields:
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+      'RecommendedMaxAgeDays':
+        type: 'int32'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_integration_credential_info.go'
+
+  'ApimodelIntegrationListItem@go.csm.mod':
+    id: 'ApimodelIntegrationListItem@go.csm.mod'
+    name: 'ApimodelIntegrationListItem'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'IntegrationID':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StatusMessage':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_integration_list_item.go'
+
+  'ApimodelKeyValueCredentialAcknowledgements@go.csm.mod':
+    id: 'ApimodelKeyValueCredentialAcknowledgements@go.csm.mod'
+    name: 'ApimodelKeyValueCredentialAcknowledgements'
+    type: 'model'
+    fields:
+      'AcceptKeyValueSecureCredentialHandling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_key_value_credential_acknowledgements.go'
+
+  'ApimodelKeyValueResourceListResponse@go.csm.mod':
+    id: 'ApimodelKeyValueResourceListResponse@go.csm.mod'
+    name: 'ApimodelKeyValueResourceListResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelKeyValueResourceResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_key_value_resource_list_response.go'
+
+  'ApimodelKeyValueResourceResponse@go.csm.mod':
+    id: 'ApimodelKeyValueResourceResponse@go.csm.mod'
+    name: 'ApimodelKeyValueResourceResponse'
+    type: 'model'
+    fields:
+      'ClusterName':
+        type: 'string'
+        required: true
+      'Configuration':
+        type: '*DomainKeyValueResourceConfiguration'
+        required: true
+      'Engine':
+        type: 'string'
+        required: true
+      'Hostnames':
+        type: 'string'
+        required: true
+      'LastRotatedAt':
+        type: 'string'
+        required: true
+      'PlatformName':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceName':
+        type: 'string'
+        required: true
+      'ResourceType':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StatusMessage':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_key_value_resource_response.go'
+
+  'ApimodelListAppUIResponse@go.csm.mod':
+    id: 'ApimodelListAppUIResponse@go.csm.mod'
+    name: 'ApimodelListAppUIResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelAppUIResponse'
+        required: true
+      'Pagination':
+        type: '*ApimodelPaginationResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_list_app_ui_response.go'
+
+  'ApimodelListIntegratedAppsKeyValueResponse@go.csm.mod':
+    id: 'ApimodelListIntegratedAppsKeyValueResponse@go.csm.mod'
+    name: 'ApimodelListIntegratedAppsKeyValueResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelIntegrationListItem'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_list_integrated_apps_key_value_response.go'
+
   'ApimodelListTopicsResponse@go.csm.mod':
     id: 'ApimodelListTopicsResponse@go.csm.mod'
     name: 'ApimodelListTopicsResponse'
@@ -2927,6 +4138,19 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_app_response.go'
 
+  'ApimodelNoSQLDatabaseAcknowledgements@go.csm.mod':
+    id: 'ApimodelNoSQLDatabaseAcknowledgements@go.csm.mod'
+    name: 'ApimodelNoSQLDatabaseAcknowledgements'
+    type: 'model'
+    fields:
+      'AcceptNosqlSecureCredentialHandling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_no_sql_database_acknowledgements.go'
+
   'ApimodelNoSQLDatabaseCredentialResponse@go.csm.mod':
     id: 'ApimodelNoSQLDatabaseCredentialResponse@go.csm.mod'
     name: 'ApimodelNoSQLDatabaseCredentialResponse'
@@ -2937,6 +4161,9 @@ symbols:
         required: true
       'Owner':
         type: 'string'
+        required: true
+      'RecommendedMaxAgeDays':
+        type: 'int32'
         required: true
       'Username':
         type: 'string'
@@ -2967,6 +4194,9 @@ symbols:
     name: 'ApimodelNoSQLDatabaseResponse'
     type: 'model'
     fields:
+      'AcceptNosqlSecureCredentialHandling':
+        type: 'bool'
+        required: true
       'AppID':
         type: 'string'
         required: true
@@ -3006,6 +4236,9 @@ symbols:
     fields:
       'Configuration':
         type: '*NosqlresourceNoSQLResourceConfiguration'
+        required: false
+      'EngineVersion':
+        type: 'string'
         required: false
       'Hostnames':
         type: 'string'
@@ -3082,6 +4315,25 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_pagination_response.go'
+
+  'ApimodelPublicIAMClientResponse@go.csm.mod':
+    id: 'ApimodelPublicIAMClientResponse@go.csm.mod'
+    name: 'ApimodelPublicIAMClientResponse'
+    type: 'model'
+    fields:
+      'ClientID':
+        type: 'string'
+        required: true
+      'ClientName':
+        type: 'string'
+        required: true
+      'RedirectURIList':
+        type: '[]string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_public_i_a_m_client_response.go'
 
   'ApimodelReplicaRequest@go.csm.mod':
     id: 'ApimodelReplicaRequest@go.csm.mod'
@@ -3196,6 +4448,178 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_self_subscribe_notification_request.go'
+
+  'ApimodelSQLAppListResponse@go.csm.mod':
+    id: 'ApimodelSQLAppListResponse@go.csm.mod'
+    name: 'ApimodelSQLAppListResponse'
+    type: 'model'
+    fields:
+      'Data':
+        type: '[]*ApimodelSQLAppResponse'
+        required: true
+      'Pagination':
+        type: '*ApimodelPaginationResponse'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_app_list_response.go'
+
+  'ApimodelSQLAppResponse@go.csm.mod':
+    id: 'ApimodelSQLAppResponse@go.csm.mod'
+    name: 'ApimodelSQLAppResponse'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'GameName':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_app_response.go'
+
+  'ApimodelSQLDatabaseAcknowledgements@go.csm.mod':
+    id: 'ApimodelSQLDatabaseAcknowledgements@go.csm.mod'
+    name: 'ApimodelSQLDatabaseAcknowledgements'
+    type: 'model'
+    fields:
+      'AcceptSQLSecureCredentialHandling':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_database_acknowledgements.go'
+
+  'ApimodelSQLDatabaseCredentialResponse@go.csm.mod':
+    id: 'ApimodelSQLDatabaseCredentialResponse@go.csm.mod'
+    name: 'ApimodelSQLDatabaseCredentialResponse'
+    type: 'model'
+    fields:
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'Owner':
+        type: 'string'
+        required: true
+      'RecommendedMaxAge':
+        type: 'int32'
+        required: true
+      'Username':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_database_credential_response.go'
+
+  'ApimodelSQLDatabaseDeleteResponse@go.csm.mod':
+    id: 'ApimodelSQLDatabaseDeleteResponse@go.csm.mod'
+    name: 'ApimodelSQLDatabaseDeleteResponse'
+    type: 'model'
+    fields:
+      'DbID':
+        type: 'string'
+        required: true
+      'DbName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_database_delete_response.go'
+
+  'ApimodelSQLDatabaseResponse@go.csm.mod':
+    id: 'ApimodelSQLDatabaseResponse@go.csm.mod'
+    name: 'ApimodelSQLDatabaseResponse'
+    type: 'model'
+    fields:
+      'AcceptSQLSecureCredentialHandling':
+        type: 'bool'
+        required: true
+      'AppID':
+        type: 'string'
+        required: true
+      'Credentials':
+        type: '*ApimodelSQLDatabaseCredentialResponse'
+        required: true
+      'DbID':
+        type: 'string'
+        required: true
+      'DbName':
+        type: 'string'
+        required: true
+      'GameNamespace':
+        type: 'string'
+        required: true
+      'Hostnames':
+        type: 'string'
+        required: true
+      'PlatformName':
+        type: 'string'
+        required: true
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceStatus':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_database_response.go'
+
+  'ApimodelSQLResourceResponse@go.csm.mod':
+    id: 'ApimodelSQLResourceResponse@go.csm.mod'
+    name: 'ApimodelSQLResourceResponse'
+    type: 'model'
+    fields:
+      'Configuration':
+        type: '*SqlresourceSQLResourceConfiguration'
+        required: false
+      'EngineVersion':
+        type: 'string'
+        required: false
+      'Hostnames':
+        type: 'string'
+        required: false
+      'LastRotatedAt':
+        type: 'string'
+        required: false
+      'PlatformName':
+        type: 'string'
+        required: true
+      'Region':
+        type: 'string'
+        required: false
+      'ResourceID':
+        type: 'string'
+        required: true
+      'ResourceName':
+        type: 'string'
+        required: true
+      'ResourceType':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'StudioName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_sql_resource_response.go'
 
   'ApimodelSubscribeNotificationRequest@go.csm.mod':
     id: 'ApimodelSubscribeNotificationRequest@go.csm.mod'
@@ -3476,6 +4900,79 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_secret_configuration_v2_request.go'
+
+  'ApimodelUploadFileResponse@go.csm.mod':
+    id: 'ApimodelUploadFileResponse@go.csm.mod'
+    name: 'ApimodelUploadFileResponse'
+    type: 'model'
+    fields:
+      'AppUI':
+        type: '*ApimodelAppUIResponse'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_upload_file_response.go'
+
+  'DomainKeyValueClusterConfig@go.csm.mod':
+    id: 'DomainKeyValueClusterConfig@go.csm.mod'
+    name: 'DomainKeyValueClusterConfig'
+    type: 'model'
+    fields:
+      'MaxClusterPerStudioPrivateCloud':
+        type: 'int32'
+        required: true
+      'MaxClusterPerStudioSharedCloud':
+        type: 'int32'
+        required: true
+      'MaxIntegrationPerCluster':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_key_value_cluster_config.go'
+
+  'DomainKeyValueResourceConfiguration@go.csm.mod':
+    id: 'DomainKeyValueResourceConfiguration@go.csm.mod'
+    name: 'DomainKeyValueResourceConfiguration'
+    type: 'model'
+    fields:
+      'ClusterName':
+        type: 'string'
+        required: true
+      'MaxDataStorageGB':
+        type: 'int32'
+        required: true
+      'MaxECPUPerSecond':
+        type: 'int32'
+        required: true
+      'ProfileName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_key_value_resource_configuration.go'
+
+  'DomainKeyValueUpdateConfiguration@go.csm.mod':
+    id: 'DomainKeyValueUpdateConfiguration@go.csm.mod'
+    name: 'DomainKeyValueUpdateConfiguration'
+    type: 'model'
+    fields:
+      'MaxDataStorageGB':
+        type: 'int32'
+        required: true
+      'MaxECPUPerSecond':
+        type: 'int32'
+        required: true
+      'ProfileName':
+        type: 'string'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_key_value_update_configuration.go'
 
   'GeneratedCreateAppV1Request@go.csm.mod':
     id: 'GeneratedCreateAppV1Request@go.csm.mod'
@@ -4334,9 +5831,68 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/response_error_response.go'
 
+  'SqlresourceSQLResourceConfiguration@go.csm.mod':
+    id: 'SqlresourceSQLResourceConfiguration@go.csm.mod'
+    name: 'SqlresourceSQLResourceConfiguration'
+    type: 'model'
+    fields:
+      'MaxACU':
+        type: 'float64'
+        required: true
+      'MinACU':
+        type: 'float64'
+        required: true
+      'MultiAZ':
+        type: 'bool'
+        required: true
+      'ProfileName':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/sqlresource_sql_resource_configuration.go'
+
   # endregion models
 
   # region functions
+
+  'ApplyAppConfigV2Short@go.csm.fun':
+    id: 'ApplyAppConfigV2Short@go.csm.fun'
+    name: 'ApplyAppConfigV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
+
+      Idempotent endpoint that creates or updates an Extend app from a declarative spec.
+      Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
+
+      Note: `preferred_k8s_namespace` is only used on the initial create call; it is ignored on subsequent apply calls.
+      On the first apply after creation the deletion phase is skipped (no prior apply state recorded).
+    struct: 'AppV2Service'
+    arguments:
+      params:
+        type: '*app_v2.ApplyAppConfigV2Params'
+        required: true
+    return_type: '(*app_v2.ApplyAppConfigV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV2.go'
+    example: |-
+      appV2Service := csm.AppV2Service{ ... }
+      params := app_v2.ApplyAppConfigV2Params{ ... }
+      res, err := appV2Service.ApplyAppConfigV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'apply'
+      - 'config'
+      - 'v2'
 
   'BulkSaveSubscriptionAppNotificationV2Short@go.csm.fun':
     id: 'BulkSaveSubscriptionAppNotificationV2Short@go.csm.fun'
@@ -4380,6 +5936,38 @@ symbols:
       - 'save'
       - 'subscription'
       - 'v2'
+
+  'CreateAppUIShort@go.csm.fun':
+    id: 'CreateAppUIShort@go.csm.fun'
+    name: 'CreateAppUIShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
+
+      Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
+    struct: 'AppUIService'
+    arguments:
+      params:
+        type: '*app_ui.CreateAppUIParams'
+        required: true
+    return_type: '(*app_ui.CreateAppUIResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appUi.go'
+    example: |-
+      appUIService := csm.AppUIService{ ... }
+      params := app_ui.CreateAppUIParams{ ... }
+      res, err := appUIService.CreateAppUIShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'create'
+      - 'ui'
 
   'CreateAppV1Short@go.csm.fun':
     id: 'CreateAppV1Short@go.csm.fun'
@@ -4430,9 +6018,9 @@ symbols:
       Create new extend app with name provided by {app} path parameter and specified scenario type
 
       Available scenario:
+      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
-      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -4559,6 +6147,128 @@ symbols:
       - 'deployment'
       - 'v2'
 
+  'CreateKeyValueClusterV2Short@go.csm.fun':
+    id: 'CreateKeyValueClusterV2Short@go.csm.fun'
+    name: 'CreateKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
+
+      Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
+
+      Cluster limits:
+      - Private cloud: up to 10 clusters per studio namespace
+      - Shared cloud: 1 cluster per studio namespace
+
+      Provisioning process is done asynchronously, you can check from the `status` field of the resource response.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.CreateKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.CreateKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.CreateKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.CreateKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'create'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'CreateKeyValueCredentialV2Short@go.csm.fun':
+    id: 'CreateKeyValueCredentialV2Short@go.csm.fun'
+    name: 'CreateKeyValueCredentialV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
+
+      Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
+      Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
+      If the same username and password are provided, returns the existing credential (idempotent).
+
+      Acknowledgement for secure credential handling is only required at integrate-app; not needed for this endpoint.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.CreateKeyValueCredentialV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.CreateKeyValueCredentialV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.CreateKeyValueCredentialV2Params{ ... }
+      res, err := managedResourcesKeyValueService.CreateKeyValueCredentialV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'credential'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'CreateNewNoSQLDatabaseCredentialV2Short@go.csm.fun':
+    id: 'CreateNewNoSQLDatabaseCredentialV2Short@go.csm.fun'
+    name: 'CreateNewNoSQLDatabaseCredentialV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
+
+      Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
+    struct: 'ManagedResourcesService'
+    arguments:
+      params:
+        type: '*managed_resources.CreateNewNoSQLDatabaseCredentialV2Params'
+        required: true
+    return_type: '(*managed_resources.CreateNewNoSQLDatabaseCredentialV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResources.go'
+    example: |-
+      managedResourcesService := csm.ManagedResourcesService{ ... }
+      params := managed_resources.CreateNewNoSQLDatabaseCredentialV2Params{ ... }
+      res, err := managedResourcesService.CreateNewNoSQLDatabaseCredentialV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'credential'
+      - 'database'
+      - 'managed'
+      - 'new'
+      - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'CreateNoSQLClusterV2Short@go.csm.fun':
     id: 'CreateNoSQLClusterV2Short@go.csm.fun'
     name: 'CreateNoSQLClusterV2Short'
@@ -4606,6 +6316,8 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
 
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -4643,6 +6355,8 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
 
       Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
+
+      `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -4667,6 +6381,115 @@ symbols:
       - 'database'
       - 'managed'
       - 'no'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'CreateSQLClusterV2Short@go.csm.fun':
+    id: 'CreateSQLClusterV2Short@go.csm.fun'
+    name: 'CreateSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
+
+      Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
+      Only one SQL resource can be created for one studio/publisher namespace.
+
+      Provisioning process is done asynchronously, you can check from the `status` field of the resource response.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.CreateSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.CreateSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.CreateSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.CreateSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'create'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'CreateSQLDatabaseCredentialV2Short@go.csm.fun':
+    id: 'CreateSQLDatabaseCredentialV2Short@go.csm.fun'
+    name: 'CreateSQLDatabaseCredentialV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
+
+      Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.CreateSQLDatabaseCredentialV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.CreateSQLDatabaseCredentialV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.CreateSQLDatabaseCredentialV2Params{ ... }
+      res, err := managedResourcesSQLService.CreateSQLDatabaseCredentialV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'credential'
+      - 'database'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'CreateSQLDatabaseV2Short@go.csm.fun':
+    id: 'CreateSQLDatabaseV2Short@go.csm.fun'
+    name: 'CreateSQLDatabaseV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
+
+      Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.CreateSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.CreateSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.CreateSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesSQLService.CreateSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'create'
+      - 'database'
+      - 'managed'
       - 'resources'
       - 'sql'
       - 'v2'
@@ -4806,6 +6629,38 @@ symbols:
       - 'image'
       - 'images'
       - 'v2'
+
+  'DeleteAppUIShort@go.csm.fun':
+    id: 'DeleteAppUIShort@go.csm.fun'
+    name: 'DeleteAppUIShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
+
+      Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
+    struct: 'AppUIService'
+    arguments:
+      params:
+        type: '*app_ui.DeleteAppUIParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appUi.go'
+    example: |-
+      appUIService := csm.AppUIService{ ... }
+      params := app_ui.DeleteAppUIParams{ ... }
+      res, err := appUIService.DeleteAppUIShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'delete'
+      - 'ui'
 
   'DeleteAppV1Short@go.csm.fun':
     id: 'DeleteAppV1Short@go.csm.fun'
@@ -4951,6 +6806,43 @@ symbols:
       - 'deployment'
       - 'v2'
 
+  'DeleteKeyValueClusterV2Short@go.csm.fun':
+    id: 'DeleteKeyValueClusterV2Short@go.csm.fun'
+    name: 'DeleteKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
+
+      Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
+      Force-deletes all active integrations. Returns resource with status DELETING.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.DeleteKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.DeleteKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.DeleteKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.DeleteKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'delete'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
   'DeleteNoSQLClusterV2Short@go.csm.fun':
     id: 'DeleteNoSQLClusterV2Short@go.csm.fun'
     name: 'DeleteNoSQLClusterV2Short'
@@ -5092,6 +6984,81 @@ symbols:
       - 'configuration'
       - 'delete'
       - 'secret'
+      - 'v2'
+
+  'DeleteSQLClusterV2Short@go.csm.fun':
+    id: 'DeleteSQLClusterV2Short@go.csm.fun'
+    name: 'DeleteSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
+
+      You can only delete the cluster when its status is "available".
+
+      Deleting the cluster will:
+      - Remove SQL integration.
+      - Remove all the data from the SQL
+      - Remove all the credentials, including the Extend Appâs credentials.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.DeleteSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.DeleteSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.DeleteSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.DeleteSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'delete'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'DeleteSQLDatabaseV2Short@go.csm.fun':
+    id: 'DeleteSQLDatabaseV2Short@go.csm.fun'
+    name: 'DeleteSQLDatabaseV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
+
+      Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.DeleteSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.DeleteSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.DeleteSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesSQLService.DeleteSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'database'
+      - 'delete'
+      - 'managed'
+      - 'resources'
+      - 'sql'
       - 'v2'
 
   'DeleteSubscriptionAppNotificationByUserIDV2Short@go.csm.fun':
@@ -5635,6 +7602,192 @@ symbols:
       - 'get'
       - 'v2'
 
+  'GetExtendFileShort@go.csm.fun':
+    id: 'GetExtendFileShort@go.csm.fun'
+    name: 'GetExtendFileShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
+
+      Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
+    struct: 'ExtendFilesService'
+    arguments:
+      params:
+        type: '*extend_files.GetExtendFileParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/extend_files'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/extendFiles.go'
+    example: |-
+      extendFilesService := csm.ExtendFilesService{ ... }
+      params := extend_files.GetExtendFileParams{ ... }
+      res, err := extendFilesService.GetExtendFileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'extend'
+      - 'file'
+      - 'files'
+      - 'get'
+
+  'GetIntegrationAppKeyValueClusterV2Short@go.csm.fun':
+    id: 'GetIntegrationAppKeyValueClusterV2Short@go.csm.fun'
+    name: 'GetIntegrationAppKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
+
+      Get integration of an extend app with a cluster.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.GetIntegrationAppKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.GetIntegrationAppKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.GetIntegrationAppKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.GetIntegrationAppKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'get'
+      - 'integration'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'GetKeyValueClusterLimitConfigV2Short@go.csm.fun':
+    id: 'GetKeyValueClusterLimitConfigV2Short@go.csm.fun'
+    name: 'GetKeyValueClusterLimitConfigV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get Key-Value cluster limit config.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.GetKeyValueClusterLimitConfigV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.GetKeyValueClusterLimitConfigV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.GetKeyValueClusterLimitConfigV2Params{ ... }
+      res, err := managedResourcesKeyValueService.GetKeyValueClusterLimitConfigV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'config'
+      - 'get'
+      - 'key'
+      - 'limit'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'GetKeyValueClusterV2Short@go.csm.fun':
+    id: 'GetKeyValueClusterV2Short@go.csm.fun'
+    name: 'GetKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
+
+      `status` field - indicates the Key-Value cluster status.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.GetKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.GetKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.GetKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.GetKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'get'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'GetListIntegratedAppKeyValueClusterV2Short@go.csm.fun':
+    id: 'GetListIntegratedAppKeyValueClusterV2Short@go.csm.fun'
+    name: 'GetListIntegratedAppKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.GetListIntegratedAppKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.GetListIntegratedAppKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.GetListIntegratedAppKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.GetListIntegratedAppKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'get'
+      - 'integrated'
+      - 'key'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
   'GetListOfDeploymentV1Short@go.csm.fun':
     id: 'GetListOfDeploymentV1Short@go.csm.fun'
     name: 'GetListOfDeploymentV1Short'
@@ -5914,16 +8067,16 @@ symbols:
       Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
 
       Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
-      - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `stopped` : The cluster is stopped and not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -5963,16 +8116,16 @@ symbols:
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -6013,15 +8166,15 @@ symbols:
 
       `resourceStatus` field - indicates the NoSQL cluster status:
       - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -6169,6 +8322,150 @@ symbols:
       - 'limits'
       - 'resources'
 
+  'GetSQLAppListV2Short@go.csm.fun':
+    id: 'GetSQLAppListV2Short@go.csm.fun'
+    name: 'GetSQLAppListV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
+
+      Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.GetSQLAppListV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.GetSQLAppListV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.GetSQLAppListV2Params{ ... }
+      res, err := managedResourcesSQLService.GetSQLAppListV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'GetSQLClusterV2Short@go.csm.fun':
+    id: 'GetSQLClusterV2Short@go.csm.fun'
+    name: 'GetSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
+
+      Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
+
+      `status` field - indicates the SQL cluster status:
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.GetSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.GetSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.GetSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.GetSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'get'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
+  'GetSQLDatabaseV2Short@go.csm.fun':
+    id: 'GetSQLDatabaseV2Short@go.csm.fun'
+    name: 'GetSQLDatabaseV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
+
+      Get a SQL database information returns the SQL database related information by given game namespace
+      and app name.
+
+      `resourceStatus` field - indicates the SQL cluster status:
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.GetSQLDatabaseV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.GetSQLDatabaseV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.GetSQLDatabaseV2Params{ ... }
+      res, err := managedResourcesSQLService.GetSQLDatabaseV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'database'
+      - 'get'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'v2'
+
   'GetSubscriptionV2HandlerShort@go.csm.fun':
     id: 'GetSubscriptionV2HandlerShort@go.csm.fun'
     name: 'GetSubscriptionV2HandlerShort'
@@ -6202,6 +8499,112 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+
+  'IntegrateAppKeyValueClusterV2Short@go.csm.fun':
+    id: 'IntegrateAppKeyValueClusterV2Short@go.csm.fun'
+    name: 'IntegrateAppKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
+
+      Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.IntegrateAppKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.IntegrateAppKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.IntegrateAppKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.IntegrateAppKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'integrate'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
+
+  'ListAppUIShort@go.csm.fun':
+    id: 'ListAppUIShort@go.csm.fun'
+    name: 'ListAppUIShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
+
+      Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
+    struct: 'AppUIService'
+    arguments:
+      params:
+        type: '*app_ui.ListAppUIParams'
+        required: true
+    return_type: '(*app_ui.ListAppUIResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appUi.go'
+    example: |-
+      appUIService := csm.AppUIService{ ... }
+      params := app_ui.ListAppUIParams{ ... }
+      res, err := appUIService.ListAppUIShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'list'
+      - 'ui'
+
+  'ListKeyValueClusterV2Short@go.csm.fun':
+    id: 'ListKeyValueClusterV2Short@go.csm.fun'
+    name: 'ListKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
+
+      List Key-Value clusters by studio/publisher namespace.
+      If `refresh=true`, the service will sync cluster status from the provider (cached).
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.ListKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.ListKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.ListKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.ListKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'key'
+      - 'list'
+      - 'managed'
+      - 'resources'
+      - 'v2'
+      - 'value'
 
   'ListTopicsHandlerShort@go.csm.fun':
     id: 'ListTopicsHandlerShort@go.csm.fun'
@@ -6266,6 +8669,44 @@ symbols:
       - 'get'
       - 'messages'
       - 'public'
+
+  'RemoveIntegrationAppKeyValueClusterV2Short@go.csm.fun':
+    id: 'RemoveIntegrationAppKeyValueClusterV2Short@go.csm.fun'
+    name: 'RemoveIntegrationAppKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
+
+      Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.RemoveIntegrationAppKeyValueClusterV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.RemoveIntegrationAppKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.RemoveIntegrationAppKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'cluster'
+      - 'integration'
+      - 'key'
+      - 'managed'
+      - 'remove'
+      - 'resources'
+      - 'v2'
+      - 'value'
 
   'SaveSecretV1Short@go.csm.fun':
     id: 'SaveSecretV1Short@go.csm.fun'
@@ -6526,6 +8967,44 @@ symbols:
       - 'start'
       - 'v2'
 
+  'StartSQLClusterV2Short@go.csm.fun':
+    id: 'StartSQLClusterV2Short@go.csm.fun'
+    name: 'StartSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Start SQL cluster.
+      You can only start the cluster when its status is "stopped".
+
+      Cluster starting process may take some time to complete.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.StartSQLClusterV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.StartSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.StartSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'start'
+      - 'v2'
+
   'StopAppV1Short@go.csm.fun':
     id: 'StopAppV1Short@go.csm.fun'
     name: 'StopAppV1Short'
@@ -6624,6 +9103,44 @@ symbols:
       - 'cluster'
       - 'managed'
       - 'no'
+      - 'resources'
+      - 'sql'
+      - 'stop'
+      - 'v2'
+
+  'StopSQLClusterV2Short@go.csm.fun':
+    id: 'StopSQLClusterV2Short@go.csm.fun'
+    name: 'StopSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Stop SQL cluster.
+      You can only start the cluster when its status is "available".
+
+      Cluster stopping process may take some time to complete.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.StopSQLClusterV2Params'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.StopSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.StopSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
       - 'resources'
       - 'sql'
       - 'stop'
@@ -6912,6 +9429,43 @@ symbols:
       - 'update'
       - 'v2'
 
+  'UpdateKeyValueClusterV2Short@go.csm.fun':
+    id: 'UpdateKeyValueClusterV2Short@go.csm.fun'
+    name: 'UpdateKeyValueClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
+
+      Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
+      Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
+    struct: 'ManagedResourcesKeyValueService'
+    arguments:
+      params:
+        type: '*managed_resources_key_value.UpdateKeyValueClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_key_value.UpdateKeyValueClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_key_value'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesKeyValue.go'
+    example: |-
+      managedResourcesKeyValueService := csm.ManagedResourcesKeyValueService{ ... }
+      params := managed_resources_key_value.UpdateKeyValueClusterV2Params{ ... }
+      res, err := managedResourcesKeyValueService.UpdateKeyValueClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'key'
+      - 'managed'
+      - 'resources'
+      - 'update'
+      - 'v2'
+      - 'value'
+
   'UpdateNoSQLClusterV2Short@go.csm.fun':
     id: 'UpdateNoSQLClusterV2Short@go.csm.fun'
     name: 'UpdateNoSQLClusterV2Short'
@@ -7025,6 +9579,44 @@ symbols:
       - 'update'
       - 'v2'
 
+  'UpdateSQLClusterV2Short@go.csm.fun':
+    id: 'UpdateSQLClusterV2Short@go.csm.fun'
+    name: 'UpdateSQLClusterV2Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
+
+      Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
+      The cluster must be in an available state to allow configuration updates.
+
+      Configuration update process may take some time to complete, you can check the updated status from the `status` field of the resource response.
+    struct: 'ManagedResourcesSQLService'
+    arguments:
+      params:
+        type: '*managed_resources_sql.UpdateSQLClusterV2Params'
+        required: true
+    return_type: '(*managed_resources_sql.UpdateSQLClusterV2Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/managed_resources_sql'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/managedResourcesSql.go'
+    example: |-
+      managedResourcesSQLService := csm.ManagedResourcesSQLService{ ... }
+      params := managed_resources_sql.UpdateSQLClusterV2Params{ ... }
+      res, err := managedResourcesSQLService.UpdateSQLClusterV2Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cluster'
+      - 'managed'
+      - 'resources'
+      - 'sql'
+      - 'update'
+      - 'v2'
+
   'UpdateVariableV1Short@go.csm.fun':
     id: 'UpdateVariableV1Short@go.csm.fun'
     name: 'UpdateVariableV1Short'
@@ -7098,5 +9690,38 @@ symbols:
       - 'update'
       - 'v2'
       - 'variable'
+
+  'UploadAppUIFileShort@go.csm.fun':
+    id: 'UploadAppUIFileShort@go.csm.fun'
+    name: 'UploadAppUIFileShort'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
+
+      Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
+    struct: 'AppUIService'
+    arguments:
+      params:
+        type: '*app_ui.UploadAppUIFileParams'
+        required: true
+    return_type: '(*app_ui.UploadAppUIFileResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_ui'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appUi.go'
+    example: |-
+      appUIService := csm.AppUIService{ ... }
+      params := app_ui.UploadAppUIFileParams{ ... }
+      res, err := appUIService.UploadAppUIFileShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'file'
+      - 'ui'
+      - 'upload'
 
   # endregion functions

@@ -193,6 +193,29 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/anonymization/admin_anonymize_user_achievement_parameters.go'
 
+  'AdminBatchQueryUserAchievementsParams@go.achievement.mod':
+    id: 'AdminBatchQueryUserAchievementsParams@go.achievement.mod'
+    name: 'AdminBatchQueryUserAchievementsParams'
+    type: 'model'
+    fields:
+      'Body':
+        type: '*ModelsBatchQueryUserAchievementRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+      'UserID':
+        type: 'string'
+        required: true
+        description: |-
+          user id
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclient/user_achievements/admin_batch_query_user_achievements_parameters.go'
+
   'AdminBulkUnlockAchievementParams@go.achievement.mod':
     id: 'AdminBulkUnlockAchievementParams@go.achievement.mod'
     name: 'AdminBulkUnlockAchievementParams'
@@ -1243,6 +1266,22 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_additional_info.go'
 
+  'ModelsBatchQueryUserAchievementRequest@go.achievement.mod':
+    id: 'ModelsBatchQueryUserAchievementRequest@go.achievement.mod'
+    name: 'ModelsBatchQueryUserAchievementRequest'
+    type: 'model'
+    fields:
+      'Codes':
+        type: '[]string'
+        required: true
+      'Status':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/achievement-sdk/pkg/achievementclientmodels/models_batch_query_user_achievement_request.go'
+
   'ModelsBulkCreatePSNEventResponse@go.achievement.mod':
     id: 'ModelsBulkCreatePSNEventResponse@go.achievement.mod'
     name: 'ModelsBulkCreatePSNEventResponse'
@@ -1837,6 +1876,58 @@ symbols:
       - 'user'
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]'
+
+  'AdminBatchQueryUserAchievementsShort@go.achievement.fun':
+    id: 'AdminBatchQueryUserAchievementsShort@go.achievement.fun'
+    name: 'AdminBatchQueryUserAchievementsShort'
+    type: 'function'
+    description: |-
+      Required permission
+      `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+      Note:
+
+
+
+
+      User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+      `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    struct: 'UserAchievementsService'
+    arguments:
+      params:
+        type: '*user_achievements.AdminBatchQueryUserAchievementsParams'
+        required: true
+    return_type: '(*user_achievements.AdminBatchQueryUserAchievementsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/achievement-sdk/pkg/achievementclient/user_achievements'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/achievement'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/achievement/userAchievements.go'
+    example: |-
+      userAchievementsService := achievement.UserAchievementsService{ ... }
+      params := user_achievements.AdminBatchQueryUserAchievementsParams{ ... }
+      res, err := userAchievementsService.AdminBatchQueryUserAchievementsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'achievements'
+      - 'admin'
+      - 'batch'
+      - 'query'
+      - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]'
+    scopes:
+      - 'social'
 
   'AdminBulkUnlockAchievementShort@go.achievement.fun':
     id: 'AdminBulkUnlockAchievementShort@go.achievement.fun'

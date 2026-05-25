@@ -1339,17 +1339,6 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/BillingHistoryPagingSlicedResult.cs'
 
-  'BinarySchema@cs.platform.mod':
-    id: 'BinarySchema@cs.platform.mod'
-    name: 'BinarySchema'
-    type: 'model'
-    imports:
-      - 'using System;'
-      - 'using System.Collections.Generic;'
-      - 'using AccelByte.Sdk.Api.Platform.Model;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/BinarySchema.cs'
-
   'BoxItem@cs.platform.mod':
     id: 'BoxItem@cs.platform.mod'
     name: 'BoxItem'
@@ -2586,6 +2575,21 @@ symbols:
       - 'using AccelByte.Sdk.Api.Platform.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/ChangeStatusItemRequest.cs'
+
+  'CheckBalanceResponse@cs.platform.mod':
+    id: 'CheckBalanceResponse@cs.platform.mod'
+    name: 'CheckBalanceResponse'
+    type: 'model'
+    fields:
+      'EnoughBalance':
+        type: 'bool'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Model/CheckBalanceResponse.cs'
 
   'CheckoutConfig@cs.platform.mod':
     id: 'CheckoutConfig@cs.platform.mod'
@@ -20324,6 +20328,53 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
 
+  'AdminSyncTwitchDropsEntitlement@cs.platform.fun':
+    id: 'AdminSyncTwitchDropsEntitlement@cs.platform.fun'
+    name: 'AdminSyncTwitchDropsEntitlement'
+    type: 'function'
+    description: |-
+      Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+      *  Returns :
+    arguments:
+      'Body':
+        type: 'TwitchSyncRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'UserId':
+        type: 'string'
+        required: true
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Platform.Model;'
+      - 'using AccelByte.Sdk.Api.Platform.Operation;'
+      - 'using AccelByte.Sdk.Api.Platform.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Wrapper/IAP.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Platform/Operation/IAP/AdminSyncTwitchDropsEntitlement.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Platform.IAP.AdminSyncTwitchDropsEntitlementOp
+              .Build();
+
+          sdk.Platform.IAP.AdminSyncTwitchDropsEntitlement(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'drops'
+      - 'entitlement'
+      - 'iap'
+      - 'sync'
+      - 'twitch'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]'
+
   'AnonymizeCampaign@cs.platform.fun':
     id: 'AnonymizeCampaign@cs.platform.fun'
     name: 'AnonymizeCampaign'
@@ -21214,7 +21265,7 @@ symbols:
         required: true
         description: |-
           userId
-    return_type: 'void'
+    return_type: 'CheckBalanceResponse'
     imports:
       - 'using AccelByte.Sdk.Core;'
       - 'using AccelByte.Sdk.Api.Platform.Model;'
@@ -21229,7 +21280,7 @@ symbols:
           var operation = sdk.Platform.Wallet.CheckBalanceOp
               .Build();
 
-          sdk.Platform.Wallet.CheckBalance(operation);
+          var response = sdk.Platform.Wallet.CheckBalance(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -34304,7 +34355,7 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
-    return_type: 'BinarySchema'
+    return_type: 'byte[]'
     imports:
       - 'using AccelByte.Sdk.Core;'
       - 'using AccelByte.Sdk.Api.Platform.Model;'
