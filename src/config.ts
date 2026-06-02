@@ -2,10 +2,19 @@
 // This is licensed software from AccelByte Inc, for limitations
 // and restrictions contact your company contract manager.
 
+import { readFileSync } from 'node:fs';
+
 import { z } from 'zod/v3';
 
+// Single source of truth for the version: read it from package.json rather
+// than duplicating the literal here. Resolves relative to this module, so it
+// works both from src/ (tests) and dist/ (built/runtime).
+const PKG = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8')
+) as { version: string };
+
 const DEFAULT_NAME = 'extend-sdk-mcp-server';
-const DEFAULT_VERSION = '2026.3.0';
+const DEFAULT_VERSION = PKG.version;
 const DEFAULT_TRANSPORT = 'stdio';
 const DEFAULT_PORT = 3000;
 const DEFAULT_MCP_PATH = '/mcp';

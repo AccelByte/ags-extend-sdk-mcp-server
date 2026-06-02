@@ -16,7 +16,7 @@ Most users should connect to the hosted AGS Extend SDK MCP Server — see the [R
 ## Run with Docker
 
 > [!IMPORTANT]
-> Use the `ghcr.io/accelbyte/ags-extend-sdk-mcp-server` image tag that matches your AGS version. See the available tags [here](https://github.com/accelbyte/ags-extend-sdk-mcp-server/pkgs/container/ags-extend-sdk-mcp-server/versions).
+> Replace `<version>` in the examples below with the `ghcr.io/accelbyte/ags-extend-sdk-mcp-server` image tag that matches your AGS version. See the available tags [here](https://github.com/accelbyte/ags-extend-sdk-mcp-server/pkgs/container/ags-extend-sdk-mcp-server/versions).
 
 ### STDIO transport (single language, fully local)
 
@@ -29,7 +29,7 @@ Point your client at a local Docker process. The language is fixed by `CONFIG_DI
       "command": "docker",
       "args": [
         "run", "-i", "--rm", "-e", "CONFIG_DIR",
-        "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0"
+        "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:<version>"
       ],
       "env": {
         "CONFIG_DIR": "config/go"
@@ -50,7 +50,7 @@ docker run -p 3000:3000 \
   -e CONFIG_DIR=config/go \
   -e NODE_ENV=production \
   -e LOG_LEVEL=info \
-  ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0
+  ghcr.io/accelbyte/ags-extend-sdk-mcp-server:<version>
 ```
 
 Over HTTP the server loads **all** languages; clients select one via `/mcp/{language}`. `CONFIG_DIR` only sets the default served on the plain `/mcp` path. Point your client at `http://localhost:3000/mcp/go` (or another language).
@@ -96,7 +96,7 @@ docker build -t extend-sdk-mcp-server:latest .   # build the container image
 ```bash
 GHCR_USERNAME=<your-username>
 GHCR_PASSWORD=<your-password>
-IMAGE_TAG=2026.3.0    # Matches AGS release; bump patch for hotfix
+IMAGE_TAG=<version>    # e.g. 2026.3.1 — matches AGS release; bump patch for hotfix
 
 docker buildx inspect extend-sdk-mcp-server-builder || docker buildx create --name extend-sdk-mcp-server-builder --use
 echo "$GHCR_PASSWORD" | docker login ghcr.io --username "$GHCR_USERNAME" --password-stdin

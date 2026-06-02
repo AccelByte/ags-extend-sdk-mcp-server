@@ -4,12 +4,24 @@
 
 import { afterEach, describe, expect, it } from 'vitest';
 
+import { readFileSync } from 'node:fs';
+
 import { loadFromEnv } from './config.js';
+
+const pkg = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8')
+) as { version: string };
 
 const TRANSPORT_VARS = ['MCP_TRANSPORT', 'TRANSPORT', 'MCP_PATH'];
 
 afterEach(() => {
   TRANSPORT_VARS.forEach((key) => delete process.env[key]);
+});
+
+describe('loadFromEnv version', () => {
+  it('defaults to the package.json version', () => {
+    expect(loadFromEnv().version).toBe(pkg.version);
+  });
 });
 
 describe('loadFromEnv transport parsing', () => {

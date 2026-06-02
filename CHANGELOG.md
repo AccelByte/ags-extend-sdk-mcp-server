@@ -1,5 +1,12 @@
 # Changelog
 
+## v2026.3.1
+
+* Added hosted deployment support: over HTTP the server now serves all SDK languages and selects one per connection via the URL path (`/mcp/{language}`).
+* Added a configurable base path via `MCP_PATH` (default `/mcp`) and a `GET /health` endpoint for load balancer probes.
+* Added `ALLOWED_HOSTS` / `ALLOWED_ORIGINS` configuration for DNS-rebinding protection behind a custom domain.
+* Fixed `TRANSPORT=streamableHttp` failing to start.
+
 ## v2026.3.0
 
 * Updated config files.
