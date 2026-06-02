@@ -16,7 +16,7 @@ import createExtendAppPrompt from './prompts/createExtendApp/prompt.js';
 const sessionManager = new SessionManager();
 
 let server: BaseServer;
-if (CONFIG.transport === 'http') {
+if (CONFIG.transport === 'http' || CONFIG.transport === 'streamablehttp') {
   server = new StreamableHttpServer(
     CONFIG.name,
     CONFIG.version,

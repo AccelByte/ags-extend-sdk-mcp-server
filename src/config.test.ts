@@ -1,0 +1,34 @@
+// Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+import { afterEach, describe, expect, it } from 'vitest';
+
+import { loadFromEnv } from './config.js';
+
+const TRANSPORT_VARS = ['MCP_TRANSPORT', 'TRANSPORT'];
+
+afterEach(() => {
+  TRANSPORT_VARS.forEach((key) => delete process.env[key]);
+});
+
+describe('loadFromEnv transport parsing', () => {
+  it('defaults to stdio when unset', () => {
+    expect(loadFromEnv().transport).toBe('stdio');
+  });
+
+  it('accepts canonical lowercase values', () => {
+    process.env.MCP_TRANSPORT = 'http';
+    expect(loadFromEnv().transport).toBe('http');
+  });
+
+  it('normalizes mixed-case streamableHttp to streamablehttp', () => {
+    process.env.MCP_TRANSPORT = 'streamableHttp';
+    expect(loadFromEnv().transport).toBe('streamablehttp');
+  });
+
+  it('rejects unknown transports', () => {
+    process.env.MCP_TRANSPORT = 'carrier-pigeon';
+    expect(() => loadFromEnv()).toThrow();
+  });
+});

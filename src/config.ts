@@ -15,9 +15,14 @@ const TransportEnum = z.enum(['http', 'stdio', 'streamablehttp']);
 const ConfigSchema = z.object({
   name: z.string().optional().default(DEFAULT_NAME),
   version: z.string().optional().default(DEFAULT_VERSION),
-  transport: TransportEnum.optional()
-    .default(DEFAULT_TRANSPORT)
-    .transform((s) => s.toLowerCase() as z.infer<typeof TransportEnum>),
+  // Normalize casing before validating so values like `streamableHttp` are accepted.
+  transport: z
+    .preprocess(
+      (value) => (typeof value === 'string' ? value.toLowerCase() : value),
+      TransportEnum
+    )
+    .optional()
+    .default(DEFAULT_TRANSPORT),
   port: z.coerce
     .number()
     .int()
