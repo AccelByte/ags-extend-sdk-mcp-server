@@ -59,6 +59,7 @@ Over HTTP the server loads **all** languages; clients select one via `/mcp/{lang
 
 - `TRANSPORT`: MCP server transport (`stdio`, `http`, `streamableHttp`; default: `stdio`)
 - `PORT`: HTTP server port when `TRANSPORT` is `http` (default: `3000`)
+- `MCP_PATH`: Base path the HTTP endpoint is mounted on (default: `/mcp`). The load balancer forwards the full path unchanged, so set this to match the routed prefix (e.g. `/extend-mcp`). Clients then connect to `<MCP_PATH>/{language}`.
 - `CONFIG_DIR`: Base language directory (default: `config/go`). Its parent (`config`) is scanned and **every** language sub-directory is loaded.
   - **stdio**: selects the single language served by the process.
   - **http**: sets the default language on the plain `/mcp` path; clients select any language via `/mcp/{language}`.
@@ -70,11 +71,11 @@ Over HTTP the server loads **all** languages; clients select one via `/mcp/{lang
 
 ## HTTP endpoints
 
-When `TRANSPORT=http`, the server exposes:
+When `TRANSPORT=http`, the server exposes (where `<MCP_PATH>` defaults to `/mcp`):
 
-- `GET /health` — Health probe; returns `200 {"status":"ok"}`. Use this as the load balancer health check path.
-- `POST|GET|DELETE /mcp` — MCP endpoint using the default language (`CONFIG_DIR`).
-- `POST|GET|DELETE /mcp/{language}` — MCP endpoint for a specific language (`csharp`, `go`, `java`, `python`). Unknown languages return `400`.
+- `GET /health` — Health probe; returns `200 {"status":"ok"}`. Use this as the load balancer health check path. Always `/health`, independent of `MCP_PATH`.
+- `POST|GET|DELETE <MCP_PATH>` — MCP endpoint using the default language (`CONFIG_DIR`).
+- `POST|GET|DELETE <MCP_PATH>/{language}` — MCP endpoint for a specific language (`csharp`, `go`, `java`, `python`). Unknown languages return `400`.
 
 ## Develop from source
 

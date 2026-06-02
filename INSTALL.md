@@ -30,7 +30,7 @@ If the user is using a client not in this list, tell them the server uses HTTP (
 The MCP URL has the form:
 
 ```
-https://<mcp-server-host>/mcp/{language}
+https://<mcp-server-host>/extend-mcp/{language}
 ```
 
 Ask the user for two things:
@@ -47,7 +47,7 @@ Ask the user for two things:
 
    If the user has a project already, infer the language from it and confirm. Otherwise ask.
 
-Assemble the URL as `https://<host>/mcp/<language>` (for example `https://mcp.example.accelbyte.io/mcp/python`).
+Assemble the URL as `https://<host>/extend-mcp/<language>` (for example `https://development.accelbyte.io/extend-mcp/python`).
 
 > If the user has no hosted instance, they can self-host with Docker — point them to [Running Locally & Self-Hosting](docs/LOCAL.md) instead of continuing here.
 
@@ -283,7 +283,7 @@ Your client may not support HTTP transport. Edit `{file path}` and replace the `
 This requires Node.js 18+ with `npx` available — check with `npx --version`. If `npx` is missing, install `npm` from your system package manager or grab the official Node installer at https://nodejs.org/. Restart the client after editing.
 
 **If you want to switch SDK language**
-Change the trailing path segment of the URL to `csharp`, `go`, `java`, or `python` (e.g. `{URL}` → the same URL ending in `/mcp/go`), then restart the client.
+Change the trailing path segment of the URL to `csharp`, `go`, `java`, or `python` (e.g. `{URL}` → the same URL ending in `/extend-mcp/go`), then restart the client.
 
 **If tool calls return a `400` error**
 The language in your URL path is not recognized. It must be one of `csharp`, `go`, `java`, or `python`.

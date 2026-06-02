@@ -39,22 +39,22 @@ Prefer to do it yourself? See [Manual Install](#manual-install) below.
 
 ### Step 1: Choose your language and get your URL
 
-The MCP URL is the hosted server's base URL followed by `/mcp/{language}`:
+The MCP URL is the hosted server's base URL followed by `/extend-mcp/{language}`:
 
 ```
-https://<mcp-server-host>/mcp/{language}
+https://<mcp-server-host>/extend-mcp/{language}
 ```
 
 | Language | URL path |
 |---|---|
-| C# | `/mcp/csharp` |
-| Go | `/mcp/go` |
-| Java | `/mcp/java` |
-| Python | `/mcp/python` |
+| C# | `/extend-mcp/csharp` |
+| Go | `/extend-mcp/go` |
+| Java | `/extend-mcp/java` |
+| Python | `/extend-mcp/python` |
 
 - `<mcp-server-host>` is the host of your organization's deployment — ask your AccelByte administrator if you're not sure.
-- One hosted instance serves every language. To switch language later, just change the trailing path segment (e.g. `/mcp/python` → `/mcp/go`). Requesting an unknown language returns HTTP `400`.
-- The plain `/mcp` path (no language) serves the server's configured default language.
+- One hosted instance serves every language. To switch language later, just change the trailing path segment (e.g. `/extend-mcp/python` → `/extend-mcp/go`). Requesting an unknown language returns HTTP `400`.
+- The base path (`/extend-mcp`) with no language serves the server's configured default language.
 
 > **No hosted instance?** You can run the server yourself with Docker — see [Running Locally & Self-Hosting](docs/LOCAL.md).
 
@@ -212,7 +212,7 @@ Prefer to run the server locally (stdio) or host the HTTP server yourself? See *
 
 ### Tool calls fail / the server returns `400`
 
-Check the language in your URL path. It must be one of `csharp`, `go`, `java`, or `python` (e.g. `/mcp/go`). An unknown language returns HTTP `400`.
+Check the language in your URL path. It must be one of `csharp`, `go`, `java`, or `python` (e.g. `/extend-mcp/go`). An unknown language returns HTTP `400`.
 
 ### Client can't connect to the HTTP URL
 
