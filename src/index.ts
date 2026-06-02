@@ -21,7 +21,8 @@ if (CONFIG.transport === 'http' || CONFIG.transport === 'streamablehttp') {
     CONFIG.name,
     CONFIG.version,
     CONFIG.port,
-    sessionManager
+    sessionManager,
+    CONFIG.mcpPath
   );
 } else if (CONFIG.transport === 'stdio') {
   server = new StdioServer(CONFIG.name, CONFIG.version, sessionManager);

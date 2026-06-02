@@ -8,6 +8,7 @@ const DEFAULT_NAME = 'extend-sdk-mcp-server';
 const DEFAULT_VERSION = '2026.3.0';
 const DEFAULT_TRANSPORT = 'stdio';
 const DEFAULT_PORT = 3000;
+const DEFAULT_MCP_PATH = '/mcp';
 const DEFAULT_CONFIG_DIR = 'config/go';
 
 const TransportEnum = z.enum(['http', 'stdio', 'streamablehttp']);
@@ -31,6 +32,19 @@ const ConfigSchema = z.object({
     .optional()
     .default(DEFAULT_PORT),
 
+  // Base path the HTTP server mounts the MCP endpoint on (e.g. `/mcp` or
+  // `/extend-mcp`). The ALB forwards the full path, so this must match the
+  // listener rule's path prefix. Normalized to a leading slash, no trailing slash.
+  mcpPath: z
+    .string()
+    .optional()
+    .default(DEFAULT_MCP_PATH)
+    .transform((value) => {
+      const trimmed = value.trim();
+      const withLead = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+      return withLead.length > 1 ? withLead.replace(/\/+$/, '') : withLead;
+    }),
+
   // custom
   configDir: z.string().optional().default(DEFAULT_CONFIG_DIR),
 });
@@ -43,6 +57,7 @@ function loadFromEnv(): Config {
     version: process.env.MCP_VERSION,
     port: process.env.MCP_PORT || process.env.PORT,
     transport: process.env.MCP_TRANSPORT || process.env.TRANSPORT,
+    mcpPath: process.env.MCP_PATH,
     configDir: process.env.CONFIG_DIR,
   });
 }

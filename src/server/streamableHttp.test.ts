@@ -13,12 +13,13 @@ import SessionManager from '../session/manager.js';
 import searchSymbolsTool from '../tools/symbols/searchTool.js';
 import describeSymbolsTool from '../tools/symbols/describeTool.js';
 
-function buildApp() {
+function buildApp(mcpPath?: string) {
   const server = new StreamableHttpServer(
     'test-server',
     '0.0.0',
     0,
-    new SessionManager()
+    new SessionManager(),
+    mcpPath
   );
   server.modify(searchSymbolsTool);
   server.modify(describeSymbolsTool);
@@ -103,5 +104,28 @@ describe('HTTP endpoints', () => {
       .send(INITIALIZE_BODY);
     expect(res.status).toBe(200);
     expect(res.headers['mcp-session-id']).toBeTruthy();
+  });
+
+  it('serves under a custom mcp path prefix', async () => {
+    const app = buildApp('/extend-mcp');
+    const ok = await request(app)
+      .post('/extend-mcp/python')
+      .set('Accept', 'application/json, text/event-stream')
+      .set('Content-Type', 'application/json')
+      .send(INITIALIZE_BODY);
+    expect(ok.status).toBe(200);
+    expect(ok.headers['mcp-session-id']).toBeTruthy();
+
+    // The default `/mcp` prefix is not mounted when a custom path is set.
+    const notFound = await request(app)
+      .post('/mcp/python')
+      .set('Accept', 'application/json, text/event-stream')
+      .set('Content-Type', 'application/json')
+      .send(INITIALIZE_BODY);
+    expect(notFound.status).toBe(404);
+
+    // Health stays at /health regardless of the mcp path prefix.
+    const health = await request(app).get('/health');
+    expect(health.status).toBe(200);
   });
 });

@@ -68,6 +68,8 @@ function resolveLanguage(
 class StreamableHttpServer extends BaseServer {
   private readonly port: number;
 
+  private readonly mcpPath: string;
+
   private readonly transports: Map<string, StreamableHTTPServerTransport>;
 
   private readonly app: express.Application;
@@ -83,10 +85,12 @@ class StreamableHttpServer extends BaseServer {
     name: string,
     version: string,
     port: number,
-    sessionManager: SessionManager
+    sessionManager: SessionManager,
+    mcpPath: string = '/mcp'
   ) {
     super(name, version, sessionManager);
     this.port = port;
+    this.mcpPath = mcpPath;
     this.transports = new Map();
     this.app = express();
     // Health check for the load balancer. Registered before the rate limiter
@@ -122,13 +126,17 @@ class StreamableHttpServer extends BaseServer {
       })
     );
     this.app.use(express.json({ limit: '10mb' }));
-    // `/mcp` uses the default language; `/mcp/:lang` selects an SDK language
-    // (e.g. `/mcp/python`). The `:lang` segment is matched by the existing
-    // `/mcp/*` ALB listener rule, so no infrastructure change is required.
-    this.app.post(['/mcp', '/mcp/:lang'], this.handleRequest.bind(this));
-    this.app.get(['/mcp', '/mcp/:lang'], this.handleSessionRequest.bind(this));
+    // `<mcpPath>` uses the default language; `<mcpPath>/:lang` selects an SDK
+    // language (e.g. `/mcp/python`). The ALB forwards the full path unchanged,
+    // so `mcpPath` must match the listener rule's path prefix.
+    const langPath = `${this.mcpPath}/:lang`;
+    this.app.post([this.mcpPath, langPath], this.handleRequest.bind(this));
+    this.app.get(
+      [this.mcpPath, langPath],
+      this.handleSessionRequest.bind(this)
+    );
     this.app.delete(
-      ['/mcp', '/mcp/:lang'],
+      [this.mcpPath, langPath],
       this.handleSessionRequest.bind(this)
     );
     this.server = undefined;
@@ -230,7 +238,7 @@ class StreamableHttpServer extends BaseServer {
     this.server = this.app
       .listen(this.port, () => {
         logger.info(
-          `Server is running on http://localhost:${this.port}/mcp ` +
+          `Server is running on http://localhost:${this.port}${this.mcpPath} ` +
             `(languages: ${AVAILABLE_LANGUAGES.join(', ')}; default: ${DEFAULT_LANGUAGE})`
         );
       })
