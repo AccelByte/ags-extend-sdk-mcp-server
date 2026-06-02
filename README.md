@@ -1,240 +1,234 @@
 # AGS Extend SDK MCP Server
 
-This **Model Context Protocol (MCP) server** exposes Extend SDK functions and models as additional context to language models. It helps AI coding assistants and other MCP clients to answer questions and generate Extend SDK code by providing the following tools.
+A Model Context Protocol (MCP) server that gives AI assistants (VS Code Copilot, Cursor, Claude, Gemini, Antigravity) the AccelByte Extend SDK as additional context — so they can answer questions about the SDK and generate correct Extend SDK code.
 
-- **`search-symbols`** – Search for symbols (functions and models) by name, tags, description (fuzzy)
-- **`describe-symbols`** – Get detailed information about specific symbols by their IDs
-- **`create-extend-app`** – Prompt template for creating Extend app projects
+## What It Does
 
-## Quickstart
+- **Search** Extend SDK symbols (functions and models) by name, tags, or description (fuzzy matching)
+- **Describe** specific symbols — parameters, fields, imports, examples, return types, required permissions
+- **Scaffold** a new Extend app from a template repository via the `create-extend-app` prompt
 
-### Prerequisites
+It serves SDK reference for **four languages — C#, Go, Java, and Python**. You pick the language per connection through the URL path (see [Choose your language](#step-1-choose-your-language-and-get-your-url)).
 
-- [Cursor](https://cursor.com/home)
-- Docker
+AccelByte hosts the Extend SDK MCP Server for you — **you don't need to install or run anything locally**. Just point your AI assistant at the hosted MCP URL for your language. There's **no sign-in**: the server only exposes read-only SDK reference data. Prefer to run it yourself? See [Running Locally & Self-Hosting](docs/LOCAL.md).
 
-> [!NOTE]
-> The instructions below can be adapted for other MCP clients as well e.g. Claude Desktop, Gemini CLI, and Visual Studio Code.
+---
 
-### Alternative 1: Using STDIO transport (default)
+## Quick Install
 
-1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.3.0.
+Paste this into your AI coding assistant — it will fetch the install guide, ask you a couple of questions, and configure everything for you:
 
-    ```bash
-    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0
-    ```
+```
+Install the AGS Extend SDK MCP server for me. Fetch and follow the instructions at
+https://raw.githubusercontent.com/AccelByte/ags-extend-sdk-mcp-server/refs/heads/master/INSTALL.md
+```
 
-2. Switch to your project directory and create `.cursor/mcp.json` with the following content.
+Works in **VS Code Copilot**, **Cursor**, **Claude Code**, **Antigravity**, and **Gemini CLI**.
 
-    ```json
-    {
-      "mcpServers": {
-        "extend-sdk-mcp-server": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "CONFIG_DIR",
-            "ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0"
-          ],
-          "env": {
-            "CONFIG_DIR": "config/go"
-          }
-        }
-      }
+> **Claude Desktop users:** The simplest path is **Settings → Connectors → Add custom connector** (Name: `extend-sdk`, URL: your MCP URL) — no AI installer needed. See [Claude Desktop](#claude-desktop) below.
+>
+> If you want to use the Quick Install prompt above, switch to the **Code** tab first (Chat and Cowork can't edit your config file).
+>
+> ![Claude Desktop — Code tab](docs/images/claude-desktop-code.png)
+
+Prefer to do it yourself? See [Manual Install](#manual-install) below.
+
+---
+
+## Manual Install
+
+### Step 1: Choose your language and get your URL
+
+The MCP URL is the hosted server's base URL followed by `/mcp/{language}`:
+
+```
+https://<mcp-server-host>/mcp/{language}
+```
+
+| Language | URL path |
+|---|---|
+| C# | `/mcp/csharp` |
+| Go | `/mcp/go` |
+| Java | `/mcp/java` |
+| Python | `/mcp/python` |
+
+- `<mcp-server-host>` is the host of your organization's deployment — ask your AccelByte administrator if you're not sure.
+- One hosted instance serves every language. To switch language later, just change the trailing path segment (e.g. `/mcp/python` → `/mcp/go`). Requesting an unknown language returns HTTP `400`.
+- The plain `/mcp` path (no language) serves the server's configured default language.
+
+> **No hosted instance?** You can run the server yourself with Docker — see [Running Locally & Self-Hosting](docs/LOCAL.md).
+
+### Step 2: Configure your client
+
+The server uses **Streamable HTTP** transport. Clients that support HTTP transport connect to the URL directly. Clients that only support **stdio** transport use [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) as a bridge.
+
+> **Need `mcp-remote`?** It runs via `npx`, so you need **Node.js 18+ with `npx` available** — verify with `npx --version`. No global install required.
+
+Substitute your URL from Step 1 wherever you see `<URL>` below.
+
+#### Visual Studio Code (Copilot)
+
+`.vscode/mcp.json` in your workspace (or user `settings.json`):
+
+```json
+{
+  "servers": {
+    "extend-sdk": {
+      "type": "http",
+      "url": "<URL>"
     }
-    ```
+  }
+}
+```
 
-    The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
+If your client can't reach an HTTP server, swap to: `{ "command": "npx", "args": ["-y", "mcp-remote", "<URL>"] }`.
 
-3. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
+See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/customization/mcp-servers).
 
-### Alternative 2: Using Streamable HTTP transport
+#### Cursor
 
-1. Pull the AGS Extend SDK MCP Server container image. For example, with image tag 2026.3.0.
+`.cursor/mcp.json` in your workspace (or user settings):
 
-    ```bash
-    docker pull ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0
-    ```
-
-2. Start the MCP server with streamable HTTP transport.
-
-    ```bash
-    docker run -p 3000:3000 \
-      -e TRANSPORT=http \
-      -e PORT=3000 \
-      -e CONFIG_DIR=config/go \
-      -e NODE_ENV=production \
-      -e LOG_LEVEL=info \
-      ghcr.io/accelbyte/ags-extend-sdk-mcp-server:2026.3.0
-    ```
-
-    The `CONFIG_DIR` value above is for Go Extend SDK. For other Extend SDK languages, see [here](#environment-variables).
-
-3. Switch to your project directory and create `.cursor/mcp.json` with the following content.
-
-    ```json
-    {
-      "mcpServers": {
-        "extend-sdk-mcp-server": {
-          "url": "http://localhost:3000/"
-        }
-      }
+```json
+{
+  "mcpServers": {
+    "extend-sdk": {
+      "type": "http",
+      "url": "<URL>"
     }
-    ```
-
-4. Open your project directory in Cursor and open `File` > `Preferences` > `Cursor Settings`, In `Cursor Settings`, click `MCP`, and make sure `extend-sdk-mcp-server` is enabled.
-
-> [!IMPORTANT]
-> Use the `ghcr.io/accelbyte/ags-extend-sdk-mcp-server` image tag that matches your AGS version. See the available image tags [here](https://github.com/accelbyte/ags-extend-sdk-mcp-server/pkgs/container/ags-extend-sdk-mcp-server/versions).
-
-### Sample prompts
-
-In Cursor, press `CTRL+L` and try the following prompts. You should see that the tools provided by this MCP server are used. Give permission to execute the tools when requested.
-
-- Search symbols: `Search for symbols related to 'user'`
-- Get symbol details: `Describe the 'AdminCreateUser@iam' and 'User@iam' symbols`
-
-[!TIP] When coding using this MCP server, we recommend to start from an Extend SDK getting started sample project or an Extend app template project instead of a blank project. Add the necessary context, such as specific source code files, to help getting better results. 
-
-## Environment Variables
-
-- `TRANSPORT`: The MCP server transport (valid values: `stdio`, `http`, `streamableHttp`, default: `stdio`)
-- `PORT`: HTTP server port if `TRANSPORT` is `http` (default: `3000`)
-- `CONFIG_DIR`: Directory of YAML config files (recursive, default: `config/go`)
-  - For Extend SDK C#: `config/csharp`
-  - For Extend SDK Go: `config/go`
-  - For Extend SDK Java: `config/java`
-  - For Extend SDK Python: `config/python`
-- `LOG_LEVEL`: Logging level (valid values: `debug`, `info`, `warn`, `error`, default: `info`)
-- `ALLOWED_ORIGINS`: Comma-separated list of allowed origins for HTTP transport (optional)
-- `NODE_ENV`: Environment (valid values: `development`, `production`) (optional, used by Express for HTTP transport)
-
-## Development
-
-### Prerequisites
-
-- Bash
-- Curl
-- Docker
-- Makefile
-- Node.js 18+ 
-- pnpm
-
-### Install dependencies
-
-```bash
-pnpm install
+  }
+}
 ```
 
-### Start the MCP server for development
+If your client can't reach an HTTP server, swap to: `{ "command": "npx", "args": ["-y", "mcp-remote", "<URL>"] }`.
 
-#### With the default STDIO transport
+See the [Cursor MCP documentation](https://cursor.com/docs/context/mcp#using-mcpjson).
 
-```bash
-pnpm dev
-```
-
-#### With streamable HTTP transport
+#### Claude Code
 
 ```bash
-TRANSPORT=http pnpm dev 
+claude mcp add --transport http extend-sdk <URL>
 ```
 
-### Build the MCP server
+Fallback (stdio-only environments): `claude mcp add extend-sdk -- npx -y mcp-remote <URL>`.
+
+See the [Claude Code MCP documentation](https://code.claude.com/docs/en/mcp#installing-mcp-servers).
+
+#### Antigravity
+
+`mcp_config.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "extend-sdk": {
+      "type": "http",
+      "url": "<URL>"
+    }
+  }
+}
+```
+
+If your client can't reach an HTTP server, swap to: `{ "command": "npx", "args": ["-y", "mcp-remote", "<URL>"] }`.
+
+See the [Antigravity MCP documentation](https://antigravity.google/docs/mcp#connecting-custom-mcp-servers).
+
+#### Gemini CLI
 
 ```bash
-pnpm build
+gemini mcp add --transport http extend-sdk <URL>
 ```
 
-### Start the MCP server after build
+Fallback (stdio-only environments): `gemini mcp add extend-sdk -- npx -y mcp-remote <URL>`.
 
-#### With the default STDIO transport
+See the [Gemini CLI MCP documentation](https://geminicli.com/docs/tools/mcp-server/#configure-the-mcp-server-in-settingsjson).
 
-```bash
-pnpm start
+#### Claude Desktop
+
+**Option A — Custom Connector (recommended)**
+
+1. Open **Settings → Connectors → Add custom connector** (under the "Customize" area).
+2. Fill in **Name**: `extend-sdk` and **Remote MCP server URL**: your `<URL>` from Step 1.
+3. Save.
+
+> **Don't see "Add custom connector"?** Some Team and Enterprise plans disable custom connectors via workspace policy. If the option is missing or greyed out, use Option B.
+
+**Option B — `mcp-remote` config file (fallback)**
+
+Edit `claude_desktop_config.json`:
+
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "extend-sdk": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "<URL>"]
+    }
+  }
+}
 ```
 
-#### With streamable HTTP transport 
+Restart Claude Desktop after saving.
 
-```bash
-TRANSPORT=http pnpm start
-```
+---
 
-### Build the MCP server container image
+## Using the Tools
 
-```bash
-docker build -t extend-sdk-mcp-server:latest .
-```
+Once connected, your assistant has access to these tools. In your assistant's chat, try the example prompts below — give permission to run the tools when requested.
 
-## Release
+### `search-symbols`
 
-### Push the MCP server container image to container registry
+Search Extend SDK symbols by name, tags, or description, with fuzzy matching. Returns a paginated list of summaries.
 
-```bash
-# Setup variables
+> *"Search for symbols related to user"* · *"Find symbols for inventory"*
 
-GHCR_USERNAME=<your-username>
-GHCR_PASSWORD=<your-password>
-IMAGE_TAG=2026.3.0    # Matches AGS release, bump patch version for hotfix
+### `describe-symbols`
 
-# Prepare builder
+Get full details for specific symbols by ID — fields, parameters, imports, example usage, return type, and required permissions.
 
-docker buildx inspect extend-sdk-mcp-server-builder || docker buildx create --name extend-sdk-mcp-server-builder --use
+> *"Describe the `AdminCreateUser@iam` and `User@iam` symbols"*
 
-# Login, build, and push multiarch image
+### `create-extend-app`
 
-docker login --username ${GHCR_USERNAME --password $GHCR_PASSWORD}
-docker buildx build -t ghcr.io/accelbyte/ags-extend-sdk-mcp-server:${IMAGE_TAG} --platform linux/amd64,linux/arm64 --push .
+A prompt template that clones an Extend app template repository and opens it (in a Dev Container when available) so you can start from a working sample.
 
-# Clean up builder
+> Invoke the `create-extend-app` prompt and follow the scenario / template / language completions.
 
-docker buildx rm --keep-state extend-sdk-mcp-server-builder
-```
+> [!TIP]
+> When coding with this MCP server, start from an Extend SDK getting-started sample or an Extend app template instead of a blank project, and add relevant source files as context for better results.
 
-## Testing
+---
 
-1. Start the MCP server with HTTP transport.
+## Running it yourself
 
-2. Initialize the MCP connection.
+Prefer to run the server locally (stdio) or host the HTTP server yourself? See **[Running Locally & Self-Hosting](docs/LOCAL.md)** for Docker usage, environment variables, HTTP endpoints, developing from source, and releasing the image.
 
-    ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test-client","version":"1.0.0"}}}' \
-        http://localhost:3000/
-    ```
+---
 
-3. List available tools.
+## Troubleshooting
 
-    ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
-        http://localhost:3000/
-    ```
+### Tool calls fail / the server returns `400`
 
-4. Test the search tool.
+Check the language in your URL path. It must be one of `csharp`, `go`, `java`, or `python` (e.g. `/mcp/go`). An unknown language returns HTTP `400`.
 
-    ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"search-symbols","arguments":{"query":"user"}}}' \
-        http://localhost:3000/
-    ```
+### Client can't connect to the HTTP URL
 
-5. Test describe model.
+Some clients only support stdio transport. Switch that client to the `mcp-remote` bridge config shown in [Step 2](#step-2-configure-your-client). It needs Node.js 18+ with `npx` available (`npx --version`).
 
-    ```bash
-    curl -N -H "Accept: application/json, text/event-stream" \
-        -H "Content-Type: application/json" \
-        -X POST \
-        -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"describe-symbols","arguments":{"ids":["User@iam"]}}}' \
-        http://localhost:3000/
-    ```
-  
+### "Connection refused" or the host is unreachable
+
+Confirm the `<mcp-server-host>` and full URL are correct (ask your AccelByte administrator), and that your network can reach it.
+
+---
+
+## Documentation
+
+- [Installation Guide](INSTALL.md) — followed by the Quick Install prompt; readable on its own
+- [Running Locally & Self-Hosting](docs/LOCAL.md) — Docker, environment variables, HTTP endpoints, development, and releasing the image
+
+## Contributions
+
+This repository is published as-is. For bug reports and questions, please open an issue.
