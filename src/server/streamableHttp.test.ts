@@ -13,13 +13,14 @@ import SessionManager from '../session/manager.js';
 import searchSymbolsTool from '../tools/symbols/searchTool.js';
 import describeSymbolsTool from '../tools/symbols/describeTool.js';
 
-function buildApp(mcpPath?: string) {
+function buildApp(mcpPath?: string, trustProxy?: number) {
   const server = new StreamableHttpServer(
     'test-server',
     '0.0.0',
     0,
     new SessionManager(),
-    mcpPath
+    mcpPath,
+    trustProxy
   );
   server.modify(searchSymbolsTool);
   server.modify(describeSymbolsTool);
@@ -70,6 +71,11 @@ describe('resolveLanguage', () => {
 });
 
 describe('HTTP endpoints', () => {
+  it('leaves trust proxy off by default and honors the configured value', () => {
+    expect(buildApp().get('trust proxy')).toBe(false);
+    expect(buildApp(undefined, 1).get('trust proxy')).toBe(1);
+  });
+
   it('serves the health check', async () => {
     const res = await request(buildApp()).get('/health');
     expect(res.status).toBe(200);

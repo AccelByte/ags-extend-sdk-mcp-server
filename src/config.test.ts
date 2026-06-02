@@ -12,10 +12,10 @@ const pkg = JSON.parse(
   readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 ) as { version: string };
 
-const TRANSPORT_VARS = ['MCP_TRANSPORT', 'TRANSPORT', 'MCP_PATH'];
+const ENV_VARS = ['MCP_TRANSPORT', 'TRANSPORT', 'MCP_PATH', 'TRUST_PROXY'];
 
 afterEach(() => {
-  TRANSPORT_VARS.forEach((key) => delete process.env[key]);
+  ENV_VARS.forEach((key) => delete process.env[key]);
 });
 
 describe('loadFromEnv version', () => {
@@ -58,5 +58,21 @@ describe('loadFromEnv mcpPath parsing', () => {
   it('adds a leading slash and strips trailing slashes', () => {
     process.env.MCP_PATH = 'extend-mcp/';
     expect(loadFromEnv().mcpPath).toBe('/extend-mcp');
+  });
+});
+
+describe('loadFromEnv trustProxy parsing', () => {
+  it('defaults to 0 (no proxy) when unset', () => {
+    expect(loadFromEnv().trustProxy).toBe(0);
+  });
+
+  it('parses a numeric proxy-hop count', () => {
+    process.env.TRUST_PROXY = '1';
+    expect(loadFromEnv().trustProxy).toBe(1);
+  });
+
+  it('rejects a non-numeric value', () => {
+    process.env.TRUST_PROXY = 'true';
+    expect(() => loadFromEnv()).toThrow();
   });
 });

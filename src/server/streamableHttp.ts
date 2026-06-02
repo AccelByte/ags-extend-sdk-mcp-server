@@ -86,13 +86,20 @@ class StreamableHttpServer extends BaseServer {
     version: string,
     port: number,
     sessionManager: SessionManager,
-    mcpPath: string = '/mcp'
+    mcpPath: string = '/mcp',
+    trustProxy: number = 0
   ) {
     super(name, version, sessionManager);
     this.port = port;
     this.mcpPath = mcpPath;
     this.transports = new Map();
     this.app = express();
+    // Behind a load balancer the client IP comes via `X-Forwarded-For`; trust
+    // the configured number of proxy hops so rate limiting identifies clients
+    // correctly. Left at the Express default (off) when not behind a proxy.
+    if (trustProxy > 0) {
+      this.app.set('trust proxy', trustProxy);
+    }
     // Health check for the load balancer. Registered before the rate limiter
     // so frequent probes are never throttled.
     this.app.get('/health', (_req, res) => {

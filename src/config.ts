@@ -54,6 +54,12 @@ const ConfigSchema = z.object({
       return withLead.length > 1 ? withLead.replace(/\/+$/, '') : withLead;
     }),
 
+  // Number of proxy hops in front of the server (Express `trust proxy`).
+  // Behind a load balancer (e.g. AWS ALB) the client IP arrives via
+  // `X-Forwarded-For`; set this to `1` for a single ALB so rate limiting
+  // identifies clients correctly. Defaults to `0` (no proxy) for local use.
+  trustProxy: z.coerce.number().int().min(0).optional().default(0),
+
   // custom
   configDir: z.string().optional().default(DEFAULT_CONFIG_DIR),
 });
@@ -67,6 +73,7 @@ function loadFromEnv(): Config {
     port: process.env.MCP_PORT || process.env.PORT,
     transport: process.env.MCP_TRANSPORT || process.env.TRANSPORT,
     mcpPath: process.env.MCP_PATH,
+    trustProxy: process.env.TRUST_PROXY,
     configDir: process.env.CONFIG_DIR,
   });
 }
