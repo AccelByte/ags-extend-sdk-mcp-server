@@ -9,6 +9,7 @@ import { Server as LLMcpServer } from '@modelcontextprotocol/sdk/server/index.js
 
 import SessionManager from '../session/manager.js';
 import { SessionSchema } from '../session/types.js';
+import { Symbol } from '../tools/symbols/types.js';
 
 const ContextSchema = z.object({
   server: z.instanceof(LLMcpServer),
@@ -37,7 +38,15 @@ const ToolMapSchema = z.map(z.string(), ToolDefinitionSchema);
 
 type ToolMap = z.infer<typeof ToolMapSchema>;
 
-type ModifyFunction = (server: HLMcpServer) => void;
+// Context passed to modify functions when a server is being set up. The
+// language and its symbol set are resolved per connection (from the request
+// path on HTTP, or from CONFIG on stdio), letting one server serve any language.
+type ServerContext = {
+  language: string;
+  symbols: Array<Symbol>;
+};
+
+type ModifyFunction = (server: HLMcpServer, context: ServerContext) => void;
 
 interface Server {
   readonly name: string;
@@ -76,7 +85,7 @@ abstract class BaseServer implements Server {
     this.modifyFunctions.push(fn);
   }
 
-  protected setup(server: HLMcpServer): void {
+  protected setup(server: HLMcpServer, context: ServerContext): void {
     this.tools.forEach((tool) => {
       server.registerTool(
         tool.name,
@@ -100,7 +109,7 @@ abstract class BaseServer implements Server {
       );
     });
 
-    this.modifyFunctions.forEach((fn) => fn(server));
+    this.modifyFunctions.forEach((fn) => fn(server, context));
   }
 
   public abstract start(): Promise<void>;
@@ -109,6 +118,7 @@ abstract class BaseServer implements Server {
 
 export {
   Server,
+  ServerContext,
   BaseServer,
   ContextSchema,
   ToolHandler,

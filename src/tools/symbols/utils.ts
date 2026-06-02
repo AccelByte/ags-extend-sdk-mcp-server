@@ -72,6 +72,42 @@ async function loadSymbols(configDir: string): Promise<Array<Symbol>> {
   return symbols;
 }
 
+/**
+ * List the language sub-directories under a base config directory.
+ * Each immediate sub-directory name is treated as a language (e.g. `go`, `python`).
+ */
+async function listLanguages(baseDir: string): Promise<Array<string>> {
+  const entries = await readdir(resolve(baseDir));
+  const languages: Array<string> = [];
+  await Promise.all(
+    entries.map(async (entry) => {
+      const path = join(baseDir, entry);
+      if ((await stat(path)).isDirectory()) {
+        languages.push(entry);
+      }
+    })
+  );
+  return languages.sort();
+}
+
+/**
+ * Eagerly load the symbols for every language found under `baseDir` into a map
+ * keyed by language name. Loading all languages up front lets a single hosted
+ * server serve any language per connection and fails fast if any config is broken.
+ */
+async function loadSymbolRegistry(
+  baseDir: string
+): Promise<Map<string, Array<Symbol>>> {
+  const languages = await listLanguages(baseDir);
+  const registry = new Map<string, Array<Symbol>>();
+  await Promise.all(
+    languages.map(async (language) => {
+      registry.set(language, await loadSymbols(join(baseDir, language)));
+    })
+  );
+  return registry;
+}
+
 function levenshteinDistance(s: string, t: string): number {
   const m = s.length;
   const n = t.length;
@@ -264,7 +300,9 @@ export {
   calculateSymbolMatchScore,
   fuzzyMatch,
   levenshteinDistance,
+  listLanguages,
   loadSymbols,
+  loadSymbolRegistry,
   parseSearchTerms,
   paginateSymbols,
   symbolToSummary,

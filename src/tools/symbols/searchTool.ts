@@ -6,7 +6,8 @@ import { z } from 'zod/v3';
 
 import { McpServer as HLMcpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import { RECOMMENDED_WORKFLOW, SYMBOLS } from './const.js';
+import { ServerContext } from '../../server/types.js';
+import { RECOMMENDED_WORKFLOW } from './const.js';
 import {
   SymbolTypeSchema,
   SymbolType,
@@ -35,7 +36,7 @@ const SEARCH_TOOL_DESCRIPTION =
 ${RECOMMENDED_WORKFLOW}
 `.trim();
 
-function searchSymbolsTool(server: HLMcpServer) {
+function searchSymbolsTool(server: HLMcpServer, { symbols }: ServerContext) {
   server.registerTool(
     'search-symbols',
     {
@@ -83,7 +84,7 @@ function searchSymbolsTool(server: HLMcpServer) {
       const searchTerms = parseSearchTerms(query);
       const symbolsWithScores: Array<{ symbol: Symbol; score: number }> = [];
 
-      SYMBOLS.forEach((symbol) => {
+      symbols.forEach((symbol) => {
         if (!symbolType || symbol.type === symbolType) {
           if (searchTerms.length > 0) {
             const score = calculateSymbolMatchScore(symbol, searchTerms);
@@ -103,8 +104,8 @@ function searchSymbolsTool(server: HLMcpServer) {
         return a.symbol.name.localeCompare(b.symbol.name);
       });
 
-      const symbols = symbolsWithScores.map((item) => item.symbol);
-      const summaries = symbols.map(symbolToSummary);
+      const matchedSymbols = symbolsWithScores.map((item) => item.symbol);
+      const summaries = matchedSymbols.map(symbolToSummary);
 
       // Paginate summaries
       const end = Math.min(offset + limit, summaries.length);

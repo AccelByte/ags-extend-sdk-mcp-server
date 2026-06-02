@@ -6,7 +6,8 @@ import { z } from 'zod/v3';
 
 import { McpServer as HLMcpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import { RECOMMENDED_WORKFLOW, SYMBOLS } from './const.js';
+import { ServerContext } from '../../server/types.js';
+import { RECOMMENDED_WORKFLOW } from './const.js';
 import { Symbol, PaginatedSymbolSchema } from './types.js';
 import { paginateSymbols, validatePaginationParams } from './utils.js';
 
@@ -20,7 +21,7 @@ const DESCRIBE_TOOL_DESCRIPTION = `Describe multiple symbols with pagination.
 ${RECOMMENDED_WORKFLOW}
 `.trim();
 
-function describeSymbolsTool(server: HLMcpServer) {
+function describeSymbolsTool(server: HLMcpServer, { symbols }: ServerContext) {
   server.registerTool(
     'describe-symbols',
     {
@@ -60,19 +61,21 @@ function describeSymbolsTool(server: HLMcpServer) {
     }) => {
       validatePaginationParams(limit, offset);
 
-      const symbols: Array<Symbol> = [];
+      const matchedSymbols: Array<Symbol> = [];
 
-      SYMBOLS.forEach((symbol) => {
+      symbols.forEach((symbol) => {
         if (ids.length > 0) {
           if (ids.includes(symbol.id)) {
-            symbols.push(symbol);
+            matchedSymbols.push(symbol);
           }
         } else {
-          symbols.push(symbol); // return all symbols if no IDs are provided
+          matchedSymbols.push(symbol); // return all symbols if no IDs are provided
         }
       });
 
-      const content = { result: paginateSymbols(symbols, limit, offset) };
+      const content = {
+        result: paginateSymbols(matchedSymbols, limit, offset),
+      };
 
       return {
         content: [
