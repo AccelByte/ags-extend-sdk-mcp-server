@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.3.2
+
+* Fixed rate limiting behind a load balancer (`ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`); added `TRUST_PROXY` to set the number of proxy hops.
+
 ## v2026.3.1
 
 * Added hosted deployment support: over HTTP the server now serves all SDK languages and selects one per connection via the URL path (`/mcp/{language}`).

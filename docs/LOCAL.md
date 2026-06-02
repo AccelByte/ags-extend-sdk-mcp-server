@@ -97,7 +97,7 @@ docker build -t extend-sdk-mcp-server:latest .   # build the container image
 ```bash
 GHCR_USERNAME=<your-username>
 GHCR_PASSWORD=<your-password>
-IMAGE_TAG=<version>    # e.g. 2026.3.1 — matches AGS release; bump patch for hotfix
+IMAGE_TAG=<version>    # e.g. 2026.3.2 — matches AGS release; bump patch for hotfix
 
 docker buildx inspect extend-sdk-mcp-server-builder || docker buildx create --name extend-sdk-mcp-server-builder --use
 echo "$GHCR_PASSWORD" | docker login ghcr.io --username "$GHCR_USERNAME" --password-stdin
