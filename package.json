@@ -3,12 +3,14 @@
   "version": "2026.3.0",
   "type": "module",
   "scripts": {
-    "build": "tsc && cp -r assets dist/ 2>/dev/null || true",
+    "build": "tsc -p tsconfig.build.json && cp -r assets dist/ 2>/dev/null || true",
     "build+": "pnpm run format && pnpm run lint && pnpm run build",
     "start": "pnpm run start:stdio",
     "start:stdio": "MCP_TRANSPORT=stdio node dist/index.js",
     "start:http": "MCP_TRANSPORT=http node dist/index.js",
     "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "inspect": "pnpm run inspect:stdio",
     "inspect:stdio": "MCP_TRANSPORT=stdio pnpm dlx @modelcontextprotocol/inspector --transport stdio -e MCP_TRANSPORT=stdio node dist/index.js",
     "inspect:http": "MCP_TRANSPORT=http node dist/index.js & sleep 2 && pnpm dlx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3000/mcp",
@@ -35,6 +37,7 @@
     "@types/express": "^5.0.3",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.7.2",
+    "@types/supertest": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.1",
@@ -45,6 +48,8 @@
     "eslint-plugin-prettier": "^5.5.4",
     "js-yaml": "^4.1.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.3"
+    "supertest": "^7.2.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.8"
   }
 }
