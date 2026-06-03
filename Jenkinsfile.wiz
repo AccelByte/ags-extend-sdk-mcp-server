@@ -24,7 +24,7 @@ pipeline {
                             sh "rm -f ${imageName}.tar.gz"
 
                             sh "docker build -t ${imageName}:wiz ."
-                            sh "docker save -o ${imageName}.tar ags-api-mcp-server:wiz"
+                            sh "docker save -o ${imageName}.tar ${imageName}:wiz"
 
                             withCredentials([
                                 usernamePassword(
@@ -61,7 +61,7 @@ pipeline {
                             sh "rm -f ${imageName}.tar.gz"
 
                             sh "docker build -t ${imageName}:wiz ."
-                            sh "docker save -o ${imageName}.tar ags-api-mcp-server:wiz"
+                            sh "docker save -o ${imageName}.tar ${imageName}:wiz"
 
                             withCredentials([
                                 usernamePassword(
