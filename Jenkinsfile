@@ -14,7 +14,7 @@ bitbucketCredentialsSsh = "bitbucket-build-extend-ssh"
 bitbucketPayload = null
 bitbucketCommitHref = null
 
-imageName = 'extend-sdk-mcp-server'
+imageName = 'ags-extend-sdk-mcp-server'
 
 pipeline {
   agent {
@@ -63,6 +63,37 @@ pipeline {
       post {
         always {
           sh "docker buildx rm --keep-state ${imageName}-builder"
+        }
+      }
+    }
+    stage('Push to ECR') {
+      when {
+        expression {
+          return (env.x_event_key == "pullrequest:fulfilled" && env.BITBUCKET_PULL_REQUEST_TARGET_BRANCH == "master")
+        }
+      }
+      steps {
+        withCredentials([
+            [
+                $class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: "AWS-Prod-Cluster",
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+            ]
+        ]) {
+          script {
+            def commitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(10)
+            def imageTag = "master-${commitHash}"
+            def ecrRepo = "144436415367.dkr.ecr.us-west-2.amazonaws.com/${imageName}"
+
+            sh "docker run --rm -t -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY amazon/aws-cli ecr get-login-password --region 'us-west-2' | docker login --username AWS --password-stdin 144436415367.dkr.ecr.us-west-2.amazonaws.com"
+            sh "docker tag ${imageName}:test ${ecrRepo}:${imageTag}"
+            sh "docker tag ${imageName}:test ${ecrRepo}:latest"
+            // We only run amd64 at the moment.
+            sh "docker push --platform linux/amd64 ${ecrRepo}:${imageTag}"
+            sh "docker push --platform linux/amd64 ${ecrRepo}:latest"
+          }
+
         }
       }
     }
