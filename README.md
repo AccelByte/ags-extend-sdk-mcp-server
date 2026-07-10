@@ -204,7 +204,7 @@ A prompt template that clones an Extend app template repository and opens it (in
 
 ## Running it yourself
 
-Prefer to run the server locally (stdio) or host the HTTP server yourself? See **[Running Locally & Self-Hosting](docs/LOCAL.md)** for Docker usage, environment variables, HTTP endpoints, developing from source, and releasing the image.
+Prefer to run the server locally (stdio) or host the HTTP server yourself? See **[Running Locally & Self-Hosting](docs/LOCAL.md)** for Docker usage, environment variables, HTTP endpoints, smoke tests, developing from source, and releasing the image.
 
 ---
 
@@ -228,6 +228,7 @@ Confirm the `<mcp-server-host>` and full URL are correct (ask your AccelByte adm
 
 - [Installation Guide](INSTALL.md) — followed by the Quick Install prompt; readable on its own
 - [Running Locally & Self-Hosting](docs/LOCAL.md) — Docker, environment variables, HTTP endpoints, development, and releasing the image
+- [Postman Collection](tests/postman/README.md) — import and Newman smoke-test instructions for `search-symbols` and `describe-symbols`
 
 ## Contributions
 

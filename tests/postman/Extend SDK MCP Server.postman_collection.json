@@ -1,0 +1,334 @@
+{
+  "info": {
+    "_postman_id": "8c1fc778-eec2-4ab3-9d09-3f46f202bdef",
+    "name": "Extend SDK MCP Server",
+    "description": "Minimal collection for exercising the Extend SDK MCP server over Streamable HTTP. Set BASE_URL, MCP_PATH, and LANGUAGE for the target deployment, run Initialize Session once, then run the tool calls.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Initialize Session",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var sessionId = pm.response.headers.get(\"mcp-session-id\");",
+              "",
+              "pm.test(\"MCP session ID is returned\", function () {",
+              "    pm.expect(sessionId).to.not.be.empty;",
+              "});",
+              "",
+              "if (sessionId) {",
+              "    pm.collectionVariables.set(\"MCP_SESSION_ID\", sessionId);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json, text/event-stream"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"initialize\",\n  \"params\": {\n    \"protocolVersion\": \"2024-11-05\",\n    \"capabilities\": {},\n    \"clientInfo\": {\n      \"name\": \"postman\",\n      \"version\": \"1.0.0\"\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/{{MCP_PATH}}/{{LANGUAGE}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "{{MCP_PATH}}",
+            "{{LANGUAGE}}"
+          ]
+        },
+        "description": "Creates a Streamable HTTP MCP session and stores the returned mcp-session-id collection variable."
+      },
+      "response": []
+    },
+    {
+      "name": "2. search-symbols",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (!pm.collectionVariables.get(\"MCP_SESSION_ID\")) {",
+              "    throw new Error(\"Run '1. Initialize Session' before calling MCP tools.\");",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function getToolResult(jsonData) {",
+              "    var rpcResult = jsonData.result || {};",
+              "    if (rpcResult.structuredContent && rpcResult.structuredContent.result) {",
+              "        return rpcResult.structuredContent.result;",
+              "    }",
+              "",
+              "    if (rpcResult.content && rpcResult.content[0] && rpcResult.content[0].text) {",
+              "        try {",
+              "            return JSON.parse(rpcResult.content[0].text).result;",
+              "        } catch (error) {",
+              "            return undefined;",
+              "        }",
+              "    }",
+              "",
+              "    return undefined;",
+              "}",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var toolResult = getToolResult(jsonData);",
+              "",
+              "pm.test(\"JSON-RPC call succeeded\", function () {",
+              "    pm.expect(jsonData.error).to.be.undefined;",
+              "    pm.expect(jsonData.result).to.be.an(\"object\");",
+              "});",
+              "",
+              "pm.test(\"Search result data is an array\", function () {",
+              "    pm.expect(toolResult).to.be.an(\"object\");",
+              "    pm.expect(toolResult.data).to.be.an(\"array\");",
+              "});",
+              "",
+              "if (toolResult && Array.isArray(toolResult.data) && toolResult.data.length > 0) {",
+              "    var firstSymbolId = toolResult.data[0].id;",
+              "    pm.collectionVariables.set(\"SYMBOL_ID\", firstSymbolId);",
+              "    pm.collectionVariables.set(\"SYMBOL_IDS\", JSON.stringify([firstSymbolId]));",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json, text/event-stream"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "mcp-session-id",
+            "value": "{{MCP_SESSION_ID}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 2,\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"search-symbols\",\n    \"arguments\": {\n      \"query\": \"{{SYMBOL_QUERY}}\",\n      \"limit\": {{SEARCH_LIMIT}},\n      \"offset\": {{SEARCH_OFFSET}}\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/{{MCP_PATH}}/{{LANGUAGE}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "{{MCP_PATH}}",
+            "{{LANGUAGE}}"
+          ]
+        },
+        "description": "Calls the search-symbols tool. When results are returned, the first symbol ID is saved to SYMBOL_IDS for the describe-symbols request."
+      },
+      "response": []
+    },
+    {
+      "name": "3. describe-symbols",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (!pm.collectionVariables.get(\"MCP_SESSION_ID\")) {",
+              "    throw new Error(\"Run '1. Initialize Session' before calling MCP tools.\");",
+              "}",
+              "",
+              "if (!pm.collectionVariables.get(\"SYMBOL_IDS\")) {",
+              "    pm.collectionVariables.set(\"SYMBOL_IDS\", \"[]\");",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function getToolResult(jsonData) {",
+              "    var rpcResult = jsonData.result || {};",
+              "    if (rpcResult.structuredContent && rpcResult.structuredContent.result) {",
+              "        return rpcResult.structuredContent.result;",
+              "    }",
+              "",
+              "    if (rpcResult.content && rpcResult.content[0] && rpcResult.content[0].text) {",
+              "        try {",
+              "            return JSON.parse(rpcResult.content[0].text).result;",
+              "        } catch (error) {",
+              "            return undefined;",
+              "        }",
+              "    }",
+              "",
+              "    return undefined;",
+              "}",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var toolResult = getToolResult(jsonData);",
+              "",
+              "pm.test(\"JSON-RPC call succeeded\", function () {",
+              "    pm.expect(jsonData.error).to.be.undefined;",
+              "    pm.expect(jsonData.result).to.be.an(\"object\");",
+              "});",
+              "",
+              "pm.test(\"Describe result data is an array\", function () {",
+              "    pm.expect(toolResult).to.be.an(\"object\");",
+              "    pm.expect(toolResult.data).to.be.an(\"array\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json, text/event-stream"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "mcp-session-id",
+            "value": "{{MCP_SESSION_ID}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 3,\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"describe-symbols\",\n    \"arguments\": {\n      \"ids\": {{SYMBOL_IDS}},\n      \"limit\": {{DESCRIBE_LIMIT}},\n      \"offset\": {{DESCRIBE_OFFSET}}\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/{{MCP_PATH}}/{{LANGUAGE}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "{{MCP_PATH}}",
+            "{{LANGUAGE}}"
+          ]
+        },
+        "description": "Calls the describe-symbols tool. Run search-symbols first to auto-fill SYMBOL_IDS, or set SYMBOL_IDS manually to a JSON array of symbol IDs."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "https://development.accelbyte.io",
+      "type": "string",
+      "description": "Target server origin with scheme and without a trailing slash. Hosted example: https://development.accelbyte.io. Local example: http://localhost:3000."
+    },
+    {
+      "key": "MCP_PATH",
+      "value": "extend-mcp",
+      "type": "string",
+      "description": "MCP endpoint base path without slashes. Hosted example: extend-mcp. Local default: mcp."
+    },
+    {
+      "key": "LANGUAGE",
+      "value": "go",
+      "type": "string",
+      "description": "SDK language path segment: csharp, go, java, or python."
+    },
+    {
+      "key": "MCP_SESSION_ID",
+      "value": "",
+      "type": "string",
+      "description": "Set automatically by Initialize Session."
+    },
+    {
+      "key": "SYMBOL_QUERY",
+      "value": "user",
+      "type": "string",
+      "description": "Search query for search-symbols."
+    },
+    {
+      "key": "SEARCH_LIMIT",
+      "value": "10",
+      "type": "string"
+    },
+    {
+      "key": "SEARCH_OFFSET",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "key": "SYMBOL_ID",
+      "value": "",
+      "type": "string",
+      "description": "Set automatically to the first search result ID."
+    },
+    {
+      "key": "SYMBOL_IDS",
+      "value": "[]",
+      "type": "string",
+      "description": "JSON array used by describe-symbols. It is auto-filled by search-symbols when a result exists."
+    },
+    {
+      "key": "DESCRIBE_LIMIT",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "DESCRIBE_OFFSET",
+      "value": "0",
+      "type": "string"
+    }
+  ]
+}

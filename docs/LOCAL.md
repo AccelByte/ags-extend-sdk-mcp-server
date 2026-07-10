@@ -12,6 +12,7 @@ Most users should connect to the hosted AGS Extend SDK MCP Server — see the [R
 - [Develop from source](#develop-from-source)
 - [Release (push the container image)](#release-push-the-container-image)
 - [Smoke-test the HTTP server](#smoke-test-the-http-server)
+- [Smoke-test with Postman or Newman](#smoke-test-with-postman-or-newman)
 
 ## Run with Docker
 
@@ -127,3 +128,38 @@ curl -N -H "Accept: application/json, text/event-stream" \
     -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search-symbols","arguments":{"query":"user"}}}' \
     http://localhost:3000/mcp/go
 ```
+
+## Smoke-test with Postman or Newman
+
+The repository includes a focused Postman collection for the HTTP MCP endpoint:
+
+```text
+tests/postman/Extend SDK MCP Server.postman_collection.json
+```
+
+It initializes an MCP session, calls `search-symbols`, then calls `describe-symbols` using the first search result. Import the collection into Postman, then set:
+
+| Variable | Hosted example | Local example |
+|---|---|---|
+| `BASE_URL` | `https://development.accelbyte.io` | `http://localhost:3000` |
+| `MCP_PATH` | `extend-mcp` | `mcp` |
+| `LANGUAGE` | `go` | `go` |
+
+`MCP_PATH` is a path segment, so do not include leading or trailing slashes. The request URL is built as `{{BASE_URL}}/{{MCP_PATH}}/{{LANGUAGE}}`.
+
+Run the collection programmatically with Newman:
+
+```bash
+newman run "tests/postman/Extend SDK MCP Server.postman_collection.json"
+```
+
+Override variables for another deployment or language:
+
+```bash
+newman run "tests/postman/Extend SDK MCP Server.postman_collection.json" \
+  --env-var BASE_URL=http://localhost:3000 \
+  --env-var MCP_PATH=mcp \
+  --env-var LANGUAGE=python
+```
+
+See [Postman Collection](../tests/postman/README.md) for the full variable list and run order.
