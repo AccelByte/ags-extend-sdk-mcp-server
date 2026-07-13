@@ -1,6 +1,36 @@
 symbols:
   # region models
 
+  'ApimodelAppDebugInfoResponse@cs.csm.mod':
+    id: 'ApimodelAppDebugInfoResponse@cs.csm.mod'
+    name: 'ApimodelAppDebugInfoResponse'
+    type: 'model'
+    fields:
+      'AllowedInterceptedPorts':
+        type: 'List<DomainAllowedInterceptedPort>'
+        required: true
+      'AppStatus':
+        type: 'string'
+        required: true
+      'DebugPods':
+        type: 'List<DomainDebugPod>'
+        required: true
+      'ExposedServices':
+        type: 'List<DomainExposedService>'
+        required: true
+      'IsDebugModeEnabled':
+        type: 'bool'
+        required: true
+      'IsDebugSessionConnected':
+        type: 'bool'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelAppDebugInfoResponse.cs'
+
   'ApimodelAppItem@cs.csm.mod':
     id: 'ApimodelAppItem@cs.csm.mod'
     name: 'ApimodelAppItem'
@@ -17,6 +47,9 @@ symbols:
         required: true
       'CreatedAt':
         type: 'string'
+        required: true
+      'EnableDebugMode':
+        type: 'bool'
         required: true
       'GameName':
         type: 'string'
@@ -69,9 +102,6 @@ symbols:
       'Message':
         type: 'string'
         required: false
-      'RedeploymentInfo':
-        type: 'ModelAppRedeploymentInfo'
-        required: false
       'Replica':
         type: 'ApimodelReplicaResponse'
         required: false
@@ -87,6 +117,48 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelAppItem.cs'
+
+  'ApimodelAppItemV5@cs.csm.mod':
+    id: 'ApimodelAppItemV5@cs.csm.mod'
+    name: 'ApimodelAppItemV5'
+    type: 'model'
+    fields:
+      'AppId':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'AppStatus':
+        type: 'string'
+        required: true
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'GameName':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'string'
+        required: true
+      'BasePath':
+        type: 'string'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'VmSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelAppItemV5.cs'
 
   'ApimodelApplyAppConfigRequest@cs.csm.mod':
     id: 'ApimodelApplyAppConfigRequest@cs.csm.mod'
@@ -165,6 +237,36 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelApplyPermissionItem.cs'
+
+  'ApimodelAppStatusProgressStep@cs.csm.mod':
+    id: 'ApimodelAppStatusProgressStep@cs.csm.mod'
+    name: 'ApimodelAppStatusProgressStep'
+    type: 'model'
+    fields:
+      'Status':
+        type: 'string'
+        required: true
+      'Step':
+        type: 'string'
+        required: true
+      'StepOrder':
+        type: 'long'
+        required: true
+      'FinishedAt':
+        type: 'DateTime'
+        required: false
+      'StartedAt':
+        type: 'DateTime'
+        required: false
+      'StatusMessage':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelAppStatusProgressStep.cs'
 
   'ApimodelAppUIResponse@cs.csm.mod':
     id: 'ApimodelAppUIResponse@cs.csm.mod'
@@ -348,6 +450,42 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateAppV2Request.cs'
+
+  'ApimodelCreateAppV5Request@cs.csm.mod':
+    id: 'ApimodelCreateAppV5Request@cs.csm.mod'
+    name: 'ApimodelCreateAppV5Request'
+    type: 'model'
+    fields:
+      'Scenario':
+        type: 'string'
+        required: true
+      'Autoscaling':
+        type: 'CreateappparamsAutoscalingRequest'
+        required: false
+      'Cpu':
+        type: 'CreateappparamsCPURequest'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Memory':
+        type: 'CreateappparamsMemoryRequest'
+        required: false
+      'PreferredK8sNamespace':
+        type: 'string'
+        required: false
+      'Replica':
+        type: 'CreateappparamsReplicaRequest'
+        required: false
+      'VmSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelCreateAppV5Request.cs'
 
   'ApimodelCreateDeploymentV2Request@cs.csm.mod':
     id: 'ApimodelCreateDeploymentV2Request@cs.csm.mod'
@@ -783,6 +921,30 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelGetAppListV2Response.cs'
+
+  'ApimodelGetAppStatusProgressResponse@cs.csm.mod':
+    id: 'ApimodelGetAppStatusProgressResponse@cs.csm.mod'
+    name: 'ApimodelGetAppStatusProgressResponse'
+    type: 'model'
+    fields:
+      'AppId':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'OperationId':
+        type: 'string'
+        required: true
+      'Steps':
+        type: 'List<ApimodelAppStatusProgressStep>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelGetAppStatusProgressResponse.cs'
 
   'ApimodelGetDeploymentListV2DataItem@cs.csm.mod':
     id: 'ApimodelGetDeploymentListV2DataItem@cs.csm.mod'
@@ -1692,6 +1854,9 @@ symbols:
       'ReplicaLimit':
         type: 'int'
         required: false
+      'RolloutReadyReplicas':
+        type: 'int'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -2199,6 +2364,9 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableDebugMode':
+        type: 'bool'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -2257,6 +2425,21 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelUpdateConfigurationV2Response.cs'
 
+  'ApimodelUpdateDebugModeRequest@cs.csm.mod':
+    id: 'ApimodelUpdateDebugModeRequest@cs.csm.mod'
+    name: 'ApimodelUpdateDebugModeRequest'
+    type: 'model'
+    fields:
+      'EnableDebugMode':
+        type: 'bool'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelUpdateDebugModeRequest.cs'
+
   'ApimodelUpdateSecretConfigurationV2Request@cs.csm.mod':
     id: 'ApimodelUpdateSecretConfigurationV2Request@cs.csm.mod'
     name: 'ApimodelUpdateSecretConfigurationV2Request'
@@ -2289,6 +2472,123 @@ symbols:
       - 'using AccelByte.Sdk.Api.Csm.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ApimodelUploadFileResponse.cs'
+
+  'CreateappparamsAutoscalingRequest@cs.csm.mod':
+    id: 'CreateappparamsAutoscalingRequest@cs.csm.mod'
+    name: 'CreateappparamsAutoscalingRequest'
+    type: 'model'
+    fields:
+      'TargetCPUUtilizationPercent':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/CreateappparamsAutoscalingRequest.cs'
+
+  'CreateappparamsCPURequest@cs.csm.mod':
+    id: 'CreateappparamsCPURequest@cs.csm.mod'
+    name: 'CreateappparamsCPURequest'
+    type: 'model'
+    fields:
+      'RequestCPU':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/CreateappparamsCPURequest.cs'
+
+  'CreateappparamsMemoryRequest@cs.csm.mod':
+    id: 'CreateappparamsMemoryRequest@cs.csm.mod'
+    name: 'CreateappparamsMemoryRequest'
+    type: 'model'
+    fields:
+      'RequestMemory':
+        type: 'int'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/CreateappparamsMemoryRequest.cs'
+
+  'CreateappparamsReplicaRequest@cs.csm.mod':
+    id: 'CreateappparamsReplicaRequest@cs.csm.mod'
+    name: 'CreateappparamsReplicaRequest'
+    type: 'model'
+    fields:
+      'MaxReplica':
+        type: 'int'
+        required: false
+      'MinReplica':
+        type: 'int'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/CreateappparamsReplicaRequest.cs'
+
+  'DomainAllowedInterceptedPort@cs.csm.mod':
+    id: 'DomainAllowedInterceptedPort@cs.csm.mod'
+    name: 'DomainAllowedInterceptedPort'
+    type: 'model'
+    fields:
+      'Port':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/DomainAllowedInterceptedPort.cs'
+
+  'DomainDebugPod@cs.csm.mod':
+    id: 'DomainDebugPod@cs.csm.mod'
+    name: 'DomainDebugPod'
+    type: 'model'
+    fields:
+      'PodName':
+        type: 'string'
+        required: true
+      'Port':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/DomainDebugPod.cs'
+
+  'DomainExposedService@cs.csm.mod':
+    id: 'DomainExposedService@cs.csm.mod'
+    name: 'DomainExposedService'
+    type: 'model'
+    fields:
+      'Host':
+        type: 'string'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Port':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/DomainExposedService.cs'
 
   'DomainKeyValueClusterConfig@cs.csm.mod':
     id: 'DomainKeyValueClusterConfig@cs.csm.mod'
@@ -3133,42 +3433,6 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/LogAppMessageDeclaration.cs'
 
-  'ModelAppRedeploymentDetail@cs.csm.mod':
-    id: 'ModelAppRedeploymentDetail@cs.csm.mod'
-    name: 'ModelAppRedeploymentDetail'
-    type: 'model'
-    fields:
-      'ReasonId':
-        type: 'string'
-        required: true
-      'Message':
-        type: 'string'
-        required: false
-    imports:
-      - 'using System;'
-      - 'using System.Collections.Generic;'
-      - 'using AccelByte.Sdk.Api.Csm.Model;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ModelAppRedeploymentDetail.cs'
-
-  'ModelAppRedeploymentInfo@cs.csm.mod':
-    id: 'ModelAppRedeploymentInfo@cs.csm.mod'
-    name: 'ModelAppRedeploymentInfo'
-    type: 'model'
-    fields:
-      'ShouldRedeploy':
-        type: 'bool'
-        required: true
-      'Details':
-        type: 'List<ModelAppRedeploymentDetail>'
-        required: false
-    imports:
-      - 'using System;'
-      - 'using System.Collections.Generic;'
-      - 'using AccelByte.Sdk.Api.Csm.Model;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Model/ModelAppRedeploymentInfo.cs'
-
   'ModelCSMAutoscalingDefaults@cs.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@cs.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -3322,8 +3586,6 @@ symbols:
     name: 'ApplyAppConfigV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
-
       Idempotent endpoint that creates or updates an Extend app from a declarative spec.
       Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
 
@@ -3367,14 +3629,14 @@ symbols:
       - 'apply'
       - 'config'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP []'
 
   'BulkSaveSubscriptionAppNotificationV2@cs.csm.fun':
     id: 'BulkSaveSubscriptionAppNotificationV2@cs.csm.fun'
     name: 'BulkSaveSubscriptionAppNotificationV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
-
       Bulk update of users subscribed to an app's notifications.
 
       Request body:
@@ -3424,14 +3686,14 @@ symbols:
       - 'save'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]'
 
   'CreateAppUI@cs.csm.fun':
     id: 'CreateAppUI@cs.csm.fun'
     name: 'CreateAppUI'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
-
       Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
     arguments:
       'Body':
@@ -3465,14 +3727,14 @@ symbols:
       - 'app'
       - 'create'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]'
 
   'CreateAppV1@cs.csm.fun':
     id: 'CreateAppV1@cs.csm.fun'
     name: 'CreateAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
-
       Creates new App for AB-Extend Customers
 
       Available scenario:
@@ -3518,20 +3780,22 @@ symbols:
       - 'app'
       - 'create'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'CreateAppV2@cs.csm.fun':
     id: 'CreateAppV2@cs.csm.fun'
     name: 'CreateAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+      [Deprecated] Please use v5 endpoint instead.
 
       Create new extend app with name provided by {app} path parameter and specified scenario type
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -3588,14 +3852,86 @@ symbols:
       - 'app'
       - 'create'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
+
+  'CreateAppV5@cs.csm.fun':
+    id: 'CreateAppV5@cs.csm.fun'
+    name: 'CreateAppV5'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Create new extend app with name provided by {app} path parameter and specified scenario type
+
+      Available scenario:
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+      - scenario 1: `function-override`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: 'ApimodelCreateAppV5Request'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'ApimodelAppItemV5'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AppV5.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AppV5/CreateAppV5.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AppV5.CreateAppV5Op
+              .Build();
+
+          var response = sdk.Csm.AppV5.CreateAppV5(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v5'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'CreateDeploymentV1@cs.csm.fun':
     id: 'CreateDeploymentV1@cs.csm.fun'
     name: 'CreateDeploymentV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This endpoint intended to apply the helm release or deploying the custom service image.
@@ -3645,14 +3981,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'CreateDeploymentV2@cs.csm.fun':
     id: 'CreateDeploymentV2@cs.csm.fun'
     name: 'CreateDeploymentV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This Endpoint will create new deployment and apply all of the secrets and variable as environment variable
@@ -3699,14 +4035,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'CreateKeyValueClusterV2@cs.csm.fun':
     id: 'CreateKeyValueClusterV2@cs.csm.fun'
     name: 'CreateKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
-
       Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
       Cluster limits:
@@ -3750,14 +4086,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]'
 
   'CreateKeyValueCredentialV2@cs.csm.fun':
     id: 'CreateKeyValueCredentialV2@cs.csm.fun'
     name: 'CreateKeyValueCredentialV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
-
       Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
       Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
       If the same username and password are provided, returns the existing credential (idempotent).
@@ -3804,14 +4140,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]'
 
   'CreateNewNoSQLDatabaseCredentialV2@cs.csm.fun':
     id: 'CreateNewNoSQLDatabaseCredentialV2@cs.csm.fun'
     name: 'CreateNewNoSQLDatabaseCredentialV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -3858,14 +4194,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateNoSQLClusterV2@cs.csm.fun':
     id: 'CreateNoSQLClusterV2@cs.csm.fun'
     name: 'CreateNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]`
-
       Provision NoSQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one NoSQL resource can be created for one studio/publisher namespace.
 
@@ -3906,14 +4242,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]'
 
   'CreateNoSQLDatabaseCredentialV2@cs.csm.fun':
     id: 'CreateNoSQLDatabaseCredentialV2@cs.csm.fun'
     name: 'CreateNoSQLDatabaseCredentialV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -3959,14 +4295,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateNoSQLDatabaseV2@cs.csm.fun':
     id: 'CreateNoSQLDatabaseV2@cs.csm.fun'
     name: 'CreateNoSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
-
       Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
@@ -4011,14 +4347,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]'
 
   'CreateSQLClusterV2@cs.csm.fun':
     id: 'CreateSQLClusterV2@cs.csm.fun'
     name: 'CreateSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
-
       Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one SQL resource can be created for one studio/publisher namespace.
 
@@ -4058,14 +4394,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]'
 
   'CreateSQLDatabaseCredentialV2@cs.csm.fun':
     id: 'CreateSQLDatabaseCredentialV2@cs.csm.fun'
     name: 'CreateSQLDatabaseCredentialV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
     arguments:
       'App':
@@ -4108,14 +4444,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateSQLDatabaseV2@cs.csm.fun':
     id: 'CreateSQLDatabaseV2@cs.csm.fun'
     name: 'CreateSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
-
       Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
     arguments:
       'App':
@@ -4157,14 +4493,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]'
 
   'CreateSubscriptionHandler@cs.csm.fun':
     id: 'CreateSubscriptionHandler@cs.csm.fun'
     name: 'CreateSubscriptionHandler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
-
       Subscribe App queue to given Topic name list inside a game namespace.
     arguments:
       'App':
@@ -4205,14 +4541,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'subscription'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]'
 
   'CreateTopicHandler@cs.csm.fun':
     id: 'CreateTopicHandler@cs.csm.fun'
     name: 'CreateTopicHandler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
-
       Create New Async Messaging Topic, the topic name is unique inside a game namespace.
     arguments:
       'Body':
@@ -4248,14 +4584,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]'
 
   'DeleteAppImagesV1@cs.csm.fun':
     id: 'DeleteAppImagesV1@cs.csm.fun'
     name: 'DeleteAppImagesV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes the images uploaded to the repository
     arguments:
       'App':
@@ -4296,14 +4632,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'DeleteAppImagesV2@cs.csm.fun':
     id: 'DeleteAppImagesV2@cs.csm.fun'
     name: 'DeleteAppImagesV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes list of provided image tags from the app image repository
     arguments:
       'App':
@@ -4344,14 +4680,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'DeleteAppUI@cs.csm.fun':
     id: 'DeleteAppUI@cs.csm.fun'
     name: 'DeleteAppUI'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
-
       Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
     arguments:
       'AppUiName':
@@ -4387,14 +4723,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]'
 
   'DeleteAppV1@cs.csm.fun':
     id: 'DeleteAppV1@cs.csm.fun'
     name: 'DeleteAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete App by given DeploymentID
 
       This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
@@ -4444,14 +4780,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'DeleteAppV2@cs.csm.fun':
     id: 'DeleteAppV2@cs.csm.fun'
     name: 'DeleteAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete extend app by given {app} name
 
       This endpoint will delete app information, configuration, deployments and all related manifest from
@@ -4499,14 +4835,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'DeleteDeploymentV1@cs.csm.fun':
     id: 'DeleteDeploymentV1@cs.csm.fun'
     name: 'DeleteDeploymentV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
@@ -4546,14 +4882,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'DeleteDeploymentV2@cs.csm.fun':
     id: 'DeleteDeploymentV2@cs.csm.fun'
     name: 'DeleteDeploymentV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint will delete release object for the service deployment in the cluster
@@ -4593,14 +4929,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'DeleteKeyValueClusterV2@cs.csm.fun':
     id: 'DeleteKeyValueClusterV2@cs.csm.fun'
     name: 'DeleteKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
-
       Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
       Force-deletes all active integrations. Returns resource with status DELETING.
     arguments:
@@ -4641,14 +4977,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]'
 
   'DeleteNoSQLClusterV2@cs.csm.fun':
     id: 'DeleteNoSQLClusterV2@cs.csm.fun'
     name: 'DeleteNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -4688,14 +5024,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]'
 
   'DeleteNoSQLDatabaseV2@cs.csm.fun':
     id: 'DeleteNoSQLDatabaseV2@cs.csm.fun'
     name: 'DeleteNoSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]`
-
       Deletes a NoSQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned NoSQL cluster.
     arguments:
       'App':
@@ -4735,14 +5071,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]'
 
   'DeleteSecretV1@cs.csm.fun':
     id: 'DeleteSecretV1@cs.csm.fun'
     name: 'DeleteSecretV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret.
     arguments:
       'App':
@@ -4784,14 +5120,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'DeleteSecretV2@cs.csm.fun':
     id: 'DeleteSecretV2@cs.csm.fun'
     name: 'DeleteSecretV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret by its config id
     arguments:
       'App':
@@ -4833,14 +5169,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'DeleteSQLClusterV2@cs.csm.fun':
     id: 'DeleteSQLClusterV2@cs.csm.fun'
     name: 'DeleteSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -4879,14 +5215,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]'
 
   'DeleteSQLDatabaseV2@cs.csm.fun':
     id: 'DeleteSQLDatabaseV2@cs.csm.fun'
     name: 'DeleteSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
-
       Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
     arguments:
       'App':
@@ -4925,14 +5261,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]'
 
   'DeleteSubscriptionAppNotificationByUserIDV2@cs.csm.fun':
     id: 'DeleteSubscriptionAppNotificationByUserIDV2@cs.csm.fun'
     name: 'DeleteSubscriptionAppNotificationByUserIDV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription by user ID.
     arguments:
       'App':
@@ -4977,14 +5313,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteSubscriptionAppNotificationV2@cs.csm.fun':
     id: 'DeleteSubscriptionAppNotificationV2@cs.csm.fun'
     name: 'DeleteSubscriptionAppNotificationV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription.
     arguments:
       'App':
@@ -5027,14 +5363,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteSubscriptionAppNotificationV3@cs.csm.fun':
     id: 'DeleteSubscriptionAppNotificationV3@cs.csm.fun'
     name: 'DeleteSubscriptionAppNotificationV3'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription using either user ID or email address.
       Only one of them should be provided.
     arguments:
@@ -5088,14 +5424,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteTopicHandler@cs.csm.fun':
     id: 'DeleteTopicHandler@cs.csm.fun'
     name: 'DeleteTopicHandler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
-
       Delete Async Messaging Topic inside a game namespace given its topic name.
     arguments:
       'Namespace':
@@ -5133,14 +5469,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]'
 
   'DeleteVariableV1@cs.csm.fun':
     id: 'DeleteVariableV1@cs.csm.fun'
     name: 'DeleteVariableV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable.
     arguments:
       'App':
@@ -5182,14 +5518,14 @@ symbols:
       - 'delete'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
 
   'DeleteVariableV2@cs.csm.fun':
     id: 'DeleteVariableV2@cs.csm.fun'
     name: 'DeleteVariableV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable by its config id
     arguments:
       'App':
@@ -5231,14 +5567,62 @@ symbols:
       - 'delete'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
+
+  'GetAppDebugInfoV4@cs.csm.fun':
+    id: 'GetAppDebugInfoV4@cs.csm.fun'
+    name: 'GetAppDebugInfoV4'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Returns the list of debug-ready pods and exposed services for the given extend app.
+
+      A pod is included only when it is in `Running` phase and has an
+      `extend-proxy-sidecar` container.
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelAppDebugInfoResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AppV4.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AppV4/GetAppDebugInfoV4.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AppV4.GetAppDebugInfoV4Op
+              .Build();
+
+          var response = sdk.Csm.AppV4.GetAppDebugInfoV4(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'debug'
+      - 'get'
+      - 'info'
+      - 'v4'
 
   'GetAppImageListV1@cs.csm.fun':
     id: 'GetAppImageListV1@cs.csm.fun'
     name: 'GetAppImageListV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -5299,14 +5683,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'GetAppImageListV2@cs.csm.fun':
     id: 'GetAppImageListV2@cs.csm.fun'
     name: 'GetAppImageListV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -5355,14 +5739,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'GetAppListV1@cs.csm.fun':
     id: 'GetAppListV1@cs.csm.fun'
     name: 'GetAppListV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
@@ -5417,14 +5801,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppListV2@cs.csm.fun':
     id: 'GetAppListV2@cs.csm.fun'
     name: 'GetAppListV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get list of extend apps on a given game namespace
     arguments:
       'Body':
@@ -5474,14 +5858,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppReleaseV1@cs.csm.fun':
     id: 'GetAppReleaseV1@cs.csm.fun'
     name: 'GetAppReleaseV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the Latest Release Version info of this App
     arguments:
       'App':
@@ -5518,14 +5902,59 @@ symbols:
       - 'get'
       - 'release'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
+
+  'GetAppStatusProgressV4@cs.csm.fun':
+    id: 'GetAppStatusProgressV4@cs.csm.fun'
+    name: 'GetAppStatusProgressV4'
+    type: 'function'
+    description: |-
+      Returns step rows for the current or last tracked operation.
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelGetAppStatusProgressResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AppStatusProgressV4.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AppStatusProgressV4/GetAppStatusProgressV4.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AppStatusProgressV4.GetAppStatusProgressV4Op
+              .Build();
+
+          var response = sdk.Csm.AppStatusProgressV4.GetAppStatusProgressV4(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'get'
+      - 'progress'
+      - 'status'
+      - 'v4'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppV1@cs.csm.fun':
     id: 'GetAppV1@cs.csm.fun'
     name: 'GetAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the App By Name
     arguments:
       'App':
@@ -5561,20 +5990,20 @@ symbols:
       - 'app'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppV2@cs.csm.fun':
     id: 'GetAppV2@cs.csm.fun'
     name: 'GetAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get extend app by name
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -5628,14 +6057,14 @@ symbols:
       - 'app'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetDeploymentV1@cs.csm.fun':
     id: 'GetDeploymentV1@cs.csm.fun'
     name: 'GetDeploymentV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
@@ -5675,14 +6104,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetDeploymentV2@cs.csm.fun':
     id: 'GetDeploymentV2@cs.csm.fun'
     name: 'GetDeploymentV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information.
@@ -5722,14 +6151,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetExtendFile@cs.csm.fun':
     id: 'GetExtendFile@cs.csm.fun'
     name: 'GetExtendFile'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
-
       Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
     arguments:
       'FilePath':
@@ -5766,14 +6195,14 @@ symbols:
       - 'file'
       - 'files'
       - 'get'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]'
 
   'GetIntegrationAppKeyValueClusterV2@cs.csm.fun':
     id: 'GetIntegrationAppKeyValueClusterV2@cs.csm.fun'
     name: 'GetIntegrationAppKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
-
       Get integration of an extend app with a cluster.
     arguments:
       'App':
@@ -5815,14 +6244,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]'
 
   'GetKeyValueClusterLimitConfigV2@cs.csm.fun':
     id: 'GetKeyValueClusterLimitConfigV2@cs.csm.fun'
     name: 'GetKeyValueClusterLimitConfigV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster limit config.
     arguments:
       'Namespace':
@@ -5859,14 +6288,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetKeyValueClusterV2@cs.csm.fun':
     id: 'GetKeyValueClusterV2@cs.csm.fun'
     name: 'GetKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the Key-Value cluster status.
@@ -5908,14 +6337,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetListIntegratedAppKeyValueClusterV2@cs.csm.fun':
     id: 'GetListIntegratedAppKeyValueClusterV2@cs.csm.fun'
     name: 'GetListIntegratedAppKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
     arguments:
       'Namespace':
@@ -5958,14 +6387,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetListOfDeploymentV1@cs.csm.fun':
     id: 'GetListOfDeploymentV1@cs.csm.fun'
     name: 'GetListOfDeploymentV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -6020,14 +6449,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetListOfDeploymentV2@cs.csm.fun':
     id: 'GetListOfDeploymentV2@cs.csm.fun'
     name: 'GetListOfDeploymentV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -6090,14 +6519,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetListOfSecretsV1@cs.csm.fun':
     id: 'GetListOfSecretsV1@cs.csm.fun'
     name: 'GetListOfSecretsV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -6154,14 +6583,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'GetListOfSecretsV2@cs.csm.fun':
     id: 'GetListOfSecretsV2@cs.csm.fun'
     name: 'GetListOfSecretsV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -6218,14 +6647,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'GetListOfVariablesV1@cs.csm.fun':
     id: 'GetListOfVariablesV1@cs.csm.fun'
     name: 'GetListOfVariablesV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -6282,14 +6711,14 @@ symbols:
       - 'of'
       - 'v1'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'GetListOfVariablesV2@cs.csm.fun':
     id: 'GetListOfVariablesV2@cs.csm.fun'
     name: 'GetListOfVariablesV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -6346,6 +6775,8 @@ symbols:
       - 'of'
       - 'v2'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'GetNoSQLAccessTunnelV2@cs.csm.fun':
     id: 'GetNoSQLAccessTunnelV2@cs.csm.fun'
@@ -6387,24 +6818,24 @@ symbols:
       - 'sql'
       - 'tunnel'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:TUNNELS [READ]'
 
   'GetNoSQLAppListV2@cs.csm.fun':
     id: 'GetNoSQLAppListV2@cs.csm.fun'
     name: 'GetNoSQLAppListV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
     arguments:
       'AppName':
@@ -6412,16 +6843,16 @@ symbols:
         required: false
         description: |-
           App Name
+      'GameNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          Game Namespace
       'Limit':
         type: 'long'
         required: false
         description: |-
           Limit for pagination
-      'Namespace':
-        type: 'string'
-        required: false
-        description: |-
-          Game Name
       'Offset':
         type: 'long'
         required: false
@@ -6451,8 +6882,8 @@ symbols:
       {
           var operation = sdk.Csm.ManagedResources.GetNoSQLAppListV2Op
               .SetAppName(...)
+              .SetGameNamespace(...)
               .SetLimit(...)
-              .SetNamespace(...)
               .SetOffset(...)
               .Build(
                   resourceId,
@@ -6472,27 +6903,27 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'GetNoSQLClusterV2@cs.csm.fun':
     id: 'GetNoSQLClusterV2@cs.csm.fun'
     name: 'GetNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'Namespace':
         type: 'string'
@@ -6526,28 +6957,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'GetNoSQLDatabaseV2@cs.csm.fun':
     id: 'GetNoSQLDatabaseV2@cs.csm.fun'
     name: 'GetNoSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]`
-
       Get a NoSQL database information returns the NoSQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     arguments:
       'App':
         type: 'string'
@@ -6586,14 +7017,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]'
 
   'GetNotificationSubscriberListV2@cs.csm.fun':
     id: 'GetNotificationSubscriberListV2@cs.csm.fun'
     name: 'GetNotificationSubscriberListV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -6644,14 +7075,14 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'GetNotificationSubscriberListV3@cs.csm.fun':
     id: 'GetNotificationSubscriberListV3@cs.csm.fun'
     name: 'GetNotificationSubscriberListV3'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -6702,6 +7133,8 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'GetResourcesLimits@cs.csm.fun':
     id: 'GetResourcesLimits@cs.csm.fun'
@@ -6749,20 +7182,18 @@ symbols:
     name: 'GetSQLAppListV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
       - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
     arguments:
       'AppName':
         type: 'string'
@@ -6773,7 +7204,7 @@ symbols:
         type: 'string'
         required: false
         description: |-
-          Game Name
+          Game Namespace
       'Limit':
         type: 'long'
         required: false
@@ -6828,28 +7259,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'GetSQLClusterV2@cs.csm.fun':
     id: 'GetSQLClusterV2@cs.csm.fun'
     name: 'GetSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the SQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
       - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
     arguments:
       'Namespace':
         type: 'string'
@@ -6882,29 +7313,29 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'GetSQLDatabaseV2@cs.csm.fun':
     id: 'GetSQLDatabaseV2@cs.csm.fun'
     name: 'GetSQLDatabaseV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
-
       Get a SQL database information returns the SQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the SQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `available` : The cluster is accessible.
     arguments:
       'App':
         type: 'string'
@@ -6942,14 +7373,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]'
 
   'GetSubscriptionV2Handler@cs.csm.fun':
     id: 'GetSubscriptionV2Handler@cs.csm.fun'
     name: 'GetSubscriptionV2Handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
-
       Get Subscription status of a user
     arguments:
       'App':
@@ -6987,14 +7418,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]'
 
   'IntegrateAppKeyValueClusterV2@cs.csm.fun':
     id: 'IntegrateAppKeyValueClusterV2@cs.csm.fun'
     name: 'IntegrateAppKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
-
       Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
     arguments:
       'App':
@@ -7038,14 +7469,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]'
 
   'ListAppUI@cs.csm.fun':
     id: 'ListAppUI@cs.csm.fun'
     name: 'ListAppUI'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
-
       Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
     arguments:
       'Limit':
@@ -7096,14 +7527,14 @@ symbols:
       - 'app'
       - 'list'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]'
 
   'ListKeyValueClusterV2@cs.csm.fun':
     id: 'ListKeyValueClusterV2@cs.csm.fun'
     name: 'ListKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       List Key-Value clusters by studio/publisher namespace.
       If `refresh=true`, the service will sync cluster status from the provider (cached).
     arguments:
@@ -7147,14 +7578,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'ListTopicsHandler@cs.csm.fun':
     id: 'ListTopicsHandler@cs.csm.fun'
     name: 'ListTopicsHandler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
-
       List all Async Messaging Topics inside a game namespace.
     arguments:
       'FuzzyTopicName':
@@ -7219,6 +7650,8 @@ symbols:
       - 'list'
       - 'messaging'
       - 'topics'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]'
 
   'PublicGetMessages@cs.csm.fun':
     id: 'PublicGetMessages@cs.csm.fun'
@@ -7255,8 +7688,6 @@ symbols:
     name: 'RemoveIntegrationAppKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
-
       Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
     arguments:
       'App':
@@ -7298,14 +7729,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]'
 
   'SaveSecretV1@cs.csm.fun':
     id: 'SaveSecretV1@cs.csm.fun'
     name: 'SaveSecretV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Request body:
       - configName : environment secret name - Required.
@@ -7351,14 +7782,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'SaveSecretV2@cs.csm.fun':
     id: 'SaveSecretV2@cs.csm.fun'
     name: 'SaveSecretV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Secret will always be masked.
       Request body:
@@ -7404,14 +7835,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'SaveVariableV1@cs.csm.fun':
     id: 'SaveVariableV1@cs.csm.fun'
     name: 'SaveVariableV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -7457,14 +7888,14 @@ symbols:
       - 'save'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'SaveVariableV2@cs.csm.fun':
     id: 'SaveVariableV2@cs.csm.fun'
     name: 'SaveVariableV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -7510,14 +7941,14 @@ symbols:
       - 'save'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'StartAppV1@cs.csm.fun':
     id: 'StartAppV1@cs.csm.fun'
     name: 'StartAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     arguments:
       'App':
@@ -7556,14 +7987,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StartAppV2@cs.csm.fun':
     id: 'StartAppV2@cs.csm.fun'
     name: 'StartAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     arguments:
       'App':
@@ -7599,14 +8030,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StartNoSQLClusterV2@cs.csm.fun':
     id: 'StartNoSQLClusterV2@cs.csm.fun'
     name: 'StartNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Start NoSQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -7644,14 +8075,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'StartSQLClusterV2@cs.csm.fun':
     id: 'StartSQLClusterV2@cs.csm.fun'
     name: 'StartSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Start SQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -7688,14 +8119,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'StopAppV1@cs.csm.fun':
     id: 'StopAppV1@cs.csm.fun'
     name: 'StopAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     arguments:
       'App':
@@ -7734,14 +8165,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StopAppV2@cs.csm.fun':
     id: 'StopAppV2@cs.csm.fun'
     name: 'StopAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     arguments:
       'App':
@@ -7777,14 +8208,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StopNoSQLClusterV2@cs.csm.fun':
     id: 'StopNoSQLClusterV2@cs.csm.fun'
     name: 'StopNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Stop NoSQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -7822,14 +8253,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'StopSQLClusterV2@cs.csm.fun':
     id: 'StopSQLClusterV2@cs.csm.fun'
     name: 'StopSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Stop SQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -7866,14 +8297,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'SubscribeAppNotificationV2@cs.csm.fun':
     id: 'SubscribeAppNotificationV2@cs.csm.fun'
     name: 'SubscribeAppNotificationV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
-
       Subscribe the user(s) an app notification.
 
       Request body:
@@ -7922,14 +8353,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]'
 
   'SubscribeV2Handler@cs.csm.fun':
     id: 'SubscribeV2Handler@cs.csm.fun'
     name: 'SubscribeV2Handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
-
       Subscribe to app notification
       Request body:
       - notificationType : type of the app notification to be subscribed - Required.
@@ -7976,14 +8407,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]'
 
   'UnsubscribeTopicHandler@cs.csm.fun':
     id: 'UnsubscribeTopicHandler@cs.csm.fun'
     name: 'UnsubscribeTopicHandler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
-
       Unsubscribe App queue from a topic by Topic Name.
     arguments:
       'App':
@@ -8026,14 +8457,14 @@ symbols:
       - 'messaging'
       - 'topic'
       - 'unsubscribe'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]'
 
   'UnsubscribeV2Handler@cs.csm.fun':
     id: 'UnsubscribeV2Handler@cs.csm.fun'
     name: 'UnsubscribeV2Handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
-
       Unsubscribe to app notification
     arguments:
       'App':
@@ -8071,14 +8502,68 @@ symbols:
       - 'subscription'
       - 'unsubscribe'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]'
+
+  'UpdateAppDebugModeV4@cs.csm.fun':
+    id: 'UpdateAppDebugModeV4@cs.csm.fun'
+    name: 'UpdateAppDebugModeV4'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Enable or disable the remote debug sidecar container for the specified extend app.
+
+      When enabled and the app is in `deployment-running` status, a new deployment will be
+      triggered automatically to apply the debug container configuration.
+
+      This operation is rejected with `409 Conflict` if the app is currently in a
+      transitional state (app-creating, app-removing, app-stopping).
+    arguments:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: 'ApimodelUpdateDebugModeRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'ApimodelAppItem'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Csm.Model;'
+      - 'using AccelByte.Sdk.Api.Csm.Operation;'
+      - 'using AccelByte.Sdk.Api.Csm.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Wrapper/AppV4.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Csm/Operation/AppV4/UpdateAppDebugModeV4.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Csm.AppV4.UpdateAppDebugModeV4Op
+              .Build();
+
+          var response = sdk.Csm.AppV4.UpdateAppDebugModeV4(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'app'
+      - 'debug'
+      - 'mode'
+      - 'update'
+      - 'v4'
 
   'UpdateAppResourcesResourceLimitFormV2@cs.csm.fun':
     id: 'UpdateAppResourcesResourceLimitFormV2@cs.csm.fun'
     name: 'UpdateAppResourcesResourceLimitFormV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     arguments:
       'App':
@@ -8121,14 +8606,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppResourcesV2@cs.csm.fun':
     id: 'UpdateAppResourcesV2@cs.csm.fun'
     name: 'UpdateAppResourcesV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     arguments:
       'App':
@@ -8168,14 +8653,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppV1@cs.csm.fun':
     id: 'UpdateAppV1@cs.csm.fun'
     name: 'UpdateAppV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update App Partially
     arguments:
       'App':
@@ -8214,15 +8699,15 @@ symbols:
       - 'app'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppV2@cs.csm.fun':
     id: 'UpdateAppV2@cs.csm.fun'
     name: 'UpdateAppV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-      Update app info provided on request body
+      Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
     arguments:
       'App':
         type: 'string'
@@ -8260,14 +8745,14 @@ symbols:
       - 'app'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateKeyValueClusterV2@cs.csm.fun':
     id: 'UpdateKeyValueClusterV2@cs.csm.fun'
     name: 'UpdateKeyValueClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
-
       Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
       Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
     arguments:
@@ -8311,14 +8796,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]'
 
   'UpdateNoSQLClusterV2@cs.csm.fun':
     id: 'UpdateNoSQLClusterV2@cs.csm.fun'
     name: 'UpdateNoSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Update NoSQL cluster configurations such as min/max DCU (Database Capacity Units) for the NoSQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -8359,14 +8844,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'UpdateSecretV1@cs.csm.fun':
     id: 'UpdateSecretV1@cs.csm.fun'
     name: 'UpdateSecretV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Request body:
       - value : configuration value - Required.
@@ -8415,14 +8900,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'UpdateSecretV2@cs.csm.fun':
     id: 'UpdateSecretV2@cs.csm.fun'
     name: 'UpdateSecretV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Secret will always be masked.
       Request body:
@@ -8471,14 +8956,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'UpdateSQLClusterV2@cs.csm.fun':
     id: 'UpdateSQLClusterV2@cs.csm.fun'
     name: 'UpdateSQLClusterV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -8518,14 +9003,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'UpdateVariableV1@cs.csm.fun':
     id: 'UpdateVariableV1@cs.csm.fun'
     name: 'UpdateVariableV1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -8574,14 +9059,14 @@ symbols:
       - 'update'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'UpdateVariableV2@cs.csm.fun':
     id: 'UpdateVariableV2@cs.csm.fun'
     name: 'UpdateVariableV2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -8630,14 +9115,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'UploadAppUIFile@cs.csm.fun':
     id: 'UploadAppUIFile@cs.csm.fun'
     name: 'UploadAppUIFile'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
-
       Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
     arguments:
       'AppUiName':
@@ -8689,4 +9174,6 @@ symbols:
       - 'file'
       - 'ui'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]'
   # endregion functions

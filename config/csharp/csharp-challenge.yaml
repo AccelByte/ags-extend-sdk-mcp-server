@@ -114,12 +114,30 @@ symbols:
       'Tags':
         type: 'List<string>'
         required: false
+      'TemplateSlots':
+        type: 'List<ModelChallengeSlotResponse>'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
       - 'using AccelByte.Sdk.Api.Challenge.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelChallengeResponse.cs'
+
+  'ModelChallengeSlotResponse@cs.challenge.mod':
+    id: 'ModelChallengeSlotResponse@cs.challenge.mod'
+    name: 'ModelChallengeSlotResponse'
+    type: 'model'
+    fields:
+      'Goals':
+        type: 'List<string>'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelChallengeSlotResponse.cs'
 
   'ModelClaimableUserReward@cs.challenge.mod':
     id: 'ModelClaimableUserReward@cs.challenge.mod'
@@ -271,6 +289,8 @@ symbols:
       'RepeatAfter':
         type: 'int'
         required: false
+        description: |-
+          number of days to repeat the challenge; when set, goals cannot include the 'schedule' field in the request body — use PUT /challenges/{challengeCode}/goals/{code}/slots to assign goals to slots instead
       'ResetConfig':
         type: 'ModelResetConfig'
         required: false
@@ -320,6 +340,30 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelCreateGoalRequest.cs'
 
+  'ModelCurrentRoundSlotResponse@cs.challenge.mod':
+    id: 'ModelCurrentRoundSlotResponse@cs.challenge.mod'
+    name: 'ModelCurrentRoundSlotResponse'
+    type: 'model'
+    fields:
+      'Goals':
+        type: 'List<ModelGoalInSchedulesResponse>'
+        required: true
+      'Index':
+        type: 'int'
+        required: true
+      'StartTime':
+        type: 'DateTime'
+        required: true
+      'EndTime':
+        type: 'DateTime'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelCurrentRoundSlotResponse.cs'
+
   'ModelEvaluatePlayerProgressionRequest@cs.challenge.mod':
     id: 'ModelEvaluatePlayerProgressionRequest@cs.challenge.mod'
     name: 'ModelEvaluatePlayerProgressionRequest'
@@ -355,6 +399,24 @@ symbols:
       - 'using AccelByte.Sdk.Api.Challenge.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelGetGoalsResponse.cs'
+
+  'ModelGetSlotsResponse@cs.challenge.mod':
+    id: 'ModelGetSlotsResponse@cs.challenge.mod'
+    name: 'ModelGetSlotsResponse'
+    type: 'model'
+    fields:
+      'CurrentRound':
+        type: 'List<ModelCurrentRoundSlotResponse>'
+        required: true
+      'TemplateSlots':
+        type: 'List<ModelTemplateSlotResponse>'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelGetSlotsResponse.cs'
 
   'ModelGoalInSchedulesResponse@cs.challenge.mod':
     id: 'ModelGoalInSchedulesResponse@cs.challenge.mod'
@@ -706,6 +768,21 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelListUserRewardsResponse.cs'
 
+  'ModelMoveGoalToSlotRequest@cs.challenge.mod':
+    id: 'ModelMoveGoalToSlotRequest@cs.challenge.mod'
+    name: 'ModelMoveGoalToSlotRequest'
+    type: 'model'
+    fields:
+      'SlotIndex':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelMoveGoalToSlotRequest.cs'
+
   'ModelPagination@cs.challenge.mod':
     id: 'ModelPagination@cs.challenge.mod'
     name: 'ModelPagination'
@@ -1010,6 +1087,24 @@ symbols:
       - 'using AccelByte.Sdk.Api.Challenge.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelScheduleResponse.cs'
+
+  'ModelTemplateSlotResponse@cs.challenge.mod':
+    id: 'ModelTemplateSlotResponse@cs.challenge.mod'
+    name: 'ModelTemplateSlotResponse'
+    type: 'model'
+    fields:
+      'Goals':
+        type: 'List<ModelGoalInSchedulesResponse>'
+        required: true
+      'Index':
+        type: 'int'
+        required: true
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Model/ModelTemplateSlotResponse.cs'
 
   'ModelUpdateChallengeRequest@cs.challenge.mod':
     id: 'ModelUpdateChallengeRequest@cs.challenge.mod'
@@ -1490,7 +1585,8 @@ symbols:
       - startDate: timestamp of when the challenge is started
       - endDate: timestamp of when the challenge is ended (optional)
       - endAfter: describe number of period challenge will be retired after (optional). To configure challenge that never end, leave the endDate and endAfter field null/empty.
-      - repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      - repeatAfter: number of periods after which the challenge's goals repeat. Leave empty if you don't want to repeat the challenge.
+      - note: when repeatAfter is set, goals cannot include the 'schedule' field when created via POST .../goals. Use PUT .../goals/{code}/slots to assign each goal to a specific slot instead.
       - rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
       - activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       - assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED|CUSTOM)
@@ -2096,6 +2192,58 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
 
+  'AdminGetChallengeSlots@cs.challenge.fun':
+    id: 'AdminGetChallengeSlots@cs.challenge.fun'
+    name: 'AdminGetChallengeSlots'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+      Returns the slot configuration for a FIXED or RANDOMIZED (non-per-rotation) assignment challenge.
+      For repeating challenges (repeatAfter set), the response contains two separate fields:
+      - templateSlots: the authoritative future configuration from TemplateSlots (goals only, no timing).
+      - currentRound: the actual running state of the current (or nearest) round (goals + startTime/endTime from schedule documents).
+      These two may differ when a slot move was deferred because the target slot was active.
+      For non-repeating challenges, only currentRound is returned (templateSlots is absent).
+    arguments:
+      'ChallengeCode':
+        type: 'string'
+        required: true
+        description: |-
+          challenge code
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'ModelGetSlotsResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
+      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/GoalConfiguration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/GoalConfiguration/AdminGetChallengeSlots.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Challenge.GoalConfiguration.AdminGetChallengeSlotsOp
+              .Build();
+
+          var response = sdk.Challenge.GoalConfiguration.AdminGetChallengeSlots(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'get'
+      - 'goal'
+      - 'slots'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
+
   'AdminGetGoal@cs.challenge.fun':
     id: 'AdminGetGoal@cs.challenge.fun'
     name: 'AdminGetGoal'
@@ -2635,6 +2783,67 @@ symbols:
       - 'list'
       - 'schedules'
 
+  'AdminMoveGoalToSlot@cs.challenge.fun':
+    id: 'AdminMoveGoalToSlot@cs.challenge.fun'
+    name: 'AdminMoveGoalToSlot'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      Moves a goal to a target slot in a FIXED or non-per-rotation RANDOMIZED challenge with repeatAfter set.
+      slotIndex is 0-based and must be in [0, repeatAfter-1].
+      Pass slotIndex = -1 to remove the goal from all slots; it will no longer appear in future rounds.
+      TemplateSlots and all non-finished schedule documents are updated immediately.
+      The currently active schedule document for the affected slot is skipped to avoid
+      disrupting in-progress user progressions; the change takes effect from the next round.
+      Finished (past) schedule documents are never modified.
+    arguments:
+      'Body':
+        type: 'ModelMoveGoalToSlotRequest'
+        required: true
+      'ChallengeCode':
+        type: 'string'
+        required: true
+        description: |-
+          challenge code
+      'Code':
+        type: 'string'
+        required: true
+        description: |-
+          goal code
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
+      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/GoalConfiguration.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/GoalConfiguration/AdminMoveGoalToSlot.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Challenge.GoalConfiguration.AdminMoveGoalToSlotOp
+              .Build();
+
+          sdk.Challenge.GoalConfiguration.AdminMoveGoalToSlot(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'goal'
+      - 'move'
+      - 'slot'
+      - 'to'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
+
   'AdminRandomizeChallenge@cs.challenge.fun':
     id: 'AdminRandomizeChallenge@cs.challenge.fun'
     name: 'AdminRandomizeChallenge'
@@ -2928,138 +3137,6 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
 
-  'EvaluateMyProgress@cs.challenge.fun':
-    id: 'EvaluateMyProgress@cs.challenge.fun'
-    name: 'EvaluateMyProgress'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-    arguments:
-      'ChallengeCode':
-        type: 'List<string>'
-        required: false
-        description: |-
-          challenge code to be evaluated, comma separated value
-      'IncludeOneTimeEvent':
-        type: 'string'
-        required: false
-        description: |-
-          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          namespace of the game
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Challenge.Model;'
-      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
-      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/ChallengeProgression.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/ChallengeProgression/EvaluateMyProgress.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Challenge.ChallengeProgression.EvaluateMyProgressOp
-              .SetChallengeCode(...)
-              .SetIncludeOneTimeEvent(...)
-              .Build(
-                  namespace_,
-              );
-
-          sdk.Challenge.ChallengeProgression.EvaluateMyProgress(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'challenge'
-      - 'evaluate'
-      - 'my'
-      - 'progress'
-      - 'progression'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
-
-  'GetChallenges@cs.challenge.fun':
-    id: 'GetChallenges@cs.challenge.fun'
-    name: 'GetChallenges'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
-    arguments:
-      'Keyword':
-        type: 'string'
-        required: false
-        description: |-
-          filter challenges by code with likes behavior
-      'Limit':
-        type: 'long'
-        required: false
-        description: |-
-          limit the amount of data retrieved
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          namespace of the game
-      'Offset':
-        type: 'long'
-        required: false
-        description: |-
-          offset
-      'SortBy':
-        type: 'string'
-        required: false
-        description: |-
-          sort list by attributes.
-          			default value: updatedAt:desc.
-      'Status':
-        type: 'string'
-        required: false
-        description: |-
-          challenge status
-      'Tags':
-        type: 'List<string>'
-        required: false
-        description: |-
-          filter challenges by tags, comma separated value
-    return_type: 'ModelListChallengeResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Challenge.Model;'
-      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
-      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/ChallengeList.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/ChallengeList/GetChallenges.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Challenge.ChallengeList.GetChallengesOp
-              .SetKeyword(...)
-              .SetLimit(...)
-              .SetOffset(...)
-              .SetSortBy(...)
-              .SetStatus(...)
-              .SetTags(...)
-              .Build(
-                  namespace_,
-              );
-
-          var response = sdk.Challenge.ChallengeList.GetChallenges(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'challenge'
-      - 'challenges'
-      - 'get'
-      - 'list'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
-
   'PublicClaimUserRewards@cs.challenge.fun':
     id: 'PublicClaimUserRewards@cs.challenge.fun'
     name: 'PublicClaimUserRewards'
@@ -3153,6 +3230,140 @@ symbols:
       - 'user'
     permissions:
       - 'NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]'
+
+  'PublicEvaluateMyProgress@cs.challenge.fun':
+    id: 'PublicEvaluateMyProgress@cs.challenge.fun'
+    name: 'PublicEvaluateMyProgress'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    arguments:
+      'ChallengeCode':
+        type: 'List<string>'
+        required: false
+        description: |-
+          challenge code to be evaluated, comma separated value
+      'IncludeOneTimeEvent':
+        type: 'string'
+        required: false
+        description: |-
+          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
+      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/ChallengeProgression.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/ChallengeProgression/PublicEvaluateMyProgress.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Challenge.ChallengeProgression.PublicEvaluateMyProgressOp
+              .SetChallengeCode(...)
+              .SetIncludeOneTimeEvent(...)
+              .Build(
+                  namespace_,
+              );
+
+          sdk.Challenge.ChallengeProgression.PublicEvaluateMyProgress(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'challenge'
+      - 'evaluate'
+      - 'my'
+      - 'progress'
+      - 'progression'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
+
+  'PublicGetChallenges@cs.challenge.fun':
+    id: 'PublicGetChallenges@cs.challenge.fun'
+    name: 'PublicGetChallenges'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    arguments:
+      'Keyword':
+        type: 'string'
+        required: false
+        description: |-
+          filter challenges by code with likes behavior
+      'Limit':
+        type: 'long'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          namespace of the game
+      'Offset':
+        type: 'long'
+        required: false
+        description: |-
+          offset
+      'SortBy':
+        type: 'string'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'Status':
+        type: 'string'
+        required: false
+        description: |-
+          challenge status
+      'Tags':
+        type: 'List<string>'
+        required: false
+        description: |-
+          filter challenges by tags, comma separated value
+    return_type: 'ModelListChallengeResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Challenge.Model;'
+      - 'using AccelByte.Sdk.Api.Challenge.Operation;'
+      - 'using AccelByte.Sdk.Api.Challenge.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Wrapper/ChallengeList.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Challenge/Operation/ChallengeList/PublicGetChallenges.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Challenge.ChallengeList.PublicGetChallengesOp
+              .SetKeyword(...)
+              .SetLimit(...)
+              .SetOffset(...)
+              .SetSortBy(...)
+              .SetStatus(...)
+              .SetTags(...)
+              .Build(
+                  namespace_,
+              );
+
+          var response = sdk.Challenge.ChallengeList.PublicGetChallenges(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'challenge'
+      - 'challenges'
+      - 'get'
+      - 'list'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
 
   'PublicGetPastUserProgression@cs.challenge.fun':
     id: 'PublicGetPastUserProgression@cs.challenge.fun'

@@ -724,6 +724,11 @@ symbols:
     name: 'GetAllTimeLeaderboardRankingAdminV3Params'
     type: 'model'
     fields:
+      'IncludeHiddenUsers':
+        type: 'bool'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'LeaderboardCode':
         type: 'string'
         required: true
@@ -879,6 +884,11 @@ symbols:
         required: true
         description: |-
           the cycle id
+      'IncludeHiddenUsers':
+        type: 'bool'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'LeaderboardCode':
         type: 'string'
         required: true
@@ -2349,6 +2359,11 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableServerHiddenFilter':
+        type: 'bool'
+        required: true
+        description: |-
+          flag to enable server-side filtering for hidden user
       'IconURL':
         type: 'string'
         required: false
@@ -2464,6 +2479,11 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableServerHiddenFilter':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user.
       'IconURL':
         type: 'string'
         required: false
@@ -2608,6 +2628,11 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableServerHiddenFilter':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user
       'IconURL':
         type: 'string'
         required: false
@@ -3228,6 +3253,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     struct: 'LeaderboardConfigurationV3Service'
     arguments:
       params:
@@ -4043,6 +4071,8 @@ symbols:
       - 'ranking'
       - 'time'
       - 'v3'
+    scopes:
+      - 'social'
 
   'GetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun':
     id: 'GetArchivedLeaderboardRankingDataV1HandlerShort@go.leaderboard.fun'
@@ -4153,6 +4183,8 @@ symbols:
       - 'public'
       - 'ranking'
       - 'v3'
+    scopes:
+      - 'social'
 
   'GetCurrentMonthLeaderboardRankingAdminV1Short@go.leaderboard.fun':
     id: 'GetCurrentMonthLeaderboardRankingAdminV1Short@go.leaderboard.fun'
@@ -5442,6 +5474,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     struct: 'LeaderboardConfigurationV3Service'
     arguments:
       params:

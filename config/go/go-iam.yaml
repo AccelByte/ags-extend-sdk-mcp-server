@@ -1444,7 +1444,7 @@ symbols:
         type: 'bool'
         required: false
         description: |-
-          If the targeted group or module is selected by any client, the deletion will fail by default. Set this flag to true to force the deletion.
+          If the targeted group or module is currently selected by any client, the deletion will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/clients_config_v3'
     files:
@@ -4358,7 +4358,7 @@ symbols:
         type: 'bool'
         required: false
         description: |-
-          If this update includes a delete action and the targeted group or module is selected by any client, the operation will fail by default. Set this flag to true to force the operation.
+          If the update would remove a group that is currently selected by any client, the request will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/clients_config_v3'
     files:
@@ -6569,6 +6569,41 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/sso/logout_sso_client_parameters.go'
 
+  'NamespaceScopedPlatformTokenGrantParams@go.iam.mod':
+    id: 'NamespaceScopedPlatformTokenGrantParams@go.iam.mod'
+    name: 'NamespaceScopedPlatformTokenGrantParams'
+    type: 'model'
+    fields:
+      'DeviceID':
+        type: 'string'
+        required: false
+        description: |-
+          Device/hardware identifier
+      'MacAddress':
+        type: 'string'
+        required: false
+        description: |-
+          Mac address of device
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformToken':
+        type: 'string'
+        required: false
+        description: |-
+          Token from platform auth
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID to login with
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/o_auth'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/o_auth/namespace_scoped_platform_token_grant_parameters.go'
+
   'OAuthDynamicClientRegisterWithNamespaceV3Params@go.iam.mod':
     id: 'OAuthDynamicClientRegisterWithNamespaceV3Params@go.iam.mod'
     name: 'OAuthDynamicClientRegisterWithNamespaceV3Params'
@@ -6889,41 +6924,6 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/o_auth2_0_extension'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/o_auth2_0_extension/platform_token_refresh_v3_parameters.go'
-
-  'PlatformTokenRequestHandlerParams@go.iam.mod':
-    id: 'PlatformTokenRequestHandlerParams@go.iam.mod'
-    name: 'PlatformTokenRequestHandlerParams'
-    type: 'model'
-    fields:
-      'DeviceID':
-        type: 'string'
-        required: false
-        description: |-
-          Device/hardware identifier
-      'MacAddress':
-        type: 'string'
-        required: false
-        description: |-
-          Mac address of device
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          Accepts alphanumeric, with hyphens allowed between segments
-      'PlatformToken':
-        type: 'string'
-        required: false
-        description: |-
-          Token from platform auth
-      'PlatformID':
-        type: 'string'
-        required: true
-        description: |-
-          Platform ID to login with
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/o_auth'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/o_auth/platform_token_request_handler_parameters.go'
 
   'PlatformUnlinkParams@go.iam.mod':
     id: 'PlatformUnlinkParams@go.iam.mod'
@@ -8410,7 +8410,7 @@ symbols:
         type: 'string'
         required: true
         description: |-
-          state
+          state, comes from the response of <code>GET /users/me/platforms/{platformId}/web/link</code> endpoint
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
     files:
@@ -8927,6 +8927,103 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/users/public_web_link_platform_establish_parameters.go'
+
+  'PublicWebReauthPlatformParams@go.iam.mod':
+    id: 'PublicWebReauthPlatformParams@go.iam.mod'
+    name: 'PublicWebReauthPlatformParams'
+    type: 'model'
+    fields:
+      'ClientID':
+        type: 'string'
+        required: false
+        description: |-
+          Client ID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'Operation':
+        type: 'string'
+        required: true
+        description: |-
+          Re-auth operation.
+          			**GDPR**: obtain a **gdpr_token** cookie after re-authentication completes. 
+          			**LINK**: perform a platform account link.
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'RedirectURI':
+        type: 'string'
+        required: false
+        description: |-
+          Redirect URI
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/users/public_web_reauth_platform_parameters.go'
+
+  'PublicWebReauthPlatformEstablishParams@go.iam.mod':
+    id: 'PublicWebReauthPlatformEstablishParams@go.iam.mod'
+    name: 'PublicWebReauthPlatformEstablishParams'
+    type: 'model'
+    fields:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          Authorization code from third party
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'State':
+        type: 'string'
+        required: true
+        description: |-
+          State from third party redirect
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/users/public_web_reauth_platform_establish_parameters.go'
+
+  'PublicWebReauthPlatformProcessParams@go.iam.mod':
+    id: 'PublicWebReauthPlatformProcessParams@go.iam.mod'
+    name: 'PublicWebReauthPlatformProcessParams'
+    type: 'model'
+    fields:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          Authorization code from third party
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'State':
+        type: 'string'
+        required: true
+        description: |-
+          State, comes from the response of <code>GET /users/me/platforms/{platformId}/web/reauth</code> endpoint
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclient/users/public_web_reauth_platform_process_parameters.go'
 
   'RemoveRoleAdminParams@go.iam.mod':
     id: 'RemoveRoleAdminParams@go.iam.mod'
@@ -14489,9 +14586,9 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_link_platform_account_with_progression_request.go'
 
-  'ModelLinkRequest@go.iam.mod':
-    id: 'ModelLinkRequest@go.iam.mod'
-    name: 'ModelLinkRequest'
+  'ModelLinkRequestResponse@go.iam.mod':
+    id: 'ModelLinkRequestResponse@go.iam.mod'
+    name: 'ModelLinkRequestResponse'
     type: 'model'
     fields:
       'ClientID':
@@ -14515,40 +14612,36 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
-      'OperationName':
-        type: 'string'
-        required: true
       'Payload':
         type: 'interface{}'
         required: true
-      'PlatformUserID':
-        type: 'string'
-        required: false
       'PlatformDisplayName':
         type: 'string'
         required: false
       'PlatformID':
         type: 'string'
         required: false
+      'PlatformUserID':
+        type: 'string'
+        required: false
       'RedirectURI':
         type: 'string'
         required: true
-      'RefreshToken':
-        type: 'string'
-        required: false
       'RequestID':
         type: 'string'
         required: true
       'Status':
         type: 'string'
         required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
       'UserID':
         type: 'string'
         required: false
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_link_request.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_link_request_response.go'
 
   'ModelListAssignedUsersV4Response@go.iam.mod':
     id: 'ModelListAssignedUsersV4Response@go.iam.mod'
@@ -15336,6 +15429,67 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_public_user_update_request_v3.go'
+
+  'ModelReAuthRequest@go.iam.mod':
+    id: 'ModelReAuthRequest@go.iam.mod'
+    name: 'ModelReAuthRequest'
+    type: 'model'
+    fields:
+      'ClientID':
+        type: 'string'
+        required: true
+      'ConflictPublisherUserID':
+        type: 'string'
+        required: false
+      'ConflictUserLinkedGames':
+        type: '[]string'
+        required: false
+      'CurrentUserLinkedGames':
+        type: '[]string'
+        required: false
+      'Error':
+        type: '*RestErrorResponseWithConflictedUserPlatformAccounts'
+        required: false
+      'Expiration':
+        type: 'int32'
+        required: false
+      'Namespace':
+        type: 'string'
+        required: true
+      'OperationName':
+        type: 'string'
+        required: true
+      'Payload':
+        type: 'interface{}'
+        required: true
+      'PlatformUserID':
+        type: 'string'
+        required: false
+      'PlatformDisplayName':
+        type: 'string'
+        required: false
+      'PlatformID':
+        type: 'string'
+        required: false
+      'RedirectURI':
+        type: 'string'
+        required: true
+      'RefreshToken':
+        type: 'string'
+        required: false
+      'RequestID':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_re_auth_request.go'
 
   'ModelRemoveUserRoleV4Request@go.iam.mod':
     id: 'ModelRemoveUserRoleV4Request@go.iam.mod'
@@ -18306,6 +18460,31 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_web_linking_response.go'
+
+  'ModelWebReauthProcessResponse@go.iam.mod':
+    id: 'ModelWebReauthProcessResponse@go.iam.mod'
+    name: 'ModelWebReauthProcessResponse'
+    type: 'model'
+    fields:
+      'LinkResponse':
+        type: '*ModelLinkRequestResponse'
+        required: false
+        description: |-
+          Populated only for operation=LINK. Contains platform linking details.
+      'Operation':
+        type: 'string'
+        required: true
+        description: |-
+          Operation type for this re-auth request. Enum: LINK, GDPR
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/iam-sdk/pkg/iamclientmodels/model_web_reauth_process_response.go'
 
   'OauthapiRevocationList@go.iam.mod':
     id: 'OauthapiRevocationList@go.iam.mod'
@@ -26001,7 +26180,13 @@ symbols:
     name: 'AdminUpdateAvailablePermissionsByModuleShort'
     type: 'function'
     description: |-
-      Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
+      Upserts client available permissions at the module level.
+      Only the modules listed in the request are processed - any other existing module is left untouched, so *callers do not need to include unchanged modules*.
+
+      ## Groups update behavior
+
+      For each module in the request, the 'groups' array is the *full desired state* of that module's groups - any existing group whose 'groupId' is omitted is treated as ***removed***.
+      If a removed group is currently used by any client, the request will fails with 400 and nothing is saved, unless 'forceDelete=true' query param is passed.
     struct: 'ClientsConfigV3Service'
     arguments:
       params:
@@ -30051,6 +30236,51 @@ symbols:
       - 'logout'
       - 'sso'
 
+  'NamespaceScopedPlatformTokenGrantShort@go.iam.fun':
+    id: 'NamespaceScopedPlatformTokenGrantShort@go.iam.fun'
+    name: 'NamespaceScopedPlatformTokenGrantShort'
+    type: 'function'
+    description: |-
+      **This endpoint is deprecated.**
+      Requires all requests to have Authorization header set with Basic access authentication
+      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
+      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
+      along with platform_token parameter against publisher namespace.
+
+      Supported platforms:
+      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
+      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
+
+      ### Endpoint migration guide
+      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
+    struct: 'OAuthService'
+    arguments:
+      params:
+        type: '*o_auth.NamespaceScopedPlatformTokenGrantParams'
+        required: true
+    return_type: '(*o_auth.NamespaceScopedPlatformTokenGrantResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/o_auth'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/iam/oAuth.go'
+    example: |-
+      oAuthService := iam.OAuthService{ ... }
+      params := o_auth.NamespaceScopedPlatformTokenGrantParams{ ... }
+      res, err := oAuthService.NamespaceScopedPlatformTokenGrantShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'auth'
+      - 'grant'
+      - 'namespace'
+      - 'o'
+      - 'platform'
+      - 'scoped'
+      - 'token'
+
   'OAuthDynamicClientRegisterWithNamespaceV3Short@go.iam.fun':
     id: 'OAuthDynamicClientRegisterWithNamespaceV3Short@go.iam.fun'
     name: 'OAuthDynamicClientRegisterWithNamespaceV3Short'
@@ -30557,50 +30787,6 @@ symbols:
       - 'refresh'
       - 'token'
       - 'v3'
-
-  'PlatformTokenRequestHandlerShort@go.iam.fun':
-    id: 'PlatformTokenRequestHandlerShort@go.iam.fun'
-    name: 'PlatformTokenRequestHandlerShort'
-    type: 'function'
-    description: |-
-      **This endpoint is deprecated.**
-      Requires all requests to have Authorization header set with Basic access authentication
-      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
-      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
-      along with platform_token parameter against publisher namespace.
-
-      Supported platforms:
-      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
-      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
-
-      ### Endpoint migration guide
-      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
-    struct: 'OAuthService'
-    arguments:
-      params:
-        type: '*o_auth.PlatformTokenRequestHandlerParams'
-        required: true
-    return_type: '(*o_auth.PlatformTokenRequestHandlerResponse, error)'
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
-      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/o_auth'
-      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/iam/oAuth.go'
-    example: |-
-      oAuthService := iam.OAuthService{ ... }
-      params := o_auth.PlatformTokenRequestHandlerParams{ ... }
-      res, err := oAuthService.PlatformTokenRequestHandlerShort(params)
-      if err != nil {
-          // handleError(err)
-      }
-    tags:
-      - 'auth'
-      - 'handler'
-      - 'o'
-      - 'platform'
-      - 'request'
-      - 'token'
 
   'PlatformUnlinkShort@go.iam.fun':
     id: 'PlatformUnlinkShort@go.iam.fun'
@@ -33551,8 +33737,8 @@ symbols:
     name: 'PublicProcessWebLinkPlatformV3Short'
     type: 'function'
     description: |-
-      Processes third party account link and returns the link status directly instead of redirecting to the original page.
-      The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+      Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -33566,6 +33752,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
     struct: 'UsersService'
     arguments:
       params:
@@ -34493,7 +34683,8 @@ symbols:
     name: 'PublicWebLinkPlatformShort'
     type: 'function'
     description: |-
-      Generates a third party login page which will redirect to the establish API.
+      Generates a redirect to a third party login page for account linking authentication.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -34507,6 +34698,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
     struct: 'UsersService'
     arguments:
       params:
@@ -34538,7 +34733,9 @@ symbols:
     name: 'PublicWebLinkPlatformEstablishShort'
     type: 'function'
     description: |-
-      Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+      Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+      After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -34552,6 +34749,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
     struct: 'UsersService'
     arguments:
       params:
@@ -34576,6 +34777,154 @@ symbols:
       - 'link'
       - 'platform'
       - 'public'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformShort@go.iam.fun':
+    id: 'PublicWebReauthPlatformShort@go.iam.fun'
+    name: 'PublicWebReauthPlatformShort'
+    type: 'function'
+    description: |-
+      Generates a redirect to a third party login page for re-authentication purpose.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    struct: 'UsersService'
+    arguments:
+      params:
+        type: '*users.PublicWebReauthPlatformParams'
+        required: true
+    return_type: '(*users.PublicWebReauthPlatformResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/iam/users.go'
+    example: |-
+      usersService := iam.UsersService{ ... }
+      params := users.PublicWebReauthPlatformParams{ ... }
+      res, err := usersService.PublicWebReauthPlatformShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformEstablishShort@go.iam.fun':
+    id: 'PublicWebReauthPlatformEstablishShort@go.iam.fun'
+    name: 'PublicWebReauthPlatformEstablishShort'
+    type: 'function'
+    description: |-
+      Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    struct: 'UsersService'
+    arguments:
+      params:
+        type: '*users.PublicWebReauthPlatformEstablishParams'
+        required: true
+    return_type: '(string, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/iam/users.go'
+    example: |-
+      usersService := iam.UsersService{ ... }
+      params := users.PublicWebReauthPlatformEstablishParams{ ... }
+      res, err := usersService.PublicWebReauthPlatformEstablishShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'establish'
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformProcessShort@go.iam.fun':
+    id: 'PublicWebReauthPlatformProcessShort@go.iam.fun'
+    name: 'PublicWebReauthPlatformProcessShort'
+    type: 'function'
+    description: |-
+      Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    struct: 'UsersService'
+    arguments:
+      params:
+        type: '*users.PublicWebReauthPlatformProcessParams'
+        required: true
+    return_type: '(*users.PublicWebReauthPlatformProcessResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/iam-sdk/pkg/iamclient/users'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/iam/users.go'
+    example: |-
+      usersService := iam.UsersService{ ... }
+      params := users.PublicWebReauthPlatformProcessParams{ ... }
+      res, err := usersService.PublicWebReauthPlatformProcessShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'platform'
+      - 'process'
+      - 'public'
+      - 'reauth'
       - 'users'
       - 'web'
 

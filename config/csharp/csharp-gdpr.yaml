@@ -476,12 +476,16 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
+        description: |-
+          Publisher Namespace
       'RequestDate':
         type: 'DateTime'
         required: true
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -509,6 +513,8 @@ symbols:
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -536,6 +542,8 @@ symbols:
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
       'ExecutionDate':
         type: 'DateTime'
         required: false
@@ -647,9 +655,13 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
+        description: |-
+          Publisher Namespace
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -953,12 +965,9 @@ symbols:
     name: 'AdminGeneratePersonalDataURL'
     type: 'function'
     description: |-
-      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-      If admin request data for themselves, password is need to be set
+      Generate personal data download url.
+      If admin request data for themselves, password is need to be set.
+      Scope: account
     arguments:
       'Namespace':
         type: 'string'
@@ -1584,7 +1593,7 @@ symbols:
     name: 'AdminRequestDataRetrieval'
     type: 'function'
     description: |-
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2061,15 +2070,15 @@ symbols:
       - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
       - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicCancelMyAccountDeletionRequest.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionHeadless/PublicCancelMyAccountDeletionRequest.cs'
     example: |-
       try
       {
-          var operation = sdk.Gdpr.DataDeletion.PublicCancelMyAccountDeletionRequestOp
+          var operation = sdk.Gdpr.DataDeletionHeadless.PublicCancelMyAccountDeletionRequestOp
               .Build();
 
-          sdk.Gdpr.DataDeletion.PublicCancelMyAccountDeletionRequest(operation);
+          sdk.Gdpr.DataDeletionHeadless.PublicCancelMyAccountDeletionRequest(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -2078,9 +2087,51 @@ symbols:
       - 'cancel'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+
+  'PublicCancelMyPersonalDataRequest@cs.gdpr.fun':
+    id: 'PublicCancelMyPersonalDataRequest@cs.gdpr.fun'
+    name: 'PublicCancelMyPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Cancel a pending Personal Data Request by its request date. Requires a valid access token.
+    arguments:
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date (RFC3339 format)
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalHeadless/PublicCancelMyPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalHeadless.PublicCancelMyPersonalDataRequestOp
+              .Build();
+
+          sdk.Gdpr.DataRetrievalHeadless.PublicCancelMyPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
 
   'PublicCancelUserAccountDeletionRequest@cs.gdpr.fun':
     id: 'PublicCancelUserAccountDeletionRequest@cs.gdpr.fun'
@@ -2181,6 +2232,52 @@ symbols:
       - 'retrieval'
       - 'user'
 
+  'PublicGenerateMyHeadlessPersonalDataURL@cs.gdpr.fun':
+    id: 'PublicGenerateMyHeadlessPersonalDataURL@cs.gdpr.fun'
+    name: 'PublicGenerateMyHeadlessPersonalDataURL'
+    type: 'function'
+    description: |-
+      Generate a download url for a completed Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` instead.
+    arguments:
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalHeadless/PublicGenerateMyHeadlessPersonalDataURL.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalHeadless.PublicGenerateMyHeadlessPersonalDataURLOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalHeadless.PublicGenerateMyHeadlessPersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
   'PublicGeneratePersonalDataURL@cs.gdpr.fun':
     id: 'PublicGeneratePersonalDataURL@cs.gdpr.fun'
     name: 'PublicGeneratePersonalDataURL'
@@ -2254,15 +2351,15 @@ symbols:
       - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
       - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicGetMyAccountDeletionStatus.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionHeadless/PublicGetMyAccountDeletionStatus.cs'
     example: |-
       try
       {
-          var operation = sdk.Gdpr.DataDeletion.PublicGetMyAccountDeletionStatusOp
+          var operation = sdk.Gdpr.DataDeletionHeadless.PublicGetMyAccountDeletionStatusOp
               .Build();
 
-          var response = sdk.Gdpr.DataDeletion.PublicGetMyAccountDeletionStatus(operation);
+          var response = sdk.Gdpr.DataDeletionHeadless.PublicGetMyAccountDeletionStatus(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -2271,9 +2368,45 @@ symbols:
       - 'data'
       - 'deletion'
       - 'get'
+      - 'headless'
       - 'my'
       - 'public'
       - 'status'
+
+  'PublicGetMyPersonalDataRequests@cs.gdpr.fun':
+    id: 'PublicGetMyPersonalDataRequests@cs.gdpr.fun'
+    name: 'PublicGetMyPersonalDataRequests'
+    type: 'function'
+    description: |-
+      List my personal data requests. Requires a valid access token.
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalHeadless/PublicGetMyPersonalDataRequests.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalHeadless.PublicGetMyPersonalDataRequestsOp
+              .Build();
+
+          var response = sdk.Gdpr.DataRetrievalHeadless.PublicGetMyPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'get'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
 
   'PublicGetUserAccountDeletionStatus@cs.gdpr.fun':
     id: 'PublicGetUserAccountDeletionStatus@cs.gdpr.fun'
@@ -2389,7 +2522,7 @@ symbols:
     name: 'PublicRequestDataRetrieval'
     type: 'function'
     description: |-
-      Submit personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2450,9 +2583,11 @@ symbols:
     name: 'PublicSubmitMyAccountDeletionRequest'
     type: 'function'
     description: |-
-      Submit my account deletion requests.
-      Requires valid user access token
-      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+      Submit an Account Deletion Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
 
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
@@ -2474,15 +2609,15 @@ symbols:
       - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
       - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletion.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletion/PublicSubmitMyAccountDeletionRequest.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionHeadless/PublicSubmitMyAccountDeletionRequest.cs'
     example: |-
       try
       {
-          var operation = sdk.Gdpr.DataDeletion.PublicSubmitMyAccountDeletionRequestOp
+          var operation = sdk.Gdpr.DataDeletionHeadless.PublicSubmitMyAccountDeletionRequestOp
               .Build();
 
-          var response = sdk.Gdpr.DataDeletion.PublicSubmitMyAccountDeletionRequest(operation);
+          var response = sdk.Gdpr.DataDeletionHeadless.PublicSubmitMyAccountDeletionRequest(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -2490,9 +2625,174 @@ symbols:
       - 'account'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessDeletionRequest@cs.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessDeletionRequest@cs.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessDeletionRequest'
+    type: 'function'
+    description: |-
+      Submit an Account Deletion Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 10 seconds).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataDeletionHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataDeletionHeadless/PublicSubmitMyHeadlessDeletionRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataDeletionHeadless.PublicSubmitMyHeadlessDeletionRequestOp
+              .Build();
+
+          var response = sdk.Gdpr.DataDeletionHeadless.PublicSubmitMyHeadlessDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'deletion'
+      - 'headless'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessPersonalDataRequest@cs.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessPersonalDataRequest@cs.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'Email':
+        type: 'string'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag for the notification email
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalHeadless/PublicSubmitMyHeadlessPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalHeadless.PublicSubmitMyHeadlessPersonalDataRequestOp
+              .SetEmail(...)
+              .SetLanguageTag(...)
+              .Build(
+              );
+
+          var response = sdk.Gdpr.DataRetrievalHeadless.PublicSubmitMyHeadlessPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'submit'
+
+  'PublicSubmitMyPersonalDataRequest@cs.gdpr.fun':
+    id: 'PublicSubmitMyPersonalDataRequest@cs.gdpr.fun'
+    name: 'PublicSubmitMyPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'Email':
+        type: 'string'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag for the notification email
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'PlatformToken':
+        type: 'string'
+        required: true
+        description: |-
+          Platform token
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Model;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Operation;'
+      - 'using AccelByte.Sdk.Api.Gdpr.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Wrapper/DataRetrievalHeadless.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Gdpr/Operation/DataRetrievalHeadless/PublicSubmitMyPersonalDataRequest.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Gdpr.DataRetrievalHeadless.PublicSubmitMyPersonalDataRequestOp
+              .SetEmail(...)
+              .SetLanguageTag(...)
+              .Build(
+                  platformId,
+                  platformToken,
+              );
+
+          var response = sdk.Gdpr.DataRetrievalHeadless.PublicSubmitMyPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
       - 'submit'
 
   'PublicSubmitUserAccountDeletionRequest@cs.gdpr.fun':
@@ -2804,7 +3104,7 @@ symbols:
     description: |-
       Scope: account
 
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
 
       **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

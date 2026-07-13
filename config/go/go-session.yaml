@@ -5015,7 +5015,7 @@ symbols:
     name: 'AdminDeleteBulkGameSessionsShort'
     type: 'function'
     description: |-
-      Delete bulk game sessions.
+      Permanently deletes multiple game sessions by their IDs. Returns a summary of deleted and failed sessions. Any allocated dedicated servers are released.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -5050,7 +5050,7 @@ symbols:
     name: 'AdminDeleteBulkPartiesShort'
     type: 'function'
     description: |-
-      Delete bulk parties.
+      Permanently deletes multiple party sessions by their IDs. Returns a summary of deleted and failed sessions.
     struct: 'PartyService'
     arguments:
       params:
@@ -5084,7 +5084,7 @@ symbols:
     name: 'AdminDeleteConfigurationAlertV1Short'
     type: 'function'
     description: |-
-      Delete configuration alert.
+      Deletes the configuration alert for the specified namespace. After deletion, no alerts are generated for session configuration issues.
     struct: 'ConfigurationTemplateService'
     arguments:
       params:
@@ -5153,7 +5153,7 @@ symbols:
     name: 'AdminDeleteGlobalConfigurationShort'
     type: 'function'
     description: |-
-      Delete of global configuration data.
+      Deletes the global configuration. After deletion, the service falls back to default configuration values.
     struct: 'GlobalConfigurationService'
     arguments:
       params:
@@ -5464,7 +5464,7 @@ symbols:
     name: 'AdminGetListNativeSessionShort'
     type: 'function'
     description: |-
-      List of native sessions.
+      Returns paginated list of native platform sessions. Native sessions are synchronized with PSN, Xbox Live, and Steam platform session systems.
     struct: 'NativeSessionService'
     arguments:
       params:
@@ -5531,7 +5531,7 @@ symbols:
     name: 'AdminGetMemberActiveSessionShort'
     type: 'function'
     description: |-
-      Get Member Active Session.
+      Returns the number of active sessions the specified user is participating in under the given configuration template.
     struct: 'MaxActiveService'
     arguments:
       params:
@@ -5735,7 +5735,7 @@ symbols:
     name: 'AdminKickGameSessionMemberShort'
     type: 'function'
     description: |-
-      Kick member from a game session.
+      Removes the specified member from a game session and sets their status to KICKED. Can be used by admins to forcefully remove members.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -5769,7 +5769,7 @@ symbols:
     name: 'AdminListEnvironmentVariablesShort'
     type: 'function'
     description: |-
-      List of environment variables.
+      Returns all environment variables currently set for the session service. Useful for debugging configuration and verifying runtime settings.
     struct: 'EnvironmentVariableService'
     arguments:
       params:
@@ -5803,7 +5803,7 @@ symbols:
     name: 'AdminListGlobalConfigurationShort'
     type: 'function'
     description: |-
-      Record of global configuration data.
+      Returns the current global configuration shared across all namespaces. Includes settings like maximum active sessions and cleanup intervals.
     struct: 'GlobalConfigurationService'
     arguments:
       params:
@@ -5870,7 +5870,7 @@ symbols:
     name: 'AdminQueryGameSessionsShort'
     type: 'function'
     description: |-
-      Get all game sessions.
+      Returns paginated list of game sessions matching the provided filter criteria. Supports filtering by namespace, status, members, and joinability.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -5954,7 +5954,7 @@ symbols:
     name: 'AdminQueryPartiesShort'
     type: 'function'
     description: |-
-      Query parties.
+      Returns paginated list of party sessions matching the provided filter criteria. Supports filtering by namespace, members, leader, and joinability mode.
     struct: 'PartyService'
     arguments:
       params:
@@ -6144,7 +6144,7 @@ symbols:
     name: 'AdminReconcileMaxActiveSessionShort'
     type: 'function'
     description: |-
-      Reconcile Max Active Session.
+      Reconciles the max active session count for the specified configuration template. Scans active sessions and updates the counter to reflect the actual count.
     struct: 'MaxActiveService'
     arguments:
       params:
@@ -6213,7 +6213,7 @@ symbols:
     name: 'AdminSyncDSMCConfigurationShort'
     type: 'function'
     description: |-
-      sync dsmc configuration.
+      **Deprecated.** Synchronizes the dedicated server manager controller configuration from DSMC. The DSMC config is cached locally for use during session creation.
     struct: 'ConfigurationTemplateService'
     arguments:
       params:
@@ -6247,7 +6247,7 @@ symbols:
     name: 'AdminSyncNativeSessionShort'
     type: 'function'
     description: |-
-      Trigger user's active party session to native platform.
+      Triggers synchronization of the user's active party session to the native platform (PSN, Xbox). Useful when native session state is out of sync with the AccelByte session state.
     struct: 'PartyService'
     arguments:
       params:
@@ -6529,7 +6529,7 @@ symbols:
     name: 'AdminUpdateGlobalConfigurationShort'
     type: 'function'
     description: |-
-      Upsert global configuration data.
+      Creates or replaces the global configuration. If no configuration exists, a new one is created. All provided fields are applied.
     struct: 'GlobalConfigurationService'
     arguments:
       params:
@@ -6669,7 +6669,7 @@ symbols:
     name: 'AppendTeamGameSessionShort'
     type: 'function'
     description: |-
-      Append new member or team to session. Please use patchUpdateGameSession instead
+      **Deprecated.** Appends new members or teams to a game session. Use PATCH updateGameSession instead, which supports partial updates and is more efficient.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -6805,7 +6805,7 @@ symbols:
     name: 'DeleteGameSessionShort'
     type: 'function'
     description: |-
-      Delete a game session.
+      Permanently deletes a game session. Only the session leader or an admin can delete the session. Any allocated dedicated server will be released.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7073,7 +7073,7 @@ symbols:
     name: 'JoinGameSessionShort'
     type: 'function'
     description: |-
-      Join a game session.
+      Joins a game session. For PASSWORD_PROTECTED sessions, the request body must include the session password. The session must have OPEN or INVITE_ONLY joinability and available slots.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7105,7 +7105,7 @@ symbols:
     name: 'LeaveGameSessionShort'
     type: 'function'
     description: |-
-      Leave a game session.
+      Leaves a game session, removing the caller from the member list. If the caller is the leader, leadership transfers to another active member.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7300,7 +7300,7 @@ symbols:
     name: 'PublicGameSessionCancelShort'
     type: 'function'
     description: |-
-      cancel a game session invitation.
+      Cancels a pending game session invitation sent to the specified user. Only the session leader or the inviting member can cancel the invitation.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7372,7 +7372,7 @@ symbols:
     name: 'PublicGameSessionRejectShort'
     type: 'function'
     description: |-
-      Reject a game session invitation.
+      Rejects a pending game session invitation. The caller must have INVITED status. The session invitation will be marked as REJECTED.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7507,7 +7507,7 @@ symbols:
     name: 'PublicGetPartyShort'
     type: 'function'
     description: |-
-      Get party details.
+      Returns party session details including members, configuration, and leader. The caller must be a party member or have admin access.
     struct: 'PartyService'
     arguments:
       params:
@@ -7687,7 +7687,7 @@ symbols:
     name: 'PublicKickGameSessionMemberShort'
     type: 'function'
     description: |-
-      Kick member from a game session, only leader can kick member.
+      Removes the specified member from a game session. Only the session leader can kick members. The kicked member's status is set to KICKED.
     struct: 'GameSessionService'
     arguments:
       params:
@@ -7721,7 +7721,7 @@ symbols:
     name: 'PublicPartyCancelShort'
     type: 'function'
     description: |-
-      Cancel a party invitation.
+      Cancels a pending party invitation sent to the specified user. Only the party leader or the inviting member can cancel the invitation.
     struct: 'PartyService'
     arguments:
       params:
@@ -7920,7 +7920,7 @@ symbols:
     name: 'PublicPartyRejectShort'
     type: 'function'
     description: |-
-      Reject a party invitation.
+      Rejects a pending party invitation. The caller must have INVITED status. Once rejected, the caller must be re-invited to rejoin.
     struct: 'PartyService'
     arguments:
       params:

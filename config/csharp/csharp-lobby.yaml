@@ -2527,7 +2527,7 @@ symbols:
     name: 'AdminDeleteGlobalConfig'
     type: 'function'
     description: |-
-      Delete of global configuration data.
+      Remove the global configuration record. This operation is permanent.
     return_type: 'string'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -3921,7 +3921,7 @@ symbols:
     name: 'AdminUpdateGlobalConfig'
     type: 'function'
     description: |-
-      Upsert global configuration data.
+      Overwrite existing global configuration with the provided values. Creates the record if it does not exist.
     arguments:
       'Body':
         type: 'ModelPutGlobalConfigurationRequest'
@@ -4192,10 +4192,7 @@ symbols:
       Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
       handlebars will be the key to be replaced when sending notification. Already existing template with the same
       slug and language can not be created.
-
       Check model description for detailed input restrictions.
-
-      Action Code: 50204
     arguments:
       'Body':
         type: 'ModelCreateTemplateRequest'
@@ -4239,11 +4236,8 @@ symbols:
     type: 'function'
     description: |-
       Create new notification topic.
-
-      topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-      Already existing topic can not be created
-
-      Action Code: 50214
+      Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
+      Already existing topics cannot be created again.
     arguments:
       'Body':
         type: 'ModelCreateTopicRequestV1'
@@ -4377,9 +4371,7 @@ symbols:
     name: 'DeleteNotificationTemplateSlugV1Admin'
     type: 'function'
     description: |-
-      Delete template slug in notification template
-
-      Action Code: 50206
+      Delete all localizations for the given notification template slug.
     arguments:
       'Namespace':
         type: 'string'
@@ -4425,12 +4417,7 @@ symbols:
     name: 'DeleteNotificationTopicV1Admin'
     type: 'function'
     description: |-
-      Delete topic information by topic name.
-
-      topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-      Already existing topic can not be created
-
-      Action Code: 50217
+      Delete a notification topic by topic name.
     arguments:
       'Namespace':
         type: 'string'
@@ -4525,9 +4512,7 @@ symbols:
     name: 'DeleteTemplateLocalizationV1Admin'
     type: 'function'
     description: |-
-      Delete template localization
-
-      Action Code: 50209
+      Delete a notification template localization by slug and language.
     arguments:
       'Namespace':
         type: 'string'
@@ -4961,9 +4946,7 @@ symbols:
     name: 'GetAllNotificationTemplatesV1Admin'
     type: 'function'
     description: |-
-      Get all templates in a namespace
-
-      Action Code: 50203
+      Get all notification templates in a namespace.
     arguments:
       'Namespace':
         type: 'string'
@@ -5004,9 +4987,7 @@ symbols:
     name: 'GetAllNotificationTopicsV1Admin'
     type: 'function'
     description: |-
-      Get topic by namespace.
-
-      Action Code: 50213
+      Get all notification topics in a namespace.
     arguments:
       'After':
         type: 'string'
@@ -5264,9 +5245,7 @@ symbols:
     name: 'GetNotificationTopicV1Admin'
     type: 'function'
     description: |-
-      Get topic information by topic name.
-
-      Action Code: 50215
+      Get notification topic information by topic name.
     arguments:
       'Namespace':
         type: 'string'
@@ -5311,9 +5290,7 @@ symbols:
     name: 'GetSingleTemplateLocalizationV1Admin'
     type: 'function'
     description: |-
-      Get a template localization
-
-      Action Code: 50207
+      Get a single notification template localization by slug and language.
     arguments:
       'Namespace':
         type: 'string'
@@ -5431,9 +5408,7 @@ symbols:
     name: 'GetTemplateSlugLocalizationsTemplateV1Admin'
     type: 'function'
     description: |-
-      Get all templates in a namespace
-
-      Action Code: 50205
+      Get all localization variants for a given notification template slug.
     arguments:
       'After':
         type: 'string'
@@ -6059,12 +6034,7 @@ symbols:
     name: 'PublicGetPartyDataV1'
     type: 'function'
     description: |-
-      Required valid user authorization
-
-
-      load personal party data in a namespace based on Party ID
-
-      Action Code: 50101
+      Load party data in a namespace by Party ID.
     arguments:
       'Namespace':
         type: 'string'
@@ -6107,12 +6077,7 @@ symbols:
     name: 'PublicGetPlayerBlockedByPlayersV1'
     type: 'function'
     description: |-
-      Required valid user authorization
-
-
-      load get players who blocked this player in a namespace based on user id
-
-      Action Code: 50101
+      Load players who have blocked the current user in a namespace.
     arguments:
       'Namespace':
         type: 'string'
@@ -6152,12 +6117,7 @@ symbols:
     name: 'PublicGetPlayerBlockedPlayersV1'
     type: 'function'
     description: |-
-      Required valid user authorization
-
-
-      load blocked players in a namespace based on user id
-
-      Action Code: 50101
+      Load blocked players in a namespace for the current user.
     arguments:
       'Namespace':
         type: 'string'
@@ -6429,9 +6389,7 @@ symbols:
     name: 'PublishTemplateLocalizationV1Admin'
     type: 'function'
     description: |-
-      Publish notification template draft. Empty draft can not be published.
-
-      Action Code: 50210
+      Publish a notification template draft. Empty drafts cannot be published.
     arguments:
       'Namespace':
         type: 'string'
@@ -6482,8 +6440,7 @@ symbols:
     name: 'SendMultipleUsersFreeformNotificationV1Admin'
     type: 'function'
     description: |-
-      Sends notification to multiple user.
-      Action Code: 50211
+      Sends freeform notification to multiple users by user ID list.
     arguments:
       'Body':
         type: 'ModelBulkUsersFreeFormNotificationRequestV1'
@@ -6632,7 +6589,6 @@ symbols:
     type: 'function'
     description: |-
       Sends notification to a user.
-      Action Code: 50211
     arguments:
       'Body':
         type: 'ModelFreeFormNotificationRequestV1'
@@ -6683,13 +6639,9 @@ symbols:
     type: 'function'
     description: |-
       Sends templated notification to a user.
-
       In the request body, specify which template slug (template identifier) to use and the template language.
-
       NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-      Template need to be published before it can be use to send notifications
-
-      Action Code: 50212
+      Template need to be published before it can be used to send notifications.
     arguments:
       'Body':
         type: 'ModelNotificationWithTemplateRequestV1'
@@ -6740,8 +6692,6 @@ symbols:
     type: 'function'
     description: |-
       Sends notification to all connected users in a namespace.
-
-      Action Code: 50201
     arguments:
       'Body':
         type: 'ModelFreeFormNotificationRequestV1'
@@ -6786,13 +6736,9 @@ symbols:
     type: 'function'
     description: |-
       Sends notification to all connected users in a namespace with predefined template.
-
       In the request body, specify which template slug (template identifier) to use and the template language.
-
       NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-      Template need to be published before it can be use to send notifications
-
-      Action Code: 50202
+      Template need to be published before it can be used to send notifications.
     arguments:
       'Body':
         type: 'ModelNotificationWithTemplateRequestV1'
@@ -6980,12 +6926,8 @@ symbols:
     name: 'UpdateNotificationTopicV1Admin'
     type: 'function'
     description: |-
-      Update topic information by topic name.
-
-      topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-      Already existing topic can not be created
-
-      Action Code: 50216
+      Update notification topic information by topic name.
+      Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
     arguments:
       'Body':
         type: 'ModelUpdateTopicRequest'
@@ -7033,9 +6975,7 @@ symbols:
     name: 'UpdateTemplateLocalizationV1Admin'
     type: 'function'
     description: |-
-      Update template localization
-
-      Action Code: 50208
+      Update the content and subject of an existing notification template localization.
     arguments:
       'Body':
         type: 'ModelUpdateTemplateRequest'

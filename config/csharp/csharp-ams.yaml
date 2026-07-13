@@ -1423,6 +1423,9 @@ symbols:
       'Region':
         type: 'string'
         required: true
+      'State':
+        type: 'string'
+        required: false
     imports:
       - 'using System;'
       - 'using System.Collections.Generic;'
@@ -2651,6 +2654,11 @@ symbols:
         required: true
         description: |-
           the id of the fleet
+      'IncludeInactiveRegions':
+        type: 'bool'
+        required: false
+        description: |-
+          include inactive regions in the response
       'Namespace':
         type: 'string'
         required: true
@@ -2669,7 +2677,11 @@ symbols:
       try
       {
           var operation = sdk.Ams.Fleets.FleetGetOp
-              .Build();
+              .SetIncludeInactiveRegions(...)
+              .Build(
+                  fleetID,
+                  namespace_,
+              );
 
           var response = sdk.Ams.Fleets.FleetGet(operation);
       }
@@ -2697,6 +2709,11 @@ symbols:
         required: false
         description: |-
           the number of fleets to return
+      'IncludeInactiveRegions':
+        type: 'bool'
+        required: false
+        description: |-
+          include inactive regions in the response
       'Name':
         type: 'string'
         required: false
@@ -2742,6 +2759,7 @@ symbols:
           var operation = sdk.Ams.Fleets.FleetListOp
               .SetActive(...)
               .SetCount(...)
+              .SetIncludeInactiveRegions(...)
               .SetName(...)
               .SetOffset(...)
               .SetRegion(...)
@@ -3063,34 +3081,6 @@ symbols:
       - 'fleet'
       - 'fleets'
       - 'update'
-
-  'Func1@cs.ams.fun':
-    id: 'Func1@cs.ams.fun'
-    name: 'Func1'
-    type: 'function'
-    return_type: 'void'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Ams.Model;'
-      - 'using AccelByte.Sdk.Api.Ams.Operation;'
-      - 'using AccelByte.Sdk.Api.Ams.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Wrapper/FleetCommander.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Operation/FleetCommander/Func1.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Ams.FleetCommander.Func1Op
-              .Build();
-
-          sdk.Ams.FleetCommander.Func1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'commander'
-      - 'fleet'
-      - 'func1'
 
   'ImageGet@cs.ams.fun':
     id: 'ImageGet@cs.ams.fun'
@@ -3735,6 +3725,35 @@ symbols:
       - 'info'
       - 'upload'
       - 'url'
+
+  'VersionInfo@cs.ams.fun':
+    id: 'VersionInfo@cs.ams.fun'
+    name: 'VersionInfo'
+    type: 'function'
+    return_type: 'void'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Ams.Model;'
+      - 'using AccelByte.Sdk.Api.Ams.Operation;'
+      - 'using AccelByte.Sdk.Api.Ams.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Wrapper/FleetCommander.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Ams/Operation/FleetCommander/VersionInfo.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Ams.FleetCommander.VersionInfoOp
+              .Build();
+
+          sdk.Ams.FleetCommander.VersionInfo(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'commander'
+      - 'fleet'
+      - 'info'
+      - 'version'
 
   'WatchdogConnect@cs.ams.fun':
     id: 'WatchdogConnect@cs.ams.fun'

@@ -1479,6 +1479,9 @@ symbols:
       'region':
         type: 'str'
         required: true
+      'state':
+        type: 'str'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.ams.models as ams_models'
@@ -2515,6 +2518,11 @@ symbols:
         required: true
         description: |-
           the id of the fleet
+      'include_inactive_regions':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          include inactive regions in the response
       'namespace':
         type: 'str'
         required: true
@@ -2554,6 +2562,11 @@ symbols:
         required: false
         description: |-
           the number of fleets to return
+      'include_inactive_regions':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          include inactive regions in the response
       'name':
         type: 'Optional[str]'
         required: false
@@ -2849,27 +2862,6 @@ symbols:
       - 'fleet'
       - 'fleets'
       - 'update'
-
-  'func1@py.ams.fun':
-    id: 'func1@py.ams.fun'
-    name: 'func1'
-    type: 'function'
-    return_type: 'Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.ams as ams'
-      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/operations/fleet_commander/func1.py'
-    example: |-
-      result, error = ams.func1(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'commander'
-      - 'fleet'
-      - 'func1'
 
   'image_get@py.ams.fun':
     id: 'image_get@py.ams.fun'
@@ -3401,6 +3393,28 @@ symbols:
       - 'info'
       - 'upload'
       - 'url'
+
+  'version_info@py.ams.fun':
+    id: 'version_info@py.ams.fun'
+    name: 'version_info'
+    type: 'function'
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.ams as ams'
+      - 'import accelbyte_py_sdk.api.ams.models as ams_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/ams/operations/fleet_commander/version_info.py'
+    example: |-
+      result, error = ams.version_info(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'commander'
+      - 'fleet'
+      - 'info'
+      - 'version'
 
   'watchdog_connect@py.ams.fun':
     id: 'watchdog_connect@py.ams.fun'

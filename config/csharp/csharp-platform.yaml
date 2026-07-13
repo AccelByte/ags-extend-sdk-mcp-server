@@ -37494,7 +37494,7 @@ symbols:
         required: false
       'UserId':
         type: 'string'
-        required: false
+        required: true
     return_type: 'FulfillmentHistoryPagingSlicedResult'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -37511,9 +37511,9 @@ symbols:
               .SetLimit(...)
               .SetOffset(...)
               .SetStatus(...)
-              .SetUserId(...)
               .Build(
                   namespace_,
+                  userId,
               );
 
           var response = sdk.Platform.Fulfillment.QueryFulfillmentHistories(operation);

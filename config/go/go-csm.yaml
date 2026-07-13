@@ -44,6 +44,31 @@ symbols:
           TokenRepository:  tokenRepo,
       }
 
+  'AppStatusProgressV4Service@go.csm.mod':
+    id: 'AppStatusProgressV4Service@go.csm.mod'
+    name: 'AppStatusProgressV4Service'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appStatusProgressV4.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appStatusProgressV4Service := AppStatusProgressV4Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'AppUIService@go.csm.mod':
     id: 'AppUIService@go.csm.mod'
     name: 'AppUIService'
@@ -89,6 +114,56 @@ symbols:
     example: |-
       csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
       appV2Service := AppV2Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AppV4Service@go.csm.mod':
+    id: 'AppV4Service@go.csm.mod'
+    name: 'AppV4Service'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV4.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appV4Service := AppV4Service{
+          Client:           csmClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'AppV5Service@go.csm.mod':
+    id: 'AppV5Service@go.csm.mod'
+    name: 'AppV5Service'
+    type: 'model'
+    fields:
+      Client:
+        type: '*csmclient.JusticeCsmService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV5.go'
+    example: |-
+      csmClient := factory.NewCsmClient(configRepo) // re-use if it exists already
+      appV5Service := AppV5Service{
           Client:           csmClient,
           ConfigRepository: configRepo,
           TokenRepository:  tokenRepo,
@@ -582,6 +657,29 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v2'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v2/create_app_v2_parameters.go'
+
+  'CreateAppV5Params@go.csm.mod':
+    id: 'CreateAppV5Params@go.csm.mod'
+    name: 'CreateAppV5Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelCreateAppV5Request'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Namespace
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v5'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v5/create_app_v5_parameters.go'
 
   'CreateDeploymentV1Params@go.csm.mod':
     id: 'CreateDeploymentV1Params@go.csm.mod'
@@ -1308,6 +1406,26 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/configuration_v2/delete_variable_v2_parameters.go'
 
+  'GetAppDebugInfoV4Params@go.csm.mod':
+    id: 'GetAppDebugInfoV4Params@go.csm.mod'
+    name: 'GetAppDebugInfoV4Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v4'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v4/get_app_debug_info_v4_parameters.go'
+
   'GetAppImageListV1Params@go.csm.mod':
     id: 'GetAppImageListV1Params@go.csm.mod'
     name: 'GetAppImageListV1Params'
@@ -1443,6 +1561,26 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app/get_app_release_v1_parameters.go'
+
+  'GetAppStatusProgressV4Params@go.csm.mod':
+    id: 'GetAppStatusProgressV4Params@go.csm.mod'
+    name: 'GetAppStatusProgressV4Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_status_progress_v4'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_status_progress_v4/get_app_status_progress_v4_parameters.go'
 
   'GetAppV1Params@go.csm.mod':
     id: 'GetAppV1Params@go.csm.mod'
@@ -1820,16 +1958,16 @@ symbols:
         required: false
         description: |-
           App Name
+      'GameNamespace':
+        type: 'string'
+        required: false
+        description: |-
+          Game Namespace
       'Limit':
         type: 'int64'
         required: false
         description: |-
           Limit for pagination
-      'Namespace':
-        type: 'string'
-        required: false
-        description: |-
-          Game Name
       'Offset':
         type: 'int64'
         required: false
@@ -1964,7 +2102,7 @@ symbols:
         type: 'string'
         required: false
         description: |-
-          Game Name
+          Game Namespace
       'Limit':
         type: 'int64'
         required: false
@@ -2516,6 +2654,29 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/notification_subscription/unsubscribe_v2_handler_parameters.go'
 
+  'UpdateAppDebugModeV4Params@go.csm.mod':
+    id: 'UpdateAppDebugModeV4Params@go.csm.mod'
+    name: 'UpdateAppDebugModeV4Params'
+    type: 'model'
+    fields:
+      'App':
+        type: 'string'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'Body':
+        type: '*ApimodelUpdateDebugModeRequest'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Game Name
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v4'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclient/app_v4/update_app_debug_mode_v4_parameters.go'
+
   'UpdateAppResourcesResourceLimitFormV2Params@go.csm.mod':
     id: 'UpdateAppResourcesResourceLimitFormV2Params@go.csm.mod'
     name: 'UpdateAppResourcesResourceLimitFormV2Params'
@@ -2813,6 +2974,34 @@ symbols:
 
   # region models
 
+  'ApimodelAppDebugInfoResponse@go.csm.mod':
+    id: 'ApimodelAppDebugInfoResponse@go.csm.mod'
+    name: 'ApimodelAppDebugInfoResponse'
+    type: 'model'
+    fields:
+      'AllowedInterceptedPorts':
+        type: '[]*DomainAllowedInterceptedPort'
+        required: true
+      'AppStatus':
+        type: 'string'
+        required: true
+      'DebugPods':
+        type: '[]*DomainDebugPod'
+        required: true
+      'ExposedServices':
+        type: '[]*DomainExposedService'
+        required: true
+      'IsDebugModeEnabled':
+        type: 'bool'
+        required: true
+      'IsDebugSessionConnected':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_debug_info_response.go'
+
   'ApimodelAppItem@go.csm.mod':
     id: 'ApimodelAppItem@go.csm.mod'
     name: 'ApimodelAppItem'
@@ -2860,6 +3049,9 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableDebugMode':
+        type: 'bool'
+        required: true
       'GameName':
         type: 'string'
         required: true
@@ -2871,9 +3063,6 @@ symbols:
         required: false
       'Message':
         type: 'string'
-        required: false
-      'RedeploymentInfo':
-        type: '*ModelAppRedeploymentInfo'
         required: false
       'Replica':
         type: '*ApimodelReplicaResponse'
@@ -2897,6 +3086,46 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_item.go'
+
+  'ApimodelAppItemV5@go.csm.mod':
+    id: 'ApimodelAppItemV5@go.csm.mod'
+    name: 'ApimodelAppItemV5'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'AppStatus':
+        type: 'string'
+        required: true
+      'BasePath':
+        type: 'string'
+        required: false
+      'CreatedAt':
+        type: 'string'
+        required: true
+      'Description':
+        type: 'string'
+        required: false
+      'GameName':
+        type: 'string'
+        required: true
+      'Scenario':
+        type: 'string'
+        required: true
+      'UpdatedAt':
+        type: 'string'
+        required: true
+      'VMSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_item_v5.go'
 
   'ApimodelApplyAppConfigRequest@go.csm.mod':
     id: 'ApimodelApplyAppConfigRequest@go.csm.mod'
@@ -2969,6 +3198,34 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_apply_permission_item.go'
+
+  'ApimodelAppStatusProgressStep@go.csm.mod':
+    id: 'ApimodelAppStatusProgressStep@go.csm.mod'
+    name: 'ApimodelAppStatusProgressStep'
+    type: 'model'
+    fields:
+      'FinishedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'StartedAt':
+        type: '*strfmt.DateTime'
+        required: false
+      'Status':
+        type: 'string'
+        required: true
+      'StatusMessage':
+        type: 'string'
+        required: false
+      'Step':
+        type: 'string'
+        required: true
+      'StepOrder':
+        type: 'int64'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_app_status_progress_step.go'
 
   'ApimodelAppUIResponse@go.csm.mod':
     id: 'ApimodelAppUIResponse@go.csm.mod'
@@ -3134,6 +3391,40 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_app_v2_request.go'
+
+  'ApimodelCreateAppV5Request@go.csm.mod':
+    id: 'ApimodelCreateAppV5Request@go.csm.mod'
+    name: 'ApimodelCreateAppV5Request'
+    type: 'model'
+    fields:
+      'Autoscaling':
+        type: '*CreateappparamsAutoscalingRequest'
+        required: false
+      'CPU':
+        type: '*CreateappparamsCPURequest'
+        required: false
+      'Description':
+        type: 'string'
+        required: false
+      'Memory':
+        type: '*CreateappparamsMemoryRequest'
+        required: false
+      'PreferredK8sNamespace':
+        type: 'string'
+        required: false
+      'Replica':
+        type: '*CreateappparamsReplicaRequest'
+        required: false
+      'Scenario':
+        type: 'string'
+        required: true
+      'VMSharingConfiguration':
+        type: 'string'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_create_app_v5_request.go'
 
   'ApimodelCreateDeploymentV2Request@go.csm.mod':
     id: 'ApimodelCreateDeploymentV2Request@go.csm.mod'
@@ -3529,6 +3820,28 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_list_v2_response.go'
+
+  'ApimodelGetAppStatusProgressResponse@go.csm.mod':
+    id: 'ApimodelGetAppStatusProgressResponse@go.csm.mod'
+    name: 'ApimodelGetAppStatusProgressResponse'
+    type: 'model'
+    fields:
+      'AppID':
+        type: 'string'
+        required: true
+      'AppName':
+        type: 'string'
+        required: true
+      'OperationID':
+        type: 'string'
+        required: true
+      'Steps':
+        type: '[]*ApimodelAppStatusProgressStep'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_get_app_status_progress_response.go'
 
   'ApimodelGetDeploymentListV2DataItem@go.csm.mod':
     id: 'ApimodelGetDeploymentListV2DataItem@go.csm.mod'
@@ -4368,6 +4681,9 @@ symbols:
       'ReplicaLimit':
         type: 'int32'
         required: false
+      'RolloutReadyReplicas':
+        type: 'int32'
+        required: false
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
@@ -4833,6 +5149,9 @@ symbols:
       'Description':
         type: 'string'
         required: false
+      'EnableDebugMode':
+        type: 'bool'
+        required: false
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
@@ -4885,6 +5204,19 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_configuration_v2_response.go'
 
+  'ApimodelUpdateDebugModeRequest@go.csm.mod':
+    id: 'ApimodelUpdateDebugModeRequest@go.csm.mod'
+    name: 'ApimodelUpdateDebugModeRequest'
+    type: 'model'
+    fields:
+      'EnableDebugMode':
+        type: 'bool'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_update_debug_mode_request.go'
+
   'ApimodelUpdateSecretConfigurationV2Request@go.csm.mod':
     id: 'ApimodelUpdateSecretConfigurationV2Request@go.csm.mod'
     name: 'ApimodelUpdateSecretConfigurationV2Request'
@@ -4913,6 +5245,109 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/apimodel_upload_file_response.go'
+
+  'CreateappparamsAutoscalingRequest@go.csm.mod':
+    id: 'CreateappparamsAutoscalingRequest@go.csm.mod'
+    name: 'CreateappparamsAutoscalingRequest'
+    type: 'model'
+    fields:
+      'TargetCPUUtilizationPercent':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/createappparams_autoscaling_request.go'
+
+  'CreateappparamsCPURequest@go.csm.mod':
+    id: 'CreateappparamsCPURequest@go.csm.mod'
+    name: 'CreateappparamsCPURequest'
+    type: 'model'
+    fields:
+      'RequestCPU':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/createappparams_cpu_request.go'
+
+  'CreateappparamsMemoryRequest@go.csm.mod':
+    id: 'CreateappparamsMemoryRequest@go.csm.mod'
+    name: 'CreateappparamsMemoryRequest'
+    type: 'model'
+    fields:
+      'RequestMemory':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/createappparams_memory_request.go'
+
+  'CreateappparamsReplicaRequest@go.csm.mod':
+    id: 'CreateappparamsReplicaRequest@go.csm.mod'
+    name: 'CreateappparamsReplicaRequest'
+    type: 'model'
+    fields:
+      'MaxReplica':
+        type: 'int32'
+        required: false
+      'MinReplica':
+        type: 'int32'
+        required: false
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/createappparams_replica_request.go'
+
+  'DomainAllowedInterceptedPort@go.csm.mod':
+    id: 'DomainAllowedInterceptedPort@go.csm.mod'
+    name: 'DomainAllowedInterceptedPort'
+    type: 'model'
+    fields:
+      'Port':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_allowed_intercepted_port.go'
+
+  'DomainDebugPod@go.csm.mod':
+    id: 'DomainDebugPod@go.csm.mod'
+    name: 'DomainDebugPod'
+    type: 'model'
+    fields:
+      'PodName':
+        type: 'string'
+        required: true
+      'Port':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_debug_pod.go'
+
+  'DomainExposedService@go.csm.mod':
+    id: 'DomainExposedService@go.csm.mod'
+    name: 'DomainExposedService'
+    type: 'model'
+    fields:
+      'Host':
+        type: 'string'
+        required: true
+      'Name':
+        type: 'string'
+        required: true
+      'Port':
+        type: 'int32'
+        required: true
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/domain_exposed_service.go'
 
   'DomainKeyValueClusterConfig@go.csm.mod':
     id: 'DomainKeyValueClusterConfig@go.csm.mod'
@@ -5689,38 +6124,6 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/log_app_message_declaration.go'
 
-  'ModelAppRedeploymentDetail@go.csm.mod':
-    id: 'ModelAppRedeploymentDetail@go.csm.mod'
-    name: 'ModelAppRedeploymentDetail'
-    type: 'model'
-    fields:
-      'Message':
-        type: 'string'
-        required: false
-      'ReasonID':
-        type: 'string'
-        required: true
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_app_redeployment_detail.go'
-
-  'ModelAppRedeploymentInfo@go.csm.mod':
-    id: 'ModelAppRedeploymentInfo@go.csm.mod'
-    name: 'ModelAppRedeploymentInfo'
-    type: 'model'
-    fields:
-      'Details':
-        type: '[]*ModelAppRedeploymentDetail'
-        required: false
-      'ShouldRedeploy':
-        type: 'bool'
-        required: true
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/csm-sdk/pkg/csmclientmodels/model_app_redeployment_info.go'
-
   'ModelCSMAutoscalingDefaults@go.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@go.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -5862,8 +6265,6 @@ symbols:
     name: 'ApplyAppConfigV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
-
       Idempotent endpoint that creates or updates an Extend app from a declarative spec.
       Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
 
@@ -5893,14 +6294,14 @@ symbols:
       - 'apply'
       - 'config'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP []'
 
   'BulkSaveSubscriptionAppNotificationV2Short@go.csm.fun':
     id: 'BulkSaveSubscriptionAppNotificationV2Short@go.csm.fun'
     name: 'BulkSaveSubscriptionAppNotificationV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
-
       Bulk update of users subscribed to an app's notifications.
 
       Request body:
@@ -5936,14 +6337,14 @@ symbols:
       - 'save'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]'
 
   'CreateAppUIShort@go.csm.fun':
     id: 'CreateAppUIShort@go.csm.fun'
     name: 'CreateAppUIShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
-
       Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
     struct: 'AppUIService'
     arguments:
@@ -5968,14 +6369,14 @@ symbols:
       - 'app'
       - 'create'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]'
 
   'CreateAppV1Short@go.csm.fun':
     id: 'CreateAppV1Short@go.csm.fun'
     name: 'CreateAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
-
       Creates new App for AB-Extend Customers
 
       Available scenario:
@@ -6007,20 +6408,22 @@ symbols:
       - 'app'
       - 'create'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'CreateAppV2Short@go.csm.fun':
     id: 'CreateAppV2Short@go.csm.fun'
     name: 'CreateAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+      [Deprecated] Please use v5 endpoint instead.
 
       Create new extend app with name provided by {app} path parameter and specified scenario type
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -6063,14 +6466,72 @@ symbols:
       - 'app'
       - 'create'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
+
+  'CreateAppV5Short@go.csm.fun':
+    id: 'CreateAppV5Short@go.csm.fun'
+    name: 'CreateAppV5Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Create new extend app with name provided by {app} path parameter and specified scenario type
+
+      Available scenario:
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+      - scenario 1: `function-override`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    struct: 'AppV5Service'
+    arguments:
+      params:
+        type: '*app_v5.CreateAppV5Params'
+        required: true
+    return_type: '(*app_v5.CreateAppV5Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v5'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV5.go'
+    example: |-
+      appV5Service := csm.AppV5Service{ ... }
+      params := app_v5.CreateAppV5Params{ ... }
+      res, err := appV5Service.CreateAppV5Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'create'
+      - 'v5'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'CreateDeploymentV1Short@go.csm.fun':
     id: 'CreateDeploymentV1Short@go.csm.fun'
     name: 'CreateDeploymentV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This endpoint intended to apply the helm release or deploying the custom service image.
@@ -6106,14 +6567,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'CreateDeploymentV2Short@go.csm.fun':
     id: 'CreateDeploymentV2Short@go.csm.fun'
     name: 'CreateDeploymentV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This Endpoint will create new deployment and apply all of the secrets and variable as environment variable
@@ -6146,14 +6607,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'CreateKeyValueClusterV2Short@go.csm.fun':
     id: 'CreateKeyValueClusterV2Short@go.csm.fun'
     name: 'CreateKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
-
       Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
       Cluster limits:
@@ -6188,14 +6649,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]'
 
   'CreateKeyValueCredentialV2Short@go.csm.fun':
     id: 'CreateKeyValueCredentialV2Short@go.csm.fun'
     name: 'CreateKeyValueCredentialV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
-
       Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
       Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
       If the same username and password are provided, returns the existing credential (idempotent).
@@ -6228,14 +6689,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]'
 
   'CreateNewNoSQLDatabaseCredentialV2Short@go.csm.fun':
     id: 'CreateNewNoSQLDatabaseCredentialV2Short@go.csm.fun'
     name: 'CreateNewNoSQLDatabaseCredentialV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -6268,14 +6729,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateNoSQLClusterV2Short@go.csm.fun':
     id: 'CreateNoSQLClusterV2Short@go.csm.fun'
     name: 'CreateNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]`
-
       Provision NoSQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one NoSQL resource can be created for one studio/publisher namespace.
 
@@ -6307,14 +6768,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]'
 
   'CreateNoSQLDatabaseCredentialV2Short@go.csm.fun':
     id: 'CreateNoSQLDatabaseCredentialV2Short@go.csm.fun'
     name: 'CreateNoSQLDatabaseCredentialV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -6346,14 +6807,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateNoSQLDatabaseV2Short@go.csm.fun':
     id: 'CreateNoSQLDatabaseV2Short@go.csm.fun'
     name: 'CreateNoSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
-
       Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
@@ -6384,14 +6845,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]'
 
   'CreateSQLClusterV2Short@go.csm.fun':
     id: 'CreateSQLClusterV2Short@go.csm.fun'
     name: 'CreateSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
-
       Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one SQL resource can be created for one studio/publisher namespace.
 
@@ -6422,14 +6883,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]'
 
   'CreateSQLDatabaseCredentialV2Short@go.csm.fun':
     id: 'CreateSQLDatabaseCredentialV2Short@go.csm.fun'
     name: 'CreateSQLDatabaseCredentialV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
     struct: 'ManagedResourcesSQLService'
     arguments:
@@ -6458,14 +6919,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]'
 
   'CreateSQLDatabaseV2Short@go.csm.fun':
     id: 'CreateSQLDatabaseV2Short@go.csm.fun'
     name: 'CreateSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
-
       Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
     struct: 'ManagedResourcesSQLService'
     arguments:
@@ -6493,14 +6954,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]'
 
   'CreateSubscriptionHandlerShort@go.csm.fun':
     id: 'CreateSubscriptionHandlerShort@go.csm.fun'
     name: 'CreateSubscriptionHandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
-
       Subscribe App queue to given Topic name list inside a game namespace.
     struct: 'AsyncMessagingService'
     arguments:
@@ -6527,14 +6988,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'subscription'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]'
 
   'CreateTopicHandlerShort@go.csm.fun':
     id: 'CreateTopicHandlerShort@go.csm.fun'
     name: 'CreateTopicHandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
-
       Create New Async Messaging Topic, the topic name is unique inside a game namespace.
     struct: 'AsyncMessagingService'
     arguments:
@@ -6561,14 +7022,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]'
 
   'DeleteAppImagesV1Short@go.csm.fun':
     id: 'DeleteAppImagesV1Short@go.csm.fun'
     name: 'DeleteAppImagesV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes the images uploaded to the repository
     struct: 'ImageService'
     arguments:
@@ -6595,14 +7056,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'DeleteAppImagesV2Short@go.csm.fun':
     id: 'DeleteAppImagesV2Short@go.csm.fun'
     name: 'DeleteAppImagesV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes list of provided image tags from the app image repository
     struct: 'ImageV2Service'
     arguments:
@@ -6629,14 +7090,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'DeleteAppUIShort@go.csm.fun':
     id: 'DeleteAppUIShort@go.csm.fun'
     name: 'DeleteAppUIShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
-
       Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
     struct: 'AppUIService'
     arguments:
@@ -6661,14 +7122,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]'
 
   'DeleteAppV1Short@go.csm.fun':
     id: 'DeleteAppV1Short@go.csm.fun'
     name: 'DeleteAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete App by given DeploymentID
 
       This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
@@ -6698,14 +7159,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'DeleteAppV2Short@go.csm.fun':
     id: 'DeleteAppV2Short@go.csm.fun'
     name: 'DeleteAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete extend app by given {app} name
 
       This endpoint will delete app information, configuration, deployments and all related manifest from
@@ -6733,14 +7194,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'DeleteDeploymentV1Short@go.csm.fun':
     id: 'DeleteDeploymentV1Short@go.csm.fun'
     name: 'DeleteDeploymentV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
@@ -6769,14 +7230,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'DeleteDeploymentV2Short@go.csm.fun':
     id: 'DeleteDeploymentV2Short@go.csm.fun'
     name: 'DeleteDeploymentV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint will delete release object for the service deployment in the cluster
@@ -6805,14 +7266,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'DeleteKeyValueClusterV2Short@go.csm.fun':
     id: 'DeleteKeyValueClusterV2Short@go.csm.fun'
     name: 'DeleteKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
-
       Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
       Force-deletes all active integrations. Returns resource with status DELETING.
     struct: 'ManagedResourcesKeyValueService'
@@ -6842,14 +7303,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]'
 
   'DeleteNoSQLClusterV2Short@go.csm.fun':
     id: 'DeleteNoSQLClusterV2Short@go.csm.fun'
     name: 'DeleteNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -6883,14 +7344,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]'
 
   'DeleteNoSQLDatabaseV2Short@go.csm.fun':
     id: 'DeleteNoSQLDatabaseV2Short@go.csm.fun'
     name: 'DeleteNoSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]`
-
       Deletes a NoSQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned NoSQL cluster.
     struct: 'ManagedResourcesService'
     arguments:
@@ -6919,14 +7380,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]'
 
   'DeleteSecretV1Short@go.csm.fun':
     id: 'DeleteSecretV1Short@go.csm.fun'
     name: 'DeleteSecretV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret.
     struct: 'ConfigurationService'
     arguments:
@@ -6952,14 +7413,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'DeleteSecretV2Short@go.csm.fun':
     id: 'DeleteSecretV2Short@go.csm.fun'
     name: 'DeleteSecretV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret by its config id
     struct: 'ConfigurationV2Service'
     arguments:
@@ -6985,14 +7446,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'DeleteSQLClusterV2Short@go.csm.fun':
     id: 'DeleteSQLClusterV2Short@go.csm.fun'
     name: 'DeleteSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -7025,14 +7486,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]'
 
   'DeleteSQLDatabaseV2Short@go.csm.fun':
     id: 'DeleteSQLDatabaseV2Short@go.csm.fun'
     name: 'DeleteSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
-
       Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
     struct: 'ManagedResourcesSQLService'
     arguments:
@@ -7060,14 +7521,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]'
 
   'DeleteSubscriptionAppNotificationByUserIDV2Short@go.csm.fun':
     id: 'DeleteSubscriptionAppNotificationByUserIDV2Short@go.csm.fun'
     name: 'DeleteSubscriptionAppNotificationByUserIDV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription by user ID.
     struct: 'NotificationSubscriptionService'
     arguments:
@@ -7096,14 +7557,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteSubscriptionAppNotificationV2Short@go.csm.fun':
     id: 'DeleteSubscriptionAppNotificationV2Short@go.csm.fun'
     name: 'DeleteSubscriptionAppNotificationV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription.
     struct: 'NotificationSubscriptionService'
     arguments:
@@ -7130,14 +7591,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteSubscriptionAppNotificationV3Short@go.csm.fun':
     id: 'DeleteSubscriptionAppNotificationV3Short@go.csm.fun'
     name: 'DeleteSubscriptionAppNotificationV3Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription using either user ID or email address.
       Only one of them should be provided.
     struct: 'NotificationSubscriptionV3Service'
@@ -7165,14 +7626,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'DeleteTopicHandlerShort@go.csm.fun':
     id: 'DeleteTopicHandlerShort@go.csm.fun'
     name: 'DeleteTopicHandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
-
       Delete Async Messaging Topic inside a game namespace given its topic name.
     struct: 'AsyncMessagingService'
     arguments:
@@ -7199,14 +7660,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]'
 
   'DeleteVariableV1Short@go.csm.fun':
     id: 'DeleteVariableV1Short@go.csm.fun'
     name: 'DeleteVariableV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable.
     struct: 'ConfigurationService'
     arguments:
@@ -7232,14 +7693,14 @@ symbols:
       - 'delete'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
 
   'DeleteVariableV2Short@go.csm.fun':
     id: 'DeleteVariableV2Short@go.csm.fun'
     name: 'DeleteVariableV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable by its config id
     struct: 'ConfigurationV2Service'
     arguments:
@@ -7265,14 +7726,51 @@ symbols:
       - 'delete'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
+
+  'GetAppDebugInfoV4Short@go.csm.fun':
+    id: 'GetAppDebugInfoV4Short@go.csm.fun'
+    name: 'GetAppDebugInfoV4Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Returns the list of debug-ready pods and exposed services for the given extend app.
+
+      A pod is included only when it is in `Running` phase and has an
+      `extend-proxy-sidecar` container.
+    struct: 'AppV4Service'
+    arguments:
+      params:
+        type: '*app_v4.GetAppDebugInfoV4Params'
+        required: true
+    return_type: '(*app_v4.GetAppDebugInfoV4Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v4'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV4.go'
+    example: |-
+      appV4Service := csm.AppV4Service{ ... }
+      params := app_v4.GetAppDebugInfoV4Params{ ... }
+      res, err := appV4Service.GetAppDebugInfoV4Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'debug'
+      - 'get'
+      - 'info'
+      - 'v4'
 
   'GetAppImageListV1Short@go.csm.fun':
     id: 'GetAppImageListV1Short@go.csm.fun'
     name: 'GetAppImageListV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -7301,14 +7799,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'GetAppImageListV2Short@go.csm.fun':
     id: 'GetAppImageListV2Short@go.csm.fun'
     name: 'GetAppImageListV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -7337,14 +7835,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'GetAppListV1Short@go.csm.fun':
     id: 'GetAppListV1Short@go.csm.fun'
     name: 'GetAppListV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
@@ -7375,14 +7873,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppListV2Short@go.csm.fun':
     id: 'GetAppListV2Short@go.csm.fun'
     name: 'GetAppListV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get list of extend apps on a given game namespace
     struct: 'AppV2Service'
     arguments:
@@ -7408,14 +7906,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppReleaseV1Short@go.csm.fun':
     id: 'GetAppReleaseV1Short@go.csm.fun'
     name: 'GetAppReleaseV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the Latest Release Version info of this App
     struct: 'AppService'
     arguments:
@@ -7441,14 +7939,48 @@ symbols:
       - 'get'
       - 'release'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
+
+  'GetAppStatusProgressV4Short@go.csm.fun':
+    id: 'GetAppStatusProgressV4Short@go.csm.fun'
+    name: 'GetAppStatusProgressV4Short'
+    type: 'function'
+    description: |-
+      Returns step rows for the current or last tracked operation.
+    struct: 'AppStatusProgressV4Service'
+    arguments:
+      params:
+        type: '*app_status_progress_v4.GetAppStatusProgressV4Params'
+        required: true
+    return_type: '(*app_status_progress_v4.GetAppStatusProgressV4Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_status_progress_v4'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appStatusProgressV4.go'
+    example: |-
+      appStatusProgressV4Service := csm.AppStatusProgressV4Service{ ... }
+      params := app_status_progress_v4.GetAppStatusProgressV4Params{ ... }
+      res, err := appStatusProgressV4Service.GetAppStatusProgressV4Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'get'
+      - 'progress'
+      - 'status'
+      - 'v4'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppV1Short@go.csm.fun':
     id: 'GetAppV1Short@go.csm.fun'
     name: 'GetAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the App By Name
     struct: 'AppService'
     arguments:
@@ -7473,20 +8005,20 @@ symbols:
       - 'app'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetAppV2Short@go.csm.fun':
     id: 'GetAppV2Short@go.csm.fun'
     name: 'GetAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get extend app by name
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -7529,14 +8061,14 @@ symbols:
       - 'app'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'GetDeploymentV1Short@go.csm.fun':
     id: 'GetDeploymentV1Short@go.csm.fun'
     name: 'GetDeploymentV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
@@ -7565,14 +8097,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetDeploymentV2Short@go.csm.fun':
     id: 'GetDeploymentV2Short@go.csm.fun'
     name: 'GetDeploymentV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information.
@@ -7601,14 +8133,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetExtendFileShort@go.csm.fun':
     id: 'GetExtendFileShort@go.csm.fun'
     name: 'GetExtendFileShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
-
       Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
     struct: 'ExtendFilesService'
     arguments:
@@ -7634,14 +8166,14 @@ symbols:
       - 'file'
       - 'files'
       - 'get'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]'
 
   'GetIntegrationAppKeyValueClusterV2Short@go.csm.fun':
     id: 'GetIntegrationAppKeyValueClusterV2Short@go.csm.fun'
     name: 'GetIntegrationAppKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
-
       Get integration of an extend app with a cluster.
     struct: 'ManagedResourcesKeyValueService'
     arguments:
@@ -7672,14 +8204,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]'
 
   'GetKeyValueClusterLimitConfigV2Short@go.csm.fun':
     id: 'GetKeyValueClusterLimitConfigV2Short@go.csm.fun'
     name: 'GetKeyValueClusterLimitConfigV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster limit config.
     struct: 'ManagedResourcesKeyValueService'
     arguments:
@@ -7710,14 +8242,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetKeyValueClusterV2Short@go.csm.fun':
     id: 'GetKeyValueClusterV2Short@go.csm.fun'
     name: 'GetKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the Key-Value cluster status.
@@ -7748,14 +8280,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetListIntegratedAppKeyValueClusterV2Short@go.csm.fun':
     id: 'GetListIntegratedAppKeyValueClusterV2Short@go.csm.fun'
     name: 'GetListIntegratedAppKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
     struct: 'ManagedResourcesKeyValueService'
     arguments:
@@ -7787,14 +8319,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'GetListOfDeploymentV1Short@go.csm.fun':
     id: 'GetListOfDeploymentV1Short@go.csm.fun'
     name: 'GetListOfDeploymentV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -7825,14 +8357,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetListOfDeploymentV2Short@go.csm.fun':
     id: 'GetListOfDeploymentV2Short@go.csm.fun'
     name: 'GetListOfDeploymentV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -7871,14 +8403,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'GetListOfSecretsV1Short@go.csm.fun':
     id: 'GetListOfSecretsV1Short@go.csm.fun'
     name: 'GetListOfSecretsV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -7909,14 +8441,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'GetListOfSecretsV2Short@go.csm.fun':
     id: 'GetListOfSecretsV2Short@go.csm.fun'
     name: 'GetListOfSecretsV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -7947,14 +8479,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'GetListOfVariablesV1Short@go.csm.fun':
     id: 'GetListOfVariablesV1Short@go.csm.fun'
     name: 'GetListOfVariablesV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -7985,14 +8517,14 @@ symbols:
       - 'of'
       - 'v1'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'GetListOfVariablesV2Short@go.csm.fun':
     id: 'GetListOfVariablesV2Short@go.csm.fun'
     name: 'GetListOfVariablesV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -8023,6 +8555,8 @@ symbols:
       - 'of'
       - 'v2'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'GetNoSQLAccessTunnelV2Short@go.csm.fun':
     id: 'GetNoSQLAccessTunnelV2Short@go.csm.fun'
@@ -8058,24 +8592,24 @@ symbols:
       - 'sql'
       - 'tunnel'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:TUNNELS [READ]'
 
   'GetNoSQLAppListV2Short@go.csm.fun':
     id: 'GetNoSQLAppListV2Short@go.csm.fun'
     name: 'GetNoSQLAppListV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
     struct: 'ManagedResourcesService'
     arguments:
@@ -8105,27 +8639,27 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'GetNoSQLClusterV2Short@go.csm.fun':
     id: 'GetNoSQLClusterV2Short@go.csm.fun'
     name: 'GetNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -8153,28 +8687,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'GetNoSQLDatabaseV2Short@go.csm.fun':
     id: 'GetNoSQLDatabaseV2Short@go.csm.fun'
     name: 'GetNoSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]`
-
       Get a NoSQL database information returns the NoSQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     struct: 'ManagedResourcesService'
     arguments:
       params:
@@ -8202,14 +8736,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]'
 
   'GetNotificationSubscriberListV2Short@go.csm.fun':
     id: 'GetNotificationSubscriberListV2Short@go.csm.fun'
     name: 'GetNotificationSubscriberListV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -8244,14 +8778,14 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'GetNotificationSubscriberListV3Short@go.csm.fun':
     id: 'GetNotificationSubscriberListV3Short@go.csm.fun'
     name: 'GetNotificationSubscriberListV3Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -8286,6 +8820,8 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'GetResourcesLimitsShort@go.csm.fun':
     id: 'GetResourcesLimitsShort@go.csm.fun'
@@ -8327,20 +8863,18 @@ symbols:
     name: 'GetSQLAppListV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
       - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
     struct: 'ManagedResourcesSQLService'
     arguments:
       params:
@@ -8368,28 +8902,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'GetSQLClusterV2Short@go.csm.fun':
     id: 'GetSQLClusterV2Short@go.csm.fun'
     name: 'GetSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the SQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
       - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
     struct: 'ManagedResourcesSQLService'
     arguments:
       params:
@@ -8416,29 +8950,29 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'GetSQLDatabaseV2Short@go.csm.fun':
     id: 'GetSQLDatabaseV2Short@go.csm.fun'
     name: 'GetSQLDatabaseV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
-
       Get a SQL database information returns the SQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the SQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `available` : The cluster is accessible.
     struct: 'ManagedResourcesSQLService'
     arguments:
       params:
@@ -8465,14 +8999,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]'
 
   'GetSubscriptionV2HandlerShort@go.csm.fun':
     id: 'GetSubscriptionV2HandlerShort@go.csm.fun'
     name: 'GetSubscriptionV2HandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
-
       Get Subscription status of a user
     struct: 'NotificationSubscriptionService'
     arguments:
@@ -8499,14 +9033,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]'
 
   'IntegrateAppKeyValueClusterV2Short@go.csm.fun':
     id: 'IntegrateAppKeyValueClusterV2Short@go.csm.fun'
     name: 'IntegrateAppKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
-
       Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
     struct: 'ManagedResourcesKeyValueService'
     arguments:
@@ -8536,14 +9070,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]'
 
   'ListAppUIShort@go.csm.fun':
     id: 'ListAppUIShort@go.csm.fun'
     name: 'ListAppUIShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
-
       Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
     struct: 'AppUIService'
     arguments:
@@ -8568,14 +9102,14 @@ symbols:
       - 'app'
       - 'list'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]'
 
   'ListKeyValueClusterV2Short@go.csm.fun':
     id: 'ListKeyValueClusterV2Short@go.csm.fun'
     name: 'ListKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       List Key-Value clusters by studio/publisher namespace.
       If `refresh=true`, the service will sync cluster status from the provider (cached).
     struct: 'ManagedResourcesKeyValueService'
@@ -8605,14 +9139,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'ListTopicsHandlerShort@go.csm.fun':
     id: 'ListTopicsHandlerShort@go.csm.fun'
     name: 'ListTopicsHandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
-
       List all Async Messaging Topics inside a game namespace.
     struct: 'AsyncMessagingService'
     arguments:
@@ -8639,6 +9173,8 @@ symbols:
       - 'list'
       - 'messaging'
       - 'topics'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]'
 
   'PublicGetMessagesShort@go.csm.fun':
     id: 'PublicGetMessagesShort@go.csm.fun'
@@ -8675,8 +9211,6 @@ symbols:
     name: 'RemoveIntegrationAppKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
-
       Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
     struct: 'ManagedResourcesKeyValueService'
     arguments:
@@ -8707,14 +9241,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]'
 
   'SaveSecretV1Short@go.csm.fun':
     id: 'SaveSecretV1Short@go.csm.fun'
     name: 'SaveSecretV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Request body:
       - configName : environment secret name - Required.
@@ -8746,14 +9280,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'SaveSecretV2Short@go.csm.fun':
     id: 'SaveSecretV2Short@go.csm.fun'
     name: 'SaveSecretV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Secret will always be masked.
       Request body:
@@ -8785,14 +9319,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'SaveVariableV1Short@go.csm.fun':
     id: 'SaveVariableV1Short@go.csm.fun'
     name: 'SaveVariableV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -8824,14 +9358,14 @@ symbols:
       - 'save'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'SaveVariableV2Short@go.csm.fun':
     id: 'SaveVariableV2Short@go.csm.fun'
     name: 'SaveVariableV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -8863,14 +9397,14 @@ symbols:
       - 'save'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'StartAppV1Short@go.csm.fun':
     id: 'StartAppV1Short@go.csm.fun'
     name: 'StartAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     struct: 'AppService'
     arguments:
@@ -8895,14 +9429,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StartAppV2Short@go.csm.fun':
     id: 'StartAppV2Short@go.csm.fun'
     name: 'StartAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     struct: 'AppV2Service'
     arguments:
@@ -8927,14 +9461,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StartNoSQLClusterV2Short@go.csm.fun':
     id: 'StartNoSQLClusterV2Short@go.csm.fun'
     name: 'StartNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Start NoSQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -8966,14 +9500,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'StartSQLClusterV2Short@go.csm.fun':
     id: 'StartSQLClusterV2Short@go.csm.fun'
     name: 'StartSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Start SQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -9004,14 +9538,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'StopAppV1Short@go.csm.fun':
     id: 'StopAppV1Short@go.csm.fun'
     name: 'StopAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     struct: 'AppService'
     arguments:
@@ -9036,14 +9570,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StopAppV2Short@go.csm.fun':
     id: 'StopAppV2Short@go.csm.fun'
     name: 'StopAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     struct: 'AppV2Service'
     arguments:
@@ -9068,14 +9602,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'StopNoSQLClusterV2Short@go.csm.fun':
     id: 'StopNoSQLClusterV2Short@go.csm.fun'
     name: 'StopNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Stop NoSQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -9107,14 +9641,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'StopSQLClusterV2Short@go.csm.fun':
     id: 'StopSQLClusterV2Short@go.csm.fun'
     name: 'StopSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Stop SQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -9145,14 +9679,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'SubscribeAppNotificationV2Short@go.csm.fun':
     id: 'SubscribeAppNotificationV2Short@go.csm.fun'
     name: 'SubscribeAppNotificationV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
-
       Subscribe the user(s) an app notification.
 
       Request body:
@@ -9187,14 +9721,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]'
 
   'SubscribeV2HandlerShort@go.csm.fun':
     id: 'SubscribeV2HandlerShort@go.csm.fun'
     name: 'SubscribeV2HandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
-
       Subscribe to app notification
       Request body:
       - notificationType : type of the app notification to be subscribed - Required.
@@ -9227,14 +9761,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]'
 
   'UnsubscribeTopicHandlerShort@go.csm.fun':
     id: 'UnsubscribeTopicHandlerShort@go.csm.fun'
     name: 'UnsubscribeTopicHandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
-
       Unsubscribe App queue from a topic by Topic Name.
     struct: 'AsyncMessagingService'
     arguments:
@@ -9261,14 +9795,14 @@ symbols:
       - 'messaging'
       - 'topic'
       - 'unsubscribe'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]'
 
   'UnsubscribeV2HandlerShort@go.csm.fun':
     id: 'UnsubscribeV2HandlerShort@go.csm.fun'
     name: 'UnsubscribeV2HandlerShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
-
       Unsubscribe to app notification
     struct: 'NotificationSubscriptionService'
     arguments:
@@ -9295,14 +9829,54 @@ symbols:
       - 'subscription'
       - 'unsubscribe'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]'
+
+  'UpdateAppDebugModeV4Short@go.csm.fun':
+    id: 'UpdateAppDebugModeV4Short@go.csm.fun'
+    name: 'UpdateAppDebugModeV4Short'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Enable or disable the remote debug sidecar container for the specified extend app.
+
+      When enabled and the app is in `deployment-running` status, a new deployment will be
+      triggered automatically to apply the debug container configuration.
+
+      This operation is rejected with `409 Conflict` if the app is currently in a
+      transitional state (app-creating, app-removing, app-stopping).
+    struct: 'AppV4Service'
+    arguments:
+      params:
+        type: '*app_v4.UpdateAppDebugModeV4Params'
+        required: true
+    return_type: '(*app_v4.UpdateAppDebugModeV4Response, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/csm-sdk/pkg/csmclient/app_v4'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/csm'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/csm/appV4.go'
+    example: |-
+      appV4Service := csm.AppV4Service{ ... }
+      params := app_v4.UpdateAppDebugModeV4Params{ ... }
+      res, err := appV4Service.UpdateAppDebugModeV4Short(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'app'
+      - 'debug'
+      - 'mode'
+      - 'update'
+      - 'v4'
 
   'UpdateAppResourcesResourceLimitFormV2Short@go.csm.fun':
     id: 'UpdateAppResourcesResourceLimitFormV2Short@go.csm.fun'
     name: 'UpdateAppResourcesResourceLimitFormV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     struct: 'AppV2Service'
     arguments:
@@ -9331,14 +9905,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppResourcesV2Short@go.csm.fun':
     id: 'UpdateAppResourcesV2Short@go.csm.fun'
     name: 'UpdateAppResourcesV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     struct: 'AppV2Service'
     arguments:
@@ -9364,14 +9938,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppV1Short@go.csm.fun':
     id: 'UpdateAppV1Short@go.csm.fun'
     name: 'UpdateAppV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update App Partially
     struct: 'AppService'
     arguments:
@@ -9396,15 +9970,15 @@ symbols:
       - 'app'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateAppV2Short@go.csm.fun':
     id: 'UpdateAppV2Short@go.csm.fun'
     name: 'UpdateAppV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-      Update app info provided on request body
+      Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
     struct: 'AppV2Service'
     arguments:
       params:
@@ -9428,14 +10002,14 @@ symbols:
       - 'app'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'UpdateKeyValueClusterV2Short@go.csm.fun':
     id: 'UpdateKeyValueClusterV2Short@go.csm.fun'
     name: 'UpdateKeyValueClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
-
       Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
       Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
     struct: 'ManagedResourcesKeyValueService'
@@ -9465,14 +10039,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]'
 
   'UpdateNoSQLClusterV2Short@go.csm.fun':
     id: 'UpdateNoSQLClusterV2Short@go.csm.fun'
     name: 'UpdateNoSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Update NoSQL cluster configurations such as min/max DCU (Database Capacity Units) for the NoSQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -9504,14 +10078,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'UpdateSecretV1Short@go.csm.fun':
     id: 'UpdateSecretV1Short@go.csm.fun'
     name: 'UpdateSecretV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Request body:
       - value : configuration value - Required.
@@ -9541,14 +10115,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'UpdateSecretV2Short@go.csm.fun':
     id: 'UpdateSecretV2Short@go.csm.fun'
     name: 'UpdateSecretV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Secret will always be masked.
       Request body:
@@ -9578,14 +10152,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'UpdateSQLClusterV2Short@go.csm.fun':
     id: 'UpdateSQLClusterV2Short@go.csm.fun'
     name: 'UpdateSQLClusterV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -9616,14 +10190,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'UpdateVariableV1Short@go.csm.fun':
     id: 'UpdateVariableV1Short@go.csm.fun'
     name: 'UpdateVariableV1Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -9653,14 +10227,14 @@ symbols:
       - 'update'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'UpdateVariableV2Short@go.csm.fun':
     id: 'UpdateVariableV2Short@go.csm.fun'
     name: 'UpdateVariableV2Short'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -9690,14 +10264,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'UploadAppUIFileShort@go.csm.fun':
     id: 'UploadAppUIFileShort@go.csm.fun'
     name: 'UploadAppUIFileShort'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
-
       Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
     struct: 'AppUIService'
     arguments:
@@ -9723,5 +10297,7 @@ symbols:
       - 'file'
       - 'ui'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]'
 
   # endregion functions

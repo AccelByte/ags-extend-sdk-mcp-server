@@ -458,12 +458,16 @@ symbols:
       'namespace':
         type: 'String'
         required: true
+        description: |-
+          Publisher Namespace
       'requestDate':
         type: 'String'
         required: true
       'userID':
         type: 'String'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
@@ -490,6 +494,8 @@ symbols:
       'userID':
         type: 'String'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
@@ -516,6 +522,8 @@ symbols:
       'userID':
         type: 'String'
         required: true
+        description: |-
+          Publisher User Id
       'executionDate':
         type: 'String'
         required: false
@@ -622,9 +630,13 @@ symbols:
       'namespace':
         type: 'String'
         required: true
+        description: |-
+          Publisher Namespace
       'userID':
         type: 'String'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
@@ -930,12 +942,9 @@ symbols:
     name: 'AdminGeneratePersonalDataURL'
     type: 'function'
     description: |-
-      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-      If admin request data for themselves, password is need to be set
+      Generate personal data download url.
+      If admin request data for themselves, password is need to be set.
+      Scope: account
     arguments:
       'namespace':
         type: 'String'
@@ -1577,7 +1586,7 @@ symbols:
     name: 'AdminRequestDataRetrieval'
     type: 'function'
     description: |-
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2076,17 +2085,17 @@ symbols:
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
-      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_headless.*;'
       - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicCancelMyAccountDeletionRequest.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_headless/PublicCancelMyAccountDeletionRequest.java'
     example: |-
       try {
           final PublicCancelMyAccountDeletionRequest operation = PublicCancelMyAccountDeletionRequest.builder()
               .build();
 
-          final DataDeletion wrapper = new DataDeletion(sdk);
+          final DataDeletionHeadless wrapper = new DataDeletionHeadless(sdk);
           wrapper.publicCancelMyAccountDeletionRequest(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
@@ -2096,9 +2105,53 @@ symbols:
       - 'cancel'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+
+  'PublicCancelMyPersonalDataRequest@jv.gdpr.fun':
+    id: 'PublicCancelMyPersonalDataRequest@jv.gdpr.fun'
+    name: 'PublicCancelMyPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Cancel a pending Personal Data Request by its request date. Requires a valid access token.
+    arguments:
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date (RFC3339 format)
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_headless/PublicCancelMyPersonalDataRequest.java'
+    example: |-
+      try {
+          final PublicCancelMyPersonalDataRequest operation = PublicCancelMyPersonalDataRequest.builder()
+              .build(
+                  requestDate,
+              );
+
+          final DataRetrievalHeadless wrapper = new DataRetrievalHeadless(sdk);
+          wrapper.publicCancelMyPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
 
   'PublicCancelUserAccountDeletionRequest@jv.gdpr.fun':
     id: 'PublicCancelUserAccountDeletionRequest@jv.gdpr.fun'
@@ -2206,6 +2259,54 @@ symbols:
       - 'retrieval'
       - 'user'
 
+  'PublicGenerateMyHeadlessPersonalDataURL@jv.gdpr.fun':
+    id: 'PublicGenerateMyHeadlessPersonalDataURL@jv.gdpr.fun'
+    name: 'PublicGenerateMyHeadlessPersonalDataURL'
+    type: 'function'
+    description: |-
+      Generate a download url for a completed Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` instead.
+    arguments:
+      'requestDate':
+        type: 'String'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+    return_type: 'ModelsUserDataURL'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_headless/PublicGenerateMyHeadlessPersonalDataURL.java'
+    example: |-
+      try {
+          final PublicGenerateMyHeadlessPersonalDataURL operation = PublicGenerateMyHeadlessPersonalDataURL.builder()
+              .build(
+                  requestDate,
+              );
+
+          final DataRetrievalHeadless wrapper = new DataRetrievalHeadless(sdk);
+          final ModelsUserDataURL response = wrapper.publicGenerateMyHeadlessPersonalDataURL(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
   'PublicGeneratePersonalDataURL@jv.gdpr.fun':
     id: 'PublicGeneratePersonalDataURL@jv.gdpr.fun'
     name: 'PublicGeneratePersonalDataURL'
@@ -2281,17 +2382,17 @@ symbols:
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
-      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_headless.*;'
       - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicGetMyAccountDeletionStatus.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_headless/PublicGetMyAccountDeletionStatus.java'
     example: |-
       try {
           final PublicGetMyAccountDeletionStatus operation = PublicGetMyAccountDeletionStatus.builder()
               .build();
 
-          final DataDeletion wrapper = new DataDeletion(sdk);
+          final DataDeletionHeadless wrapper = new DataDeletionHeadless(sdk);
           final ModelsDeletionStatus response = wrapper.publicGetMyAccountDeletionStatus(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
@@ -2301,9 +2402,45 @@ symbols:
       - 'data'
       - 'deletion'
       - 'get'
+      - 'headless'
       - 'my'
       - 'public'
       - 'status'
+
+  'PublicGetMyPersonalDataRequests@jv.gdpr.fun':
+    id: 'PublicGetMyPersonalDataRequests@jv.gdpr.fun'
+    name: 'PublicGetMyPersonalDataRequests'
+    type: 'function'
+    description: |-
+      List my personal data requests. Requires a valid access token.
+    return_type: 'ModelsUserPersonalDataResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_headless/PublicGetMyPersonalDataRequests.java'
+    example: |-
+      try {
+          final PublicGetMyPersonalDataRequests operation = PublicGetMyPersonalDataRequests.builder()
+              .build();
+
+          final DataRetrievalHeadless wrapper = new DataRetrievalHeadless(sdk);
+          final ModelsUserPersonalDataResponse response = wrapper.publicGetMyPersonalDataRequests(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'get'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
 
   'PublicGetUserAccountDeletionStatus@jv.gdpr.fun':
     id: 'PublicGetUserAccountDeletionStatus@jv.gdpr.fun'
@@ -2422,7 +2559,7 @@ symbols:
     name: 'PublicRequestDataRetrieval'
     type: 'function'
     description: |-
-      Submit personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2483,9 +2620,11 @@ symbols:
     name: 'PublicSubmitMyAccountDeletionRequest'
     type: 'function'
     description: |-
-      Submit my account deletion requests.
-      Requires valid user access token
-      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+      Submit an Account Deletion Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
 
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
@@ -2504,11 +2643,11 @@ symbols:
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.gdpr.models.*;'
-      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_headless.*;'
       - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletion.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion/PublicSubmitMyAccountDeletionRequest.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_headless/PublicSubmitMyAccountDeletionRequest.java'
     example: |-
       try {
           final PublicSubmitMyAccountDeletionRequest operation = PublicSubmitMyAccountDeletionRequest.builder()
@@ -2517,7 +2656,7 @@ symbols:
                   platformToken,
               );
 
-          final DataDeletion wrapper = new DataDeletion(sdk);
+          final DataDeletionHeadless wrapper = new DataDeletionHeadless(sdk);
           final ModelsRequestDeleteResponse response = wrapper.publicSubmitMyAccountDeletionRequest(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
@@ -2526,9 +2665,173 @@ symbols:
       - 'account'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessDeletionRequest@jv.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessDeletionRequest@jv.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessDeletionRequest'
+    type: 'function'
+    description: |-
+      Submit an Account Deletion Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 10 seconds).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
+    return_type: 'ModelsRequestDeleteResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_deletion_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataDeletionHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_deletion_headless/PublicSubmitMyHeadlessDeletionRequest.java'
+    example: |-
+      try {
+          final PublicSubmitMyHeadlessDeletionRequest operation = PublicSubmitMyHeadlessDeletionRequest.builder()
+              .build();
+
+          final DataDeletionHeadless wrapper = new DataDeletionHeadless(sdk);
+          final ModelsRequestDeleteResponse response = wrapper.publicSubmitMyHeadlessDeletionRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'deletion'
+      - 'headless'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessPersonalDataRequest@jv.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessPersonalDataRequest@jv.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'email':
+        type: 'String'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'languageTag':
+        type: 'String'
+        required: false
+        description: |-
+          Language tag for the notification email
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_headless/PublicSubmitMyHeadlessPersonalDataRequest.java'
+    example: |-
+      try {
+          final PublicSubmitMyHeadlessPersonalDataRequest operation = PublicSubmitMyHeadlessPersonalDataRequest.builder()
+              .email(...)
+              .languageTag(...)
+              .build();
+
+          final DataRetrievalHeadless wrapper = new DataRetrievalHeadless(sdk);
+          final ModelsDataRetrievalResponse response = wrapper.publicSubmitMyHeadlessPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'submit'
+
+  'PublicSubmitMyPersonalDataRequest@jv.gdpr.fun':
+    id: 'PublicSubmitMyPersonalDataRequest@jv.gdpr.fun'
+    name: 'PublicSubmitMyPersonalDataRequest'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'email':
+        type: 'String'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'languageTag':
+        type: 'String'
+        required: false
+        description: |-
+          Language tag for the notification email
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID
+      'platformToken':
+        type: 'String'
+        required: true
+        description: |-
+          Platform token
+    return_type: 'ModelsDataRetrievalResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.models.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.operations.data_retrieval_headless.*;'
+      - 'import net.accelbyte.sdk.api.gdpr.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/wrappers/DataRetrievalHeadless.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_headless/PublicSubmitMyPersonalDataRequest.java'
+    example: |-
+      try {
+          final PublicSubmitMyPersonalDataRequest operation = PublicSubmitMyPersonalDataRequest.builder()
+              .email(...)
+              .languageTag(...)
+              .build(
+                  platformId,
+                  platformToken,
+              );
+
+          final DataRetrievalHeadless wrapper = new DataRetrievalHeadless(sdk);
+          final ModelsDataRetrievalResponse response = wrapper.publicSubmitMyPersonalDataRequest(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
       - 'submit'
 
   'PublicSubmitUserAccountDeletionRequest@jv.gdpr.fun':
@@ -2855,7 +3158,7 @@ symbols:
     description: |-
       Scope: account
 
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
 
       **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

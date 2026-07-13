@@ -117,6 +117,9 @@ symbols:
       'tags':
         type: 'List[str]'
         required: false
+      'template_slots':
+        type: 'List[ModelChallengeSlotResponse]'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
@@ -124,6 +127,22 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_challenge_response.py'
     example: |-
       model_challenge_response = challenge_models.ModelChallengeResponse.create(...)
+
+  'ModelChallengeSlotResponse@py.challenge.mod':
+    id: 'ModelChallengeSlotResponse@py.challenge.mod'
+    name: 'ModelChallengeSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List[str]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_challenge_slot_response.py'
+    example: |-
+      model_challenge_slot_response = challenge_models.ModelChallengeSlotResponse.create(...)
 
   'ModelClaimableUserReward@py.challenge.mod':
     id: 'ModelClaimableUserReward@py.challenge.mod'
@@ -280,6 +299,8 @@ symbols:
       'repeat_after':
         type: 'int'
         required: false
+        description: |-
+          number of days to repeat the challenge; when set, goals cannot include the 'schedule' field in the request body — use PUT /challenges/{challengeCode}/goals/{code}/slots to assign goals to slots instead
       'reset_config':
         type: 'ModelResetConfig'
         required: false
@@ -331,6 +352,31 @@ symbols:
     example: |-
       model_create_goal_request = challenge_models.ModelCreateGoalRequest.create(...)
 
+  'ModelCurrentRoundSlotResponse@py.challenge.mod':
+    id: 'ModelCurrentRoundSlotResponse@py.challenge.mod'
+    name: 'ModelCurrentRoundSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List[ModelGoalInSchedulesResponse]'
+        required: true
+      'index':
+        type: 'int'
+        required: true
+      'start_time':
+        type: 'str'
+        required: true
+      'end_time':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_current_round_slot_response.py'
+    example: |-
+      model_current_round_slot_response = challenge_models.ModelCurrentRoundSlotResponse.create(...)
+
   'ModelEvaluatePlayerProgressionRequest@py.challenge.mod':
     id: 'ModelEvaluatePlayerProgressionRequest@py.challenge.mod'
     name: 'ModelEvaluatePlayerProgressionRequest'
@@ -368,6 +414,25 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_get_goals_response.py'
     example: |-
       model_get_goals_response = challenge_models.ModelGetGoalsResponse.create(...)
+
+  'ModelGetSlotsResponse@py.challenge.mod':
+    id: 'ModelGetSlotsResponse@py.challenge.mod'
+    name: 'ModelGetSlotsResponse'
+    type: 'model'
+    fields:
+      'current_round':
+        type: 'List[ModelCurrentRoundSlotResponse]'
+        required: true
+      'template_slots':
+        type: 'List[ModelTemplateSlotResponse]'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_get_slots_response.py'
+    example: |-
+      model_get_slots_response = challenge_models.ModelGetSlotsResponse.create(...)
 
   'ModelGoalInSchedulesResponse@py.challenge.mod':
     id: 'ModelGoalInSchedulesResponse@py.challenge.mod'
@@ -733,6 +798,22 @@ symbols:
     example: |-
       model_list_user_rewards_response = challenge_models.ModelListUserRewardsResponse.create(...)
 
+  'ModelMoveGoalToSlotRequest@py.challenge.mod':
+    id: 'ModelMoveGoalToSlotRequest@py.challenge.mod'
+    name: 'ModelMoveGoalToSlotRequest'
+    type: 'model'
+    fields:
+      'slot_index':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_move_goal_to_slot_request.py'
+    example: |-
+      model_move_goal_to_slot_request = challenge_models.ModelMoveGoalToSlotRequest.create(...)
+
   'ModelPagination@py.challenge.mod':
     id: 'ModelPagination@py.challenge.mod'
     name: 'ModelPagination'
@@ -1050,6 +1131,25 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_schedule_response.py'
     example: |-
       model_schedule_response = challenge_models.ModelScheduleResponse.create(...)
+
+  'ModelTemplateSlotResponse@py.challenge.mod':
+    id: 'ModelTemplateSlotResponse@py.challenge.mod'
+    name: 'ModelTemplateSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List[ModelGoalInSchedulesResponse]'
+        required: true
+      'index':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/models/model_template_slot_response.py'
+    example: |-
+      model_template_slot_response = challenge_models.ModelTemplateSlotResponse.create(...)
 
   'ModelUpdateChallengeRequest@py.challenge.mod':
     id: 'ModelUpdateChallengeRequest@py.challenge.mod'
@@ -1511,7 +1611,8 @@ symbols:
       - startDate: timestamp of when the challenge is started
       - endDate: timestamp of when the challenge is ended (optional)
       - endAfter: describe number of period challenge will be retired after (optional). To configure challenge that never end, leave the endDate and endAfter field null/empty.
-      - repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      - repeatAfter: number of periods after which the challenge's goals repeat. Leave empty if you don't want to repeat the challenge.
+      - note: when repeatAfter is set, goals cannot include the 'schedule' field when created via POST .../goals. Use PUT .../goals/{code}/slots to assign each goal to a specific slot instead.
       - rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
       - activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       - assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED|CUSTOM)
@@ -2018,6 +2119,51 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
 
+  'admin_get_challenge_slots@py.challenge.fun':
+    id: 'admin_get_challenge_slots@py.challenge.fun'
+    name: 'admin_get_challenge_slots'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+      Returns the slot configuration for a FIXED or RANDOMIZED (non-per-rotation) assignment challenge.
+      For repeating challenges (repeatAfter set), the response contains two separate fields:
+      - templateSlots: the authoritative future configuration from TemplateSlots (goals only, no timing).
+      - currentRound: the actual running state of the current (or nearest) round (goals + startTime/endTime from schedule documents).
+      These two may differ when a slot move was deferred because the target slot was active.
+      For non-repeating challenges, only currentRound is returned (templateSlots is absent).
+    arguments:
+      'challenge_code':
+        type: 'str'
+        required: true
+        description: |-
+          challenge code
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'Tuple[Union[None, ModelGetSlotsResponse], Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.challenge as challenge'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_get_challenge_slots.py'
+    example: |-
+      result, error = challenge.admin_get_challenge_slots(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'get'
+      - 'goal'
+      - 'slots'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
+
   'admin_get_goal@py.challenge.fun':
     id: 'admin_get_goal@py.challenge.fun'
     name: 'admin_get_goal'
@@ -2457,6 +2603,60 @@ symbols:
       - 'list'
       - 'schedules'
 
+  'admin_move_goal_to_slot@py.challenge.fun':
+    id: 'admin_move_goal_to_slot@py.challenge.fun'
+    name: 'admin_move_goal_to_slot'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      Moves a goal to a target slot in a FIXED or non-per-rotation RANDOMIZED challenge with repeatAfter set.
+      slotIndex is 0-based and must be in [0, repeatAfter-1].
+      Pass slotIndex = -1 to remove the goal from all slots; it will no longer appear in future rounds.
+      TemplateSlots and all non-finished schedule documents are updated immediately.
+      The currently active schedule document for the affected slot is skipped to avoid
+      disrupting in-progress user progressions; the change takes effect from the next round.
+      Finished (past) schedule documents are never modified.
+    arguments:
+      'body':
+        type: 'ModelMoveGoalToSlotRequest'
+        required: true
+      'challenge_code':
+        type: 'str'
+        required: true
+        description: |-
+          challenge code
+      'code':
+        type: 'str'
+        required: true
+        description: |-
+          goal code
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'Tuple[None, Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.challenge as challenge'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_move_goal_to_slot.py'
+    example: |-
+      result, error = challenge.admin_move_goal_to_slot(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'goal'
+      - 'move'
+      - 'slot'
+      - 'to'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
+
   'admin_randomize_challenge@py.challenge.fun':
     id: 'admin_randomize_challenge@py.challenge.fun'
     name: 'admin_randomize_challenge'
@@ -2715,112 +2915,6 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
 
-  'evaluate_my_progress@py.challenge.fun':
-    id: 'evaluate_my_progress@py.challenge.fun'
-    name: 'evaluate_my_progress'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-    arguments:
-      'challenge_code':
-        type: 'Optional[List[str]]'
-        required: false
-        description: |-
-          challenge code to be evaluated, comma separated value
-      'include_one_time_event':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          namespace of the game
-    return_type: 'Tuple[None, Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.challenge as challenge'
-      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/challenge_progression/evaluate_my_progress.py'
-    example: |-
-      result, error = challenge.evaluate_my_progress(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'challenge'
-      - 'evaluate'
-      - 'my'
-      - 'progress'
-      - 'progression'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
-
-  'get_challenges@py.challenge.fun':
-    id: 'get_challenges@py.challenge.fun'
-    name: 'get_challenges'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
-    arguments:
-      'keyword':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          filter challenges by code with likes behavior
-      'limit':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          limit the amount of data retrieved
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          namespace of the game
-      'offset':
-        type: 'Optional[int]'
-        required: false
-        description: |-
-          offset
-      'sort_by':
-        type: 'Optional[Union[str, GetChallengesSortByEnum]]'
-        required: false
-        description: |-
-          sort list by attributes.
-          			default value: updatedAt:desc.
-      'status':
-        type: 'Optional[Union[str, GetChallengesStatusEnum]]'
-        required: false
-        description: |-
-          challenge status
-      'tags':
-        type: 'Optional[List[str]]'
-        required: false
-        description: |-
-          filter challenges by tags, comma separated value
-    return_type: 'Tuple[Union[None, ModelListChallengeResponse], Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.challenge as challenge'
-      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/challenge_list/get_challenges.py'
-    example: |-
-      result, error = challenge.get_challenges(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'challenge'
-      - 'challenges'
-      - 'get'
-      - 'list'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
-
   'public_claim_user_rewards@py.challenge.fun':
     id: 'public_claim_user_rewards@py.challenge.fun'
     name: 'public_claim_user_rewards'
@@ -2900,6 +2994,114 @@ symbols:
       - 'user'
     permissions:
       - 'NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]'
+
+  'public_evaluate_my_progress@py.challenge.fun':
+    id: 'public_evaluate_my_progress@py.challenge.fun'
+    name: 'public_evaluate_my_progress'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    arguments:
+      'challenge_code':
+        type: 'Optional[List[str]]'
+        required: false
+        description: |-
+          challenge code to be evaluated, comma separated value
+      'include_one_time_event':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'Tuple[None, Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.challenge as challenge'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_evaluate_my_progress.py'
+    example: |-
+      result, error = challenge.public_evaluate_my_progress(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'challenge'
+      - 'evaluate'
+      - 'my'
+      - 'progress'
+      - 'progression'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
+
+  'public_get_challenges@py.challenge.fun':
+    id: 'public_get_challenges@py.challenge.fun'
+    name: 'public_get_challenges'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    arguments:
+      'keyword':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          filter challenges by code with likes behavior
+      'limit':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          namespace of the game
+      'offset':
+        type: 'Optional[int]'
+        required: false
+        description: |-
+          offset
+      'sort_by':
+        type: 'Optional[Union[str, PublicGetChallengesSortByEnum]]'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'status':
+        type: 'Optional[Union[str, PublicGetChallengesStatusEnum]]'
+        required: false
+        description: |-
+          challenge status
+      'tags':
+        type: 'Optional[List[str]]'
+        required: false
+        description: |-
+          filter challenges by tags, comma separated value
+    return_type: 'Tuple[Union[None, ModelListChallengeResponse], Union[None, HttpResponse, IamErrorResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.challenge as challenge'
+      - 'import accelbyte_py_sdk.api.challenge.models as challenge_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/challenge/operations/challenge_list/public_get_challenges.py'
+    example: |-
+      result, error = challenge.public_get_challenges(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'challenge'
+      - 'challenges'
+      - 'get'
+      - 'list'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
 
   'public_get_past_user_progression@py.challenge.fun':
     id: 'public_get_past_user_progression@py.challenge.fun'

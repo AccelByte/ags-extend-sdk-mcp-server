@@ -494,12 +494,16 @@ symbols:
       'namespace':
         type: 'str'
         required: true
+        description: |-
+          Publisher Namespace
       'request_date':
         type: 'str'
         required: true
       'user_id':
         type: 'str'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
@@ -528,6 +532,8 @@ symbols:
       'user_id':
         type: 'str'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
@@ -556,6 +562,8 @@ symbols:
       'user_id':
         type: 'str'
         required: true
+        description: |-
+          Publisher User Id
       'execution_date':
         type: 'str'
         required: false
@@ -672,9 +680,13 @@ symbols:
       'namespace':
         type: 'str'
         required: true
+        description: |-
+          Publisher Namespace
       'user_id':
         type: 'str'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
@@ -965,12 +977,9 @@ symbols:
     name: 'admin_generate_personal_data_url'
     type: 'function'
     description: |-
-      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-      If admin request data for themselves, password is need to be set
+      Generate personal data download url.
+      If admin request data for themselves, password is need to be set.
+      Scope: account
     arguments:
       'namespace':
         type: 'str'
@@ -1491,7 +1500,7 @@ symbols:
     name: 'admin_request_data_retrieval'
     type: 'function'
     description: |-
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -1894,7 +1903,7 @@ symbols:
       - 'import accelbyte_py_sdk.api.gdpr as gdpr'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_cancel_my_accoun_107811.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_headless/public_cancel_my_accoun_107811.py'
     example: |-
       result, error = gdpr.public_cancel_my_account_deletion_request(...)
       if error:
@@ -1904,9 +1913,44 @@ symbols:
       - 'cancel'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+
+  'public_cancel_my_personal_data_request@py.gdpr.fun':
+    id: 'public_cancel_my_personal_data_request@py.gdpr.fun'
+    name: 'public_cancel_my_personal_data_request'
+    type: 'function'
+    description: |-
+      Cancel a pending Personal Data Request by its request date. Requires a valid access token.
+    arguments:
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date (RFC3339 format)
+    return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_headless/public_cancel_my_person_702fb0.py'
+    example: |-
+      result, error = gdpr.public_cancel_my_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
 
   'public_cancel_user_account_deletion_request@py.gdpr.fun':
     id: 'public_cancel_user_account_deletion_request@py.gdpr.fun'
@@ -1993,6 +2037,45 @@ symbols:
       - 'retrieval'
       - 'user'
 
+  'public_generate_my_headless_personal_data_url@py.gdpr.fun':
+    id: 'public_generate_my_headless_personal_data_url@py.gdpr.fun'
+    name: 'public_generate_my_headless_personal_data_url'
+    type: 'function'
+    description: |-
+      Generate a download url for a completed Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` instead.
+    arguments:
+      'request_date':
+        type: 'str'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+    return_type: 'Tuple[Union[None, ModelsUserDataURL], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_headless/public_generate_my_head_3818b6.py'
+    example: |-
+      result, error = gdpr.public_generate_my_headless_personal_data_url(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'generate'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
   'public_generate_personal_data_url@py.gdpr.fun':
     id: 'public_generate_personal_data_url@py.gdpr.fun'
     name: 'public_generate_personal_data_url'
@@ -2059,7 +2142,7 @@ symbols:
       - 'import accelbyte_py_sdk.api.gdpr as gdpr'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_get_my_account_d_8595d0.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_headless/public_get_my_account_d_8595d0.py'
     example: |-
       result, error = gdpr.public_get_my_account_deletion_status(...)
       if error:
@@ -2069,9 +2152,38 @@ symbols:
       - 'data'
       - 'deletion'
       - 'get'
+      - 'headless'
       - 'my'
       - 'public'
       - 'status'
+
+  'public_get_my_personal_data_requests@py.gdpr.fun':
+    id: 'public_get_my_personal_data_requests@py.gdpr.fun'
+    name: 'public_get_my_personal_data_requests'
+    type: 'function'
+    description: |-
+      List my personal data requests. Requires a valid access token.
+    return_type: 'Tuple[Union[None, ModelsUserPersonalDataResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_headless/public_get_my_personal__1068bc.py'
+    example: |-
+      result, error = gdpr.public_get_my_personal_data_requests(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'get'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
 
   'public_get_user_account_deletion_status@py.gdpr.fun':
     id: 'public_get_user_account_deletion_status@py.gdpr.fun'
@@ -2168,7 +2280,7 @@ symbols:
     name: 'public_request_data_retrieval'
     type: 'function'
     description: |-
-      Submit personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2217,9 +2329,11 @@ symbols:
     name: 'public_submit_my_account_deletion_request'
     type: 'function'
     description: |-
-      Submit my account deletion requests.
-      Requires valid user access token
-      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+      Submit an Account Deletion Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
 
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
@@ -2241,7 +2355,7 @@ symbols:
       - 'import accelbyte_py_sdk.api.gdpr as gdpr'
       - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_submit_my_accoun_f5ded3.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_headless/public_submit_my_accoun_f5ded3.py'
     example: |-
       result, error = gdpr.public_submit_my_account_deletion_request(...)
       if error:
@@ -2250,9 +2364,145 @@ symbols:
       - 'account'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+      - 'submit'
+
+  'public_submit_my_headless_deletion_request@py.gdpr.fun':
+    id: 'public_submit_my_headless_deletion_request@py.gdpr.fun'
+    name: 'public_submit_my_headless_deletion_request'
+    type: 'function'
+    description: |-
+      Submit an Account Deletion Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 10 seconds).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
+    return_type: 'Tuple[Union[None, ModelsRequestDeleteResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_deletion_headless/public_submit_my_headle_0964ca.py'
+    example: |-
+      result, error = gdpr.public_submit_my_headless_deletion_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'deletion'
+      - 'headless'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'public_submit_my_headless_personal_data_request@py.gdpr.fun':
+    id: 'public_submit_my_headless_personal_data_request@py.gdpr.fun'
+    name: 'public_submit_my_headless_personal_data_request'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'email':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'language_tag':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Language tag for the notification email
+    return_type: 'Tuple[Union[None, ModelsDataRetrievalResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_headless/public_submit_my_headle_42af28.py'
+    example: |-
+      result, error = gdpr.public_submit_my_headless_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'submit'
+
+  'public_submit_my_personal_data_request@py.gdpr.fun':
+    id: 'public_submit_my_personal_data_request@py.gdpr.fun'
+    name: 'public_submit_my_personal_data_request'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    arguments:
+      'email':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'language_tag':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Language tag for the notification email
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID
+      'platform_token':
+        type: 'str'
+        required: true
+        description: |-
+          Platform token
+    return_type: 'Tuple[Union[None, ModelsDataRetrievalResponse], Union[None, HttpResponse, ResponseError]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.gdpr as gdpr'
+      - 'import accelbyte_py_sdk.api.gdpr.models as gdpr_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/gdpr/operations/data_retrieval_headless/public_submit_my_person_811b35.py'
+    example: |-
+      result, error = gdpr.public_submit_my_personal_data_request(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
       - 'submit'
 
   'public_submit_user_account_deletion_request@py.gdpr.fun':
@@ -2524,7 +2774,7 @@ symbols:
     description: |-
       Scope: account
 
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
 
       **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

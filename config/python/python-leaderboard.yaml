@@ -437,6 +437,11 @@ symbols:
       'descending':
         type: 'bool'
         required: true
+      'enable_server_hidden_filter':
+        type: 'bool'
+        required: true
+        description: |-
+          flag to enable server-side filtering for hidden user
       'is_deleted':
         type: 'bool'
         required: true
@@ -582,6 +587,11 @@ symbols:
       'description':
         type: 'str'
         required: false
+      'enable_server_hidden_filter':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user.
       'icon_url':
         type: 'str'
         required: false
@@ -738,6 +748,11 @@ symbols:
       'description':
         type: 'str'
         required: false
+      'enable_server_hidden_filter':
+        type: 'bool'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user
       'icon_url':
         type: 'str'
         required: false
@@ -1438,6 +1453,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     arguments:
       'body':
         type: 'ModelsLeaderboardConfigReqV3'
@@ -2223,6 +2241,11 @@ symbols:
     description: |-
       Get rankings in an all time leaderboard.
     arguments:
+      'include_hidden_users':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'leaderboard_code':
         type: 'str'
         required: true
@@ -2415,6 +2438,8 @@ symbols:
       - 'ranking'
       - 'time'
       - 'v3'
+    scopes:
+      - 'social'
 
   'get_archived_leaderboard_ranking_data_v1_handler@py.leaderboard.fun':
     id: 'get_archived_leaderboard_ranking_data_v1_handler@py.leaderboard.fun'
@@ -2478,6 +2503,11 @@ symbols:
         required: true
         description: |-
           the cycle id
+      'include_hidden_users':
+        type: 'Optional[bool]'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'leaderboard_code':
         type: 'str'
         required: true
@@ -2587,6 +2617,8 @@ symbols:
       - 'public'
       - 'ranking'
       - 'v3'
+    scopes:
+      - 'social'
 
   'get_current_month_leaderboard_ranking_admin_v1@py.leaderboard.fun':
     id: 'get_current_month_leaderboard_ranking_admin_v1@py.leaderboard.fun'
@@ -4308,6 +4340,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     arguments:
       'body':
         type: 'ModelsUpdateLeaderboardConfigReqV3'

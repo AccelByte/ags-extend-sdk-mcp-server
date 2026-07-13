@@ -4488,18 +4488,15 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelLinkPlatformAccountWithProgressionRequest.cs'
 
-  'ModelLinkRequest@cs.iam.mod':
-    id: 'ModelLinkRequest@cs.iam.mod'
-    name: 'ModelLinkRequest'
+  'ModelLinkRequestResponse@cs.iam.mod':
+    id: 'ModelLinkRequestResponse@cs.iam.mod'
+    name: 'ModelLinkRequestResponse'
     type: 'model'
     fields:
       'ClientId':
         type: 'string'
         required: true
       'Namespace':
-        type: 'string'
-        required: true
-      'OperationName':
         type: 'string'
         required: true
       'Payload':
@@ -4514,6 +4511,8 @@ symbols:
       'Status':
         type: 'string'
         required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
       'ConflictPublisherUserId':
         type: 'string'
         required: false
@@ -4532,16 +4531,13 @@ symbols:
       'PlatformDisplayName':
         type: 'string'
         required: false
-      'PlatformID':
+      'PlatformId':
         type: 'string'
         required: false
       'PlatformUserId':
         type: 'string'
         required: false
-      'RefreshToken':
-        type: 'string'
-        required: false
-      'UserID':
+      'UserId':
         type: 'string'
         required: false
     imports:
@@ -4549,7 +4545,7 @@ symbols:
       - 'using System.Collections.Generic;'
       - 'using AccelByte.Sdk.Api.Iam.Model;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelLinkRequest.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelLinkRequestResponse.cs'
 
   'ModelListAssignedUsersV4Response@cs.iam.mod':
     id: 'ModelListAssignedUsersV4Response@cs.iam.mod'
@@ -5409,6 +5405,69 @@ symbols:
       - 'using AccelByte.Sdk.Api.Iam.Model;'
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelPublicUserUpdateRequestV3.cs'
+
+  'ModelReAuthRequest@cs.iam.mod':
+    id: 'ModelReAuthRequest@cs.iam.mod'
+    name: 'ModelReAuthRequest'
+    type: 'model'
+    fields:
+      'ClientId':
+        type: 'string'
+        required: true
+      'Namespace':
+        type: 'string'
+        required: true
+      'OperationName':
+        type: 'string'
+        required: true
+      'Payload':
+        type: 'Dictionary<string, object>'
+        required: true
+      'RedirectUri':
+        type: 'string'
+        required: true
+      'RequestId':
+        type: 'string'
+        required: true
+      'Status':
+        type: 'string'
+        required: true
+      'ConflictPublisherUserId':
+        type: 'string'
+        required: false
+      'ConflictUserLinkedGames':
+        type: 'List<string>'
+        required: false
+      'CurrentUserLinkedGames':
+        type: 'List<string>'
+        required: false
+      'Error':
+        type: 'RestErrorResponseWithConflictedUserPlatformAccounts'
+        required: false
+      'Expiration':
+        type: 'int'
+        required: false
+      'PlatformDisplayName':
+        type: 'string'
+        required: false
+      'PlatformID':
+        type: 'string'
+        required: false
+      'PlatformUserId':
+        type: 'string'
+        required: false
+      'RefreshToken':
+        type: 'string'
+        required: false
+      'UserID':
+        type: 'string'
+        required: false
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelReAuthRequest.cs'
 
   'ModelRemoveUserRoleV4Request@cs.iam.mod':
     id: 'ModelRemoveUserRoleV4Request@cs.iam.mod'
@@ -8598,6 +8657,33 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelWebLinkingResponse.cs'
 
+  'ModelWebReauthProcessResponse@cs.iam.mod':
+    id: 'ModelWebReauthProcessResponse@cs.iam.mod'
+    name: 'ModelWebReauthProcessResponse'
+    type: 'model'
+    fields:
+      'Operation':
+        type: 'string'
+        required: true
+        description: |-
+          Operation type for this re-auth request. Enum: LINK, GDPR
+      'Status':
+        type: 'string'
+        required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
+      'LinkResponse':
+        type: 'ModelLinkRequestResponse'
+        required: false
+        description: |-
+          Populated only for operation=LINK. Contains platform linking details.
+    imports:
+      - 'using System;'
+      - 'using System.Collections.Generic;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Model/ModelWebReauthProcessResponse.cs'
+
   'OauthapiRevocationList@cs.iam.mod':
     id: 'OauthapiRevocationList@cs.iam.mod'
     name: 'OauthapiRevocationList'
@@ -11628,7 +11714,7 @@ symbols:
         type: 'bool'
         required: false
         description: |-
-          If the targeted group or module is selected by any client, the deletion will fail by default. Set this flag to true to force the deletion.
+          If the targeted group or module is currently selected by any client, the deletion will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'void'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -18751,7 +18837,13 @@ symbols:
     name: 'AdminUpdateAvailablePermissionsByModule'
     type: 'function'
     description: |-
-      Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
+      Upserts client available permissions at the module level.
+      Only the modules listed in the request are processed - any other existing module is left untouched, so *callers do not need to include unchanged modules*.
+
+      ## Groups update behavior
+
+      For each module in the request, the 'groups' array is the *full desired state* of that module's groups - any existing group whose 'groupId' is omitted is treated as ***removed***.
+      If a removed group is currently used by any client, the request will fails with 400 and nothing is saved, unless 'forceDelete=true' query param is passed.
     arguments:
       'Body':
         type: 'ClientmodelListUpsertModulesRequest'
@@ -18760,7 +18852,7 @@ symbols:
         type: 'bool'
         required: false
         description: |-
-          If this update includes a delete action and the targeted group or module is selected by any client, the operation will fail by default. Set this flag to true to force the operation.
+          If the update would remove a group that is currently selected by any client, the request will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'void'
     imports:
       - 'using AccelByte.Sdk.Core;'
@@ -24188,6 +24280,83 @@ symbols:
       - 'logout'
       - 'sso'
 
+  'NamespaceScopedPlatformTokenGrant@cs.iam.fun':
+    id: 'NamespaceScopedPlatformTokenGrant@cs.iam.fun'
+    name: 'NamespaceScopedPlatformTokenGrant'
+    type: 'function'
+    description: |-
+      **This endpoint is deprecated.**
+      Requires all requests to have Authorization header set with Basic access authentication
+      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
+      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
+      along with platform_token parameter against publisher namespace.
+
+      Supported platforms:
+      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
+      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
+
+      ### Endpoint migration guide
+      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
+    arguments:
+      'DeviceId':
+        type: 'string'
+        required: false
+        description: |-
+          Device/hardware identifier
+      'MacAddress':
+        type: 'string'
+        required: false
+        description: |-
+          Mac address of device
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformToken':
+        type: 'string'
+        required: false
+        description: |-
+          Token from platform auth
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID to login with
+    return_type: 'OauthmodelTokenResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+      - 'using AccelByte.Sdk.Api.Iam.Operation;'
+      - 'using AccelByte.Sdk.Api.Iam.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Wrapper/OAuth.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Operation/OAuth/NamespaceScopedPlatformTokenGrant.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Iam.OAuth.NamespaceScopedPlatformTokenGrantOp
+              .SetDeviceId(...)
+              .SetMacAddress(...)
+              .SetPlatformToken(...)
+              .Build(
+                  namespace_,
+                  platformId,
+              );
+
+          var response = sdk.Iam.OAuth.NamespaceScopedPlatformTokenGrant(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'auth'
+      - 'grant'
+      - 'namespace'
+      - 'o'
+      - 'platform'
+      - 'scoped'
+      - 'token'
+
   'OAuthDynamicClientRegisterWithNamespaceV3@cs.iam.fun':
     id: 'OAuthDynamicClientRegisterWithNamespaceV3@cs.iam.fun'
     name: 'OAuthDynamicClientRegisterWithNamespaceV3'
@@ -24985,82 +25154,6 @@ symbols:
       - 'refresh'
       - 'token'
       - 'v3'
-
-  'PlatformTokenRequestHandler@cs.iam.fun':
-    id: 'PlatformTokenRequestHandler@cs.iam.fun'
-    name: 'PlatformTokenRequestHandler'
-    type: 'function'
-    description: |-
-      **This endpoint is deprecated.**
-      Requires all requests to have Authorization header set with Basic access authentication
-      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
-      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
-      along with platform_token parameter against publisher namespace.
-
-      Supported platforms:
-      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
-      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
-
-      ### Endpoint migration guide
-      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
-    arguments:
-      'DeviceId':
-        type: 'string'
-        required: false
-        description: |-
-          Device/hardware identifier
-      'MacAddress':
-        type: 'string'
-        required: false
-        description: |-
-          Mac address of device
-      'Namespace':
-        type: 'string'
-        required: true
-        description: |-
-          Accepts alphanumeric, with hyphens allowed between segments
-      'PlatformToken':
-        type: 'string'
-        required: false
-        description: |-
-          Token from platform auth
-      'PlatformId':
-        type: 'string'
-        required: true
-        description: |-
-          Platform ID to login with
-    return_type: 'OauthmodelTokenResponse'
-    imports:
-      - 'using AccelByte.Sdk.Core;'
-      - 'using AccelByte.Sdk.Api.Iam.Model;'
-      - 'using AccelByte.Sdk.Api.Iam.Operation;'
-      - 'using AccelByte.Sdk.Api.Iam.Wrapper;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Wrapper/OAuth.cs'
-      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Operation/OAuth/PlatformTokenRequestHandler.cs'
-    example: |-
-      try
-      {
-          var operation = sdk.Iam.OAuth.PlatformTokenRequestHandlerOp
-              .SetDeviceId(...)
-              .SetMacAddress(...)
-              .SetPlatformToken(...)
-              .Build(
-                  namespace_,
-                  platformId,
-              );
-
-          var response = sdk.Iam.OAuth.PlatformTokenRequestHandler(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'auth'
-      - 'handler'
-      - 'o'
-      - 'platform'
-      - 'request'
-      - 'token'
 
   'PlatformUnlink@cs.iam.fun':
     id: 'PlatformUnlink@cs.iam.fun'
@@ -26314,7 +26407,7 @@ symbols:
         required: true
         description: |-
           Request ID of the link status
-    return_type: 'ModelLinkRequest'
+    return_type: 'ModelReAuthRequest'
     imports:
       - 'using AccelByte.Sdk.Core;'
       - 'using AccelByte.Sdk.Api.Iam.Model;'
@@ -28903,8 +28996,8 @@ symbols:
     name: 'PublicProcessWebLinkPlatformV3'
     type: 'function'
     description: |-
-      Processes third party account link and returns the link status directly instead of redirecting to the original page.
-      The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+      Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -28918,6 +29011,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
     arguments:
       'Code':
         type: 'string'
@@ -28938,8 +29035,8 @@ symbols:
         type: 'string'
         required: true
         description: |-
-          state
-    return_type: 'ModelLinkRequest'
+          state, comes from the response of <code>GET /users/me/platforms/{platformId}/web/link</code> endpoint
+    return_type: 'ModelReAuthRequest'
     imports:
       - 'using AccelByte.Sdk.Core;'
       - 'using AccelByte.Sdk.Api.Iam.Model;'
@@ -30137,7 +30234,8 @@ symbols:
     name: 'PublicWebLinkPlatform'
     type: 'function'
     description: |-
-      Generates a third party login page which will redirect to the establish API.
+      Generates a redirect to a third party login page for account linking authentication.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -30151,6 +30249,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
     arguments:
       'ClientId':
         type: 'string'
@@ -30208,7 +30310,9 @@ symbols:
     name: 'PublicWebLinkPlatformEstablish'
     type: 'function'
     description: |-
-      Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+      Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+      After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -30222,6 +30326,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
     arguments:
       'Code':
         type: 'string'
@@ -30272,6 +30380,240 @@ symbols:
       - 'link'
       - 'platform'
       - 'public'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatform@cs.iam.fun':
+    id: 'PublicWebReauthPlatform@cs.iam.fun'
+    name: 'PublicWebReauthPlatform'
+    type: 'function'
+    description: |-
+      Generates a redirect to a third party login page for re-authentication purpose.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'ClientId':
+        type: 'string'
+        required: false
+        description: |-
+          Client ID
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'Operation':
+        type: 'string'
+        required: true
+        description: |-
+          Re-auth operation.
+          			**GDPR**: obtain a **gdpr_token** cookie after re-authentication completes. 
+          			**LINK**: perform a platform account link.
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'RedirectUri':
+        type: 'string'
+        required: false
+        description: |-
+          Redirect URI
+    return_type: 'ModelWebLinkingResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+      - 'using AccelByte.Sdk.Api.Iam.Operation;'
+      - 'using AccelByte.Sdk.Api.Iam.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Wrapper/Users.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Operation/Users/PublicWebReauthPlatform.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Iam.Users.PublicWebReauthPlatformOp
+              .SetClientId(...)
+              .SetRedirectUri(...)
+              .Build(
+                  namespace_,
+                  operation,
+                  platformId,
+              );
+
+          var response = sdk.Iam.Users.PublicWebReauthPlatform(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformEstablish@cs.iam.fun':
+    id: 'PublicWebReauthPlatformEstablish@cs.iam.fun'
+    name: 'PublicWebReauthPlatformEstablish'
+    type: 'function'
+    description: |-
+      Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          Authorization code from third party
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'State':
+        type: 'string'
+        required: true
+        description: |-
+          State from third party redirect
+    return_type: 'string'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+      - 'using AccelByte.Sdk.Api.Iam.Operation;'
+      - 'using AccelByte.Sdk.Api.Iam.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Wrapper/Users.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Operation/Users/PublicWebReauthPlatformEstablish.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Iam.Users.PublicWebReauthPlatformEstablishOp
+              .SetCode(...)
+              .Build(
+                  namespace_,
+                  platformId,
+                  state,
+              );
+
+          sdk.Iam.Users.PublicWebReauthPlatformEstablish(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'establish'
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformProcess@cs.iam.fun':
+    id: 'PublicWebReauthPlatformProcess@cs.iam.fun'
+    name: 'PublicWebReauthPlatformProcess'
+    type: 'function'
+    description: |-
+      Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'Code':
+        type: 'string'
+        required: false
+        description: |-
+          Authorization code from third party
+      'Namespace':
+        type: 'string'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'PlatformId':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'State':
+        type: 'string'
+        required: true
+        description: |-
+          State, comes from the response of <code>GET /users/me/platforms/{platformId}/web/reauth</code> endpoint
+    return_type: 'ModelWebReauthProcessResponse'
+    imports:
+      - 'using AccelByte.Sdk.Core;'
+      - 'using AccelByte.Sdk.Api.Iam.Model;'
+      - 'using AccelByte.Sdk.Api.Iam.Operation;'
+      - 'using AccelByte.Sdk.Api.Iam.Wrapper;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Wrapper/Users.cs'
+      - 'https://github.com/AccelByte/accelbyte-csharp-sdk/blob/main/AccelByte.Sdk/Api/Iam/Operation/Users/PublicWebReauthPlatformProcess.cs'
+    example: |-
+      try
+      {
+          var operation = sdk.Iam.Users.PublicWebReauthPlatformProcessOp
+              .SetCode(...)
+              .Build(
+                  namespace_,
+                  platformId,
+                  state,
+              );
+
+          var response = sdk.Iam.Users.PublicWebReauthPlatformProcess(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'platform'
+      - 'process'
+      - 'public'
+      - 'reauth'
       - 'users'
       - 'web'
 

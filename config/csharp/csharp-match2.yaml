@@ -1770,7 +1770,10 @@ symbols:
     name: 'AdminQueryBackfill'
     type: 'function'
     description: |-
-      Admin Query backfill ticket
+      Admin Query backfill ticket.
+
+      Supports filtering by session ID, match pool, time range, active status, player ID, and region.
+      Use pagination parameters offset and limit to control result size.
     arguments:
       'FromTime':
         type: 'DateTime'
@@ -2525,7 +2528,10 @@ symbols:
     name: 'GetBackfillProposal'
     type: 'function'
     description: |-
-      Get backfill proposal
+      Get backfill proposal for the given session.
+
+      Returns the current pending backfill proposal associated with the session ID.
+      Returns 404 if no proposal exists for the session.
     arguments:
       'Namespace':
         type: 'string'
@@ -2831,7 +2837,8 @@ symbols:
     name: 'MatchPoolDetails'
     type: 'function'
     description: |-
-      Get details for a specific match pool
+      Get details for a specific match pool, including its configuration such as match function,
+      ticket expiration, ruleset, and backfill settings.
     arguments:
       'Namespace':
         type: 'string'
@@ -2983,7 +2990,8 @@ symbols:
     name: 'MatchTicketDetails'
     type: 'function'
     description: |-
-      Get details for a specific match ticket
+      Get details for a specific match ticket, including its current matching status and
+      the session ID if a match has been found.
     arguments:
       'Namespace':
         type: 'string'
@@ -3028,7 +3036,10 @@ symbols:
     name: 'PostMatchErrorMetric'
     type: 'function'
     description: |-
-      Post metrics for external flow failure in a specific match pool
+      Post metrics for external flow failure in a specific match pool.
+
+      Records an external match error metric for the given match pool. Used to track failures
+      from custom (gRPC) match functions during the matchmaking process.
     arguments:
       'Body':
         type: 'ApiExternalFailureMetricRecord'
@@ -3169,7 +3180,8 @@ symbols:
     name: 'RuleSetDetails'
     type: 'function'
     description: |-
-      Get details for a specific rule set
+      Get details for a specific rule set, including its name and the rule data used to
+      configure matchmaking logic.
     arguments:
       'Namespace':
         type: 'string'

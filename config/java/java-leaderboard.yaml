@@ -397,6 +397,11 @@ symbols:
       'descending':
         type: 'Boolean'
         required: true
+      'enableServerHiddenFilter':
+        type: 'Boolean'
+        required: true
+        description: |-
+          flag to enable server-side filtering for hidden user
       'isDeleted':
         type: 'Boolean'
         required: true
@@ -534,6 +539,11 @@ symbols:
       'description':
         type: 'String'
         required: false
+      'enableServerHiddenFilter':
+        type: 'Boolean'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user.
       'iconURL':
         type: 'String'
         required: false
@@ -678,6 +688,11 @@ symbols:
       'description':
         type: 'String'
         required: false
+      'enableServerHiddenFilter':
+        type: 'Boolean'
+        required: false
+        description: |-
+          flag to enable server-side filtering for hidden user
       'iconURL':
         type: 'String'
         required: false
@@ -1395,6 +1410,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     arguments:
       'body':
         type: 'ModelsLeaderboardConfigReqV3'
@@ -2350,6 +2368,11 @@ symbols:
     description: |-
       Get rankings in an all time leaderboard.
     arguments:
+      'includeHiddenUsers':
+        type: 'Boolean'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'leaderboardCode':
         type: 'String'
         required: true
@@ -2382,6 +2405,7 @@ symbols:
     example: |-
       try {
           final GetAllTimeLeaderboardRankingAdminV3 operation = GetAllTimeLeaderboardRankingAdminV3.builder()
+              .includeHiddenUsers(...)
               .limit(...)
               .offset(...)
               .build(
@@ -2590,6 +2614,8 @@ symbols:
       - 'ranking'
       - 'time'
       - 'v3'
+    scopes:
+      - 'social'
 
   'GetArchivedLeaderboardRankingDataV1Handler@jv.leaderboard.fun':
     id: 'GetArchivedLeaderboardRankingDataV1Handler@jv.leaderboard.fun'
@@ -2665,6 +2691,11 @@ symbols:
         required: true
         description: |-
           the cycle id
+      'includeHiddenUsers':
+        type: 'Boolean'
+        required: false
+        description: |-
+          Whether to include hidden users in ranking list. Omit to follow leaderboard config enableServerHiddenFilter, true to always include, false to always exclude.
       'leaderboardCode':
         type: 'String'
         required: true
@@ -2702,6 +2733,7 @@ symbols:
     example: |-
       try {
           final GetCurrentCycleLeaderboardRankingAdminV3 operation = GetCurrentCycleLeaderboardRankingAdminV3.builder()
+              .includeHiddenUsers(...)
               .limit(...)
               .offset(...)
               .previousVersion(...)
@@ -2802,6 +2834,8 @@ symbols:
       - 'public'
       - 'ranking'
       - 'v3'
+    scopes:
+      - 'social'
 
   'GetCurrentMonthLeaderboardRankingAdminV1@jv.leaderboard.fun':
     id: 'GetCurrentMonthLeaderboardRankingAdminV1@jv.leaderboard.fun'
@@ -4915,6 +4949,9 @@ symbols:
 
 
         * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+        * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
     arguments:
       'body':
         type: 'ModelsUpdateLeaderboardConfigReqV3'

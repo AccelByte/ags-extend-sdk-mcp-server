@@ -1,6 +1,37 @@
 symbols:
   # region models
 
+  'ApimodelAppDebugInfoResponse@py.csm.mod':
+    id: 'ApimodelAppDebugInfoResponse@py.csm.mod'
+    name: 'ApimodelAppDebugInfoResponse'
+    type: 'model'
+    fields:
+      'allowed_intercepted_ports':
+        type: 'List[DomainAllowedInterceptedPort]'
+        required: true
+      'app_status':
+        type: 'str'
+        required: true
+      'debug_pods':
+        type: 'List[DomainDebugPod]'
+        required: true
+      'exposed_services':
+        type: 'List[DomainExposedService]'
+        required: true
+      'is_debug_mode_enabled':
+        type: 'bool'
+        required: true
+      'is_debug_session_connected':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_app_debug_info_response.py'
+    example: |-
+      apimodel_app_debug_info_response = csm_models.ApimodelAppDebugInfoResponse.create(...)
+
   'ApimodelAppItem@py.csm.mod':
     id: 'ApimodelAppItem@py.csm.mod'
     name: 'ApimodelAppItem'
@@ -17,6 +48,9 @@ symbols:
         required: true
       'created_at':
         type: 'str'
+        required: true
+      'enable_debug_mode':
+        type: 'bool'
         required: true
       'game_name':
         type: 'str'
@@ -69,9 +103,6 @@ symbols:
       'message':
         type: 'str'
         required: false
-      'redeployment_info':
-        type: 'ModelAppRedeploymentInfo'
-        required: false
       'replica':
         type: 'ApimodelReplicaResponse'
         required: false
@@ -88,6 +119,49 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_app_item.py'
     example: |-
       apimodel_app_item = csm_models.ApimodelAppItem.create(...)
+
+  'ApimodelAppItemV5@py.csm.mod':
+    id: 'ApimodelAppItemV5@py.csm.mod'
+    name: 'ApimodelAppItemV5'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'app_status':
+        type: 'str'
+        required: true
+      'created_at':
+        type: 'str'
+        required: true
+      'game_name':
+        type: 'str'
+        required: true
+      'scenario':
+        type: 'str'
+        required: true
+      'updated_at':
+        type: 'str'
+        required: true
+      'base_path':
+        type: 'str'
+        required: false
+      'description':
+        type: 'str'
+        required: false
+      'vm_sharing_configuration':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_app_item_v5.py'
+    example: |-
+      apimodel_app_item_v5 = csm_models.ApimodelAppItemV5.create(...)
 
   'ApimodelApplyAppConfigRequest@py.csm.mod':
     id: 'ApimodelApplyAppConfigRequest@py.csm.mod'
@@ -169,6 +243,37 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_apply_permission_item.py'
     example: |-
       apimodel_apply_permission_item = csm_models.ApimodelApplyPermissionItem.create(...)
+
+  'ApimodelAppStatusProgressStep@py.csm.mod':
+    id: 'ApimodelAppStatusProgressStep@py.csm.mod'
+    name: 'ApimodelAppStatusProgressStep'
+    type: 'model'
+    fields:
+      'status':
+        type: 'str'
+        required: true
+      'step':
+        type: 'str'
+        required: true
+      'step_order':
+        type: 'int'
+        required: true
+      'finished_at':
+        type: 'str'
+        required: false
+      'started_at':
+        type: 'str'
+        required: false
+      'status_message':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_app_status_progress_step.py'
+    example: |-
+      apimodel_app_status_progress_step = csm_models.ApimodelAppStatusProgressStep.create(...)
 
   'ApimodelAppUIResponse@py.csm.mod':
     id: 'ApimodelAppUIResponse@py.csm.mod'
@@ -361,6 +466,43 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_app_v2_request.py'
     example: |-
       apimodel_create_app_v2_request = csm_models.ApimodelCreateAppV2Request.create(...)
+
+  'ApimodelCreateAppV5Request@py.csm.mod':
+    id: 'ApimodelCreateAppV5Request@py.csm.mod'
+    name: 'ApimodelCreateAppV5Request'
+    type: 'model'
+    fields:
+      'scenario':
+        type: 'str'
+        required: true
+      'autoscaling':
+        type: 'CreateappparamsAutoscalingRequest'
+        required: false
+      'cpu':
+        type: 'CreateappparamsCPURequest'
+        required: false
+      'description':
+        type: 'str'
+        required: false
+      'memory':
+        type: 'CreateappparamsMemoryRequest'
+        required: false
+      'preferred_k8s_namespace':
+        type: 'str'
+        required: false
+      'replica':
+        type: 'CreateappparamsReplicaRequest'
+        required: false
+      'vm_sharing_configuration':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_create_app_v5_request.py'
+    example: |-
+      apimodel_create_app_v5_request = csm_models.ApimodelCreateAppV5Request.create(...)
 
   'ApimodelCreateDeploymentV2Request@py.csm.mod':
     id: 'ApimodelCreateDeploymentV2Request@py.csm.mod'
@@ -816,6 +958,31 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_get_app_list_v2_response.py'
     example: |-
       apimodel_get_app_list_v2_response = csm_models.ApimodelGetAppListV2Response.create(...)
+
+  'ApimodelGetAppStatusProgressResponse@py.csm.mod':
+    id: 'ApimodelGetAppStatusProgressResponse@py.csm.mod'
+    name: 'ApimodelGetAppStatusProgressResponse'
+    type: 'model'
+    fields:
+      'app_id':
+        type: 'str'
+        required: true
+      'app_name':
+        type: 'str'
+        required: true
+      'operation_id':
+        type: 'str'
+        required: true
+      'steps':
+        type: 'List[ApimodelAppStatusProgressStep]'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_get_app_status_progress_response.py'
+    example: |-
+      apimodel_get_app_status_progress_response = csm_models.ApimodelGetAppStatusProgressResponse.create(...)
 
   'ApimodelGetDeploymentListV2DataItem@py.csm.mod':
     id: 'ApimodelGetDeploymentListV2DataItem@py.csm.mod'
@@ -1760,6 +1927,9 @@ symbols:
       'replica_limit':
         type: 'int'
         required: false
+      'rollout_ready_replicas':
+        type: 'int'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.csm.models as csm_models'
@@ -2288,6 +2458,9 @@ symbols:
       'description':
         type: 'str'
         required: false
+      'enable_debug_mode':
+        type: 'bool'
+        required: false
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.csm.models as csm_models'
@@ -2349,6 +2522,22 @@ symbols:
     example: |-
       apimodel_update_configuration_v2_response = csm_models.ApimodelUpdateConfigurationV2Response.create(...)
 
+  'ApimodelUpdateDebugModeRequest@py.csm.mod':
+    id: 'ApimodelUpdateDebugModeRequest@py.csm.mod'
+    name: 'ApimodelUpdateDebugModeRequest'
+    type: 'model'
+    fields:
+      'enable_debug_mode':
+        type: 'bool'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_update_debug_mode_request.py'
+    example: |-
+      apimodel_update_debug_mode_request = csm_models.ApimodelUpdateDebugModeRequest.create(...)
+
   'ApimodelUpdateSecretConfigurationV2Request@py.csm.mod':
     id: 'ApimodelUpdateSecretConfigurationV2Request@py.csm.mod'
     name: 'ApimodelUpdateSecretConfigurationV2Request'
@@ -2383,6 +2572,130 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/apimodel_upload_file_response.py'
     example: |-
       apimodel_upload_file_response = csm_models.ApimodelUploadFileResponse.create(...)
+
+  'CreateappparamsAutoscalingRequest@py.csm.mod':
+    id: 'CreateappparamsAutoscalingRequest@py.csm.mod'
+    name: 'CreateappparamsAutoscalingRequest'
+    type: 'model'
+    fields:
+      'target_cpu_utilization_percent':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/createappparams_autoscaling_request.py'
+    example: |-
+      createappparams_autoscaling_request = csm_models.CreateappparamsAutoscalingRequest.create(...)
+
+  'CreateappparamsCPURequest@py.csm.mod':
+    id: 'CreateappparamsCPURequest@py.csm.mod'
+    name: 'CreateappparamsCPURequest'
+    type: 'model'
+    fields:
+      'request_cpu':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/createappparams_cpu_request.py'
+    example: |-
+      createappparams_cpu_request = csm_models.CreateappparamsCPURequest.create(...)
+
+  'CreateappparamsMemoryRequest@py.csm.mod':
+    id: 'CreateappparamsMemoryRequest@py.csm.mod'
+    name: 'CreateappparamsMemoryRequest'
+    type: 'model'
+    fields:
+      'request_memory':
+        type: 'int'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/createappparams_memory_request.py'
+    example: |-
+      createappparams_memory_request = csm_models.CreateappparamsMemoryRequest.create(...)
+
+  'CreateappparamsReplicaRequest@py.csm.mod':
+    id: 'CreateappparamsReplicaRequest@py.csm.mod'
+    name: 'CreateappparamsReplicaRequest'
+    type: 'model'
+    fields:
+      'max_replica':
+        type: 'int'
+        required: false
+      'min_replica':
+        type: 'int'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/createappparams_replica_request.py'
+    example: |-
+      createappparams_replica_request = csm_models.CreateappparamsReplicaRequest.create(...)
+
+  'DomainAllowedInterceptedPort@py.csm.mod':
+    id: 'DomainAllowedInterceptedPort@py.csm.mod'
+    name: 'DomainAllowedInterceptedPort'
+    type: 'model'
+    fields:
+      'port':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_allowed_intercepted_port.py'
+    example: |-
+      domain_allowed_intercepted_port = csm_models.DomainAllowedInterceptedPort.create(...)
+
+  'DomainDebugPod@py.csm.mod':
+    id: 'DomainDebugPod@py.csm.mod'
+    name: 'DomainDebugPod'
+    type: 'model'
+    fields:
+      'pod_name':
+        type: 'str'
+        required: true
+      'port':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_debug_pod.py'
+    example: |-
+      domain_debug_pod = csm_models.DomainDebugPod.create(...)
+
+  'DomainExposedService@py.csm.mod':
+    id: 'DomainExposedService@py.csm.mod'
+    name: 'DomainExposedService'
+    type: 'model'
+    fields:
+      'host':
+        type: 'str'
+        required: true
+      'name':
+        type: 'str'
+        required: true
+      'port':
+        type: 'int'
+        required: true
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/domain_exposed_service.py'
+    example: |-
+      domain_exposed_service = csm_models.DomainExposedService.create(...)
 
   'DomainKeyValueClusterConfig@py.csm.mod':
     id: 'DomainKeyValueClusterConfig@py.csm.mod'
@@ -3261,44 +3574,6 @@ symbols:
     example: |-
       log_app_message_declaration = csm_models.LogAppMessageDeclaration.create(...)
 
-  'ModelAppRedeploymentDetail@py.csm.mod':
-    id: 'ModelAppRedeploymentDetail@py.csm.mod'
-    name: 'ModelAppRedeploymentDetail'
-    type: 'model'
-    fields:
-      'reason_id':
-        type: 'str'
-        required: true
-      'message':
-        type: 'str'
-        required: false
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/model_app_redeployment_detail.py'
-    example: |-
-      model_app_redeployment_detail = csm_models.ModelAppRedeploymentDetail.create(...)
-
-  'ModelAppRedeploymentInfo@py.csm.mod':
-    id: 'ModelAppRedeploymentInfo@py.csm.mod'
-    name: 'ModelAppRedeploymentInfo'
-    type: 'model'
-    fields:
-      'should_redeploy':
-        type: 'bool'
-        required: true
-      'details':
-        type: 'List[ModelAppRedeploymentDetail]'
-        required: false
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/models/model_app_redeployment_info.py'
-    example: |-
-      model_app_redeployment_info = csm_models.ModelAppRedeploymentInfo.create(...)
-
   'ModelCSMAutoscalingDefaults@py.csm.mod':
     id: 'ModelCSMAutoscalingDefaults@py.csm.mod'
     name: 'ModelCSMAutoscalingDefaults'
@@ -3458,8 +3733,6 @@ symbols:
     name: 'apply_app_config_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
-
       Idempotent endpoint that creates or updates an Extend app from a declarative spec.
       Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
 
@@ -3496,14 +3769,14 @@ symbols:
       - 'apply'
       - 'config'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP []'
 
   'bulk_save_subscription_app_notification_v2@py.csm.fun':
     id: 'bulk_save_subscription_app_notification_v2@py.csm.fun'
     name: 'bulk_save_subscription_app_notification_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
-
       Bulk update of users subscribed to an app's notifications.
 
       Request body:
@@ -3546,14 +3819,14 @@ symbols:
       - 'save'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]'
 
   'create_app_ui@py.csm.fun':
     id: 'create_app_ui@py.csm.fun'
     name: 'create_app_ui'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
-
       Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
     arguments:
       'body':
@@ -3580,14 +3853,14 @@ symbols:
       - 'app'
       - 'create'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]'
 
   'create_app_v1@py.csm.fun':
     id: 'create_app_v1@py.csm.fun'
     name: 'create_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
-
       Creates new App for AB-Extend Customers
 
       Available scenario:
@@ -3626,20 +3899,22 @@ symbols:
       - 'app'
       - 'create'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'create_app_v2@py.csm.fun':
     id: 'create_app_v2@py.csm.fun'
     name: 'create_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+      [Deprecated] Please use v5 endpoint instead.
 
       Create new extend app with name provided by {app} path parameter and specified scenario type
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -3689,14 +3964,79 @@ symbols:
       - 'app'
       - 'create'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
+
+  'create_app_v5@py.csm.fun':
+    id: 'create_app_v5@py.csm.fun'
+    name: 'create_app_v5'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+
+      Create new extend app with name provided by {app} path parameter and specified scenario type
+
+      Available scenario:
+      - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
+      - scenario 1: `function-override`
+
+
+      Available app status:
+      - `app-creating`
+      - `app-creation-failed`
+      - `app-creation-timeout`
+      - `app-undeployed`
+      - `deployment-in-progress`
+      - `deployment-failed`
+      - `deployment-timeout`
+      - `deployment-running`
+      - `deployment-down`
+      - `app-stopping`
+      - `app-stop-failed`
+      - `app-stop-timeout`
+      - `app-stopped`
+      - `app-removing`
+      - `app-removed`
+      - `app-remove-timeout`
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelCreateAppV5Request'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Namespace
+    return_type: 'Tuple[Union[None, ApimodelAppItemV5], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_v5/create_app_v5.py'
+    example: |-
+      result, error = csm.create_app_v5(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'create'
+      - 'v5'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]'
 
   'create_deployment_v1@py.csm.fun':
     id: 'create_deployment_v1@py.csm.fun'
     name: 'create_deployment_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This endpoint intended to apply the helm release or deploying the custom service image.
@@ -3739,14 +4079,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'create_deployment_v2@py.csm.fun':
     id: 'create_deployment_v2@py.csm.fun'
     name: 'create_deployment_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
       Creates Deployment for extend service
 
       This Endpoint will create new deployment and apply all of the secrets and variable as environment variable
@@ -3786,14 +4126,14 @@ symbols:
       - 'create'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]'
 
   'create_key_value_cluster_v2@py.csm.fun':
     id: 'create_key_value_cluster_v2@py.csm.fun'
     name: 'create_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
-
       Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
       Cluster limits:
@@ -3830,14 +4170,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]'
 
   'create_key_value_credential_v2@py.csm.fun':
     id: 'create_key_value_credential_v2@py.csm.fun'
     name: 'create_key_value_credential_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
-
       Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
       Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
       If the same username and password are provided, returns the existing credential (idempotent).
@@ -3877,14 +4217,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]'
 
   'create_new_no_sql_database_credential_v2@py.csm.fun':
     id: 'create_new_no_sql_database_credential_v2@py.csm.fun'
     name: 'create_new_no_sql_database_credential_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -3924,14 +4264,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'create_no_sql_cluster_v2@py.csm.fun':
     id: 'create_no_sql_cluster_v2@py.csm.fun'
     name: 'create_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]`
-
       Provision NoSQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one NoSQL resource can be created for one studio/publisher namespace.
 
@@ -3965,14 +4305,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]'
 
   'create_no_sql_database_credential_v2@py.csm.fun':
     id: 'create_no_sql_database_credential_v2@py.csm.fun'
     name: 'create_no_sql_database_credential_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
@@ -4011,14 +4351,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]'
 
   'create_no_sql_database_v2@py.csm.fun':
     id: 'create_no_sql_database_v2@py.csm.fun'
     name: 'create_no_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
-
       Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
       `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
@@ -4056,14 +4396,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]'
 
   'create_sql_cluster_v2@py.csm.fun':
     id: 'create_sql_cluster_v2@py.csm.fun'
     name: 'create_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
-
       Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
       Only one SQL resource can be created for one studio/publisher namespace.
 
@@ -4096,14 +4436,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]'
 
   'create_sql_database_credential_v2@py.csm.fun':
     id: 'create_sql_database_credential_v2@py.csm.fun'
     name: 'create_sql_database_credential_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
-
       Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
     arguments:
       'app':
@@ -4139,14 +4479,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]'
 
   'create_sql_database_v2@py.csm.fun':
     id: 'create_sql_database_v2@py.csm.fun'
     name: 'create_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
-
       Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
     arguments:
       'app':
@@ -4181,14 +4521,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]'
 
   'create_subscription_handler@py.csm.fun':
     id: 'create_subscription_handler@py.csm.fun'
     name: 'create_subscription_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
-
       Subscribe App queue to given Topic name list inside a game namespace.
     arguments:
       'app':
@@ -4222,14 +4562,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'subscription'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]'
 
   'create_topic_handler@py.csm.fun':
     id: 'create_topic_handler@py.csm.fun'
     name: 'create_topic_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
-
       Create New Async Messaging Topic, the topic name is unique inside a game namespace.
     arguments:
       'body':
@@ -4258,14 +4598,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]'
 
   'delete_app_images_v1@py.csm.fun':
     id: 'delete_app_images_v1@py.csm.fun'
     name: 'delete_app_images_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes the images uploaded to the repository
     arguments:
       'app':
@@ -4299,14 +4639,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'delete_app_images_v2@py.csm.fun':
     id: 'delete_app_images_v2@py.csm.fun'
     name: 'delete_app_images_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
       Deletes list of provided image tags from the app image repository
     arguments:
       'app':
@@ -4340,14 +4680,14 @@ symbols:
       - 'image'
       - 'images'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]'
 
   'delete_app_ui@py.csm.fun':
     id: 'delete_app_ui@py.csm.fun'
     name: 'delete_app_ui'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
-
       Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
     arguments:
       'app_ui_name':
@@ -4376,14 +4716,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]'
 
   'delete_app_v1@py.csm.fun':
     id: 'delete_app_v1@py.csm.fun'
     name: 'delete_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete App by given DeploymentID
 
       This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
@@ -4422,14 +4762,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'delete_app_v2@py.csm.fun':
     id: 'delete_app_v2@py.csm.fun'
     name: 'delete_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
       Delete extend app by given {app} name
 
       This endpoint will delete app information, configuration, deployments and all related manifest from
@@ -4466,14 +4806,14 @@ symbols:
       - 'app'
       - 'delete'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]'
 
   'delete_deployment_v1@py.csm.fun':
     id: 'delete_deployment_v1@py.csm.fun'
     name: 'delete_deployment_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
@@ -4506,14 +4846,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'delete_deployment_v2@py.csm.fun':
     id: 'delete_deployment_v2@py.csm.fun'
     name: 'delete_deployment_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
       Delete Deployment information by given DeploymentID
 
       This endpoint will delete release object for the service deployment in the cluster
@@ -4546,14 +4886,14 @@ symbols:
       - 'delete'
       - 'deployment'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]'
 
   'delete_key_value_cluster_v2@py.csm.fun':
     id: 'delete_key_value_cluster_v2@py.csm.fun'
     name: 'delete_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
-
       Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
       Force-deletes all active integrations. Returns resource with status DELETING.
     arguments:
@@ -4587,14 +4927,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]'
 
   'delete_no_sql_cluster_v2@py.csm.fun':
     id: 'delete_no_sql_cluster_v2@py.csm.fun'
     name: 'delete_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -4627,14 +4967,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]'
 
   'delete_no_sql_database_v2@py.csm.fun':
     id: 'delete_no_sql_database_v2@py.csm.fun'
     name: 'delete_no_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]`
-
       Deletes a NoSQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned NoSQL cluster.
     arguments:
       'app':
@@ -4667,14 +5007,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]'
 
   'delete_secret_v1@py.csm.fun':
     id: 'delete_secret_v1@py.csm.fun'
     name: 'delete_secret_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret.
     arguments:
       'app':
@@ -4709,14 +5049,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'delete_secret_v2@py.csm.fun':
     id: 'delete_secret_v2@py.csm.fun'
     name: 'delete_secret_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
       Delete an environment secret by its config id
     arguments:
       'app':
@@ -4751,14 +5091,14 @@ symbols:
       - 'delete'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]'
 
   'delete_sql_cluster_v2@py.csm.fun':
     id: 'delete_sql_cluster_v2@py.csm.fun'
     name: 'delete_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
-
       You can only delete the cluster when its status is "available".
 
       Deleting the cluster will:
@@ -4790,14 +5130,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]'
 
   'delete_sql_database_v2@py.csm.fun':
     id: 'delete_sql_database_v2@py.csm.fun'
     name: 'delete_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
-
       Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
     arguments:
       'app':
@@ -4829,14 +5169,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]'
 
   'delete_subscription_app_notification_by_user_idv2@py.csm.fun':
     id: 'delete_subscription_app_notification_by_user_idv2@py.csm.fun'
     name: 'delete_subscription_app_notification_by_user_idv2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription by user ID.
     arguments:
       'app':
@@ -4874,14 +5214,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'user'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'delete_subscription_app_notification_v2@py.csm.fun':
     id: 'delete_subscription_app_notification_v2@py.csm.fun'
     name: 'delete_subscription_app_notification_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription.
     arguments:
       'app':
@@ -4917,14 +5257,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'delete_subscription_app_notification_v3@py.csm.fun':
     id: 'delete_subscription_app_notification_v3@py.csm.fun'
     name: 'delete_subscription_app_notification_v3'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
       Remove a user from the notification subscription using either user ID or email address.
       Only one of them should be provided.
     arguments:
@@ -4966,14 +5306,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]'
 
   'delete_topic_handler@py.csm.fun':
     id: 'delete_topic_handler@py.csm.fun'
     name: 'delete_topic_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
-
       Delete Async Messaging Topic inside a game namespace given its topic name.
     arguments:
       'namespace':
@@ -5004,14 +5344,14 @@ symbols:
       - 'handler'
       - 'messaging'
       - 'topic'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]'
 
   'delete_variable_v1@py.csm.fun':
     id: 'delete_variable_v1@py.csm.fun'
     name: 'delete_variable_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable.
     arguments:
       'app':
@@ -5046,14 +5386,14 @@ symbols:
       - 'delete'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
 
   'delete_variable_v2@py.csm.fun':
     id: 'delete_variable_v2@py.csm.fun'
     name: 'delete_variable_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
       Delete an environment variable by its config id
     arguments:
       'app':
@@ -5088,14 +5428,55 @@ symbols:
       - 'delete'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]'
+
+  'get_app_debug_info_v4@py.csm.fun':
+    id: 'get_app_debug_info_v4@py.csm.fun'
+    name: 'get_app_debug_info_v4'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+
+      Returns the list of debug-ready pods and exposed services for the given extend app.
+
+      A pod is included only when it is in `Running` phase and has an
+      `extend-proxy-sidecar` container.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelAppDebugInfoResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_v4/get_app_debug_info_v4.py'
+    example: |-
+      result, error = csm.get_app_debug_info_v4(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'debug'
+      - 'get'
+      - 'info'
+      - 'v4'
 
   'get_app_image_list_v1@py.csm.fun':
     id: 'get_app_image_list_v1@py.csm.fun'
     name: 'get_app_image_list_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -5143,14 +5524,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'get_app_image_list_v2@py.csm.fun':
     id: 'get_app_image_list_v2@py.csm.fun'
     name: 'get_app_image_list_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
       Get a list of container images
 
       Default 'cached' parameter is 'true'
@@ -5188,14 +5569,14 @@ symbols:
       - 'image'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]'
 
   'get_app_list_v1@py.csm.fun':
     id: 'get_app_list_v1@py.csm.fun'
     name: 'get_app_list_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the List of Apps for AB-Extend Customer
 
       Available scenario:
@@ -5238,14 +5619,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'get_app_list_v2@py.csm.fun':
     id: 'get_app_list_v2@py.csm.fun'
     name: 'get_app_list_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get list of extend apps on a given game namespace
     arguments:
       'body':
@@ -5283,14 +5664,14 @@ symbols:
       - 'get'
       - 'list'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'get_app_release_v1@py.csm.fun':
     id: 'get_app_release_v1@py.csm.fun'
     name: 'get_app_release_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the Latest Release Version info of this App
     arguments:
       'app':
@@ -5320,14 +5701,52 @@ symbols:
       - 'get'
       - 'release'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
+
+  'get_app_status_progress_v4@py.csm.fun':
+    id: 'get_app_status_progress_v4@py.csm.fun'
+    name: 'get_app_status_progress_v4'
+    type: 'function'
+    description: |-
+      Returns step rows for the current or last tracked operation.
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelGetAppStatusProgressResponse], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_status_progress_v4/get_app_status_progress_v4.py'
+    example: |-
+      result, error = csm.get_app_status_progress_v4(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'get'
+      - 'progress'
+      - 'status'
+      - 'v4'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'get_app_v1@py.csm.fun':
     id: 'get_app_v1@py.csm.fun'
     name: 'get_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Gets the App By Name
     arguments:
       'app':
@@ -5356,20 +5775,20 @@ symbols:
       - 'app'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'get_app_v2@py.csm.fun':
     id: 'get_app_v2@py.csm.fun'
     name: 'get_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
       Get extend app by name
 
       Available scenario:
-      - scenario 3: `event-handler`
       - scenario 1: `function-override`
       - scenario 2: `service-extension`
+      - scenario 3: `event-handler`
 
 
       Available app status:
@@ -5416,14 +5835,14 @@ symbols:
       - 'app'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]'
 
   'get_deployment_v1@py.csm.fun':
     id: 'get_deployment_v1@py.csm.fun'
     name: 'get_deployment_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
@@ -5456,14 +5875,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'get_deployment_v2@py.csm.fun':
     id: 'get_deployment_v2@py.csm.fun'
     name: 'get_deployment_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Get Deployment information by given DeploymentID
 
       This endpoint intended to get Deployment information.
@@ -5496,14 +5915,14 @@ symbols:
       - 'deployment'
       - 'get'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'get_extend_file@py.csm.fun':
     id: 'get_extend_file@py.csm.fun'
     name: 'get_extend_file'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
-
       Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
     arguments:
       'file_path':
@@ -5533,14 +5952,14 @@ symbols:
       - 'file'
       - 'files'
       - 'get'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]'
 
   'get_integration_app_key_value_cluster_v2@py.csm.fun':
     id: 'get_integration_app_key_value_cluster_v2@py.csm.fun'
     name: 'get_integration_app_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
-
       Get integration of an extend app with a cluster.
     arguments:
       'app':
@@ -5575,14 +5994,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]'
 
   'get_key_value_cluster_limit_config_v2@py.csm.fun':
     id: 'get_key_value_cluster_limit_config_v2@py.csm.fun'
     name: 'get_key_value_cluster_limit_config_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster limit config.
     arguments:
       'namespace':
@@ -5612,14 +6031,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'get_key_value_cluster_v2@py.csm.fun':
     id: 'get_key_value_cluster_v2@py.csm.fun'
     name: 'get_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the Key-Value cluster status.
@@ -5654,14 +6073,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'get_list_integrated_app_key_value_cluster_v2@py.csm.fun':
     id: 'get_list_integrated_app_key_value_cluster_v2@py.csm.fun'
     name: 'get_list_integrated_app_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
     arguments:
       'namespace':
@@ -5697,14 +6116,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'get_list_of_deployment_v1@py.csm.fun':
     id: 'get_list_of_deployment_v1@py.csm.fun'
     name: 'get_list_of_deployment_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -5747,14 +6166,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'get_list_of_deployment_v2@py.csm.fun':
     id: 'get_list_of_deployment_v2@py.csm.fun'
     name: 'get_list_of_deployment_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
       Filters the List of Deployments
 
       This endpoint intended to get list of Deployment done for the given publisher and game.
@@ -5805,14 +6224,14 @@ symbols:
       - 'list'
       - 'of'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]'
 
   'get_list_of_secrets_v1@py.csm.fun':
     id: 'get_list_of_secrets_v1@py.csm.fun'
     name: 'get_list_of_secrets_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -5857,14 +6276,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'get_list_of_secrets_v2@py.csm.fun':
     id: 'get_list_of_secrets_v2@py.csm.fun'
     name: 'get_list_of_secrets_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
       Get list of environment secrets per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -5909,14 +6328,14 @@ symbols:
       - 'of'
       - 'secrets'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]'
 
   'get_list_of_variables_v1@py.csm.fun':
     id: 'get_list_of_variables_v1@py.csm.fun'
     name: 'get_list_of_variables_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -5961,14 +6380,14 @@ symbols:
       - 'of'
       - 'v1'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'get_list_of_variables_v2@py.csm.fun':
     id: 'get_list_of_variables_v2@py.csm.fun'
     name: 'get_list_of_variables_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
       Get list of environment variables per app
       Available Deployment Status:
       `deployed` = app config is already deployed
@@ -6013,6 +6432,8 @@ symbols:
       - 'of'
       - 'v2'
       - 'variables'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]'
 
   'get_no_sql_access_tunnel_v2@py.csm.fun':
     id: 'get_no_sql_access_tunnel_v2@py.csm.fun'
@@ -6047,24 +6468,24 @@ symbols:
       - 'sql'
       - 'tunnel'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:TUNNELS [READ]'
 
   'get_no_sql_app_list_v2@py.csm.fun':
     id: 'get_no_sql_app_list_v2@py.csm.fun'
     name: 'get_no_sql_app_list_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
     arguments:
       'app_name':
@@ -6072,16 +6493,16 @@ symbols:
         required: false
         description: |-
           App Name
+      'game_namespace':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Game Namespace
       'limit':
         type: 'Optional[int]'
         required: false
         description: |-
           Limit for pagination
-      'namespace':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Game Name
       'offset':
         type: 'Optional[int]'
         required: false
@@ -6118,27 +6539,27 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'get_no_sql_cluster_v2@py.csm.fun':
     id: 'get_no_sql_cluster_v2@py.csm.fun'
     name: 'get_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
       Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the NoSQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
       - `available` : The cluster is accessible.
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `failed` : The cluster failed to provision or is in an error state and not accessible.
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+      - `creating` : The cluster or instance is being created and is not yet accessible.
       - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     arguments:
       'namespace':
         type: 'str'
@@ -6165,28 +6586,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]'
 
   'get_no_sql_database_v2@py.csm.fun':
     id: 'get_no_sql_database_v2@py.csm.fun'
     name: 'get_no_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]`
-
       Get a NoSQL database information returns the NoSQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the NoSQL cluster status:
-      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
       - `unknown` : The cluster status is not recognized
+      - `available` : The cluster is accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     arguments:
       'app':
         type: 'str'
@@ -6218,14 +6639,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [READ]'
 
   'get_notification_subscriber_list_v2@py.csm.fun':
     id: 'get_notification_subscriber_list_v2@py.csm.fun'
     name: 'get_notification_subscriber_list_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -6269,14 +6690,14 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'get_notification_subscriber_list_v3@py.csm.fun':
     id: 'get_notification_subscriber_list_v3@py.csm.fun'
     name: 'get_notification_subscriber_list_v3'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
       Request param:
       - notificationType : type of the subscribed app notification
       - values:
@@ -6320,6 +6741,8 @@ symbols:
       - 'subscriber'
       - 'subscription'
       - 'v3'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]'
 
   'get_resources_limits@py.csm.fun':
     id: 'get_resources_limits@py.csm.fun'
@@ -6360,20 +6783,18 @@ symbols:
     name: 'get_sql_app_list_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
       - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
     arguments:
       'app_name':
         type: 'Optional[str]'
@@ -6384,7 +6805,7 @@ symbols:
         type: 'Optional[str]'
         required: false
         description: |-
-          Game Name
+          Game Namespace
       'limit':
         type: 'Optional[int]'
         required: false
@@ -6425,28 +6846,28 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'get_sql_cluster_v2@py.csm.fun':
     id: 'get_sql_cluster_v2@py.csm.fun'
     name: 'get_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
       Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
 
       `status` field - indicates the SQL cluster status:
-      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-      - `stopped` : The cluster is stopped and not accessible.
       - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
-      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
       - `unknown` : The cluster status is not recognized
       - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `available` : The cluster is accessible.
+      - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
+      - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+      - `stopped` : The cluster is stopped and not accessible.
     arguments:
       'namespace':
         type: 'str'
@@ -6472,29 +6893,29 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]'
 
   'get_sql_database_v2@py.csm.fun':
     id: 'get_sql_database_v2@py.csm.fun'
     name: 'get_sql_database_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
-
       Get a SQL database information returns the SQL database related information by given game namespace
       and app name.
 
       `resourceStatus` field - indicates the SQL cluster status:
-      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-      - `available` : The cluster is accessible.
       - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-      - `creating` : The cluster or instance is being created and is not yet accessible.
-      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-      - `unknown` : The cluster status is not recognized
-      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-      - `deleting` : The cluster is in the process of being deleted and is not accessible.
       - `failed` : The cluster failed to provision or is in an error state and not accessible.
       - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
       - `stopped` : The cluster is stopped and not accessible.
+      - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+      - `creating` : The cluster or instance is being created and is not yet accessible.
+      - `deleting` : The cluster is in the process of being deleted and is not accessible.
+      - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+      - `unknown` : The cluster status is not recognized
+      - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+      - `available` : The cluster is accessible.
     arguments:
       'app':
         type: 'str'
@@ -6525,14 +6946,14 @@ symbols:
       - 'resources'
       - 'sql'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]'
 
   'get_subscription_v2_handler@py.csm.fun':
     id: 'get_subscription_v2_handler@py.csm.fun'
     name: 'get_subscription_v2_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
-
       Get Subscription status of a user
     arguments:
       'app':
@@ -6563,14 +6984,14 @@ symbols:
       - 'notification'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]'
 
   'integrate_app_key_value_cluster_v2@py.csm.fun':
     id: 'integrate_app_key_value_cluster_v2@py.csm.fun'
     name: 'integrate_app_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
-
       Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
     arguments:
       'app':
@@ -6607,14 +7028,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]'
 
   'list_app_ui@py.csm.fun':
     id: 'list_app_ui@py.csm.fun'
     name: 'list_app_ui'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
-
       Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
     arguments:
       'limit':
@@ -6653,14 +7074,14 @@ symbols:
       - 'app'
       - 'list'
       - 'ui'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]'
 
   'list_key_value_cluster_v2@py.csm.fun':
     id: 'list_key_value_cluster_v2@py.csm.fun'
     name: 'list_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
       List Key-Value clusters by studio/publisher namespace.
       If `refresh=true`, the service will sync cluster status from the provider (cached).
     arguments:
@@ -6694,14 +7115,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]'
 
   'list_topics_handler@py.csm.fun':
     id: 'list_topics_handler@py.csm.fun'
     name: 'list_topics_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
-
       List all Async Messaging Topics inside a game namespace.
     arguments:
       'fuzzy_topic_name':
@@ -6752,6 +7173,8 @@ symbols:
       - 'list'
       - 'messaging'
       - 'topics'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]'
 
   'public_get_messages@py.csm.fun':
     id: 'public_get_messages@py.csm.fun'
@@ -6781,8 +7204,6 @@ symbols:
     name: 'remove_integration_app_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
-
       Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
     arguments:
       'app':
@@ -6817,14 +7238,14 @@ symbols:
       - 'resources'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]'
 
   'save_secret_v1@py.csm.fun':
     id: 'save_secret_v1@py.csm.fun'
     name: 'save_secret_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Request body:
       - configName : environment secret name - Required.
@@ -6863,14 +7284,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'save_secret_v2@py.csm.fun':
     id: 'save_secret_v2@py.csm.fun'
     name: 'save_secret_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
       Save an environment secret.
       Secret will always be masked.
       Request body:
@@ -6909,14 +7330,14 @@ symbols:
       - 'save'
       - 'secret'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]'
 
   'save_variable_v1@py.csm.fun':
     id: 'save_variable_v1@py.csm.fun'
     name: 'save_variable_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -6955,14 +7376,14 @@ symbols:
       - 'save'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'save_variable_v2@py.csm.fun':
     id: 'save_variable_v2@py.csm.fun'
     name: 'save_variable_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
       Save an environment variable.
       Request body:
       - configName : environment variable name - Required.
@@ -7001,14 +7422,14 @@ symbols:
       - 'save'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]'
 
   'start_app_v1@py.csm.fun':
     id: 'start_app_v1@py.csm.fun'
     name: 'start_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     arguments:
       'app':
@@ -7040,14 +7461,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'start_app_v2@py.csm.fun':
     id: 'start_app_v2@py.csm.fun'
     name: 'start_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Starts the Application
     arguments:
       'app':
@@ -7076,14 +7497,14 @@ symbols:
       - 'app'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'start_no_sql_cluster_v2@py.csm.fun':
     id: 'start_no_sql_cluster_v2@py.csm.fun'
     name: 'start_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Start NoSQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -7114,14 +7535,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'start_sql_cluster_v2@py.csm.fun':
     id: 'start_sql_cluster_v2@py.csm.fun'
     name: 'start_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Start SQL cluster.
       You can only start the cluster when its status is "stopped".
 
@@ -7151,14 +7572,14 @@ symbols:
       - 'sql'
       - 'start'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'stop_app_v1@py.csm.fun':
     id: 'stop_app_v1@py.csm.fun'
     name: 'stop_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     arguments:
       'app':
@@ -7190,14 +7611,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'stop_app_v2@py.csm.fun':
     id: 'stop_app_v2@py.csm.fun'
     name: 'stop_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Stops the Application
     arguments:
       'app':
@@ -7226,14 +7647,14 @@ symbols:
       - 'app'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'stop_no_sql_cluster_v2@py.csm.fun':
     id: 'stop_no_sql_cluster_v2@py.csm.fun'
     name: 'stop_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Stop NoSQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -7264,14 +7685,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'stop_sql_cluster_v2@py.csm.fun':
     id: 'stop_sql_cluster_v2@py.csm.fun'
     name: 'stop_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Stop SQL cluster.
       You can only start the cluster when its status is "available".
 
@@ -7301,14 +7722,14 @@ symbols:
       - 'sql'
       - 'stop'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'subscribe_app_notification_v2@py.csm.fun':
     id: 'subscribe_app_notification_v2@py.csm.fun'
     name: 'subscribe_app_notification_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
-
       Subscribe the user(s) an app notification.
 
       Request body:
@@ -7350,14 +7771,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]'
 
   'subscribe_v2_handler@py.csm.fun':
     id: 'subscribe_v2_handler@py.csm.fun'
     name: 'subscribe_v2_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
-
       Subscribe to app notification
       Request body:
       - notificationType : type of the app notification to be subscribed - Required.
@@ -7397,14 +7818,14 @@ symbols:
       - 'subscribe'
       - 'subscription'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]'
 
   'unsubscribe_topic_handler@py.csm.fun':
     id: 'unsubscribe_topic_handler@py.csm.fun'
     name: 'unsubscribe_topic_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
-
       Unsubscribe App queue from a topic by Topic Name.
     arguments:
       'app':
@@ -7440,14 +7861,14 @@ symbols:
       - 'messaging'
       - 'topic'
       - 'unsubscribe'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]'
 
   'unsubscribe_v2_handler@py.csm.fun':
     id: 'unsubscribe_v2_handler@py.csm.fun'
     name: 'unsubscribe_v2_handler'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
-
       Unsubscribe to app notification
     arguments:
       'app':
@@ -7478,14 +7899,61 @@ symbols:
       - 'subscription'
       - 'unsubscribe'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]'
+
+  'update_app_debug_mode_v4@py.csm.fun':
+    id: 'update_app_debug_mode_v4@py.csm.fun'
+    name: 'update_app_debug_mode_v4'
+    type: 'function'
+    description: |-
+      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
+
+      Enable or disable the remote debug sidecar container for the specified extend app.
+
+      When enabled and the app is in `deployment-running` status, a new deployment will be
+      triggered automatically to apply the debug container configuration.
+
+      This operation is rejected with `409 Conflict` if the app is currently in a
+      transitional state (app-creating, app-removing, app-stopping).
+    arguments:
+      'app':
+        type: 'str'
+        required: true
+        description: |-
+          App Name. Expected format: (^[A-Za-z](?:[A-Za-z0-9\-]*[A-Za-z0-9])?$)
+      'body':
+        type: 'ApimodelUpdateDebugModeRequest'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Game Name
+    return_type: 'Tuple[Union[None, ApimodelAppItem], Union[None, HttpResponse, ResponseErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.csm as csm'
+      - 'import accelbyte_py_sdk.api.csm.models as csm_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/csm/operations/app_v4/update_app_debug_mode_v4.py'
+    example: |-
+      result, error = csm.update_app_debug_mode_v4(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'app'
+      - 'debug'
+      - 'mode'
+      - 'update'
+      - 'v4'
 
   'update_app_resources_resource_limit_form_v2@py.csm.fun':
     id: 'update_app_resources_resource_limit_form_v2@py.csm.fun'
     name: 'update_app_resources_resource_limit_form_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     arguments:
       'app':
@@ -7521,14 +7989,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'update_app_resources_v2@py.csm.fun':
     id: 'update_app_resources_v2@py.csm.fun'
     name: 'update_app_resources_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update app resources provided on request body
     arguments:
       'app':
@@ -7561,14 +8029,14 @@ symbols:
       - 'resources'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'update_app_v1@py.csm.fun':
     id: 'update_app_v1@py.csm.fun'
     name: 'update_app_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
       Update App Partially
     arguments:
       'app':
@@ -7600,15 +8068,15 @@ symbols:
       - 'app'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'update_app_v2@py.csm.fun':
     id: 'update_app_v2@py.csm.fun'
     name: 'update_app_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-      Update app info provided on request body
+      Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
     arguments:
       'app':
         type: 'str'
@@ -7639,14 +8107,14 @@ symbols:
       - 'app'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]'
 
   'update_key_value_cluster_v2@py.csm.fun':
     id: 'update_key_value_cluster_v2@py.csm.fun'
     name: 'update_key_value_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
-
       Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
       Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
     arguments:
@@ -7683,14 +8151,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'value'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]'
 
   'update_no_sql_cluster_v2@py.csm.fun':
     id: 'update_no_sql_cluster_v2@py.csm.fun'
     name: 'update_no_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
       Update NoSQL cluster configurations such as min/max DCU (Database Capacity Units) for the NoSQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -7724,14 +8192,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]'
 
   'update_secret_v1@py.csm.fun':
     id: 'update_secret_v1@py.csm.fun'
     name: 'update_secret_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Request body:
       - value : configuration value - Required.
@@ -7773,14 +8241,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v1'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'update_secret_v2@py.csm.fun':
     id: 'update_secret_v2@py.csm.fun'
     name: 'update_secret_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
       Update an environment secret.
       Secret will always be masked.
       Request body:
@@ -7822,14 +8290,14 @@ symbols:
       - 'secret'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]'
 
   'update_sql_cluster_v2@py.csm.fun':
     id: 'update_sql_cluster_v2@py.csm.fun'
     name: 'update_sql_cluster_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
       Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
       The cluster must be in an available state to allow configuration updates.
 
@@ -7862,14 +8330,14 @@ symbols:
       - 'sql'
       - 'update'
       - 'v2'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]'
 
   'update_variable_v1@py.csm.fun':
     id: 'update_variable_v1@py.csm.fun'
     name: 'update_variable_v1'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -7911,14 +8379,14 @@ symbols:
       - 'update'
       - 'v1'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'update_variable_v2@py.csm.fun':
     id: 'update_variable_v2@py.csm.fun'
     name: 'update_variable_v2'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
       Update an environment variable.
       Request body:
       - value : configuration value - Required.
@@ -7960,14 +8428,14 @@ symbols:
       - 'update'
       - 'v2'
       - 'variable'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]'
 
   'upload_app_ui_file@py.csm.fun':
     id: 'upload_app_ui_file@py.csm.fun'
     name: 'upload_app_ui_file'
     type: 'function'
     description: |-
-      Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
-
       Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
     arguments:
       'app_ui_name':
@@ -8007,4 +8475,6 @@ symbols:
       - 'file'
       - 'ui'
       - 'upload'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]'
   # endregion functions

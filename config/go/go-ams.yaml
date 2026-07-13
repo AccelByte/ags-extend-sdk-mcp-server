@@ -843,6 +843,11 @@ symbols:
         required: true
         description: |-
           the id of the fleet
+      'IncludeInactiveRegions':
+        type: 'bool'
+        required: false
+        description: |-
+          include inactive regions in the response
       'Namespace':
         type: 'string'
         required: true
@@ -868,6 +873,11 @@ symbols:
         required: false
         description: |-
           the number of fleets to return
+      'IncludeInactiveRegions':
+        type: 'bool'
+        required: false
+        description: |-
+          include inactive regions in the response
       'Name':
         type: 'string'
         required: false
@@ -1075,15 +1085,6 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleets'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleets/fleet_update_parameters.go'
-
-  'Func1Params@go.ams.mod':
-    id: 'Func1Params@go.ams.mod'
-    name: 'Func1Params'
-    type: 'model'
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/func1_parameters.go'
 
   'ImageGetParams@go.ams.mod':
     id: 'ImageGetParams@go.ams.mod'
@@ -1378,6 +1379,15 @@ symbols:
       - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/a_m_s_info'
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/a_m_s_info/upload_url_get_parameters.go'
+
+  'VersionInfoParams@go.ams.mod':
+    id: 'VersionInfoParams@go.ams.mod'
+    name: 'VersionInfoParams'
+    type: 'model'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/ams-sdk/pkg/amsclient/fleet_commander/version_info_parameters.go'
 
   'WatchdogConnectParams@go.ams.mod':
     id: 'WatchdogConnectParams@go.ams.mod'
@@ -2713,6 +2723,9 @@ symbols:
       'Region':
         type: 'string'
         required: true
+      'State':
+        type: 'string'
+        required: false
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
     files:
@@ -3787,34 +3800,6 @@ symbols:
       - 'fleets'
       - 'update'
 
-  'Func1Short@go.ams.fun':
-    id: 'Func1Short@go.ams.fun'
-    name: 'Func1Short'
-    type: 'function'
-    struct: 'FleetCommanderService'
-    arguments:
-      params:
-        type: '*fleet_commander.Func1Params'
-        required: true
-    return_type: 'error'
-    imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
-      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
-      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
-    example: |-
-      fleetCommanderService := ams.FleetCommanderService{ ... }
-      params := fleet_commander.Func1Params{ ... }
-      res, err := fleetCommanderService.Func1Short(params)
-      if err != nil {
-          // handleError(err)
-      }
-    tags:
-      - 'commander'
-      - 'fleet'
-      - 'func1'
-
   'ImageGetShort@go.ams.fun':
     id: 'ImageGetShort@go.ams.fun'
     name: 'ImageGetShort'
@@ -4275,6 +4260,35 @@ symbols:
       - 'info'
       - 'upload'
       - 'url'
+
+  'VersionInfoShort@go.ams.fun':
+    id: 'VersionInfoShort@go.ams.fun'
+    name: 'VersionInfoShort'
+    type: 'function'
+    struct: 'FleetCommanderService'
+    arguments:
+      params:
+        type: '*fleet_commander.VersionInfoParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/ams-sdk/pkg/amsclient/fleet_commander'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/ams'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/ams/fleetCommander.go'
+    example: |-
+      fleetCommanderService := ams.FleetCommanderService{ ... }
+      params := fleet_commander.VersionInfoParams{ ... }
+      res, err := fleetCommanderService.VersionInfoShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'commander'
+      - 'fleet'
+      - 'info'
+      - 'version'
 
   'WatchdogConnectShort@go.ams.fun':
     id: 'WatchdogConnectShort@go.ams.fun'

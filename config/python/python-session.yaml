@@ -2546,7 +2546,7 @@ symbols:
     name: 'admin_delete_bulk_game_sessions'
     type: 'function'
     description: |-
-      Delete bulk game sessions.
+      Permanently deletes multiple game sessions by their IDs. Returns a summary of deleted and failed sessions. Any allocated dedicated servers are released.
     arguments:
       'body':
         type: 'ApimodelsDeleteBulkGameSessionRequest'
@@ -2583,7 +2583,7 @@ symbols:
     name: 'admin_delete_bulk_parties'
     type: 'function'
     description: |-
-      Delete bulk parties.
+      Permanently deletes multiple party sessions by their IDs. Returns a summary of deleted and failed sessions.
     arguments:
       'body':
         type: 'ApimodelsDeleteBulkPartySessionRequest'
@@ -2619,7 +2619,7 @@ symbols:
     name: 'admin_delete_configuration_alert_v1'
     type: 'function'
     description: |-
-      Delete configuration alert.
+      Deletes the configuration alert for the specified namespace. After deletion, no alerts are generated for session configuration issues.
     arguments:
       'namespace':
         type: 'str'
@@ -2691,7 +2691,7 @@ symbols:
     name: 'admin_delete_global_configuration'
     type: 'function'
     description: |-
-      Delete of global configuration data.
+      Deletes the global configuration. After deletion, the service falls back to default configuration values.
     return_type: 'Tuple[None, Union[None, HttpResponse, ResponseError]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -3021,7 +3021,7 @@ symbols:
     name: 'admin_get_list_native_session'
     type: 'function'
     description: |-
-      List of native sessions.
+      Returns paginated list of native platform sessions. Native sessions are synchronized with PSN, Xbox Live, and Steam platform session systems.
     arguments:
       'limit':
         type: 'Optional[int]'
@@ -3095,7 +3095,7 @@ symbols:
     name: 'admin_get_member_active_session'
     type: 'function'
     description: |-
-      Get Member Active Session.
+      Returns the number of active sessions the specified user is participating in under the given configuration template.
     arguments:
       'name':
         type: 'str'
@@ -3329,7 +3329,7 @@ symbols:
     name: 'admin_kick_game_session_member'
     type: 'function'
     description: |-
-      Kick member from a game session.
+      Removes the specified member from a game session and sets their status to KICKED. Can be used by admins to forcefully remove members.
     arguments:
       'member_id':
         type: 'str'
@@ -3372,7 +3372,7 @@ symbols:
     name: 'admin_list_environment_variables'
     type: 'function'
     description: |-
-      List of environment variables.
+      Returns all environment variables currently set for the session service. Useful for debugging configuration and verifying runtime settings.
     return_type: 'Tuple[Union[None, ApimodelsEnvironmentVariableListResponse], Union[None, HttpResponse, ResponseError]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -3399,7 +3399,7 @@ symbols:
     name: 'admin_list_global_configuration'
     type: 'function'
     description: |-
-      Record of global configuration data.
+      Returns the current global configuration shared across all namespaces. Includes settings like maximum active sessions and cleanup intervals.
     return_type: 'Tuple[Union[None, ApimodelsGlobalConfigurationResponse], Union[None, HttpResponse, ResponseError]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -3456,7 +3456,7 @@ symbols:
     name: 'admin_query_game_sessions'
     type: 'function'
     description: |-
-      Get all game sessions.
+      Returns paginated list of game sessions matching the provided filter criteria. Supports filtering by namespace, status, members, and joinability.
     arguments:
       'configuration_name':
         type: 'Optional[str]'
@@ -3626,7 +3626,7 @@ symbols:
     name: 'admin_query_parties'
     type: 'function'
     description: |-
-      Query parties.
+      Returns paginated list of party sessions matching the provided filter criteria. Supports filtering by namespace, members, leader, and joinability mode.
     arguments:
       'configuration_name':
         type: 'Optional[str]'
@@ -3911,7 +3911,7 @@ symbols:
     name: 'admin_reconcile_max_active_session'
     type: 'function'
     description: |-
-      Reconcile Max Active Session.
+      Reconciles the max active session count for the specified configuration template. Scans active sessions and updates the counter to reflect the actual count.
     arguments:
       'body':
         type: 'ModelsRequestReconcileMaxActiveSession'
@@ -3994,7 +3994,7 @@ symbols:
     name: 'admin_sync_dsmc_configuration'
     type: 'function'
     description: |-
-      sync dsmc configuration.
+      **Deprecated.** Synchronizes the dedicated server manager controller configuration from DSMC. The DSMC config is cached locally for use during session creation.
     arguments:
       'namespace':
         type: 'str'
@@ -4027,7 +4027,7 @@ symbols:
     name: 'admin_sync_native_session'
     type: 'function'
     description: |-
-      Trigger user's active party session to native platform.
+      Triggers synchronization of the user's active party session to the native platform (PSN, Xbox). Useful when native session state is out of sync with the AccelByte session state.
     arguments:
       'namespace':
         type: 'str'
@@ -4347,7 +4347,7 @@ symbols:
     name: 'admin_update_global_configuration'
     type: 'function'
     description: |-
-      Upsert global configuration data.
+      Creates or replaces the global configuration. If no configuration exists, a new one is created. All provided fields are applied.
     arguments:
       'body':
         type: 'ApimodelsPutGlobalConfigurationRequest'
@@ -4524,7 +4524,7 @@ symbols:
     name: 'append_team_game_session'
     type: 'function'
     description: |-
-      Append new member or team to session. Please use patchUpdateGameSession instead
+      **Deprecated.** Appends new members or teams to a game session. Use PATCH updateGameSession instead, which supports partial updates and is more efficient.
     arguments:
       'body':
         type: 'ApimodelsAppendTeamGameSessionRequest'
@@ -4674,7 +4674,7 @@ symbols:
     name: 'delete_game_session'
     type: 'function'
     description: |-
-      Delete a game session.
+      Permanently deletes a game session. Only the session leader or an admin can delete the session. Any allocated dedicated server will be released.
     arguments:
       'namespace':
         type: 'str'
@@ -4948,7 +4948,7 @@ symbols:
     name: 'join_game_session'
     type: 'function'
     description: |-
-      Join a game session.
+      Joins a game session. For PASSWORD_PROTECTED sessions, the request body must include the session password. The session must have OPEN or INVITE_ONLY joinability and available slots.
     arguments:
       'body':
         type: 'ApimodelsJoinSessionRequest'
@@ -4987,7 +4987,7 @@ symbols:
     name: 'leave_game_session'
     type: 'function'
     description: |-
-      Leave a game session.
+      Leaves a game session, removing the caller from the member list. If the caller is the leader, leadership transfers to another active member.
     arguments:
       'namespace':
         type: 'str'
@@ -5194,7 +5194,7 @@ symbols:
     name: 'public_game_session_cancel'
     type: 'function'
     description: |-
-      cancel a game session invitation.
+      Cancels a pending game session invitation sent to the specified user. Only the session leader or the inviting member can cancel the invitation.
     arguments:
       'namespace':
         type: 'str'
@@ -5282,7 +5282,7 @@ symbols:
     name: 'public_game_session_reject'
     type: 'function'
     description: |-
-      Reject a game session invitation.
+      Rejects a pending game session invitation. The caller must have INVITED status. The session invitation will be marked as REJECTED.
     arguments:
       'namespace':
         type: 'str'
@@ -5431,7 +5431,7 @@ symbols:
     name: 'public_get_party'
     type: 'function'
     description: |-
-      Get party details.
+      Returns party session details including members, configuration, and leader. The caller must be a party member or have admin access.
     arguments:
       'namespace':
         type: 'str'
@@ -5626,7 +5626,7 @@ symbols:
     name: 'public_kick_game_session_member'
     type: 'function'
     description: |-
-      Kick member from a game session, only leader can kick member.
+      Removes the specified member from a game session. Only the session leader can kick members. The kicked member's status is set to KICKED.
     arguments:
       'member_id':
         type: 'str'
@@ -5669,7 +5669,7 @@ symbols:
     name: 'public_party_cancel'
     type: 'function'
     description: |-
-      Cancel a party invitation.
+      Cancels a pending party invitation sent to the specified user. Only the party leader or the inviting member can cancel the invitation.
     arguments:
       'namespace':
         type: 'str'
@@ -5906,7 +5906,7 @@ symbols:
     name: 'public_party_reject'
     type: 'function'
     description: |-
-      Reject a party invitation.
+      Rejects a pending party invitation. The caller must have INVITED status. Once rejected, the caller must be re-invited to rejoin.
     arguments:
       'namespace':
         type: 'str'

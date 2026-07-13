@@ -4305,18 +4305,15 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelLinkPlatformAccountWithProgressionRequest.java'
 
-  'ModelLinkRequest@jv.iam.mod':
-    id: 'ModelLinkRequest@jv.iam.mod'
-    name: 'ModelLinkRequest'
+  'ModelLinkRequestResponse@jv.iam.mod':
+    id: 'ModelLinkRequestResponse@jv.iam.mod'
+    name: 'ModelLinkRequestResponse'
     type: 'model'
     fields:
       'clientId':
         type: 'String'
         required: true
       'namespace':
-        type: 'String'
-        required: true
-      'operationName':
         type: 'String'
         required: true
       'payload':
@@ -4331,6 +4328,8 @@ symbols:
       'status':
         type: 'String'
         required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
       'conflictPublisherUserId':
         type: 'String'
         required: false
@@ -4349,23 +4348,20 @@ symbols:
       'platformDisplayName':
         type: 'String'
         required: false
-      'platformID':
+      'platformId':
         type: 'String'
         required: false
       'platformUserId':
         type: 'String'
         required: false
-      'refreshToken':
-        type: 'String'
-        required: false
-      'userID':
+      'userId':
         type: 'String'
         required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.iam.models.*;'
     files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelLinkRequest.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelLinkRequestResponse.java'
 
   'ModelListAssignedUsersV4Response@jv.iam.mod':
     id: 'ModelListAssignedUsersV4Response@jv.iam.mod'
@@ -5189,6 +5185,68 @@ symbols:
       - 'import net.accelbyte.sdk.api.iam.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelPublicUserUpdateRequestV3.java'
+
+  'ModelReAuthRequest@jv.iam.mod':
+    id: 'ModelReAuthRequest@jv.iam.mod'
+    name: 'ModelReAuthRequest'
+    type: 'model'
+    fields:
+      'clientId':
+        type: 'String'
+        required: true
+      'namespace':
+        type: 'String'
+        required: true
+      'operationName':
+        type: 'String'
+        required: true
+      'payload':
+        type: 'Map<String, ?>'
+        required: true
+      'redirectUri':
+        type: 'String'
+        required: true
+      'requestId':
+        type: 'String'
+        required: true
+      'status':
+        type: 'String'
+        required: true
+      'conflictPublisherUserId':
+        type: 'String'
+        required: false
+      'conflictUserLinkedGames':
+        type: 'List<String>'
+        required: false
+      'currentUserLinkedGames':
+        type: 'List<String>'
+        required: false
+      'error':
+        type: 'RestErrorResponseWithConflictedUserPlatformAccounts'
+        required: false
+      'expiration':
+        type: 'Integer'
+        required: false
+      'platformDisplayName':
+        type: 'String'
+        required: false
+      'platformID':
+        type: 'String'
+        required: false
+      'platformUserId':
+        type: 'String'
+        required: false
+      'refreshToken':
+        type: 'String'
+        required: false
+      'userID':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelReAuthRequest.java'
 
   'ModelRemoveUserRoleV4Request@jv.iam.mod':
     id: 'ModelRemoveUserRoleV4Request@jv.iam.mod'
@@ -8268,6 +8326,32 @@ symbols:
       - 'import net.accelbyte.sdk.api.iam.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelWebLinkingResponse.java'
+
+  'ModelWebReauthProcessResponse@jv.iam.mod':
+    id: 'ModelWebReauthProcessResponse@jv.iam.mod'
+    name: 'ModelWebReauthProcessResponse'
+    type: 'model'
+    fields:
+      'operation':
+        type: 'String'
+        required: true
+        description: |-
+          Operation type for this re-auth request. Enum: LINK, GDPR
+      'status':
+        type: 'String'
+        required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
+      'linkResponse':
+        type: 'ModelLinkRequestResponse'
+        required: false
+        description: |-
+          Populated only for operation=LINK. Contains platform linking details.
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/models/ModelWebReauthProcessResponse.java'
 
   'OauthapiRevocationList@jv.iam.mod':
     id: 'OauthapiRevocationList@jv.iam.mod'
@@ -11412,7 +11496,7 @@ symbols:
         type: 'Boolean'
         required: false
         description: |-
-          If the targeted group or module is selected by any client, the deletion will fail by default. Set this flag to true to force the deletion.
+          If the targeted group or module is currently selected by any client, the deletion will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'void'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
@@ -18767,7 +18851,13 @@ symbols:
     name: 'AdminUpdateAvailablePermissionsByModule'
     type: 'function'
     description: |-
-      Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
+      Upserts client available permissions at the module level.
+      Only the modules listed in the request are processed - any other existing module is left untouched, so *callers do not need to include unchanged modules*.
+
+      ## Groups update behavior
+
+      For each module in the request, the 'groups' array is the *full desired state* of that module's groups - any existing group whose 'groupId' is omitted is treated as ***removed***.
+      If a removed group is currently used by any client, the request will fails with 400 and nothing is saved, unless 'forceDelete=true' query param is passed.
     arguments:
       'body':
         type: 'ClientmodelListUpsertModulesRequest'
@@ -18776,7 +18866,7 @@ symbols:
         type: 'Boolean'
         required: false
         description: |-
-          If this update includes a delete action and the targeted group or module is selected by any client, the operation will fail by default. Set this flag to true to force the operation.
+          If the update would remove a group that is currently selected by any client, the request will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'void'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
@@ -24452,6 +24542,83 @@ symbols:
       - 'logout'
       - 'sso'
 
+  'NamespaceScopedPlatformTokenGrant@jv.iam.fun':
+    id: 'NamespaceScopedPlatformTokenGrant@jv.iam.fun'
+    name: 'NamespaceScopedPlatformTokenGrant'
+    type: 'function'
+    description: |-
+      **This endpoint is deprecated.**
+      Requires all requests to have Authorization header set with Basic access authentication
+      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
+      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
+      along with platform_token parameter against publisher namespace.
+
+      Supported platforms:
+      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
+      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
+
+      ### Endpoint migration guide
+      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
+    arguments:
+      'deviceId':
+        type: 'String'
+        required: false
+        description: |-
+          Device/hardware identifier
+      'macAddress':
+        type: 'String'
+        required: false
+        description: |-
+          Mac address of device
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platformToken':
+        type: 'String'
+        required: false
+        description: |-
+          Token from platform auth
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID to login with
+    return_type: 'OauthmodelTokenResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+      - 'import net.accelbyte.sdk.api.iam.operations.o_auth.*;'
+      - 'import net.accelbyte.sdk.api.iam.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/wrappers/OAuth.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/operations/o_auth/NamespaceScopedPlatformTokenGrant.java'
+    example: |-
+      try {
+          final NamespaceScopedPlatformTokenGrant operation = NamespaceScopedPlatformTokenGrant.builder()
+              .deviceId(...)
+              .macAddress(...)
+              .platformToken(...)
+              .build(
+                  namespace,
+                  platformId,
+              );
+
+          final OAuth wrapper = new OAuth(sdk);
+          final OauthmodelTokenResponse response = wrapper.namespaceScopedPlatformTokenGrant(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'auth'
+      - 'grant'
+      - 'namespace'
+      - 'o'
+      - 'platform'
+      - 'scoped'
+      - 'token'
+
   'OAuthDynamicClientRegisterWithNamespaceV3@jv.iam.fun':
     id: 'OAuthDynamicClientRegisterWithNamespaceV3@jv.iam.fun'
     name: 'OAuthDynamicClientRegisterWithNamespaceV3'
@@ -25264,82 +25431,6 @@ symbols:
       - 'refresh'
       - 'token'
       - 'v3'
-
-  'PlatformTokenRequestHandler@jv.iam.fun':
-    id: 'PlatformTokenRequestHandler@jv.iam.fun'
-    name: 'PlatformTokenRequestHandler'
-    type: 'function'
-    description: |-
-      **This endpoint is deprecated.**
-      Requires all requests to have Authorization header set with Basic access authentication
-      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
-      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
-      along with platform_token parameter against publisher namespace.
-
-      Supported platforms:
-      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
-      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
-
-      ### Endpoint migration guide
-      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
-    arguments:
-      'deviceId':
-        type: 'String'
-        required: false
-        description: |-
-          Device/hardware identifier
-      'macAddress':
-        type: 'String'
-        required: false
-        description: |-
-          Mac address of device
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          Accepts alphanumeric, with hyphens allowed between segments
-      'platformToken':
-        type: 'String'
-        required: false
-        description: |-
-          Token from platform auth
-      'platformId':
-        type: 'String'
-        required: true
-        description: |-
-          Platform ID to login with
-    return_type: 'OauthmodelTokenResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.iam.models.*;'
-      - 'import net.accelbyte.sdk.api.iam.operations.o_auth.*;'
-      - 'import net.accelbyte.sdk.api.iam.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/wrappers/OAuth.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/operations/o_auth/PlatformTokenRequestHandler.java'
-    example: |-
-      try {
-          final PlatformTokenRequestHandler operation = PlatformTokenRequestHandler.builder()
-              .deviceId(...)
-              .macAddress(...)
-              .platformToken(...)
-              .build(
-                  namespace,
-                  platformId,
-              );
-
-          final OAuth wrapper = new OAuth(sdk);
-          final OauthmodelTokenResponse response = wrapper.platformTokenRequestHandler(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'auth'
-      - 'handler'
-      - 'o'
-      - 'platform'
-      - 'request'
-      - 'token'
 
   'PlatformUnlink@jv.iam.fun':
     id: 'PlatformUnlink@jv.iam.fun'
@@ -26650,7 +26741,7 @@ symbols:
         required: true
         description: |-
           Request ID of the link status
-    return_type: 'ModelLinkRequest'
+    return_type: 'ModelReAuthRequest'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.iam.models.*;'
@@ -26668,7 +26759,7 @@ symbols:
               );
 
           final Users wrapper = new Users(sdk);
-          final ModelLinkRequest response = wrapper.publicGetAsyncStatus(operation);
+          final ModelReAuthRequest response = wrapper.publicGetAsyncStatus(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -29325,8 +29416,8 @@ symbols:
     name: 'PublicProcessWebLinkPlatformV3'
     type: 'function'
     description: |-
-      Processes third party account link and returns the link status directly instead of redirecting to the original page.
-      The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+      Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -29340,6 +29431,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
     arguments:
       'code':
         type: 'String'
@@ -29360,8 +29455,8 @@ symbols:
         type: 'String'
         required: true
         description: |-
-          state
-    return_type: 'ModelLinkRequest'
+          state, comes from the response of <code>GET /users/me/platforms/{platformId}/web/link</code> endpoint
+    return_type: 'ModelReAuthRequest'
     imports:
       - 'import net.accelbyte.sdk.core.*;'
       - 'import net.accelbyte.sdk.api.iam.models.*;'
@@ -29381,7 +29476,7 @@ symbols:
               );
 
           final Users wrapper = new Users(sdk);
-          final ModelLinkRequest response = wrapper.publicProcessWebLinkPlatformV3(operation);
+          final ModelReAuthRequest response = wrapper.publicProcessWebLinkPlatformV3(operation);
       }
       catch (HttpResponseException e) { /* Handle exceptions. */ }
       catch (Exception e)             { /* Handle exceptions. */ }
@@ -30612,7 +30707,8 @@ symbols:
     name: 'PublicWebLinkPlatform'
     type: 'function'
     description: |-
-      Generates a third party login page which will redirect to the establish API.
+      Generates a redirect to a third party login page for account linking authentication.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -30626,6 +30722,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
     arguments:
       'clientId':
         type: 'String'
@@ -30683,7 +30783,9 @@ symbols:
     name: 'PublicWebLinkPlatformEstablish'
     type: 'function'
     description: |-
-      Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+      Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+      After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -30697,6 +30799,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
     arguments:
       'code':
         type: 'String'
@@ -30747,6 +30853,240 @@ symbols:
       - 'link'
       - 'platform'
       - 'public'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatform@jv.iam.fun':
+    id: 'PublicWebReauthPlatform@jv.iam.fun'
+    name: 'PublicWebReauthPlatform'
+    type: 'function'
+    description: |-
+      Generates a redirect to a third party login page for re-authentication purpose.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'clientId':
+        type: 'String'
+        required: false
+        description: |-
+          Client ID
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'operation':
+        type: 'String'
+        required: true
+        description: |-
+          Re-auth operation.
+          			**GDPR**: obtain a **gdpr_token** cookie after re-authentication completes. 
+          			**LINK**: perform a platform account link.
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID
+      'redirectUri':
+        type: 'String'
+        required: false
+        description: |-
+          Redirect URI
+    return_type: 'ModelWebLinkingResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+      - 'import net.accelbyte.sdk.api.iam.operations.users.*;'
+      - 'import net.accelbyte.sdk.api.iam.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/wrappers/Users.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/operations/users/PublicWebReauthPlatform.java'
+    example: |-
+      try {
+          final PublicWebReauthPlatform operation = PublicWebReauthPlatform.builder()
+              .clientId(...)
+              .redirectUri(...)
+              .build(
+                  namespace,
+                  operation,
+                  platformId,
+              );
+
+          final Users wrapper = new Users(sdk);
+          final ModelWebLinkingResponse response = wrapper.publicWebReauthPlatform(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformEstablish@jv.iam.fun':
+    id: 'PublicWebReauthPlatformEstablish@jv.iam.fun'
+    name: 'PublicWebReauthPlatformEstablish'
+    type: 'function'
+    description: |-
+      Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'code':
+        type: 'String'
+        required: false
+        description: |-
+          Authorization code from third party
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID
+      'state':
+        type: 'String'
+        required: true
+        description: |-
+          State from third party redirect
+    return_type: 'String'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+      - 'import net.accelbyte.sdk.api.iam.operations.users.*;'
+      - 'import net.accelbyte.sdk.api.iam.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/wrappers/Users.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/operations/users/PublicWebReauthPlatformEstablish.java'
+    example: |-
+      try {
+          final PublicWebReauthPlatformEstablish operation = PublicWebReauthPlatformEstablish.builder()
+              .code(...)
+              .build(
+                  namespace,
+                  platformId,
+                  state,
+              );
+
+          final Users wrapper = new Users(sdk);
+          wrapper.publicWebReauthPlatformEstablish(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'establish'
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'PublicWebReauthPlatformProcess@jv.iam.fun':
+    id: 'PublicWebReauthPlatformProcess@jv.iam.fun'
+    name: 'PublicWebReauthPlatformProcess'
+    type: 'function'
+    description: |-
+      Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'code':
+        type: 'String'
+        required: false
+        description: |-
+          Authorization code from third party
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platformId':
+        type: 'String'
+        required: true
+        description: |-
+          Platform ID
+      'state':
+        type: 'String'
+        required: true
+        description: |-
+          State, comes from the response of <code>GET /users/me/platforms/{platformId}/web/reauth</code> endpoint
+    return_type: 'ModelWebReauthProcessResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.iam.models.*;'
+      - 'import net.accelbyte.sdk.api.iam.operations.users.*;'
+      - 'import net.accelbyte.sdk.api.iam.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/wrappers/Users.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/iam/operations/users/PublicWebReauthPlatformProcess.java'
+    example: |-
+      try {
+          final PublicWebReauthPlatformProcess operation = PublicWebReauthPlatformProcess.builder()
+              .code(...)
+              .build(
+                  namespace,
+                  platformId,
+                  state,
+              );
+
+          final Users wrapper = new Users(sdk);
+          final ModelWebReauthProcessResponse response = wrapper.publicWebReauthPlatformProcess(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'platform'
+      - 'process'
+      - 'public'
+      - 'reauth'
       - 'users'
       - 'web'
 

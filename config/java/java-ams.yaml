@@ -1367,6 +1367,9 @@ symbols:
       'region':
         type: 'String'
         required: true
+      'state':
+        type: 'String'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.ams.models.*;'
@@ -2646,6 +2649,11 @@ symbols:
         required: true
         description: |-
           the id of the fleet
+      'includeInactiveRegions':
+        type: 'Boolean'
+        required: false
+        description: |-
+          include inactive regions in the response
       'namespace':
         type: 'String'
         required: true
@@ -2663,6 +2671,7 @@ symbols:
     example: |-
       try {
           final FleetGet operation = FleetGet.builder()
+              .includeInactiveRegions(...)
               .build(
                   fleetID,
                   namespace,
@@ -2695,6 +2704,11 @@ symbols:
         required: false
         description: |-
           the number of fleets to return
+      'includeInactiveRegions':
+        type: 'Boolean'
+        required: false
+        description: |-
+          include inactive regions in the response
       'name':
         type: 'String'
         required: false
@@ -2739,6 +2753,7 @@ symbols:
           final FleetList operation = FleetList.builder()
               .active(...)
               .count(...)
+              .includeInactiveRegions(...)
               .name(...)
               .offset(...)
               .region(...)
@@ -3071,34 +3086,6 @@ symbols:
       - 'fleet'
       - 'fleets'
       - 'update'
-
-  'Func1@jv.ams.fun':
-    id: 'Func1@jv.ams.fun'
-    name: 'Func1'
-    type: 'function'
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.ams.models.*;'
-      - 'import net.accelbyte.sdk.api.ams.operations.fleet_commander.*;'
-      - 'import net.accelbyte.sdk.api.ams.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/wrappers/FleetCommander.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/operations/fleet_commander/Func1.java'
-    example: |-
-      try {
-          final Func1 operation = Func1.builder()
-              .build();
-
-          final FleetCommander wrapper = new FleetCommander(sdk);
-          wrapper.func1(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'commander'
-      - 'fleet'
-      - 'func1'
 
   'ImageGet@jv.ams.fun':
     id: 'ImageGet@jv.ams.fun'
@@ -3772,6 +3759,35 @@ symbols:
       - 'info'
       - 'upload'
       - 'url'
+
+  'VersionInfo@jv.ams.fun':
+    id: 'VersionInfo@jv.ams.fun'
+    name: 'VersionInfo'
+    type: 'function'
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.ams.models.*;'
+      - 'import net.accelbyte.sdk.api.ams.operations.fleet_commander.*;'
+      - 'import net.accelbyte.sdk.api.ams.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/wrappers/FleetCommander.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/ams/operations/fleet_commander/VersionInfo.java'
+    example: |-
+      try {
+          final VersionInfo operation = VersionInfo.builder()
+              .build();
+
+          final FleetCommander wrapper = new FleetCommander(sdk);
+          wrapper.versionInfo(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'commander'
+      - 'fleet'
+      - 'info'
+      - 'version'
 
   'WatchdogConnect@jv.ams.fun':
     id: 'WatchdogConnect@jv.ams.fun'

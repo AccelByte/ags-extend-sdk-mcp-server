@@ -111,11 +111,28 @@ symbols:
       'tags':
         type: 'List<String>'
         required: false
+      'templateSlots':
+        type: 'List<ModelChallengeSlotResponse>'
+        required: false
     imports:
       - 'import java.util.*;'
       - 'import net.accelbyte.sdk.api.challenge.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeResponse.java'
+
+  'ModelChallengeSlotResponse@jv.challenge.mod':
+    id: 'ModelChallengeSlotResponse@jv.challenge.mod'
+    name: 'ModelChallengeSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List<String>'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeSlotResponse.java'
 
   'ModelClaimableUserReward@jv.challenge.mod':
     id: 'ModelClaimableUserReward@jv.challenge.mod'
@@ -262,6 +279,8 @@ symbols:
       'repeatAfter':
         type: 'Integer'
         required: false
+        description: |-
+          number of days to repeat the challenge; when set, goals cannot include the 'schedule' field in the request body — use PUT /challenges/{challengeCode}/goals/{code}/slots to assign goals to slots instead
       'resetConfig':
         type: 'ModelResetConfig'
         required: false
@@ -309,6 +328,29 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateGoalRequest.java'
 
+  'ModelCurrentRoundSlotResponse@jv.challenge.mod':
+    id: 'ModelCurrentRoundSlotResponse@jv.challenge.mod'
+    name: 'ModelCurrentRoundSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List<ModelGoalInSchedulesResponse>'
+        required: true
+      'index':
+        type: 'Integer'
+        required: true
+      'startTime':
+        type: 'String'
+        required: true
+      'endTime':
+        type: 'String'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCurrentRoundSlotResponse.java'
+
   'ModelEvaluatePlayerProgressionRequest@jv.challenge.mod':
     id: 'ModelEvaluatePlayerProgressionRequest@jv.challenge.mod'
     name: 'ModelEvaluatePlayerProgressionRequest'
@@ -342,6 +384,23 @@ symbols:
       - 'import net.accelbyte.sdk.api.challenge.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGetGoalsResponse.java'
+
+  'ModelGetSlotsResponse@jv.challenge.mod':
+    id: 'ModelGetSlotsResponse@jv.challenge.mod'
+    name: 'ModelGetSlotsResponse'
+    type: 'model'
+    fields:
+      'currentRound':
+        type: 'List<ModelCurrentRoundSlotResponse>'
+        required: true
+      'templateSlots':
+        type: 'List<ModelTemplateSlotResponse>'
+        required: false
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGetSlotsResponse.java'
 
   'ModelGoalInSchedulesResponse@jv.challenge.mod':
     id: 'ModelGoalInSchedulesResponse@jv.challenge.mod'
@@ -679,6 +738,20 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListUserRewardsResponse.java'
 
+  'ModelMoveGoalToSlotRequest@jv.challenge.mod':
+    id: 'ModelMoveGoalToSlotRequest@jv.challenge.mod'
+    name: 'ModelMoveGoalToSlotRequest'
+    type: 'model'
+    fields:
+      'slotIndex':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelMoveGoalToSlotRequest.java'
+
   'ModelPagination@jv.challenge.mod':
     id: 'ModelPagination@jv.challenge.mod'
     name: 'ModelPagination'
@@ -970,6 +1043,23 @@ symbols:
       - 'import net.accelbyte.sdk.api.challenge.models.*;'
     files:
       - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelScheduleResponse.java'
+
+  'ModelTemplateSlotResponse@jv.challenge.mod':
+    id: 'ModelTemplateSlotResponse@jv.challenge.mod'
+    name: 'ModelTemplateSlotResponse'
+    type: 'model'
+    fields:
+      'goals':
+        type: 'List<ModelGoalInSchedulesResponse>'
+        required: true
+      'index':
+        type: 'Integer'
+        required: true
+    imports:
+      - 'import java.util.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelTemplateSlotResponse.java'
 
   'ModelUpdateChallengeRequest@jv.challenge.mod':
     id: 'ModelUpdateChallengeRequest@jv.challenge.mod'
@@ -1456,7 +1546,8 @@ symbols:
       - startDate: timestamp of when the challenge is started
       - endDate: timestamp of when the challenge is ended (optional)
       - endAfter: describe number of period challenge will be retired after (optional). To configure challenge that never end, leave the endDate and endAfter field null/empty.
-      - repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      - repeatAfter: number of periods after which the challenge's goals repeat. Leave empty if you don't want to repeat the challenge.
+      - note: when repeatAfter is set, goals cannot include the 'schedule' field when created via POST .../goals. Use PUT .../goals/{code}/slots to assign each goal to a specific slot instead.
       - rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
       - activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       - assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED|CUSTOM)
@@ -2083,6 +2174,61 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
 
+  'AdminGetChallengeSlots@jv.challenge.fun':
+    id: 'AdminGetChallengeSlots@jv.challenge.fun'
+    name: 'AdminGetChallengeSlots'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+      Returns the slot configuration for a FIXED or RANDOMIZED (non-per-rotation) assignment challenge.
+      For repeating challenges (repeatAfter set), the response contains two separate fields:
+      - templateSlots: the authoritative future configuration from TemplateSlots (goals only, no timing).
+      - currentRound: the actual running state of the current (or nearest) round (goals + startTime/endTime from schedule documents).
+      These two may differ when a slot move was deferred because the target slot was active.
+      For non-repeating challenges, only currentRound is returned (templateSlots is absent).
+    arguments:
+      'challengeCode':
+        type: 'String'
+        required: true
+        description: |-
+          challenge code
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'ModelGetSlotsResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+      - 'import net.accelbyte.sdk.api.challenge.operations.goal_configuration.*;'
+      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/GoalConfiguration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminGetChallengeSlots.java'
+    example: |-
+      try {
+          final AdminGetChallengeSlots operation = AdminGetChallengeSlots.builder()
+              .build(
+                  challengeCode,
+                  namespace,
+              );
+
+          final GoalConfiguration wrapper = new GoalConfiguration(sdk);
+          final ModelGetSlotsResponse response = wrapper.adminGetChallengeSlots(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'challenge'
+      - 'configuration'
+      - 'get'
+      - 'goal'
+      - 'slots'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]'
+
   'AdminGetGoal@jv.challenge.fun':
     id: 'AdminGetGoal@jv.challenge.fun'
     name: 'AdminGetGoal'
@@ -2629,6 +2775,72 @@ symbols:
       - 'list'
       - 'schedules'
 
+  'AdminMoveGoalToSlot@jv.challenge.fun':
+    id: 'AdminMoveGoalToSlot@jv.challenge.fun'
+    name: 'AdminMoveGoalToSlot'
+    type: 'function'
+    description: |-
+      - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+      Moves a goal to a target slot in a FIXED or non-per-rotation RANDOMIZED challenge with repeatAfter set.
+      slotIndex is 0-based and must be in [0, repeatAfter-1].
+      Pass slotIndex = -1 to remove the goal from all slots; it will no longer appear in future rounds.
+      TemplateSlots and all non-finished schedule documents are updated immediately.
+      The currently active schedule document for the affected slot is skipped to avoid
+      disrupting in-progress user progressions; the change takes effect from the next round.
+      Finished (past) schedule documents are never modified.
+    arguments:
+      'body':
+        type: 'ModelMoveGoalToSlotRequest'
+        required: true
+      'challengeCode':
+        type: 'String'
+        required: true
+        description: |-
+          challenge code
+      'code':
+        type: 'String'
+        required: true
+        description: |-
+          goal code
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+      - 'import net.accelbyte.sdk.api.challenge.operations.goal_configuration.*;'
+      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/GoalConfiguration.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminMoveGoalToSlot.java'
+    example: |-
+      try {
+          final AdminMoveGoalToSlot operation = AdminMoveGoalToSlot.builder()
+              .build(
+                  body,
+                  challengeCode,
+                  code,
+                  namespace,
+              );
+
+          final GoalConfiguration wrapper = new GoalConfiguration(sdk);
+          wrapper.adminMoveGoalToSlot(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'admin'
+      - 'configuration'
+      - 'goal'
+      - 'move'
+      - 'slot'
+      - 'to'
+    permissions:
+      - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
+
   'AdminRandomizeChallenge@jv.challenge.fun':
     id: 'AdminRandomizeChallenge@jv.challenge.fun'
     name: 'AdminRandomizeChallenge'
@@ -2941,138 +3153,6 @@ symbols:
     permissions:
       - 'ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]'
 
-  'EvaluateMyProgress@jv.challenge.fun':
-    id: 'EvaluateMyProgress@jv.challenge.fun'
-    name: 'EvaluateMyProgress'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-    arguments:
-      'challengeCode':
-        type: 'List<String>'
-        required: false
-        description: |-
-          challenge code to be evaluated, comma separated value
-      'includeOneTimeEvent':
-        type: 'String'
-        required: false
-        description: |-
-          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          namespace of the game
-    return_type: 'void'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.challenge.models.*;'
-      - 'import net.accelbyte.sdk.api.challenge.operations.challenge_progression.*;'
-      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeProgression.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/EvaluateMyProgress.java'
-    example: |-
-      try {
-          final EvaluateMyProgress operation = EvaluateMyProgress.builder()
-              .challengeCode(...)
-              .includeOneTimeEvent(...)
-              .build(
-                  namespace,
-              );
-
-          final ChallengeProgression wrapper = new ChallengeProgression(sdk);
-          wrapper.evaluateMyProgress(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'challenge'
-      - 'evaluate'
-      - 'my'
-      - 'progress'
-      - 'progression'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
-
-  'GetChallenges@jv.challenge.fun':
-    id: 'GetChallenges@jv.challenge.fun'
-    name: 'GetChallenges'
-    type: 'function'
-    description: |-
-      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
-    arguments:
-      'keyword':
-        type: 'String'
-        required: false
-        description: |-
-          filter challenges by code with likes behavior
-      'limit':
-        type: 'Integer'
-        required: false
-        description: |-
-          limit the amount of data retrieved
-      'namespace':
-        type: 'String'
-        required: true
-        description: |-
-          namespace of the game
-      'offset':
-        type: 'Integer'
-        required: false
-        description: |-
-          offset
-      'sortBy':
-        type: 'String'
-        required: false
-        description: |-
-          sort list by attributes.
-          			default value: updatedAt:desc.
-      'status':
-        type: 'String'
-        required: false
-        description: |-
-          challenge status
-      'tags':
-        type: 'List<String>'
-        required: false
-        description: |-
-          filter challenges by tags, comma separated value
-    return_type: 'ModelListChallengeResponse'
-    imports:
-      - 'import net.accelbyte.sdk.core.*;'
-      - 'import net.accelbyte.sdk.api.challenge.models.*;'
-      - 'import net.accelbyte.sdk.api.challenge.operations.challenge_list.*;'
-      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeList.java'
-      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_list/GetChallenges.java'
-    example: |-
-      try {
-          final GetChallenges operation = GetChallenges.builder()
-              .keyword(...)
-              .limit(...)
-              .offset(...)
-              .sortBy(...)
-              .status(...)
-              .tags(...)
-              .build(
-                  namespace,
-              );
-
-          final ChallengeList wrapper = new ChallengeList(sdk);
-          final ModelListChallengeResponse response = wrapper.getChallenges(operation);
-      }
-      catch (HttpResponseException e) { /* Handle exceptions. */ }
-      catch (Exception e)             { /* Handle exceptions. */ }
-    tags:
-      - 'challenge'
-      - 'challenges'
-      - 'get'
-      - 'list'
-    permissions:
-      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
-
   'PublicClaimUserRewards@jv.challenge.fun':
     id: 'PublicClaimUserRewards@jv.challenge.fun'
     name: 'PublicClaimUserRewards'
@@ -3173,6 +3253,140 @@ symbols:
       - 'user'
     permissions:
       - 'NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]'
+
+  'PublicEvaluateMyProgress@jv.challenge.fun':
+    id: 'PublicEvaluateMyProgress@jv.challenge.fun'
+    name: 'PublicEvaluateMyProgress'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    arguments:
+      'challengeCode':
+        type: 'List<String>'
+        required: false
+        description: |-
+          challenge code to be evaluated, comma separated value
+      'includeOneTimeEvent':
+        type: 'String'
+        required: false
+        description: |-
+          Include one-time events (e.g. user achievement unlocks, platform linking). Normally this flag should be disabled and is only used to recover from failed one-time event processing.
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+    return_type: 'void'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+      - 'import net.accelbyte.sdk.api.challenge.operations.challenge_progression.*;'
+      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeProgression.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/PublicEvaluateMyProgress.java'
+    example: |-
+      try {
+          final PublicEvaluateMyProgress operation = PublicEvaluateMyProgress.builder()
+              .challengeCode(...)
+              .includeOneTimeEvent(...)
+              .build(
+                  namespace,
+              );
+
+          final ChallengeProgression wrapper = new ChallengeProgression(sdk);
+          wrapper.publicEvaluateMyProgress(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'challenge'
+      - 'evaluate'
+      - 'my'
+      - 'progress'
+      - 'progression'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]'
+
+  'PublicGetChallenges@jv.challenge.fun':
+    id: 'PublicGetChallenges@jv.challenge.fun'
+    name: 'PublicGetChallenges'
+    type: 'function'
+    description: |-
+      - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    arguments:
+      'keyword':
+        type: 'String'
+        required: false
+        description: |-
+          filter challenges by code with likes behavior
+      'limit':
+        type: 'Integer'
+        required: false
+        description: |-
+          limit the amount of data retrieved
+      'namespace':
+        type: 'String'
+        required: true
+        description: |-
+          namespace of the game
+      'offset':
+        type: 'Integer'
+        required: false
+        description: |-
+          offset
+      'sortBy':
+        type: 'String'
+        required: false
+        description: |-
+          sort list by attributes.
+          			default value: updatedAt:desc.
+      'status':
+        type: 'String'
+        required: false
+        description: |-
+          challenge status
+      'tags':
+        type: 'List<String>'
+        required: false
+        description: |-
+          filter challenges by tags, comma separated value
+    return_type: 'ModelListChallengeResponse'
+    imports:
+      - 'import net.accelbyte.sdk.core.*;'
+      - 'import net.accelbyte.sdk.api.challenge.models.*;'
+      - 'import net.accelbyte.sdk.api.challenge.operations.challenge_list.*;'
+      - 'import net.accelbyte.sdk.api.challenge.wrappers.*;'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeList.java'
+      - 'https://github.com/AccelByte/accelbyte-java-sdk/blob/main/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_list/PublicGetChallenges.java'
+    example: |-
+      try {
+          final PublicGetChallenges operation = PublicGetChallenges.builder()
+              .keyword(...)
+              .limit(...)
+              .offset(...)
+              .sortBy(...)
+              .status(...)
+              .tags(...)
+              .build(
+                  namespace,
+              );
+
+          final ChallengeList wrapper = new ChallengeList(sdk);
+          final ModelListChallengeResponse response = wrapper.publicGetChallenges(operation);
+      }
+      catch (HttpResponseException e) { /* Handle exceptions. */ }
+      catch (Exception e)             { /* Handle exceptions. */ }
+    tags:
+      - 'challenge'
+      - 'challenges'
+      - 'get'
+      - 'list'
+      - 'public'
+    permissions:
+      - 'NAMESPACE:{namespace}:CHALLENGE [READ]'
 
   'PublicGetPastUserProgression@jv.challenge.fun':
     id: 'PublicGetPastUserProgression@jv.challenge.fun'

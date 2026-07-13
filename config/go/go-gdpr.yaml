@@ -94,6 +94,31 @@ symbols:
           TokenRepository:  tokenRepo,
       }
 
+  'DataDeletionHeadlessService@go.gdpr.mod':
+    id: 'DataDeletionHeadlessService@go.gdpr.mod'
+    name: 'DataDeletionHeadlessService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionHeadless.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataDeletionHeadlessService := DataDeletionHeadlessService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
   'DataRetrievalService@go.gdpr.mod':
     id: 'DataRetrievalService@go.gdpr.mod'
     name: 'DataRetrievalService'
@@ -139,6 +164,31 @@ symbols:
     example: |-
       gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
       dataRetrievalS2SService := DataRetrievalS2SService{
+          Client:           gdprClient,
+          ConfigRepository: configRepo,
+          TokenRepository:  tokenRepo,
+      }
+
+  'DataRetrievalHeadlessService@go.gdpr.mod':
+    id: 'DataRetrievalHeadlessService@go.gdpr.mod'
+    name: 'DataRetrievalHeadlessService'
+    type: 'model'
+    fields:
+      Client:
+        type: '*gdprclient.JusticeGdprService'
+      ConfigRepository:
+        type: 'repository.ConfigRepository'
+      TokenRepository:
+        type: 'repository.TokenRepository'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      gdprClient := factory.NewGdprClient(configRepo) // re-use if it exists already
+      dataRetrievalHeadlessService := DataRetrievalHeadlessService{
           Client:           gdprClient,
           ConfigRepository: configRepo,
           TokenRepository:  tokenRepo,
@@ -728,9 +778,24 @@ symbols:
     name: 'PublicCancelMyAccountDeletionRequestParams'
     type: 'model'
     imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_cancel_my_account_deletion_request_parameters.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_headless/public_cancel_my_account_deletion_request_parameters.go'
+
+  'PublicCancelMyPersonalDataRequestParams@go.gdpr.mod':
+    id: 'PublicCancelMyPersonalDataRequestParams@go.gdpr.mod'
+    name: 'PublicCancelMyPersonalDataRequestParams'
+    type: 'model'
+    fields:
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date (RFC3339 format)
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_headless/public_cancel_my_personal_data_request_parameters.go'
 
   'PublicCancelUserAccountDeletionRequestParams@go.gdpr.mod':
     id: 'PublicCancelUserAccountDeletionRequestParams@go.gdpr.mod'
@@ -777,6 +842,21 @@ symbols:
     files:
       - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval/public_cancel_user_personal_data_request_parameters.go'
 
+  'PublicGenerateMyHeadlessPersonalDataURLParams@go.gdpr.mod':
+    id: 'PublicGenerateMyHeadlessPersonalDataURLParams@go.gdpr.mod'
+    name: 'PublicGenerateMyHeadlessPersonalDataURLParams'
+    type: 'model'
+    fields:
+      'RequestDate':
+        type: 'string'
+        required: true
+        description: |-
+          Request date in RFC3339 format
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_headless/public_generate_my_headless_personal_data_url_parameters.go'
+
   'PublicGeneratePersonalDataURLParams@go.gdpr.mod':
     id: 'PublicGeneratePersonalDataURLParams@go.gdpr.mod'
     name: 'PublicGeneratePersonalDataURLParams'
@@ -812,9 +892,18 @@ symbols:
     name: 'PublicGetMyAccountDeletionStatusParams'
     type: 'model'
     imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_get_my_account_deletion_status_parameters.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_headless/public_get_my_account_deletion_status_parameters.go'
+
+  'PublicGetMyPersonalDataRequestsParams@go.gdpr.mod':
+    id: 'PublicGetMyPersonalDataRequestsParams@go.gdpr.mod'
+    name: 'PublicGetMyPersonalDataRequestsParams'
+    type: 'model'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_headless/public_get_my_personal_data_requests_parameters.go'
 
   'PublicGetUserAccountDeletionStatusParams@go.gdpr.mod':
     id: 'PublicGetUserAccountDeletionStatusParams@go.gdpr.mod'
@@ -912,9 +1001,68 @@ symbols:
         description: |-
           Platform token of current logged platform
     imports:
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion/public_submit_my_account_deletion_request_parameters.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_headless/public_submit_my_account_deletion_request_parameters.go'
+
+  'PublicSubmitMyHeadlessDeletionRequestParams@go.gdpr.mod':
+    id: 'PublicSubmitMyHeadlessDeletionRequestParams@go.gdpr.mod'
+    name: 'PublicSubmitMyHeadlessDeletionRequestParams'
+    type: 'model'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_deletion_headless/public_submit_my_headless_deletion_request_parameters.go'
+
+  'PublicSubmitMyHeadlessPersonalDataRequestParams@go.gdpr.mod':
+    id: 'PublicSubmitMyHeadlessPersonalDataRequestParams@go.gdpr.mod'
+    name: 'PublicSubmitMyHeadlessPersonalDataRequestParams'
+    type: 'model'
+    fields:
+      'Email':
+        type: 'string'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag for the notification email
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_headless/public_submit_my_headless_personal_data_request_parameters.go'
+
+  'PublicSubmitMyPersonalDataRequestParams@go.gdpr.mod':
+    id: 'PublicSubmitMyPersonalDataRequestParams@go.gdpr.mod'
+    name: 'PublicSubmitMyPersonalDataRequestParams'
+    type: 'model'
+    fields:
+      'Email':
+        type: 'string'
+        required: false
+        description: |-
+          Email address to receive notifications and download links when the generated data is ready.
+      'LanguageTag':
+        type: 'string'
+        required: false
+        description: |-
+          Language tag for the notification email
+      'PlatformID':
+        type: 'string'
+        required: true
+        description: |-
+          Platform ID
+      'PlatformToken':
+        type: 'string'
+        required: true
+        description: |-
+          Platform token
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/gdpr-sdk/pkg/gdprclient/data_retrieval_headless/public_submit_my_personal_data_request_parameters.go'
 
   'PublicSubmitUserAccountDeletionRequestParams@go.gdpr.mod':
     id: 'PublicSubmitUserAccountDeletionRequestParams@go.gdpr.mod'
@@ -1560,12 +1708,16 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
+        description: |-
+          Publisher Namespace
       'RequestDate':
         type: 'strfmt.DateTime'
         required: true
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
     files:
@@ -1591,6 +1743,8 @@ symbols:
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
     files:
@@ -1619,6 +1773,8 @@ symbols:
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
     files:
@@ -1717,9 +1873,13 @@ symbols:
       'Namespace':
         type: 'string'
         required: true
+        description: |-
+          Publisher Namespace
       'UserID':
         type: 'string'
         required: true
+        description: |-
+          Publisher User Id
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
     files:
@@ -1969,12 +2129,9 @@ symbols:
     name: 'AdminGeneratePersonalDataURLShort'
     type: 'function'
     description: |-
-      Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-      If admin request data for themselves, password is need to be set
+      Generate personal data download url.
+      If admin request data for themselves, password is need to be set.
+      Scope: account
     struct: 'DataRetrievalService'
     arguments:
       params:
@@ -2398,7 +2555,7 @@ symbols:
     name: 'AdminRequestDataRetrievalShort'
     type: 'function'
     description: |-
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -2767,22 +2924,22 @@ symbols:
     description: |-
       Cancel my account deletion request
       Requires valid user access token
-    struct: 'DataDeletionService'
+    struct: 'DataDeletionHeadlessService'
     arguments:
       params:
-        type: '*data_deletion.PublicCancelMyAccountDeletionRequestParams'
+        type: '*data_deletion_headless.PublicCancelMyAccountDeletionRequestParams'
         required: true
     return_type: 'error'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionHeadless.go'
     example: |-
-      dataDeletionService := gdpr.DataDeletionService{ ... }
-      params := data_deletion.PublicCancelMyAccountDeletionRequestParams{ ... }
-      res, err := dataDeletionService.PublicCancelMyAccountDeletionRequestShort(params)
+      dataDeletionHeadlessService := gdpr.DataDeletionHeadlessService{ ... }
+      params := data_deletion_headless.PublicCancelMyAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionHeadlessService.PublicCancelMyAccountDeletionRequestShort(params)
       if err != nil {
           // handleError(err)
       }
@@ -2791,9 +2948,45 @@ symbols:
       - 'cancel'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+
+  'PublicCancelMyPersonalDataRequestShort@go.gdpr.fun':
+    id: 'PublicCancelMyPersonalDataRequestShort@go.gdpr.fun'
+    name: 'PublicCancelMyPersonalDataRequestShort'
+    type: 'function'
+    description: |-
+      Cancel a pending Personal Data Request by its request date. Requires a valid access token.
+    struct: 'DataRetrievalHeadlessService'
+    arguments:
+      params:
+        type: '*data_retrieval_headless.PublicCancelMyPersonalDataRequestParams'
+        required: true
+    return_type: 'error'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      dataRetrievalHeadlessService := gdpr.DataRetrievalHeadlessService{ ... }
+      params := data_retrieval_headless.PublicCancelMyPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalHeadlessService.PublicCancelMyPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'cancel'
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
 
   'PublicCancelUserAccountDeletionRequestShort@go.gdpr.fun':
     id: 'PublicCancelUserAccountDeletionRequestShort@go.gdpr.fun'
@@ -2867,6 +3060,46 @@ symbols:
       - 'retrieval'
       - 'user'
 
+  'PublicGenerateMyHeadlessPersonalDataURLShort@go.gdpr.fun':
+    id: 'PublicGenerateMyHeadlessPersonalDataURLShort@go.gdpr.fun'
+    name: 'PublicGenerateMyHeadlessPersonalDataURLShort'
+    type: 'function'
+    description: |-
+      Generate a download url for a completed Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` instead.
+    struct: 'DataRetrievalHeadlessService'
+    arguments:
+      params:
+        type: '*data_retrieval_headless.PublicGenerateMyHeadlessPersonalDataURLParams'
+        required: true
+    return_type: '(*data_retrieval_headless.PublicGenerateMyHeadlessPersonalDataURLResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      dataRetrievalHeadlessService := gdpr.DataRetrievalHeadlessService{ ... }
+      params := data_retrieval_headless.PublicGenerateMyHeadlessPersonalDataURLParams{ ... }
+      res, err := dataRetrievalHeadlessService.PublicGenerateMyHeadlessPersonalDataURLShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'generate'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'retrieval'
+      - 'url'
+
   'PublicGeneratePersonalDataURLShort@go.gdpr.fun':
     id: 'PublicGeneratePersonalDataURLShort@go.gdpr.fun'
     name: 'PublicGeneratePersonalDataURLShort'
@@ -2912,22 +3145,22 @@ symbols:
     description: |-
       Retrieve my account deletion status
       Requires valid user access token
-    struct: 'DataDeletionService'
+    struct: 'DataDeletionHeadlessService'
     arguments:
       params:
-        type: '*data_deletion.PublicGetMyAccountDeletionStatusParams'
+        type: '*data_deletion_headless.PublicGetMyAccountDeletionStatusParams'
         required: true
-    return_type: '(*data_deletion.PublicGetMyAccountDeletionStatusResponse, error)'
+    return_type: '(*data_deletion_headless.PublicGetMyAccountDeletionStatusResponse, error)'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionHeadless.go'
     example: |-
-      dataDeletionService := gdpr.DataDeletionService{ ... }
-      params := data_deletion.PublicGetMyAccountDeletionStatusParams{ ... }
-      res, err := dataDeletionService.PublicGetMyAccountDeletionStatusShort(params)
+      dataDeletionHeadlessService := gdpr.DataDeletionHeadlessService{ ... }
+      params := data_deletion_headless.PublicGetMyAccountDeletionStatusParams{ ... }
+      res, err := dataDeletionHeadlessService.PublicGetMyAccountDeletionStatusShort(params)
       if err != nil {
           // handleError(err)
       }
@@ -2936,9 +3169,45 @@ symbols:
       - 'data'
       - 'deletion'
       - 'get'
+      - 'headless'
       - 'my'
       - 'public'
       - 'status'
+
+  'PublicGetMyPersonalDataRequestsShort@go.gdpr.fun':
+    id: 'PublicGetMyPersonalDataRequestsShort@go.gdpr.fun'
+    name: 'PublicGetMyPersonalDataRequestsShort'
+    type: 'function'
+    description: |-
+      List my personal data requests. Requires a valid access token.
+    struct: 'DataRetrievalHeadlessService'
+    arguments:
+      params:
+        type: '*data_retrieval_headless.PublicGetMyPersonalDataRequestsParams'
+        required: true
+    return_type: '(*data_retrieval_headless.PublicGetMyPersonalDataRequestsResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      dataRetrievalHeadlessService := gdpr.DataRetrievalHeadlessService{ ... }
+      params := data_retrieval_headless.PublicGetMyPersonalDataRequestsParams{ ... }
+      res, err := dataRetrievalHeadlessService.PublicGetMyPersonalDataRequestsShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'get'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'requests'
+      - 'retrieval'
 
   'PublicGetUserAccountDeletionStatusShort@go.gdpr.fun':
     id: 'PublicGetUserAccountDeletionStatusShort@go.gdpr.fun'
@@ -3017,7 +3286,7 @@ symbols:
     name: 'PublicRequestDataRetrievalShort'
     type: 'function'
     description: |-
-      Submit personal data retrieval request.
+      Submit user's personal data request.
       Scope: account
 
       ### Request Header:
@@ -3052,28 +3321,30 @@ symbols:
     name: 'PublicSubmitMyAccountDeletionRequestShort'
     type: 'function'
     description: |-
-      Submit my account deletion requests.
-      Requires valid user access token
-      This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
+      Submit an Account Deletion Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
 
       ### Request Header:
       - **Content-Type: application/x-www-form-urlencoded**
-    struct: 'DataDeletionService'
+    struct: 'DataDeletionHeadlessService'
     arguments:
       params:
-        type: '*data_deletion.PublicSubmitMyAccountDeletionRequestParams'
+        type: '*data_deletion_headless.PublicSubmitMyAccountDeletionRequestParams'
         required: true
-    return_type: '(*data_deletion.PublicSubmitMyAccountDeletionRequestResponse, error)'
+    return_type: '(*data_deletion_headless.PublicSubmitMyAccountDeletionRequestResponse, error)'
     imports:
       - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
-      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
       - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
     files:
-      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletion.go'
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionHeadless.go'
     example: |-
-      dataDeletionService := gdpr.DataDeletionService{ ... }
-      params := data_deletion.PublicSubmitMyAccountDeletionRequestParams{ ... }
-      res, err := dataDeletionService.PublicSubmitMyAccountDeletionRequestShort(params)
+      dataDeletionHeadlessService := gdpr.DataDeletionHeadlessService{ ... }
+      params := data_deletion_headless.PublicSubmitMyAccountDeletionRequestParams{ ... }
+      res, err := dataDeletionHeadlessService.PublicSubmitMyAccountDeletionRequestShort(params)
       if err != nil {
           // handleError(err)
       }
@@ -3081,9 +3352,134 @@ symbols:
       - 'account'
       - 'data'
       - 'deletion'
+      - 'headless'
       - 'my'
       - 'public'
       - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessDeletionRequestShort@go.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessDeletionRequestShort@go.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessDeletionRequestShort'
+    type: 'function'
+    description: |-
+      Submit an Account Deletion Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 10 seconds).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/deletions` instead.
+    struct: 'DataDeletionHeadlessService'
+    arguments:
+      params:
+        type: '*data_deletion_headless.PublicSubmitMyHeadlessDeletionRequestParams'
+        required: true
+    return_type: '(*data_deletion_headless.PublicSubmitMyHeadlessDeletionRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_deletion_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataDeletionHeadless.go'
+    example: |-
+      dataDeletionHeadlessService := gdpr.DataDeletionHeadlessService{ ... }
+      params := data_deletion_headless.PublicSubmitMyHeadlessDeletionRequestParams{ ... }
+      res, err := dataDeletionHeadlessService.PublicSubmitMyHeadlessDeletionRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'deletion'
+      - 'headless'
+      - 'my'
+      - 'public'
+      - 'request'
+      - 'submit'
+
+  'PublicSubmitMyHeadlessPersonalDataRequestShort@go.gdpr.fun':
+    id: 'PublicSubmitMyHeadlessPersonalDataRequestShort@go.gdpr.fun'
+    name: 'PublicSubmitMyHeadlessPersonalDataRequestShort'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request for headless account scenario (without a password).
+      **Typically used by web portal** to invoke headless player GDPR using 3rd platform web authentication.
+      Requires a valid access token and a fresh **gdpr_token** cookie (max-age 5 minutes).
+      The gdpr_token is issued by the IAM service during 3rd platform web authentication.
+
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataRetrievalHeadlessService'
+    arguments:
+      params:
+        type: '*data_retrieval_headless.PublicSubmitMyHeadlessPersonalDataRequestParams'
+        required: true
+    return_type: '(*data_retrieval_headless.PublicSubmitMyHeadlessPersonalDataRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      dataRetrievalHeadlessService := gdpr.DataRetrievalHeadlessService{ ... }
+      params := data_retrieval_headless.PublicSubmitMyHeadlessPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalHeadlessService.PublicSubmitMyHeadlessPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
+      - 'submit'
+
+  'PublicSubmitMyPersonalDataRequestShort@go.gdpr.fun':
+    id: 'PublicSubmitMyPersonalDataRequestShort@go.gdpr.fun'
+    name: 'PublicSubmitMyPersonalDataRequestShort'
+    type: 'function'
+    description: |-
+      Submit a Personal Data Request authenticated by a platform token.
+      Requires a valid access token.
+
+      This endpoint is intended for **in-game use** only and requires a valid platformId and platform token.
+      If a full account is available, use `POST /gdpr/public/namespaces/{namespace}/users/{userId}/requests` instead.
+
+      ### Request Header:
+      - **Content-Type: application/x-www-form-urlencoded**
+    struct: 'DataRetrievalHeadlessService'
+    arguments:
+      params:
+        type: '*data_retrieval_headless.PublicSubmitMyPersonalDataRequestParams'
+        required: true
+    return_type: '(*data_retrieval_headless.PublicSubmitMyPersonalDataRequestResponse, error)'
+    imports:
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclientmodels'
+      - 'github.com/AccelByte/accelbyte-go-sdk/gdpr-sdk/pkg/gdprclient/data_retrieval_headless'
+      - 'github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/gdpr'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-go-sdk/blob/main/services-api/pkg/service/gdpr/dataRetrievalHeadless.go'
+    example: |-
+      dataRetrievalHeadlessService := gdpr.DataRetrievalHeadlessService{ ... }
+      params := data_retrieval_headless.PublicSubmitMyPersonalDataRequestParams{ ... }
+      res, err := dataRetrievalHeadlessService.PublicSubmitMyPersonalDataRequestShort(params)
+      if err != nil {
+          // handleError(err)
+      }
+    tags:
+      - 'data'
+      - 'headless'
+      - 'my'
+      - 'personal'
+      - 'public'
+      - 'request'
+      - 'retrieval'
       - 'submit'
 
   'PublicSubmitUserAccountDeletionRequestShort@go.gdpr.fun':
@@ -3310,7 +3706,7 @@ symbols:
     description: |-
       Scope: account
 
-      Submit user personal data retrieval request.
+      Submit user's personal data request.
 
       **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

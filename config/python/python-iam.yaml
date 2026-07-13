@@ -4671,18 +4671,15 @@ symbols:
     example: |-
       model_link_platform_account_with_progression_request = iam_models.ModelLinkPlatformAccountWithProgressionRequest.create(...)
 
-  'ModelLinkRequest@py.iam.mod':
-    id: 'ModelLinkRequest@py.iam.mod'
-    name: 'ModelLinkRequest'
+  'ModelLinkRequestResponse@py.iam.mod':
+    id: 'ModelLinkRequestResponse@py.iam.mod'
+    name: 'ModelLinkRequestResponse'
     type: 'model'
     fields:
       'client_id':
         type: 'str'
         required: true
       'namespace':
-        type: 'str'
-        required: true
-      'operation_name':
         type: 'str'
         required: true
       'payload':
@@ -4697,6 +4694,8 @@ symbols:
       'status':
         type: 'str'
         required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
       'conflict_publisher_user_id':
         type: 'str'
         required: false
@@ -4721,9 +4720,6 @@ symbols:
       'platform_user_id':
         type: 'str'
         required: false
-      'refresh_token':
-        type: 'str'
-        required: false
       'user_id':
         type: 'str'
         required: false
@@ -4731,9 +4727,9 @@ symbols:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'import accelbyte_py_sdk.api.iam.models as iam_models'
     files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/models/model_link_request.py'
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/models/model_link_request_response.py'
     example: |-
-      model_link_request = iam_models.ModelLinkRequest.create(...)
+      model_link_request_response = iam_models.ModelLinkRequestResponse.create(...)
 
   'ModelListAssignedUsersV4Response@py.iam.mod':
     id: 'ModelListAssignedUsersV4Response@py.iam.mod'
@@ -5629,6 +5625,70 @@ symbols:
       - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/models/model_public_user_update_request_v3.py'
     example: |-
       model_public_user_update_request_v3 = iam_models.ModelPublicUserUpdateRequestV3.create(...)
+
+  'ModelReAuthRequest@py.iam.mod':
+    id: 'ModelReAuthRequest@py.iam.mod'
+    name: 'ModelReAuthRequest'
+    type: 'model'
+    fields:
+      'client_id':
+        type: 'str'
+        required: true
+      'namespace':
+        type: 'str'
+        required: true
+      'operation_name':
+        type: 'str'
+        required: true
+      'payload':
+        type: 'Dict[str, Any]'
+        required: true
+      'redirect_uri':
+        type: 'str'
+        required: true
+      'request_id':
+        type: 'str'
+        required: true
+      'status':
+        type: 'str'
+        required: true
+      'conflict_publisher_user_id':
+        type: 'str'
+        required: false
+      'conflict_user_linked_games':
+        type: 'List[str]'
+        required: false
+      'current_user_linked_games':
+        type: 'List[str]'
+        required: false
+      'error':
+        type: 'RestErrorResponseWithConflictedUserPlatformAccounts'
+        required: false
+      'expiration':
+        type: 'int'
+        required: false
+      'platform_display_name':
+        type: 'str'
+        required: false
+      'platform_id':
+        type: 'str'
+        required: false
+      'platform_user_id':
+        type: 'str'
+        required: false
+      'refresh_token':
+        type: 'str'
+        required: false
+      'user_id':
+        type: 'str'
+        required: false
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/models/model_re_auth_request.py'
+    example: |-
+      model_re_auth_request = iam_models.ModelReAuthRequest.create(...)
 
   'ModelRemoveUserRoleV4Request@py.iam.mod':
     id: 'ModelRemoveUserRoleV4Request@py.iam.mod'
@@ -8927,6 +8987,34 @@ symbols:
     example: |-
       model_web_linking_response = iam_models.ModelWebLinkingResponse.create(...)
 
+  'ModelWebReauthProcessResponse@py.iam.mod':
+    id: 'ModelWebReauthProcessResponse@py.iam.mod'
+    name: 'ModelWebReauthProcessResponse'
+    type: 'model'
+    fields:
+      'operation':
+        type: 'str'
+        required: true
+        description: |-
+          Operation type for this re-auth request. Enum: LINK, GDPR
+      'status':
+        type: 'str'
+        required: true
+        description: |-
+          Enum: SUCCESS, PENDING, FAILED
+      'link_response':
+        type: 'ModelLinkRequestResponse'
+        required: false
+        description: |-
+          Populated only for operation=LINK. Contains platform linking details.
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/models/model_web_reauth_process_response.py'
+    example: |-
+      model_web_reauth_process_response = iam_models.ModelWebReauthProcessResponse.create(...)
+
   'OauthapiRevocationList@py.iam.mod':
     id: 'OauthapiRevocationList@py.iam.mod'
     name: 'OauthapiRevocationList'
@@ -11686,7 +11774,7 @@ symbols:
         type: 'Optional[bool]'
         required: false
         description: |-
-          If the targeted group or module is selected by any client, the deletion will fail by default. Set this flag to true to force the deletion.
+          If the targeted group or module is currently selected by any client, the deletion will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'Tuple[None, Union[None, HttpResponse, RestErrorResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -17688,7 +17776,13 @@ symbols:
     name: 'admin_update_available_permissions_by_module'
     type: 'function'
     description: |-
-      Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
+      Upserts client available permissions at the module level.
+      Only the modules listed in the request are processed - any other existing module is left untouched, so *callers do not need to include unchanged modules*.
+
+      ## Groups update behavior
+
+      For each module in the request, the 'groups' array is the *full desired state* of that module's groups - any existing group whose 'groupId' is omitted is treated as ***removed***.
+      If a removed group is currently used by any client, the request will fails with 400 and nothing is saved, unless 'forceDelete=true' query param is passed.
     arguments:
       'body':
         type: 'ClientmodelListUpsertModulesRequest'
@@ -17697,7 +17791,7 @@ symbols:
         type: 'Optional[bool]'
         required: false
         description: |-
-          If this update includes a delete action and the targeted group or module is selected by any client, the operation will fail by default. Set this flag to true to force the operation.
+          If the update would remove a group that is currently selected by any client, the request will fail by default. Set to 'true' to first unselect that group from affected clients and then proceed.
     return_type: 'Tuple[None, Union[None, HttpResponse, RestErrorResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
@@ -22297,6 +22391,70 @@ symbols:
       - 'logout'
       - 'sso'
 
+  'namespace_scoped_platform_token_grant@py.iam.fun':
+    id: 'namespace_scoped_platform_token_grant@py.iam.fun'
+    name: 'namespace_scoped_platform_token_grant'
+    type: 'function'
+    description: |-
+      **This endpoint is deprecated.**
+      Requires all requests to have Authorization header set with Basic access authentication
+      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
+      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
+      along with platform_token parameter against publisher namespace.
+
+      Supported platforms:
+      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
+      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
+
+      ### Endpoint migration guide
+      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
+    arguments:
+      'device_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Device/hardware identifier
+      'mac_address':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Mac address of device
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platform_token':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Token from platform auth
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID to login with
+    return_type: 'Tuple[Union[None, OauthmodelTokenResponse], Union[None, HttpResponse, OauthmodelErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.iam as iam'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/operations/o_auth/namespace_scoped_platfo_c548f1.py'
+    example: |-
+      result, error = iam.namespace_scoped_platform_token_grant(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'auth'
+      - 'grant'
+      - 'namespace'
+      - 'o'
+      - 'platform'
+      - 'scoped'
+      - 'token'
+
   'o_auth_dynamic_client_register_with_namespace_v3@py.iam.fun':
     id: 'o_auth_dynamic_client_register_with_namespace_v3@py.iam.fun'
     name: 'o_auth_dynamic_client_register_with_namespace_v3'
@@ -22996,69 +23154,6 @@ symbols:
       - 'refresh'
       - 'token'
       - 'v3'
-
-  'platform_token_request_handler@py.iam.fun':
-    id: 'platform_token_request_handler@py.iam.fun'
-    name: 'platform_token_request_handler'
-    type: 'function'
-    description: |-
-      **This endpoint is deprecated.**
-      Requires all requests to have Authorization header set with Basic access authentication
-      constructed from client id and client secret. For publisher-game namespace schema : Specify only either platform_token or device_id. Device token grant
-      should be requested along with device_id parameter against game namespace. Another 3rd party platform token grant should be requested
-      along with platform_token parameter against publisher namespace.
-
-      Supported platforms:
-      - **steamopenid**: Steam's user authentication method using OpenID 2.0. The expected value of the platform token is the URL generated by Steam on web authentication
-      The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans..
-
-      ### Endpoint migration guide
-      - **Substitute endpoint: _/iam/v3/oauth/platforms/{platformId}/token [POST]_**
-    arguments:
-      'device_id':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Device/hardware identifier
-      'mac_address':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Mac address of device
-      'namespace':
-        type: 'str'
-        required: true
-        description: |-
-          Accepts alphanumeric, with hyphens allowed between segments
-      'platform_token':
-        type: 'Optional[str]'
-        required: false
-        description: |-
-          Token from platform auth
-      'platform_id':
-        type: 'str'
-        required: true
-        description: |-
-          Platform ID to login with
-    return_type: 'Tuple[Union[None, OauthmodelTokenResponse], Union[None, HttpResponse, OauthmodelErrorResponse]]'
-    imports:
-      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
-      - 'from accelbyte_py_sdk.core import HttpResponse'
-      - 'import accelbyte_py_sdk.api.iam as iam'
-      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
-    files:
-      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/operations/o_auth/platform_token_request_handler.py'
-    example: |-
-      result, error = iam.platform_token_request_handler(...)
-      if error:
-          # handle_error(error)
-    tags:
-      - 'auth'
-      - 'handler'
-      - 'o'
-      - 'platform'
-      - 'request'
-      - 'token'
 
   'platform_unlink@py.iam.fun':
     id: 'platform_unlink@py.iam.fun'
@@ -24117,7 +24212,7 @@ symbols:
         required: true
         description: |-
           Request ID of the link status
-    return_type: 'Tuple[Union[None, ModelLinkRequest], Union[None, HttpResponse, RestErrorResponse]]'
+    return_type: 'Tuple[Union[None, ModelReAuthRequest], Union[None, HttpResponse, RestErrorResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'from accelbyte_py_sdk.core import HttpResponse'
@@ -26318,8 +26413,8 @@ symbols:
     name: 'public_process_web_link_platform_v3'
     type: 'function'
     description: |-
-      Processes third party account link and returns the link status directly instead of redirecting to the original page.
-      The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+      Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -26333,6 +26428,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
     arguments:
       'code':
         type: 'Optional[str]'
@@ -26353,8 +26452,8 @@ symbols:
         type: 'str'
         required: true
         description: |-
-          state
-    return_type: 'Tuple[Union[None, ModelLinkRequest], Union[None, HttpResponse, RestErrorResponse]]'
+          state, comes from the response of <code>GET /users/me/platforms/{platformId}/web/link</code> endpoint
+    return_type: 'Tuple[Union[None, ModelReAuthRequest], Union[None, HttpResponse, RestErrorResponse]]'
     imports:
       - 'from typing import Any, Dict, List, Optional, Tuple, Union'
       - 'from accelbyte_py_sdk.core import HttpResponse'
@@ -27358,7 +27457,8 @@ symbols:
     name: 'public_web_link_platform'
     type: 'function'
     description: |-
-      Generates a third party login page which will redirect to the establish API.
+      Generates a redirect to a third party login page for account linking authentication.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -27372,6 +27472,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
     arguments:
       'client_id':
         type: 'Optional[str]'
@@ -27417,7 +27521,9 @@ symbols:
     name: 'public_web_link_platform_establish'
     type: 'function'
     description: |-
-      Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+      Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+      After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
       Supported platforms:
       - ps4web
       - xblweb
@@ -27431,6 +27537,10 @@ symbols:
       - discord
       - amazon
       - oculusweb
+
+      ## New API version
+
+      This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
     arguments:
       'code':
         type: 'Optional[str]'
@@ -27469,6 +27579,203 @@ symbols:
       - 'link'
       - 'platform'
       - 'public'
+      - 'users'
+      - 'web'
+
+  'public_web_reauth_platform@py.iam.fun':
+    id: 'public_web_reauth_platform@py.iam.fun'
+    name: 'public_web_reauth_platform'
+    type: 'function'
+    description: |-
+      Generates a redirect to a third party login page for re-authentication purpose.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'client_id':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Client ID
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'operation':
+        type: 'Union[str, PublicWebReauthPlatformOperationEnum]'
+        required: true
+        description: |-
+          Re-auth operation.
+          			**GDPR**: obtain a **gdpr_token** cookie after re-authentication completes. 
+          			**LINK**: perform a platform account link.
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID
+      'redirect_uri':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Redirect URI
+    return_type: 'Tuple[Union[None, ModelWebLinkingResponse], Union[None, HttpResponse, RestErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.iam as iam'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platform.py'
+    example: |-
+      result, error = iam.public_web_reauth_platform(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'public_web_reauth_platform_establish@py.iam.fun':
+    id: 'public_web_reauth_platform_establish@py.iam.fun'
+    name: 'public_web_reauth_platform_establish'
+    type: 'function'
+    description: |-
+      Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'code':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Authorization code from third party
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID
+      'state':
+        type: 'str'
+        required: true
+        description: |-
+          State from third party redirect
+    return_type: 'Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.iam as iam'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platf_0ad092.py'
+    example: |-
+      result, error = iam.public_web_reauth_platform_establish(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'establish'
+      - 'platform'
+      - 'public'
+      - 'reauth'
+      - 'users'
+      - 'web'
+
+  'public_web_reauth_platform_process@py.iam.fun':
+    id: 'public_web_reauth_platform_process@py.iam.fun'
+    name: 'public_web_reauth_platform_process'
+    type: 'function'
+    description: |-
+      Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+      The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+      For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+      Supported platforms:
+      - ps4web
+      - xblweb
+      - steamopenid
+      - epicgames
+      - facebook
+      - twitch
+      - google
+      - apple
+      - snapchat
+      - discord
+      - amazon
+      - oculusweb
+    arguments:
+      'code':
+        type: 'Optional[str]'
+        required: false
+        description: |-
+          Authorization code from third party
+      'namespace':
+        type: 'str'
+        required: true
+        description: |-
+          Accepts alphanumeric, with hyphens allowed between segments
+      'platform_id':
+        type: 'str'
+        required: true
+        description: |-
+          Platform ID
+      'state':
+        type: 'str'
+        required: true
+        description: |-
+          State, comes from the response of <code>GET /users/me/platforms/{platformId}/web/reauth</code> endpoint
+    return_type: 'Tuple[Union[None, ModelWebReauthProcessResponse], Union[None, HttpResponse, RestErrorResponse]]'
+    imports:
+      - 'from typing import Any, Dict, List, Optional, Tuple, Union'
+      - 'from accelbyte_py_sdk.core import HttpResponse'
+      - 'import accelbyte_py_sdk.api.iam as iam'
+      - 'import accelbyte_py_sdk.api.iam.models as iam_models'
+    files:
+      - 'https://github.com/AccelByte/accelbyte-python-sdk/blob/main/accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platf_e14b6f.py'
+    example: |-
+      result, error = iam.public_web_reauth_platform_process(...)
+      if error:
+          # handle_error(error)
+    tags:
+      - 'platform'
+      - 'process'
+      - 'public'
+      - 'reauth'
       - 'users'
       - 'web'
 
