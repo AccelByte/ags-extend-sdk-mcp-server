@@ -1,7 +1,7 @@
 {
   "name": "extend-sdk-mcp-server",
   "version": "2026.3.2",
-  "description": "Model Context Protocol server exposing the AccelByte Extend SDK (C#, Go, Java, Python) as searchable reference context for AI coding assistants.",
+  "description": "Searchable AccelByte Extend SDK reference (C#, Go, Java, Python) for AI coding assistants",
   "keywords": [
     "mcp",
     "server",
@@ -11,7 +11,6 @@
   ],
   "author": "AccelByte Inc.",
   "license": "Apache-2.0",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AccelByte/ags-extend-sdk-mcp-server.git"
@@ -22,7 +21,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && cp -r assets dist/ 2>/dev/null || true",
+    "sync:server-version": "node sync-server-version.js",
+    "build": "pnpm run sync:server-version && tsc -p tsconfig.build.json && cp -r assets dist/ 2>/dev/null || true",
     "build+": "pnpm run format && pnpm run lint && pnpm run build",
     "start": "pnpm run start:stdio",
     "start:stdio": "MCP_TRANSPORT=stdio node dist/index.js",
