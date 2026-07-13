@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.4.0
+
+* Updated config files.
+
 ## v2026.3.2
 
 * Fixed rate limiting behind a load balancer (`ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`); added `TRUST_PROXY` to set the number of proxy hops.
