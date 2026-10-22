@@ -1,5 +1,9 @@
 # Changelog
 
+## v2026.4.1
+
+* Security: the image now runs Node.js 24.22.1 on base image `node-24:1.0.3-alpine3.23`. Images up to and including v2026.4.0 run Node.js 20.20.2, which is end-of-life and affected by CVE-2026-111497, an out-of-bounds write in the Brotli decoder that can lead to remote code execution. The HTTP transport decompresses `Content-Encoding: br` request bodies, so a client can reach the decoder without signing in. Self-hosted deployments should move to this release.
+
 ## v2026.4.0
 
 * Updated config files.
