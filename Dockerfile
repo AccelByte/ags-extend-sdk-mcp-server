@@ -1,5 +1,5 @@
 # Use the latest stable Node.js LTS image
-FROM public.ecr.aws/c0i0b4n8/accelbyte/base-images/node-24:1.0.1-alpine3.23
+FROM public.ecr.aws/c0i0b4n8/accelbyte/base-images/node-24:1.0.3-alpine3.23
 
 # Set working directory
 WORKDIR /app
