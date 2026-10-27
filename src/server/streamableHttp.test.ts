@@ -11,6 +11,7 @@ import StreamableHttpServer, {
 import SessionManager from '../session/manager.js';
 import searchSymbolsTool from '../tools/symbols/searchTool.js';
 import describeSymbolsTool from '../tools/symbols/describeTool.js';
+import { AVAILABLE_LANGUAGES, getSymbols } from '../tools/symbols/const.js';
 
 function buildApp(mcpPath?: string, trustProxy?: number) {
   const server = new StreamableHttpServer(
@@ -67,9 +68,93 @@ describe('resolveLanguage', () => {
   it('returns null for an unavailable language', () => {
     expect(resolveLanguage('ruby', available, 'go')).toBeNull();
   });
+
+  it('rejects array-valued route parameters', () => {
+    expect(resolveLanguage(['python'], available, 'go')).toBeNull();
+  });
 });
 
 describe('HTTP endpoints', () => {
+  it.each(AVAILABLE_LANGUAGES)(
+    'lists and calls tools with validated output for %s',
+    async (language) => {
+      const app = buildApp();
+      const path = `/mcp/${language}`;
+      const initialized = await request(app)
+        .post(path)
+        .set('Accept', 'application/json, text/event-stream')
+        .send(INITIALIZE_BODY);
+      expect(initialized.status).toBe(200);
+      const sessionId = initialized.headers['mcp-session-id'];
+      expect(sessionId).toBeTruthy();
+
+      const rpc = (body: object) =>
+        request(app)
+          .post(path)
+          .set('Accept', 'application/json, text/event-stream')
+          .set('mcp-session-id', sessionId)
+          .send({ jsonrpc: '2.0', ...body });
+
+      try {
+        const notification = await rpc({ method: 'notifications/initialized' });
+        expect(notification.status).toBe(202);
+
+        const listed = await rpc({ id: 2, method: 'tools/list' });
+        expect(listed.status).toBe(200);
+        expect(listed.body.error).toBeUndefined();
+        expect(listed.body.result.tools).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              name: 'search-symbols',
+              inputSchema: expect.objectContaining({ type: 'object' }),
+              outputSchema: expect.objectContaining({ type: 'object' }),
+            }),
+            expect.objectContaining({ name: 'describe-symbols' }),
+          ])
+        );
+
+        const searched = await rpc({
+          id: 3,
+          method: 'tools/call',
+          params: { name: 'search-symbols', arguments: { query: '' } },
+        });
+        expect(searched.status).toBe(200);
+        expect(searched.body.error).toBeUndefined();
+        expect(searched.body.result.isError).not.toBe(true);
+        const page = searched.body.result.structuredContent.result;
+        expect(page.total).toBe(getSymbols(language).length);
+        expect(page.data).toHaveLength(Math.min(25, page.total));
+        expect(page.data.length).toBeGreaterThan(0);
+
+        const { id } = page.data[0];
+        const described = await rpc({
+          id: 4,
+          method: 'tools/call',
+          params: { name: 'describe-symbols', arguments: { ids: [id] } },
+        });
+        expect(described.status).toBe(200);
+        expect(described.body.error).toBeUndefined();
+        expect(described.body.result.isError).not.toBe(true);
+        expect(described.body.result.structuredContent.result).toEqual({
+          data: [getSymbols(language).find((symbol) => symbol.id === id)],
+          total: 1,
+        });
+
+        const invalid = await rpc({
+          id: 5,
+          method: 'tools/call',
+          params: { name: 'search-symbols', arguments: { query: 123 } },
+        });
+        expect(invalid.body.result.isError).toBe(true);
+      } finally {
+        const closed = await request(app)
+          .delete(path)
+          .set('mcp-session-id', sessionId);
+        expect(closed.status).toBe(200);
+      }
+    }
+  );
+
   it('leaves trust proxy off by default and honors the configured value', () => {
     expect(buildApp().get('trust proxy')).toBe(false);
     expect(buildApp(undefined, 1).get('trust proxy')).toBe(1);

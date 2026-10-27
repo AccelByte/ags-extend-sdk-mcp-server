@@ -5,6 +5,11 @@ import { z } from 'zod/v3';
 
 import { McpServer as HLMcpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { Server as LLMcpServer } from '@modelcontextprotocol/sdk/server/index.js';
+import { RequestHandlerExtra } from '@modelcontextprotocol/sdk/shared/protocol.js';
+import {
+  ServerRequest,
+  ServerNotification,
+} from '@modelcontextprotocol/sdk/types.js';
 
 import SessionManager from '../session/manager.js';
 import { SessionSchema } from '../session/types.js';
@@ -94,7 +99,10 @@ abstract class BaseServer implements Server {
           inputSchema: tool.inputSchema,
           outputSchema: tool.outputSchema,
         },
-        async (args, extra) => {
+        async (
+          args: unknown,
+          extra: RequestHandlerExtra<ServerRequest, ServerNotification>
+        ) => {
           const sessionId = extra?.sessionId;
           const session = sessionId
             ? this.sessionManager.getSession(sessionId)

@@ -54,14 +54,16 @@ function parseList(value?: string): Array<string> | undefined {
  * or `null` when the requested language is not available.
  */
 function resolveLanguage(
-  requested: string | undefined,
+  requested: string | Array<string> | undefined,
   available: Array<string>,
   fallback: string
 ): string | null {
   if (requested === undefined) {
     return fallback;
   }
-  return available.includes(requested) ? requested : null;
+  return typeof requested === 'string' && available.includes(requested)
+    ? requested
+    : null;
 }
 
 class StreamableHttpServer extends BaseServer {
