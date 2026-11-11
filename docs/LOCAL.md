@@ -69,6 +69,8 @@ Over HTTP the server loads **all** languages; clients select one via `/mcp/{lang
 - `ALLOWED_ORIGINS`: Comma-separated list of allowed `Origin` header values for HTTP transport (optional). When set, requests with a disallowed origin are rejected (DNS-rebinding protection).
 - `ALLOWED_HOSTS`: Comma-separated list of allowed `Host` header values for HTTP transport (optional). Set this to your deployment hostname(s) — e.g. behind a load balancer — to enable strict `Host` validation. When unset, any host is accepted.
 - `TRUST_PROXY`: Number of proxy hops in front of the server (Express `trust proxy`; optional, default `0`). Behind a load balancer the client IP arrives via `X-Forwarded-For`; set this to `1` for a single ALB so rate limiting identifies clients correctly. Leave unset for local/direct use.
+- `RATE_LIMIT_MAX`: Requests allowed per client IP per window for HTTP transport (optional, default `100`). Raise it for a hosted deployment that many users reach through one gateway.
+- `RATE_LIMIT_WINDOW_MINS`: Rate limit window in minutes (optional, default `15`).
 - `NODE_ENV`: `development` or `production` (optional, used by Express for HTTP transport)
 
 ## HTTP endpoints
