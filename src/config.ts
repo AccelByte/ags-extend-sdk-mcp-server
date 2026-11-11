@@ -18,6 +18,8 @@ const DEFAULT_TRANSPORT = 'stdio';
 const DEFAULT_PORT = 3000;
 const DEFAULT_MCP_PATH = '/mcp';
 const DEFAULT_CONFIG_DIR = 'config/go';
+const DEFAULT_RATE_LIMIT_MAX = 100;
+const DEFAULT_RATE_LIMIT_WINDOW_MINS = 15;
 
 const TransportEnum = z.enum(['http', 'stdio', 'streamablehttp']);
 
@@ -59,6 +61,22 @@ const ConfigSchema = z.object({
   // identifies clients correctly. Defaults to `0` (no proxy) for local use.
   trustProxy: z.coerce.number().int().min(0).optional().default(0),
 
+  // Requests allowed per client IP in each window. A hosted deployment behind
+  // a shared gateway (e.g. ChatGPT, which calls from OpenAI's servers) needs a
+  // far higher limit than the default.
+  rateLimitMax: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .optional()
+    .default(DEFAULT_RATE_LIMIT_MAX),
+  rateLimitWindowMins: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .optional()
+    .default(DEFAULT_RATE_LIMIT_WINDOW_MINS),
+
   // custom
   configDir: z.string().optional().default(DEFAULT_CONFIG_DIR),
 });
@@ -73,6 +91,8 @@ function loadFromEnv(): Config {
     transport: process.env.MCP_TRANSPORT || process.env.TRANSPORT,
     mcpPath: process.env.MCP_PATH,
     trustProxy: process.env.TRUST_PROXY,
+    rateLimitMax: process.env.RATE_LIMIT_MAX,
+    rateLimitWindowMins: process.env.RATE_LIMIT_WINDOW_MINS,
     configDir: process.env.CONFIG_DIR,
   });
 }

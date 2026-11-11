@@ -13,14 +13,19 @@ import searchSymbolsTool from '../tools/symbols/searchTool.js';
 import describeSymbolsTool from '../tools/symbols/describeTool.js';
 import { AVAILABLE_LANGUAGES, getSymbols } from '../tools/symbols/const.js';
 
-function buildApp(mcpPath?: string, trustProxy?: number) {
+function buildApp(
+  mcpPath?: string,
+  trustProxy?: number,
+  rateLimitMax?: number
+) {
   const server = new StreamableHttpServer(
     'test-server',
     '0.0.0',
     0,
     new SessionManager(),
     mcpPath,
-    trustProxy
+    trustProxy,
+    rateLimitMax
   );
   server.modify(searchSymbolsTool);
   server.modify(describeSymbolsTool);
@@ -158,6 +163,21 @@ describe('HTTP endpoints', () => {
   it('leaves trust proxy off by default and honors the configured value', () => {
     expect(buildApp().get('trust proxy')).toBe(false);
     expect(buildApp(undefined, 1).get('trust proxy')).toBe(1);
+  });
+
+  it('rate limits at the configured maximum', async () => {
+    const app = buildApp(undefined, undefined, 2);
+    const send = () =>
+      request(app)
+        .post('/mcp')
+        .set('Accept', 'application/json, text/event-stream')
+        .set('Content-Type', 'application/json')
+        .send(INITIALIZE_BODY);
+    const first = await send();
+    expect(first.status).toBe(200);
+    expect(first.headers['ratelimit-policy']).toBe('2;w=900');
+    expect((await send()).status).toBe(200);
+    expect((await send()).status).toBe(429);
   });
 
   it('serves the health check', async () => {

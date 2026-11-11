@@ -11,7 +11,14 @@ const pkg = JSON.parse(
   readFileSync(new URL('../package.json', import.meta.url), 'utf8')
 ) as { version: string };
 
-const ENV_VARS = ['MCP_TRANSPORT', 'TRANSPORT', 'MCP_PATH', 'TRUST_PROXY'];
+const ENV_VARS = [
+  'MCP_TRANSPORT',
+  'TRANSPORT',
+  'MCP_PATH',
+  'TRUST_PROXY',
+  'RATE_LIMIT_MAX',
+  'RATE_LIMIT_WINDOW_MINS',
+];
 
 afterEach(() => {
   ENV_VARS.forEach((key) => delete process.env[key]);
@@ -72,6 +79,29 @@ describe('loadFromEnv trustProxy parsing', () => {
 
   it('rejects a non-numeric value', () => {
     process.env.TRUST_PROXY = 'true';
+    expect(() => loadFromEnv()).toThrow();
+  });
+});
+
+describe('loadFromEnv rate limit parsing', () => {
+  it('defaults to 100 requests per 15 minutes when unset', () => {
+    const config = loadFromEnv();
+    expect(config.rateLimitMax).toBe(100);
+    expect(config.rateLimitWindowMins).toBe(15);
+  });
+
+  it('parses configured values', () => {
+    process.env.RATE_LIMIT_MAX = '20000';
+    process.env.RATE_LIMIT_WINDOW_MINS = '5';
+    const config = loadFromEnv();
+    expect(config.rateLimitMax).toBe(20000);
+    expect(config.rateLimitWindowMins).toBe(5);
+  });
+
+  it('rejects a zero or non-numeric maximum', () => {
+    process.env.RATE_LIMIT_MAX = '0';
+    expect(() => loadFromEnv()).toThrow();
+    process.env.RATE_LIMIT_MAX = 'lots';
     expect(() => loadFromEnv()).toThrow();
   });
 });

@@ -88,7 +88,9 @@ class StreamableHttpServer extends BaseServer {
     port: number,
     sessionManager: SessionManager,
     mcpPath: string = '/mcp',
-    trustProxy: number = 0
+    trustProxy: number = 0,
+    rateLimitMax: number = 100,
+    rateLimitWindowMins: number = 15
   ) {
     super(name, version, sessionManager);
     this.port = port;
@@ -126,8 +128,8 @@ class StreamableHttpServer extends BaseServer {
     );
     this.app.use(
       rateLimit({
-        windowMs: 15 * 60 * 1000, // 15 minutes
-        max: 100, // 100 requests per windowMs
+        windowMs: rateLimitWindowMins * 60 * 1000,
+        max: rateLimitMax,
         message: 'Too many requests, please try again later.',
         standardHeaders: true,
         legacyHeaders: false,
