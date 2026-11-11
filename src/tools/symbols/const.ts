@@ -49,9 +49,19 @@ const RECOMMENDED_WORKFLOW = `
 3. Analyze: Use the symbol's description, imports, example, fields, parameters, and return_type for instantiation and usage information.
 `.trim();
 
+// Both tools only read the bundled SDK index: nothing is modified, and no
+// external system is reached.
+const READ_ONLY_TOOL_ANNOTATIONS = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+};
+
 export {
   AVAILABLE_LANGUAGES,
   DEFAULT_LANGUAGE,
+  READ_ONLY_TOOL_ANNOTATIONS,
   RECOMMENDED_WORKFLOW,
   getSymbols,
 };

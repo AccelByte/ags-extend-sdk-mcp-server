@@ -6,7 +6,7 @@ import { z } from 'zod/v3';
 import { McpServer as HLMcpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import { ServerContext } from '../../server/types.js';
-import { RECOMMENDED_WORKFLOW } from './const.js';
+import { READ_ONLY_TOOL_ANNOTATIONS, RECOMMENDED_WORKFLOW } from './const.js';
 import {
   SymbolTypeSchema,
   SymbolType,
@@ -40,6 +40,7 @@ function searchSymbolsTool(server: HLMcpServer, { symbols }: ServerContext) {
     'search-symbols',
     {
       title: 'Search symbols',
+      annotations: READ_ONLY_TOOL_ANNOTATIONS,
       description: SEARCH_TOOL_DESCRIPTION,
       inputSchema: {
         query: z

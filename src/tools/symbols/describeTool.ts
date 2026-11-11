@@ -6,7 +6,7 @@ import { z } from 'zod/v3';
 import { McpServer as HLMcpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import { ServerContext } from '../../server/types.js';
-import { RECOMMENDED_WORKFLOW } from './const.js';
+import { READ_ONLY_TOOL_ANNOTATIONS, RECOMMENDED_WORKFLOW } from './const.js';
 import { Symbol, PaginatedSymbolSchema } from './types.js';
 import { paginateSymbols, validatePaginationParams } from './utils.js';
 
@@ -25,6 +25,7 @@ function describeSymbolsTool(server: HLMcpServer, { symbols }: ServerContext) {
     'describe-symbols',
     {
       title: 'Describe symbols',
+      annotations: READ_ONLY_TOOL_ANNOTATIONS,
       description: DESCRIBE_TOOL_DESCRIPTION,
       inputSchema: {
         ids: z

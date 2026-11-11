@@ -117,6 +117,14 @@ describe('HTTP endpoints', () => {
             expect.objectContaining({ name: 'describe-symbols' }),
           ])
         );
+        listed.body.result.tools.forEach((tool: { annotations?: object }) => {
+          expect(tool.annotations).toEqual({
+            readOnlyHint: true,
+            destructiveHint: false,
+            idempotentHint: true,
+            openWorldHint: false,
+          });
+        });
 
         const searched = await rpc({
           id: 3,
